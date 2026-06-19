@@ -1,0 +1,281 @@
+/* Case studies — Soft Industry "#hero-cards" expanding accordion, our theme */
+.section {
+  position: relative;
+  z-index: 4;
+  background: var(--color-bg);
+  padding: 90px 0;
+}
+
+.heading {
+  font-size: clamp(2rem, 4vw, 3.2rem);
+  font-weight: 300;
+  color: var(--color-text);
+  margin-bottom: 2.5rem;
+}
+.heading span {
+  color: var(--color-blue);
+}
+
+.cards {
+  display: flex;
+  gap: 1.25rem;
+  min-height: 560px;
+}
+
+.card {
+  position: relative;
+  flex: 0 0 110px;
+  min-height: 560px;
+  border-radius: 20px;
+  overflow: hidden;
+  color: #fff;
+  cursor: pointer;
+  transition: flex 0.6s ease;
+}
+.active {
+  flex: 1 1 auto;
+  cursor: default;
+}
+
+.banner {
+  object-fit: cover;
+}
+/* Light wash when collapsed; strong left-to-bottom gradient when active */
+.mask {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(5, 10, 24, 0.1), rgba(5, 10, 24, 0.55));
+  transition: background 0.6s ease;
+}
+.active .mask {
+  background: linear-gradient(
+      105deg,
+      rgba(5, 10, 24, 0.9) 0%,
+      rgba(5, 10, 24, 0.65) 38%,
+      rgba(5, 10, 24, 0.15) 70%
+    ),
+    linear-gradient(0deg, rgba(5, 10, 24, 0.75), transparent 45%);
+}
+
+/* Collapsed: rotated label running down the card. Active: swings to horizontal
+   top-right. Exact Soft Industry transform so placement stays correct. */
+.name {
+  position: absolute;
+  top: 30px;
+  right: 30px;
+  z-index: 2;
+  transform-origin: top right;
+  font-size: 1.05rem;
+  font-weight: 600;
+  line-height: 1.2;
+  white-space: nowrap;
+  transition: transform 0.6s cubic-bezier(0.4, 0.2, 0.4, 1), top 0.6s ease,
+    right 0.6s ease, opacity 0.35s ease;
+}
+.card:not(.active) .name {
+  right: 40%;
+  transform: rotate(90deg) translateX(100%);
+}
+.active .name {
+  transform: rotate(0deg);
+  font-size: 1.1rem;
+}
+
+/* Bottom-left ↗ on collapsed cards */
+.arrow {
+  position: absolute;
+  bottom: 1.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+  width: 2.2rem;
+  height: 2.2rem;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.55);
+  font-size: 0.95rem;
+  transition: opacity 0.3s ease;
+}
+.active .arrow {
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* Active body (title / text / View More) */
+.body {
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+  max-width: 620px;
+  padding: 2.5rem 2.5rem 0;
+  opacity: 0;
+  transform: translateX(40px);
+  transition: opacity 0.35s ease 0.15s, transform 0.6s ease;
+  pointer-events: none;
+}
+.active .body {
+  opacity: 1;
+  transform: translateX(0);
+  pointer-events: auto;
+}
+.title {
+  font-size: clamp(1.6rem, 2.6vw, 2.6rem);
+  font-weight: 300;
+  line-height: 1.1;
+  margin-bottom: 1rem;
+}
+.text {
+  color: #dbe3f1;
+  line-height: 1.55;
+  margin-bottom: 1.75rem;
+  max-width: 460px;
+}
+.viewMore {
+  align-self: flex-start;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 12px 26px;
+  border-radius: var(--radius-button);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  color: #fff;
+  font-weight: 600;
+  transition: background-color 0.25s ease, color 0.25s ease;
+}
+.viewMore:hover {
+  background: #fff;
+  color: var(--color-text);
+}
+
+/* Active meta row (tags / stats + nav) pinned to bottom */
+.meta {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 1.5rem;
+  padding: 2rem 2.5rem;
+  opacity: 0;
+  transform: translateX(40px);
+  transition: opacity 0.35s ease 0.2s, transform 0.6s ease;
+  pointer-events: none;
+}
+.active .meta {
+  opacity: 1;
+  transform: translateX(0);
+  pointer-events: auto;
+}
+
+/* Feature tags — 3-column grid with dividers (Soft Industry "era") */
+.tags {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem 0;
+  max-width: 640px;
+  flex: 1;
+}
+.tags li {
+  padding: 0.2rem 1.5rem;
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: #fff;
+  border-left: 1px solid rgba(255, 255, 255, 0.25);
+}
+.tags li:nth-child(3n + 1) {
+  border-left: none;
+  padding-left: 0;
+}
+
+/* Stat bullets (cards without tags) */
+.stats {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  flex: 1;
+  max-width: 640px;
+}
+.stats li {
+  position: relative;
+  padding-left: 1.6rem;
+  font-weight: 600;
+}
+.stats li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.4em;
+  width: 0.7rem;
+  height: 0.4rem;
+  border-left: 2px solid var(--color-accent);
+  border-bottom: 2px solid var(--color-accent);
+  transform: rotate(-45deg);
+}
+
+/* Nav arrows */
+.nav {
+  display: flex;
+  gap: 0.6rem;
+  flex: 0 0 auto;
+}
+.nav button {
+  width: 2.6rem;
+  height: 2.6rem;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  background: transparent;
+  color: #fff;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+.nav button:hover {
+  background: #fff;
+  color: var(--color-text);
+}
+
+@media (max-width: 767px) {
+  .cards {
+    flex-direction: column;
+    min-height: 0;
+  }
+  .card {
+    flex: none;
+    min-height: 200px;
+  }
+  .active {
+    min-height: 540px;
+  }
+  .name {
+    left: 1.5rem;
+    right: auto;
+    top: 1.5rem;
+    transform: rotate(0deg);
+  }
+  .active .name {
+    right: auto;
+    left: 1.5rem;
+  }
+  .body {
+    padding: 4rem 1.5rem 0;
+  }
+  .meta {
+    padding: 1.5rem;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .tags {
+    grid-template-columns: 1fr 1fr;
+  }
+}

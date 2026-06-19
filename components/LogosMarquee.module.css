@@ -1,0 +1,62 @@
+/* Logos strip — matched to Sumato (.logos): white background, muted slate
+   logos via Sumato's exact filter, continuous linear marquee. */
+.section {
+  position: relative;
+  z-index: 4;
+  background: #fff;
+  padding: 32px 0;
+  overflow: hidden;
+}
+
+.marquee {
+  display: flex;
+  width: max-content;
+  animation: scroll 40s linear infinite;
+}
+.marquee:hover {
+  animation-play-state: paused;
+}
+
+.track {
+  display: flex;
+  align-items: center;
+  list-style: none;
+}
+
+.item {
+  flex: 0 0 auto;
+  display: grid;
+  place-items: center;
+  padding: 12px 28px;
+}
+
+.logo {
+  max-height: 38px;
+  width: auto;
+  object-fit: contain;
+  /* Sumato's exact logo treatment: muted slate-blue, full colour on hover */
+  filter: brightness(0) saturate(0) invert(35%) sepia(16%) saturate(10)
+    hue-rotate(175deg) brightness(75%) contrast(100%);
+  transition: filter 0.25s ease;
+}
+.item:hover .logo {
+  filter: none;
+}
+
+@keyframes scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    /* Each track is half the marquee, so -50% loops seamlessly */
+    transform: translateX(-50%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .marquee {
+    animation: none;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+}

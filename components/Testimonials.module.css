@@ -1,0 +1,249 @@
+/* Featured Testimonials — Satva "brxe-omdrle" layout, our light theme */
+.section {
+  position: relative;
+  z-index: 4;
+  background: var(--color-bg);
+  padding: 80px 0;
+}
+
+.container {
+  width: 100%;
+  margin: 0 auto;
+  max-width: var(--max-width);
+}
+
+.head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 2rem;
+}
+.eyebrow {
+  font-size: 1.25rem;
+  font-weight: 600;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+}
+.arrows {
+  display: flex;
+  gap: 0.5rem;
+}
+.arrow {
+  width: 2.8rem;
+  height: 2.8rem;
+  border-radius: 8px;
+  border: none;
+  background: var(--color-surface);
+  /* color: var(--color-text); */
+  font-size: 1.2rem;
+  cursor: pointer;
+  /* transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease; */
+}
+.arrow:hover {
+  /* background: var(--color-accent); */
+  /* border-color: var(--color-accent); */
+  color: var(--color-accent);
+}
+/* Carousel — clips the sliding track */
+.viewport {
+  overflow: hidden;
+  width: 100%;
+}
+
+/* Track — all slides side-by-side; --total is set inline from JS */
+.track {
+  display: flex;
+  width: calc(var(--total, 6) * 100%);
+}
+
+/* Each slide occupies one equal slice of the track */
+.slideWrap {
+  flex-shrink: 0;
+  width: calc(100% / var(--total, 6));
+  min-width: 0;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1.05fr 1fr;
+  gap: 1.5rem;
+}
+
+.featured {
+  position: relative;
+  border-radius: var(--radius-card);
+  overflow: hidden;
+  min-height: 520px;
+  display: flex;
+  align-items: flex-end;
+}
+.featuredImg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.featuredOverlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(5, 10, 24, 0.92) 0%, rgba(5, 10, 24, 0.2) 55%, transparent 100%);
+}
+.playBadge {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  display: grid;
+  place-items: center;
+  width: 5rem;
+  height: 5rem;
+  border-radius: 50%;
+  background: var(--color-accent);
+  color: #fff;
+  font-size: 1.4rem;
+  padding-left: 5px;
+  box-shadow: 0 14px 40px rgba(255, 65, 92, 0.5);
+  transition: transform 0.2s ease;
+}
+.featured:hover .playBadge {
+  transform: translate(-50%, -50%) scale(1.08);
+}
+
+.featuredBody {
+  position: relative;
+  padding: 2.5rem;
+  color: #fff;
+}
+.featuredTitle {
+  font-size: clamp(2rem, 3.2vw, 3rem);
+  font-weight: 300;
+  margin-bottom: 0.5rem;
+}
+.featuredSub {
+  font-size: 1.05rem;
+  color: #dbe3f1;
+  margin-bottom: 1.5rem;
+}
+.featuredActions {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.featured .play,
+.point .play {
+  display: grid;
+  place-items: center;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  background: var(--color-accent);
+  color: #fff;
+  font-size: 0.9rem;
+  padding-left: 3px;
+  box-shadow: 0 10px 30px rgba(255, 65, 92, 0.45);
+  flex: 0 0 auto;
+}
+
+.points {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 1.5rem;
+}
+.point {
+  position: relative;
+  border-radius: var(--radius-card);
+  overflow: hidden;
+  min-height: 248px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 1.5rem;
+}
+.pointImage {
+  color: #fff;
+}
+.pointImg {
+  object-fit: cover;
+}
+.pointOverlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(5, 10, 24, 0.85), rgba(5, 10, 24, 0.15));
+}
+.pointText {
+  position: relative;
+  font-size: 1.15rem;
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+.pointSolid {
+  background: var(--color-blue-dark);
+  color: #fff;
+  justify-content: space-between;
+}
+.pointTextLight {
+  font-size: 1.15rem;
+  font-weight: 600;
+  line-height: 1.3;
+  color: #fff;
+}
+.pointIcons {
+  display: flex;
+  gap: 0.75rem;
+  align-items: center;
+}
+.pointIcon {
+  width: 48px;
+  height: 48px;
+  object-fit: contain;
+}
+.counter {
+  font-size: 3.4rem;
+  font-weight: 400;
+  line-height: 1;
+  color: var(--color-accent);
+}
+.counter span {
+  font-size: 2.4rem;
+}
+
+.dots {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-top: 2rem;
+}
+.dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  border: none;
+  background: var(--color-border);
+  cursor: pointer;
+  transition: background-color 0.2s ease, width 0.2s ease;
+}
+.dotActive {
+  width: 26px;
+  border-radius: 5px;
+  background: var(--color-accent);
+}
+
+@media (max-width: 900px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+  .featured {
+    min-height: 380px;
+  }
+}
+@media (max-width: 520px) {
+  .points {
+    grid-template-columns: 1fr;
+    grid-template-rows: none;
+  }
+}

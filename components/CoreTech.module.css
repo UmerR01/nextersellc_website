@@ -1,0 +1,130 @@
+/* Core tech stack — exact Sumatosoft TechStackBlock_style-index.css (with-divider / light-mode) */
+
+/* .tech-stack-block */
+.section {
+  align-items: flex-start;
+  display: flex;
+  justify-content: center;
+  overflow: hidden;
+  position: relative;
+  z-index: 4;
+  /* light-mode */
+  background: #fff;
+  color: #000;
+}
+
+/* .tech-stack-block .container — Sumatosoft: max-width:1440px; padding:96px 92px; width:100% */
+.inner {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 96px 92px;
+  width: 100%;
+}
+
+@media screen and (max-width: 768px) {
+  .inner {
+    padding: 72px 24px 77px;
+  }
+}
+
+/* .tech-stack-block__title */
+.title {
+  font-size: 56px;
+  line-height: 61px;
+  font-weight: 300;
+  margin-bottom: 24px;
+}
+
+.title span {
+  color: #127aff;
+}
+
+@media screen and (max-width: 768px) {
+  .title {
+    font-size: 32px;
+    line-height: 35px;
+  }
+}
+
+/* .tech-stack-block__tools */
+.tools {
+  padding: 64px 0 0;
+}
+
+/* .tech-stack-block__tools--row */
+.row {
+  align-items: center;
+  border-top: 1px solid rgba(57, 70, 99, 0.502);
+  display: flex;
+  gap: 100px;
+  justify-content: flex-start;
+  padding: 32px 0;
+  width: 100%;
+}
+
+.row:last-child {
+  border-bottom: 1px solid rgba(57, 70, 99, 0.502);
+}
+
+@media screen and (max-width: 1024px) {
+  .row {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 24px;
+    justify-content: center;
+  }
+}
+
+/* .row-title — Sumatosoft sets no font-weight (inherits 400) */
+.rowTitle {
+  font-size: 18px;
+  line-height: 28px;
+  max-width: 205px;
+  width: 100%;
+}
+
+@media screen and (max-width: 1024px) {
+  .rowTitle {
+    max-width: 100%;
+  }
+}
+
+/* .logos */
+.logos {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 34px 50px;
+  justify-content: flex-start;
+  max-width: 100%;
+  width: 100%;
+}
+
+@media screen and (max-width: 1024px) {
+  .logos {
+    gap: 24px;
+  }
+}
+
+/* .logo — flex-grow:1 only on smallest screens, matching Sumatosoft */
+.logo {
+  align-items: flex-start;
+  display: flex;
+  flex-basis: 120px;
+  justify-content: flex-start;
+}
+
+@media screen and (max-width: 576px) {
+  .logo {
+    flex-grow: 1;
+  }
+}
+
+/* .tool — max-width keeps wide wordmarks from overflowing;
+   max-height caps square icons (56×56) so they don't tower over constrained wordmarks */
+.logoImg {
+  height: auto;
+  max-width: 120px;
+  max-height: 56px;
+  width: auto;
+}

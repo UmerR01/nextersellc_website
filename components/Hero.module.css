@@ -1,0 +1,277 @@
+/* Tall wrapper gives the sticky stage room to drive the door animation */
+.wrap {
+  position: relative;
+  height: 120vh;
+}
+
+.stage {
+  --p: 0;
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  overflow: hidden;
+  /* Deep navy base — Sumato hero */
+  background: #081530;
+  color: #fff;
+}
+
+/* ---------- Background revealed behind the doors ---------- */
+.bg {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  background: radial-gradient(120% 120% at 50% 0%, #0c1f48 0%, #081530 60%, #050d22 100%);
+}
+.bgGrid {
+  position: absolute;
+  inset: 0;
+  background-image: linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+  background-size: 64px 64px;
+  mask-image: radial-gradient(70% 70% at 50% 45%, #000 0%, transparent 75%);
+}
+.bgGlowBlue,
+.bgGlowRed {
+  position: absolute;
+  width: 48vw;
+  height: 48vw;
+  border-radius: 50%;
+  filter: blur(110px);
+}
+.bgGlowBlue {
+  right: -10vw;
+  top: -8vw;
+  background: var(--color-blue);
+  opacity: 0.3;
+}
+.bgGlowRed {
+  left: -10vw;
+  bottom: -12vw;
+  background: var(--color-accent);
+  opacity: 0.22;
+}
+.bgCaption {
+  position: relative;
+  text-align: center;
+  max-width: 560px;
+  padding: 0 1.5rem;
+}
+.bgKicker {
+  display: inline-block;
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  margin-bottom: 0.75rem;
+}
+.bgCaption p {
+  font-size: clamp(1.1rem, 2.4vw, 1.7rem);
+  color: #fff;
+  font-weight: 300;
+}
+
+/* ---------- Sliding doors (Sumato dark hero, split for the reveal) ---------- */
+.door {
+  position: absolute;
+  top: 0;
+  width: 50%;
+  height: 100%;
+  display: flex;
+  overflow: hidden;
+  will-change: transform;
+  z-index: 2;
+}
+/* Left half — red-tinted, matching Sumato's left side */
+.doorLeft {
+  left: 0;
+  justify-content: center;
+  background:
+    radial-gradient(80% 90% at 35% 38%, rgba(255, 65, 92, 0.22), transparent 62%),
+    linear-gradient(125deg, #0b1c42 0%, #081530 70%);
+  border-right: 1px solid rgba(255, 255, 255, 0.06);
+  transform: translateX(calc(var(--p) * -102%));
+}
+/* Right half — blue-tinted, matching Sumato's right side */
+.doorRight {
+  right: 0;
+  justify-content: center;
+  background:
+    radial-gradient(80% 90% at 65% 45%, rgba(18, 122, 255, 0.26), transparent 62%),
+    linear-gradient(235deg, #0c2150 0%, #081530 70%);
+  border-left: 1px solid rgba(255, 255, 255, 0.06);
+  transform: translateX(calc(var(--p) * 102%));
+}
+/* Angular geometric facets (Sumato's polygon planes) */
+.door::before,
+.door::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: rgba(255, 255, 255, 0.025);
+}
+.doorLeft::before {
+  clip-path: polygon(0 0, 42% 0, 0 70%);
+}
+.doorLeft::after {
+  clip-path: polygon(0 100%, 30% 100%, 0 55%);
+  background: rgba(0, 0, 0, 0.18);
+}
+.doorRight::before {
+  clip-path: polygon(100% 0, 58% 0, 100% 78%);
+}
+.doorRight::after {
+  clip-path: polygon(100% 100%, 64% 100%, 100% 48%);
+  background: rgba(0, 0, 0, 0.18);
+}
+
+.doorContent {
+  position: relative;
+  z-index: 1;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 3rem;
+  padding: var(--header-height) 3rem 3rem;
+}
+
+/* ---------- Hero heading (split across the seam) ---------- */
+.heading {
+  font-size: clamp(2.2rem, 5vw, 4.4rem);
+  font-weight: 300;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  color: #fff;
+}
+.headingLeft {
+  text-align: center;
+}
+.headingRight {
+  text-align: center;
+}
+
+/* ---------- Columns (Sumato two-column: illustration directly on dark) ---------- */
+.card {
+  width: min(380px, 100%);
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 1.1rem;
+}
+.cardImage {
+  width: 100%;
+  display: grid;
+  place-items: center;
+}
+.cardImage :global(img) {
+  height: auto;
+  width: auto;
+  max-height: 170px;
+  object-fit: contain;
+}
+.cardTitle {
+  font-size: 1.35rem;
+  font-weight: 600;
+  color: #fff;
+}
+.cardDesc {
+  font-size: 0.95rem;
+  color: #c3cee2;
+  line-height: 1.5;
+}
+.card .btn {
+  margin-top: 0.5rem;
+}
+
+/* ---------- Scroll hint ---------- */
+.scrollHint {
+  position: absolute;
+  bottom: 1.75rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.75rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.6);
+  opacity: calc(1 - var(--p) * 2);
+  pointer-events: none;
+}
+.scrollHint i {
+  width: 1px;
+  height: 32px;
+  background: linear-gradient(rgba(255, 255, 255, 0.6), transparent);
+  animation: drop 1.6s ease-in-out infinite;
+}
+@keyframes drop {
+  0% {
+    transform: scaleY(0);
+    transform-origin: top;
+  }
+  50% {
+    transform: scaleY(1);
+    transform-origin: top;
+  }
+  51% {
+    transform-origin: bottom;
+  }
+  100% {
+    transform: scaleY(0);
+    transform-origin: bottom;
+  }
+}
+
+/* ---------- Responsive: stack the doors, drop the animation ---------- */
+@media (max-width: 860px) {
+  .wrap {
+    height: auto;
+  }
+  .stage {
+    position: static;
+    height: auto;
+    overflow: visible;
+    padding-top: var(--header-height);
+    background: linear-gradient(160deg, #0b1c42, #081530);
+  }
+  .bg {
+    display: none;
+  }
+  .door {
+    position: static;
+    width: 100%;
+    height: auto;
+    transform: none !important;
+    border: none;
+    background: transparent;
+  }
+  .door::before,
+  .door::after {
+    display: none;
+  }
+  .doorContent {
+    width: 100%;
+    height: auto;
+    padding: 2rem 1.5rem;
+    gap: 1.5rem;
+  }
+  .heading {
+    text-align: center;
+  }
+  .scrollHint {
+    display: none;
+  }
+}

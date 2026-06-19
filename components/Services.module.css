@@ -1,0 +1,412 @@
+/* Services — exact Sumatosoft VerticalTabsBlock dark-mode CSS */
+
+/* Section */
+.section {
+  display: flex;
+  justify-content: center;
+  overflow: hidden;
+  position: relative;
+  /* Sumatosoft: dark-mode colour */
+  color: #fff;
+}
+
+/* Background image layer — the faceted SVG + glow circles */
+.bg {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  /* base gradient from the SVG: paint0_linear #02102C → #112244 */
+  background: linear-gradient(to right, #02102c, #112244);
+}
+.glowRed,
+.glowBlue {
+  position: absolute;
+  width: 340px;
+  height: 340px;
+  border-radius: 50%;
+  filter: blur(200px);
+}
+/* filter0: cx=8 cy=803 r=170 fill=#FF415C opacity=0.38 */
+.glowRed {
+  left: -162px;
+  bottom: 200px;
+  background: #ff415c;
+  opacity: 0.38;
+}
+/* filter1: cx=1353 cy=254 r=170 fill=#127AFF opacity=0.4 */
+.glowBlue {
+  right: -100px;
+  top: 0;
+  background: #127aff;
+  opacity: 0.4;
+}
+
+.wrapper {
+  position: relative;
+  z-index: 1;
+  padding: 60px clamp(2rem, 9vw, 9rem);
+}
+
+@media screen and (max-width: 768px) {
+  .wrapper {
+    padding: 72px 1.5rem 77px;
+  }
+}
+
+/* Title: 56px / 61px, centre-aligned
+   "Services" = #127aff, "we provide" = #fff */
+.title {
+  font-size: 56px;
+  line-height: 61px;
+  font-weight: 300;
+  text-align: center;
+  margin-bottom: 24px;
+  color: #fff;
+}
+.title .blue {
+  color: #127aff;
+}
+
+@media screen and (max-width: 768px) {
+  .title {
+    font-size: 32px;
+    line-height: 35px;
+    text-align: left;
+  }
+}
+
+/* Description: margin-bottom 64px */
+.description {
+  margin-bottom: 64px;
+  color: #c3cee2;
+  font-size: 1rem;
+  line-height: 1.6;
+  text-align: center;
+}
+
+/* Vertical tabs wrapper: display flex, gap 64px */
+.tabs {
+  display: flex;
+  align-items: flex-start;
+  gap: 64px;
+  justify-content: flex-start;
+}
+
+/* ── Left menu ── */
+.menu {
+  /* max-width: 380px; padding: 16px 0 24px; position: relative */
+  max-width: 380px;
+  width: 100%;
+  padding: 16px 0 24px;
+  position: relative;
+  flex-shrink: 0;
+}
+
+/* Faint blurred bg behind menu */
+.menu::before {
+  background: rgba(210, 210, 210, 0.05);
+  bottom: 0;
+  content: "";
+  filter: blur(0) contrast(0.9) opacity(0.5);
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+  z-index: -1;
+}
+
+/* Menu item: 18px / 28px, padding 24px 32px, full width */
+.menuItem {
+  align-items: center;
+  cursor: pointer;
+  display: flex;
+  font-size: 18px;
+  line-height: 28px;
+  font-weight: 400;
+  gap: 16px;
+  justify-content: flex-start;
+  padding: 24px 32px;
+  width: 100%;
+  /* reset button */
+  background: transparent;
+  border: none;
+  color: #fff;
+  text-align: left;
+  transition: background 0.2s;
+}
+
+/* Active: solid blue fill */
+.menuActive {
+  background: #127aff;
+}
+
+/* ── Right content panel ── */
+.content {
+  max-width: 680px;
+  width: 100%;
+}
+
+/* Item title: margin 48px 0 24px; font-size 28px / 36px */
+.itemTitle {
+  margin: 48px 0 24px;
+  font-size: 28px;
+  line-height: 36px;
+  font-weight: 300;
+  color: #fff;
+}
+
+/* Item description: 18px / 28px */
+.itemDesc {
+  font-size: 18px;
+  line-height: 28px;
+  color: #c3cee2;
+  margin-bottom: 0;
+}
+
+/* Points list */
+.points {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  margin: 16px 0 0;
+  width: 100%;
+}
+
+/* Each point: padding-left 32px, position relative, 18px / 28px */
+.points li {
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 28px;
+  margin-top: 8px;
+  padding-left: 32px;
+  position: relative;
+  color: #fff;
+}
+
+/* Sumatosoft blue checkmark SVG icon */
+.points li::before {
+  background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' fill='none'%3E%3Cpath stroke='%23127AFF' stroke-linecap='square' stroke-width='1.5' d='m20.25 6.75-10.5 10.5L4.5 12'/%3E%3C/svg%3E");
+  content: "";
+  height: 24px;
+  left: 0;
+  position: absolute;
+  top: 6px;
+  width: 24px;
+}
+
+/* CTA button — OUTLINED, NOT solid:
+   background: transparent; border: 2px solid #ff415c; color: #ff415c;
+   padding: 18px 32px; max-width: 300px */
+.ctaBtn {
+  display: inline-block;
+  margin-top: 48px;
+  background: transparent;
+  border: 2px solid #ff415c;
+  border-radius: 30px;
+  color: #ff415c;
+  cursor: pointer;
+  font-size: 1rem;
+  line-height: 1;
+  max-width: 400px;
+  padding: 7px 20px;
+  text-align: center;
+  transition: background-color 0.2s, color 0.2s;
+  text-decoration: none;
+  
+}
+.ctaBtn:hover {
+  background-color: #ff415c;
+  color: #fff;
+}
+
+/* ── Mobile / tablet ≤1024px: menu hidden, mobile-accordion shown ── */
+@media screen and (max-width: 1024px) {
+  .menu {
+    display: none;
+  }
+  .content {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .wrapper {
+    padding: 72px 24px 77px;
+  }
+  .description {
+    margin-bottom: 24px;
+    text-align: left;
+  }
+  .ctaBtn {
+    max-width: 100%;
+    flex-basis: 327px;
+    flex-grow: 1;
+  }
+}
+
+/* ── Mobile Accordion Styles ── */
+.mobileContent {
+  display: none;
+}
+
+@media screen and (max-width: 1024px) {
+  .mobileContent {
+    display: block;
+    width: 100%;
+  }
+}
+
+.mobileContent details {
+  align-items: flex-start;
+  cursor: default;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  overflow: hidden;
+  padding: 24px 32px;
+  position: relative;
+  width: 100%;
+  border-bottom: 1px solid #394663;
+}
+
+.mobileContent details[open] {
+  animation: mobile 1s both linear;
+}
+
+.mobileContent details[open]:before {
+  background: rgba(210, 210, 210, 0.05);
+  bottom: 0;
+  content: "";
+  filter: blur(0) contrast(0.9) opacity(0.5);
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+  z-index: -1;
+}
+
+.mobileContent details[open] summary {
+  margin-bottom: 8px;
+}
+
+.mobileContent details[open] summary:after {
+  transform: rotate(180deg);
+  transition: 0.5s;
+}
+
+.mobileContent details[open] .mobileItemContent {
+  animation: show 0.5s both linear;
+}
+
+.mobileContent details summary {
+  align-items: flex-start;
+  display: flex !important;
+  font-size: 20px;
+  gap: 16px;
+  justify-content: space-between;
+  line-height: 24px;
+  list-style: none;
+  padding-right: 48px;
+  position: relative;
+  width: 100%;
+  color: #fff;
+  cursor: pointer;
+}
+
+.mobileContent details summary:after {
+  content: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='none'%3E%3Cpath stroke='%23fff' stroke-linecap='square' stroke-width='1.5' d='m13 6-5 5-5-5'/%3E%3C/svg%3E");
+  position: absolute;
+  right: 0;
+  transform: rotate(0deg);
+  transition: 0.5s;
+}
+
+.mobileContent details summary::-webkit-details-marker {
+  display: none;
+}
+
+.mobileContent details .mobileItemContent {
+  width: 95%;
+  margin-top: 16px;
+}
+
+.mobileContent details .mobileItemContent p {
+  font-size: 14px;
+  line-height: 22px;
+  color: #c3cee2;
+  margin-bottom: 16px;
+}
+
+.mobileContent details .mobileItemContent ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  margin: 16px 0;
+  width: 100%;
+  padding: 0;
+}
+
+.mobileContent details .mobileItemContent li {
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 22px;
+  margin-top: 8px;
+  padding-left: 32px;
+  position: relative;
+  color: #fff;
+}
+
+@media screen and (max-width: 768px) {
+  .mobileContent details .mobileItemContent li {
+    font-size: 16px;
+    line-height: 26px;
+  }
+}
+
+.mobileContent details .mobileItemContent li::before {
+  background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' fill='none'%3E%3Cpath stroke='%23127AFF' stroke-linecap='square' stroke-width='1.5' d='m20.25 6.75-10.5 10.5L4.5 12'/%3E%3C/svg%3E");
+  content: "";
+  height: 24px;
+  left: 0;
+  position: absolute;
+  top: 6px;
+  width: 24px;
+}
+
+@media screen and (max-width: 768px) {
+  .mobileContent details .mobileItemContent li::before {
+    top: 1px;
+  }
+}
+
+.mobileContent details .mobileItemContent .ctaBtn {
+  margin-top: 24px;
+  width: 100%;
+  max-width: 100%;
+  display: inline-block;
+  background: transparent;
+  border: 2px solid #ff415c;
+  color: #ff415c;
+  cursor: pointer;
+  font-size: 16px;
+  padding: 14px 24px;
+  text-align: center;
+  transition: background-color 0.2s, color 0.2s;
+  text-decoration: none;
+  border-radius: 0;
+}
+
+.mobileContent details .mobileItemContent .ctaBtn:hover {
+  background-color: #ff415c;
+  color: #fff;
+}
+
+@keyframes show {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+@keyframes mobile {
+  0% { max-height: 0.1px; }
+  100% { max-height: 999px; }
+}

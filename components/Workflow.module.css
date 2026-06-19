@@ -1,0 +1,169 @@
+/* Collaboration process — Zoolatech "cs_cont_proc_6_bn-section": header +
+   image left, connected vertical timeline right. Our light theme. */
+.section {
+  position: relative;
+  z-index: 4;
+  background: var(--color-bg);
+  padding: 90px 0;
+}
+
+.content {
+  display: grid;
+  grid-template-columns: 1fr 1.1fr;
+  gap: 5rem;
+  align-items: start;
+}
+
+/* ---- Left header + image ---- */
+.left {
+  position: sticky;
+  top: calc(var(--header-height) + 1.5rem);
+}
+.eyebrow {
+  display: inline-block;
+  font-size: 1.0rem;
+  font-weight: 700;
+  color: var(--color-blue);
+  margin-bottom: 0.75rem;
+}
+.title {
+  font-size: clamp(2rem, 3vw, 3rem);
+  font-weight: 500;
+  color: var(--color-text);
+  margin-bottom: 1rem;
+}
+.sub {
+  color: var(--color-text-muted);
+  font-size: 1.2rem;
+  line-height: 1.55;
+  font-weight: 500;
+  max-width: 500px;
+  margin-bottom: 2.5rem;
+}
+.media {
+  position: relative;
+  width: 100%;
+  max-width: 400px;
+  aspect-ratio: 440 / 345;
+  border-radius: 20px;
+  overflow: hidden;
+  /* Blue decorative wash behind the photo (Zoolatech style) */
+  background: radial-gradient(120% 120% at 30% 30%, var(--color-blue), #0a3bd0);
+}
+.mediaImg {
+  object-fit: cover;
+}
+
+/* ---- Right column wrapper (timeline + CTA card) ---- */
+.right {
+  display: flex;
+  flex-direction: column;
+}
+
+/* ---- Right timeline ---- */
+.timeline {
+  position: relative;
+  list-style: none;
+  padding-left: 2.5rem;
+  /* 1.75rem ≈ eyebrow height (1rem) + its margin-bottom (0.75rem),
+     so Step 1 dot aligns with the top of "Our Collaboration Process" on the left */
+  padding-top: 3rem;
+}
+/* Connecting line — starts at the top edge of the first dot */
+.timeline::before {
+  content: "";
+  position: absolute;
+  left: 5px;
+  top: calc(3rem + 5px);
+  bottom: 8px;
+  width: 2px;
+  background: var(--color-border);
+}
+
+/* ---- CTA card ---- */
+.ctaBox {
+  margin-top: 2.75rem;
+  background: rgba(18, 122, 255, 0.07);
+  border-radius: 16px;
+  padding: 2rem 2.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+.ctaText {
+  font-size: 1.1rem;
+  font-weight: 500;
+  line-height: 1.6;
+  color: var(--color-text);
+}
+.ctaBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: var(--color-blue);
+  color: #ffffff;
+  padding: 0.8rem 1.75rem;
+  border-radius: var(--radius-button);
+  font-weight: 600;
+  font-size: 1rem;
+  line-height: 1;
+  text-decoration: none;
+  width: fit-content;
+  transition: background 0.2s ease;
+}
+.ctaBtn:hover {
+  background: #0a60e0;
+}
+.step {
+  position: relative;
+  padding-bottom: 2.75rem;
+}
+.step:last-child {
+  padding-bottom: 0;
+}
+.dot {
+  position: absolute;
+  left: -2.5rem;
+  top: 5px;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--color-blue);
+  box-shadow: 0 0 0 4px var(--color-bg);
+}
+.stepLabel {
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 0.10em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  margin-bottom: 0.35rem;
+}
+.stepTitle {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--color-text);
+  margin-bottom: 0.5rem;
+}
+.stepText {
+  color: var(--color-text-muted);
+  line-height: 1.55;
+  font-size: 1.0rem;
+  max-width: 750px;
+}
+
+@media (max-width: 860px) {
+  .content {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+  .left {
+    position: static;
+  }
+  .media {
+    max-width: none;
+  }
+  .ctaBox {
+    padding: 1.5rem;
+  }
+}

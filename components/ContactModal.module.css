@@ -1,0 +1,427 @@
+/* ContactModal — mirrors Sumatosoft dm-modal exactly */
+
+/* ── Overlay: fullscreen scroll container ── */
+.overlay {
+  position: fixed;
+  inset: 0;
+  overflow-x: hidden;
+  overflow-y: auto;
+  z-index: 9999;
+  animation: overlayIn 0.2s ease;
+}
+
+@keyframes overlayIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+/* Dark backdrop sitting behind the modal */
+.backdrop {
+  background: rgba(0, 0, 0, 0.8);
+  position: fixed;
+  inset: 0;
+}
+
+/* Centering wrapper (scrollable content) */
+.wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100%;
+  padding: 24px;
+  position: relative;
+  z-index: 1;
+}
+
+/* ── Modal box ── */
+.modal {
+  position: relative;
+  display: flex;
+  background: #fff;
+  width: 100%;
+  max-width: 1420px;
+  animation: modalIn 0.25s ease;
+  overflow: hidden;
+}
+
+@keyframes modalIn {
+  from { transform: translateY(20px); opacity: 0; }
+  to   { transform: translateY(0);    opacity: 1; }
+}
+
+/* Blue-glow decoration — top-left of modal */
+.modal::before {
+  background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='367' height='449' fill='none'%3E%3Cg filter='url(%23a)'%3E%3Ccircle cx='-43' cy='39' r='170' fill='%23127AFF' fill-opacity='.12'/%3E%3C/g%3E%3Cdefs%3E%3Cfilter id='a' width='820' height='820' x='-453' y='-371' color-interpolation-filters='sRGB' filterUnits='userSpaceOnUse'%3E%3CfeFlood flood-opacity='0' result='BackgroundImageFix'/%3E%3CfeBlend in='SourceGraphic' in2='BackgroundImageFix' result='shape'/%3E%3CfeGaussianBlur result='effect1_foregroundBlur_3780_17120' stdDeviation='120'/%3E%3C/filter%3E%3C/defs%3E%3C/svg%3E");
+  content: "";
+  height: 340px;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 340px;
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* ── Close button ── */
+.closeBtn {
+  position: absolute;
+  top: 32px;
+  right: 32px;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: none;
+  cursor: pointer;
+  z-index: 10;
+  padding: 0;
+}
+.closeBtn:hover svg path { stroke: #127aff; }
+
+/* ── Left panel ── */
+.left {
+  padding: 52px 120px 150px;
+  width: 100%;
+  position: relative;
+  z-index: 1;
+}
+
+/* Brand / logo */
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.logoMark {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.25rem;
+  height: 2.25rem;
+  background: var(--color-blue);
+  color: #fff;
+  font-weight: 700;
+  font-size: 1.1rem;
+  border-radius: 4px;
+}
+.logoText {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--color-text);
+  letter-spacing: -0.01em;
+}
+.dot { color: var(--color-accent); }
+
+/* Email description */
+.emailDesc {
+  margin-top: 40px;
+  font-size: 1rem;
+  color: var(--color-text);
+  line-height: 1.55;
+  margin-bottom: 16px;
+}
+.emailDesc a {
+  color: var(--color-accent);
+  font-weight: 600;
+}
+
+/* ── Form ── */
+.form {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  margin-top: 44px;
+}
+
+/* Each label row: right-aligned like Sumatosoft */
+.field {
+  display: flex;
+  align-items: baseline;
+  justify-content: flex-end;
+  width: 100%;
+  margin-bottom: 20px;
+}
+.fieldTextarea {
+  align-items: flex-start;
+}
+
+.fieldLabel {
+  color: var(--color-text);
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 22px;
+  text-align: right;
+  white-space: nowrap;
+  margin-right: 20px;
+  flex-shrink: 0;
+}
+
+.field input,
+.field textarea {
+  max-width: 632px;
+  min-width: 0;
+  width: 632px;
+  padding: 4px 0 10px;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid #899fb6;
+  color: var(--color-text);
+  font: inherit;
+  font-size: 1rem;
+  resize: vertical;
+}
+.field input::placeholder,
+.field textarea::placeholder { color: #5e6d8e; }
+.field input:focus,
+.field textarea:focus {
+  outline: none;
+  border-bottom-color: var(--color-blue);
+}
+
+/* Privacy text */
+.privacy {
+  margin-bottom: 20px;
+  margin-top: 16px;
+  max-width: 632px;
+  color: #899fb6;
+  font-size: 0.875rem;
+  line-height: 1.55;
+  width: 100%;
+  text-align: left;
+}
+.privacy a { color: var(--color-accent); }
+
+/* File + Send row */
+.formBottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 632px;
+  width: 100%;
+}
+
+.attach {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--color-text);
+  cursor: pointer;
+  text-decoration: none;
+}
+.attach:hover { text-decoration: none; }
+
+.sendBtn {
+  height: 54px;
+  min-width: 279px;
+  max-width: 279px;
+  border: none;
+  border-radius: 4px;
+  background: var(--color-accent);
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.25s ease;
+}
+.sendBtn:hover { background: var(--color-accent-hover); }
+
+/* Manager / booking row */
+.manager {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  max-width: 632px;
+  width: 100%;
+  margin-top: 2rem;
+  padding-top: 2rem;
+  border-top: 1px solid rgba(16, 30, 77, 0.12);
+}
+.managerInfo {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+}
+.avatar {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+.managerName {
+  font-weight: 600;
+  font-size: 1rem;
+  color: var(--color-text);
+}
+.managerRole {
+  color: #899fb6;
+  font-size: 0.875rem;
+}
+.bookBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  height: 54px;
+  min-width: 279px;
+  max-width: 279px;
+  border: 1px solid var(--color-accent);
+  border-radius: 4px;
+  color: var(--color-accent);
+  font-weight: 700;
+  font-size: 1rem;
+  white-space: nowrap;
+  transition: background 0.25s ease, color 0.25s ease;
+}
+.bookBtn:hover {
+  background: var(--color-accent);
+  color: #fff;
+}
+
+/* ── Success state ── */
+.success {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  max-width: 701px;
+  width: 100%;
+  margin: auto;
+}
+.successIcon { margin-bottom: 1.5rem; }
+.successTitle {
+  font-size: 3.5rem;
+  font-weight: 400;
+  color: var(--color-text);
+  line-height: 62px;
+  margin-bottom: 1rem;
+}
+.successSub {
+  font-size: 1.375rem;
+  color: var(--color-text);
+  line-height: 36px;
+  margin-bottom: 2rem;
+}
+.successLink { color: var(--color-accent); font-weight: 400; }
+.successFooter {
+  margin-top: auto;
+  padding: 32px;
+  margin: 0 -120px;
+  width: calc(100% + 240px);
+  background: linear-gradient(135deg, rgba(18,122,255,0.06) 0%, rgba(255,65,92,0.04) 100%);
+  border-top: 1px solid rgba(16,30,77,0.1);
+}
+.successFooterText {
+  font-size: 1.125rem;
+  color: var(--color-text);
+  margin-bottom: 1rem;
+}
+.successFooterNav {
+  display: flex;
+  gap: 1rem;
+  list-style: none;
+  justify-content: center;
+}
+.successFooterNav a {
+  color: var(--color-accent);
+  font-weight: 600;
+}
+
+/* ── Right panel (dark navy) ── */
+.right {
+  flex: 0 0 415px;
+  background: #112244;
+  padding: 52px 32px 48px;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+}
+
+.rightHeading {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  
+  color: var(--color-text-muted);
+  margin-bottom: 1.25rem;
+  text-align: center;
+}
+
+/* Client logo rows — each in its own row with separator */
+.clientLogos {
+  display: flex;
+  flex-direction: column;
+}
+.clientLogoRow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 80px;
+}
+.clientLogo {
+  filter: brightness(0) invert(1);
+  opacity: 1;
+  object-fit: contain;
+  max-height: 62px;
+}
+
+.divider {
+  border: none;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  margin: 0.75rem 0;
+}
+
+/* 3×2 badge grid — pushed to bottom of right panel */
+.badgeGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  margin-top: auto;
+}
+.badgeWrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.badge {
+  max-height: 90px;
+  width: auto;
+  object-fit: contain;
+  filter: brightness(0) invert(1);
+  opacity: 1;
+}
+
+/* ── Responsive ── */
+@media screen and (min-width: 1200px) and (max-width: 1600px) {
+  .left { padding: 48px 0 54px; margin: 0 auto; max-width: 760px; }
+  .form { margin-top: 32px; }
+  .field input, .field textarea { max-width: 626px; width: 626px; }
+  .privacy, .formBottom, .manager { max-width: 626px; }
+}
+
+@media (max-width: 1199px) {
+  .modal { flex-direction: column; }
+  .right { display: none; }
+  .left { padding: 72px 24px 101px; }
+  .form { align-items: flex-start; margin-top: 40px; }
+  .field { flex-direction: column; justify-content: flex-start; }
+  .fieldLabel { text-align: left; margin-right: 0; margin-bottom: 4px; }
+  .field input, .field textarea { max-width: 100%; min-width: unset; width: 100%; }
+  .privacy, .formBottom, .manager { max-width: 100%; }
+  .formBottom { flex-wrap: wrap; gap: 1rem; }
+  .manager { flex-wrap: wrap; }
+  .successFooter { margin: 0 -24px; width: calc(100% + 48px); }
+}
+
+@media (max-width: 768px) {
+  .closeBtn { top: 16px; right: 16px; }
+  .sendBtn { min-width: 174px; max-width: 174px; }
+  .successTitle { font-size: 2rem; line-height: 35px; }
+  .successSub { font-size: 1rem; line-height: 26px; }
+  .wrapper { padding: 0; }
+  .modal { min-height: 100vh; }
+}

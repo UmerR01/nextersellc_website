@@ -1,0 +1,71 @@
+/* About / stats — Sumato "for-ten-years-block" (padding 96px 0 64px) */
+.section {
+  position: relative;
+  z-index: 4;
+  background: var(--color-bg);
+  padding: 96px 0 64px;
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  gap: 3rem;
+  flex-wrap: wrap;
+}
+.titleCol {
+  flex: 1 1 48%;
+  min-width: 280px;
+}
+.statsCol {
+  flex: 1 1 42%;
+  min-width: 280px;
+}
+
+.title {
+  font-size: clamp(1.9rem, 3.5vw, 4.0rem);
+  font-weight: 300;
+  line-height: 1.15;
+  color: var(--color-text);
+}
+.title span {
+  color: var(--color-blue);
+}
+
+.wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  margin: -16px -12px;
+}
+.achievement {
+  flex: 1 1 33.33%;
+  max-width: 33.33%;
+  padding: 16px 12px;
+}
+.number {
+  font-size: 56px;
+  line-height: 1.1;
+  font-weight: 400;
+  margin-bottom: 4px;
+  color: var(--color-text);
+}
+.achTitle {
+  font-size: 16px;
+  line-height: 22px;
+  font-weight: 400;
+  color: var(--color-text-muted);
+}
+
+@media (max-width: 768px) {
+  .section {
+    padding: 72px 0 40px;
+  }
+  .number {
+    font-size: 36px;
+  }
+}
+@media (max-width: 576px) {
+  .achievement {
+    flex: 1 1 50%;
+    max-width: 50%;
+  }
+}

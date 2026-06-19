@@ -1,0 +1,115 @@
+/* Free estimation — exact match to Sumato download-company-profile */
+
+/* ── Section: dark band, content inside .container (max-width constrained) ── */
+.section {
+  position: relative;
+  z-index: 4;
+  overflow: hidden;
+  background: #081530;
+  color: #fff;
+  padding: 64px 0;
+  /* Full viewport width — no margins, like Sumatosoft */
+}
+
+@media (max-width: 768px) {
+  .section { padding: 40px 0; }
+}
+
+/* ── download-company-profile__bg parallax-wrapper ──
+   Sumatosoft CSS:
+   position: absolute; left: 50%; top: 50%; transform: translate(-50%,-50%);
+   max-width: 1420px; width: 100%; height: 100%;
+   background-position: center; background-size: cover;
+   The SVG is pricing-bg.svg — a dark navy with subtle blue geometric mesh lines */
+.bg {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  max-width: 1420px;
+  width: 100%;
+  height: 100%;
+  background-position: center;
+  background-size: cover;
+
+  /* pricing-bg.svg replicated as CSS:
+     - base dark navy gradient
+     - faint dot-grid pattern
+     - soft blue radial glow on right (the bright region in the screenshot) */
+  background-image:
+    /* scattered dot grid — mimics the tech/circuit pattern */
+    radial-gradient(circle, rgba(100,160,255,0.15) 1px, transparent 1px),
+    /* right-side blue glow cloud */
+    radial-gradient(ellipse 55% 80% at 80% 50%, rgba(20,90,200,0.55) 0%, transparent 70%),
+    /* subtle left warm tint */
+    radial-gradient(ellipse 30% 60% at 10% 60%, rgba(220,50,80,0.08) 0%, transparent 60%),
+    /* base gradient */
+    linear-gradient(105deg, #071228 0%, #0c1e4a 45%, #0a1838 100%);
+  background-size: 28px 28px, 100% 100%, 100% 100%, 100% 100%;
+}
+
+/* ── Content row — .container > .row ── */
+.row {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+  flex-wrap: wrap;
+  /* Sumatosoft: container padding 0 48px at ≤1366px */
+  padding-inline: 48px;
+}
+
+@media (max-width: 768px) {
+  .row { padding-inline: 1.5rem; }
+}
+
+/* col-md-8 */
+.text {
+  flex: 1 1 400px;
+  max-width: 66.666%;
+}
+
+@media (max-width: 768px) {
+  .text { max-width: 100%; }
+}
+
+/* Sumatosoft: 38px / 46px */
+.title {
+  font-size: 38px;
+  line-height: 46px;
+  font-weight: 300;
+  color: #fff;
+  letter-spacing: -0.02em;
+}
+
+@media (max-width: 768px) {
+  .title { font-size: 24px; line-height: 29px; }
+}
+
+/* Sumatosoft: margin-top 24px */
+.desc {
+  margin-top: 24px;
+  font-size: 1.05rem;
+  color: #c3cee2;
+  line-height: 1.6;
+}
+
+@media (max-width: 768px) {
+  .desc { margin-top: 8px; }
+}
+
+/* col-md-4 */
+.action {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cta {
+  padding: 16px 36px;
+  font-size: 1.05rem;
+  white-space: nowrap;
+}

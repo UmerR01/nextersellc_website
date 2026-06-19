@@ -1,0 +1,42 @@
+[
+  {
+    "title": "AI foundational models",
+    "files": [
+      "/tech/r1-1.svg",
+      "/tech/r1-2.svg",
+      "/tech/r1-3.svg",
+      "/tech/r1-4.svg",
+      "/tech/r1-5.svg",
+      "/tech/r1-6.svg"
+    ]
+  },
+  {
+    "title": "Orchestration &amp; agent frameworks",
+    "files": [
+      "/tech/r2-1.svg",
+      "/tech/r2-2.svg",
+      "/tech/r2-3.svg",
+      "/tech/r2-4.svg"
+    ]
+  },
+  {
+    "title": "Software development",
+    "files": [
+      "/tech/r3-1.svg",
+      "/tech/r3-2.svg",
+      "/tech/r3-3.svg",
+      "/tech/r3-4.svg",
+      "/tech/r3-5.svg",
+      "/tech/r3-6.svg",
+      "/tech/r3-7.svg"
+    ]
+  },
+  {
+    "title": "Mobile development",
+    "files": [
+      "/tech/r4-1.svg",
+      "/tech/r4-2.svg",
+      "/tech/r4-3.svg"
+    ]
+  }
+]

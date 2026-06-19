@@ -1,0 +1,211 @@
+/* Awesome stories — exact pixel match to Sumatosoft blog-section CSS (line 102) */
+
+.section {
+  position: relative;
+  z-index: 4;
+  /* Sumatosoft: white background, NOT elevated */
+  background: #ffffff;
+  padding: 96px 0 40px;
+}
+
+/* "We have awesome stories to tell you" — "stories" in blue */
+.title {
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 300;
+  color: var(--color-text);
+  /* Sumatosoft: margin-bottom 64px */
+  margin-bottom: 64px;
+  letter-spacing: -0.02em;
+}
+
+.titleAccent {
+  color: var(--color-blue); /* #127aff */
+}
+
+/* ---- Two-col grid: col-md-6 col-md-6 ---- */
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: start;
+}
+
+/* ── Left column: feature post ── */
+.feature {
+  display: block;
+  margin-bottom: 32px;
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Sumatosoft: image zooms on hover */
+.feature:hover .featureImage img {
+  transform: scale(1.2);
+}
+
+/* Sumatosoft: post title turns red (#ff415c) on hover */
+.feature:hover .featureTitle {
+  color: #ff415c;
+}
+
+/* blog-section__post-image — uses padding-top trick for 56.21% aspect ratio */
+.featureImage {
+  position: relative;
+  margin-bottom: 24px;
+  overflow: hidden;
+}
+
+/* padding-top trick: creates 56.21% aspect ratio container */
+.featureImage::before {
+  content: "";
+  display: block;
+  padding-top: 56.21%;
+}
+
+/* blog-section__post-image-wrapper */
+.featureImageWrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: linear-gradient(135deg, #c5d4ec, #dde9f8);
+}
+
+/* img inside wrapper */
+.featureImageWrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.3s ease;
+}
+
+/* blog-section__post-title: 28px / 36px / black */
+.featureTitle {
+  color: #000000;
+  font-size: 28px;
+  line-height: 36px;
+  margin-bottom: 8px;
+  font-weight: 400;
+  transition: color 0.3s;
+}
+
+/* ── Right column: sidebar (text-only posts) ──
+   Sumatosoft: padding-left: 62px on last col-md-6 */
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  padding-left: 62px;
+}
+
+/* blog-section__post in right col: margin-bottom 32px */
+.sidePost {
+  display: block;
+  margin-bottom: 32px;
+  text-decoration: none;
+  color: inherit;
+}
+
+.sidePost:last-of-type {
+  margin-bottom: 0;
+}
+
+/* Sumatosoft: title turns red on hover */
+.sidePost:hover .sideTitle {
+  color: #ff415c;
+}
+
+/* blog-section__post-title: 28px / 36px / black */
+.sideTitle {
+  color: #000000;
+  font-size: 28px;
+  line-height: 36px;
+  margin-bottom: 8px;
+  font-weight: 400;
+  transition: color 0.3s;
+}
+
+/* ── Post meta: clock icon + separator + date ──
+   blog-section__post-meta: color #5e6d8e; font-size 16px; line-height 22px */
+.meta {
+  display: flex;
+  align-items: center;
+  color: #5e6d8e;
+  font-size: 16px;
+  line-height: 22px;
+}
+
+/* blog-section__post-read-time: padding-left 24px, clock icon absolute left */
+.readTime {
+  position: relative;
+  padding-left: 24px;
+  display: inline-flex;
+  align-items: center;
+}
+
+.readTime svg {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+/* blog-section__post-meta-separator */
+.metaSep {
+  padding: 0 6px;
+  opacity: 0.6;
+}
+
+/* ── "All articles ›" link ──
+   blog-section__link: align-items flex-end, flex: 1 */
+.allLinkWrap {
+  display: flex;
+  align-items: flex-end;
+  flex: 1;
+  margin-top: 8px;
+}
+
+.allLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 16px;
+  font-weight: 600;
+  color: #ff415c;
+  text-decoration: none;
+  transition: opacity 0.2s;
+}
+
+.allLink:hover {
+  opacity: 0.75;
+}
+
+/* ── Responsive ── */
+@media (max-width: 768px) {
+  .section {
+    padding: 72px 0 34px;
+  }
+  .title {
+    margin-bottom: 40px;
+  }
+  .grid {
+    grid-template-columns: 1fr;
+  }
+  .sidebar {
+    padding-left: 10px;
+    margin-top: 16px;
+  }
+  .featureTitle,
+  .sideTitle {
+    font-size: 20px;
+    line-height: 24px;
+  }
+  .meta {
+    font-size: 13px;
+    line-height: 18px;
+  }
+  .featureImage {
+    margin-bottom: 16px;
+  }
+}
