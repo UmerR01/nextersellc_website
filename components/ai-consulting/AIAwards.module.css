@@ -1,0 +1,157 @@
+.section {
+  padding: 96px 0;
+  background: var(--color-bg);
+  overflow: visible;
+}
+
+.title {
+  font-size: clamp(2rem, 4vw, 3.5rem);
+  font-weight: 300;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+  color: var(--color-text);
+  margin-bottom: 1rem;
+  text-align: center;
+}
+.title span { color: var(--color-blue); }
+
+.desc {
+  font-size: clamp(0.95rem, 1.2vw, 1.125rem);
+  font-weight: 400;
+  line-height: 1.7;
+  color: var(--color-text-muted);
+  text-align: center;
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+/* ── Slider — mirrors Certificates achievements-block ── */
+.achievements {
+  position: relative;
+  margin: 64px auto 0;
+  max-width: calc(100% - 160px);
+}
+
+.sliderOuter {
+  overflow: hidden;
+}
+
+.track {
+  display: flex;
+  transition: transform 0.4s ease;
+}
+
+.slide {
+  flex: 0 0 calc(100% / 6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 16px;
+}
+
+.badge {
+  height: 110px;
+  width: auto;
+  max-width: 140px;
+  object-fit: contain;
+}
+
+/* ── Arrows — exact Certificates swiper-button style ── */
+.btnPrev,
+.btnNext {
+  cursor: pointer;
+  height: 24px;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 40px;
+  border: none;
+  background: none;
+  padding: 0;
+  appearance: none;
+}
+
+.btnPrev { right: calc(100% + 40px); }
+.btnNext { left:  calc(100% + 40px); }
+
+/* Tail */
+.btnPrev::before,
+.btnNext::before {
+  background: var(--color-accent);
+  content: "";
+  display: block;
+  height: 2px;
+  position: absolute;
+  top: 11px;
+  transition: width 0.3s ease-in-out;
+  width: calc(100% - 2px);
+}
+
+/* Arrowhead */
+.btnPrev::after,
+.btnNext::after {
+  border-bottom: 2px solid var(--color-accent);
+  border-right: 2px solid var(--color-accent);
+  content: "";
+  display: block;
+  height: 10px;
+  position: absolute;
+  top: 7px;
+  transition: 0.3s ease-in-out;
+  width: 10px;
+}
+
+.btnNext::before { left: 1px; }
+.btnNext::after  { right: 2px; transform: rotate(-45deg); }
+.btnPrev::before { right: 1px; }
+.btnPrev::after  { left: 2px;  transform: rotate(135deg); }
+
+/* Hover */
+.btnNext:not(.disabled):hover::before { width: calc(100% + 4px); }
+.btnNext:not(.disabled):hover::after  { right: -4px; }
+.btnPrev:not(.disabled):hover::before { width: calc(100% + 4px); }
+.btnPrev:not(.disabled):hover::after  { left: -4px; }
+
+/* Disabled */
+.disabled { cursor: default; pointer-events: none; }
+.disabled::before { background: #899fb6; }
+.disabled::after  { border-color: #899fb6; }
+
+/* Mobile nav */
+.nav { display: none; }
+
+@media (max-width: 768px) {
+  .section { padding: 64px 0; }
+
+  .achievements {
+    max-width: none;
+    margin-top: 40px;
+  }
+  .achievements .btnPrev,
+  .achievements .btnNext { display: none; }
+
+  .nav {
+    display: flex;
+    justify-content: flex-start;
+    margin-top: 32px;
+  }
+  .nav .btnPrev,
+  .nav .btnNext {
+    position: static;
+    transform: none;
+  }
+  .nav .btnPrev { margin-right: 8px; }
+  .nav .btnNext { margin-left: 8px; }
+
+  .slide { flex: 0 0 calc(100% / 3); padding: 8px; }
+  .badge { height: 80px; }
+
+  .btnPrev::before,
+  .btnNext::before { width: calc(100% - 1px); }
+  .btnNext::after  { right: 0; }
+  .btnPrev::after  { left: 0; }
+}
+
+@media (max-width: 480px) {
+  .slide { flex: 0 0 calc(100% / 2); }
+}

@@ -13,6 +13,10 @@ export const metadata: Metadata = {
   title: "Nexterse — Custom Software & AI Development",
   description:
     "Nexterse builds custom software and AI-driven solutions that ship on time, scale with your business, and outlast their launch.",
+  icons: {
+    icon: "/brand/favicon-nexterse.ico",
+    shortcut: "/brand/favicon-nexterse.ico",
+  },
 };
 
 export default function RootLayout({

@@ -1,0 +1,339 @@
+/* Tall wrapper gives the sticky stage room to drive the door animation */
+.wrap {
+  position: relative;
+  height: 160vh;
+}
+
+.stage {
+  --p: 0;
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  overflow: hidden;
+  background: #081530;
+  color: #fff;
+}
+
+/* Solid bar covering the header zone — prevents door seam from
+   showing through the transparent header */
+.stage::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: var(--header-height);
+  z-index: 5;
+  pointer-events: none;
+}
+
+/* ---------- Background revealed behind the doors ---------- */
+/* NO z-index on .bg — removing it from its own stacking context so
+   backdrop-filter on .door::before can reach through and blur the video.
+   Chrome cannot composite a blur across a stacking-context boundary. */
+.bg {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  background: #050d22;
+}
+
+/* Full-cover looping video — no z-index, paints in DOM order */
+.bgVideo {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Dark overlay — no z-index, paints after bgVideo in DOM order */
+.bgOverlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.55);
+}
+.bgGrid {
+  position: absolute;
+  inset: 0;
+  background-image: linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+  background-size: 64px 64px;
+  mask-image: radial-gradient(70% 70% at 50% 45%, #000 0%, transparent 75%);
+}
+.bgGlowBlue,
+.bgGlowRed {
+  position: absolute;
+  width: 48vw;
+  height: 48vw;
+  border-radius: 50%;
+  filter: blur(110px);
+}
+.bgGlowBlue {
+  right: -10vw;
+  top: -8vw;
+  background: var(--color-blue);
+  opacity: 0.3;
+}
+.bgGlowRed {
+  left: -10vw;
+  bottom: -12vw;
+  background: var(--color-accent);
+  opacity: 0.22;
+}
+/* No z-index — stays below doors (z-index:2) via DOM order */
+.bgCaption {
+  position: relative;
+  text-align: center;
+  max-width: 560px;
+  padding: 0 1.5rem;
+}
+.bgKicker {
+  display: inline-block;
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  margin-bottom: 0.75rem;
+}
+.bgCaption p {
+  font-size: clamp(1.1rem, 2.4vw, 1.7rem);
+  color: #fff;
+  font-weight: 300;
+}
+
+/* ---------- Blur panels — move WITH doors, video anchored to stage ---------- */
+/* Uses filter:blur on a real video element (always works, no compositor issues).
+   The panel transforms with the door. The video inside counteracts that transform
+   via its left offset so it stays pixel-aligned with the bg video at all scroll positions. */
+.doorBlur {
+  position: absolute;
+  top: 0;
+  height: 100%;
+  width: 50%;
+  overflow: hidden;
+  z-index: 1;
+  pointer-events: none;
+}
+.doorBlurLeft {
+  left: 0;
+  transform: translateX(calc(var(--p) * -102%));
+}
+.doorBlurRight {
+  right: 0;
+  transform: translateX(calc(var(--p) * 102%));
+}
+
+/* 200% wide = full stage. left offset counteracts door's translateX so the
+   blurred frame stays aligned with the background video as the door slides. */
+.doorBlurVideo {
+  position: absolute;
+  top: 0;
+  width: 200%;
+  height: 100%;
+  object-fit: cover;
+  filter: blur(6px);
+  /* +102%*p cancels the door's -102%*p translateX → video stays stage-anchored */
+  left: calc(var(--p) * 102%);
+}
+.doorBlurVideoRight {
+  /* -100% = initial right-door offset; -102%*p cancels the door's +102%*p translateX */
+  left: calc(-100% - var(--p) * 102%);
+}
+
+/* Dark tint over blurred video */
+.doorBlurTint {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+}
+
+/* ---------- Sliding doors — transparent carriers for content only ---------- */
+.door {
+  position: absolute;
+  top: 0;
+  width: 50%;
+  height: 100%;
+  display: flex;
+  overflow: hidden;
+  z-index: 2;
+  background: transparent; /* blur layer beneath handles the visual */
+}
+
+.doorLeft {
+  left: 0;
+  justify-content: center;
+  transform: translateX(calc(var(--p) * -102%));
+}
+
+.doorRight {
+  right: 0;
+  justify-content: center;
+  transform: translateX(calc(var(--p) * 102%));
+}
+
+/* Subtle inner border — starts below the header so the seam doesn't enter the header zone */
+.door::before {
+  content: "";
+  position: absolute;
+  top: var(--header-height);
+  bottom: 0;
+  left: 0;
+  right: 0;
+  border-inline: 1px solid rgba(255, 255, 255, 0.08);
+  z-index: 0;
+  pointer-events: none;
+}
+
+.door::after { display: none; }
+
+.doorContent {
+  position: relative;
+  z-index: 1;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 3rem;
+  padding: var(--header-height) 3rem 3rem;
+}
+/* ---------- Hero heading (split across the seam) ---------- */
+.heading {
+  font-size: clamp(2.2rem, 5vw, 4.4rem);
+  font-weight: 300;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  color: #fff;
+}
+.headingLeft {
+  text-align: center;
+}
+.headingRight {
+  text-align: center;
+}
+
+/* ---------- Columns (Sumato two-column: illustration directly on dark) ---------- */
+.card {
+  width: min(380px, 100%);
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 1.1rem;
+}
+.cardImage {
+  width: 100%;
+  display: grid;
+  place-items: center;
+}
+.cardImage :global(img) {
+  height: auto;
+  width: auto;
+  max-height: 170px;
+  object-fit: contain;
+}
+.cardTitle {
+  font-size: 1.35rem;
+  font-weight: 600;
+  color: #fff;
+}
+.cardDesc {
+  font-size: 0.95rem;
+  color: #c3cee2;
+  line-height: 1.5;
+}
+.card .btn {
+  margin-top: 0.5rem;
+}
+
+/* ---------- Scroll hint ---------- */
+.scrollHint {
+  position: absolute;
+  bottom: 1.75rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.75rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.6);
+  opacity: calc(1 - var(--p) * 2);
+  pointer-events: none;
+}
+.scrollHint i {
+  width: 1px;
+  height: 32px;
+  background: linear-gradient(rgba(255, 255, 255, 0.6), transparent);
+  animation: drop 1.6s ease-in-out infinite;
+}
+@keyframes drop {
+  0% {
+    transform: scaleY(0);
+    transform-origin: top;
+  }
+  50% {
+    transform: scaleY(1);
+    transform-origin: top;
+  }
+  51% {
+    transform-origin: bottom;
+  }
+  100% {
+    transform: scaleY(0);
+    transform-origin: bottom;
+  }
+}
+
+/* ---------- Responsive: stack the doors, drop the animation ---------- */
+@media (max-width: 860px) {
+  .wrap {
+    height: auto;
+  }
+  .stage {
+    position: static;
+    height: auto;
+    overflow: visible;
+    padding-top: var(--header-height);
+    background: linear-gradient(160deg, #0b1c42, #081530);
+  }
+  .bg,
+  .doorBlur {
+    display: none;
+  }
+  .door {
+    position: static;
+    width: 100%;
+    height: auto;
+    transform: none !important;
+    border: none;
+    background: transparent;
+  }
+  .door::before,
+  .door::after {
+    display: none;
+  }
+  .doorContent {
+    width: 100%;
+    height: auto;
+    padding: 2rem 1.5rem;
+    gap: 1.5rem;
+  }
+  .heading {
+    text-align: center;
+  }
+  .scrollHint {
+    display: none;
+  }
+}

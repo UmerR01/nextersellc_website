@@ -1,0 +1,111 @@
+.section {
+  padding-top: calc(var(--header-height) + 80px);
+  padding-bottom: 80px;
+  background: var(--color-blue-dark);
+  color: #fff;
+  overflow: hidden;
+  position: relative;
+}
+
+.section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 70% 60% at 20% 40%, rgba(18,122,255,0.28) 0%, transparent 70%),
+    radial-gradient(ellipse 60% 50% at 80% 60%, rgba(60,196,229,0.18) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.inner {
+  position: relative;
+  z-index: 1;
+}
+
+.breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.85rem;
+  color: rgba(255,255,255,0.45);
+  margin-bottom: 2.5rem;
+}
+.breadcrumb a {
+  color: rgba(255,255,255,0.45);
+  transition: color 0.2s;
+}
+.breadcrumb a:hover { color: rgba(255,255,255,0.9); }
+.breadcrumb span { color: rgba(255,255,255,0.25); }
+
+.title {
+  font-size: clamp(2.4rem, 5vw, 4rem);
+  font-weight: 300;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+  color: #fff;
+  max-width: 860px;
+  margin: 0 0 1.5rem;
+}
+.title span { color: var(--color-blue); }
+
+.desc {
+  font-size: clamp(1rem, 1.4vw, 1.25rem);
+  font-weight: 400;
+  line-height: 1.64;
+  color: rgba(255,255,255,0.7);
+  max-width: 620px;
+  margin: 0 0 2.5rem;
+}
+
+.points {
+  display: flex;
+  gap: 0;
+  margin-bottom: 2.5rem;
+}
+.point {
+  flex: 0 0 33.333%;
+  max-width: 33.333%;
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  text-align: left;
+  padding: 0 2rem;
+  border-right: 1px solid rgba(255,255,255,0.1);
+}
+.point:first-child { padding-left: 0; }
+.point:last-child  { border-right: none; padding-right: 0; }
+
+.checkIcon {
+  flex-shrink: 0;
+  width: 22px;
+  height: 22px;
+  color: var(--color-accent);
+  margin-top: 4px;
+}
+.pointText {
+  font-size: clamp(0.95rem, 1.2vw, 1.125rem);
+  font-weight: 400;
+  line-height: 1.55;
+  color: #fff;
+}
+
+.buttons {
+  display: flex;
+  gap: 1.25rem;
+  flex-wrap: wrap;
+}
+
+@media (max-width: 768px) {
+  .points {
+    flex-direction: column;
+    gap: 1.25rem;
+    margin-bottom: 2rem;
+  }
+  .point {
+    flex: none;
+    max-width: 100%;
+    padding: 0;
+    border-right: none;
+  }
+  .buttons { gap: 1rem; }
+}

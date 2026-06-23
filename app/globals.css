@@ -5,12 +5,14 @@
   --color-surface: #ffffff;
   --color-text: #0a1530;
   --color-text-muted: #5a6b87;
+  --color-text-white-off:#c3cee2;
   --color-border: rgba(16, 30, 77, 0.12);
 
   /* Accents */
   --color-blue: #127aff; /* Sumato primary */
   --color-blue-dark: #0a1530; /* deep navy */
-  --color-accent: #ff415c; /* Sumato CTA red */
+  --color-accent: #3CC4E5; /* Sumato CTA red */
+  --color-accent-dark: #2B2A6D; /* darker red for hover */
   --color-accent-hover: #ff2a48;
 
   /* Shape language */
@@ -66,7 +68,7 @@ img {
   justify-content: center;
   gap: 8px;
   border-radius: var(--radius-button);
-  padding: 7px 20px;
+  padding: 0.4rem 1.25rem;
   font-size: 1rem;
   font-weight: 600;
   line-height: 1;
@@ -80,7 +82,7 @@ img {
 .btn-outline {
   background: transparent;
   color: var(--color-accent);
-  border: 1px solid var(--color-accent);
+  border: 2px solid var(--color-accent);
 }
 .btn-outline:hover {
   background: var(--color-accent);
@@ -91,7 +93,7 @@ img {
 .btn-primary {
   background: var(--color-blue-dark);
   color: #fff;
-  border: 1px solid var(--color-blue-dark);
+  border: 2px solid var(--color-blue-dark);
 }
 .btn-primary:hover {
   background: var(--color-blue);

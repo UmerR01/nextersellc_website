@@ -1,0 +1,110 @@
+.section {
+  background: var(--color-bg);
+  padding: 96px 0;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.title {
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 300;
+  letter-spacing: -0.02em;
+  color: var(--color-text);
+}
+.title span { color: var(--color-blue); }
+
+/* ── Steps — vertical list ── */
+.steps {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  max-width: 760px;
+  margin: 0 auto;
+}
+
+.step {
+  display: flex;
+  align-items: flex-start;
+  gap: 2rem;
+  position: relative;
+  padding-bottom: 3rem;
+}
+
+.stepWithLine::after {
+  content: "";
+  position: absolute;
+  left: 43px;
+  top: 88px;
+  width: 2px;
+  height: calc(100% - 88px + 24px);
+  background: var(--color-border);
+}
+
+.step:last-child {
+  padding-bottom: 0;
+}
+
+/* ── Circle badge ── */
+.stepNum {
+  width: 88px;
+  height: 88px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  background: var(--color-blue-dark);
+  color: #fff;
+  font-size: 1.75rem;
+  font-weight: 600;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  z-index: 1;
+  box-shadow: 0 0 0 6px var(--color-bg), 0 0 0 8px var(--color-border);
+}
+
+.stepContent {
+  flex: 1;
+  padding-top: 1.25rem;
+}
+
+.stepTitle {
+  font-size: clamp(1.1rem, 1.8vw, 1.5rem);
+  font-weight: 600;
+  line-height: 1.3;
+  color: var(--color-text);
+  margin-bottom: 1rem;
+}
+
+.stepDesc p {
+  font-size: clamp(0.9rem, 1.1vw, 1.0625rem);
+  font-weight: 400;
+  line-height: 1.75;
+  color: var(--color-text-muted);
+  margin-bottom: 0;
+}
+
+@media (max-width: 768px) {
+  .section { padding: 72px 0; }
+
+  .stepWithLine::after {
+    left: 23px;
+    top: 54px;
+    height: calc(100% - 54px + 24px);
+  }
+
+  .stepNum {
+    width: 48px;
+    height: 48px;
+    font-size: 1rem;
+    box-shadow: 0 0 0 4px var(--color-bg), 0 0 0 6px var(--color-border);
+  }
+
+  .stepContent {
+    padding-top: 0.5rem;
+    margin-left: -0.5rem;
+  }
+}

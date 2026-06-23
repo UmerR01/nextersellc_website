@@ -1,0 +1,100 @@
+.section {
+  padding: 96px 0;
+  background: #fff;
+}
+
+.title {
+  font-size: clamp(2rem, 4vw, 3.5rem);
+  font-weight: 300;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+  text-align: center;
+  color: var(--color-text);
+  margin-bottom: 4rem;
+}
+.title span { color: var(--color-accent); }
+
+.desc {
+  font-size: clamp(1rem, 1.4vw, 1.375rem);
+  font-weight: 400;
+  line-height: 1.64;
+  text-align: center;
+  color: var(--color-text-muted);
+  max-width: 860px;
+  margin: -2.5rem auto 4rem;
+}
+
+.grid {
+  display: flex;
+  gap: 0;
+}
+.col {
+  flex: 0 0 50%;
+  max-width: 50%;
+  padding: 0 1rem;
+}
+
+.card {
+  height: 100%;
+  padding: 2.5rem;
+  /* background: var(--color-bg-elevated);
+  border: 1px solid var(--color-border); */
+}
+.cardIcon {
+  width: 56px;
+  height: 56px;
+  margin-bottom: 1.5rem;
+  display: block;
+  
+}
+.cardTitle {
+  font-size: clamp(1.1rem, 1.8vw, 1.75rem);
+  font-weight: 400;
+  line-height: 1.3;
+  color: var(--color-text);
+  margin-bottom: 1rem;
+}
+.cardBody {
+  font-size: clamp(0.9rem, 1.1vw, 1.125rem);
+  font-weight: 400;
+  line-height: 1.75;
+  color: var(--color-text-muted);
+  margin-bottom: 1.5rem;
+}
+.cardHow {
+  padding-top: 1.25rem;
+}
+.cardHowLabel {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--color-text);
+  display: block;
+  margin-bottom: 0.6rem;
+}
+.cardHowText {
+  font-size: clamp(0.9rem, 1.1vw, 1.125rem);
+  font-weight: 400;
+  line-height: 1.75;
+  color: var(--color-text-muted);
+}
+
+.ctaBanner {
+  margin-top: 4rem;
+  background: var(--color-accent-dark);
+  color: #fff;
+  padding: 2.5rem 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+.ctaText h3 { font-size: 1.5rem; font-weight: 600; margin-bottom: 0.35rem; }
+.ctaText p  { font-size: 1rem; color: rgba(255,255,255,0.6); }
+
+@media (max-width: 768px) {
+  .section { padding: 64px 0; }
+  .grid { flex-direction: column; }
+  .col { flex: none; max-width: 100%; padding: 0 0 1rem; }
+  .ctaBanner { flex-direction: column; padding: 2rem; }
+}
