@@ -96,10 +96,14 @@ export default function ContactModal({ open, onClose }: Props) {
           <div className={styles.left}>
             {/* Brand */}
             <div className={styles.brand}>
-              <span className={styles.logoMark}>N</span>
-              <span className={styles.logoText}>
-                Nexterse<span className={styles.dot}>.</span>
-              </span>
+              <Image
+                src="/brand/nexters_logo_blue.png"
+                alt="Nexterse"
+                width={160}
+                height={42}
+                className={styles.brandLogo}
+                priority
+              />
             </div>
 
             {/* Email description */}

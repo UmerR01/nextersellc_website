@@ -1,0 +1,208 @@
+.section {
+  padding: 96px 0;
+  background: var(--color-bg);
+}
+
+/* Inner wrapper — matches clone's 100px left inset for quote mark */
+.wrapper {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 0 32px 0 124px; /* 124 = 100px quote space + 24px gutter */
+}
+
+/* ── Slide row ── */
+.slide {
+  display: flex;
+  align-items: flex-start;
+}
+
+/* ── Left: quote ── */
+.leftContent {
+  flex: 1;
+  min-width: 0;
+  margin-right: 48px;
+  position: relative;
+}
+
+/* Large double-opening-quote mark SVG, mirroring clone exactly */
+.leftContent::before {
+  content: "";
+  display: block;
+  position: absolute;
+  left: -70px;
+  top: -17px;
+  width: 48px;
+  height: 48px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='48' height='48' fill='none'%3E%3Cpath fill='%23112244' d='M1.39 42.24V30.46q0-7.03 2.09-12.92 2.28-6.08 7.79-11.78l6.27 4.75q-3.99 4.37-5.7 8.17-1.52 3.61-1.71 7.22h7.41v16.34zm29.07 0V30.46q0-7.03 2.09-12.92 2.28-6.08 7.79-11.78l6.27 4.75q-3.99 4.37-5.7 8.17-1.52 3.61-1.71 7.22h7.41v16.34z'/%3E%3C/svg%3E");
+  background-size: cover;
+}
+
+.quoteText {
+  font-size: clamp(1rem, 1.6vw, 1.375rem);
+  font-style: italic;
+  font-weight: 400;
+  line-height: 1.636;
+  color: var(--color-text);
+  margin: 0;
+}
+
+/* ── Right: author ── */
+.rightContent {
+  width: 252px;
+  flex-shrink: 0;
+  padding-top: 8px;
+}
+
+.authorData {
+  display: flex;
+  flex-direction: column;
+}
+
+.photo {
+  width: 72px !important;
+  height: 72px !important;
+  object-fit: cover;
+  display: block;
+}
+
+.authorText {
+  margin-top: 16px;
+}
+
+.name {
+  font-size: 1.375rem;
+  font-weight: 400;
+  line-height: 1.636;
+  color: var(--color-text);
+}
+
+.role {
+  font-size: 0.875rem;
+  font-weight: 400;
+  line-height: 1.43;
+  color: var(--color-text-muted);
+}
+
+/* ── Bottom navigation bar ── */
+.bottomContent {
+  display: flex;
+  align-items: center;
+  margin-top: 2.5rem;
+}
+
+.navigation {
+  flex: 1;
+  display: flex;
+  align-items: center;
+}
+
+.allReviewsWrap {
+  width: 252px;
+  flex-shrink: 0;
+}
+
+.allReviews {
+  color: var(--color-accent);
+  font-size: 1rem;
+  font-weight: 500;
+  text-decoration: none;
+  transition: opacity 0.15s;
+}
+.allReviews:hover { opacity: 0.75; }
+
+/* ── Arrows — same style as AIAwards / Certificates ── */
+.btnPrev,
+.btnNext {
+  cursor: pointer;
+  height: 24px;
+  width: 40px;
+  border: none;
+  background: none;
+  padding: 0;
+  position: relative;
+  flex-shrink: 0;
+}
+
+.btnPrev { margin-right: 8px; }
+.btnNext { margin-left: 8px; }
+
+/* Tail */
+.btnPrev::before,
+.btnNext::before {
+  background: var(--color-accent);
+  content: "";
+  display: block;
+  height: 2px;
+  position: absolute;
+  top: 11px;
+  transition: width 0.3s ease-in-out;
+  width: calc(100% - 2px);
+}
+
+/* Arrowhead */
+.btnPrev::after,
+.btnNext::after {
+  border-bottom: 2px solid var(--color-accent);
+  border-right: 2px solid var(--color-accent);
+  content: "";
+  display: block;
+  height: 10px;
+  position: absolute;
+  top: 7px;
+  transition: 0.3s ease-in-out;
+  width: 10px;
+}
+
+.btnNext::before { left: 1px; }
+.btnNext::after  { right: 2px; transform: rotate(-45deg); }
+.btnPrev::before { right: 1px; }
+.btnPrev::after  { left: 2px;  transform: rotate(135deg); }
+
+/* Hover */
+.btnNext:not(.disabled):hover::before { width: calc(100% + 4px); }
+.btnNext:not(.disabled):hover::after  { right: -4px; }
+.btnPrev:not(.disabled):hover::before { width: calc(100% + 4px); }
+.btnPrev:not(.disabled):hover::after  { left: -4px; }
+
+/* Disabled */
+.disabled { cursor: default; pointer-events: none; }
+.disabled::before { background: #899fb6 !important; }
+.disabled::after  { border-color: #899fb6 !important; }
+
+/* ── Responsive ── */
+@media (max-width: 1024px) {
+  .wrapper { padding: 0 32px 0 100px; }
+}
+
+@media (max-width: 768px) {
+  .section { padding: 64px 0; }
+
+  .wrapper {
+    padding: 0 24px 0 64px;
+  }
+
+  .leftContent::before {
+    left: -44px;
+    top: -10px;
+    width: 32px;
+    height: 32px;
+  }
+
+  .slide { flex-direction: column; gap: 2rem; }
+
+  .leftContent { margin-right: 0; }
+
+  .rightContent {
+    width: 100%;
+    padding-top: 0;
+  }
+
+  .authorData { flex-direction: row; align-items: center; }
+  .authorText { margin-top: 0; margin-left: 16px; }
+
+  .quoteText { font-size: 1rem; line-height: 1.625; }
+
+  .name { font-size: 1rem; line-height: 1.625; }
+
+  .allReviewsWrap { width: auto; }
+}
