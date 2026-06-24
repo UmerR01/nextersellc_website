@@ -1,0 +1,131 @@
+.wrapper {
+  background: #fff;
+  padding: 0;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+  overflow: hidden;
+}
+
+/* Desktop table */
+.tableDesktop {
+  width: 100%;
+  border-collapse: collapse;
+  display: table;
+}
+
+@media (max-width: 768px) {
+  .tableDesktop {
+    display: none;
+  }
+}
+
+.tableDesktop th,
+.tableDesktop td {
+  padding: 20px 24px;
+  font-size: 16px;
+  line-height: 22px;
+  font-weight: 400;
+  text-align: left;
+  border-bottom: 1px solid var(--color-border);
+  vertical-align: top;
+}
+
+.tableDesktop th {
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 20px;
+  color: var(--color-text-muted);
+  background: #f7f9fe;
+  border-bottom: 2px solid var(--color-border);
+  white-space: nowrap;
+}
+
+.tableDesktop th:first-child {
+  color: var(--color-text);
+  min-width: 280px;
+}
+
+.tableDesktop td:first-child {
+  font-weight: 500;
+  color: var(--color-text);
+}
+
+.tableDesktop td:not(:first-child) {
+  color: var(--color-text-muted);
+}
+
+.tableDesktop tr:last-child td {
+  border-bottom: none;
+}
+
+.tableDesktop tr:nth-child(even) td {
+  background: #fafbff;
+}
+
+/* Mobile table */
+.tableMobile {
+  display: none;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  gap: 0;
+}
+
+@media (max-width: 768px) {
+  .tableMobile {
+    display: flex;
+    flex-direction: row;
+    padding-bottom: 16px;
+  }
+}
+
+.mobileCol {
+  min-width: 180px;
+  flex-shrink: 0;
+}
+
+.mobileCol:first-child {
+  min-width: 160px;
+  position: sticky;
+  left: 0;
+  z-index: 2;
+  background: #fff;
+  box-shadow: 2px 0 8px rgba(0, 0, 0, 0.06);
+}
+
+.mobileColTitle {
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 20px;
+  color: var(--color-text);
+  padding: 16px 12px;
+  background: #f7f9fe;
+  border-bottom: 2px solid var(--color-border);
+  min-height: 56px;
+  display: flex;
+  align-items: center;
+}
+
+.mobileColData {
+  display: flex;
+  flex-direction: column;
+}
+
+.mobileCell {
+  padding: 14px 12px;
+  font-size: 13px;
+  line-height: 18px;
+  color: var(--color-text-muted);
+  border-bottom: 1px solid var(--color-border);
+  min-height: 52px;
+  display: flex;
+  align-items: center;
+}
+
+.mobileCol:first-child .mobileCell {
+  font-weight: 500;
+  color: var(--color-text);
+}

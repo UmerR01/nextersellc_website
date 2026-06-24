@@ -56,6 +56,11 @@ a {
   text-decoration: none;
 }
 
+/* HomeCTA overlaps the footer only on pages that render the CTA section */
+main:has([data-section="home-cta"]) ~ footer [data-id="footer-body"] {
+  padding-top: 205px;
+}
+
 img {
   max-width: 100%;
   display: block;
