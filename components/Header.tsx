@@ -25,9 +25,9 @@ const PANEL_LINKS = [
 ];
 
 const CONTACTS = [
-  { label: "USA: +1 (919) 629-9671", href: "tel:+19196299671" },
-  { label: "UK: +44 (0) 20 8731 5255", href: "tel:+442087315255" },
-  { label: "hello@nexterse.com", href: "mailto:hello@nexterse.com" },
+  { label: "USA: +1 (321) 491-2236", href: "tel:+13214912236" },
+  { label: "UAE: +971 58 512 2084", href: "tel:+971585122084" },
+  { label: "info@nexterse.com", href: "mailto:info@nexterse.com" },
 ];
 
 const SOCIAL = [
@@ -59,6 +59,17 @@ export default function Header() {
     };
 
     const update = () => {
+      // Sub-pages (no home hero layout): always visible, solid when scrolled past top
+      if (!aboutEl) {
+        const past = window.scrollY > 10;
+        if (past !== solidRef.current) {
+          solidRef.current = past;
+          setSolid(past);
+        }
+        if (headerRef.current) headerRef.current.style.transform = "";
+        return;
+      }
+
       if (window.innerWidth <= 860) {
         const past = window.scrollY > 50;
         if (past !== solidRef.current) {
@@ -306,9 +317,9 @@ export default function Header() {
                     <div className={dd.colLinks}>
                       {[
                         { label: "Team", href: "#about" },
-                        { label: "FAQ", href: "#faq" },
-                        { label: "Testimonials", href: "#" },
-                        { label: "Engagement Models", href: "#process" },
+                        { label: "FAQ", href: "/faq" },
+                        { label: "Testimonials", href: "/testimonials" },
+                        { label: "Engagement Models", href: "/engagement-models-process" },
                         { label: "ADLC", href: "#applied-ai" },
                         { label: "SDLC", href: "#process" },
                         { label: "Careers", href: "#" },

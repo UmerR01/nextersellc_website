@@ -117,6 +117,9 @@
   line-height: 36px;
   margin-top: 24px;
 }
+.descriptionLarge {
+  margin-top: 84px;
+}
 .description a {
   color: var(--color-accent);
   font-weight: 600;

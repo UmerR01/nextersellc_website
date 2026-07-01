@@ -32,8 +32,6 @@ function CalendarIcon() {
   );
 }
 
-/** Let's start — replicated from Sumato's "lets-start" block: a "what's next"
- *  timeline on the left and an underline-style contact form on the right. */
 const STEPS = [
   "Tell us your vision",
   "Expert discovery session",
@@ -41,7 +39,11 @@ const STEPS = [
   "Launch your project",
 ];
 
-export default function LetsStart() {
+interface LetsStartProps {
+  variant?: "testimonials";
+}
+
+export default function LetsStart({ variant }: LetsStartProps = {}) {
   const [sent, setSent] = useState(false);
   const [fileName, setFileName] = useState("");
 
@@ -49,26 +51,39 @@ export default function LetsStart() {
     <section className={styles.section} id="lets-start">
       <div className={styles.wrapper}>
         <div className={styles.content}>
-          {/* Left: title + timeline */}
+          {/* Left: title + content */}
           <div className={styles.left}>
-            <p className={styles.title}>Let’s start</p>
-            <div className={styles.steps}>
-              <span className={styles.stepsEyebrow}>What’s next</span>
-              {STEPS.map((s, i) => (
-                <div key={s} className={styles.step}>
-                  {i === STEPS.length - 1 && (
-                    <span className={styles.timelineArrow} aria-hidden />
-                  )}
-                  <span className={styles.stepText}>
-                    {i + 1}. {s}
-                  </span>
+            {variant === "testimonials" ? (
+              <>
+                <p className={styles.title}>Become our next happy Client</p>
+                <div className={`${styles.description} ${styles.descriptionLarge}`}>
+                  Contact us and we&rsquo;ll provide additional case studies for
+                  your business domain!
                 </div>
-              ))}
-            </div>
-            <div className={styles.description}>
-              If you have any questions, email us{" "}
-              <a href="mailto:hello@nexterse.com">hello@nexterse.com</a>
-            </div>
+              </>
+            ) : (
+              <>
+                <p className={styles.title}>Let's start</p>
+                <div className={styles.steps}>
+                  <span className={styles.stepsEyebrow}>What's next</span>
+                  {STEPS.map((s, i) => (
+                    <div key={s} className={styles.step}>
+                      {i === STEPS.length - 1 && (
+                        <span className={styles.timelineArrow} aria-hidden />
+                      )}
+                      <span className={styles.stepText}>
+                        {i + 1}. {s}
+                      </span>
+                    </div>
+                  ))}
+                </div>
+                <div className={styles.description}>
+                  If you have any questions, email us{" "}
+                  <a href="mailto:hello@nexterse.com">info@nexterse.com
+</a>
+                </div>
+              </>
+            )}
           </div>
 
           {/* Right: form */}
@@ -127,7 +142,7 @@ export default function LetsStart() {
                     <div className={styles.managerRole}>Account Manager</div>
                   </div>
                 </div>
-                <a href="#contact" className={styles.book}>
+                <a href="https://calendly.com/nexterse-meeting-schedule22/30min" target="_blank" rel="noreferrer noopener" className={styles.book}>
                   <CalendarIcon /> Book a consultation
                 </a>
               </div>

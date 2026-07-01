@@ -14,6 +14,7 @@ import WhyWork from "@/components/home/WhyWork";
 import LetsStart from "@/components/home/LetsStart";
 import Faq from "@/components/home/Faq";
 import Stories from "@/components/home/Stories";
+import HomeCTA from "@/components/home/HomeCTA";
 
 export default function Home() {
   return (
@@ -35,6 +36,7 @@ export default function Home() {
         <LetsStart />
         <Faq />
         <Stories />
+        <HomeCTA />
       </main>
     </>
   );

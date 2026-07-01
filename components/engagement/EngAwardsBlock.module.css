@@ -1,0 +1,117 @@
+.section {
+  padding: 136px 0 96px;
+  background: #fff;
+}
+
+@media (max-width: 768px) {
+  .section {
+    padding: 104px 0 72px;
+  }
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.blue {
+  color: var(--color-blue);
+}
+
+.title {
+  font-size: 56px;
+  font-weight: 400;
+  line-height: 62px;
+  color: #000;
+  margin: 0 0 64px;
+  text-align: center;
+}
+
+@media (max-width: 768px) {
+  .title {
+    font-size: 32px;
+    line-height: 35px;
+    margin-bottom: 40px;
+    text-align: left;
+  }
+}
+
+.slider {
+  overflow: hidden;
+}
+
+.track {
+  display: flex;
+  transition: transform 0.5s cubic-bezier(0.76, 0, 0.24, 1);
+  width: 100%;
+}
+
+.slide {
+  flex: 0 0 20%;
+  min-width: 20%;
+  padding: 0 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@media (max-width: 768px) {
+  .slide {
+    flex: 0 0 33.333%;
+    min-width: 33.333%;
+  }
+}
+
+.awardWrap {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.awardImg {
+  max-width: 140px;
+  max-height: 140px;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+@media (max-width: 768px) {
+  .awardImg {
+    max-width: 80px;
+    max-height: 80px;
+  }
+}
+
+.nav {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  margin-top: 48px;
+}
+
+.navBtn {
+  width: 48px;
+  height: 48px;
+  border: 1px solid var(--color-border);
+  background: transparent;
+  color: var(--color-text);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  padding: 0;
+  transition: all 0.3s ease;
+}
+
+.navBtn:hover:not(:disabled) {
+  border-color: var(--color-blue);
+  color: var(--color-blue);
+}
+
+.navBtn:disabled {
+  opacity: 0.3;
+  cursor: default;
+}
