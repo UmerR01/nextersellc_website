@@ -47,7 +47,7 @@ export default function AIWontForce() {
             Not every business challenge requires machine learning, generative AI, or autonomous agents.
             In many cases, the fastest and safest solution is still well-engineered traditional software.
           </p>
-          <p>At Nexterse, we operate as a Dual-Engine engineering firm.</p>
+          <p>At Nexterse LLC, we operate as a Dual-Engine engineering firm.</p>
           <p>
             This means we bring together two complementary capabilities and understand exactly when to
             apply each one: Development of traditional software (SDLC) or Development of AI &amp; agentic

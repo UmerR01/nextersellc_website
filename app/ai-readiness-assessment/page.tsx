@@ -1,4 +1,4 @@
-﻿import type { Metadata } from "next";
+import type { Metadata } from "next";
 import Header from "@/components/Header";
 import ARHero from "@/components/ai-readiness/ARHero";
 import ARFoundation from "@/components/ai-readiness/ARFoundation";
@@ -24,9 +24,9 @@ import Stories from "@/components/home/Stories";
 import styles from "./page.module.css";
 
 export const metadata: Metadata = {
-  title: "AI Readiness Assessment — Nexterse",
+  title: "AI Readiness Assessment — Nexterse LLC",
   description:
-    "Nexterse fixed-scope AI readiness assessment reviews your data architecture, infrastructure, security, and ROI assumptions before you invest in AI development.",
+    "Nexterse LLC fixed-scope AI readiness assessment reviews your data architecture, infrastructure, security, and ROI assumptions before you invest in AI development.",
 };
 
 export default function AIReadinessPage() {

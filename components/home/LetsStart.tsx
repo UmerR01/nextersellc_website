@@ -39,8 +39,15 @@ const STEPS = [
   "Launch your project",
 ];
 
+const LIBRARY_STEPS = [
+  "Share your idea",
+  "Discuss it with our expert",
+  "Get an estimation of a project",
+  "Start the project",
+];
+
 interface LetsStartProps {
-  variant?: "testimonials";
+  variant?: "testimonials" | "whitepapers" | "library";
 }
 
 export default function LetsStart({ variant }: LetsStartProps = {}) {
@@ -48,17 +55,46 @@ export default function LetsStart({ variant }: LetsStartProps = {}) {
   const [fileName, setFileName] = useState("");
 
   return (
-    <section className={styles.section} id="lets-start">
+    <section className={`${styles.section} ${variant === "library" ? styles.library : ""}`} id="lets-start">
       <div className={styles.wrapper}>
         <div className={styles.content}>
           {/* Left: title + content */}
           <div className={styles.left}>
-            {variant === "testimonials" ? (
+            {variant === "library" ? (
+              <>
+                <p className={styles.title}>Let&rsquo;s start your project</p>
+                <div className={styles.steps}>
+                  <span className={styles.stepsEyebrow}>You are here</span>
+                  {LIBRARY_STEPS.map((s, i) => (
+                    <div key={s} className={styles.step}>
+                      {i === LIBRARY_STEPS.length - 1 && (
+                        <span className={styles.timelineArrow} aria-hidden />
+                      )}
+                      <span className={styles.stepText}>
+                        {i + 1} {s}
+                      </span>
+                    </div>
+                  ))}
+                </div>
+                <div className={styles.description}>
+                  If you have any questions, email us{" "}
+                  <a href="mailto:info@nexterse.com">info@nexterse.com</a>
+                </div>
+              </>
+            ) : variant === "testimonials" ? (
               <>
                 <p className={styles.title}>Become our next happy Client</p>
                 <div className={`${styles.description} ${styles.descriptionLarge}`}>
                   Contact us and we&rsquo;ll provide additional case studies for
                   your business domain!
+                </div>
+              </>
+            ) : variant === "whitepapers" ? (
+              <>
+                <p className={styles.title}>Let's start</p>
+                <div className={styles.description}>
+                  If you have any questions, email us{" "}
+                  <a href="mailto:info@nexterse.com">info@nexterse.com</a>
                 </div>
               </>
             ) : (
@@ -109,7 +145,7 @@ export default function LetsStart({ variant }: LetsStartProps = {}) {
               </label>
 
               <p className={styles.privacy}>
-                When you click Send, Nexterse will process your personal data in accordance
+                When you click Send, Nexterse LLC will process your personal data in accordance
                 with our <a href="#">Privacy notice</a> to respond to your enquiry.
               </p>
 

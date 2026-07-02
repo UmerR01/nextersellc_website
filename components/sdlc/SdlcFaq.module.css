@@ -1,0 +1,137 @@
+.section {
+  font-family: var(--font-inter-tight), "Inter Tight", sans-serif;
+  padding: 96px 0;
+  background: #fff;
+}
+
+@media screen and (max-width: 768px) {
+  .section { padding: 64px 0; }
+}
+
+.title {
+  font-size: 38px;
+  font-weight: 400;
+  line-height: 46px;
+  color: #112244;
+  margin: 0 0 48px;
+}
+
+@media screen and (max-width: 768px) {
+  .title {
+    font-size: 24px;
+    line-height: 29px;
+    margin-bottom: 32px;
+  }
+}
+
+.cards {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.card {
+  border-top: 1px solid #e6eff7;
+}
+
+.card:last-child {
+  border-bottom: 1px solid #e6eff7;
+}
+
+.question {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  background: none;
+  border: none;
+  padding: 24px 0;
+  cursor: pointer;
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 26px;
+  color: #112244;
+  font-family: var(--font-inter-tight), "Inter Tight", sans-serif;
+  text-align: left;
+  transition: color 0.2s;
+}
+
+.question:hover {
+  color: var(--color-accent, #3CC4E5);
+}
+
+.cardActive .question {
+  color: #112244;
+}
+
+@media screen and (max-width: 768px) {
+  .question {
+    font-size: 15px;
+    line-height: 22px;
+    padding: 20px 0;
+  }
+}
+
+.toggle {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  color: #5e6d8e;
+  transition: color 0.2s;
+}
+
+.question:hover .toggle {
+  color: var(--color-accent, #3CC4E5);
+}
+
+.iconOpen {
+  transform: rotate(180deg);
+}
+
+.answer {
+  padding: 0 0 24px;
+  font-size: 16px;
+  line-height: 26px;
+  color: #5e6d8e;
+}
+
+.answer p { margin: 0; }
+
+@media screen and (max-width: 768px) {
+  .answer {
+    font-size: 14px;
+    line-height: 22px;
+    padding-bottom: 20px;
+  }
+}
+
+.loadMore {
+  padding: 24px 0;
+  border-top: 1px solid #e6eff7;
+}
+
+.loadMoreBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: none;
+  border: none;
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--color-accent, #3CC4E5);
+  cursor: pointer;
+  font-family: var(--font-inter-tight), "Inter Tight", sans-serif;
+  padding: 0;
+  transition: opacity 0.2s;
+}
+
+.loadMoreBtn:hover { opacity: 0.8; }
+
+.arrow {
+  display: inline-flex;
+  align-items: center;
+  transition: transform 0.2s;
+}
+
+.loadMoreBtn:hover .arrow { transform: translateX(4px); }

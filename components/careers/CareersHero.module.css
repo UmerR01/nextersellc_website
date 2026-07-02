@@ -1,0 +1,188 @@
+.hero {
+  overflow: hidden;
+  padding-top: 50px;
+  position: relative;
+  width: 100%;
+}
+
+@media screen and (max-width: 767px) {
+  .hero {
+    padding-top: 88px;
+  }
+}
+
+@media screen and (min-width: 1024px) and (max-width: 1680px) {
+  .hero {
+    padding-top: 160px;
+  }
+}
+
+.bgWrapper {
+  align-items: center;
+  background-position: 50%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  height: 100%;
+  justify-content: center;
+  left: 50%;
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+}
+
+@media screen and (min-width: 769px) {
+  .bgWrapper {
+    min-height: 700px;
+  }
+}
+
+.desktopBg {
+  display: block;
+  height: calc(100% + 224px);
+  position: absolute;
+  top: 0;
+  width: 100%;
+  z-index: -1;
+}
+
+@media (max-width: 768px) {
+  .desktopBg {
+    display: none;
+  }
+}
+
+.mobileBg {
+  display: none;
+  height: 100%;
+  position: absolute;
+  width: 100%;
+  z-index: -1;
+}
+
+@media (max-width: 768px) {
+  .mobileBg {
+    display: block;
+  }
+}
+
+.heroBgSvg {
+  height: 100%;
+  width: 100%;
+}
+
+.heroContent {
+  position: relative;
+  z-index: 1;
+}
+
+.container {
+  margin: 0 auto;
+  max-width: 1504px;
+  padding-inline: clamp(1.25rem, 4vw, 3.75rem);
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 0 20px;
+  }
+}
+
+.inner {
+  color: #fff;
+  padding: 96px 0 clamp(4.5rem, 6vw, 6rem);
+  position: relative;
+}
+
+@media screen and (max-width: 767px) {
+  .inner {
+    padding-bottom: 72px;
+    padding-top: 40px;
+    text-align: left;
+  }
+}
+
+.breadcrumbs {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  margin-bottom: 24px;
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.7);
+  flex-wrap: wrap;
+}
+
+.breadcrumbs a {
+  color: #fff;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.breadcrumbs a:hover {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.breadcrumbs a::after {
+  content: "";
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  margin: 0 6px;
+  background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none'%3E%3Cpath d='M6 4l4 4-4 4' stroke='rgba(255,255,255,0.5)' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  vertical-align: middle;
+}
+
+.title {
+  font-size: clamp(2.5rem, 6vw, 4rem);
+  font-weight: 400;
+  line-height: 1.2;
+  color: #fff;
+  margin: 0;
+}
+
+@media screen and (min-width: 768px) {
+  .title {
+    color: #fff;
+    font-size: clamp(3rem, 6vw, 4rem);
+    font-weight: 400;
+    line-height: 1.2;
+    max-width: 1920px;
+    text-align: center;
+  }
+}
+
+.titleAccent {
+  color: #3CC4E5;
+}
+
+.description {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 164%;
+  margin-bottom: 32px;
+  margin-top: 16px;
+  text-align: left;
+  color: #fff;
+}
+
+@media screen and (min-width: 768px) {
+  .description {
+    font-size: clamp(1.125rem, 2.2vw, 1.375rem);
+    margin-bottom: 40px;
+    text-align: left;
+  }
+}
+
+@media screen and (min-width: 1025px) {
+  .description {
+    text-align: center;
+  }
+}
+
+.description p {
+  margin: 0;
+}

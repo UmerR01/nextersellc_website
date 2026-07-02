@@ -6,8 +6,8 @@
 }
 
 .container {
-  margin: 0 120px;
-  padding: 0 24px;
+  width: min(calc(100% - (2 * var(--page-gutter))), var(--max-width));
+  margin: 0 auto;
 }
 
 .inner {
@@ -113,13 +113,22 @@
   }
 }
 
+@media (max-width: 900px) {
+  .inner {
+    padding: 32px;
+  }
+  .left {
+    width: 60%;
+  }
+}
+
 @media (max-width: 767px) {
   .section {
     padding: 40px 0 0;
+    margin-bottom: 0;
   }
   .container {
-    margin: 0;
-    padding: 0;
+    width: 100%;
   }
   .inner {
     flex-direction: column;
@@ -137,5 +146,9 @@
   }
   .title {
     font-size: 22px;
+  }
+  .right,
+  .btn {
+    width: 100%;
   }
 }

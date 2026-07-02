@@ -10,6 +10,11 @@
   color: #fff;
 }
 
+.container {
+  width: 100%;
+  min-width: 0;
+}
+
 /* Background image layer — the faceted SVG + glow circles */
 .bg {
   position: absolute;
@@ -232,7 +237,7 @@
 
 @media screen and (max-width: 768px) {
   .wrapper {
-    padding: 72px 24px 77px;
+    padding: 72px var(--page-gutter) 77px;
   }
   .description {
     margin-bottom: 24px;
@@ -242,6 +247,21 @@
     max-width: 100%;
     flex-basis: 327px;
     flex-grow: 1;
+  }
+}
+
+@media screen and (max-width: 420px) {
+  .mobileContent details {
+    padding: 20px 12px;
+  }
+
+  .mobileContent details summary {
+    font-size: 18px;
+    padding-right: 32px;
+  }
+
+  .mobileContent details .mobileItemContent {
+    width: 100%;
   }
 }
 

@@ -32,6 +32,8 @@
 /* ── Table — matches clone's new-post-table-block ── */
 .tableWrap {
   overflow-x: auto;
+  overscroll-behavior-inline: contain;
+  -webkit-overflow-scrolling: touch;
   max-width: 1152px;
   margin: 0 auto;
 }
@@ -78,4 +80,7 @@
   .desc { text-align: left; }
   .table thead th:first-child,
   .table thead th:not(:first-child) { width: auto; }
+  .table { min-width: 680px; }
+  .table thead th,
+  .table tbody td { padding: 12px; }
 }

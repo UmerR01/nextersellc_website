@@ -1,0 +1,320 @@
+@keyframes show {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes mobileOpen {
+  from { max-height: 0.1px; }
+  to { max-height: 999px; }
+}
+
+.section {
+  display: flex;
+  justify-content: center;
+  overflow: hidden;
+  position: relative;
+  color: #000;
+  font-family: var(--font-inter-tight);
+}
+
+.inner {
+  padding-block: clamp(6rem, 8vw, 8.5rem);
+  width: 100%;
+}
+
+.articleGrid {
+  display: block;
+}
+
+.articleMain {
+  min-width: 0;
+}
+
+@media screen and (max-width: 768px) {
+  .inner {
+    padding: 72px 0 77px;
+  }
+}
+
+.title {
+  font-size: clamp(2.5rem, 4vw, 3.5rem);
+  line-height: 1.12;
+  font-weight: 400;
+  margin: 0 0 1.5rem;
+  text-align: center;
+}
+
+@media screen and (max-width: 768px) {
+  .title {
+    font-size: 32px;
+    line-height: 35px;
+    text-align: left;
+  }
+}
+
+.description {
+  margin-bottom: 4rem;
+  font-size: 22px;
+  line-height: 1.65;
+}
+
+.description p {
+  margin: 0 0 12px;
+}
+
+.description p:last-child {
+  margin-bottom: 0;
+}
+
+.tabsLayout {
+  display: flex;
+  align-items: flex-start;
+  gap: 64px;
+  justify-content: flex-start;
+}
+
+
+@media screen and (max-width: 1024px) {
+  .tabsLayout {
+    display: none;
+  }
+}
+
+.menuDesktop {
+  align-items: flex-start;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  max-width: 380px;
+  padding: 16px 0 24px;
+  position: relative;
+  width: 100%;
+  background: linear-gradient(105.87deg, rgba(60, 196, 229, 0.09) 3.04%, rgba(60, 196, 229, 0.161) 96.05%);
+}
+
+.menuItem {
+  align-items: center;
+  cursor: pointer;
+  display: flex;
+  font-size: 18px;
+  gap: 16px;
+  justify-content: flex-start;
+  line-height: 28px;
+  padding: 24px 32px;
+  width: 100%;
+  color: #000;
+  transition: background-color 0.2s;
+  user-select: none;
+}
+
+.menuItem:focus {
+  outline: 2px solid #3CC4E5;
+  outline-offset: -2px;
+}
+
+.menuItemActive {
+  background: #3CC4E5;
+  color: #fff;
+}
+
+.menuItemActive .menuIcon svg path,
+.menuItemActive .menuIcon svg circle {
+  stroke: #fff;
+  fill: currentColor;
+}
+
+.menuItemActive .menuIcon svg {
+  filter: brightness(10) contrast(11);
+}
+
+.menuIcon {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  width: 56px;
+  height: 56px;
+}
+
+.contentDesktop {
+  max-width: 680px;
+  width: 100%;
+  flex: 1;
+}
+
+.contentPanel {
+  animation: show 0.3s linear both;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.contentTitle {
+  margin: 48px 0 24px;
+}
+
+.contentTitle h3 {
+  font-size: 28px;
+  line-height: 36px;
+  font-weight: 600;
+  margin: 0;
+}
+
+.contentDescription {
+  font-size: 22px;
+  line-height: 34px;
+}
+
+.contentDescription p {
+  margin: 0 0 12px;
+}
+
+.contentDescription p:last-child {
+  margin-bottom: 0;
+}
+
+.contentDescription strong {
+  font-weight: 500;
+}
+
+.contentPoints {
+  display: flex;
+  margin: 16px 0 0;
+  width: 100%;
+}
+
+.pointsList {
+  width: 100%;
+}
+
+.pointItem {
+  color: #000;
+  font-size: 22px;
+  font-weight: 400;
+  line-height: 34px;
+  margin-top: 8px;
+  padding-left: 32px;
+  position: relative;
+  text-align: left;
+  width: 100%;
+}
+
+.pointItem::before {
+  background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' fill='none'%3E%3Cpath stroke='%233CC4E5' stroke-linecap='square' stroke-width='1.5' d='m20.25 6.75-10.5 10.5L4.5 12'/%3E%3C/svg%3E");
+  content: "";
+  height: 24px;
+  left: 0;
+  position: absolute;
+  top: 6px;
+  width: 24px;
+}
+
+@media screen and (max-width: 768px) {
+  .pointItem {
+    font-size: 14px;
+    line-height: 22px;
+  }
+
+  .pointItem::before {
+    top: 1px;
+  }
+}
+
+.accordionMobile {
+  display: none;
+  width: 100%;
+}
+
+@media screen and (max-width: 1024px) {
+  .accordionMobile {
+    display: block;
+  }
+}
+
+.accordionItem {
+  align-items: flex-start;
+  cursor: default;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  overflow: hidden;
+  padding: 24px 32px;
+  position: relative;
+  width: 100%;
+  border-bottom: 1px solid #c6d0db;
+}
+
+.accordionItem[open] {
+  animation: mobileOpen 1s linear both;
+  border-bottom-color: transparent;
+  background: linear-gradient(105.87deg, rgba(60, 196, 229, 0.09) 3.04%, rgba(60, 196, 229, 0.161) 96.05%);
+}
+
+.accordionItem[open] .summaryArrow svg {
+  transform: rotate(180deg);
+}
+
+.accordionItem[open] .accordionContent {
+  animation: show 0.5s linear both;
+}
+
+.accordionSummary {
+  align-items: flex-start;
+  display: flex !important;
+  font-size: 20px;
+  gap: 16px;
+  justify-content: space-between;
+  line-height: 24px;
+  list-style: none;
+  width: 100%;
+  cursor: pointer;
+  position: relative;
+}
+
+.accordionSummary::-webkit-details-marker {
+  display: none;
+}
+
+.summaryIcon {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  width: 56px;
+  height: 56px;
+}
+
+.summaryLabel {
+  flex: 1;
+  font-weight: 600;
+}
+
+.summaryArrow {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  margin-left: auto;
+}
+
+.summaryArrow svg {
+  transition: transform 0.3s ease;
+}
+
+.accordionContent {
+  width: 95%;
+  padding-top: 8px;
+}
+
+.accordionContent .contentDescription {
+  font-size: 14px;
+  line-height: 22px;
+}
+
+@media screen and (max-width: 768px) {
+  .accordionItem {
+    padding: 24px 16px;
+  }
+
+  .contentPoints {
+    flex-direction: column;
+    margin: 8px 0 0;
+  }
+}

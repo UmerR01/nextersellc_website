@@ -1,0 +1,84 @@
+"use client";
+
+import { useState } from "react";
+import styles from "./WhitepaperSubscribe.module.css";
+
+export default function WhitepaperSubscribe() {
+  const [submitted, setSubmitted] = useState(false);
+  const [form, setForm] = useState({ name: "", email: "", agree: false });
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!form.name || !form.email || !form.agree) return;
+    setSubmitted(true);
+  };
+
+  return (
+    <section className={styles.section}>
+      <div className={styles.inner}>
+        {!submitted ? (
+          <div className={styles.formState}>
+            <div className={styles.left}>
+              <div className={styles.heading}>
+                <span className={styles.accent}>Subscribe</span> for updates
+              </div>
+              <div className={styles.subtext}>
+                Get fresh whitepapers to your inbox every two weeks.
+              </div>
+            </div>
+
+            <div className={styles.right}>
+              <form className={styles.form} onSubmit={handleSubmit} noValidate>
+                <label className={styles.field}>
+                  <span className={styles.label}>Full name*</span>
+                  <input
+                    type="text"
+                    placeholder="John Smith"
+                    value={form.name}
+                    onChange={(e) => setForm((f) => ({ ...f, name: e.target.value }))}
+                    required
+                  />
+                </label>
+
+                <label className={styles.field}>
+                  <span className={styles.label}>Email*</span>
+                  <input
+                    type="email"
+                    placeholder="name@company.com"
+                    value={form.email}
+                    onChange={(e) => setForm((f) => ({ ...f, email: e.target.value }))}
+                    required
+                  />
+                </label>
+
+                <div className={styles.bottomRow}>
+                  <label className={styles.checkboxLabel}>
+                    <input
+                      type="checkbox"
+                      checked={form.agree}
+                      onChange={(e) => setForm((f) => ({ ...f, agree: e.target.checked }))}
+                    />
+                    <span>
+                      Agree with <a href="/privacy-policy">Privacy Policy</a>
+                    </span>
+                  </label>
+                  <button type="submit" className={styles.submitBtn}>
+                    Subscribe
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        ) : (
+          <div className={styles.thankYou}>
+            <svg width="80" height="80" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M69.9989 36.4774V39.3031C69.9951 45.9264 67.8504 52.3711 63.8847 57.6759C59.919 62.9807 54.3447 66.8615 47.9932 68.7394C41.6417 70.6173 34.8533 70.3918 28.6405 68.0965C22.4276 65.8012 17.1232 61.559 13.5183 56.0027C9.91334 50.4464 8.2011 43.8736 8.63689 37.2647C9.07268 30.6557 11.6332 24.3647 15.9365 19.3299C20.2397 14.295 26.0553 10.7861 32.5157 9.32646C38.9762 7.86681 45.7354 8.53462 51.7853 11.2303" stroke="#112244" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+              <path d="M71.389 12.5088L38.6679 45.2626L28.8516 35.4463" stroke="#112244" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+            </svg>
+            <div className={styles.thankYouTitle}>Thank You!</div>
+          </div>
+        )}
+      </div>
+    </section>
+  );
+}

@@ -1,8 +1,12 @@
 "use client";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import styles from "./EngAwardsBlock.module.css";
 
 const AWARDS = [
+  { src: "/engagement/05_top_clutch.co_artificial_intelligence_company_boston_2026-2.svg", alt: "Top Clutch AI Company Boston 2026" },
+  { src: "/engagement/06_RightFirms-1.svg", alt: "RightFirms badge" },
+  { src: "/engagement/06_techreviewer_badge_2026-12.svg", alt: "TechReviewer badge 2026" },
+  { src: "/engagement/05_top_clutch.co_iot_company_providence_2026-2.svg", alt: "Top Clutch IoT Company Providence 2026" },
   { src: "/engagement/12_5ca49c9f6cb37e33319e1162_Goodfirms.svg", alt: "Goodfirms badge" },
   { src: "/engagement/12_5ca49c9f8ff5ad26d13b6845_TDA.svg", alt: "TDA badge" },
   { src: "/engagement/12_5ca49c9f6cb37e49a79e1163_changed.svg", alt: "AWS partner badge" },
@@ -14,12 +18,22 @@ const AWARDS = [
   { src: "/engagement/01_techreviewer_badge_2025-1.svg", alt: "TR top web developers 2025" },
 ];
 
-const VISIBLE = 5;
-
 export default function EngAwardsBlock() {
   const [offset, setOffset] = useState(0);
+  const [visible, setVisible] = useState(6);
+  const max = Math.max(0, AWARDS.length - visible);
 
-  const max = AWARDS.length - VISIBLE;
+  useEffect(() => {
+    const updateVisible = () => setVisible(window.innerWidth <= 1024 ? 4 : 6);
+    updateVisible();
+    window.addEventListener("resize", updateVisible);
+    return () => window.removeEventListener("resize", updateVisible);
+  }, []);
+
+  useEffect(() => {
+    setOffset((current) => Math.min(current, max));
+  }, [max]);
+
   const prev = () => setOffset((o) => Math.max(0, o - 1));
   const next = () => setOffset((o) => Math.min(max, o + 1));
 
@@ -29,28 +43,31 @@ export default function EngAwardsBlock() {
         <h2 className={styles.title}>
           <span className={styles.blue}>Awards</span> &amp; Recognitions
         </h2>
-        <div className={styles.slider}>
-          <div
-            className={styles.track}
-            style={{ transform: `translateX(-${offset * (100 / VISIBLE)}%)` }}
-          >
-            {AWARDS.map((a, i) => (
-              <div key={i} className={styles.slide}>
-                <div className={styles.awardWrap}>
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img src={a.src} alt={a.alt} className={styles.awardImg} loading="lazy" />
+        <div className={styles.sliderArea}>
+          <div className={styles.slider}>
+            <div
+              className={styles.track}
+              style={{
+                "--visible": visible,
+                transform: `translateX(calc(-${offset} * (100% / ${visible})))`,
+              } as React.CSSProperties}
+            >
+              {AWARDS.map((a, i) => (
+                <div key={i} className={styles.slide}>
+                  <div className={styles.awardWrap}>
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img src={a.src} alt={a.alt} className={styles.awardImg} loading="lazy" />
+                  </div>
                 </div>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
+          <button className={`${styles.navBtn} ${styles.navPrev}`} onClick={prev} disabled={offset === 0} aria-label="Previous" />
+          <button className={`${styles.navBtn} ${styles.navNext}`} onClick={next} disabled={offset >= max} aria-label="Next" />
         </div>
-        <div className={styles.nav}>
-          <button className={styles.navBtn} onClick={prev} disabled={offset === 0} aria-label="Previous">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M15 18L9 12L15 6" stroke="currentColor" strokeWidth="2" strokeLinecap="square" /></svg>
-          </button>
-          <button className={styles.navBtn} onClick={next} disabled={offset >= max} aria-label="Next">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M9 6L15 12L9 18" stroke="currentColor" strokeWidth="2" strokeLinecap="square" /></svg>
-          </button>
+        <div className={styles.mobileNav}>
+          <button className={`${styles.navBtn} ${styles.navPrev}`} onClick={prev} disabled={offset === 0} aria-label="Previous" />
+          <button className={`${styles.navBtn} ${styles.navNext}`} onClick={next} disabled={offset >= max} aria-label="Next" />
         </div>
       </div>
     </section>

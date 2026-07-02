@@ -1,0 +1,129 @@
+.section {
+  padding: 80px 0;
+  background: #fff;
+  font-family: var(--font-inter-tight), sans-serif;
+}
+
+@media (max-width: 768px) {
+  .section {
+    padding: 56px 0;
+  }
+}
+
+.container {
+  max-width: min(100%, 1200px);
+  margin: 0 auto;
+  padding-inline: clamp(1.25rem, 3vw, 2.5rem);
+}
+
+.heading {
+  font-family: var(--font-inter-tight), sans-serif;
+  font-size: clamp(1.75rem, 3vw, 2.5rem);
+  font-weight: 400;
+  line-height: 1.25;
+  color: #02102C;
+  margin: 0 0 48px;
+}
+
+@media (max-width: 768px) {
+  .heading {
+    margin-bottom: 32px;
+  }
+}
+
+.accent {
+  color: #3CC4E5;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+@media (max-width: 1024px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.card {
+  background: #fff;
+  border: 1px solid #e6eff7;
+  border-radius: 8px;
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+  color: inherit;
+  transition: box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.card:hover {
+  box-shadow: 0 8px 32px rgba(60, 196, 229, 0.12);
+  border-color: #3CC4E5;
+}
+
+.iconWrap {
+  width: 56px;
+  height: 56px;
+  margin-bottom: 20px;
+  flex-shrink: 0;
+}
+
+.icon {
+  width: 56px;
+  height: 56px;
+  object-fit: contain;
+}
+
+.cardTitle {
+  font-family: var(--font-inter-tight), sans-serif;
+  font-size: 1.125rem;
+  font-weight: 600;
+  line-height: 1.4;
+  color: #02102C;
+  margin: 0 0 12px;
+}
+
+.cardDesc {
+  font-family: var(--font-inter-tight), sans-serif;
+  font-size: 0.9375rem;
+  font-weight: 400;
+  line-height: 1.65;
+  color: #4a5f7a;
+  margin: 0 0 24px;
+  flex: 1;
+}
+
+.cardLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-inter-tight), sans-serif;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  line-height: 1.4;
+  color: #3CC4E5;
+  margin-top: auto;
+  transition: gap 0.2s ease;
+}
+
+.card:hover .cardLink {
+  gap: 10px;
+}
+
+.arrow {
+  flex-shrink: 0;
+  transition: transform 0.2s ease;
+}
+
+.card:hover .arrow {
+  transform: translateX(3px);
+}

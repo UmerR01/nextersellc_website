@@ -1,7 +1,7 @@
 .section {
   overflow: hidden;
   position: relative;
-  padding: 64px 0;
+  padding: clamp(3.5rem, 5vw, 4rem) 0;
   --text-color: #000;
 }
 
@@ -46,7 +46,7 @@
 .container {
   max-width: min(100%, 1504px);
   margin: 0 auto;
-  padding: 0 40px;
+  padding: 0 clamp(1.25rem, 3vw, 2.5rem);
 }
 
 @media (max-width: 768px) {
@@ -56,16 +56,20 @@
 }
 
 .grid {
-  column-gap: 20px;
+  column-gap: clamp(1.25rem, 2vw, 2rem);
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(311px, 1fr));
-  overflow: hidden;
-  row-gap: 56px;
-  transition: max-height 0.25s ease;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 311px), 1fr));
+  row-gap: clamp(2.5rem, 4vw, 3.5rem);
+}
+
+@media (max-width: 420px) {
+  .itemLinkLast {
+    white-space: normal;
+  }
 }
 
 .col {
-  max-width: 580px;
+  max-width: 36.25rem;
 }
 
 .colTitle {
@@ -120,45 +124,56 @@
 
 .itemLinkLast {
   white-space: nowrap;
-  position: relative;
-  padding-right: 18px;
 }
 
 .linkArrow {
-  display: inline-block;
-  width: 6px;
-  height: 9px;
-  position: absolute;
-  right: 4px;
-  top: 6px;
-  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg width='6' height='10' viewBox='0 0 6 10' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 8.59L3.59 5L0 1.41L1 0.5L5.5 5L1 9.5L0 8.59Z' fill='%230a1530'/%3E%3C/svg%3E");
+  display: inline;
+  padding-left: 6px;
+  padding-right: 17px;
+  position: relative;
+}
+
+.linkArrow::before,
+.linkArrow::after {
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg width='6' height='10' viewBox='0 0 6 10' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M7.94319e-08 8.59L3.59 5L-3.53625e-07 1.41L1 0.5L5.5 5L1 9.5L7.94319e-08 8.59Z' fill='%233CC4E5'/%3E%3C/svg%3E");
   background-position: 50%;
   background-repeat: no-repeat;
   background-size: cover;
+  content: "";
+  display: block;
+  height: 9px;
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  transition: 0.1s;
+  width: 6px;
 }
 
-.toggleWrap {
-  display: flex;
-  justify-content: flex-end;
-  margin-top: 40px;
+.linkArrow::after {
+  opacity: 0;
 }
 
-.toggle {
-  align-items: center;
-  background: transparent;
-  border: none;
-  color: var(--color-accent);
-  cursor: pointer;
-  display: inline-flex;
-  font-size: 18px;
-  font-weight: 600;
-  letter-spacing: 0;
-  line-height: 100%;
-  padding: 0;
-  vertical-align: middle;
+.itemLink:hover .linkArrow::before {
+  animation: bounceBefore 1s linear infinite;
+  right: 6px;
 }
 
-.toggle svg {
-  margin-left: 6px;
-  transition: all 0.25s ease;
+.itemLink:hover .linkArrow::after {
+  animation: bounceAfter 1s linear infinite;
+  right: 6px;
+}
+
+@keyframes bounceBefore {
+  0% { opacity: 1; transform: translateX(0) translateY(-50%); }
+  49% { opacity: 0; transform: translateX(7px) translateY(-50%); }
+  52% { opacity: 0; transform: translateX(-7px) translateY(-50%); }
+  100% { opacity: 1; transform: translateX(0) translateY(-50%); }
+}
+
+@keyframes bounceAfter {
+  0% { opacity: 0; transform: translateX(-7px) translateY(-50%); }
+  49% { opacity: 1; transform: translateX(0) translateY(-50%); }
+  99% { opacity: 0; transform: translateX(7px) translateY(-50%); }
+  100% { opacity: 0; transform: translateX(-7px) translateY(-50%); }
 }

@@ -1,0 +1,563 @@
+/* ──────────────────────────────────────────────────
+   Article content grid  (.post-type-page .article-content)
+   Single column by default; 2-column on ≥1366px
+   ────────────────────────────────────────────────── */
+.articleContent {
+  display: grid;
+  grid-template-columns: 100%;
+  gap: 24px;
+  margin: 0 auto;
+  max-width: 1724px;
+  padding: 0;
+}
+
+@media screen and (min-width: 1366px) {
+  .articleContent {
+    grid-template-columns: minmax(0, 1420px) minmax(260px, 280px);
+    gap: 24px;
+    padding: 0;
+  }
+}
+
+@media screen and (min-width: 1024px) and (max-width: 1680px) {
+  .articleContent {
+    max-width: 100%;
+  }
+}
+
+.articleBody {
+  min-width: 0;
+}
+
+.afterContent {
+  background: #fff;
+  padding-top: clamp(2.5rem, 4vw, 4rem);
+  padding-bottom: clamp(2.5rem, 4vw, 4rem);
+}
+
+@media screen and (max-width: 768px) {
+  .afterContent {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+  }
+}
+
+/* ──────────────────────────────────────────────────
+   Category header (.services-block)
+   ────────────────────────────────────────────────── */
+.servicesBlock {
+  scroll-margin-top: 100px;
+  overflow: hidden;
+  padding: 0;
+  position: relative;
+}
+
+.servicesBlockWrapper {
+  margin: 0 auto;
+  max-width: 1420px;
+  overflow: hidden;
+  padding: clamp(4.5rem, 7vw, 6.5rem) 1.5rem clamp(3.75rem, 6vw, 5.5rem);
+  position: relative;
+  text-align: center;
+}
+
+@media screen and (max-width: 768px) {
+  .servicesBlockWrapper {
+    min-height: 14.25rem;
+    margin: 0 auto;
+    padding: 5.75rem 0;
+    text-align: left;
+    display: flex;
+    align-items: center;
+  }
+}
+
+.servicesBlockTitle {
+  color: #000;
+  font-family: var(--font-inter-tight), sans-serif;
+  font-size: clamp(2.5rem, 3.3vw, 3.5rem);
+  line-height: 1.1;
+  font-weight: 400;
+  letter-spacing: -0.03em;
+  margin: 0;
+}
+
+@media screen and (max-width: 768px) {
+  .servicesBlockTitle {
+    font-size: 2rem;
+    line-height: 1.15;
+    letter-spacing: -0.025em;
+  }
+}
+
+/* ──────────────────────────────────────────────────
+   Download section (.download-company-profile)
+   ────────────────────────────────────────────────── */
+.downloadSection {
+  overflow: hidden;
+  padding: clamp(3.5rem, 4.5vw, 4.5rem) clamp(2rem, 9vw, 8.375rem);
+  position: relative;
+}
+
+@media screen and (max-width: 768px) {
+  .downloadSection {
+    min-height: 20rem;
+    padding: 2.5rem clamp(1.5rem, 11.5vw, 3rem);
+    display: flex;
+    align-items: center;
+  }
+
+  .downloadSection :global(.container) {
+    width: 100%;
+  }
+}
+
+/* Background layer — absolutely positioned, max 1420px, centred */
+.downloadBg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+}
+
+/* Dark variant */
+.downloadDark {
+  background:
+    linear-gradient(118deg, transparent 0 61%, rgba(60, 196, 229, 0.2) 61% 72%, transparent 72%),
+    linear-gradient(104deg, transparent 0 72%, rgba(60, 196, 229, 0.12) 72% 100%),
+    linear-gradient(110deg, #071936 0%, #0b2d68 62%, #166b91 100%);
+}
+
+/* Light variant */
+.downloadLight {
+  background:
+    linear-gradient(118deg, transparent 0 62%, rgba(60, 196, 229, 0.1) 62% 74%, transparent 74%),
+    linear-gradient(110deg, #fff 0%, #f5fcfe 58%, #e6f8fc 100%);
+}
+
+.downloadSection :global(.container) {
+  max-width: none;
+  padding: 0;
+}
+
+/* Container children sit above the bg */
+.downloadSection .container {
+  position: relative;
+  z-index: 1;
+}
+
+/* ──────────────────────────────────────────────────
+   Bootstrap-like row (.row)
+   ────────────────────────────────────────────────── */
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  margin-left: -10px;
+  margin-right: -10px;
+}
+
+/* Left column: col-md-8 */
+.colLeft {
+  padding-left: 10px;
+  padding-right: 10px;
+  position: relative;
+  width: 100%;
+}
+
+/* Right column: col-xl-3 col-md-4 offset-xl-1 align-self-center justify-content-center */
+.colRight {
+  padding-left: 10px;
+  padding-right: 10px;
+  position: relative;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-self: center;
+}
+
+/* At md (768px+): left = 66.67%, right = 33.33% */
+@media (min-width: 768px) {
+  .colLeft {
+    flex: 0 0 66.666667%;
+    max-width: 66.666667%;
+  }
+  .colRight {
+    flex: 0 0 33.333333%;
+    max-width: 33.333333%;
+  }
+}
+
+/* At xl (1200px+): right = 25% with 8.33% left offset */
+@media (min-width: 1200px) {
+  .colLeft {
+    flex: 0 0 66.666667%;
+    max-width: 66.666667%;
+  }
+  .colRight {
+    flex: 0 0 25%;
+    max-width: 25%;
+    margin-left: 8.333333%;
+  }
+}
+
+/* ──────────────────────────────────────────────────
+   Download title
+   ────────────────────────────────────────────────── */
+.downloadTitle {
+  font-family: var(--font-inter-tight), sans-serif;
+  font-size: clamp(2rem, 2.6vw, 2.375rem);
+  line-height: 1.18;
+  font-weight: 400;
+  letter-spacing: -0.025em;
+  margin: 0;
+}
+
+@media screen and (max-width: 768px) {
+  .downloadTitle {
+    font-size: 24px;
+    line-height: 29px;
+  }
+}
+
+.titleDark {
+  color: #fff;
+}
+
+.titleLight {
+  color: #000;
+}
+
+/* ──────────────────────────────────────────────────
+   Download description
+   ────────────────────────────────────────────────── */
+.downloadDesc {
+  margin-top: 24px;
+}
+
+.downloadDesc p {
+  font-size: clamp(1rem, 1.45vw, 1.375rem);
+  line-height: 1.65;
+  margin: 0;
+}
+
+.descDark p {
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.descLight p {
+  color: #112244;
+}
+
+@media screen and (max-width: 768px) {
+  .downloadDesc {
+    margin-top: 8px;
+  }
+  .downloadDesc p {
+    font-size: 16px;
+    line-height: 26px;
+  }
+}
+
+/* ──────────────────────────────────────────────────
+   Download button (.button.button-default_big.button-default_pdf)
+   ────────────────────────────────────────────────── */
+.downloadBtnWrap {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+@media screen and (max-width: 768px) {
+  .downloadBtnWrap {
+    margin-top: 1.25rem;
+  }
+}
+
+.downloadBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  background: var(--color-accent, #3cc4e5);
+  border: 1px solid transparent;
+  color: #fff;
+  font-size: 18px;
+  line-height: 24px;
+  font-weight: 600;
+  min-height: 55px;
+  padding: 14px 24px;
+  text-decoration: none;
+  overflow: hidden;
+  position: relative;
+  text-align: center;
+  z-index: 1;
+  transition: all 0.5s ease;
+  border-radius: var(--radius-button, 30px);
+  white-space: nowrap;
+}
+
+@media screen and (min-width: 1200px) {
+  .downloadBtn {
+    min-width: 273px;
+  }
+}
+
+.downloadBtn:hover {
+  background: transparent;
+  border-color: var(--color-accent, #3cc4e5);
+  color: var(--color-accent, #3cc4e5);
+}
+
+/* SVG icon inherits currentColor so it follows text color automatically */
+
+/* ──────────────────────────────────────────────────
+   TOC sidebar (.post-navigation)
+   ────────────────────────────────────────────────── */
+
+/* Hidden on mobile by default; show as fixed overlay on small screens */
+.postNavigation {
+  display: none;
+}
+
+@media screen and (max-width: 1365px) {
+  .postNavigation {
+    display: block;
+    position: fixed;
+    right: 24px;
+    top: 92px;
+    width: auto;
+    z-index: 999;
+  }
+}
+
+@media screen and (max-width: 1365px) {
+  .postNavigation {
+    display: none;
+  }
+}
+
+@media screen and (min-width: 1366px) {
+  .postNavigation {
+    display: block;
+  }
+}
+
+.postNavContent {
+  position: sticky;
+  top: 102px;
+  width: 100%;
+}
+
+/* The wrapper card */
+.postNavWrapper {
+  background: #112244;
+  border: 1px solid #112244;
+  box-sizing: border-box;
+  cursor: pointer;
+  max-height: 53px;
+  min-width: 100%;
+  overflow: hidden;
+  transition: 0.5s;
+}
+
+@media screen and (min-width: 769px) {
+  .postNavWrapper {
+    min-width: 260px;
+  }
+}
+
+/* Open state on mobile/tablet */
+.postNavOpen {
+  background: #fff;
+  border-color: #e6eff7;
+  max-height: 437px;
+  overflow: auto;
+}
+
+/* On desktop it's always white and fully open */
+@media screen and (min-width: 1366px) {
+  .postNavWrapper {
+    background: #fff;
+    border-color: #e6eff7;
+    cursor: auto;
+    max-height: fit-content;
+    max-width: 280px;
+    min-width: 220px;
+    overflow: auto;
+    scrollbar-color: #c6d0db #e6eff7;
+    scrollbar-width: thin;
+  }
+}
+
+@media (min-width: 1440px) {
+  .postNavWrapper {
+    max-width: 100%;
+  }
+}
+
+/* Title area */
+.postNavTitle {
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  font-size: 18px;
+  font-style: normal;
+  margin-bottom: 0;
+  position: relative;
+}
+
+@media screen and (min-width: 1366px) {
+  .postNavTitle {
+    color: #000;
+    transition: 0.5s;
+  }
+}
+
+/* Desktop "Contents" header */
+.desktopHeader {
+  display: none;
+  padding: 29px 15px 20px;
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 28px;
+}
+
+@media screen and (min-width: 1366px) {
+  .desktopHeader {
+    display: block;
+  }
+}
+
+@media screen and (min-width: 1700px) {
+  .desktopHeader {
+    padding: 29px 30px 20px;
+  }
+}
+
+/* Mobile "Navigate" header */
+.mobileHeader {
+  align-items: center;
+  background: #112244;
+  color: #fff;
+  cursor: pointer;
+  display: flex;
+  font-size: 14px;
+  justify-content: space-between;
+  line-height: 22px;
+  margin-bottom: 0;
+  padding: 7px 20px;
+}
+
+@media screen and (min-width: 769px) {
+  .mobileHeader {
+    font-size: 18px;
+    line-height: 29px;
+    padding: 12px 20px;
+  }
+}
+
+@media screen and (min-width: 1366px) {
+  .mobileHeader {
+    display: none;
+  }
+}
+
+.tocChevron {
+  transition: transform 0.3s;
+}
+
+.tocChevronOpen {
+  transform: rotate(-180deg);
+}
+
+/* TOC list */
+.tocList {
+  list-style: none;
+  margin: 10px 0 0;
+  padding: 0 20px 12px;
+}
+
+@media screen and (min-width: 769px) {
+  .tocList {
+    margin-top: 0;
+  }
+}
+
+@media screen and (min-width: 1366px) {
+  .tocList {
+    padding: 0 15px;
+  }
+}
+
+@media screen and (min-width: 1700px) {
+  .tocList {
+    padding: 0 30px 0 31px;
+  }
+}
+
+/* Hidden on mobile when closed */
+.tocClosed {
+  display: none;
+}
+
+@media screen and (min-width: 1366px) {
+  .tocClosed {
+    display: block;
+  }
+}
+
+/* TOC list item */
+.tocItem {
+  color: #112244;
+  font-size: 14px;
+  line-height: 20px;
+  margin-bottom: 16px;
+}
+
+.tocItem:last-child {
+  margin-bottom: 20px;
+}
+
+@media screen and (max-width: 768px) {
+  .tocItem {
+    font-size: 12px;
+    line-height: 17px;
+  }
+}
+
+@media screen and (min-width: 1366px) {
+  .tocItem:last-child {
+    margin-bottom: 32px;
+  }
+}
+
+/* TOC link button */
+.tocLink {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 14px;
+  line-height: 20px;
+  padding: 0;
+  text-align: left;
+  width: 100%;
+}
+
+.tocLink span {
+  color: #112244;
+}
+
+.tocLink:hover span {
+  color: var(--color-accent, #3cc4e5);
+}
+
+.tocLinkActive span {
+  color: var(--color-accent, #3cc4e5) !important;
+  font-weight: 700;
+}

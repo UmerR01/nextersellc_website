@@ -1,130 +1,384 @@
 import type { ReactNode } from "react";
-import Link from "next/link";
 import styles from "./ModelsBlock.module.css";
 
 interface Col {
-  icon: string;
-  alt: string;
-  title: string;
-  content: ReactNode;
-  ctaLink?: string;
+  icon?: string;
+  alt?: string;
+  title?: string;
+  content?: ReactNode;
+  empty?: boolean;
 }
 
 interface ModelData {
   id: string;
   bg: "white" | "light";
   titleHtml: ReactNode;
-  description: ReactNode;
+  description: string;
   cols: Col[];
-  dark?: boolean;
+  twoCol?: boolean;
 }
 
 const MODELS: ModelData[] = [
   {
     id: "time-material",
-    bg: "light",
-    titleHtml: <><span className={styles.blue}>Time</span> &amp; Material model</>,
-    description: <p>In the Time and Material model, you pay for the actual work done. Billing is based on tracked man-hours and any materials or tools used. All tasks and efforts to complete them are registered and reported to you every week. The requirements, scope, and budget are not fixed, while the hourly rate is agreed upon in the contract. Even without a fixed scope, our experienced PMs deliver estimates with tight variance and monitor cost forecasts at every stage.</p>,
+    bg: "white",
+    titleHtml: <>Time and Materials</>,
+    description:
+      "In the Time and Materials model, you pay for the hours worked at an agreed hourly rate. Scope and budget stay flexible while the rate stays fixed in the contract. Our project managers track effort weekly and forecast cost at every stage, so flexibility does not mean losing sight of the total.",
     cols: [
       {
-        icon: "/engagement/01_How-does-it-work_.svg",
-        alt: "Gear icon",
-        title: "How does it work?",
-        content: <p>This model is especially well-suited for Agile methodology. Work is typically organized in short iterations (sprints). No detailed specification is needed to kick off the project; the team estimates tasks on the fly and begins coding quickly. You, as a Client, get a progress report, detailed time/expense logs, and a demo during weekly or bi-weekly meetings. Any features added during the project are simply billed at the agreed-upon hourly rates. The team can be easily scaled up or down depending on the development needs.</p>,
+        icon: "/engagement/03_AI-generative-AI-readiness-assessment-01.svg",
+        alt: "How it works",
+        title: "How it works",
+        content: (
+          <p>
+            You pay for actual hours at the agreed rate, invoiced monthly, with
+            detailed timesheets and a sprint demo each cycle.
+          </p>
+        ),
       },
       {
-        icon: "/engagement/01_When-is-it-best-used_.svg",
-        alt: "Bulb icon",
-        title: "When is it best used?",
-        content: <ul><li>The T&amp;M model is best suited for projects with unclear or evolving requirements, where providing a detailed specification at the project start is of little value.</li><li>There is no specification, but the project needs to start immediately and move quickly.</li><li>A long-term cooperation with the Service provider is planned.</li><li>There are no strict deadlines.</li></ul>,
+        icon: "/engagement/06_Security-and-compliance-requirements-01.svg",
+        alt: "When it fits best",
+        title: "When it fits best",
+        content: (
+          <p>
+            Evolving scope, product development with feature iteration, and
+            projects where discovery continues as you build.
+          </p>
+        ),
       },
       {
-        icon: "/engagement/01_Business-benefits.svg",
-        alt: "Graph icon",
+        icon: "/engagement/06_Pricing-models-01.svg",
+        alt: "Business benefits",
         title: "Business benefits",
-        content: <ul><li><strong>Flexibility &amp; control</strong> – scope, feature priorities, and even team size can be changed at any time. You decide the project direction each sprint.</li><li><strong>Full transparency</strong> – you get a detailed breakdown of tasks and efforts spent, a clear roadmap, and regular updates on the project progress. You know the current efforts, path traveled, and the next step.</li><li><strong>Quick start</strong> – little upfront planning is needed without a long requirements phase.</li><li><strong>Cost efficiency</strong> – you pay only for completed work. In many cases, this can yield a lower total cost than a fixed-price bid.</li></ul>,
-        ctaLink: "/contact",
+        content: (
+          <p>
+            Maximum flexibility, no penalty for changing direction, transparent
+            reporting, and a quick start with little upfront planning.
+          </p>
+        ),
+      },
+      {
+        icon: "/engagement/03_Data-exposure-risks-02.svg",
+        alt: "Risk allocation",
+        title: "Risk allocation",
+        content: (
+          <p>
+            We carry delivery and quality risk. You carry scope and budget risk.
+            Timeline risk is shared.
+          </p>
+        ),
+      },
+      {
+        icon: "/engagement/03_Mid-size-businesses.svg",
+        alt: "Typical project size",
+        title: "Typical project size",
+        content: (
+          <p>
+            $50K to $500K, lasting 3 to 18 months, with a team of 2 to 8.
+          </p>
+        ),
+      },
+      {
+        icon: "/engagement/06_Team-composition-01.svg",
+        alt: "Team composition",
+        title: "Team composition",
+        content: (
+          <p>
+            Cross-functional: a project manager plus 2 to 5 developers and QA,
+            with roles flexing as the scope evolves.
+          </p>
+        ),
+      },
+      { empty: true },
+      {
+        icon: "/engagement/04_Managing-AI-after-release-via-ADLC-03.svg",
+        alt: "SDLC and ADLC fit",
+        title: "SDLC and ADLC fit",
+        content: (
+          <p>
+            Strong for traditional software. Strong for AI work such as LLM
+            integration, RAG, and iterative model refinement. ADLC is the
+            Agentic Development Lifecycle, our process for building governed AI
+            systems.
+          </p>
+        ),
+      },
+    ],
+  },
+  {
+    id: "tm-cap",
+    bg: "white",
+    titleHtml: (
+      <>
+        Time and Materials <span className={styles.blue}>with a cap</span>
+      </>
+    ),
+    description:
+      "Time and Materials with a cap retains the flexibility of Time and Materials while adding a guaranteed ceiling on total spend. You still pay for hours and resources, and the contract sets a not-to-exceed limit. The budget is fixed while the scope stays open, which is why it is the model most mid-size projects settle on.",
+    cols: [
+      {
+        icon: "/engagement/03_AI-generative-AI-readiness-assessment-01.svg",
+        alt: "How it works",
+        title: "How it works",
+        content: (
+          <p>
+            Time-and-materials billing with a pre-agreed ceiling. Above the
+            ceiling, we absorb the additional hours, or we renegotiate the scope
+            with you first.
+          </p>
+        ),
+      },
+      {
+        icon: "/engagement/06_Security-and-compliance-requirements-01.svg",
+        alt: "When it fits best",
+        title: "When it fits best",
+        content: (
+          <p>
+            Mid-size projects with a firm budget and AI MVPs, where the exact
+            scope cannot be fixed, but the budget can.
+          </p>
+        ),
+      },
+      {
+        icon: "/engagement/06_Pricing-models-01.svg",
+        alt: "Business benefits",
+        title: "Business benefits",
+        content: (
+          <p>
+            Budget protection plus flexibility, and an incentive for us to spend
+            the scope efficiently.
+          </p>
+        ),
+      },
+      {
+        icon: "/engagement/03_Data-exposure-risks-02.svg",
+        alt: "Risk allocation",
+        title: "Risk allocation",
+        content: (
+          <p>
+            Scope risk is shared. Your budget is capped. We carry the risk of
+            overruns beyond the cap.
+          </p>
+        ),
+      },
+      {
+        icon: "/engagement/03_Mid-size-businesses.svg",
+        alt: "Typical project size",
+        title: "Typical project size",
+        content: (
+          <p>
+            $100K to $300K, lasting 3 to 9 months, with a team of 3 to 6.
+          </p>
+        ),
+      },
+      {
+        icon: "/engagement/06_Team-composition-01.svg",
+        alt: "Team composition",
+        title: "Team composition",
+        content: (
+          <p>
+            Cross-functional, with project management tuned to keep the work
+            inside the cap.
+          </p>
+        ),
+      },
+      { empty: true },
+      {
+        icon: "/engagement/04_Managing-AI-after-release-via-ADLC-03.svg",
+        alt: "SDLC and ADLC fit",
+        title: "SDLC and ADLC fit",
+        content: (
+          <p>
+            Strong for traditional software. Strongest for AI MVPs, where it is
+            our primary recommendation.
+          </p>
+        ),
       },
     ],
   },
   {
     id: "fixed-price",
     bg: "white",
-    titleHtml: <><span className={styles.blue}>Fixed </span>price model</>,
-    description: <p>In a Fixed-Price engagement, the project scope, schedule, and budget are agreed upon upfront. The budget is based on a detailed specification and frozen for the whole project. All payments within this model are made on pre-defined milestones. As the first step of cooperation, we finalize all requirements during a Discovery phase.</p>,
+    titleHtml: <>Fixed Price</>,
+    description:
+      "In a Fixed Price engagement, the scope, schedule, and budget are agreed upon up front and frozen. The price is based on a detailed specification, payments follow defined milestones, and any change runs through a formal change order. We finalize requirements in a discovery phase before the price is set.",
     cols: [
       {
-        icon: "/engagement/01_How-does-it-work_.svg",
-        alt: "Gear icon",
-        title: "How does it work?",
-        content: <p>Once we get the full specification, our development team estimates all tasks, locking the total cost and deliverables. Once a contract is signed, the development phase begins strictly according to the plan. No additional functionality can be added to the scope without cost re-estimation. Even feature replacement requires a price revision. In short, the fixed-price model runs like a &quot;closed box&quot; without any flexibility for changes.</p>,
+        icon: "/engagement/03_AI-generative-AI-readiness-assessment-01.svg",
+        alt: "How it works",
+        title: "How it works",
+        content: (
+          <p>
+            A pre-agreed total price for a well-defined scope, with
+            milestone-based payments and change orders for anything new.
+          </p>
+        ),
       },
       {
-        icon: "/engagement/01_When-is-it-best-used_.svg",
-        alt: "Bulb icon",
-        title: "When is it best used?",
-        content: <ul><li>Well-defined requirements, when the project specification is clearly defined and is unlikely to be altered before the release.</li><li>Short, straightforward projects that last under a few months, and the detailed functionality description can be prepared from the start.</li><li>Projects with strict budget requirements, like projects funded by grants or with a non-exceedable budget.</li><li>Proof of concept (PoC) development, code audits, or one-time tasks with clear boundaries.</li></ul>,
+        icon: "/engagement/06_Security-and-compliance-requirements-01.svg",
+        alt: "When it fits best",
+        title: "When it fits best",
+        content: (
+          <p>
+            Tightly scoped projects, MVPs with locked specifications, proofs of
+            concept, and fixed-functionality builds that run under a few months.
+          </p>
+        ),
       },
       {
-        icon: "/engagement/01_Business-benefits.svg",
-        alt: "Graph icon",
+        icon: "/engagement/06_Pricing-models-01.svg",
+        alt: "Business benefits",
         title: "Business benefits",
-        content: <ul><li><strong>Predictable budget</strong> – you know the total cost upfront with guarantee to get the final product without exceeding the budget.</li><li><strong>Minimal surprises</strong> – the price can&apos;t be changed, nor can the scope. You will get exactly what you agreed upon at the beginning.</li><li><strong>Lower management overhead</strong> – once development starts, you can leave all the work to the development team and only return when the product is ready.</li></ul>,
-        ctaLink: "/contact",
-      },
-    ],
-  },
-  {
-    id: "tm-cap",
-    bg: "light",
-    titleHtml: <>Time &amp; Material (T&amp;M) with<span className={styles.blue}> budget cap</span></>,
-    description: <p>Time &amp; Material with a budget cap is a hybrid model combining T&amp;M&apos;s flexibility with a guaranteed maximum spend. You still pay for hours and resources as in standard T&amp;M, but the contract includes an overall cap (often called a &quot;not-to-exceed&quot; limit) on the total cost. The budget is fixed, while the scope remains flexible. This is the most popular engagement strategy nowadays. Often, this model follows a fixed-price discovery or architecture phase and transitions into flexible T&amp;M for development.</p>,
-    cols: [
-      {
-        icon: "/engagement/01_How-does-it-work_.svg",
-        alt: "Gear icon",
-        title: "How does it work?",
-        content: <p>In practice, the T&amp;M+Cap contract and its development approach are structured like a regular T&amp;M contract but with explicit budget controls. The development is divided into sprints and requires your active participation in demos and progress meetings. You pay for the actual effort spent, but with the rule that the sum of all invoices will never exceed the agreed cap. Any altered or new requirements are examined and estimated for their potential impact on the deadline and budget. If we see that the cap is about to be exceeded, we immediately alert you and suggest options for staying within the cap. At that point, you can decide whether to extend the cap (with a change order) or reduce the remaining scope to stay within budget.</p>,
+        content: (
+          <p>
+            Budget certainty, clear deliverables, and minimal management
+            overhead once development starts.
+          </p>
+        ),
       },
       {
-        icon: "/engagement/01_When-is-it-best-used_.svg",
-        alt: "Bulb icon",
-        title: "When is it best used?",
-        content: <ul><li>The project has unclear or dynamic requirements, but you have a strict budget limit.</li><li>The majority of Agile projects.</li><li>MVP with limited budget.</li><li>Support activities and legacy system modernization.</li></ul>,
+        icon: "/engagement/03_Data-exposure-risks-02.svg",
+        alt: "Risk allocation",
+        title: "Risk allocation",
+        content: (
+          <p>
+            We carry scope, timeline, and budget risk. You carry the risk that
+            the requirements were clear enough at the start.
+          </p>
+        ),
       },
       {
-        icon: "/engagement/01_Business-benefits.svg",
-        alt: "Graph icon",
-        title: "Business benefits",
-        content: <ul><li><strong>Budget certainty</strong> – the project has an upper limit agreed upon from the start.</li><li><strong>Requirements flexibility</strong> – this model provides all the benefits of flexibility for dealing with dynamic and unclear requirements than an ordinary Time and Material model.</li><li><strong>Risk mitigation</strong> – the budget cap protects from runaway costs and encourages the discussion of any changes that might lead to a budget overrun.</li><li><strong>Transparency</strong> – you still get the same detailed reporting as in regular T&amp;M, including weekly demos, hours logged, progress reports, etc.</li></ul>,
-        ctaLink: "/contact",
+        icon: "/engagement/03_Mid-size-businesses.svg",
+        alt: "Typical project size",
+        title: "Typical project size",
+        content: (
+          <p>
+            $30K to $150K, lasting 2 to 6 months, with a team of 2 to 4.
+          </p>
+        ),
+      },
+      {
+        icon: "/engagement/06_Team-composition-01.svg",
+        alt: "Team composition",
+        title: "Team composition",
+        content: (
+          <p>
+            Lean: a project manager plus 2 to 3 specialists tied to the
+            deliverables.
+          </p>
+        ),
+      },
+      { empty: true },
+      {
+        icon: "/engagement/04_Managing-AI-after-release-via-ADLC-03.svg",
+        alt: "SDLC and ADLC fit",
+        title: "SDLC and ADLC fit",
+        content: (
+          <p>
+            Strong for traditional software. Limited for AI, suitable only for
+            bounded proofs of concept with explicit evaluation criteria, and
+            discouraged for production AI systems.
+          </p>
+        ),
       },
     ],
   },
   {
     id: "dedicated-team",
     bg: "white",
-    titleHtml: <>Dedicated <span className={styles.blue}>team</span> model</>,
-    description: <p>The Dedicated Team model assembles a full-time team of specialists who work exclusively on your project as if they were your own staff. Billing is based on a fixed monthly fee for those team members.</p>,
+    titleHtml: <>Dedicated Team</>,
+    description:
+      "In the Dedicated Team model, we assemble a cross-functional team that works only on your product and integrates with your in-house engineering. You bill monthly per team member, you set product direction, and the team builds deep knowledge of your system over time.",
+    twoCol: true,
     cols: [
       {
-        icon: "/engagement/01_How-does-it-work_.svg",
-        alt: "Gear icon",
-        title: "How does it work?",
-        content: <p>You define the roles and expertise needed, and we assemble a team with the most well-suited specialists for your requirements. The team becomes an extension of your in-house staff. You are fully responsible for team management and control. The developers will report directly to you. On our part, we will monitor the quality of the services provided and get involved if necessary.</p>,
+        icon: "/engagement/03_AI-generative-AI-readiness-assessment-01.svg",
+        alt: "How it works",
+        title: "How it works",
+        content: (
+          <p>
+            A dedicated cross-functional team integrated with your engineers,
+            billed monthly per member.
+          </p>
+        ),
       },
       {
-        icon: "/engagement/01_When-is-it-best-used_.svg",
-        alt: "Bulb icon",
-        title: "When is it best used?",
-        content: <ul><li>You have in-house specialists who can manage the software development process.</li><li>When you have a substantial project and want ongoing development capacity.</li><li>It&apos;s ideal when project requirements are clear and you need the development team to handle it.</li><li>Great for long-term projects with evolving scope or when your own team lacks certain expertise.</li></ul>,
+        icon: "/engagement/06_Security-and-compliance-requirements-01.svg",
+        alt: "When it fits best",
+        title: "When it fits best",
+        content: (
+          <p>
+            Long-term product development of six months or more, ongoing
+            platforms, and multi-year engagements.
+          </p>
+        ),
       },
       {
-        icon: "/engagement/01_Business-benefits.svg",
-        alt: "Graph icon",
+        icon: "/engagement/06_Security-and-compliance-requirements-03.svg",
+        alt: "Business benefits",
         title: "Business benefits",
-        content: <ul><li><strong>Full control &amp; transparency</strong> – a dedicated team becomes a natural extension of your in-house team, giving you complete visibility into progress and budget.</li><li><strong>Quick ramp-up</strong> – it takes less than a week for our specialists to join your team and start bringing value.</li><li><strong>Long-term continuity</strong> – because the team stays consistent, product knowledge is retained and productivity often increases over time. This makes the Dedicated Team model well-suited to longer engagements and ongoing maintenance.</li></ul>,
-        ctaLink: "/contact",
+        content: (
+          <p>
+            Continuity of knowledge, dedicated focus, and a team that builds
+            product expertise and scales with you.
+          </p>
+        ),
+      },
+      {
+        icon: "/engagement/03_Data-exposure-risks-02.svg",
+        alt: "Risk allocation",
+        title: "Risk allocation",
+        content: (
+          <p>Shared. We manage the team. You provide product direction.</p>
+        ),
+      },
+      {
+        icon: "/engagement/06_Pricing-models-01.svg",
+        alt: "Typical project size",
+        title: "Typical project size",
+        content: (
+          <p>
+            $200K to $2M+ per year, typically 12 months or longer, with a team
+            of 4 to 15.
+          </p>
+        ),
+      },
+      {
+        icon: "/engagement/06_Team-composition-01.svg",
+        alt: "Team composition",
+        title: "Team composition",
+        content: (
+          <p>
+            Cross-functional: a project manager plus 3 to 12 developers, QA,
+            DevOps, and a designer as needed. Unlike pure staff augmentation,
+            which supplies individual contributors only, a Dedicated Team
+            includes its own project manager and cross-functional roles.
+          </p>
+        ),
+      },
+      {
+        icon: "/engagement/05_Fail-safe-OTA-guarantee-02.svg",
+        alt: "Replacement guarantee",
+        title: "Replacement guarantee",
+        content: (
+          <p>
+            If a team member is not the right fit within the first 7 days, we
+            replace them at no additional cost.
+          </p>
+        ),
+      },
+      {
+        icon: "/engagement/04_Managing-AI-after-release-via-ADLC-03.svg",
+        alt: "SDLC and ADLC fit",
+        title: "SDLC and ADLC fit",
+        content: (
+          <p>
+            Strong for traditional software. Strongest for ongoing AI products
+            that need model maintenance and retraining.
+          </p>
+        ),
       },
     ],
   },
@@ -141,27 +395,23 @@ export default function ModelsBlock() {
         >
           <div className={styles.container}>
             <h2 className={styles.title}>{model.titleHtml}</h2>
-            <div className={styles.description}>{model.description}</div>
-            <div className={styles.cols}>
+            <div className={styles.description}>
+              <p>{model.description}</p>
+            </div>
+            <div className={model.twoCol ? styles.colsTwoCol : styles.cols}>
               {model.cols.map((col, i) =>
-                col.ctaLink ? (
-                  <Link key={i} href={col.ctaLink} className={`${styles.col} ${styles.colLink}`}>
-                    <div className={styles.icon}>
-                      {/* eslint-disable-next-line @next/next/no-img-element */}
-                      <img src={col.icon} alt={col.alt} width={56} height={56} loading="lazy" />
-                    </div>
-                    <h3 className={styles.colTitle}>{col.title}</h3>
-                    <div className={styles.colContent}>{col.content}</div>
-                    <div className={styles.cta}>
-                      Get a quote based on your model
-                      <span className={styles.ctaArrow} />
-                    </div>
-                  </Link>
+                col.empty ? (
+                  <div key={i} className={styles.col} aria-hidden="true" />
                 ) : (
                   <div key={i} className={styles.col}>
                     <div className={styles.icon}>
-                      {/* eslint-disable-next-line @next/next/no-img-element */}
-                      <img src={col.icon} alt={col.alt} width={56} height={56} loading="lazy" />
+                      <img
+                        src={col.icon}
+                        alt={col.alt}
+                        width={56}
+                        height={56}
+                        loading="lazy"
+                      />
                     </div>
                     <h3 className={styles.colTitle}>{col.title}</h3>
                     <div className={styles.colContent}>{col.content}</div>

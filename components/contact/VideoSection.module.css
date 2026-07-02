@@ -1,0 +1,54 @@
+.section {
+  margin: clamp(4.5rem, 7vw, 6rem) 0;
+  position: relative;
+}
+
+@media (max-width: 768px) {
+  .section {
+    margin: clamp(4.5rem, 18vw, 6rem) 0;
+  }
+}
+
+.wrapper {
+  margin: 0 auto;
+  max-width: 88.75rem;
+}
+
+.container {
+  margin: 0 auto;
+  width: min(calc(100% - clamp(3rem, 5vw, 5rem)), 88.75rem);
+}
+
+.header {
+  max-width: 100%;
+}
+
+.title {
+  color: #112244;
+  font-size: clamp(1.75rem, 2.6vw, 2.375rem);
+  font-weight: 400;
+  line-height: 1.22;
+  margin-bottom: clamp(1.5rem, 4vw, 4rem);
+  text-align: center;
+}
+
+@media (max-width: 768px) {
+  .title {
+    font-size: 28px;
+    line-height: 34px;
+    margin-bottom: 24px;
+    text-align: left;
+  }
+}
+
+.videoBlock {
+  aspect-ratio: 16 / 9;
+  position: relative;
+}
+
+.videoBlock iframe {
+  height: 100%;
+  display: block;
+  width: 100%;
+  border: 0;
+}

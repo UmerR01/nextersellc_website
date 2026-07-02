@@ -1,0 +1,188 @@
+.section {
+  background: #fff;
+  padding: clamp(4.5rem, 7vw, 6rem) 0 clamp(7.5rem, 11vw, 10.5rem);
+}
+
+.container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding-inline: clamp(1.25rem, 4vw, 3.75rem);
+}
+
+.wrapper {
+  display: flex;
+  gap: 48px;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+/* ── Left column ── */
+.left {
+  flex: 0 1 690px;
+  max-width: 690px;
+}
+
+.titleBlock {
+  margin-bottom: 32px;
+}
+
+.title {
+  font-size: 56px;
+  line-height: 62px;
+  font-weight: 400;
+  color: #02102C;
+  letter-spacing: normal;
+  margin: 0;
+  font-family: var(--font-inter-tight), sans-serif;
+}
+
+.accent {
+  color: #3CC4E5;
+}
+
+.desc p {
+  font-size: 20px;
+  line-height: 30px;
+  color: #112244;
+  margin-bottom: 20px;
+  font-family: var(--font-inter-tight), sans-serif;
+}
+
+.desc p:last-child {
+  margin-bottom: 0;
+}
+
+.desc a {
+  color: #3CC4E5;
+  text-decoration: none;
+}
+
+.desc a:hover {
+  text-decoration: underline;
+}
+
+/* ── Right column ── */
+.right {
+  flex: 0 1 500px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.imageWrap {
+  position: relative;
+  width: 100%;
+  max-width: 430px;
+  overflow: visible;
+}
+
+.officeImage {
+  width: 100%;
+  height: 500px;
+  object-fit: cover;
+  display: block;
+}
+
+.addressCard {
+  position: absolute;
+  left: 50%;
+  bottom: -72px;
+  transform: translateX(-50%);
+  width: min(360px, calc(100% - 48px));
+  min-height: 300px;
+  background: linear-gradient(259.16deg, #02102C -0.49%, #112244 100%);
+  color: #fff;
+  padding: 38px 32px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+}
+
+.cardHeading {
+  font-size: 28px;
+  font-weight: 500;
+  line-height: 1.4;
+  margin-bottom: 14px;
+  color: #fff;
+  font-family: var(--font-inter-tight), sans-serif;
+}
+
+.cardDesc {
+  font-size: 16px;
+  line-height: 1.7;
+  color: #fff;
+  font-family: var(--font-inter-tight), sans-serif;
+}
+
+.cardDesc strong {
+  color: #fff;
+  font-weight: 600;
+}
+
+/* ── ≤1024px ── */
+@media (max-width: 1024px) {
+  .section {
+    padding-bottom: 152px;
+  }
+
+  .wrapper {
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .left {
+    flex: none;
+    max-width: 100%;
+    text-align: center;
+    width: 100%;
+  }
+
+  .right {
+    width: 100%;
+    max-width: 500px;
+    align-self: center;
+  }
+}
+
+/* ── ≤768px ── */
+@media (max-width: 768px) {
+  .section {
+    padding: 72px 0 132px;
+  }
+
+  .title {
+    font-size: 32px;
+    line-height: 35px;
+  }
+
+  .titleBlock {
+    margin-bottom: 1.5rem;
+  }
+
+  .desc p {
+    font-size: 16px;
+    line-height: 26px;
+  }
+
+  .addressCard {
+    bottom: -60px;
+    width: calc(100% - 32px);
+    min-height: 230px;
+    padding: 28px 20px;
+  }
+
+  .officeImage {
+    height: auto;
+    aspect-ratio: 0.86;
+  }
+
+  .cardHeading {
+    font-size: 22px;
+  }
+
+  .cardDesc {
+    font-size: 14px;
+    line-height: 1.6;
+  }
+}

@@ -1,0 +1,47 @@
+.section {
+  padding: 64px 0;
+  background: #fff;
+  font-family: var(--font-inter-tight), sans-serif;
+}
+
+.container {
+  max-width: min(100%, 1200px);
+  margin: 0 auto;
+  padding-inline: clamp(1.25rem, 3vw, 2.5rem);
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(2.5rem, 4vw, 4rem);
+}
+
+@media (max-width: 640px) {
+  .row {
+    gap: 24px;
+  }
+
+  .badgeWrap {
+    flex: 0 0 calc(33.333% - 16px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+.badgeWrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.badge {
+  height: 64px;
+  width: auto;
+  max-width: 100%;
+  object-fit: contain;
+}

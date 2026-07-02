@@ -34,7 +34,7 @@
 
 /* ── Each slide: 1/6 of track ── */
 .slide {
-  flex: 0 0 calc(100% / 6);
+  flex: 0 0 calc(100% / var(--visible, 6));
   display: flex;
   align-items: center;
   justify-content: center;
@@ -133,7 +133,7 @@
   display: none;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
   .section { padding: 0 0 40px; }
 
   /* achievements goes full width on mobile, arrows move to .nav below */
@@ -153,30 +153,65 @@
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
-    margin-top: 32px;
+    align-items: center;
+    gap: 16px;
+    margin-top: 24px;
   }
 
-  /* mobile arrows are static (not absolute) */
+  /* Each mobile button remains a positioning context for its absolute
+     arrow line/head, while the buttons themselves flow below the badges. */
   .nav .btnPrev,
   .nav .btnNext {
-    position: static;
+    position: relative;
+    inset: auto;
+    top: auto;
+    right: auto;
+    bottom: auto;
+    left: auto;
     transform: none;
+    flex: 0 0 32px;
+    width: 32px;
+    height: 20px;
+    outline: none;
+    box-shadow: none;
+    background-color: transparent;
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+    user-select: none;
   }
-  .nav .btnPrev { margin-right: 8px; }
-  .nav .btnNext { margin-left: 8px; }
+  .nav .btnPrev,
+  .nav .btnNext {
+    margin: 0;
+  }
+
+  .nav .btnPrev:focus,
+  .nav .btnNext:focus,
+  .nav .btnPrev:active,
+  .nav .btnNext:active {
+    outline: none;
+    box-shadow: none;
+    background-color: transparent;
+  }
+
+  .nav .btnPrev::before,
+  .nav .btnNext::before {
+    top: 9px;
+  }
+
+  .nav .btnPrev::after,
+  .nav .btnNext::after {
+    top: 5px;
+    width: 8px;
+    height: 8px;
+  }
 
   .slide {
-    flex: 0 0 calc(100% / 3);
-    padding: 8px 8px;
+    padding: 6px 4px;
   }
-  .badge { height: 80px; }
+  .badge { height: clamp(56px, 10vw, 80px); }
 
   .btnPrev::before,
   .btnNext::before { width: calc(100% - 1px); }
   .btnNext::after  { right: 0; }
   .btnPrev::after  { left: 0; }
-}
-
-@media (max-width: 480px) {
-  .slide { flex: 0 0 calc(100% / 2); }
 }

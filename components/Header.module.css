@@ -101,6 +101,11 @@
   /* width: rem ; */
 }
 
+.contactButtonIcon,
+.contactRipple {
+  display: none;
+}
+
 .burger {
   display: flex;
   flex-direction: column;
@@ -240,16 +245,103 @@
 }
 
 /* ---- Responsive ---- */
-@media (max-width: 900px) {
+@media (max-width: 1024px) {
   .nav {
     display: none;
   }
   .inner {
     grid-template-columns: 1fr auto;
   }
-}
-@media (max-width: 560px) {
-  .right :global(.btn-accent) {
+
+  .contactButton {
+    background: var(--color-accent) !important;
+    border: 0 !important;
+    border-radius: 0 !important;
+    height: 2.5rem;
+    isolation: isolate;
+    overflow: visible;
+    padding: 0 !important;
+    position: relative;
+    width: 2.5rem;
+  }
+
+  .contactButton:hover {
+    background: var(--color-accent) !important;
+    color: #fff !important;
+  }
+
+  .contactButtonText {
     display: none;
+  }
+
+  .contactButtonIcon {
+    display: block;
+    fill: none;
+    height: 1.5rem;
+    position: relative;
+    stroke: currentColor;
+    stroke-linecap: square;
+    stroke-linejoin: miter;
+    stroke-width: 1.4;
+    width: 1.5rem;
+    z-index: 2;
+  }
+
+  .contactRipple {
+    animation: contactSquareRipple 2.4s ease-out infinite;
+    border: 1px solid var(--color-accent);
+    display: block;
+    inset: 0;
+    opacity: 0;
+    pointer-events: none;
+    position: absolute;
+    z-index: -1;
+  }
+
+  .rippleTwo {
+    animation-delay: 0.22s;
+  }
+
+  .rippleThree {
+    animation-delay: 0.44s;
+  }
+}
+
+@keyframes contactSquareRipple {
+  0%, 18% {
+    opacity: 0;
+    transform: scale(1);
+  }
+  22% {
+    opacity: 0.65;
+  }
+  58%, 100% {
+    opacity: 0;
+    transform: scale(1.75);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .contactRipple {
+    animation: none;
+  }
+}
+
+@media (max-width: 560px) {
+  .inner {
+    padding-inline: var(--page-gutter);
+    gap: 0.75rem;
+  }
+  .logoImg {
+    height: 40px;
+    max-width: 170px;
+  }
+  .right {
+    gap: 0.75rem;
+  }
+  .panel {
+    width: min(22rem, 100%);
+    max-width: 100vw;
+    padding: 1.25rem;
   }
 }

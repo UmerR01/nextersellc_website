@@ -1,0 +1,155 @@
+.hero {
+  margin-left: calc(50% - 50vw);
+  overflow: hidden;
+  padding-top: 50px;
+  position: relative;
+  width: 100vw;
+}
+
+@media screen and (max-width: 768px) {
+  .hero {
+    margin-left: 0;
+    padding-top: 88px;
+    width: 100%;
+  }
+}
+
+@media screen and (min-width: 1024px) and (max-width: 1680px) {
+  .hero {
+    margin-left: 0;
+    padding-top: 160px;
+    width: 100%;
+  }
+}
+
+.bgWrapper {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.desktopImage {
+  display: block;
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('/contact/hero-bg.jpg');
+  background-size: cover;
+  background-position: center;
+  z-index: -1;
+  min-height: 700px;
+}
+
+@media (max-width: 768px) {
+  .desktopImage {
+    display: none;
+  }
+}
+
+.mobileImage {
+  display: none;
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
+
+@media (max-width: 768px) {
+  .mobileImage {
+    display: block;
+  }
+}
+
+.bgSvg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.heroWrapper {
+  position: relative;
+  z-index: 1;
+}
+
+.container {
+  margin: 0 auto;
+  max-width: 1504px;
+  padding: 0 40px;
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 0 20px;
+  }
+}
+
+.inner {
+  color: #fff;
+  padding: 96px 0 136px;
+  position: relative;
+}
+
+@media screen and (max-width: 768px) {
+  .inner {
+    padding-bottom: 72px;
+    padding-top: 40px;
+    text-align: left;
+  }
+}
+
+.breadcrumbs {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  margin-bottom: 24px;
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.7);
+  flex-wrap: wrap;
+}
+
+.breadcrumbs a {
+  color: rgba(255, 255, 255, 0.7);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.breadcrumbs a:hover {
+  color: #fff;
+}
+
+.breadcrumbs a::after {
+  content: "";
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  margin: 0 4px;
+  background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='none'%3E%3Cpath stroke='rgba(255,255,255,0.5)' stroke-linecap='square' d='m6 4 4 4-4 4'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  vertical-align: middle;
+}
+
+.breadcrumbs span {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.title {
+  color: #fff;
+  font-size: 64px;
+  font-weight: 400;
+  line-height: 77px;
+  text-align: center;
+  margin: 0;
+}
+
+@media screen and (max-width: 768px) {
+  .title {
+    font-size: clamp(2rem, 10vw, 2.5rem);
+    line-height: 1.2;
+    text-align: left;
+  }
+}

@@ -116,6 +116,9 @@
   overflow: hidden;
   z-index: 1;
   pointer-events: none;
+  background: rgba(5, 13, 34, 0.5);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
 }
 .doorBlurLeft {
   left: 0;
@@ -296,44 +299,151 @@
   }
 }
 
-/* ---------- Responsive: stack the doors, drop the animation ---------- */
-@media (max-width: 860px) {
+/* ---------- Responsive: stack the doors while preserving the reveal ---------- */
+@media (max-width: 767px) {
   .wrap {
-    height: auto;
+    height: 180svh;
   }
   .stage {
-    position: static;
-    height: auto;
-    overflow: visible;
-    padding-top: var(--header-height);
-    background: linear-gradient(160deg, #0b1c42, #081530);
+    position: sticky;
+    height: 100svh;
+    overflow: hidden;
+    padding-top: 0;
+    background: #081530;
   }
-  .bg,
-  .doorBlur {
-    display: none;
+
+  .bg {
+    display: grid;
   }
+
+  /* The mobile doors span the full width and split the stage vertically. */
+  .doorBlur,
   .door {
-    position: static;
+    display: flex;
     width: 100%;
-    height: auto;
-    transform: none !important;
+    height: 50%;
+  }
+  .doorBlurLeft,
+  .doorLeft {
+    top: 0;
+    left: 0;
+    right: auto;
+    transform: translateX(calc(var(--p) * -102%));
+  }
+  .doorBlurRight,
+  .doorRight {
+    top: 50%;
+    left: 0;
+    right: auto;
+    transform: translateX(calc(var(--p) * 102%));
+  }
+
+  /* Each blur video is a full-stage frame cropped by its half-height door.
+     Horizontal offsets counter the parent transform so both video copies
+     stay aligned with the sharp background throughout the reveal. */
+  .doorBlurVideo {
+    top: 0;
+    left: calc(var(--p) * 102%);
+    width: 100%;
+    height: 200%;
+  }
+  .doorBlurVideoRight {
+    top: -100%;
+    left: calc(var(--p) * -102%);
+  }
+  .doorBlurTint {
+    background: rgba(0, 0, 0, 0.58);
+  }
+
+  .door {
+    position: absolute;
     border: none;
     background: transparent;
   }
-  .door::before,
-  .door::after {
-    display: none;
+  .door::before {
+    top: 0;
+    border-inline: 0;
+    border-block: 1px solid rgba(255, 255, 255, 0.08);
   }
   .doorContent {
     width: 100%;
-    height: auto;
-    padding: 2rem 1.5rem;
-    gap: 1.5rem;
+    height: 100%;
+    justify-content: center;
+    padding: 0.75rem var(--page-gutter);
+    gap: clamp(0.5rem, 1.4vh, 1rem);
+  }
+  .doorLeft .doorContent {
+    padding-top: calc(var(--header-height) + 0.5rem);
   }
   .heading {
+    font-size: clamp(1.45rem, 5.2vw, 2.3rem);
+    line-height: 1.05;
     text-align: center;
   }
-  .scrollHint {
+  .card {
+    gap: clamp(0.35rem, 0.9vh, 0.75rem);
+  }
+  .cardImage :global(img) {
+    max-height: clamp(55px, 10vh, 100px);
+  }
+  .cardTitle {
+    font-size: clamp(0.9rem, 2.5vw, 1.15rem);
+  }
+  .cardDesc {
+    max-width: 34rem;
+    font-size: clamp(0.72rem, 1.8vw, 0.85rem);
+    line-height: 1.3;
+  }
+  .card :global(.btn) {
+    margin-top: 0;
+    padding: 0.35rem 0.85rem;
+    font-size: clamp(0.75rem, 2vw, 0.9rem);
+  }
+}
+
+@media (max-width: 420px) {
+  .doorContent {
+    padding-inline: var(--page-gutter);
+  }
+  .heading {
+    font-size: clamp(1.35rem, 6.8vw, 1.75rem);
+  }
+  .cardImage :global(img) {
+    max-height: clamp(48px, 9vh, 72px);
+  }
+  .cardDesc {
+    font-size: 0.7rem;
+  }
+}
+
+/* Short mobile viewports need the essential panel content only. */
+@media (max-width: 767px) and (max-height: 700px) {
+  .cardDesc {
     display: none;
+  }
+}
+
+@media (max-width: 767px) and (max-height: 640px) {
+  .cardImage {
+    display: none;
+  }
+  .doorContent {
+    gap: 0.4rem;
+  }
+  .doorLeft .doorContent {
+    padding-top: calc(var(--header-height) + 0.2rem);
+  }
+}
+
+@media (max-width: 767px) and (max-height: 560px) {
+  .heading {
+    font-size: 1.1rem;
+  }
+  .cardTitle {
+    font-size: 0.8rem;
+  }
+  .card :global(.btn) {
+    padding-block: 0.25rem;
+    font-size: 0.7rem;
   }
 }

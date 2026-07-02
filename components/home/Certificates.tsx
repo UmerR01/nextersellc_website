@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Image from "next/image";
 import styles from "./Certificates.module.css";
 
@@ -28,11 +28,27 @@ const BADGES = [
   { src: "/badges/clutch-iot.svg",     alt: "Clutch Top IoT Company" },
 ];
 
-const VISIBLE = 6;
+const DESKTOP_VISIBLE = 6;
+const MOBILE_VISIBLE = 4;
 
 export default function Certificates() {
   const [index, setIndex] = useState(0);
-  const maxIndex = Math.max(0, BADGES.length - VISIBLE);
+  const [visible, setVisible] = useState(DESKTOP_VISIBLE);
+  const maxIndex = Math.max(0, BADGES.length - visible);
+
+  useEffect(() => {
+    const updateVisible = () => {
+      setVisible(window.innerWidth <= 1024 ? MOBILE_VISIBLE : DESKTOP_VISIBLE);
+    };
+
+    updateVisible();
+    window.addEventListener("resize", updateVisible);
+    return () => window.removeEventListener("resize", updateVisible);
+  }, []);
+
+  useEffect(() => {
+    setIndex((current) => Math.min(current, maxIndex));
+  }, [maxIndex]);
 
   const prev = () => setIndex((i) => Math.max(0, i - 1));
   const next = () => setIndex((i) => Math.min(maxIndex, i + 1));
@@ -61,8 +77,9 @@ export default function Certificates() {
             <div
               className={styles.track}
               style={{
-                transform: `translateX(calc(-${index} * (100% / ${VISIBLE})))`,
-              }}
+                "--visible": visible,
+                transform: `translateX(calc(-${index} * (100% / ${visible})))`,
+              } as React.CSSProperties}
             >
               {BADGES.map((badge, i) => (
                 <div key={`${badge.src}-${i}`} className={styles.slide}>

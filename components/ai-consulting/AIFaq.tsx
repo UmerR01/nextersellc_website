@@ -7,7 +7,7 @@ const FAQS = [
     q: "Will your consulting engagement just be a sales pitch for a massive AI development project?",
     a: (
       <p>
-        Absolutely not. Nexterse is a &ldquo;Dual-Engine&rdquo; engineering firm, meaning our
+        Absolutely not. Nexterse LLC is a &ldquo;Dual-Engine&rdquo; engineering firm, meaning our
         consulting is 100% objective. If our audit reveals that your business bottleneck is better
         solved with traditional, deterministic software — like a standard ERP upgrade or data
         modernization — we will tell you. We don&rsquo;t force AI where a conventional SDLC is the

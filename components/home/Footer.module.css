@@ -10,9 +10,9 @@
 
 /* ── Shared container ── */
 .container {
-  /* max-width: 1200px; */
-  margin: 0 120px;
-  padding: 0 24px;
+  width: min(calc(100% - (2 * var(--page-gutter))), var(--max-width));
+  margin: 0 auto;
+  padding: 0;
 }
 
 /* ═══════════════════════════════════════════
@@ -23,6 +23,7 @@
   background: url(/footer/world-map.png) center no-repeat;
   background-size: 72%;
   background-color: #fcfcfa;
+  overflow: hidden;
 }
 
 /* ── Desktop Footer ── */
@@ -297,6 +298,10 @@
   .footerRow {
     column-gap: 32px;
   }
+
+  .badgeList {
+    gap: 1.5rem;
+  }
 }
 
 /* ═══════════════════════════════════════════
@@ -365,7 +370,8 @@
   }
 
   .mobileFooter .certsBlock .badgeList {
-    justify-content: space-between;
+    justify-content: flex-start;
+    gap: 1rem;
   }
 
   .mobileFooter .badgeList li img {
@@ -387,5 +393,23 @@
     text-align: center;
     padding-bottom: 20px;
     gap: 12px;
+  }
+}
+
+@media (max-width: 420px) {
+  .mobileAddresses,
+  .mobileLinkPolicy {
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .mobileFooter .badgeList li img {
+    width: 72px;
+    height: 72px;
+  }
+
+  .securityBox {
+    flex-wrap: wrap;
+    justify-content: center;
   }
 }

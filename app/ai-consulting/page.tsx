@@ -22,9 +22,9 @@ import Stories from "@/components/home/Stories";
 import styles from "./page.module.css";
 
 export const metadata: Metadata = {
-  title: "AI Consulting Services — Nexterse",
+  title: "AI Consulting Services — Nexterse LLC",
   description:
-    "Stop guessing how AI fits into your business. Nexterse AI consulting helps organizations identify the highest-ROI opportunities and design secure, production-ready AI solutions.",
+    "Stop guessing how AI fits into your business. Nexterse LLC AI consulting helps organizations identify the highest-ROI opportunities and design secure, production-ready AI solutions.",
 };
 
 export default function AIConsultingPage() {

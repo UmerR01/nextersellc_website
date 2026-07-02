@@ -1,0 +1,223 @@
+.section {
+  background: #02102c;
+  padding: 64px 0;
+  overflow: hidden;
+}
+
+.swiperWrapper {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 40px;
+}
+
+.swiper {
+  width: 100%;
+}
+
+.slide {
+  display: flex !important;
+  flex-direction: row;
+  align-items: center;
+  gap: 64px;
+  padding: 0 0 40px;
+}
+
+.leftContent {
+  flex: 1 1 60%;
+  position: relative;
+  padding-left: 64px;
+}
+
+.leftContent::before {
+  content: "\201C";
+  position: absolute;
+  left: 0;
+  top: -24px;
+  font-family: var(--font-inter-tight);
+  font-size: 120px;
+  line-height: 1;
+  color: #3cc4e5;
+  opacity: 0.3;
+  pointer-events: none;
+  user-select: none;
+}
+
+.reviewText {
+  position: relative;
+  z-index: 1;
+}
+
+.reviewText p {
+  font-family: var(--font-inter-tight);
+  font-size: clamp(1rem, 1.4vw, 1.25rem);
+  font-weight: 300;
+  line-height: 1.75;
+  color: rgba(255, 255, 255, 0.85);
+  margin-bottom: 1rem;
+}
+
+.reviewText p:last-child {
+  margin-bottom: 0;
+}
+
+.rightContent {
+  flex: 0 0 280px;
+  max-width: 280px;
+}
+
+.authorData {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+.authorPhoto {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  object-fit: cover;
+  display: block;
+}
+
+.authorLogo {
+  max-height: 72px;
+  max-width: 172px;
+  width: auto;
+  height: auto;
+  display: block;
+}
+
+.authorText {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.authorName {
+  font-family: var(--font-inter-tight);
+  font-size: 1rem;
+  font-weight: 600;
+  color: #fff;
+  line-height: 1.4;
+}
+
+.authorPosition {
+  font-family: var(--font-inter-tight);
+  font-size: 0.875rem;
+  color: rgba(255, 255, 255, 0.55);
+  line-height: 1.4;
+}
+
+.bottomContent {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  padding-top: 8px;
+}
+
+.navigation {
+  display: flex;
+  gap: 8px;
+}
+
+.navPrev,
+.navNext {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.24);
+  background: transparent;
+  color: #fff;
+  cursor: pointer;
+  transition: border-color 0.2s ease, background 0.2s ease;
+}
+
+.navPrev:hover,
+.navNext:hover {
+  border-color: #3cc4e5;
+  background: rgba(60, 196, 229, 0.1);
+  color: #3cc4e5;
+}
+
+.allReviewsLink {
+  margin-left: auto;
+}
+
+.linkPrimary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-inter-tight);
+  font-size: 1rem;
+  font-weight: 500;
+  color: #3cc4e5;
+  text-decoration: none;
+  transition: gap 0.2s ease;
+}
+
+.linkPrimary:hover {
+  gap: 12px;
+}
+
+.linkArrow {
+  display: flex;
+  align-items: center;
+  color: #3cc4e5;
+  transition: transform 0.2s ease;
+}
+
+.linkPrimary:hover .linkArrow {
+  transform: translateX(4px);
+}
+
+@media (max-width: 1150px) {
+  .slide {
+    flex-direction: column;
+    gap: 40px;
+  }
+
+  .leftContent {
+    flex: none;
+    width: 100%;
+  }
+
+  .rightContent {
+    flex: none;
+    max-width: 100%;
+    width: 100%;
+  }
+
+  .authorData {
+    flex-direction: row;
+    align-items: center;
+  }
+}
+
+@media (max-width: 768px) {
+  .swiperWrapper {
+    padding: 0 20px;
+  }
+
+  .leftContent {
+    padding-left: 40px;
+  }
+
+  .leftContent::before {
+    font-size: 80px;
+    top: -12px;
+  }
+
+  .bottomContent {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
+
+  .allReviewsLink {
+    margin-left: 0;
+  }
+}

@@ -1,0 +1,134 @@
+.section {
+  background: #fff;
+  padding: 48px 0;
+}
+
+.container {
+  max-width: 1468px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 40px;
+  min-height: 270px;
+  padding: 56px 112px;
+  overflow: hidden;
+  background:
+    linear-gradient(135deg, transparent 48%, rgba(60, 196, 229, 0.16) 49%, transparent 72%),
+    linear-gradient(45deg, rgba(18, 122, 255, 0.28) 0%, transparent 42%),
+    linear-gradient(110deg, #071a3d 0%, #0b2d68 58%, #127aff 100%);
+}
+
+.left {
+  flex: 0 0 60%;
+}
+
+.left h2 {
+  font-family: var(--font-inter-tight), sans-serif;
+  font-size: 38px;
+  line-height: 1.25;
+  font-weight: 400;
+  color: #fff;
+  letter-spacing: normal;
+  margin-bottom: 16px;
+  margin-top: 0;
+}
+
+.left p {
+  font-family: var(--font-inter-tight), sans-serif;
+  font-size: 22px;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.92);
+  font-weight: 400;
+  margin: 0;
+}
+
+.right {
+  flex-shrink: 0;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.4rem 1.25rem;
+  border: 2px solid var(--color-bg);
+  border-radius: 30px;
+  background: transparent;
+  color: var(--color-bg);
+  font-family: var(--font-inter-tight), sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: background 0.25s, color 0.25s;
+}
+
+.btn:hover {
+  background: var(--color-accent);
+  border: 2px solid var(--color-accent);
+  color: #fff;
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+  .container {
+    padding-inline: 0;
+  }
+
+  .row {
+    gap: clamp(1.5rem, 4vw, 2.5rem);
+    min-height: 0;
+    padding: clamp(2rem, 5vw, 3rem);
+  }
+
+  .left {
+    flex: 1 1 auto;
+  }
+
+  .left h2 {
+    font-size: clamp(1.5rem, 3.5vw, 2rem);
+  }
+
+  .left p {
+    font-size: clamp(1rem, 2.2vw, 1.125rem);
+  }
+
+  .right {
+    margin-left: auto;
+  }
+}
+
+@media (max-width: 767px) {
+  .section {
+    padding: 32px 0;
+  }
+
+  .row {
+    flex-direction: column;
+    align-items: flex-start;
+    min-height: 0;
+    padding: 40px 24px;
+  }
+
+  .left {
+    flex: unset;
+    width: 100%;
+  }
+
+  .left h2 {
+    font-size: 32px;
+    line-height: 35px;
+  }
+
+  .left p {
+    font-size: 18px;
+  }
+
+  .right {
+    align-self: center;
+  }
+
+}

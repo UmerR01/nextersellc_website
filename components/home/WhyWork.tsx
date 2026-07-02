@@ -80,7 +80,7 @@ export default function WhyWork() {
 
         <div className={styles.why}>
           <div className={styles.whyHead}>
-            <h2 className={styles.title}>Why companies choose Nexterse</h2>
+            <h2 className={styles.title}>Why companies choose Nexterse LLC</h2>
             <p className={styles.sub}>
               We cut through the noise with senior-led teams, defined accountability,
               and a culture of shipping software that actually works.

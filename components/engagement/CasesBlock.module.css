@@ -41,6 +41,103 @@
   gap: 24px;
 }
 
+.sliderWrapper {
+  position: relative;
+}
+
+.sliderNav {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: space-between;
+  align-items: stretch;
+  pointer-events: none;
+  z-index: 3;
+}
+
+.navPrev,
+.navNext {
+  pointer-events: all;
+  background: transparent;
+  border: none;
+  width: 8%;
+  cursor: pointer;
+  opacity: 0;
+}
+
+@media (max-width: 768px) {
+  .navPrev,
+  .navNext {
+    width: 15%;
+  }
+  .navNext {
+    display: none;
+  }
+}
+
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 32px 0 0;
+  width: 83%;
+  margin: 0 auto;
+}
+
+@media (max-width: 768px) {
+  .pagination {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+    width: 100%;
+  }
+}
+
+.dots {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  flex: 1;
+}
+
+.dot {
+  flex: 1;
+  height: 2px;
+  background: #c6d0db;
+  border: none;
+  cursor: pointer;
+  transition: background 0.3s ease;
+  padding: 0;
+}
+
+.dotActive {
+  background: #3CC4E5;
+}
+
+.allLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 18px;
+  font-weight: 600;
+  color: #3CC4E5;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.allLinkArrow {
+  display: inline-block;
+  width: 6px;
+  height: 10px;
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg width='6' height='10' viewBox='0 0 6 10' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M7.94319e-08 8.59L3.59 5L-3.53625e-07 1.41L1 0.5L5.5 5L1 9.5L7.94319e-08 8.59Z' fill='%233CC4E5'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
 .card {
   display: block;
   text-decoration: none;

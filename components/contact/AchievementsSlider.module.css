@@ -1,0 +1,231 @@
+.section {
+  padding: 0;
+}
+
+@media screen and (min-width: 768px) {
+  .section {
+    padding: 0 0 clamp(4rem, 7vw, 6rem);
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .section {
+    padding-inline: clamp(2rem, 5vw, 6rem);
+  }
+}
+
+.container {
+  margin: 0 auto;
+  width: min(calc(100% - clamp(3rem, 5vw, 5rem)), 88.75rem);
+}
+
+.title {
+  font-size: clamp(1.75rem, 3.6vw, 3.25rem);
+  font-weight: 400;
+  line-height: 1.2;
+  word-spacing: 0.5rem;
+  letter-spacing: 0.05rem;
+  text-align: center;
+  margin-bottom: 0;
+  color: #112244;
+  font-family: var(--font-inter-tight), sans-serif;
+}
+
+@media (max-width: 768px) {
+  .section {
+    padding-top: clamp(2rem, 9vw, 2.75rem);
+    padding-bottom: clamp(3.5rem, 12vw, 4.75rem);
+  }
+
+  .title {
+    text-align: left;
+    font-size: 28px;
+    line-height: 34px;
+  }
+}
+
+.titleAccent {
+  color: #3CC4E5;
+  padding-right: 0.5rem;
+  
+}
+
+.achievementsWrap {
+  margin-top: clamp(2.5rem, 5vw, 4rem);
+  position: relative;
+}
+
+.sliderOuter {
+  overflow: hidden;
+}
+
+.track {
+  display: flex;
+  transition: transform 0.4s ease;
+}
+
+@media (min-width: 769px) and (max-width: 1440px) {
+  .achievementsWrap {
+    margin: 64px auto 0;
+    max-width: calc(100% - 160px);
+  }
+}
+
+@media (max-width: 768px) {
+  .achievementsWrap {
+    margin-top: 2rem;
+    max-width: none;
+    padding-bottom: 2.75rem;
+  }
+}
+
+/* Nav buttons — exact same style as home Certificates arrows */
+.navPrev,
+.navNext {
+  appearance: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  height: 24px;
+  width: 40px;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+}
+
+/* Tail line */
+.navPrev::before,
+.navNext::before {
+  background: var(--color-accent);
+  content: "";
+  display: block;
+  height: 2px;
+  position: absolute;
+  top: 11px;
+  transition: width 0.3s ease-in-out;
+  width: calc(100% - 2px);
+}
+
+/* Arrowhead (rotated square corner) */
+.navPrev::after,
+.navNext::after {
+  border-bottom: 2px solid var(--color-accent);
+  border-right: 2px solid var(--color-accent);
+  content: "";
+  display: block;
+  height: 10px;
+  width: 10px;
+  position: absolute;
+  top: 7px;
+  transition: 0.3s ease-in-out;
+}
+
+.navNext::before { left: 1px; }
+.navNext::after  { right: 2px; transform: rotate(-45deg); }
+
+.navPrev::before { right: 1px; }
+.navPrev::after  { left: 2px; transform: rotate(135deg); }
+
+.navPrev {
+  right: calc(100% + 40px);
+}
+
+.navNext {
+  left: calc(100% + 40px);
+}
+
+/* Hover grow */
+.navNext:not(.navDisabled):hover::before { width: calc(100% + 4px); }
+.navNext:not(.navDisabled):hover::after  { right: -4px; }
+.navPrev:not(.navDisabled):hover::before { width: calc(100% + 4px); }
+.navPrev:not(.navDisabled):hover::after  { left: -4px; }
+
+/* Disabled state */
+.navDisabled {
+  cursor: not-allowed;
+  pointer-events: none;
+}
+.navDisabled::before { background: #899fb6; }
+.navDisabled::after  { border-color: #899fb6; }
+
+@media (max-width: 1024px) {
+  .navPrev,
+  .navNext {
+    position: absolute;
+    top: auto;
+    right: auto;
+    bottom: 0;
+    transform: none;
+    width: 32px;
+    height: 20px;
+    margin: 0;
+    outline: none;
+    box-shadow: none;
+    background-color: transparent;
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+  }
+
+  .navPrev {
+    left: 0;
+  }
+  .navNext {
+    left: 48px;
+  }
+  .navPrev:focus,
+  .navNext:focus,
+  .navPrev:active,
+  .navNext:active {
+    outline: none;
+    box-shadow: none;
+    background-color: transparent;
+  }
+  .navPrev::before,
+  .navNext::before {
+    top: 9px;
+  }
+  .navPrev::after,
+  .navNext::after {
+    top: 5px;
+    width: 8px;
+    height: 8px;
+  }
+}
+
+.slide {
+  flex: 0 0 calc(100% / var(--visible, 6));
+  position: relative;
+}
+
+.slide::before {
+  content: "";
+  display: block;
+  padding-bottom: 72%;
+}
+
+@media (max-width: 768px) {
+  .slide::before {
+    padding-bottom: 76%;
+  }
+}
+
+.slideWrapper {
+  align-items: center;
+  display: flex;
+  height: 100%;
+  justify-content: center;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
+}
+
+.badgeImage {
+  height: auto;
+  max-height: 100%;
+  width: auto;
+  max-width: 100%;
+  object-fit: contain;
+}

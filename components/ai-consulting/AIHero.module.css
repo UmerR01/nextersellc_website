@@ -103,6 +103,13 @@
 
 /* ── Responsive ── */
 @media (max-width: 768px) {
+  .section {
+    padding-top: calc(var(--header-height) + 48px);
+    padding-bottom: 64px;
+  }
+  .title {
+    font-size: clamp(2rem, 10vw, 2.4rem);
+  }
   .points {
     flex-direction: column;
     gap: 1.25rem;
@@ -115,4 +122,11 @@
     border-right: none;
   }
   .buttons { gap: 1rem; }
+}
+
+@media (max-width: 420px) {
+  .buttons,
+  .buttons :global(.btn) {
+    width: 100%;
+  }
 }

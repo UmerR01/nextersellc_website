@@ -40,7 +40,7 @@ export default function AIAwards() {
           <span>Awards</span> &amp; Recognitions
         </h2>
         <p className={styles.desc}>
-          Nexterse has been recognized by leading analytics agencies working with the best software
+          Nexterse LLC has been recognized by leading analytics agencies working with the best software
           development companies from all over the world. Our values and partners help us provide the
           best services in the field.
         </p>

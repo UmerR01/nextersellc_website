@@ -7,9 +7,9 @@ import LetsStart from "@/components/home/LetsStart";
 import CrosslinksBlock from "@/components/testimonials/CrosslinksBlock";
 
 export const metadata: Metadata = {
-  title: "Client Testimonials | Nexterse",
+  title: "Client Testimonials | Nexterse LLC",
   description:
-    "See what our clients say about working with Nexterse. Read verified reviews and testimonials from 350+ delivered projects across 20+ industries.",
+    "See what our clients say about working with Nexterse LLC. Read verified reviews and testimonials from 350+ delivered projects across 20+ industries.",
 };
 
 export default function TestimonialsPage() {

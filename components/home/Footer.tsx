@@ -59,7 +59,7 @@ export default function Footer() {
               <div className={styles.colBrand}>
                 <Image
                   src="/brand/nexters_logo_blue.png"
-                  alt="Nexterse"
+                  alt="Nexterse LLC"
                   width={200}
                   height={52}
                   className={styles.footerLogo}
@@ -74,7 +74,7 @@ export default function Footer() {
                 <h3>Useful Links</h3>
                 <ul>
                   <li><Link href="/">Home</Link></li>
-                  <li><Link href="/about-us">About Us</Link></li>
+                  <li><Link href="/team">About Us</Link></li>
                   <li><Link href="/engagement-models-process">Engagement Models</Link></li>
                   <li><Link href="/blog">Blog</Link></li>
                   <li><Link href="/case-study">Case Study</Link></li>
@@ -184,13 +184,13 @@ export default function Footer() {
             <div className={styles.colBrand}>
               <Image
                 src="/brand/nexters_logo_blue.png"
-                alt="Nexterse"
+                alt="Nexterse LLC"
                 width={180}
                 height={46}
                 className={styles.footerLogo}
               />
               <p>
-                Nexterse is a team of dedicated experts, selected to deliver
+                Nexterse LLC is a team of dedicated experts, selected to deliver
                 outstanding software solutions, enabling businesses to flourish
                 in the digital environment.
               </p>
@@ -273,7 +273,7 @@ export default function Footer() {
                 <h3>Useful Links</h3>
                 <ul>
                   <li><Link href="/">Home</Link></li>
-                  <li><Link href="/about-us">About Us</Link></li>
+                  <li><Link href="/team">About Us</Link></li>
                   <li><Link href="/engagement-models-process">Engagement Models</Link></li>
                   <li><Link href="/blog">Blog</Link></li>
                   <li><Link href="/case-study">Case Study</Link></li>
