@@ -1,0 +1,23 @@
+.background {
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  position: absolute;
+  z-index: 0;
+}
+
+.desktop,
+.mobile {
+  display: block;
+  height: 100%;
+  width: 100%;
+}
+
+.mobile {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .desktop { display: none; }
+  .mobile { display: block; }
+}

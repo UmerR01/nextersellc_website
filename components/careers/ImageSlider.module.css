@@ -1,0 +1,57 @@
+.section {
+  background: #fff;
+  padding-bottom: clamp(3.75rem, 7vw, 5rem);
+  position: relative;
+  overflow: hidden;
+}
+
+.section::before,
+.section::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 120px;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.section::before {
+  left: 0;
+  background: linear-gradient(to right, #fff 0%, transparent 100%);
+}
+
+.section::after {
+  right: 0;
+  background: linear-gradient(to left, #fff 0%, transparent 100%);
+}
+
+.swiperContainer {
+  width: 100%;
+  overflow: hidden;
+  min-height: clamp(11rem, 28vw, 24rem);
+}
+
+:global(.careers-img-swiper .swiper-wrapper) {
+  transition-timing-function: linear !important;
+}
+
+.slide {
+  height: auto;
+  flex-shrink: 0;
+}
+
+.slideImg {
+  width: 100%;
+  height: auto;
+  display: block;
+  aspect-ratio: 920 / 600;
+  object-fit: cover;
+}
+
+@media (max-width: 1024px) {
+  .section::before,
+  .section::after {
+    width: clamp(2rem, 8vw, 5rem);
+  }
+}

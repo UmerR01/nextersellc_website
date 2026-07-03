@@ -250,14 +250,55 @@
   color: var(--color-text);
 }
 
-@media (max-width: 767px) {
+@media (min-width: 768px) and (max-width: 1024px) {
   .cards {
-    flex-direction: column;
+    min-height: 560px;
+    overflow: hidden;
+    touch-action: pan-y;
+  }
+  .card {
+    display: none;
+  }
+  .card.active,
+  .card.tabletNext {
+    display: block;
+  }
+  .card.active {
+    flex: 1 1 auto;
+    min-width: 0;
+  }
+  .card.active.slideNext {
+    animation: caseSlideFromRight 0.38s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .card.active.slidePrev {
+    animation: caseSlideFromLeft 0.38s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .card.tabletNext {
+    flex: 0 0 110px;
+  }
+}
+
+@media (max-width: 767px) {
+  .section {
+    padding: 72px 0;
+  }
+  .cards {
+    display: block;
     min-height: 0;
+    touch-action: pan-y;
   }
   .card {
     flex: none;
-    min-height: 200px;
+    width: 100%;
+  }
+  .card:not(.active) {
+    display: none;
+  }
+  .active.slideNext {
+    animation: caseSlideFromRight 0.38s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .active.slidePrev {
+    animation: caseSlideFromLeft 0.38s cubic-bezier(0.22, 1, 0.36, 1);
   }
   .active {
     min-height: 540px;
@@ -273,14 +314,64 @@
     left: 1.5rem;
   }
   .body {
-    padding: 4rem 1.5rem 0;
+    justify-content: center;
+    padding: 4rem 1.5rem 5.5rem;
   }
   .meta {
     padding: 1.5rem;
-    flex-direction: column;
-    align-items: flex-start;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
   }
-  .tags {
-    grid-template-columns: 1fr 1fr;
+  .tags,
+  .stats {
+    display: none;
+  }
+  .nav {
+    margin: 0;
+  }
+}
+
+@keyframes caseSlideFromRight {
+  from {
+    opacity: 0;
+    transform: translateX(18%);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes caseSlideFromLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-18%);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@media (max-width: 520px) {
+  .active {
+    min-height: 540px;
+  }
+  .body {
+    padding-inline: var(--page-gutter);
+  }
+  .meta {
+    padding: var(--page-gutter);
+  }
+  .title {
+    font-size: clamp(1.65rem, 8vw, 2.25rem);
+  }
+  .text {
+    font-size: 0.95rem;
+    margin-bottom: 1.25rem;
+  }
+  .viewMore {
+    padding-inline: 1rem;
   }
 }

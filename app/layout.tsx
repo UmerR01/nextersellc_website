@@ -11,9 +11,9 @@ const interTight = Inter_Tight({
 });
 
 export const metadata: Metadata = {
-  title: "Nexterse — Custom Software & AI Development",
+  title: "Nexterse LLC — Custom Software & AI Development",
   description:
-    "Nexterse builds custom software and AI-driven solutions that ship on time, scale with your business, and outlast their launch.",
+    "Nexterse LLC builds custom software and AI-driven solutions that ship on time, scale with your business, and outlast their launch.",
   icons: {
     icon: "/brand/favicon-nexterse.ico",
     shortcut: "/brand/favicon-nexterse.ico",

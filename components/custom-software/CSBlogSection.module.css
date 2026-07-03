@@ -1,0 +1,158 @@
+.section {
+  background: #fff;
+  padding: 96px 0;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.title {
+  font-size: clamp(2rem, 3.5vw, 3.5rem);
+  font-weight: 400;
+  color: #112244;
+  margin-bottom: 48px;
+}
+
+.accent {
+  color: #3cc4e5;
+}
+
+.postsGrid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 32px;
+  align-items: flex-start;
+}
+
+.featuredCol {
+  flex: 1;
+  min-width: 300px;
+}
+
+.featuredPost {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+}
+
+.featuredImageWrapper {
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 16px;
+}
+
+.featuredImageWrapper::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, rgba(60, 196, 229, 0.3), rgba(60, 196, 229, 0.1));
+}
+
+.featuredImg {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.featuredPostTitle {
+  font-size: 20px;
+  font-weight: 600;
+  color: #112244;
+  margin: 16px 0 8px;
+  line-height: 1.4;
+}
+
+.postMeta {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #5e6d8e;
+  font-size: 14px;
+}
+
+.readTime {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: #5e6d8e;
+  font-size: 14px;
+}
+
+.metaSep {
+  color: #5e6d8e;
+}
+
+.postDate {
+  color: #5e6d8e;
+}
+
+.sideCol {
+  flex: 1;
+  min-width: 300px;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.sidePost {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  padding-bottom: 24px;
+  border-bottom: 1px solid #e6eff7;
+  margin-bottom: 24px;
+}
+
+.sidePost:last-of-type {
+  margin-bottom: 0;
+}
+
+.sidePostTitle {
+  font-size: 16px;
+  font-weight: 600;
+  color: #112244;
+  margin-bottom: 8px;
+  line-height: 1.4;
+}
+
+.allArticlesWrapper {
+  margin-top: auto;
+  padding-top: 8px;
+}
+
+.allArticlesLink {
+  color: #3cc4e5;
+  font-size: 16px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+  transition: gap 0.2s ease;
+}
+
+.allArticlesLink:hover {
+  gap: 12px;
+}
+
+.linkArrow {
+  display: flex;
+  align-items: center;
+  transition: transform 0.2s ease;
+}
+
+.allArticlesLink:hover .linkArrow {
+  transform: translateX(4px);
+}
+
+@media (max-width: 768px) {
+  .section {
+    padding: 64px 0;
+  }
+
+  .title {
+    margin-bottom: 32px;
+  }
+}

@@ -40,7 +40,7 @@ export default function Workflow() {
             A structured, no-surprises engagement model designed to keep every stakeholder
             aligned from first conversation to long-term delivery.
           </p>
-          <div className={styles.media}>
+          <div className={`${styles.media} ${styles.desktopMedia}`}>
             <Image
               src="/cases/woman.jpg"
               alt="Working session"
@@ -72,6 +72,16 @@ export default function Workflow() {
               Start the conversation →
             </a>
           </div>
+        </div>
+
+        <div className={`${styles.media} ${styles.mobileMedia}`}>
+          <Image
+            src="/cases/woman.jpg"
+            alt="Working session"
+            fill
+            sizes="100vw"
+            className={styles.mediaImg}
+          />
         </div>
       </div>
     </section>

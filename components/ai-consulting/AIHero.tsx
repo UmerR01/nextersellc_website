@@ -30,7 +30,7 @@ export default function AIHero() {
         </h1>
 
         <p className={styles.desc}>
-          Stop guessing how AI fits into your business. Nexterse&apos;s AI consulting
+          Stop guessing how AI fits into your business. Nexterse LLC&apos;s AI consulting
           services help organizations identify the highest-ROI opportunities for
           artificial intelligence and design secure, production-ready solutions.
         </p>

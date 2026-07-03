@@ -4,12 +4,12 @@ export interface FAQPanel { id: number; tab: string; title: string; questions: F
 export const FAQ_PANELS: FAQPanel[] = [
   {
     id: 1,
-    tab: "About Nexterse & dual-engine approach",
-    title: "About Nexterse & dual-engine approach",
+    tab: "About Nexterse LLC & dual-engine approach",
+    title: "About Nexterse LLC & dual-engine approach",
     questions: [
       {
-        q: "How would you briefly describe Nexterse?",
-        a: `<p>Nexterse is an AI-powered custom software development company. We operate as a dual-engine engineering firm: we build stable, scalable custom software under a structured SDLC, and we engineer governed AI systems under our Agentic Development Lifecycle (ADLC). Our focus is on engineering you can audit – predictable timelines, clean architectures, and AI that operates inside enterprise guardrails. We have delivered 350+ custom software products across 20+ industries over 14+ years on the market.</p>
+        q: "How would you briefly describe Nexterse LLC?",
+        a: `<p>Nexterse LLC is an AI-powered custom software development company. We operate as a dual-engine engineering firm: we build stable, scalable custom software under a structured SDLC, and we engineer governed AI systems under our Agentic Development Lifecycle (ADLC). Our focus is on engineering you can audit – predictable timelines, clean architectures, and AI that operates inside enterprise guardrails. We have delivered 350+ custom software products across 20+ industries over 14+ years on the market.</p>
 <p><a href="/portfolio">View our case studies</a></p>
 <p><a href="/testimonials">Read Clients' testimonials</a></p>`,
       },
@@ -30,11 +30,11 @@ export const FAQ_PANELS: FAQPanel[] = [
         a: `<p>Our headquarters is in the USA, MA, Boston. Most of the production team is located in Poland. Other team members are located in different locations, including Georgia, Austria and other countries. We have been working with US-based Clients for over 14 years and structure each engagement with overlapping working hours for daily or weekly stand-ups, plus asynchronous collaboration via Slack, Jira, and email, so progress continues across time zones.</p>`,
       },
       {
-        q: "How many employees does Nexterse have, and how is the team structured?",
+        q: "How many employees does Nexterse LLC have, and how is the team structured?",
         a: `<p>Currently, our team counts more than 100 employees, with a strong concentration of senior engineers. A typical engagement includes a dedicated Project Manager, Business Analyst, Solution Architect, UX/UI designers, AI developers, QA engineers, and – for AI scope – an ADLC lead or AI architect. Our size lets us ramp resources up or down quickly when a project's scope or pace changes.</p>`,
       },
       {
-        q: "What makes Nexterse different from other development agencies?",
+        q: "What makes Nexterse LLC different from other development agencies?",
         a: `<p>Three things.</p>
 <ul>
 <li><strong>People</strong> – a strong concentration of senior European engineers with formal technical education.</li>
@@ -486,7 +486,7 @@ export const FAQ_PANELS: FAQPanel[] = [
         a: `<p>Yes, we encourage our Clients to sign an <strong>NDA</strong> even before the project discussion. Also, an NDA clause is a must in our Master Agreement. All of our employees have strict confidentiality clauses in their contracts, so confidentiality is enforced at both the company level and within the delivery team.</p>`,
       },
       {
-        q: "What security certifications does Nexterse hold, and how do they apply to AI engagements?",
+        q: "What security certifications does Nexterse LLC hold, and how do they apply to AI engagements?",
         a: `<p>We hold ISO 27001 (information security management) and ISO 9001 (quality management) certifications. Our delivery processes – including AI engagements under the ADLC – operate under these certified processes: documented access controls, audit trails, incident response, secure coding standards, and continuous internal auditing. We can share scope documentation and certificate details during procurement review.</p>`,
       },
       {

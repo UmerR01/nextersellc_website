@@ -1,0 +1,120 @@
+.section {
+  font-family: var(--font-inter-tight), "Inter Tight", sans-serif;
+  padding: 96px 0;
+  background: #fff;
+}
+
+@media screen and (max-width: 768px) {
+  .section { padding: 64px 0; }
+}
+
+.row {
+  display: flex;
+  align-items: flex-start;
+  gap: 48px;
+}
+
+@media screen and (max-width: 992px) {
+  .row {
+    flex-direction: column;
+    gap: 40px;
+  }
+}
+
+.left {
+  flex: 0 0 33.333%;
+  max-width: 33.333%;
+}
+
+@media screen and (max-width: 992px) {
+  .left {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+}
+
+.title {
+  font-size: 38px;
+  font-weight: 400;
+  line-height: 46px;
+  color: #112244;
+  margin: 0 0 24px;
+}
+
+@media screen and (max-width: 768px) {
+  .title {
+    font-size: 24px;
+    line-height: 29px;
+  }
+}
+
+.accent {
+  color: var(--color-accent, #3CC4E5);
+}
+
+.leftDesc {
+  font-size: 16px;
+  line-height: 26px;
+  color: #5e6d8e;
+}
+
+.leftDesc p {
+  margin: 0;
+}
+
+.right {
+  flex: 1;
+  min-width: 0;
+}
+
+.tabs {}
+
+.tabBtns {
+  display: flex;
+  gap: 0;
+  border-bottom: 2px solid #e6eff7;
+  margin-bottom: 32px;
+}
+
+.tabBtn {
+  background: none;
+  border: none;
+  border-bottom: 2px solid transparent;
+  margin-bottom: -2px;
+  padding: 12px 24px;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 22px;
+  color: #5e6d8e;
+  cursor: pointer;
+  font-family: var(--font-inter-tight), "Inter Tight", sans-serif;
+  transition: color 0.2s, border-color 0.2s;
+}
+
+.tabBtn:hover {
+  color: #112244;
+}
+
+.tabBtnActive {
+  color: #112244;
+  border-bottom-color: var(--color-accent, #3CC4E5);
+}
+
+.tabContent {}
+
+.tabDesc {
+  font-size: 16px;
+  line-height: 26px;
+  color: #5e6d8e;
+  margin: 0 0 32px;
+}
+
+.tabImage {
+  width: 100%;
+}
+
+.tabImg {
+  width: 100%;
+  height: auto;
+  display: block;
+}

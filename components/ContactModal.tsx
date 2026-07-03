@@ -98,7 +98,7 @@ export default function ContactModal({ open, onClose }: Props) {
             <div className={styles.brand}>
               <Image
                 src="/brand/nexters_logo_blue.png"
-                alt="Nexterse"
+                alt="Nexterse LLC"
                 width={160}
                 height={42}
                 className={styles.brandLogo}
@@ -138,10 +138,10 @@ export default function ContactModal({ open, onClose }: Props) {
                 </p>
                 <div className={styles.successFooter}>
                   <p className={styles.successFooterText}>
-                    Find out more about Nexterse and our services
+                    Find out more about Nexterse LLC and our services
                   </p>
                   <ul className={styles.successFooterNav}>
-                    <li><a href="#about">About us</a></li>
+                    <li><a href="/team">About us</a></li>
                     <li><a href="#faq">FAQ</a></li>
                     <li><a href="#insights">Guides &amp; insights</a></li>
                   </ul>
@@ -166,7 +166,7 @@ export default function ContactModal({ open, onClose }: Props) {
                 </label>
 
                 <p className={styles.privacy}>
-                  Please be informed that when you click the Send button Nexterse will process
+                  Please be informed that when you click the Send button Nexterse LLC will process
                   your personal data in accordance with our{" "}
                   <a href="#">Privacy notice</a> for the purpose of providing you with
                   appropriate information.

@@ -1,4 +1,4 @@
-﻿import Image from "next/image";
+import Image from "next/image";
 import styles from "./ARDeliverables.module.css";
 
 const DELIVERABLES = [
@@ -33,7 +33,7 @@ export default function ARDeliverables() {
             answer to be &ldquo;build AI.&rdquo; That creates pressure to force a use case into the wrong shape.
           </p>
           <p>
-            Nexterse works differently. We are a software engineering company with deep AI capability,
+            Nexterse LLC works differently. We are a software engineering company with deep AI capability,
             not an AI-only shop. If the review shows that your foundation is weak, we will say so. If
             the target outcome is better served by deterministic software, we will say that too. If the
             right answer is data cleanup, integration work, or architecture modernization before any

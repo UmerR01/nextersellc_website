@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useRef, useState } from "react";
 import Image from "next/image";
 import styles from "./CaseCards.module.css";
 
@@ -22,7 +22,7 @@ type CaseCard = {
 const CARDS: CaseCard[] = [
   {
     banner: "/cases/si-digital.webp",
-    name: "Who is Nexterse?",
+    name: "Who is Nexterse LLC?",
     title: "Your digital partner for strategic outcomes",
     text: "We drive business profitability by steering advanced technologies, responsible delivery, and human-centered collaboration toward your endgame.",
     stats: [
@@ -56,8 +56,29 @@ const CARDS: CaseCard[] = [
 
 export default function CaseCards() {
   const [active, setActive] = useState(2);
+  const [direction, setDirection] = useState<-1 | 0 | 1>(0);
+  const touchStartX = useRef<number | null>(null);
   const count = CARDS.length;
-  const go = (dir: number) => setActive((i) => (i + dir + count) % count);
+  const go = (dir: -1 | 1) => {
+    setDirection(dir);
+    setActive((i) => (i + dir + count) % count);
+  };
+
+  const onTouchStart = (event: React.TouchEvent<HTMLDivElement>) => {
+    touchStartX.current = event.touches[0]?.clientX ?? null;
+  };
+
+  const onTouchEnd = (event: React.TouchEvent<HTMLDivElement>) => {
+    if (touchStartX.current === null) return;
+    const endX = event.changedTouches[0]?.clientX;
+    if (endX === undefined) return;
+
+    const distance = touchStartX.current - endX;
+    touchStartX.current = null;
+
+    if (Math.abs(distance) < 50) return;
+    go(distance > 0 ? 1 : -1);
+  };
 
   return (
     <section className={styles.section} id="case-studies">
@@ -66,12 +87,28 @@ export default function CaseCards() {
           Case studies <span>that move the numbers</span>
         </h2>
 
-        <div className={styles.cards}>
+        <div
+          className={styles.cards}
+          onTouchStart={onTouchStart}
+          onTouchEnd={onTouchEnd}
+          aria-label="Case studies carousel"
+        >
           {CARDS.map((card, i) => (
             <article
               key={card.name}
-              className={`${styles.card} ${i === active ? styles.active : ""}`}
-              onClick={() => setActive(i)}
+              className={`${styles.card} ${i === active ? styles.active : ""} ${
+                i === active && direction === 1
+                  ? styles.slideNext
+                  : i === active && direction === -1
+                    ? styles.slidePrev
+                    : ""
+              } ${i === (active + 1) % count ? styles.tabletNext : ""}`}
+              onClick={() => {
+                if (i !== active) {
+                  setDirection(1);
+                  setActive(i);
+                }
+              }}
             >
               <Image
                 src={card.banner}

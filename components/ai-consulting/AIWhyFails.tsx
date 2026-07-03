@@ -67,7 +67,7 @@ export default function AIWhyFails() {
             <p className={styles.contentBody}>{TABS[active].body}</p>
             <p className={styles.contentBody}>{TABS[active].how}</p>
             {/* <div className={styles.contentReality}>
-              <span className={styles.realityLabel}>The Nexterse approach</span>
+              <span className={styles.realityLabel}>The Nexterse LLC approach</span>
               <p className={styles.contentBody}>{TABS[active].how}</p>
             </div> */}
           </div>
@@ -84,7 +84,7 @@ export default function AIWhyFails() {
               <div className={styles.accordionContent}>
                 <p className={styles.accordionBody}>{t.body}</p>
                 <div className={styles.accordionReality}>
-                  <span className={styles.realityLabel}>The Nexterse approach</span>
+                  <span className={styles.realityLabel}>The Nexterse LLC approach</span>
                   <p className={styles.realityText}>{t.how}</p>
                 </div>
               </div>

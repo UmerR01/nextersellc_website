@@ -176,7 +176,7 @@
 }
 @media (max-width: 768px) {
   .section { padding: 64px 0; }
-  .tabs { margin-top: 40px; overflow-x: auto; }
+  .tabs { margin-top: 40px; overflow-x: auto; overscroll-behavior-inline: contain; }
   .tab { min-width: 130px; }
   .panelWrap { margin-top: 24px; }
 }

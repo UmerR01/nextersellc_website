@@ -30,7 +30,7 @@ export default function ARHero() {
         </h1>
 
         <p className={styles.desc}>
-          Nexterse&apos;s fixed-scope AI readiness assessment reviews your data architecture,
+          Nexterse LLC&apos;s fixed-scope AI readiness assessment reviews your data architecture,
           infrastructure, security, and ROI assumptions before you invest in development,
           providing a roadmap for AI adoption.
         </p>

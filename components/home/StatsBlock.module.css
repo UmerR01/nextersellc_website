@@ -63,7 +63,38 @@
     font-size: 36px;
   }
 }
+
+@media (min-width: 768px) and (max-width: 1024px) {
+  .row {
+    display: block;
+  }
+  .titleCol,
+  .statsCol {
+    min-width: 0;
+    width: 100%;
+  }
+  .titleCol {
+    margin-bottom: 2.5rem;
+  }
+  .wrapper {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    margin: 0;
+  }
+  .achievement {
+    max-width: none;
+    padding: 16px 12px;
+  }
+}
 @media (max-width: 576px) {
+  .row {
+    gap: 2rem;
+  }
+  .titleCol,
+  .statsCol {
+    min-width: 0;
+    flex-basis: 100%;
+  }
   .achievement {
     flex: 1 1 50%;
     max-width: 50%;

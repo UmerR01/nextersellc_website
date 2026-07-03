@@ -1,5 +1,6 @@
 import Link from "next/link";
 import styles from "./EngagementHero.module.css";
+import AboutNavHeroBackground from "@/components/AboutNavHeroBackground";
 
 export default function EngagementHero() {
   return (
@@ -10,20 +11,20 @@ export default function EngagementHero() {
             <g clipPath="url(#eng_clip0)">
               <rect width="1920" height="816" fill="url(#eng_paint0)" />
               <g opacity="0.08">
-                <path fillRule="evenodd" clipRule="evenodd" d="M-845.628 857.916L-688.82 11.95L-883.335 -19L-1166 857.916L-845.628 857.916ZM-78.6641 465.883L-10.577 857.916L289.163 857.916L150.925 490.643L-78.6641 465.883ZM-588.25 857.916L-466.518 30.5199L412.996 141.94L825.646 857.916L544.475 857.916L309.265 350.336L-305.016 296.69L-267.877 857.916L-588.25 857.916Z" fill="#FF415C" />
+                <path fillRule="evenodd" clipRule="evenodd" d="M-845.628 857.916L-688.82 11.95L-883.335 -19L-1166 857.916L-845.628 857.916ZM-78.6641 465.883L-10.577 857.916L289.163 857.916L150.925 490.643L-78.6641 465.883ZM-588.25 857.916L-466.518 30.5199L412.996 141.94L825.646 857.916L544.475 857.916L309.265 350.336L-305.016 296.69L-267.877 857.916L-588.25 857.916Z" fill="#3CC4E5" />
               </g>
               <g opacity="0.08">
-                <path fillRule="evenodd" clipRule="evenodd" d="M874.988 -647.181L1388.56 -730.869L1655.22 -246.923L1928.98 -316.113L1484.69 -947.631L656.166 -844.49L599.943 19.784L892.548 -54.1681L874.988 -647.181ZM1254.33 -550.397L1420.26 -187.351L1127.66 -113.399L1098.77 -529.125L1254.33 -550.397ZM1687.02 -978.365L1877.47 -996.427L2419.15 -439.644L2162.35 -374.741L1687.02 -978.365Z" fill="#FF415C" />
-                <path fillRule="evenodd" clipRule="evenodd" d="M892.667 -53.7166L1231.16 682.73L1060.65 755.898L600.063 20.2355L892.667 -53.7166ZM1683.65 127.297L1655.34 -246.473L1929.1 -315.663L1887.62 51.6869L1683.65 127.297ZM1127.73 -113.128L1429.9 614.455L2207.47 309.673L2419.08 -439.5L2162.28 -374.597L2064.62 143.284L1515.97 334.075L1420.34 -187.08L1127.73 -113.128Z" fill="#FF415C" />
+                <path fillRule="evenodd" clipRule="evenodd" d="M874.988 -647.181L1388.56 -730.869L1655.22 -246.923L1928.98 -316.113L1484.69 -947.631L656.166 -844.49L599.943 19.784L892.548 -54.1681L874.988 -647.181ZM1254.33 -550.397L1420.26 -187.351L1127.66 -113.399L1098.77 -529.125L1254.33 -550.397ZM1687.02 -978.365L1877.47 -996.427L2419.15 -439.644L2162.35 -374.741L1687.02 -978.365Z" fill="#3CC4E5" />
+                <path fillRule="evenodd" clipRule="evenodd" d="M892.667 -53.7166L1231.16 682.73L1060.65 755.898L600.063 20.2355L892.667 -53.7166ZM1683.65 127.297L1655.34 -246.473L1929.1 -315.663L1887.62 51.6869L1683.65 127.297ZM1127.73 -113.128L1429.9 614.455L2207.47 309.673L2419.08 -439.5L2162.28 -374.597L2064.62 143.284L1515.97 334.075L1420.34 -187.08L1127.73 -113.128Z" fill="#3CC4E5" />
               </g>
               <g filter="url(#eng_filter0)">
                 <ellipse cx="960" cy="458" rx="590" ry="346" fill="url(#eng_paint1)" />
               </g>
               <g opacity="0.26" filter="url(#eng_filter1)">
-                <circle cx="2010" cy="205" r="460" fill="#FF415C" />
+                <circle cx="2010" cy="205" r="460" fill="#3CC4E5" />
               </g>
               <g opacity="0.26" filter="url(#eng_filter2)">
-                <circle cx="19" cy="804" r="460" fill="#FF415C" />
+                <circle cx="19" cy="804" r="460" fill="#3CC4E5" />
               </g>
             </g>
             <defs>
@@ -65,10 +66,10 @@ export default function EngagementHero() {
                 <path fillRule="evenodd" clipRule="evenodd" d="M30.5391 -422.814L453.522 -344.41L468.997 -441.667L30.5391 -583V-422.814ZM226.556 -39.3311L30.5391 -5.28754V144.583L214.176 75.4636L226.556 -39.3311ZM30.5391 -294.125L444.237 -233.259L388.527 206.498L30.5391 412.823V272.238L284.329 154.632L311.152 -152.508L30.5391 -133.939V-294.125Z" fill="white" />
               </g>
               <g opacity="0.32" filter="url(#eng_mob_f0)">
-                <ellipse cx="61" cy="-88" rx="311" ry="312" transform="rotate(90 61 -88)" fill="#FF415C" />
+                <ellipse cx="61" cy="-88" rx="311" ry="312" transform="rotate(90 61 -88)" fill="#3CC4E5" />
               </g>
               <g opacity="0.32" filter="url(#eng_mob_f1)">
-                <ellipse cx="387" cy="744" rx="311" ry="312" transform="rotate(90 387 744)" fill="#FF415C" />
+                <ellipse cx="387" cy="744" rx="311" ry="312" transform="rotate(90 387 744)" fill="#3CC4E5" />
               </g>
               <g filter="url(#eng_mob_f2)">
                 <ellipse cx="145" cy="270.5" rx="212.5" ry="145" transform="rotate(90 145 270.5)" fill="url(#eng_mob_paint1)" />
@@ -106,6 +107,7 @@ export default function EngagementHero() {
         </div>
       </div>
 
+      <AboutNavHeroBackground />
       <div className={styles.heroWrapper}>
         <div className={styles.container}>
           <div className={styles.content}>
@@ -115,7 +117,8 @@ export default function EngagementHero() {
             </div>
             <h1 className={styles.title}>Flexible and client-oriented engagement models</h1>
             <div className={styles.description}>
-              <p>Our engagement models are tailored to fit the diverse and dynamic needs of American businesses, offering flexibility, transparency, and efficiency, whether you&apos;re looking for a Fixed Price, Time &amp; Material, or a Dedicated Team approach.</p>
+              <p>Choose the engagement model that fits your project shape and engage Nexterse LLC to build it: Time and Materials, Time and Materials with a cap, Fixed Price, or a Dedicated Team.</p>
+              <p>Each model defines how the scope, budget, and team evolve throughout the project.</p>
             </div>
           </div>
         </div>

@@ -1,21 +1,32 @@
 import type { Metadata } from "next";
 import Header from "@/components/Header";
 import EngagementHero from "@/components/engagement/EngagementHero";
-import WhyNavCards from "@/components/engagement/WhyNavCards";
+import EngagementLogos from "@/components/engagement/EngagementLogos";
+import AchievementsBlock from "@/components/engagement/AchievementsBlock";
+import WhyModelMatters from "@/components/engagement/WhyModelMatters";
+import OurServicesBlock from "@/components/engagement/OurServicesBlock";
 import ModelsBlock from "@/components/engagement/ModelsBlock";
 import ComparisonTable from "@/components/engagement/ComparisonTable";
+import AIProjectsBlock from "@/components/engagement/AIProjectsBlock";
 import DownloadCTA from "@/components/engagement/DownloadCTA";
-import ProjectOrganization from "@/components/engagement/ProjectOrganization";
-import CasesBlock from "@/components/engagement/CasesBlock";
+import IndustryTable from "@/components/engagement/IndustryTable";
+import SwitchingModels from "@/components/engagement/SwitchingModels";
+import RiskTable from "@/components/engagement/RiskTable";
+import ContractingProcess from "@/components/engagement/ContractingProcess";
+import HowWeRunProjects from "@/components/engagement/HowWeRunProjects";
+import CasesBlock from "@/components/home/CaseCards";
 import ReviewSlider from "@/components/engagement/ReviewSlider";
+import WhySumatoSoft from "@/components/engagement/WhySumatoSoft";
 import EngAwardsBlock from "@/components/engagement/EngAwardsBlock";
+import EngFaqBlock from "@/components/engagement/EngFaqBlock";
 import LetsStart from "@/components/home/LetsStart";
 import EngCrosslinksBlock from "@/components/engagement/EngCrosslinksBlock";
+import BlogSection from "@/components/engagement/BlogSection";
 
 export const metadata: Metadata = {
-  title: "Engagement Models & Process | Nexterse",
+  title: "Engagement Models & Process | Nexterse LLC",
   description:
-    "Explore Nexterse's flexible engagement models – Fixed Price, Time & Material, T&M with Budget Cap, and Dedicated Team. Find the right model for your custom software project.",
+    "Explore Nexterse LLC's flexible engagement models – Fixed Price, Time & Material, T&M with Budget Cap, and Dedicated Team. Find the right model for your custom software project.",
 };
 
 export default function EngagementModelsPage() {
@@ -23,16 +34,27 @@ export default function EngagementModelsPage() {
     <>
       <Header />
       <EngagementHero />
-      <WhyNavCards />
+      <EngagementLogos />
+      <AchievementsBlock />
+      <WhyModelMatters />
+      <OurServicesBlock />
       <ModelsBlock />
       <ComparisonTable />
+      <AIProjectsBlock />
       <DownloadCTA />
-      <ProjectOrganization />
+      <IndustryTable />
+      <SwitchingModels />
+      <RiskTable />
+      <ContractingProcess />
+      <HowWeRunProjects />
       <CasesBlock />
       <ReviewSlider />
+      <WhySumatoSoft />
       <EngAwardsBlock />
+      <EngFaqBlock />
       <LetsStart />
       <EngCrosslinksBlock />
+      <BlogSection />
     </>
   );
 }

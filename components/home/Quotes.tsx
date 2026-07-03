@@ -62,7 +62,7 @@ export default function Quotes() {
     if (!el) return;
     const compute = () => {
       const w = el.clientWidth;
-      const mobile = window.innerWidth <= 767;
+      const mobile = window.innerWidth <= 1024;
       const g = mobile ? 0 : 32;
       const pp = mobile ? 1 : 2;
       setGapPx(g);

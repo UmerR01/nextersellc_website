@@ -1,6 +1,7 @@
 "use client";
 import Link from "next/link";
 import styles from "./FAQHero.module.css";
+import AboutNavHeroBackground from "@/components/AboutNavHeroBackground";
 
 export default function FAQHero() {
   return (
@@ -57,17 +58,18 @@ export default function FAQHero() {
         </div>
       </div>
 
+      <AboutNavHeroBackground />
       <div className={styles.heroWrapper}>
         <div className={styles.container}>
           <div className={styles.inner}>
             <nav className={styles.breadcrumbs} aria-label="Breadcrumb">
               <Link href="/">Home</Link>
-              <Link href="/about">About us</Link>
+              <Link href="/team">About us</Link>
               <span>Frequently asked questions</span>
             </nav>
 
             <h1 className={styles.title}>
-              <span className={styles.titleBlue}>FAQ</span> about Nexterse
+              <span className={styles.titleBlue}>FAQ</span> about Nexterse LLC
             </h1>
 
             <div className={styles.description}>

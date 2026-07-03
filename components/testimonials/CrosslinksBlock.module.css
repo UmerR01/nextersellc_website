@@ -59,10 +59,16 @@
 .grid {
   column-gap: 20px;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(311px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 311px), 1fr));
   overflow: hidden;
   row-gap: 56px;
   transition: max-height 0.25s ease;
+}
+
+@media (max-width: 420px) {
+  .itemLinkLast {
+    white-space: normal;
+  }
 }
 
 .col {

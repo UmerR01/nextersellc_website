@@ -1,0 +1,190 @@
+.section {
+  padding: clamp(4.5rem, 6vw, 6rem) 0;
+  background: #fff;
+}
+
+@media (max-width: 768px) {
+  .section {
+    padding: 72px 0;
+  }
+}
+
+.container {
+  width: min(calc(100% - clamp(2.5rem, 8vw, 6rem)), 75rem);
+  margin: 0 auto;
+  padding: 0;
+}
+
+.title {
+  font-size: clamp(2rem, 4vw, 3.5rem);
+  font-weight: 400;
+  line-height: 1.1;
+  color: #000;
+  margin: 0 0 24px;
+  text-align: center;
+}
+
+@media (max-width: 768px) {
+  .title {
+    font-size: 32px;
+    line-height: 38px;
+    margin-bottom: 16px;
+  }
+}
+
+.description {
+  font-size: clamp(1rem, 1.4vw, 1.375rem);
+  font-weight: 400;
+  line-height: 1.64;
+  color: #5e6d8e;
+  margin: 0 0 56px;
+  max-width: 51.25rem;
+}
+
+@media (max-width: 768px) {
+  .description {
+    font-size: 16px;
+    line-height: 26px;
+    margin-bottom: 32px;
+    margin-inline: auto;
+    text-align: left;
+  }
+
+  .title {
+    text-align: left;
+  }
+}
+
+.desktopLayout {
+  display: flex;
+  gap: clamp(2.5rem, 5vw, 4rem);
+  align-items: flex-start;
+}
+
+/* Tab list panel — light blue background box */
+.menu {
+  min-width: clamp(16rem, 27vw, 20rem);
+  flex-shrink: 0;
+  background: #dce8f7;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.menuItem {
+  padding: clamp(1rem, 1.5vw, 1.375rem) clamp(1.25rem, 2vw, 2rem);
+  cursor: pointer;
+  border: none;
+  background: transparent;
+  text-align: left;
+  font-size: 18px;
+  font-weight: 400;
+  color: #112244;
+  transition: background 0.2s ease, color 0.2s ease;
+  line-height: 1.4;
+}
+
+.menuItem:hover {
+  background: rgba(60, 196, 229, 0.12);
+  color: var(--color-accent);
+}
+
+/* Active tab: solid accent fill + white text */
+.menuItemActive {
+  background: var(--color-accent);
+  color: #fff;
+  font-weight: 600;
+}
+
+.menuItemActive:hover {
+  background: var(--color-accent);
+  color: #fff;
+}
+
+.panel {
+  flex: 1;
+  padding-top: 16px;
+}
+
+.panelTitle {
+  font-size: clamp(1.75rem, 3vw, 2.75rem);
+  font-weight: 400;
+  margin: 0 0 24px;
+  color: #112244;
+  line-height: 1.2;
+}
+
+.panelText {
+  color: #5e6d8e;
+  font-size: clamp(1rem, 1.4vw, 1.375rem);
+  line-height: 1.75;
+  margin: 0;
+}
+
+.mobileLayout {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .desktopLayout {
+    display: none;
+  }
+
+  .mobileLayout {
+    display: block;
+  }
+}
+
+.accordion {
+  border-bottom: 1px solid #e6eff7;
+  margin-bottom: 0.25rem;
+  transition: background-color 0.25s ease;
+}
+
+.accordion[open] {
+  background: linear-gradient(110deg, #eef7ff 0%, #dcecff 100%);
+  border-bottom-color: transparent;
+}
+
+.accordionSummary {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem 2rem;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 600;
+  color: #112244;
+  list-style: none;
+}
+
+.accordionSummary::-webkit-details-marker {
+  display: none;
+}
+
+.chevron {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg width='16' height='16' viewBox='0 0 16 16' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M4 6l4 4 4-4' stroke='%23112244' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  transition: transform 0.3s ease;
+}
+
+details[open] .chevron {
+  transform: rotate(180deg);
+}
+
+.accordionBody {
+  padding: 0 2rem 2.5rem;
+}
+
+.accordionBody p {
+  font-size: 16px;
+  line-height: 1.6;
+  color: #5e6d8e;
+  margin: 0;
+}

@@ -1,5 +1,6 @@
 import Link from "next/link";
 import styles from "./TestimonialsHero.module.css";
+import AboutNavHeroBackground from "@/components/AboutNavHeroBackground";
 
 export default function TestimonialsHero() {
   return (
@@ -133,6 +134,7 @@ export default function TestimonialsHero() {
         </div>
       </div>
 
+      <AboutNavHeroBackground />
       <div className={styles.heroWrapper}>
         <div className={styles.container}>
           <div className={styles.inner}>

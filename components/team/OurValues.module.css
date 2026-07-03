@@ -1,0 +1,138 @@
+.section {
+  background: #fff;
+  padding: 28px 0;
+}
+
+.container {
+  box-sizing: border-box;
+  width: calc(100% - 48px);
+  max-width: 1420px;
+  margin: 0 auto;
+  padding: 24px 132px 0;
+  background: #f7f9fe;
+}
+
+.title {
+  font-family: var(--font-inter-tight), sans-serif;
+  font-size: 56px;
+  line-height: 62px;
+  font-weight: 400;
+  color: #02102C;
+  letter-spacing: normal;
+  text-align: center;
+  margin-bottom: 64px;
+  margin-top: 0;
+}
+
+.accent {
+  color: #3CC4E5;
+}
+
+.content {
+  display: grid;
+  grid-template-columns: minmax(0, 1.08fr) minmax(0, 0.92fr);
+  gap: 88px;
+  align-items: start;
+}
+
+.valuesList ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.valuesList li {
+  font-family: var(--font-inter-tight), sans-serif;
+  font-size: 22px;
+  line-height: 1.62;
+  color: #112244;
+  padding-left: 30px;
+  position: relative;
+}
+
+.valuesList li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 10px;
+  width: 19px;
+  height: 14px;
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg width='19' height='14' viewBox='0 0 19 14' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M17.25 1.75037L6.75 12.2504L1.5 7.00037' stroke='%233CC4E5' stroke-width='1.5' stroke-linecap='square'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+.valuesList li b {
+  color: #02102C;
+  font-weight: 600;
+}
+
+.imageCol {
+  position: relative;
+}
+
+.imageWrap {
+  position: relative;
+  overflow: hidden;
+}
+
+.imageWrap img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 683 / 1024;
+  display: block;
+  object-fit: cover;
+}
+
+.imageWrap::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(110deg, rgba(255, 65, 92, 0.2), rgba(18, 122, 255, 0.22));
+  mix-blend-mode: multiply;
+  pointer-events: none;
+}
+
+@media (max-width: 1024px) {
+  .container {
+    padding: 4rem clamp(2rem, 5vw, 3.5rem);
+  }
+
+  .content {
+    grid-template-columns: minmax(0, 1.08fr) minmax(0, 0.92fr);
+    gap: clamp(2rem, 5vw, 4rem);
+  }
+}
+
+@media (max-width: 767px) {
+  .section {
+    padding: 20px 0;
+  }
+
+  .container {
+    width: calc(100% - 32px);
+    padding: 56px 24px;
+  }
+
+  .title {
+    font-size: 32px;
+    line-height: 35px;
+    margin-bottom: 40px;
+  }
+
+  .content {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .valuesList { order: 1; }
+  .imageCol { order: 2; }
+
+  .valuesList li {
+    font-size: 16px;
+    padding-left: 26px;
+  }
+}

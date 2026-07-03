@@ -32,6 +32,28 @@
   }
 }
 
+@media (max-width: 420px) {
+  .block {
+    padding: 64px 0;
+  }
+  .category {
+    padding-inline: 12px;
+  }
+  .categoryTitle {
+    font-size: 18px;
+    padding-right: 12px;
+  }
+  .question {
+    column-gap: 10px;
+  }
+  .answer {
+    margin-left: 26px;
+  }
+  .answerText ul {
+    padding-left: 24px;
+  }
+}
+
 .tabs {
   background: linear-gradient(
     105.87deg,
@@ -108,8 +130,8 @@
   color: var(--color-text);
   cursor: pointer;
   display: flex;
-  font-size: 20px;
-  font-weight: 600;
+  font-size: 1.25rem;
+  font-weight: 500;
   justify-content: space-between;
   list-style: none;
   padding: 24px 24px 24px 0;

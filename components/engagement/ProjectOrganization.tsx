@@ -17,7 +17,7 @@ const COLS = [
     icon: "/engagement/01_Reports.svg",
     alt: "Reports icon",
     title: "Planning and reporting",
-    text: "Nexterse undertakes a commitment to regular reporting on the project. The reports depend on the chosen engagement model: real-time 24/7 reporting via Jira Atlassian, monthly, weekly reports, etc. Regular reporting ensures transparency of the development process and provides a clear understanding of the costs at every stage of development.",
+    text: "Nexterse LLC undertakes a commitment to regular reporting on the project. The reports depend on the chosen engagement model: real-time 24/7 reporting via Jira Atlassian, monthly, weekly reports, etc. Regular reporting ensures transparency of the development process and provides a clear understanding of the costs at every stage of development.",
   },
 ];
 

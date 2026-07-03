@@ -1,76 +1,49 @@
 import styles from "./ComparisonTable.module.css";
 
-const FEATURES = [
-  "Applicable for pilot projects and initial phases (Phase 0)",
-  "For projects requiring specific expertise (domain/product experience)",
-  "Detailed specifications required before start",
-  "Minimal contract duration",
-  "Final total price guaranteed before start",
-  "Lowest hourly rates",
-  "Tends to give the lowest overall cost",
-  "Invoicing interval",
-  "Customer controls team member assignments",
-  "Permitted requirement changes after start",
-  "Multiple projects covered under one contract",
-];
-
-const COLS = [
-  {
-    label: "Fixed Price (FP)",
-    data: ["Yes", "Yes", "Yes", "Any (no minimum)", "Yes", "No", "No", "Every milestone", "No", "Minimal (contract amendments only)", "Limited"],
-  },
-  {
-    label: "Time & Materials (T&M)",
-    data: ["Yes", "No", "No", "1 calendar month", "No", "No", "Yes (for a single project)", "Monthly (or per sprint)", "No", "Any (unlimited)", "Yes"],
-  },
-  {
-    label: "T&M + Cap",
-    data: ["Yes", "No", "No", "1 calendar month", "Yes", "No", "Yes (for a single project)", "Monthly (or per sprint)", "No", "Some (limited)", "Limited"],
-  },
-  {
-    label: "Dedicated Team (DT)",
-    data: ["No", "Yes", "No", "3 calendar months", "No", "Yes", "Yes (for long-term projects)", "Monthly", "Yes", "Any (unlimited)", "Yes"],
-  },
+const ROWS = [
+  { factor: "Scope", fp: "Flexible", tm: "Flexible", tmCap: "Flexible", dt: "Flexible" },
+  { factor: "Budget", fp: "Variable", tm: "Capped", tmCap: "Fixed", dt: "Monthly per member" },
+  { factor: "Best for", fp: "Evolving products", tm: "Mid-size, firm budget", tmCap: "Bounded, specified work", dt: "Long-term ownership" },
+  { factor: "Typical size", fp: "$50K – $500K", tm: "$100K – $300K", tmCap: "$30K – $150K", dt: "$200K – $2M+/yr" },
+  { factor: "Typical duration", fp: "3 – 18 months", tm: "3 – 9 months", tmCap: "2 – 6 months", dt: "12 months+" },
+  { factor: "Who manages the team", fp: "Nexterse LLC", tm: "Nexterse LLC", tmCap: "Nexterse LLC", dt: "Client direction, Nexterse LLC delivery" },
+  { factor: "SDLC project fit", fp: "Strong", tm: "Strong", tmCap: "Strong", dt: "Strong" },
+  { factor: "ADLC (AI) project fit", fp: "Strong", tm: "Strongest", tmCap: "Limited, bounded PoCs only", dt: "Strongest for ongoing" },
 ];
 
 export default function ComparisonTable() {
   return (
-    <div className={styles.wrapper}>
+    <section className={styles.section}>
       <div className={styles.container}>
-        <table className={styles.tableDesktop}>
-          <thead>
-            <tr>
-              <th scope="col">Feature or limitation</th>
-              {COLS.map((c) => <th key={c.label} scope="col">{c.label}</th>)}
-            </tr>
-          </thead>
-          <tbody>
-            {FEATURES.map((feat, fi) => (
-              <tr key={fi}>
-                <td>{feat}</td>
-                {COLS.map((c) => <td key={c.label}>{c.data[fi]}</td>)}
+        <h2 className={styles.title}>Compare the four models</h2>
+        <p className={styles.description}>
+          The table sets the four models side by side on the factors buyers weigh most. Column order matches the rest of the page: Time and Materials, Time and Materials with a cap, Fixed Price, Dedicated Team.
+        </p>
+        <div className={styles.tableWrapper}>
+          <table className={styles.table}>
+            <thead>
+              <tr>
+                <th>Factor</th>
+                <th>Fixed Price</th>
+                <th>Time and Materials</th>
+                <th>T&M with a cap</th>
+                <th>Dedicated Team</th>
               </tr>
-            ))}
-          </tbody>
-        </table>
-
-        <div className={styles.tableMobile}>
-          <div className={styles.mobileCol}>
-            <div className={styles.mobileColTitle}>Feature or limitation</div>
-            <div className={styles.mobileColData}>
-              {FEATURES.map((f, i) => <div key={i} className={styles.mobileCell}>{f}</div>)}
-            </div>
-          </div>
-          {COLS.map((c) => (
-            <div key={c.label} className={styles.mobileCol}>
-              <div className={styles.mobileColTitle}>{c.label}</div>
-              <div className={styles.mobileColData}>
-                {c.data.map((d, i) => <div key={i} className={styles.mobileCell}>{d}</div>)}
-              </div>
-            </div>
-          ))}
+            </thead>
+            <tbody>
+              {ROWS.map((row) => (
+                <tr key={row.factor}>
+                  <td>{row.factor}</td>
+                  <td>{row.fp}</td>
+                  <td>{row.tm}</td>
+                  <td>{row.tmCap}</td>
+                  <td>{row.dt}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
         </div>
       </div>
-    </div>
+    </section>
   );
 }

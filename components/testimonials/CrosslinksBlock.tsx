@@ -6,7 +6,7 @@ import styles from "./CrosslinksBlock.module.css";
 const LINKS = [
   { label: "AI software development", last: "services", href: "/ai-consulting" },
   { label: "IoT development", last: "services", href: "/ai-consulting" },
-  { label: "About", last: "Nexterse", href: "/about" },
+  { label: "About", last: "Nexterse LLC", href: "/team" },
   { label: "Legacy software", last: "modernization", href: "/ai-consulting" },
   { label: "Custom software", last: "development", href: "/ai-consulting" },
   { label: "AI readiness", last: "assessment", href: "/ai-readiness-assessment" },
@@ -44,7 +44,7 @@ export default function CrosslinksBlock() {
           }
         >
           <div className={styles.col}>
-            <div className={styles.colTitle}>More about Nexterse</div>
+            <div className={styles.colTitle}>More about Nexterse LLC</div>
             <div className={styles.list}>
               {LINKS.map((l, i) => (
                 <div key={i} className={styles.item}>

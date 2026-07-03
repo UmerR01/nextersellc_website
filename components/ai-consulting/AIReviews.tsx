@@ -41,7 +41,7 @@ const REVIEWS = [
   },
   {
     quote:
-      "Working with Nexterse has been an outstanding experience. Their team is not only highly skilled but also incredibly responsive, collaborative, and committed to delivering quality results. I can't recommend them enough! Thank you team Nexterse for bringing my vision to life.",
+      "Working with Nexterse LLC has been an outstanding experience. Their team is not only highly skilled but also incredibly responsive, collaborative, and committed to delivering quality results. I can't recommend them enough! Thank you team Nexterse LLC for bringing my vision to life.",
     name: "Julie Crawford",
     role: "Founder",
     photo: "/ai-consulting/imgs/08_Julia-C-300x300.jpg",

@@ -1,0 +1,270 @@
+/* .hero-about */
+.hero {
+  margin-left: calc(50% - 50vw);
+  overflow: hidden;
+  padding-top: 110px;
+  position: relative;
+  width: 100vw;
+}
+
+@media screen and (min-width: 1024px) and (max-width: 1680px) {
+  .hero {
+    margin-left: 0;
+    padding-top: 160px;
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .hero {
+    padding-top: 88px;
+  }
+}
+
+/* Background wrapper — full-size absolute, centred */
+.bgWrapper {
+  align-items: center;
+  display: none;
+  height: 100%;
+  justify-content: center;
+  left: 50%;
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+}
+
+@media screen and (min-width: 769px) {
+  .bgWrapper {
+    min-height: 700px;
+  }
+}
+
+/* Desktop SVG */
+.desktopBg {
+  display: block;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  z-index: -1;
+}
+
+@media (max-width: 768px) {
+  .desktopBg {
+    display: none;
+  }
+}
+
+.bgSvg {
+  height: 100%;
+  width: 100%;
+}
+
+/* Mobile image */
+.mobileBg {
+  display: none;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  z-index: -1;
+}
+
+.mobileBg img {
+  height: 100%;
+  object-fit: cover;
+  width: 100%;
+}
+
+@media (max-width: 768px) {
+  .mobileBg {
+    display: block;
+  }
+}
+
+/* Content positioning shell */
+.heroWrapper {
+  position: relative;
+  z-index: 1;
+}
+
+/* hero-about .container override — max 1504px */
+.heroWrapper :global(.container) {
+  max-width: 1504px;
+}
+
+/* .hero-about__wrapper — position: relative so breadcrumbs can be absolute */
+.content {
+  color: #fff;
+  padding: 96px 0 136px;
+  position: relative;
+}
+
+@media screen and (max-width: 768px) {
+  .content {
+    padding-bottom: 72px;
+    padding-top: 40px;
+    text-align: left;
+  }
+}
+
+/* ── Breadcrumbs  ──────────────────────────────────
+   Original: position:absolute; top:8px; left:0;
+   white-space:nowrap; overflow:hidden
+   ────────────────────────────────────────────────── */
+.breadcrumbs {
+  display: flex;
+  left: 0;
+  overflow: hidden;
+  position: absolute;
+  text-overflow: ellipsis;
+  top: 8px;
+  white-space: nowrap;
+}
+
+@media screen and (max-width: 768px) {
+  .breadcrumbs {
+    position: relative;
+    top: -40px;
+  }
+}
+
+.breadcrumbs a {
+  color: #fff;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+  margin-right: 8px;
+  padding-right: 24px;
+  position: relative;
+  text-decoration: none;
+}
+
+/* Chevron arrow after each link */
+.breadcrumbs a::after {
+  background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='none'%3E%3Cpath stroke='%23fff' stroke-linecap='square' d='m6 4 4 4-4 4'/%3E%3C/svg%3E");
+  bottom: 0;
+  content: "";
+  height: 16px;
+  margin: auto 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 16px;
+}
+
+.breadcrumbs a:hover {
+  color: var(--color-accent, #3cc4e5);
+  transition: all 0.3s ease;
+}
+
+/* Current page span */
+.breadcrumbs span {
+  color: #899fb6;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* ── Title (.hero-about__title)  ───────────────────── */
+.title {
+  font-size: 40px;
+  font-weight: 400;
+  line-height: 48px;
+  color: #fff;
+  max-width: 980px;
+  text-align: left;
+}
+
+@media screen and (min-width: 768px) {
+  .title {
+    font-size: 64px;
+    line-height: 77px;
+  }
+}
+
+/* ── Description (.hero-about__description .wysiwyg_big) ─ */
+.description {
+  color: #fff;
+  font-size: 22px;
+  font-weight: 400;
+  line-height: 36px;
+  margin: 24px 0 0;
+  max-width: 880px;
+  text-align: left;
+}
+
+.description p + p {
+  margin-top: 0;
+}
+
+@media screen and (max-width: 768px) {
+  .description {
+    font-size: 16px;
+    line-height: 26px;
+    margin-top: 16px;
+  }
+}
+
+/* ── Buttons (.hero-about__buttons .left) ─────────── */
+.buttons {
+  align-items: flex-start;
+  display: flex;
+  gap: 32px;
+  justify-content: flex-start;
+  margin-top: 56px;
+}
+
+@media screen and (max-width: 768px) {
+  .buttons {
+    flex-wrap: wrap;
+    gap: 16px;
+    margin-top: 32px;
+  }
+}
+
+/* .button.first: filled accent */
+.btnPrimary {
+  align-items: center;
+  background-color: var(--color-accent, #3cc4e5);
+  border: 2px solid var(--color-accent, #3cc4e5);
+  border-radius: var(--radius-button);
+  color: #fff;
+  cursor: pointer;
+  display: inline-flex;
+  font-size: 16px;
+  justify-content: center;
+
+  overflow: hidden;
+  padding: 0.4rem 1.25rem;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  transition: all 0.5s ease;
+  z-index: 1;
+}
+
+.btnPrimary:hover {
+  background: transparent;
+  color: var(--color-accent, #3cc4e5);
+}
+
+@media screen and (max-width: 768px) {
+  .btnPrimary {
+    flex-basis: auto;
+    flex-grow: 0;
+    max-width: max-content;
+    width: auto;
+  }
+}
+
+@media screen and (min-width: 769px) and (max-width: 1365px) {
+  .btnPrimary {
+    width: auto;
+    max-width: max-content;
+  }
+}

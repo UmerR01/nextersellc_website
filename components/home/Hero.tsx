@@ -7,6 +7,7 @@ import styles from "./Hero.module.css";
 export default function Hero() {
   const wrapRef = useRef<HTMLDivElement>(null);
   const stageRef = useRef<HTMLDivElement>(null);
+  const videoRefs = useRef<Array<HTMLVideoElement | null>>([]);
 
   useEffect(() => {
     const wrap = wrapRef.current;
@@ -15,12 +16,41 @@ export default function Hero() {
 
     let ticking = false;
 
+    const recoverVideos = () => {
+      const videos = videoRefs.current.filter(
+        (video): video is HTMLVideoElement => video !== null,
+      );
+
+      for (const video of videos) {
+        video.muted = true;
+        if (video.readyState === 0 || video.networkState === HTMLMediaElement.NETWORK_NO_SOURCE) {
+          video.load();
+        }
+        void video.play().catch(() => {
+          // A later pageshow/visibility/focus event retries muted playback.
+        });
+      }
+
+      const master = videos[0];
+      if (!master || master.readyState < 2) return;
+      for (const copy of videos.slice(1)) {
+        if (copy.readyState >= 1 && Math.abs(copy.currentTime - master.currentTime) > 0.35) {
+          copy.currentTime = master.currentTime;
+        }
+      }
+    };
+
     const update = () => {
       ticking = false;
       const rect = wrap.getBoundingClientRect();
       const distance = wrap.offsetHeight - window.innerHeight;
       const progress = distance > 0 ? clamp(-rect.top / distance, 0, 1) : 0;
-      stage.style.setProperty("--p", progress.toFixed(4));
+      // On stacked layouts, finish the door movement before the sticky stage
+      // releases so the revealed video gets a deliberate pause before the
+      // following section enters the viewport.
+      const isStacked = window.matchMedia("(max-width: 767px)").matches;
+      const doorProgress = isStacked ? clamp(progress / 0.72, 0, 1) : progress;
+      stage.style.setProperty("--p", doorProgress.toFixed(4));
     };
 
     const onScroll = () => {
@@ -30,12 +60,25 @@ export default function Hero() {
       }
     };
 
+    const onPageActive = () => {
+      if (document.visibilityState === "hidden") return;
+      update();
+      recoverVideos();
+    };
+
     update();
+    recoverVideos();
     window.addEventListener("scroll", onScroll, { passive: true });
     window.addEventListener("resize", onScroll);
+    window.addEventListener("pageshow", onPageActive);
+    window.addEventListener("focus", onPageActive);
+    document.addEventListener("visibilitychange", onPageActive);
     return () => {
       window.removeEventListener("scroll", onScroll);
       window.removeEventListener("resize", onScroll);
+      window.removeEventListener("pageshow", onPageActive);
+      window.removeEventListener("focus", onPageActive);
+      document.removeEventListener("visibilitychange", onPageActive);
     };
   }, []);
 
@@ -46,8 +89,10 @@ export default function Hero() {
         {/* Layer 1 — sharp background video (revealed as doors open) */}
         <div className={styles.bg} aria-hidden>
           <video
+            ref={(node) => { videoRefs.current[0] = node; }}
             className={styles.bgVideo}
             src="/hero/nexterse_herov.webm"
+            preload="auto"
             autoPlay
             loop
             muted
@@ -55,7 +100,7 @@ export default function Hero() {
           />
           <div className={styles.bgOverlay} />
           <div className={styles.bgCaption}>
-            <span className={styles.bgKicker}>Nexterse</span>
+            <span className={styles.bgKicker}>Nexterse LLC</span>
             <p>Software engineering &amp; applied AI, built to outlast launch.</p>
           </div>
         </div>
@@ -65,11 +110,11 @@ export default function Hero() {
             The video's left offset counteracts the door's translateX so the blurred
             image stays aligned with the background video throughout the scroll. */}
         <div className={`${styles.doorBlur} ${styles.doorBlurLeft}`} aria-hidden>
-          <video className={styles.doorBlurVideo} src="/hero/nexterse_herov.webm" autoPlay loop muted playsInline />
+          <video ref={(node) => { videoRefs.current[1] = node; }} className={styles.doorBlurVideo} src="/hero/nexterse_herov.webm" preload="auto" autoPlay loop muted playsInline />
           <div className={styles.doorBlurTint} />
         </div>
         <div className={`${styles.doorBlur} ${styles.doorBlurRight}`} aria-hidden>
-          <video className={`${styles.doorBlurVideo} ${styles.doorBlurVideoRight}`} src="/hero/nexterse_herov.webm" autoPlay loop muted playsInline />
+          <video ref={(node) => { videoRefs.current[2] = node; }} className={`${styles.doorBlurVideo} ${styles.doorBlurVideoRight}`} src="/hero/nexterse_herov.webm" preload="auto" autoPlay loop muted playsInline />
           <div className={styles.doorBlurTint} />
         </div>
 

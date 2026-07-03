@@ -1,0 +1,204 @@
+.section {
+  background: #fff;
+  padding: clamp(4.5rem, 7vw, 6rem) 0 clamp(6rem, 8vw, 8rem);
+}
+
+.container {
+  max-width: 1504px;
+  margin: 0 auto;
+  padding-inline: clamp(1.25rem, 4vw, 3.75rem);
+}
+
+.title {
+  font-family: var(--font-inter-tight), sans-serif;
+  font-size: clamp(2rem, 4vw, 3rem);
+  line-height: 1.2;
+  font-weight: 300;
+  color: #02102C;
+  letter-spacing: normal;
+  margin-bottom: clamp(2.5rem, 5vw, 4rem);
+  margin-top: 0;
+}
+
+.accent {
+  color: #3CC4E5;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  align-items: start;
+}
+
+/* Featured post */
+.featuredPost {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+}
+
+.featuredImgWrap {
+  aspect-ratio: 1 / 0.5621;
+  overflow: hidden;
+  margin-bottom: 16px;
+}
+
+.featuredImg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.3s ease;
+}
+
+.featuredPost:hover .featuredImg {
+  transform: scale(1.02);
+}
+
+.postTitle {
+  font-family: var(--font-inter-tight), sans-serif;
+  font-size: clamp(1.25rem, 2vw, 1.75rem);
+  font-weight: 400;
+  color: #02102C;
+  line-height: 1.4;
+  margin-bottom: 8px;
+  margin-top: 0;
+  transition: color 0.2s;
+}
+
+.featuredPost:hover .postTitle {
+  color: #3CC4E5;
+}
+
+.postMeta {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-inter-tight), sans-serif;
+  font-size: 14px;
+  color: #5e6d8e;
+}
+
+/* Small posts column */
+.smallPostsCol {
+  display: flex;
+  flex-direction: column;
+  padding-left: clamp(1.5rem, 4vw, 3.875rem);
+}
+
+.smallPosts {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.smallPost {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  border-bottom: 0;
+  margin-bottom: 2rem;
+  padding: 0;
+}
+
+.smallPost .postTitle {
+  font-size: clamp(1.125rem, 2vw, 1.75rem);
+}
+
+.smallPost:hover .postTitle {
+  color: #3CC4E5;
+}
+
+.moreLink {
+  display: block;
+  margin-top: 24px;
+}
+
+.moreLinkAnchor {
+  font-family: var(--font-inter-tight), sans-serif;
+  color: #3CC4E5;
+  font-weight: 600;
+  font-size: 16px;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  position: relative;
+}
+
+.linkArrow {
+  display: inline-block;
+  font-size: 1em;
+  line-height: 1;
+  padding-left: 6px;
+  padding-right: 17px;
+  position: relative;
+  width: 17px;
+}
+
+.linkArrow::before,
+.linkArrow::after {
+  background: url("data:image/svg+xml;charset=utf8,%3Csvg width='6' height='10' viewBox='0 0 6 10' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 8.59L3.59 5L0 1.41L1 .5L5.5 5L1 9.5L0 8.59Z' fill='%233CC4E5'/%3E%3C/svg%3E") center / cover no-repeat;
+  content: "";
+  height: 0.5em;
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 6px;
+}
+
+.linkArrow::after { opacity: 0; }
+
+.moreLinkAnchor:hover .linkArrow::before {
+  animation: blogArrowBefore 1s linear infinite;
+  right: 6px;
+}
+
+.moreLinkAnchor:hover .linkArrow::after {
+  animation: blogArrowAfter 1s linear infinite;
+  right: 6px;
+}
+
+@keyframes blogArrowBefore {
+  0% { opacity: 1; transform: translateX(0) translateY(-50%); }
+  49% { opacity: 0; transform: translateX(7px) translateY(-50%); }
+  52% { opacity: 0; transform: translateX(-7px) translateY(-50%); }
+  100% { opacity: 1; transform: translateX(0) translateY(-50%); }
+}
+
+@keyframes blogArrowAfter {
+  0% { opacity: 0; transform: translateX(-7px) translateY(-50%); }
+  49% { opacity: 1; transform: translateX(0) translateY(-50%); }
+  99% { opacity: 0; transform: translateX(7px) translateY(-50%); }
+  100% { opacity: 0; transform: translateX(-7px) translateY(-50%); }
+}
+
+@media (max-width: 767px) {
+  .section {
+    padding: 4rem 0 4.5rem;
+  }
+
+  .title {
+    font-size: 32px;
+    line-height: 35px;
+    margin-bottom: 40px;
+  }
+
+  .grid {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  .smallPostsCol {
+    padding-left: 0;
+  }
+
+  .postTitle {
+    font-size: 18px;
+  }
+
+  .smallPost .postTitle {
+    font-size: 16px;
+  }
+}

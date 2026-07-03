@@ -6,7 +6,7 @@ const RISKS = [
     icon: "/ai-consulting/imgs/03_Getting-caught-up-in-the-hype-03.svg",
     title: "Getting caught up in the hype",
     body: "Too many organizations chase the latest AI trends without thinking about the actual problems they need to solve. Teams spend big on custom AI models or experimental platforms when a simpler approach would deliver results faster and for less money. Companies end up with expensive prototypes that never make it into the real world.",
-    how: "At Nexterse, we keep things grounded. Before recommending any AI solution, we look hard at your data, your operations, and what it will cost to run. We only move forward with solutions that deliver clear, measurable value.",
+    how: "At Nexterse LLC, we keep things grounded. Before recommending any AI solution, we look hard at your data, your operations, and what it will cost to run. We only move forward with solutions that deliver clear, measurable value.",
   },
   {
     icon: "/ai-consulting/imgs/03_The-price-of-standing-still-03.svg",

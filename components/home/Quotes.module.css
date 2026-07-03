@@ -10,7 +10,7 @@
   overflow: hidden;
 }
 
-@media (max-width: 991px) {
+@media (max-width: 1024px) {
   .section {
     padding: 5rem 2rem;
   }
@@ -49,7 +49,7 @@
   margin: 0;
 }
 
-@media (max-width: 991px) {
+@media (max-width: 1024px) {
   .title { font-size: 4rem; }
 }
 @media (max-width: 478px) {
@@ -164,7 +164,7 @@
   }
 }
 
-@media (max-width: 991px) {
+@media (max-width: 1024px) {
   .panel {
     padding: 2rem;
     justify-content: flex-end;
@@ -172,17 +172,34 @@
 }
 
 @media (max-width: 767px) {
+  .section {
+    padding: 4rem var(--page-gutter);
+  }
+  .container {
+    row-gap: 2.5rem;
+  }
+  .headerRow {
+    flex-direction: column;
+  }
+  .title {
+    font-size: clamp(2.25rem, 11vw, 3.2rem);
+  }
+  .arrow {
+    width: 3rem;
+    height: 3rem;
+    padding-top: 0;
+  }
   .panel {
     width: 100%;
-    row-gap: 0;
-    justify-content: flex-end;
+    row-gap: 1.25rem;
+    justify-content: flex-start;
   }
 }
 
 @media (max-width: 478px) {
   .panel {
     flex-direction: column;
-    row-gap: 0;
+    row-gap: 1rem;
   }
 }
 
@@ -202,7 +219,7 @@
   .quoteText { font-size: 1.8rem; }
 }
 @media (max-width: 478px) {
-  .quoteText { font-size: 2rem; }
+  .quoteText { font-size: clamp(1.1rem, 5.2vw, 1.3rem); }
 }
 
 /* ── Brand block ── */
@@ -250,7 +267,7 @@
 }
 
 /* ── Card mobile adjustments ── */
-@media (max-width: 991px) {
+@media (max-width: 1024px) {
   .card {
     height: 40rem;
   }
@@ -258,13 +275,46 @@
 
 @media (max-width: 767px) {
   .card {
-    height: 38rem;
+    height: clamp(30rem, 68svh, 34rem);
+    background: linear-gradient(180deg, #101010 0%, #0b0d17 54%, #071b68 75%, #0b3fe0 100%);
+  }
+
+  .card::before {
+    background: linear-gradient(180deg, rgba(8, 8, 8, 0.35) 0%, rgba(8, 8, 8, 0) 62%);
   }
 
   .portrait {
-    height: 20rem;
+    height: 52%;
     width: 100%;
     object-fit: contain;
     object-position: left bottom;
+  }
+  .panel {
+    padding: 1.5rem;
+    pointer-events: none;
+  }
+  .quoteText {
+    font-size: clamp(1.2rem, 4.5vw, 1.65rem);
+    line-height: 1.2;
+  }
+  .brand {
+    row-gap: 0.65rem;
+  }
+  .logoWrap,
+  .logo {
+    height: 2.5rem;
+  }
+  .name,
+  .role {
+    font-size: clamp(0.85rem, 3.2vw, 1rem);
+  }
+}
+
+@media (max-width: 420px) {
+  .panel {
+    padding: 1.25rem;
+  }
+  .portrait {
+    height: 50%;
   }
 }

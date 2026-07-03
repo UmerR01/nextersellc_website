@@ -1,5 +1,5 @@
 .section {
-  padding: 96px 0;
+  padding: clamp(4.5rem, 7vw, 7.5rem) 0;
 }
 
 @media (max-width: 768px) {
@@ -17,19 +17,19 @@
 }
 
 .container {
-  max-width: 1200px;
+  width: min(calc(100% - clamp(2.5rem, 8vw, 6rem)), 75rem);
   margin: 0 auto;
-  padding: 0 24px;
+  padding: 0;
 }
 
 .blue {
-  color: var(--color-blue);
+  color: var(--color-accent);
 }
 
 .title {
-  font-size: 56px;
+  font-size: clamp(2rem, 4vw, 3.5rem);
   font-weight: 400;
-  line-height: 62px;
+  line-height: 1.1;
   color: #000;
   margin: 0 0 32px;
   text-align: center;
@@ -44,15 +44,19 @@
 }
 
 .description {
-  margin-bottom: 56px;
+  margin-bottom: clamp(3rem, 5vw, 4.5rem);
+  max-width: 56.25rem;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .description p {
-  font-size: 22px;
+  font-size: clamp(1rem, 1.4vw, 1.375rem);
   font-weight: 400;
-  line-height: 36px;
+  line-height: 1.64;
   color: var(--color-text-muted);
   margin: 0;
+  text-align: center;
 }
 
 @media (max-width: 768px) {
@@ -63,16 +67,46 @@
   .description {
     margin-bottom: 40px;
   }
+
+  .title,
+  .description,
+  .col,
+  .colTitle,
+  .colContent {
+    text-align: left;
+  }
+
+  .col {
+    align-items: flex-start;
+  }
+
+  .icon {
+    margin-inline: 0;
+  }
+
+  .col[aria-hidden="true"] {
+    display: none;
+  }
 }
 
 .cols {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 24px;
+  gap: clamp(2.5rem, 4vw, 3.5rem) clamp(2rem, 4vw, 3rem);
+}
+
+.colsTwoCol {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: clamp(2.5rem, 4vw, 3.5rem) clamp(2rem, 4vw, 3rem);
 }
 
 @media (max-width: 992px) {
   .cols {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+  .colsTwoCol {
     grid-template-columns: 1fr;
     gap: 40px;
   }
@@ -97,7 +131,7 @@
 .icon {
   width: 56px;
   height: 56px;
-  margin-bottom: 24px;
+  margin-bottom: 32px;
 }
 
 .icon img {
@@ -107,7 +141,7 @@
 }
 
 .colTitle {
-  font-size: 28px;
+  font-size: clamp(1.25rem, 2vw, 1.75rem);
   font-weight: 400;
   line-height: 1.3;
   color: #000;
@@ -125,9 +159,9 @@
 }
 
 .colContent p {
-  font-size: 16px;
+  font-size: clamp(1rem, 1.25vw, 1.125rem);
   font-weight: 400;
-  line-height: 26px;
+  line-height: 30px;
   color: var(--color-text-muted);
   margin: 0;
 }

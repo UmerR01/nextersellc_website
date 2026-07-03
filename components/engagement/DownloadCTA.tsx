@@ -3,23 +3,25 @@ import styles from "./DownloadCTA.module.css";
 
 export default function DownloadCTA() {
   return (
+    <div className={styles.outer}>
     <section className={styles.section}>
       <div className={styles.bg} />
       <div className={styles.container}>
         <div className={styles.row}>
           <div className={styles.left}>
-            <h2 className={styles.title}>Need custom software?</h2>
+            <h2 className={styles.title}>Talk through your options</h2>
             <div className={styles.description}>
-              <p>Just drop us a line and get a free consultation from top experts in custom software development!</p>
+              <p>Not sure which model fits your project? Talk to our engagement specialist for a recommendation based on your scope, budget, and timeline.</p>
             </div>
           </div>
           <div className={styles.right}>
             <Link href="/contact" className={styles.btn}>
-              Discuss your engagement model
+              Schedule a 30-minute discovery call
             </Link>
           </div>
         </div>
       </div>
     </section>
+    </div>
   );
 }

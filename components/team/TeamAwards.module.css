@@ -1,0 +1,191 @@
+.section {
+  background: #fff;
+  padding: 96px 0;
+}
+
+.container {
+  max-width: 1504px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.title {
+  font-family: var(--font-inter-tight), sans-serif;
+  font-size: clamp(1.75rem, 3.6vw, 3.25rem);
+  line-height: 1.2;
+  font-weight: 400;
+  color: #112244;
+  letter-spacing: 0.05rem;
+  word-spacing: 0.5rem;
+  text-align: center;
+  margin-bottom: 64px;
+  margin-top: 0;
+}
+
+.accent {
+  color: #3CC4E5;
+  padding-right: 0.5rem;
+}
+
+.swiperWrap {
+  position: relative;
+  max-width: calc(100% - 160px);
+  margin: 0 auto;
+}
+
+.swiper {
+  overflow: hidden;
+}
+
+.track {
+  display: flex;
+  transition: transform 0.4s ease;
+}
+
+.slide {
+  flex: 0 0 calc(100% / var(--visible, 6));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 16px;
+}
+
+.badge {
+  max-height: 120px;
+  max-width: 140px;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  display: block;
+}
+
+.navBtn {
+  appearance: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  height: 24px;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+  width: 40px;
+  padding: 0;
+}
+
+.navBtn::before {
+  background: var(--color-accent);
+  content: "";
+  display: block;
+  height: 2px;
+  position: absolute;
+  top: 11px;
+  transition: width 0.3s ease-in-out;
+  width: calc(100% - 2px);
+}
+
+.navBtn::after {
+  border-bottom: 2px solid var(--color-accent);
+  border-right: 2px solid var(--color-accent);
+  content: "";
+  display: block;
+  height: 10px;
+  position: absolute;
+  top: 7px;
+  transition: 0.3s ease-in-out;
+  width: 10px;
+}
+
+.navPrev {
+  right: calc(100% + 40px);
+}
+
+.navNext {
+  left: calc(100% + 40px);
+}
+
+.navPrev::before { right: 1px; }
+.navPrev::after { left: 2px; transform: rotate(135deg); }
+.navNext::before { left: 1px; }
+.navNext::after { right: 2px; transform: rotate(-45deg); }
+
+.navNext:not(.navDisabled):hover::before { width: calc(100% + 4px); }
+.navNext:not(.navDisabled):hover::after { right: -4px; }
+.navPrev:not(.navDisabled):hover::before { width: calc(100% + 4px); }
+.navPrev:not(.navDisabled):hover::after { left: -4px; }
+
+.navDisabled {
+  cursor: default;
+  pointer-events: none;
+}
+
+.navDisabled::before {
+  background: #899fb6;
+}
+
+.navDisabled::after {
+  border-color: #899fb6;
+}
+
+.mobileNav {
+  display: none;
+}
+
+@media (max-width: 1024px) {
+  .swiperWrap {
+    max-width: none;
+  }
+
+  .swiperWrap > .navBtn {
+    display: none;
+  }
+
+  .mobileNav {
+    display: flex;
+    gap: 16px;
+    margin-top: 24px;
+  }
+
+  .mobileNav .navBtn {
+    position: relative;
+    inset: auto;
+    transform: none;
+    flex: 0 0 32px;
+    width: 32px;
+    height: 20px;
+  }
+
+  .mobileNav .navBtn::before {
+    top: 9px;
+  }
+
+  .mobileNav .navBtn::after {
+    top: 5px;
+    width: 8px;
+    height: 8px;
+  }
+}
+
+@media (max-width: 768px) {
+  .section {
+    padding: 72px 0;
+  }
+
+  .title {
+    font-size: 28px;
+    line-height: 34px;
+    margin-bottom: 40px;
+    text-align: left;
+  }
+
+  .slide {
+    padding: 6px 4px;
+    min-width: 0;
+  }
+
+  .badge {
+    max-height: 112px;
+    max-width: 100%;
+  }
+
+}

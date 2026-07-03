@@ -5,9 +5,9 @@ import FAQBlock from "@/components/faq/FAQBlock";
 import LetsStart from "@/components/home/LetsStart";
 
 export const metadata: Metadata = {
-  title: "FAQ | Nexterse",
+  title: "FAQ | Nexterse LLC",
   description:
-    "Frequently asked questions about Nexterse – our company, services, processes, AI development, pricing, and legal terms.",
+    "Frequently asked questions about Nexterse LLC – our company, services, processes, AI development, pricing, and legal terms.",
 };
 
 export default function FAQPage() {

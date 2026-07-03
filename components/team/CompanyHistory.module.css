@@ -1,0 +1,48 @@
+.section {
+  background: #fff;
+  padding: 96px 0 0;
+}
+
+.container {
+  max-width: 1504px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.title {
+  font-size: 56px;
+  line-height: 62px;
+  font-weight: 400;
+  color: #3CC4E5;
+  text-align: center;
+  letter-spacing: normal;
+  margin: 0 0 48px;
+  font-family: var(--font-inter-tight), sans-serif;
+}
+
+.accent {
+  color: #3CC4E5;
+}
+
+.imageWrap {
+  width: 100%;
+}
+
+.historyImage {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* ── ≤768px ── */
+@media (max-width: 768px) {
+  .section {
+    padding: 72px 0 0;
+  }
+
+  .title {
+    font-size: 32px;
+    line-height: 35px;
+    margin-bottom: 32px;
+  }
+}

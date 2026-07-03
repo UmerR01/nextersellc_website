@@ -5,6 +5,40 @@
   background: var(--color-accent-dark);
   color: #fff;
 }
+
+.library {
+  background: var(--color-accent-dark);
+}
+
+.library .wrapper {
+  max-width: none;
+  padding: clamp(7rem, 8vw, 8rem) clamp(3rem, 8.5vw, 7.5rem);
+}
+
+.library .content {
+  justify-content: flex-start;
+}
+
+.library .title {
+  color: #fff;
+}
+
+.library .stepsEyebrow {
+  padding-left: 0;
+}
+
+@media (max-width: 1024px) {
+  .library .wrapper {
+    padding: 5rem clamp(1.5rem, 6vw, 3rem);
+  }
+}
+
+@media (max-width: 576px) {
+  .library .wrapper {
+    padding-top: 4.5rem;
+    padding-bottom: 4.5rem;
+  }
+}
 .wrapper {
   margin: 0 auto;
   max-width: 1420px;
@@ -97,14 +131,16 @@
 .step:last-of-type::after {
   display: none;
 }
-/* Downward chevron — lives inside step 4 at top:-4px so its tip (y=16.5
-   in a 24px SVG) lands at -4+16.5=+12.5px from step4 top, which aligns
-   with circle 4 top (top:12px). Step-3 line ends at step4_top+12px and
-   still overlaps the arrow body, giving a seamless join. */
+/* Step 3 line stops at the arrow base (arrow is at top:-10px in step 4,
+   so we stop 10px before step 3's bottom instead of 12px past it) */
+.step:nth-last-child(2)::after {
+  bottom: -5px;
+}
+/* Downward chevron — sits above circle 4 with ~10px gap between tip and circle. */
 .timelineArrow {
   position: absolute;
   left: -31px;   /* center at -31+12 = -19px — same x as circles and line */
-  top: -4px;
+  top: -10px;
   width: 24px;
   height: 24px;
   background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' fill='none'%3E%3Cpath stroke='%23fff' stroke-linecap='square' stroke-width='2' d='M19.5 9 12 16.5 4.5 9'/%3E%3C/svg%3E");
@@ -202,9 +238,24 @@
   font-weight: 600;
   cursor: pointer;
   text-decoration: none;
+  position: relative;
+  padding-bottom: 4px;
+}
+.attach::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 0;
+  height: 1px;
+  background: #fff;
+  transition: width 0.3s ease;
 }
 .attach:hover {
   text-decoration: none;
+}
+.attach:hover::after {
+  width: 100%;
 }
 .attach svg {
   width: 24px;
@@ -285,7 +336,7 @@
   color: #fff;
 }
 
-@media (max-width: 900px) {
+@media (max-width: 1024px) {
   .content {
     flex-direction: column;
   }
@@ -293,6 +344,9 @@
     margin-right: 0;
     max-width: 100%;
     margin-bottom: 2.5rem;
+  }
+  .steps {
+    display: none;
   }
   .right {
     max-width: 100%;
@@ -314,5 +368,36 @@
   .bottom,
   .manager {
     margin-left: 0;
+    width: 100%;
+    max-width: none;
+  }
+}
+
+@media (max-width: 576px) {
+  .wrapper {
+    padding: 72px var(--page-gutter);
+  }
+  .steps {
+    display: none;
+  }
+  .step,
+  .description {
+    font-size: 18px;
+    line-height: 1.55;
+  }
+  .descriptionLarge {
+    margin-top: 48px;
+  }
+  .bottom {
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+  .manager {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+  .book {
+    white-space: normal;
+    text-align: center;
   }
 }
