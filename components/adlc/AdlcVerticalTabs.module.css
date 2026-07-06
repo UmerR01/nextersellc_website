@@ -32,7 +32,7 @@
 
 @media screen and (max-width: 768px) {
   .inner {
-    padding: 72px 0 77px;
+    padding: 2rem 1.5rem 4.8125rem;
   }
 }
 
@@ -47,8 +47,15 @@
 @media screen and (max-width: 768px) {
   .title {
     font-size: 32px;
-    line-height: 35px;
+    line-height: 1.12;
+    margin-bottom: 1.5rem;
     text-align: left;
+  }
+
+  .description {
+    font-size: 1rem;
+    line-height: 1.62;
+    margin-bottom: 3rem;
   }
 }
 
@@ -241,6 +248,7 @@
   position: relative;
   width: 100%;
   border-bottom: 1px solid #c6d0db;
+  box-sizing: border-box;
 }
 
 .accordionItem[open] {
@@ -258,11 +266,11 @@
 }
 
 .accordionSummary {
-  align-items: flex-start;
-  display: flex !important;
+  align-items: center;
+  display: grid !important;
   font-size: 20px;
-  gap: 16px;
-  justify-content: space-between;
+  grid-template-columns: minmax(0, 1fr) 56px 16px;
+  column-gap: 16px;
   line-height: 24px;
   list-style: none;
   width: 100%;
@@ -280,18 +288,24 @@
   flex-shrink: 0;
   width: 56px;
   height: 56px;
+  grid-column: 2;
+  grid-row: 1;
 }
 
 .summaryLabel {
-  flex: 1;
-  font-weight: 600;
+  grid-column: 1;
+  grid-row: 1;
+  font-weight: 400;
 }
 
 .summaryArrow {
   display: flex;
   align-items: center;
   flex-shrink: 0;
-  margin-left: auto;
+  grid-column: 3;
+  grid-row: 1;
+  justify-content: center;
+  margin-left: 0;
 }
 
 .summaryArrow svg {
@@ -299,7 +313,7 @@
 }
 
 .accordionContent {
-  width: 95%;
+  width: 100%;
   padding-top: 8px;
 }
 
@@ -311,6 +325,15 @@
 @media screen and (max-width: 768px) {
   .accordionItem {
     padding: 24px 16px;
+  }
+
+  .accordionSummary {
+    grid-template-columns: minmax(0, 1fr) 56px 16px;
+    column-gap: 16px;
+  }
+
+  .accordionItem[open] {
+    padding-bottom: 24px;
   }
 
   .contentPoints {

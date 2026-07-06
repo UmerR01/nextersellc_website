@@ -8,6 +8,7 @@
 
 .articleBody {
   min-width: 0;
+  overflow: hidden;
 }
 
 .articleBody :global(section[id]),

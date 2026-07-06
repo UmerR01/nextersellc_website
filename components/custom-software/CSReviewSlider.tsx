@@ -1,6 +1,11 @@
 "use client";
-import { useState } from "react";
+import { useRef, useState } from "react";
+import Image from "next/image";
 import Link from "next/link";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation } from "swiper/modules";
+import type { SwiperRef } from "swiper/react";
+import "swiper/css";
 import styles from "./CSReviewSlider.module.css";
 
 const REVIEWS = [
@@ -42,53 +47,83 @@ const REVIEWS = [
 ];
 
 export default function CSReviewSlider() {
-  const [current, setCurrent] = useState(0);
+  const swiperRef = useRef<SwiperRef>(null);
+  const [atStart, setAtStart] = useState(true);
+  const [atEnd, setAtEnd] = useState(false);
 
-  const prev = () => setCurrent((c) => (c === 0 ? REVIEWS.length - 1 : c - 1));
-  const next = () => setCurrent((c) => (c === REVIEWS.length - 1 ? 0 : c + 1));
-
-  const review = REVIEWS[current];
+  const syncNav = (swiper: { isBeginning: boolean; isEnd: boolean }) => {
+    setAtStart(swiper.isBeginning);
+    setAtEnd(swiper.isEnd);
+  };
 
   return (
     <section className={styles.section}>
-      <div className={styles.wrapper}>
-        <div className={styles.slide}>
-          <div className={styles.left}>
-            <div className={styles.text}>{review.text}</div>
-          </div>
-          <div className={styles.right}>
-            <div className={styles.authorData}>
-              {review.photo ? (
-                // eslint-disable-next-line @next/next/no-img-element
-                <img src={review.photo} alt={review.name} className={styles.photo} width={96} height={96} loading="lazy" />
-              ) : review.logo ? (
-                // eslint-disable-next-line @next/next/no-img-element
-                <img src={review.logo} alt={review.name} className={styles.logoImg} width={180} height={75} loading="lazy" />
-              ) : null}
-              <div className={styles.authorText}>
-                <div className={styles.authorName}>{review.name}</div>
-                <div className={styles.authorPosition}>{review.position}</div>
-              </div>
-            </div>
-          </div>
-        </div>
+      <div className={styles.container}>
+        <Swiper
+          ref={swiperRef}
+          modules={[Navigation]}
+          slidesPerView={1}
+          speed={600}
+          onSwiper={syncNav}
+          onSlideChange={syncNav}
+          className={styles.swiper}
+        >
+          {REVIEWS.map((review, idx) => (
+            <SwiperSlide key={idx}>
+              <div className={styles.slide}>
+                {/* Right: author */}
+                <div className={styles.rightContent}>
+                  <div className={styles.authorMedia}>
+                    {review.logo ? (
+                      <Image src={review.logo} alt={review.name} width={172} height={72} className={styles.authorLogo} />
+                    ) : review.photo ? (
+                      <Image src={review.photo} alt={review.name} width={72} height={72} className={styles.authorPhoto} />
+                    ) : null}
+                  </div>
+                  <p className={styles.authorName}>{review.name}</p>
+                  <p className={styles.authorPosition}>{review.position}</p>
+                </div>
 
-        <div className={styles.bottom}>
-          <div className={styles.nav}>
-            <button className={styles.navBtn} onClick={prev} aria-label="Previous review">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M15 18L9 12L15 6" stroke="currentColor" strokeWidth="2" strokeLinecap="square" />
+                {/* Left: quote */}
+                <div className={styles.leftContent}>
+                  <div className={styles.quoteIcon} aria-hidden="true">
+                    <svg width="52" height="52" viewBox="0 0 48 48" fill="none">
+                      <path d="M14 22H6C6 16 8 10 14 8V4C4 6 0 14 0 22V38H16V22H14ZM38 22H30C30 16 32 10 38 8V4C28 6 24 14 24 22V38H40V22H38Z" fill="#112244" fillOpacity="0.12" />
+                    </svg>
+                  </div>
+                  <p className={styles.quoteText}>{review.text}</p>
+                </div>
+              </div>
+            </SwiperSlide>
+          ))}
+        </Swiper>
+
+        <div className={styles.bottomNav}>
+          <div className={styles.navButtons}>
+            <button
+              className={styles.navBtn}
+              onClick={() => swiperRef.current?.swiper.slidePrev()}
+              aria-label="Previous"
+              disabled={atStart}
+            >
+              <svg width="48" height="24" viewBox="0 0 48 24" fill="none">
+                <path d="M47 12H3M10 5L3 12L10 19" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
               </svg>
             </button>
-            <button className={styles.navBtn} onClick={next} aria-label="Next review">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M9 6L15 12L9 18" stroke="currentColor" strokeWidth="2" strokeLinecap="square" />
+            <button
+              className={styles.navBtn}
+              onClick={() => swiperRef.current?.swiper.slideNext()}
+              aria-label="Next"
+              disabled={atEnd}
+            >
+              <svg width="48" height="24" viewBox="0 0 48 24" fill="none">
+                <path d="M1 12H45M38 5L45 12L38 19" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
               </svg>
             </button>
           </div>
-          <Link href="/testimonials" className={styles.allLink}>
-            All Reviews
-            <span className={styles.allLinkArrow} />
+          <Link href="/testimonials" className={styles.testimonialsLink}>
+            Read Clients&rsquo; testimonials
+            <span className={styles.linkArrow} aria-hidden="true" />
           </Link>
         </div>
       </div>

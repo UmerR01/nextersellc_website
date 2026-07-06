@@ -1,0 +1,723 @@
+/* ─── Design tokens (dark throughout) ──────────────────────────────────────── */
+:root {
+  --p-bg: #ffffff;
+  --p-fg: #0a1530;
+  --p-border: rgba(10, 21, 48, 0.14);
+  --p-surface: #ffffff;
+  --p-muted: #5a6b87;
+  --p-accent: #3cc4e5;
+  --p-icon-default-bg: var(--color-accent);
+  --p-icon-active-bg: var(--color-accent);
+  --p-font: var(--font-inter-tight), "Inter Tight", system-ui, sans-serif;
+}
+
+/* ─── Page wrapper ──────────────────────────────────────────────────────────── */
+.page {
+  background-color: var(--p-bg);
+  color: var(--p-fg);
+  font-family: var(--p-font);
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.4;
+  overflow-x: clip;
+}
+
+/* ─── Fixed background layer ────────────────────────────────────────────────── */
+.fixedBg {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background-color: var(--p-bg);
+}
+
+/* ─── Main content ──────────────────────────────────────────────────────────── */
+.main {
+  position: relative;
+  z-index: 1;
+}
+
+/* ─── Hero ──────────────────────────────────────────────────────────────────── */
+.hero {
+  position: relative;
+  overflow: hidden;
+  padding-top: 12.5rem;
+  padding-right: 1.25rem;
+  padding-bottom: 0;
+  padding-left: 1.25rem;
+  background: linear-gradient(rgba(255, 255, 255, 0.18), #ffffff);
+}
+
+@media (max-width: 767px) {
+  .hero {
+    padding-top: 3.125rem;
+    padding-bottom: 0;
+  }
+}
+
+.heroBgVideo {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  overflow: hidden;
+}
+
+.heroBgVideo video {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  transform: translate(-50%, -50%);
+  object-fit: cover;
+  opacity: 0.68;
+}
+
+.heroGradient {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.06) 0%,
+    rgba(255, 255, 255, 0.2) 55%,
+    #ffffff 100%
+  );
+  pointer-events: none;
+}
+
+.heroCard {
+  position: relative;
+  z-index: 1;
+  border: 1px solid var(--p-border);
+  padding: 3.125rem;
+  backdrop-filter: blur(18px) saturate(125%);
+  -webkit-backdrop-filter: blur(18px) saturate(125%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.875rem;
+  max-width: 90rem;
+  margin: 0 auto;
+  background: rgba(255, 255, 255, 0.34);
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.72) inset,
+    0 1.5rem 4rem rgba(10, 21, 48, 0.08);
+}
+
+@media (max-width: 991px) {
+  .heroCard {
+    padding: 1.875rem;
+  }
+}
+
+@media (max-width: 767px) {
+  .heroCard {
+    padding: 1.25rem;
+    align-items: flex-start;
+  }
+}
+
+.heroEyebrow {
+  font-size: 1.0625rem;
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--p-fg);
+  text-align: center;
+  margin: 0;
+}
+
+@media (max-width: 478px) {
+  .heroEyebrow {
+    text-align: left;
+  }
+}
+
+.heroDivider {
+  width: 100%;
+  height: 1px;
+  background: var(--p-accent);
+  opacity: 0.7;
+  margin: 0;
+}
+
+.heroTitle {
+  font-size: 3.75rem;
+  font-weight: 300;
+  line-height: 1.2;
+  color: var(--p-fg);
+  margin: 0;
+  text-align: center;
+  width: 80%;
+}
+
+.heroTitle h1 {
+  color: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+  line-height: inherit;
+  margin: 0;
+  text-align: inherit;
+}
+
+@media (max-width: 991px) {
+  .heroTitle {
+    font-size: 2.5rem;
+  }
+}
+
+@media (max-width: 478px) {
+  .heroTitle {
+    font-size: 1.5rem;
+    line-height: 1.3;
+    text-align: left;
+    width: 100%;
+  }
+}
+
+.heroBody {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5625rem;
+  width: 37.5rem;
+  max-width: 100%;
+}
+
+@media (max-width: 478px) {
+  .heroBody {
+    align-items: flex-start;
+    width: 100%;
+  }
+}
+
+.heroSubtitle {
+  font-size: 1.5rem;
+  line-height: 1.2;
+  font-weight: 300;
+  color: var(--p-fg);
+  text-align: center;
+  margin: 0;
+  max-width: 31.25rem;
+}
+
+@media (max-width: 767px) {
+  .heroSubtitle {
+    font-size: 1.125rem;
+  }
+}
+
+@media (max-width: 478px) {
+  .heroSubtitle {
+    text-align: left;
+  }
+}
+
+.heroDesc {
+  font-size: 1.0625rem;
+  line-height: 1.4;
+  color: var(--p-fg);
+  text-align: center;
+  margin: 0;
+  max-width: 31.25rem;
+}
+
+@media (max-width: 478px) {
+  .heroDesc {
+    text-align: left;
+  }
+}
+
+.heroCta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  background: var(--color-accent);
+  color: #fff;
+  font-family: var(--p-font);
+  font-size: 1rem;
+  font-weight: 500;
+  padding: 0.5625rem 1.5rem;
+  border-radius: 100px;
+  text-decoration: none;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+.heroCta:hover {
+  background: var(--color-accent-dark);
+  color: #fff;
+}
+
+/* ─── Timeline section ──────────────────────────────────────────────────────── */
+.timelineSection {
+  padding-right: 1.25rem;
+  padding-left: 1.25rem;
+}
+
+@media (max-width: 767px) {
+  .timelineSection {
+    padding-bottom: 3.125rem;
+  }
+}
+
+.timelineContainer {
+  max-width: 90rem;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  padding: 3.125rem 3.125rem 0;
+  border-top: 0 solid var(--p-border);
+  border-right: 1px solid var(--p-border);
+  border-bottom: 1px solid var(--p-border);
+  border-left: 1px solid var(--p-border);
+}
+
+@media (max-width: 991px) {
+  .timelineContainer {
+    padding: 1.875rem;
+  }
+}
+
+@media (max-width: 767px) {
+  .timelineContainer {
+    padding: 3.125rem 1.25rem 1.25rem;
+  }
+}
+
+/* ─── Single timeline step row ──────────────────────────────────────────────── */
+.step {
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  column-gap: 0;
+  row-gap: 0;
+  justify-content: center;
+}
+
+@media (max-width: 767px) {
+  .step {
+    column-gap: 5%;
+  }
+}
+
+@media (max-width: 478px) {
+  .step {
+    column-gap: 5%;
+  }
+}
+
+/* ─── Card columns (left / right) ───────────────────────────────────────────── */
+.cardLeft,
+.cardRight {
+  width: 40%;
+  min-width: 40%;
+  max-width: 40%;
+}
+
+@media (max-width: 767px) {
+  .cardLeft,
+  .cardRight {
+    width: 80%;
+    min-width: 80%;
+    max-width: 80%;
+  }
+}
+
+@media (max-width: 478px) {
+  .cardLeft,
+  .cardRight {
+    width: 80%;
+    min-width: 80%;
+    max-width: 80%;
+  }
+}
+
+/* Cards that are empty placeholders */
+.cardEmpty {
+  width: 40%;
+  min-width: 40%;
+  max-width: 40%;
+}
+
+@media (max-width: 767px) {
+  .cardEmpty {
+    display: none;
+  }
+}
+
+@media (max-width: 478px) {
+  .cardEmpty {
+    display: none;
+  }
+}
+
+/* Odd cards (1,3,5,7) are LEFT */
+.cardLeft {
+  order: 0;
+}
+
+/* Even cards (2,4,6) are RIGHT */
+.cardRight {
+  order: 2;
+}
+
+/* Flip order for right-side steps on mobile */
+@media (max-width: 767px) {
+  .cardRight {
+    order: 2;
+  }
+}
+
+@media (max-width: 478px) {
+  .cardRight {
+    order: 2;
+  }
+}
+
+/* ─── Center column ─────────────────────────────────────────────────────────── */
+.centerCol {
+  flex-direction: column;
+  width: 10%;
+  min-width: 10%;
+  max-width: 10%;
+  align-items: center;
+  position: relative;
+  display: flex;
+  order: 1;
+}
+
+@media (max-width: 767px) {
+  .centerCol {
+    width: 15%;
+    min-width: 15%;
+    max-width: 15%;
+  }
+}
+
+@media (max-width: 478px) {
+  .centerCol {
+    width: 15%;
+    min-width: 15%;
+    max-width: 15%;
+    align-items: center;
+    order: 1;
+  }
+}
+
+/* ─── Center column: left-side steps have centerCol flipped for right steps ── */
+.centerColRight {
+  flex-direction: column;
+  width: 10%;
+  min-width: 10%;
+  max-width: 10%;
+  align-items: center;
+  position: relative;
+  display: flex;
+  order: 1;
+}
+
+@media (max-width: 767px) {
+  .centerColRight {
+    width: 15%;
+    min-width: 15%;
+    max-width: 15%;
+    order: 1;
+  }
+}
+
+@media (max-width: 478px) {
+  .centerColRight {
+    width: 15%;
+    min-width: 15%;
+    max-width: 15%;
+    order: 1;
+    align-items: center;
+  }
+}
+
+/* ─── Icon circle ───────────────────────────────────────────────────────────── */
+.iconBg {
+  width: 65%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background-color: #3cc4e5 !important;
+  border: 1px solid var(--p-border);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  z-index: 10;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  transition: background 0.3s ease;
+}
+
+@media (max-width: 478px) {
+  .iconBg {
+    width: 100%;
+    left: 0;
+    transform: none;
+  }
+}
+
+.timelineIcon {
+  font-size: 1.5vw;
+  color: #fff;
+  fill: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.3s ease;
+}
+
+.timelineIcon svg {
+  width: 1em;
+  height: 1em;
+}
+
+@media (max-width: 478px) {
+  .timelineIcon {
+    font-size: 5vw;
+  }
+}
+
+/* ─── Vertical progress line ────────────────────────────────────────────────── */
+.lineTrack {
+  width: 0.0625rem;
+  min-width: 0.0625rem;
+  max-width: 0.0625rem;
+  height: 100%;
+  min-height: 100%;
+  max-height: 100%;
+  background-color: var(--p-border);
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+}
+
+.progressBar {
+  width: 0.0625rem;
+  min-width: 0.0625rem;
+  max-width: 0.0625rem;
+  background-color: rgba(10, 21, 48, 0.5);
+  height: 0;
+  border-radius: 100px;
+  position: relative;
+  z-index: 1;
+}
+
+/* ─── Card content wrapper ──────────────────────────────────────────────────── */
+.cardInnerLeft {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  margin-top: 1.875rem;
+  margin-bottom: 6.25rem;
+}
+
+@media (max-width: 767px) {
+  .cardInnerLeft {
+    align-items: flex-start;
+  }
+}
+
+.cardInnerRight {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-top: 1.875rem;
+  margin-bottom: 6.25rem;
+}
+
+/* Last step (Launch) has extra bottom margin */
+.cardInnerLaunch {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  margin-top: 1.875rem;
+  margin-bottom: 12.5rem;
+}
+
+@media (max-width: 767px) {
+  .cardInnerLaunch {
+    align-items: flex-start;
+  }
+}
+
+/* ─── Step card box ─────────────────────────────────────────────────────────── */
+.cardBox {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  padding: 2.5rem;
+  border: 1px solid var(--p-border);
+  border-radius: 4px;
+  background-color: var(--p-surface);
+  box-shadow: 0 1rem 2.5rem rgba(10, 21, 48, 0.08);
+  width: 25rem;
+  max-width: 25rem;
+}
+
+@media (max-width: 478px) {
+  .cardBox {
+    width: 100%;
+    max-width: 100%;
+    padding: 1.875rem;
+  }
+}
+
+/* ─── Step label + title ────────────────────────────────────────────────────── */
+.stepMeta {
+  display: flex;
+  flex-direction: column;
+  row-gap: 0.625rem;
+}
+
+.eyebrowBox {
+  display: inline-block;
+  padding: 0.625rem;
+  background-color: var(--p-border);
+  font-size: 1.0625rem;
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--p-fg);
+  width: fit-content;
+}
+
+.stepTitle {
+  font-size: 2.5rem;
+  font-weight: 300;
+  line-height: 1.2;
+  color: var(--p-fg);
+  margin: 0;
+}
+
+@media (max-width: 478px) {
+  .stepTitle {
+    font-size: 1.5rem;
+    line-height: 1.3;
+  }
+}
+
+.stepSubtitle {
+  font-size: 1.0625rem;
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--p-muted);
+  margin-top: -1rem;
+  margin-bottom: 0;
+}
+
+.stepText {
+  font-size: 1rem;
+  line-height: 1.4;
+  color: var(--p-fg);
+  margin: 0;
+}
+
+/* ─── Final card (The End) ──────────────────────────────────────────────────── */
+.finalStep {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  column-gap: 0;
+  row-gap: 0;
+}
+
+@media (max-width: 767px) {
+  .finalStep {
+    column-gap: 5%;
+    align-items: flex-start;
+  }
+}
+
+.finalCardOuter {
+  width: 40%;
+  max-width: 40%;
+  min-width: 40%;
+  margin-bottom: 6.25rem;
+}
+
+@media (max-width: 478px) {
+  .finalCardOuter {
+    width: 100%;
+    max-width: 100%;
+    min-width: 100%;
+    order: 2;
+  }
+}
+
+.finalCard {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  padding: 2.5rem;
+  border: 1px solid var(--p-border);
+  border-radius: 4px;
+  background-color: var(--p-surface);
+  box-shadow: 0 1rem 2.5rem rgba(10, 21, 48, 0.08);
+}
+
+.finalHeading {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  align-items: center;
+}
+
+@media (max-width: 478px) {
+  .finalCard {
+    padding: 1.875rem;
+  }
+}
+
+.finalTitle {
+  font-size: 2.5rem;
+  font-weight: 300;
+  line-height: 1.2;
+  color: var(--p-fg);
+  margin: 0;
+  text-align: center;
+}
+
+@media (max-width: 478px) {
+  .finalTitle {
+    font-size: 1.5rem;
+    line-height: 1.3;
+    text-align: left;
+  }
+}
+
+.finalSubtitle {
+  font-size: 0.875rem;
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--p-muted);
+}
+
+.finalText {
+  font-size: 1rem;
+  line-height: 1.4;
+  color: var(--p-fg);
+  margin: 0;
+  text-align: center;
+  max-width: 31.25rem;
+}
+
+@media (max-width: 478px) {
+  .finalText {
+    text-align: left;
+  }
+}

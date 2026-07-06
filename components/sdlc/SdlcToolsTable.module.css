@@ -1,24 +1,25 @@
 .section {
   font-family: var(--font-inter-tight), "Inter Tight", sans-serif;
   position: relative;
-  background: linear-gradient(180deg, #112244 0%, #02102C 100%);
+  background: #fff;
 }
 
 .wrapper {
-  max-width: 1420px;
+  max-width: 100%;
   margin: 0 auto;
-  padding: 96px 0;
+  padding: clamp(4rem, 5vw, 5rem) 0 clamp(5rem, 7vw, 7rem);
   position: relative;
 }
 
 .title {
-  font-size: 38px;
+  font-size: clamp(2.75rem, 3.6vw, 3.5rem);
   font-weight: 400;
-  line-height: 46px;
-  color: #fff;
+  line-height: 1.08;
+  letter-spacing: -0.025em;
+  color: #0b0b0d;
   text-align: center;
-  margin: 0 0 24px;
-  max-width: 880px;
+  margin: 0 0 clamp(1.75rem, 3vw, 2.25rem);
+  max-width: 1000px;
   margin-left: auto;
   margin-right: auto;
 }
@@ -38,12 +39,12 @@
 }
 
 .description {
-  font-size: 18px;
-  line-height: 28px;
-  color: rgba(255, 255, 255, 0.75);
+  font-size: clamp(1.125rem, 1.45vw, 1.375rem);
+  line-height: 1.62;
+  color: #253858;
   text-align: center;
-  max-width: 880px;
-  margin: 0 auto 48px;
+  max-width: 1200px;
+  margin: 0 auto clamp(5rem, 7vw, 7rem);
 }
 
 @media screen and (max-width: 768px) {
@@ -61,14 +62,17 @@
 
 /* Desktop table */
 .tableWrap {
+  margin: 0 auto;
+  max-width: 1150px;
   overflow-x: auto;
 }
 
 .table {
   width: 100%;
   border-collapse: collapse;
-  font-size: 16px;
-  line-height: 24px;
+  color: #253858;
+  font-size: 1rem;
+  line-height: 1.45;
 }
 
 @media screen and (max-width: 768px) {
@@ -76,27 +80,32 @@
 }
 
 .table th {
-  font-size: 16px;
-  font-weight: 700;
-  color: #fff;
-  padding: 14px 20px;
+  font-size: 1rem;
+  font-weight: 500;
+  color: #253858;
+  padding: 1rem;
   text-align: left;
-  background: rgba(255,255,255,0.08);
-  border: 1px solid rgba(255,255,255,0.12);
+  background: #f3f6fb;
+  border: 1px solid #cbd6e3;
 }
 
 .table td {
-  padding: 14px 20px;
+  padding: 1rem;
   vertical-align: top;
-  border: 1px solid rgba(255,255,255,0.1);
-  color: rgba(255,255,255,0.75);
+  border: 1px solid #cbd6e3;
+  color: #253858;
 }
 
 .table td strong {
-  color: #fff;
+  color: #253858;
+  font-weight: 600;
 }
 
 .table p { margin: 0; }
+
+.table tbody tr:nth-child(even) {
+  background: #f3f6fb;
+}
 
 /* Mobile */
 .tableMobile {
@@ -112,25 +121,25 @@
 .mobileColTitle {
   font-size: 14px;
   font-weight: 700;
-  color: #fff;
+  color: #253858;
   padding: 10px 14px;
-  background: rgba(255,255,255,0.1);
-  border: 1px solid rgba(255,255,255,0.12);
+  background: #f3f6fb;
+  border: 1px solid #cbd6e3;
   border-bottom: none;
 }
 
 .mobileColData {
-  border: 1px solid rgba(255,255,255,0.1);
+  border: 1px solid #cbd6e3;
 }
 
 .mobileCell {
   padding: 10px 14px;
-  border-bottom: 1px solid rgba(255,255,255,0.08);
-  color: rgba(255,255,255,0.75);
+  border-bottom: 1px solid #cbd6e3;
+  color: #253858;
   font-size: 13px;
   line-height: 20px;
 }
 
 .mobileCell:last-child { border-bottom: none; }
 .mobileCell p { margin: 0; }
-.mobileCell strong { color: #fff; }
+.mobileCell strong { color: #253858; }

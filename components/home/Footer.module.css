@@ -6,6 +6,8 @@
 
 .footer {
   font-family: var(--font-inter-tight), "Inter Tight", sans-serif;
+  position: relative;
+  z-index: 1;
 }
 
 /* ── Shared container ── */
@@ -24,6 +26,7 @@
   background-size: 72%;
   background-color: #fcfcfa;
   overflow: hidden;
+  padding-top: 3rem;
 }
 
 /* ── Desktop Footer ── */

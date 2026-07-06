@@ -49,19 +49,21 @@ export default function CSBlogSection() {
     <section className={styles.section}>
       <div className={styles.container}>
         <h2 className={styles.title}>
-          We have awesome<span className={styles.accent}> stories</span> to tell you
+          We have awesome <span className={styles.accent}>stories</span> to tell you
         </h2>
         <div className={styles.postsGrid}>
           <div className={styles.featuredCol}>
             <a href="/blog/ai-cost-reduction-playbook" className={styles.featuredPost}>
               <div className={styles.featuredImageWrapper}>
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
-                  src="/custom-software/06_The-AI-Cost-Spiral-7-Hidden-Drivers-1024x578.jpg"
-                  alt="The AI Cost Spiral - 7 Hidden Drivers"
-                  className={styles.featuredImg}
-                  loading="lazy"
-                />
+                <div className={styles.featuredImgInner}>
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src="/custom-software/06_The-AI-Cost-Spiral-7-Hidden-Drivers-1024x578.jpg"
+                    alt="The AI Cost Spiral - 7 Hidden Drivers"
+                    className={styles.featuredImg}
+                    loading="lazy"
+                  />
+                </div>
               </div>
               <div className={styles.featuredPostTitle}>
                 The AI Cost Reduction Playbook – 9 Mechanisms, 7 Hidden Drivers, and Real-World Case Studies (2026 Edition)
@@ -76,6 +78,7 @@ export default function CSBlogSection() {
               </div>
             </a>
           </div>
+
           <div className={styles.sideCol}>
             {SIDE_POSTS.map((post) => (
               <a key={post.href} href={post.href} className={styles.sidePost}>

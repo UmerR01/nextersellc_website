@@ -27,18 +27,15 @@ export default function WhyTeams() {
   return (
     <section id="cs-why-teams" className={styles.section}>
       <div className={styles.container}>
+        <h2 className={styles.heading}>
+          <span className={styles.accent}>Why</span> teams choose Nexterse LLC
+        </h2>
         <div className={styles.cols}>
           <div className={styles.leftCol}>
-            <h2 className={styles.heading}>
-              <span className={styles.accent}>Why</span> teams choose Nexterse
-              LLC
-            </h2>
             <ul className={styles.list}>
               {REASONS.map((reason) => (
                 <li key={reason.heading} className={styles.item}>
-                  <strong className={styles.itemHeading}>
-                    {reason.heading}
-                  </strong>
+                  <strong className={styles.itemHeading}>{reason.heading}</strong>
                   <p className={styles.itemDesc}>{reason.desc}</p>
                 </li>
               ))}
@@ -53,7 +50,6 @@ export default function WhyTeams() {
                 className={styles.image}
                 loading="lazy"
               />
-              <div className={styles.imageOverlay} aria-hidden="true" />
             </div>
           </div>
         </div>

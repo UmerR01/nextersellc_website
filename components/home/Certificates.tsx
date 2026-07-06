@@ -89,6 +89,7 @@ export default function Certificates() {
                     width={120}
                     height={120}
                     className={styles.badge}
+                    style={{ width: "auto" }}
                   />
                 </div>
               ))}

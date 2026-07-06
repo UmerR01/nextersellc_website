@@ -1,0 +1,91 @@
+.section {
+  padding: clamp(4rem, 6vw, 6rem) 0;
+  background: #F7F9FE;
+}
+
+.container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding-inline: clamp(1.25rem, 3vw, 2.5rem);
+}
+
+.title {
+  font-family: var(--font-inter-tight), sans-serif;
+  font-size: clamp(2.25rem, 3.5vw, 3.5rem);
+  font-weight: 400;
+  line-height: 1.15;
+  color: #02102C;
+  text-align: center;
+  margin: 0 0 1.25rem;
+  letter-spacing: -0.01em;
+}
+
+.accent {
+  color: #3CC4E5;
+}
+
+.intro {
+  font-family: var(--font-inter-tight), sans-serif;
+  font-size: clamp(1.125rem, 1.35vw, 1.375rem);
+  line-height: 1.65;
+  color: #172b4d;
+  max-width: 69rem;
+  margin: 0 auto clamp(2.5rem, 4vw, 4rem);
+  text-align: center;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0;
+}
+
+@media (max-width: 1024px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.card {
+  min-height: 24.5rem;
+  padding: 1.5rem 1.25rem 2rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.icon {
+  width: 56px;
+  height: 56px;
+  object-fit: contain;
+  margin-bottom: 1.25rem;
+}
+
+.cardTitle {
+  font-family: var(--font-inter-tight), sans-serif;
+  font-size: clamp(1.5rem, 1.8vw, 1.875rem);
+  font-weight: 400;
+  line-height: 1.3;
+  color: #02102C;
+  margin: 0 0 0.75rem;
+}
+
+.cardDesc {
+  font-family: var(--font-inter-tight), sans-serif;
+  font-size: clamp(1rem, 1.2vw, 1.1875rem);
+  line-height: 1.48;
+  color: #172b4d;
+  margin: 0;
+}
+
+@media (max-width: 768px) {
+  .card {
+    min-height: 0;
+    padding: 28px 20px;
+  }
+}

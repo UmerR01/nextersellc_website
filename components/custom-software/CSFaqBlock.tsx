@@ -44,15 +44,18 @@ const FAQ_ITEMS: FaqItem[] = [
 const INITIAL_VISIBLE = 5;
 
 export default function CSFaqBlock() {
-  const [openIndex, setOpenIndex] = useState<number>(0);
+  const [openItems, setOpenItems] = useState<Set<number>>(new Set([0]));
   const [showAll, setShowAll] = useState(false);
 
-  const visibleItems = showAll
-    ? FAQ_ITEMS
-    : FAQ_ITEMS.slice(0, INITIAL_VISIBLE);
+  const visibleItems = showAll ? FAQ_ITEMS : FAQ_ITEMS.slice(0, INITIAL_VISIBLE);
 
   function toggle(index: number) {
-    setOpenIndex(openIndex === index ? -1 : index);
+    setOpenItems((prev) => {
+      const next = new Set(prev);
+      if (next.has(index)) next.delete(index);
+      else next.add(index);
+      return next;
+    });
   }
 
   return (
@@ -62,35 +65,34 @@ export default function CSFaqBlock() {
 
         <div className={styles.list}>
           {visibleItems.map((item, i) => {
-            const isOpen = openIndex === i;
+            const isOpen = openItems.has(i);
             return (
-              <div key={i} className={styles.item}>
+              <div key={i} className={`${styles.item} ${isOpen ? styles.active : ""}`}>
                 <button
                   className={styles.question}
                   onClick={() => toggle(i)}
                   aria-expanded={isOpen}
                 >
+                  <span className={styles.bullet} aria-hidden="true" />
                   <span>{item.question}</span>
-                  <span
-                    className={`${styles.chevron} ${isOpen ? styles.chevronOpen : ""}`}
-                    aria-hidden="true"
-                  />
                 </button>
-                {isOpen && (
-                  <div className={styles.answer}>
+                <div className={styles.answer} aria-hidden={!isOpen}>
+                  <div className={styles.answerInner}>
                     <p>{item.answer}</p>
                   </div>
-                )}
+                </div>
               </div>
             );
           })}
         </div>
 
         {!showAll && (
-          <button className={styles.loadMore} onClick={() => setShowAll(true)}>
-            Load more
-            <span className={styles.loadMoreArrow} aria-hidden="true" />
-          </button>
+          <div className={styles.loadMoreWrap}>
+            <button className={styles.loadMoreBtn} onClick={() => setShowAll(true)}>
+              Load more
+              <span className={styles.linkArrow} aria-hidden="true" />
+            </button>
+          </div>
         )}
       </div>
     </section>

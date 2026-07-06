@@ -1,6 +1,6 @@
 .section {
   font-family: var(--font-inter-tight), "Inter Tight", sans-serif;
-  padding: 96px 0;
+  padding: 1.125rem 0 0;
   background: #fff;
 }
 
@@ -9,36 +9,35 @@
 }
 
 .row {
-  display: flex;
+  display: grid;
   align-items: flex-start;
-  gap: 48px;
+  gap: clamp(3rem, 4vw, 4rem);
+  grid-template-columns: 560px minmax(0, 1fr);
+  margin: 0 auto;
+  max-width: 1434px;
+  min-height: 866px;
 }
 
-@media screen and (max-width: 992px) {
+@media screen and (max-width: 1200px) {
   .row {
-    flex-direction: column;
+    grid-template-columns: minmax(360px, 0.8fr) minmax(0, 1.2fr);
     gap: 40px;
   }
 }
 
 .left {
-  flex: 0 0 33.333%;
-  max-width: 33.333%;
-}
-
-@media screen and (max-width: 992px) {
-  .left {
-    flex: 0 0 100%;
-    max-width: 100%;
-  }
+  align-self: stretch;
+  background: #f5f8fc;
+  padding: clamp(4rem, 6vw, 6.5rem) clamp(2.5rem, 7vw, 8.5rem);
 }
 
 .title {
-  font-size: 38px;
+  font-size: clamp(2.75rem, 3.5vw, 3.5rem);
   font-weight: 400;
-  line-height: 46px;
-  color: #112244;
-  margin: 0 0 24px;
+  line-height: 1.12;
+  letter-spacing: -0.025em;
+  color: #0b0b0d;
+  margin: 0 0 1.75rem;
 }
 
 @media screen and (max-width: 768px) {
@@ -53,9 +52,9 @@
 }
 
 .leftDesc {
-  font-size: 16px;
-  line-height: 26px;
-  color: #5e6d8e;
+  font-size: clamp(1.125rem, 1.4vw, 1.375rem);
+  line-height: 1.65;
+  color: #253858;
 }
 
 .leftDesc p {
@@ -63,8 +62,8 @@
 }
 
 .right {
-  flex: 1;
   min-width: 0;
+  padding-top: clamp(6.5rem, 8vw, 7.75rem);
 }
 
 .tabs {}
@@ -73,7 +72,8 @@
   display: flex;
   gap: 0;
   border-bottom: 2px solid #e6eff7;
-  margin-bottom: 32px;
+  margin-bottom: 2.5rem;
+  max-width: 332px;
 }
 
 .tabBtn {
@@ -81,40 +81,74 @@
   border: none;
   border-bottom: 2px solid transparent;
   margin-bottom: -2px;
-  padding: 12px 24px;
-  font-size: 16px;
-  font-weight: 600;
-  line-height: 22px;
+  flex: 1;
+  padding: 0 0 0.875rem;
+  font-size: 1.75rem;
+  font-weight: 400;
+  line-height: 1.2;
   color: #5e6d8e;
   cursor: pointer;
   font-family: var(--font-inter-tight), "Inter Tight", sans-serif;
   transition: color 0.2s, border-color 0.2s;
+  text-align: left;
+  text-transform: uppercase;
 }
 
 .tabBtn:hover {
-  color: #112244;
+  color: var(--color-accent, #3cc4e5);
 }
 
 .tabBtnActive {
-  color: #112244;
+  color: var(--color-accent, #3cc4e5);
   border-bottom-color: var(--color-accent, #3CC4E5);
 }
 
 .tabContent {}
 
 .tabDesc {
-  font-size: 16px;
-  line-height: 26px;
-  color: #5e6d8e;
-  margin: 0 0 32px;
+  font-size: clamp(1.125rem, 1.4vw, 1.375rem);
+  line-height: 1.62;
+  color: #253858;
+  margin: 0 0 clamp(3rem, 5vw, 4rem);
+  max-width: 650px;
 }
 
 .tabImage {
-  width: 100%;
+  max-width: 670px;
+  width: min(100%, 670px);
 }
 
 .tabImg {
   width: 100%;
   height: auto;
   display: block;
+}
+
+@media screen and (max-width: 992px) {
+  .section {
+    padding-top: 0;
+  }
+
+  .row {
+    grid-template-columns: 1fr;
+    min-height: 0;
+  }
+
+  .left {
+    padding: 4rem 2rem;
+  }
+
+  .right {
+    padding: 0 2rem 4rem;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .title {
+    font-size: 2.5rem;
+  }
+
+  .tabBtn {
+    font-size: 1.25rem;
+  }
 }

@@ -1,0 +1,104 @@
+/* Single sticky container — both Contents card and CTA banner move together */
+.stickyWrapper {
+  position: sticky;
+  top: calc(var(--header-height) + 2rem);
+  max-height: calc(100vh - var(--header-height) - 4rem);
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Contents card */
+.contentsCard {
+  background: #fff;
+  border: 1px solid #e6eff7;
+  padding: 1.75rem clamp(0.9375rem, 1.6vw, 1.875rem) 2rem;
+  flex-shrink: 0;
+}
+
+.contentsCard h2 {
+  color: #000;
+  font-size: 1.125rem;
+  font-weight: 600;
+  line-height: 1.55;
+  margin: 0 0 1.5rem;
+}
+
+.contentsCard nav {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.contentsCard a {
+  color: #112244;
+  font-size: 0.875rem;
+  line-height: 1.45;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.contentsCard a:hover,
+.active {
+  color: var(--color-accent, #3CC4E5);
+}
+
+.active {
+  font-weight: 700;
+}
+
+/* "From Concept to Clicks" banner card */
+.ctaBanner {
+  position: relative;
+  overflow: hidden;
+  padding: 2rem 1.5rem;
+  background: #02102C;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  flex-shrink: 0;
+}
+
+.ctaBannerBg {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.ctaBannerBg svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.ctaBannerTitle {
+  position: relative;
+  z-index: 1;
+  color: #fff;
+  font-size: 1.0625rem;
+  font-weight: 600;
+  line-height: 1.4;
+  margin: 0;
+}
+
+.ctaBannerBtn {
+  position: relative;
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--color-accent, #3CC4E5);
+  color: #fff;
+  font-weight: 600;
+  font-size: 0.9375rem;
+  padding: 0.625rem 1.25rem;
+  text-decoration: none;
+  transition: opacity 0.2s;
+  white-space: nowrap;
+  width: fit-content;
+}
+
+.ctaBannerBtn:hover {
+  opacity: 0.85;
+  color: #fff;
+}

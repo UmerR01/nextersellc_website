@@ -82,16 +82,13 @@
 .breadcrumbs {
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   gap: 4px;
   font-size: 14px;
   color: rgba(255, 255, 255, 0.6);
   margin-bottom: 24px;
 }
 
-@media screen and (max-width: 768px) {
-  .breadcrumbs { justify-content: flex-start; }
-}
 
 .breadcrumbs a {
   color: rgba(255, 255, 255, 0.8);

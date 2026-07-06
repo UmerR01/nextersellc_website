@@ -1,4 +1,3 @@
-import { redirect } from "next/navigation";
 import type { Metadata } from "next";
 import Header from "@/components/Header";
 import SdlcHero from "@/components/sdlc/SdlcHero";
@@ -9,7 +8,7 @@ import SdlcFrameworks from "@/components/sdlc/SdlcFrameworks";
 import SdlcToolsTable from "@/components/sdlc/SdlcToolsTable";
 import SdlcTeamRoles from "@/components/sdlc/SdlcTeamRoles";
 import SdlcEstimation from "@/components/sdlc/SdlcEstimation";
-import SdlcCases from "@/components/sdlc/SdlcCases";
+import CaseCards from "@/components/home/CaseCards";
 import SdlcReviews from "@/components/sdlc/SdlcReviews";
 import SdlcFaq from "@/components/sdlc/SdlcFaq";
 import TeamAwards from "@/components/team/TeamAwards";
@@ -24,7 +23,6 @@ export const metadata: Metadata = {
 };
 
 export default function SdlcPage() {
-  redirect("/");
   return (
     <>
       <Header />
@@ -37,7 +35,7 @@ export default function SdlcPage() {
         <SdlcToolsTable />
         <SdlcTeamRoles />
         <SdlcEstimation />
-        <SdlcCases />
+        <CaseCards />
         <SdlcReviews />
         <SdlcFaq />
         <TeamAwards />

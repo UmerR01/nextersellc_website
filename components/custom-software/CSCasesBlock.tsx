@@ -1,118 +1,153 @@
 "use client";
-import { useState } from "react";
+
+import { useRef, useState } from "react";
+import Image from "next/image";
 import styles from "./CSCasesBlock.module.css";
 
-const CASES = [
+type CaseCard = {
+  href: string;
+  banner: string;
+  maskColor: string;
+  name: string;
+  title: string;
+  text: string;
+  tags: string[];
+};
+
+const CASES: CaseCard[] = [
   {
     href: "/portfolio/ai-ml-route-optimization",
-    bg: "linear-gradient(280.31deg, #780013 -2.24%, #B31E35 76.47%)",
-    tech: "AI-powered stack",
+    banner: "/custom-software/10_Cover-1-1.png",
+    maskColor: "rgba(120,0,19,0.72)",
+    name: "AI-powered stack",
     title: "AI/ML route optimization for a freight delivery service",
-    desc: "Lifted on-time delivery to 98% – without expanding the fleet. An AI/ML platform that plans and reoptimizes B2B/B2C routes in real time with traffic, weather, and capacity constraints, cutting last-mile costs by 22%.",
-    tags: ["AI inside", "Enterprise"],
-    imgRight: "/custom-software/10_Cover-1-1.png",
-    imgLeft: "/custom-software/10_Cover-1-2.png",
+    text: "Lifted on-time delivery to 98% – without expanding the fleet. An AI/ML platform that plans and reoptimizes B2B/B2C routes in real time with traffic, weather, and capacity constraints, cutting last-mile costs by 22%.",
+    tags: ["AI inside", "Enterprise", "Route optimization", "Real-time replan", "Cost reduction", "B2B/B2C"],
   },
   {
     href: "/portfolio/smart-integration",
-    bg: "linear-gradient(259.16deg, #02102C -0.49%, #112244 100%)",
-    tech: "Traditional tech stack",
+    banner: "/custom-software/02_Smart-Int-Perspl.png",
+    maskColor: "rgba(2,16,44,0.78)",
+    name: "Traditional tech stack",
     title: "Hotel management system that cut guest check-in time by 35%",
-    desc: "SaaS hotel management platform for a Saudi HoReCa operator – centralizing property, rate, and guest data across multiple hotels, with automated night audit and a 60% reduction in overnight processing time.",
-    tags: ["Startups"],
-    imgRight: "/custom-software/02_Smart-Int-Perspl.png",
-    imgLeft: "/custom-software/02_Smart-Int-Perspr.png",
+    text: "SaaS hotel management platform for a Saudi HoReCa operator – centralizing property, rate, and guest data across multiple hotels, with automated night audit and a 60% reduction in overnight processing time.",
+    tags: ["SaaS", "Startups", "Hospitality", "Multi-property", "Automation", "Night audit"],
   },
   {
     href: "/portfolio/tl-nika",
-    bg: "linear-gradient(281.09deg, #36185F 2.55%, #7349AC 72.04%)",
-    tech: "Traditional tech stack",
+    banner: "/custom-software/02_TLNIKA5-1.png",
+    maskColor: "rgba(54,24,95,0.76)",
+    name: "Traditional tech stack",
     title: "Transportation management system",
-    desc: "A comprehensive solution for companies operating in the logistics industry, covering all the major aspects of transport and cargo management.",
-    tags: ["Enterprise"],
-    imgRight: "/custom-software/02_TLNIKA5-1.png",
-    imgLeft: "/custom-software/02_TLNIKA5-1.png",
+    text: "A comprehensive solution for companies operating in the logistics industry, covering all the major aspects of transport and cargo management.",
+    tags: ["Enterprise", "Logistics", "Cargo", "Fleet management", "Operations", "TMS"],
   },
   {
     href: "/portfolio/media-buying-software-development",
-    bg: "linear-gradient(280.31deg, #780013 -2.24%, #B31E35 76.47%)",
-    tech: "Traditional tech stack",
+    banner: "/custom-software/01_Cover.png",
+    maskColor: "rgba(120,0,19,0.72)",
+    name: "Traditional tech stack",
     title: "A media buying system for a leading US-based advertising agency",
-    desc: "50x faster ad operations and data processing cut from hours to under a minute – we replaced a 20-year-old FileMaker system with a custom platform covering 100+ operational workflows.",
-    tags: ["Enterprise"],
-    imgRight: "/custom-software/01_Cover.png",
-    imgLeft: "/custom-software/01_Cover.png",
+    text: "50× faster ad operations and data processing cut from hours to under a minute – we replaced a 20-year-old FileMaker system with a custom platform covering 100+ operational workflows.",
+    tags: ["Enterprise", "AdTech", "100+ workflows", "Legacy modernization", "50× faster", "Media buying"],
   },
   {
     href: "/portfolio/advanced-structural-analysis-web-application",
-    bg: "linear-gradient(259.16deg, #02102C -0.49%, #112244 100%)",
-    tech: "Traditional tech stack",
+    banner: "/custom-software/10_Cover-1.png",
+    maskColor: "rgba(2,16,44,0.78)",
+    name: "Traditional tech stack",
     title: "Advanced structural analysis web app for a leading steel distributor",
-    desc: "Engineers complete structural analyses ~45% faster with a web platform that integrates the Client's Excel-based calculation logic, delivers real-time Shear, Deflection, and Moment visualization, and centralizes project records for geotechnical teams.",
-    tags: ["Enterprise"],
-    imgRight: "/custom-software/10_Cover-1.png",
-    imgLeft: "/custom-software/10_Cover-2.png",
+    text: "Engineers complete structural analyses ~45% faster with a web platform that integrates the Client's Excel-based calculation logic and delivers real-time Shear, Deflection, and Moment visualization.",
+    tags: ["Enterprise", "Engineering", "45% faster", "Real-time viz", "Web platform", "Steel industry"],
   },
 ];
 
 export default function CSCasesBlock() {
-  const [current, setCurrent] = useState(0);
+  const [active, setActive] = useState(0);
+  const [direction, setDirection] = useState<-1 | 0 | 1>(0);
+  const touchStartX = useRef<number | null>(null);
+  const count = CASES.length;
 
-  const prev = () => setCurrent((c) => (c === 0 ? CASES.length - 1 : c - 1));
-  const next = () => setCurrent((c) => (c === CASES.length - 1 ? 0 : c + 1));
+  const go = (dir: -1 | 1) => {
+    setDirection(dir);
+    setActive((i) => (i + dir + count) % count);
+  };
 
-  const c = CASES[current];
+  const onTouchStart = (e: React.TouchEvent) => {
+    touchStartX.current = e.touches[0]?.clientX ?? null;
+  };
+  const onTouchEnd = (e: React.TouchEvent) => {
+    if (touchStartX.current === null) return;
+    const dist = touchStartX.current - (e.changedTouches[0]?.clientX ?? 0);
+    touchStartX.current = null;
+    if (Math.abs(dist) >= 50) go(dist > 0 ? 1 : -1);
+  };
 
   return (
     <section id="cs-cases" className={styles.section}>
-      <div className={styles.container}>
-        <h2 className={styles.sectionTitle}>
-          Our recent <span className={styles.blue}>works</span>
+      <div className="container">
+        <h2 className={styles.heading}>
+          Our recent <span>case studies</span>
         </h2>
-        <div className={styles.sliderWrapper}>
-          <a href={c.href} className={styles.card} style={{ background: c.bg }}>
-            <div className={styles.cardWrapper}>
-              <div className={styles.cardContent}>
-                <div className={styles.tech}>
-                  <span>{c.tech}</span>
-                </div>
-                <h3 className={styles.cardTitle}>{c.title}</h3>
-                <p className={styles.cardDesc}>{c.desc}</p>
-                <div className={styles.tags}>
-                  {c.tags.map((t) => <span key={t} className={styles.tag}>{t}</span>)}
-                </div>
-              </div>
-              <div className={styles.cardImages}>
-                <div className={styles.imgRight}>
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img src={c.imgRight} alt={c.title} loading="lazy" />
-                </div>
-                <div className={styles.imgLeft}>
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img src={c.imgLeft} alt={c.title} loading="lazy" />
-                </div>
-              </div>
-            </div>
-          </a>
-          <div className={styles.sliderNav}>
-            <button className={styles.navPrev} onClick={prev} aria-label="Previous case" />
-            <button className={styles.navNext} onClick={next} aria-label="Next case" />
-          </div>
-        </div>
-        <div className={styles.pagination}>
-          <div className={styles.dots}>
-            {CASES.map((_, i) => (
-              <button
-                key={i}
-                className={`${styles.dot} ${i === current ? styles.dotActive : ""}`}
-                onClick={() => setCurrent(i)}
-                aria-label={`Go to case ${i + 1}`}
+
+        <div
+          className={styles.cards}
+          onTouchStart={onTouchStart}
+          onTouchEnd={onTouchEnd}
+          aria-label="Case studies carousel"
+        >
+          {CASES.map((card, i) => (
+            <article
+              key={card.href}
+              className={`${styles.card} ${i === active ? styles.active : ""} ${
+                i === active && direction === 1 ? styles.slideNext :
+                i === active && direction === -1 ? styles.slidePrev : ""
+              } ${i === (active + 1) % count ? styles.tabletNext : ""}`}
+              onClick={() => { if (i !== active) { setDirection(1); setActive(i); } }}
+            >
+              <Image
+                src={card.banner}
+                alt={card.title}
+                fill
+                sizes="(max-width:767px) 100vw, 60vw"
+                className={styles.banner}
               />
-            ))}
-          </div>
+              <div
+                className={styles.mask}
+                style={{ "--mask-color": card.maskColor } as React.CSSProperties}
+              />
+
+              <div className={styles.name}>{card.name}</div>
+
+              <div className={styles.body}>
+                <h3 className={styles.title}>{card.title}</h3>
+                <p className={styles.text}>{card.text}</p>
+                <a href={card.href} className={styles.viewMore} onClick={(e) => e.stopPropagation()}>
+                  View case <span aria-hidden>↗</span>
+                </a>
+              </div>
+
+              <div className={styles.meta}>
+                <ul className={styles.tags}>
+                  {card.tags.map((t) => (
+                    <li key={t}>{t}</li>
+                  ))}
+                </ul>
+                <div className={styles.nav}>
+                  <button aria-label="Previous case" onClick={(e) => { e.stopPropagation(); go(-1); }}>←</button>
+                  <button aria-label="Next case" onClick={(e) => { e.stopPropagation(); go(1); }}>→</button>
+                </div>
+              </div>
+
+              <span className={styles.arrow} aria-hidden>↗</span>
+            </article>
+          ))}
+        </div>
+
+        <div className={styles.allRow}>
           <a href="/portfolio" className={styles.allLink}>
             All projects
-            <span className={styles.allLinkArrow} />
+            <span className={styles.allLinkArrow} aria-hidden />
           </a>
         </div>
       </div>

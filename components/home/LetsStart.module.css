@@ -6,6 +6,12 @@
   color: #fff;
 }
 
+.process {
+  width: calc(100% - 2.5rem);
+  max-width: 90rem;
+  margin: 0 auto;
+}
+
 .library {
   background: var(--color-accent-dark);
 }
