@@ -46,17 +46,17 @@
 
 .cardTitle {
   font-family: var(--font-inter-tight), sans-serif;
-  font-size: clamp(1.5rem, 2.5vw, 2rem);
+  font-size: clamp(1.25rem, 2vw, 1.625rem);
   font-weight: 600;
   color: #112244;
-  margin: 0 0 24px;
-  line-height: 1.2;
+  margin: 0 0 16px;
+  line-height: 1.3;
 }
 
 .cardDesc {
   font-family: var(--font-inter-tight), sans-serif;
-  font-size: clamp(1rem, 1.4vw, 1.25rem);
-  color: #112244;
+  font-size: clamp(1rem, 1.2vw, 1.125rem);
+  color: #4a5f7a;
   line-height: 1.7;
   margin: 0;
 }

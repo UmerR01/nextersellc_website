@@ -6,7 +6,7 @@ const phases = [
     title: "Phase 1 – Discovery",
     content: (
       <>
-        <p><strong>Purpose: </strong>Define what gets built, for whom, and under what constraints – before design or development begins. Discovery converts business intent into documented requirements that the full team can build against.</p>
+        <p><strong>Purpose: </strong>Define what gets built, for whom, and under what constraints – before design or development begins. <span className={styles.inlineAccent}>Discovery</span> converts business intent into documented requirements that the full team can build against.</p>
         <p><strong>Deliverables:</strong></p>
         <ul>
           <li>Product backlog with MoSCoW-prioritised requirements</li>

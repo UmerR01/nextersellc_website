@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import styles from "./SdlcFaq.module.css";
+import styles from "@/components/home/Faq.module.css";
 
 const faqs = [
   {
@@ -32,64 +32,57 @@ const faqs = [
 ];
 
 export default function SdlcFaq() {
-  const [open, setOpen] = useState<number | null>(0);
+  const [openItems, setOpenItems] = useState<Set<number>>(new Set([0]));
   const [showAll, setShowAll] = useState(false);
 
   const visibleFaqs = showAll ? faqs : faqs.filter((f) => !f.hidden);
 
+  const toggle = (index: number) => {
+    setOpenItems((previous) => {
+      const next = new Set(previous);
+      if (next.has(index)) next.delete(index);
+      else next.add(index);
+      return next;
+    });
+  };
+
   return (
-    <section className={styles.section}>
-      <div className="container">
+    <section className={styles.section} id="faq">
+      <div className={`container ${styles.wrapper}`}>
         <h2 className={styles.title}>
           Frequently asked questions about Nexterse&apos;s SDLC
         </h2>
         <div className={styles.cards}>
-          {visibleFaqs.map((faq, i) => (
-            <div key={i} className={`${styles.card} ${open === i ? styles.cardActive : ""}`}>
-              <button
-                className={styles.question}
-                onClick={() => setOpen(open === i ? null : i)}
-                type="button"
-                aria-expanded={open === i}
-              >
-                <span>{faq.q}</span>
-                <span className={styles.toggle}>
-                  <svg
-                    width="16"
-                    height="16"
-                    viewBox="0 0 16 16"
-                    fill="none"
-                    aria-hidden
-                    className={open === i ? styles.iconOpen : ""}
-                  >
-                    <path d="M2 5L8 11L14 5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                  </svg>
-                </span>
-              </button>
-              {open === i && (
-                <div className={styles.answer}>
-                  <p>{faq.a}</p>
+          {visibleFaqs.map((faq, index) => {
+            const isOpen = openItems.has(index);
+            return (
+              <div key={faq.q} className={`${styles.card} ${isOpen ? styles.active : ""}`}>
+                <button
+                  className={styles.question}
+                  onClick={() => toggle(index)}
+                  type="button"
+                  aria-expanded={isOpen}
+                >
+                  <span className={styles.bullet} aria-hidden />
+                  <span>{faq.q}</span>
+                </button>
+                <div className={styles.answer} aria-hidden={!isOpen}>
+                  <div className={styles.answerInner}>
+                    <p>{faq.a}</p>
+                  </div>
                 </div>
-              )}
-            </div>
-          ))}
-          {!showAll && (
-            <div className={styles.loadMore}>
-              <button
-                className={styles.loadMoreBtn}
-                onClick={() => { setShowAll(true); }}
-                type="button"
-              >
-                Load more
-                <span className={styles.arrow}>
-                  <svg width="6" height="10" viewBox="0 0 6 10" fill="none">
-                    <path d="M7.94319e-08 8.59L3.59 5L-3.53625e-07 1.41L1 0.5L5.5 5L1 9.5L7.94319e-08 8.59Z" fill="currentColor"/>
-                  </svg>
-                </span>
-              </button>
-            </div>
-          )}
+              </div>
+            );
+          })}
         </div>
+
+        {!showAll && (
+          <div className={styles.loadMore}>
+            <button className={styles.loadMoreLink} onClick={() => setShowAll(true)}>
+              Load more <span className={styles.loadMoreArrow} aria-hidden />
+            </button>
+          </div>
+        )}
       </div>
     </section>
   );

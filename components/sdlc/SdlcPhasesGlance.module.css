@@ -4,7 +4,7 @@
 }
 
 .wrapper {
-  padding: 48px 0 64px;
+  padding: clamp(2.5rem, 4vw, 4rem) 0 clamp(3rem, 5vw, 5rem);
 }
 
 @media screen and (max-width: 768px) {
@@ -12,12 +12,14 @@
 }
 
 .title {
-  font-size: 38px;
+  font-size: clamp(2.75rem, 3.5vw, 3.5rem);
   font-weight: 400;
-  line-height: 46px;
+  line-height: 1.05;
   color: #112244;
-  margin: 0 0 24px;
-  max-width: 880px;
+  letter-spacing: -0.035em;
+  margin: 0 auto clamp(1.75rem, 3vw, 2.25rem);
+  max-width: 900px;
+  text-align: center;
 }
 
 @media screen and (max-width: 768px) {
@@ -32,11 +34,12 @@
 }
 
 .description {
-  font-size: 22px;
-  line-height: 36px;
+  font-size: clamp(1.125rem, 1.4vw, 1.25rem);
+  line-height: 1.6;
   color: #5e6d8e;
-  max-width: 880px;
-  margin: 0 0 48px;
+  max-width: 900px;
+  margin: 0 auto clamp(3rem, 5vw, 4.5rem);
+  text-align: center;
 }
 
 @media screen and (max-width: 768px) {
@@ -52,11 +55,28 @@
 }
 
 .imageWrap {
-  width: 100%;
+  margin: 0 auto;
+  max-width: 980px;
+  width: min(100%, 980px);
 }
 
 .image {
   width: 100%;
   height: auto;
   display: block;
+}
+
+@media screen and (max-width: 768px) {
+  .title,
+  .description {
+    text-align: left;
+  }
+
+  .imageWrap {
+    overflow-x: auto;
+  }
+
+  .image {
+    min-width: 620px;
+  }
 }

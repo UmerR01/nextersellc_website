@@ -1,12 +1,6 @@
 "use client";
 
-import { useRef } from "react";
-import Image from "next/image";
-import { Swiper, SwiperSlide } from "swiper/react";
-import type { SwiperRef } from "swiper/react";
-import { Navigation } from "swiper/modules";
-import "swiper/css";
-import styles from "./SdlcReviews.module.css";
+import TeamReviewSlider, { type TeamReview } from "@/components/team/TeamReviewSlider";
 
 type Review = {
   texts: string[];
@@ -129,90 +123,19 @@ const reviews: Review[] = [
 ];
 
 export default function SdlcReviews() {
-  const swiperRef = useRef<SwiperRef>(null);
+  const sliderReviews: TeamReview[] = reviews.map((review) => ({
+    text: review.texts.join(" "),
+    name: review.name,
+    position: review.position,
+    photo: review.photo?.src,
+    logo: review.logo?.src,
+  }));
 
   return (
-    <section className={styles.section}>
-      <div className="container">
-        <Swiper
-          ref={swiperRef}
-          modules={[Navigation]}
-          slidesPerView={1}
-          loop
-          className={styles.swiper}
-        >
-          {reviews.map((r, i) => (
-            <SwiperSlide key={i}>
-              <div className={styles.slide}>
-                <div className={styles.leftContent}>
-                  <div className={styles.reviewTexts}>
-                    {r.texts.map((t, j) => (
-                      <p key={j} className={styles.reviewText}>{t}</p>
-                    ))}
-                  </div>
-                </div>
-                <div className={styles.rightContent}>
-                  <div className={styles.authorData}>
-                    {r.photo ? (
-                      <Image
-                        src={r.photo.src}
-                        alt={r.name}
-                        width={r.photo.width}
-                        height={r.photo.height}
-                        className={styles.authorPhoto}
-                      />
-                    ) : r.logo ? (
-                      <Image
-                        src={r.logo.src}
-                        alt={r.name}
-                        width={r.logo.width}
-                        height={r.logo.height}
-                        className={styles.authorLogo}
-                      />
-                    ) : null}
-                    <div className={styles.authorText}>
-                      <div className={styles.authorName}>{r.name}</div>
-                      <div className={styles.authorPosition}>{r.position}</div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </SwiperSlide>
-          ))}
-        </Swiper>
-        <div className={styles.bottom}>
-          <div className={styles.navBtns}>
-            <button
-              className={styles.navBtn}
-              onClick={() => swiperRef.current?.swiper.slidePrev()}
-              aria-label="Previous review"
-              type="button"
-            >
-              <svg width="8" height="14" viewBox="0 0 8 14" fill="none">
-                <path d="M7 1L1 7L7 13" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
-              </svg>
-            </button>
-            <button
-              className={styles.navBtn}
-              onClick={() => swiperRef.current?.swiper.slideNext()}
-              aria-label="Next review"
-              type="button"
-            >
-              <svg width="8" height="14" viewBox="0 0 8 14" fill="none">
-                <path d="M1 1L7 7L1 13" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
-              </svg>
-            </button>
-          </div>
-          <a href="/testimonials" className={styles.allLink}>
-            All Reviews
-            <span className={styles.arrow}>
-              <svg width="6" height="10" viewBox="0 0 6 10" fill="none">
-                <path d="M7.94319e-08 8.59L3.59 5L-3.53625e-07 1.41L1 0.5L5.5 5L1 9.5L7.94319e-08 8.59Z" fill="currentColor"/>
-              </svg>
-            </span>
-          </a>
-        </div>
-      </div>
-    </section>
+    <TeamReviewSlider
+      reviews={sliderReviews}
+      linkLabel="All Reviews"
+      linkHref="/testimonials"
+    />
   );
 }

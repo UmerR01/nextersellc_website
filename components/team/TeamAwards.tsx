@@ -72,7 +72,11 @@ export default function TeamAwards() {
             onClick={previous}
             aria-label="Previous award"
             disabled={previousDisabled}
-          />
+          >
+            <svg width="48" height="24" viewBox="0 0 48 24" fill="none" aria-hidden>
+              <path d="M47 12H3M10 5L3 12L10 19" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
+          </button>
 
           <div className={styles.swiper}>
             <div
@@ -101,7 +105,11 @@ export default function TeamAwards() {
             onClick={next}
             aria-label="Next award"
             disabled={nextDisabled}
-          />
+          >
+            <svg width="48" height="24" viewBox="0 0 48 24" fill="none" aria-hidden>
+              <path d="M1 12H45M38 5L45 12L38 19" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
+          </button>
         </div>
 
         <div className={styles.mobileNav}>
@@ -110,13 +118,21 @@ export default function TeamAwards() {
             onClick={previous}
             aria-label="Previous award"
             disabled={previousDisabled}
-          />
+          >
+            <svg width="36" height="18" viewBox="0 0 48 24" fill="none" aria-hidden>
+              <path d="M47 12H3M10 5L3 12L10 19" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
+          </button>
           <button
             className={`${styles.navBtn} ${styles.navNext} ${nextDisabled ? styles.navDisabled : ""}`}
             onClick={next}
             aria-label="Next award"
             disabled={nextDisabled}
-          />
+          >
+            <svg width="36" height="18" viewBox="0 0 48 24" fill="none" aria-hidden>
+              <path d="M1 12H45M38 5L45 12L38 19" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
+          </button>
         </div>
       </div>
     </section>

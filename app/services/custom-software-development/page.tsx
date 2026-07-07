@@ -1,4 +1,3 @@
-import { redirect } from "next/navigation";
 import type { Metadata } from "next";
 import Header from "@/components/Header";
 import CSHero from "@/components/custom-software/CSHero";
@@ -31,7 +30,6 @@ export const metadata: Metadata = {
 };
 
 export default function CustomSoftwareDevelopmentPage() {
-  redirect("/");
   return (
     <>
       <Header />

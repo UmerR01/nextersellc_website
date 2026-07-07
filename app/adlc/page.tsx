@@ -1,4 +1,3 @@
-import { redirect } from "next/navigation";
 import type { Metadata } from "next";
 import Header from "@/components/Header";
 import AdlcHero from "@/components/adlc/AdlcHero";
@@ -25,7 +24,6 @@ export const metadata: Metadata = {
 };
 
 export default function AdlcPage() {
-  redirect("/");
   return (
     <>
       <Header />

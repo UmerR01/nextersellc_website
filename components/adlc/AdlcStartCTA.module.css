@@ -74,21 +74,37 @@
   .section {
     padding: 2rem 0 3.5rem;
   }
+
+  .section > :global(.container) {
+    padding-inline: 0;
+  }
+
   .row {
     flex-direction: column;
     align-items: flex-start;
-    gap: 32px;
+    gap: 1rem;
     min-height: 0;
-    padding: 2.5rem 1.5rem;
+    padding: 2.25rem 3rem;
   }
+
   .right {
     width: 100%;
   }
+
   .btn {
+    min-height: 3.375rem;
     width: 100%;
     text-align: center;
   }
+
   .title {
-    font-size: 2rem;
+    font-size: 1.5rem;
+    line-height: 1.2;
+    margin-bottom: 0.625rem;
+  }
+
+  .description p {
+    font-size: 1rem;
+    line-height: 1.65;
   }
 }

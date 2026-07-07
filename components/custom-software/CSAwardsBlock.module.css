@@ -53,14 +53,14 @@
 
 .track {
   display: flex;
+  gap: 40px;
   transition: transform 0.4s ease;
   width: 100%;
 }
 
 .slide {
-  flex: 0 0 calc(100% / var(--visible, 6));
-  min-width: calc(100% / var(--visible, 6));
-  padding: 0 16px;
+  flex: 0 0 calc((100% - (var(--visible, 6) - 1) * 40px) / var(--visible, 6));
+  min-width: calc((100% - (var(--visible, 6) - 1) * 40px) / var(--visible, 6));
   display: flex;
   align-items: center;
   justify-content: center;
@@ -90,7 +90,7 @@
 
 .navBtn {
   appearance: none;
-  width: 40px;
+  width: 48px;
   height: 24px;
   border: none;
   background: none;
@@ -99,47 +99,18 @@
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
+  color: #3CC4E5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.2s ease;
 }
 
-.navBtn::before {
-  background: #3CC4E5;
-  content: "";
-  display: block;
-  height: 2px;
-  position: absolute;
-  top: 11px;
-  transition: width 0.3s ease-in-out;
-  width: calc(100% - 2px);
-}
+.navBtn:hover { color: var(--color-accent-dark, #127aff); }
+.navBtn:disabled { color: #b8c7d8; cursor: default; pointer-events: none; }
 
-.navBtn::after {
-  border-bottom: 2px solid #3CC4E5;
-  border-right: 2px solid #3CC4E5;
-  content: "";
-  display: block;
-  height: 10px;
-  position: absolute;
-  top: 7px;
-  transition: 0.3s ease-in-out;
-  width: 10px;
-}
-
-.navPrev { right: calc(100% + 40px); }
-.navNext { left: calc(100% + 40px); }
-.navPrev::before { right: 1px; }
-.navPrev::after { left: 2px; transform: rotate(135deg); }
-.navNext::before { left: 1px; }
-.navNext::after { right: 2px; transform: rotate(-45deg); }
-.navBtn:disabled {
-  cursor: default;
-  pointer-events: none;
-}
-.navBtn:disabled::before { background: #899fb6; }
-.navBtn:disabled::after { border-color: #899fb6; }
-.navNext:not(:disabled):hover::before { width: calc(100% + 4px); }
-.navNext:not(:disabled):hover::after { right: -4px; }
-.navPrev:not(:disabled):hover::before { width: calc(100% + 4px); }
-.navPrev:not(:disabled):hover::after { left: -4px; }
+.navPrev { right: calc(100% + 24px); }
+.navNext { left: calc(100% + 24px); }
 
 .mobileNav {
   display: none;
@@ -156,7 +127,7 @@
 
   .mobileNav {
     display: flex;
-    gap: 16px;
+    gap: 12px;
     margin-top: 24px;
   }
 
@@ -164,15 +135,7 @@
     position: relative;
     inset: auto;
     transform: none;
-    flex: 0 0 32px;
-    width: 32px;
-    height: 20px;
-  }
-
-  .mobileNav .navBtn::before { top: 9px; }
-  .mobileNav .navBtn::after {
-    top: 5px;
-    width: 8px;
-    height: 8px;
+    width: 36px;
+    height: 18px;
   }
 }

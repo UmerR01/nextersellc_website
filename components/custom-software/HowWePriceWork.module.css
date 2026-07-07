@@ -1,109 +1,145 @@
+/* How we price work */
 .section {
-  padding: 80px 0;
-  background: linear-gradient(135deg, #02102C 0%, #112244 100%);
+  background: #fff;
   font-family: var(--font-inter-tight), sans-serif;
-}
-
-@media (max-width: 768px) {
-  .section {
-    padding: 56px 0;
-  }
+  padding: clamp(3.5rem, 5vw, 5rem) 24px;
 }
 
 .container {
-  max-width: min(100%, 1200px);
+  background:
+    linear-gradient(118deg, rgba(43, 42, 109, 0.18) 0%, transparent 42%),
+    linear-gradient(135deg, #081b3f 0%, var(--color-accent-dark) 100%);
   margin: 0 auto;
-  padding-inline: clamp(1.25rem, 3vw, 2.5rem);
+  max-width: 1420px;
+  overflow: hidden;
+  padding: clamp(4.5rem, 6vw, 6.25rem) clamp(2rem, 7vw, 8.25rem);
+  position: relative;
+}
+
+.container::after {
+  background: linear-gradient(135deg, transparent 10%, rgba(60, 196, 229, 0.16) 52%, rgba(60, 196, 229, 0.05) 100%);
+  clip-path: polygon(20% 0, 100% 0, 100% 100%, 0 100%);
+  content: "";
+  inset: 36% 0 0 50%;
+  pointer-events: none;
+  position: absolute;
 }
 
 .heading {
-  font-family: var(--font-inter-tight), sans-serif;
-  font-size: clamp(1.75rem, 3vw, 2.5rem);
-  font-weight: 400;
-  line-height: 1.25;
   color: #fff;
-  margin: 0 0 48px;
-}
-
-@media (max-width: 768px) {
-  .heading {
-    margin-bottom: 32px;
-  }
+  font-family: var(--font-inter-tight), sans-serif;
+  font-size: clamp(2.5rem, 3.5vw, 3.5rem);
+  font-weight: 400;
+  letter-spacing: -0.035em;
+  line-height: 1.15;
+  margin: 0 0 clamp(2.5rem, 4vw, 3.25rem);
+  position: relative;
+  text-align: center;
+  z-index: 1;
 }
 
 .accent {
-  color: #3CC4E5;
+  color: var(--color-accent);
 }
 
 .grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 24px;
-}
-
-@media (max-width: 768px) {
-  .grid {
-    grid-template-columns: 1fr;
-  }
+  gap: clamp(1rem, 2vw, 2rem);
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  position: relative;
+  z-index: 1;
 }
 
 .card {
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 8px;
-  padding: 32px;
+  background: rgba(43, 42, 109, 0.16);
+  border: 1px solid transparent;
+  border-radius: 0;
+  color: inherit;
   display: flex;
   flex-direction: column;
+  padding: clamp(1.75rem, 2.5vw, 2rem);
   text-decoration: none;
-  color: inherit;
-  transition: background 0.2s ease, border-color 0.2s ease;
+  transition: background 0.3s ease, border-color 0.3s ease, transform 0.3s ease;
 }
 
-.card:hover {
-  background: rgba(255, 255, 255, 0.08);
-  border-color: rgba(60, 196, 229, 0.4);
+.card:hover,
+.card:focus-visible {
+  background: linear-gradient(135deg, rgba(60, 196, 229, 0.28), rgba(60, 196, 229, 0.08));
+  border-color: var(--color-accent);
+  transform: translateY(-2px);
 }
 
 .cardTitle {
-  font-family: var(--font-inter-tight), sans-serif;
-  font-size: 1.25rem;
-  font-weight: 600;
-  line-height: 1.4;
   color: #fff;
-  margin: 0 0 16px;
+  font-family: var(--font-inter-tight), sans-serif;
+  font-size: clamp(1.5rem, 1.8vw, 1.75rem);
+  font-weight: 600;
+  line-height: 1.35;
+  margin: 0 0 1rem;
 }
 
 .cardDesc {
-  font-family: var(--font-inter-tight), sans-serif;
-  font-size: 0.9375rem;
-  font-weight: 400;
-  line-height: 1.65;
-  color: rgba(255, 255, 255, 0.7);
-  margin: 0 0 24px;
+  color: rgba(255, 255, 255, 0.9);
   flex: 1;
+  font-family: var(--font-inter-tight), sans-serif;
+  font-size: clamp(1rem, 1.15vw, 1.125rem);
+  font-weight: 400;
+  line-height: 1.58;
+  margin: 0 0 1.5rem;
 }
 
 .cardLink {
-  display: inline-flex;
   align-items: center;
-  gap: 6px;
+  color: var(--color-accent);
+  display: inline-flex;
   font-family: var(--font-inter-tight), sans-serif;
-  font-size: 0.9375rem;
+  font-size: clamp(1rem, 1.1vw, 1.125rem);
   font-weight: 500;
-  color: #3CC4E5;
+  gap: 0.5rem;
   margin-top: auto;
-  transition: gap 0.2s ease;
-}
-
-.card:hover .cardLink {
-  gap: 10px;
 }
 
 .arrow {
   flex-shrink: 0;
-  transition: transform 0.2s ease;
 }
 
-.card:hover .arrow {
-  transform: translateX(3px);
+.card:hover .arrow,
+.card:focus-visible .arrow {
+  animation: arrowForward 0.8s ease-in-out infinite;
+}
+
+@keyframes arrowForward {
+  0%, 100% { transform: translateX(0); }
+  50% { transform: translateX(7px); }
+}
+
+@media (max-width: 768px) {
+  .section {
+    padding: 3.5rem 0;
+  }
+
+  .container {
+    padding: 3.5rem 1.5rem;
+  }
+
+  .heading {
+    margin-bottom: 2rem;
+    text-align: left;
+  }
+
+  .grid {
+    grid-template-columns: 1fr;
+  }
+
+  .card {
+    padding: 1.5rem 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .card,
+  .arrow {
+    animation: none !important;
+    transition: none;
+  }
 }

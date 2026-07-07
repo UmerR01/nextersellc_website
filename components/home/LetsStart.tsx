@@ -47,7 +47,7 @@ const LIBRARY_STEPS = [
 ];
 
 interface LetsStartProps {
-  variant?: "testimonials" | "whitepapers" | "library";
+  variant?: "testimonials" | "whitepapers" | "library" | "process";
 }
 
 export default function LetsStart({ variant }: LetsStartProps = {}) {
@@ -55,7 +55,10 @@ export default function LetsStart({ variant }: LetsStartProps = {}) {
   const [fileName, setFileName] = useState("");
 
   return (
-    <section className={`${styles.section} ${variant === "library" ? styles.library : ""}`} id="lets-start">
+    <section
+      className={`${styles.section} ${variant === "library" ? styles.library : ""} ${variant === "process" ? styles.process : ""}`}
+      id="lets-start"
+    >
       <div className={styles.wrapper}>
         <div className={styles.content}>
           {/* Left: title + content */}

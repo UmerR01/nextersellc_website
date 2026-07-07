@@ -58,9 +58,11 @@ export default function DevelopmentProcess() {
         <div className={styles.grid}>
           {STEPS.map((step) => (
             <div key={step.number} className={styles.step}>
-              <div className={styles.stepNumber}>{step.number}</div>
-              <h3 className={styles.stepTitle}>{step.title}</h3>
-              <p className={styles.stepDesc}>{step.desc}</p>
+              <div className={styles.stepNumber}>{Number(step.number)}</div>
+              <div className={styles.stepContent}>
+                <h3 className={styles.stepTitle}>{step.title}</h3>
+                <p className={styles.stepDesc}>{step.desc}</p>
+              </div>
             </div>
           ))}
         </div>

@@ -16,7 +16,7 @@ const Chevron = ({ className }: { className?: string }) => (
 const PANEL_LINKS = [
   { label: "About", href: "/team" },
   { label: "Services", href: "#services" },
-  { label: "Process", href: "#process" },
+  { label: "Process", href: "/process" },
   { label: "Work", href: "#work" },
   { label: "Applied AI", href: "#applied-ai" },
   { label: "Insights", href: "/library" },
@@ -36,15 +36,15 @@ const SOCIAL = [
   { label: "in", href: "https://linkedin.com", icon: "in" },
 ];
 
-export default function Header({ forceSolid = false }: { forceSolid?: boolean }) {
+export default function Header({ forceSolid = false, startTransparent = false }: { forceSolid?: boolean; startTransparent?: boolean }) {
   const [open, setOpen] = useState(false);
-  const [solid, setSolid] = useState(forceSolid);
+  const [solid, setSolid] = useState(forceSolid && !startTransparent);
   const [modalOpen, setModalOpen] = useState(false);
   const headerRef = useRef<HTMLElement>(null);
-  const solidRef = useRef(forceSolid);
+  const solidRef = useRef(forceSolid && !startTransparent);
 
   useEffect(() => {
-    if (forceSolid) return;
+    if (forceSolid && !startTransparent) return;
     const aboutEl = document.getElementById("about");
     const heroEl = document.getElementById("top");
     let frame = 0;
@@ -71,9 +71,10 @@ export default function Header({ forceSolid = false }: { forceSolid?: boolean })
 
     const update = () => {
       frame = 0;
-      // Sub-pages (no home hero layout): always visible, solid when scrolled past top
+      // Sub-pages (no home hero layout): transparent over hero, solid once scrolled past
       if (!aboutEl) {
-        const past = window.scrollY > 10;
+        const threshold = startTransparent ? window.innerHeight * 0.6 : 10;
+        const past = window.scrollY > threshold;
         applySolid(past);
         if (headerRef.current) headerRef.current.style.transform = "";
         return;
@@ -128,7 +129,7 @@ export default function Header({ forceSolid = false }: { forceSolid?: boolean })
       window.removeEventListener("focus", onPageActive);
       document.removeEventListener("visibilitychange", onPageActive);
     };
-  }, [forceSolid]);
+  }, [forceSolid, startTransparent]);
 
   useEffect(() => {
     document.body.style.overflow = open ? "hidden" : "";
@@ -222,12 +223,15 @@ export default function Header({ forceSolid = false }: { forceSolid?: boolean })
                     <p className={dd.colTitle}>Key Services</p>
                     <div className={dd.colLinks}>
                       {[
-                        { label: "Custom Software Development", href: "/services/custom-software-development" },
-                        { label: "Enterprise Software Development", href: "#services" },
+                        { label: "Custom Software Development", href: "/services/custom-software-development", locked: true },
+                        { label: "Enterprise Software Development", href: "/services/enterprise-software-development", locked: true },
                         { label: "CRM Development", href: "#services" },
-                        { label: "Legacy Software Modernization", href: "#services" },
-                        { label: "MVP Development", href: "#services" },
-                      ].map((l) => <a key={l.label} href={l.href} className={dd.colLink}>{l.label}</a>)}
+                        { label: "Legacy Software Modernization", href: "/legacy-modernization", locked: true },
+                        { label: "MVP Development", href: "/process/mvp" },
+                      ].map((l) => l.locked
+                        ? <span key={l.label} className={dd.colLinkLocked}>{l.label}</span>
+                        : <a key={l.label} href={l.href} className={dd.colLink}>{l.label}</a>
+                      )}
                     </div>
                     <a href="#services" className={dd.allLink}>All Services</a>
                   </div>
@@ -262,7 +266,7 @@ export default function Header({ forceSolid = false }: { forceSolid?: boolean })
 
               {/* ── Process — Satva-style mega panel ── */}
               <li className={dd.item}>
-                <a href="#process" className={dd.link}>
+                <a href="/process" className={dd.link}>
                   Process <Chevron className={dd.chevron} />
                 </a>
                 <div className={`${dd.panel} ${dd.panelProcess}`}>
@@ -271,7 +275,7 @@ export default function Header({ forceSolid = false }: { forceSolid?: boolean })
                     <p className={dd.processTagline}>
                       Working collaboratively with clients to develop outstanding solutions
                     </p>
-                    <a href="#process" className={dd.processCtaLink}>
+                    <a href="/process" className={dd.processCtaLink}>
                       Our Process →
                     </a>
                   </div>
@@ -281,17 +285,17 @@ export default function Header({ forceSolid = false }: { forceSolid?: boolean })
                     {[
                       {
                         label: "Project Onboarding & Delivery",
-                        href: "#process",
+                        href: "/process/onboard",
                         src: "/cases/team.jpg",
                       },
                       {
                         label: "Expert Vetting Process",
-                        href: "#process",
+                        href: "/process/vetting",
                         src: "/cases/woman.jpg",
                       },
                       {
                         label: "Our Development Process",
-                        href: "#process",
+                        href: "/process/development",
                         src: "/cases/mobile-dev.webp",
                       },
                     ].map((card) => (
@@ -367,7 +371,7 @@ export default function Header({ forceSolid = false }: { forceSolid?: boolean })
                       {[
                         { label: "Library", href: "/library" },
                         { label: "Whitepapers", href: "/whitepapers" },
-                        { label: "Blog", href: "#insights" },
+                        { label: "Blog", href: "/blog" },
                       ].map((l) => (
                         <a key={l.label} href={l.href} className={dd.colLink}>{l.label}</a>
                       ))}

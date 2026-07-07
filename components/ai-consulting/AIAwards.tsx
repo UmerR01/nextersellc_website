@@ -52,7 +52,11 @@ export default function AIAwards() {
             onClick={prev}
             aria-label="Previous"
             disabled={isPrevDisabled}
-          />
+          >
+            <svg width="48" height="24" viewBox="0 0 48 24" fill="none" aria-hidden>
+              <path d="M47 12H3M10 5L3 12L10 19" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
+          </button>
 
           <div className={styles.sliderOuter}>
             <div
@@ -78,7 +82,11 @@ export default function AIAwards() {
             onClick={next}
             aria-label="Next"
             disabled={isNextDisabled}
-          />
+          >
+            <svg width="48" height="24" viewBox="0 0 48 24" fill="none" aria-hidden>
+              <path d="M1 12H45M38 5L45 12L38 19" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
+          </button>
         </div>
 
         {/* Mobile nav row */}
@@ -88,13 +96,21 @@ export default function AIAwards() {
             onClick={prev}
             aria-label="Previous"
             disabled={isPrevDisabled}
-          />
+          >
+            <svg width="36" height="18" viewBox="0 0 48 24" fill="none" aria-hidden>
+              <path d="M47 12H3M10 5L3 12L10 19" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
+          </button>
           <button
             className={`${styles.btnNext} ${isNextDisabled ? styles.disabled : ""}`}
             onClick={next}
             aria-label="Next"
             disabled={isNextDisabled}
-          />
+          >
+            <svg width="36" height="18" viewBox="0 0 48 24" fill="none" aria-hidden>
+              <path d="M1 12H45M38 5L45 12L38 19" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
+          </button>
         </div>
       </div>
     </section>

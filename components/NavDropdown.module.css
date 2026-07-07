@@ -307,6 +307,16 @@
   color: var(--color-accent);
   padding-left: 6px;
 }
+.colLinkLocked {
+  font-size: 1rem;
+  font-weight: 400;
+  color: var(--color-text);
+  padding: 6px 0;
+  display: block;
+  white-space: nowrap;
+  cursor: default;
+  pointer-events: none;
+}
 .allLink {
   display: inline-flex;
   align-items: center;

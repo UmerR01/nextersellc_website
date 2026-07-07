@@ -1,19 +1,18 @@
 .section {
   background: #fff;
-  padding: clamp(4.5rem, 6vw, 6rem) 0 clamp(2rem, 3vw, 2.5rem);
+  padding: 96px 0 40px;
 }
 
 .container {
   width: min(calc(100% - clamp(2.5rem, 8vw, 6rem)), 75rem);
   margin: 0 auto;
-  padding: 0;
 }
 
 .title {
   font-size: clamp(2rem, 4vw, 3rem);
   font-weight: 300;
   color: #112244;
-  margin-bottom: clamp(2.5rem, 5vw, 4rem);
+  margin-bottom: 64px;
   letter-spacing: -0.02em;
 }
 
@@ -21,7 +20,7 @@
   color: var(--color-accent);
 }
 
-/* ---- Two-col grid: 1fr 1fr ---- */
+/* ---- Two-col grid ---- */
 .postsGrid {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -39,7 +38,6 @@
   color: inherit;
 }
 
-/* Image: aspect-ratio container + zoom on hover */
 .featuredImageWrapper {
   position: relative;
   margin-bottom: 24px;

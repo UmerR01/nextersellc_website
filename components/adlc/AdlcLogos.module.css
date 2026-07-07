@@ -16,8 +16,23 @@
 }
 
 @media screen and (max-width: 768px) {
+  .section {
+    padding: 3rem 0 2.25rem;
+  }
+
+  .inner {
+    padding-inline: 1.5rem;
+  }
+
   .logosWrapper {
-    gap: 24px 32px;
+    gap: 1.5rem 2rem;
+    margin: 0 auto;
+    max-width: 18.125rem;
+  }
+
+  .logoImage {
+    height: 26px;
+    max-width: 90px;
   }
 }
 
@@ -38,4 +53,11 @@
 
 .logoItem:hover .logoImage {
   filter: grayscale(0) opacity(1);
+}
+
+@media screen and (max-width: 768px) {
+  .logoImage {
+    height: 26px;
+    max-width: 90px;
+  }
 }

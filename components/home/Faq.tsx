@@ -123,7 +123,7 @@ export default function Faq() {
         {!showAll && (
           <div className={styles.loadMore}>
             <button className={styles.loadMoreLink} onClick={() => setShowAll(true)}>
-              Load more ›
+              Load more <span className={styles.loadMoreArrow} aria-hidden />
             </button>
           </div>
         )}
