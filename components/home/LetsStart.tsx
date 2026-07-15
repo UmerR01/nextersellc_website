@@ -56,7 +56,7 @@ export default function LetsStart({ variant }: LetsStartProps = {}) {
 
   return (
     <section
-      className={`${styles.section} ${variant === "library" ? styles.library : ""} ${variant === "process" ? styles.process : ""}`}
+      className={`${styles.section} ${variant === "library" ? styles.library : ""} ${variant === "process" ? styles.process : ""} ${variant === "whitepapers" ? styles.whitepapers : ""}`}
       id="lets-start"
     >
       <div className={styles.wrapper}>

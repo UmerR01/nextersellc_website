@@ -1,0 +1,219 @@
+.section {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  padding-top: 50px;
+  font-family: var(--font-inter-tight), sans-serif;
+}
+
+@media screen and (max-width: 768px) {
+  .section {
+    padding-top: 88px;
+  }
+}
+
+@media screen and (min-width: 1024px) and (max-width: 1680px) {
+  .section {
+    padding-top: 96px;
+  }
+}
+
+.bgWrapper {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.bgSvg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.heroWrapper {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  padding: clamp(4.5rem, 6vw, 6rem) 0 clamp(3rem, 4vw, 4rem);
+}
+
+@media (max-width: 768px) {
+  .heroWrapper {
+    padding-top: 40px;
+    padding-bottom: 72px;
+  }
+}
+
+@media (max-width: 420px) {
+  .heroWrapper {
+    padding-top: 40px;
+    padding-bottom: 56px;
+  }
+}
+.container {
+  max-width: min(100%, 1470px);
+  margin: 0 auto;
+  padding-inline: clamp(1.25rem, 3vw, 2.5rem);
+}
+
+.content {
+  position: relative;
+}
+
+/* Breadcrumbs */
+.breadcrumbs {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 0;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+  text-align: left;
+}
+
+.breadcrumbs a {
+  color: #fff;
+  font-family: var(--font-inter-tight), sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+  text-decoration: none;
+  padding-right: 24px;
+  position: relative;
+}
+
+.breadcrumbs a::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  margin: auto 0;
+  width: 16px;
+  height: 16px;
+  background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='none'%3E%3Cpath stroke='%23fff' stroke-linecap='square' d='m6 4 4 4-4 4'/%3E%3C/svg%3E");
+}
+
+.breadcrumbs a:hover {
+  color: #3CC4E5;
+}
+
+.breadcrumbs span {
+  color: #899fb6;
+  font-family: var(--font-inter-tight), sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+}
+
+/* Title */
+.title {
+  color: #fff;
+  font-family: var(--font-inter-tight), sans-serif;
+  font-size: clamp(2.5rem, 4.2vw, 4rem);
+  font-weight: 400;
+  line-height: 1.2;
+  margin: 0 0 1.5rem;
+  max-width: 980px;
+}
+
+@media (max-width: 768px) {
+  .title {
+    font-size: clamp(2rem, 10vw, 2.5rem);
+    line-height: 1.2;
+  }
+}
+
+/* Description */
+.description {
+  color: #c8d5e8;
+  font-family: var(--font-inter-tight), sans-serif;
+  font-size: clamp(1.125rem, 1.45vw, 1.375rem);
+  font-weight: 400;
+  line-height: 1.62;
+  margin: 0 0 clamp(1.75rem, 3vw, 2.25rem);
+  max-width: 900px;
+}
+
+@media (max-width: 768px) {
+  .description {
+    font-size: 16px;
+    line-height: 26px;
+  }
+}
+
+/* CTA row: button + ratings side by side */
+.ctaRow {
+  display: flex;
+  align-items: center;
+  gap: clamp(2.5rem, 4vw, 4.5rem);
+  flex-wrap: wrap;
+}
+
+@media (max-width: 768px) {
+  .ctaRow {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 24px;
+  }
+}
+
+/* CTA Button */
+.ctaButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.4rem 1.25rem;
+  background: var(--color-accent);
+  color: #fff;
+  border: 2px solid var(--color-accent);
+  border-radius: var(--radius-button);
+  font-family: var(--font-inter-tight), sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 1;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+.ctaButton:hover {
+  background: transparent;
+  color: var(--color-accent);
+}
+
+/* Ratings */
+.ratings {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.ratingsLabel {
+  color: #c8d5e8;
+  font-family: var(--font-inter-tight), sans-serif;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.35;
+  margin: 0;
+}
+
+.ratingsBadge {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.ratingsScore {
+  color: #FFAB00;
+  font-family: var(--font-inter-tight), sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1;
+  padding-left: 2px;
+}
+
+.titleAccent { color: var(--color-accent); }

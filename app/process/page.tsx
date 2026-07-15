@@ -12,7 +12,7 @@ export const metadata: Metadata = {
 export default function ProcessRoute() {
   return (
     <>
-      <Header startTransparent />
+      <Header forceSolid />
       <main>
         <ProcessPage />
         <LetsStart variant="process" />

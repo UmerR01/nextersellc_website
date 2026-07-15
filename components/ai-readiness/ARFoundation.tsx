@@ -52,15 +52,14 @@ export default function ARFoundation() {
   return (
     <section className={styles.section} id="foundation">
       <div className="container">
-        <h2 className={styles.title}>
-          Strong AI starts with a ready <span>foundation</span>
-        </h2>
+        <h2 className={styles.title}>Strong AI starts with a ready foundation</h2>
         <p className={styles.desc}>
           Generative AI can improve search, summarization, classification, and workflow automation.
           To do that well, it needs structured data, clear access rules, and an environment that can
           support secure deployment. That is why the AI readiness assessment comes first. Before you
-          invest in a pilot or a broader rollout, it helps to confirm that your data foundation and
-          delivery environment can support the outcome you want.
+          invest in <a href="/services/ai-software-development">AI software development</a>, a pilot,
+          or a broader rollout, it helps to confirm that your data foundation and delivery environment
+          can support the outcome you want.
         </p>
         <div className={styles.grid}>
           {CARDS.map((card) => (

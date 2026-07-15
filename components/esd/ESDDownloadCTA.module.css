@@ -1,10 +1,7 @@
 .section {
   position: relative;
   padding: 3.5rem 0;
-  background:
-    linear-gradient(75deg, transparent 0 16%, rgba(18, 122, 255, 0.13) 16% 29%, transparent 29% 100%),
-    linear-gradient(160deg, transparent 0 72%, rgba(18, 122, 255, 0.16) 72% 88%, transparent 88% 100%),
-    linear-gradient(110deg, #0d3470 0%, #031633 55%, #0c326d 100%);
+  background: linear-gradient(115deg, var(--color-accent-dark) 0%, #17163f 100%);
   overflow: hidden;
 }
 
@@ -86,20 +83,10 @@
   font-size: 1rem;
   font-weight: 600;
   color: #fff;
-  background: #3CC4E5;
-  border: none;
-  border-radius: 6px;
-  padding: 1.25rem 2rem;
   text-decoration: none;
-  transition: background 0.2s ease, transform 0.15s ease;
   text-align: center;
   white-space: normal;
   min-height: 4.875rem;
   width: 17.125rem;
   max-width: 100%;
-}
-
-.btn:hover {
-  background: #2aa8c9;
-  transform: translateY(-2px);
 }

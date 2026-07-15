@@ -72,10 +72,10 @@
 }
 
 .menuItemActive {
-  background: #127aff;
+  background: var(--color-accent);
   color: #fff;
   font-weight: 600;
-  border-right-color: #127aff;
+  border-right-color: var(--color-accent);
 }
 
 .content {

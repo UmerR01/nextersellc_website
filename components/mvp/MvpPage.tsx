@@ -3,6 +3,11 @@
 import { useState } from "react";
 import Image from "next/image";
 import s from "./MvpPage.module.css";
+import CaseCards, { type CaseCard } from "@/components/home/CaseCards";
+import MvpReviewSlider from "./MvpReviewSlider";
+import MvpAchievements from "./MvpAchievements";
+import MvpFaqBlock from "./MvpFaqBlock";
+import MvpBlogSection from "./MvpBlogSection";
 
 /* ── Tab data ─────────────────────────────────────────────────────────────── */
 const ourServicesTabs = [
@@ -55,292 +60,159 @@ const devAboutTabs = [
   },
 ];
 
-const cases = [
+const cases: CaseCard[] = [
   {
-    href: "#",
-    bg: "linear-gradient(280.31deg, #780013 -2.24%, #B31E35 76.47%)",
-    logo: "/mvp/12_nika_logo.svg",
-    logoAlt: "Nika logo",
-    tech: "Traditional tech stack",
+    href: "/portfolio/dexai",
+    banner: "/services-page/02_Frame-1787-1.png",
+    name: "IoT · Startups",
     title: "Dexai Robotics: graphical user interface for robot operation",
-    desc: "A GUI that freed Dexai Robotics' restaurant staff from engineer dependency – cutting robot setup time per shift by ~65% and reducing interaction errors by ~50% through real-time visual state monitoring and offline operation.",
-    tags: ["IoT", "Startups"],
-    imgRight: "/mvp/02_Frame-1787-1.png",
+    text: "A GUI that freed Dexai Robotics' restaurant staff from engineer dependency — cutting robot setup time per shift by ~65% and reducing interaction errors by ~50% through real-time visual state monitoring and offline operation.",
+    tags: ["IoT", "Startups", "Traditional tech stack"],
   },
   {
-    href: "#",
-    bg: "linear-gradient(259.16deg, #02102C -0.49%, #112244 100%)",
-    logo: null,
-    logoAlt: "",
-    tech: "Traditional tech stack",
+    href: "/portfolio/ml-based-predictive-maintenance-for-wind-farm",
+    banner: "/services-page/12_Cover-2-1.png",
+    name: "IoT · AI · Enterprise",
+    title: "IoT and ML predictive maintenance for a 28-turbine wind farm",
+    text: "A German operator runs 28 onshore turbines. Nexterse LLC built a predictive maintenance layer on top of the existing SCADA. Within 12 months, unplanned downtime fell by 38%, and availability rose to 97.7%.",
+    tags: ["IoT", "AI inside", "Enterprise", "AI-powered stack"],
+  },
+  {
+    href: "/portfolio/scalex-custom-erp-system-for-automotive-industry",
+    banner: "/services-page/09_inbound_transportation_kanban_board011@2x.png",
+    name: "Enterprise",
+    title: "Toyota custom ERP/CRM system",
+    text: "A custom ERP/CRM for Business Car Group — Russia's largest Toyota and Lexus dealer network — that replaced decade-old disjointed tools with a unified platform, cutting sales cycles by 30% across 20 dealer centers.",
+    tags: ["Enterprise", "Traditional tech stack"],
+  },
+  {
+    href: "/portfolio/advanced-structural-analysis-web-application",
+    banner: "/services-page/10_Cover-1.png",
+    name: "Enterprise",
+    title: "Advanced structural analysis web app for a leading steel distributor",
+    text: "Engineers complete structural analyses ~45% faster with a web platform that integrates the Client's Excel-based calculation logic, delivers real-time Shear, Deflection, and Moment visualization, and centralizes project records.",
+    tags: ["Enterprise", "Traditional tech stack"],
+  },
+  {
+    href: "/portfolio/ai-knowledge-base-development",
+    banner: "/services-page/07_Cover-right-2.png",
+    name: "AI · Enterprise",
+    title: "AI-powered knowledge base for a global rights nonprofit",
+    text: "A Middle Eastern nonprofit working in cultural preservation needed a single searchable repository for fragmented research on ethnic minorities. Nexterse LLC built a multilingual AI platform that now indexes 12,000+ artifacts across 18 countries.",
+    tags: ["AI inside", "Enterprise", "AI-powered stack"],
+  },
+  {
+    href: "/portfolio/media-buying-software-development",
+    banner: "/services-page/01_Cover.png",
+    name: "Enterprise",
     title: "A media buying system for a leading US-based advertising agency",
-    desc: "50x faster ad operations and data processing cut from hours to under a minute – we replaced a 20-year-old FileMaker system with a custom platform covering 100+ operational workflows.",
-    tags: ["Enterprise"],
-    imgRight: "/mvp/01_Cover.png",
+    text: "50x faster ad operations and data processing cut from hours to under a minute — we replaced a 20-year-old FileMaker system with a custom platform covering 100+ operational workflows.",
+    tags: ["Enterprise", "Traditional tech stack"],
   },
   {
-    href: "#",
-    bg: "linear-gradient(281.09deg, #36185F 2.55%, #7349AC 72.04%)",
-    logo: null,
-    logoAlt: "",
-    tech: "AI-powered stack",
-    title: "Platform for vital farm animals signs monitoring",
-    desc: "An IoT platform connecting a matchbox-sized farm animal wearable to a real-time visualization and diagnostics dashboard – reducing monitoring setup time by ~55% and eliminating invasive multi-device procedures.",
-    tags: ["IoT", "Startups"],
-    imgRight: "/mvp/01_cover-2-1.png",
-  },
-  {
-    href: "#",
-    bg: "linear-gradient(280.31deg, #780013 -2.24%, #B31E35 76.47%)",
-    logo: null,
-    logoAlt: "",
-    tech: "Traditional tech stack",
+    href: "/portfolio/event-platform-development",
+    banner: "/services-page/06_Cover-1.png",
+    name: "Startups",
     title: "Event platform for indie organizers across Europe",
-    desc: "A platform for indie event organizers that drove 8,000+ ticket sales in four months, with 54% of attendees completing post-event feedback — replacing a 4–5 tool workflow with a single dashboard.",
-    tags: ["Startups"],
-    imgRight: "/mvp/06_Cover-1.png",
+    text: "A platform for indie event organizers that drove 8,000+ ticket sales in four months, with 54% of attendees completing post-event feedback — replacing a 4–5 tool workflow with a single dashboard.",
+    tags: ["Startups", "Traditional tech stack"],
   },
   {
-    href: "#",
-    bg: "linear-gradient(259.16deg, #02102C -0.49%, #112244 100%)",
-    logo: null,
-    logoAlt: "",
-    tech: "Traditional tech stack",
-    title: "MVP development of Q&A and voting service",
-    desc: "A 2-month MVP delivery for Harmony Park covering all 7 planned feature modules – yes/no questions, social sharing, statistics, and time management – shipped on a bi-weekly sprint cadence with investor demos at each stage.",
-    tags: ["Startups"],
-    imgRight: "/mvp/01_Right-3.png",
+    href: "/portfolio/ai-powered-predictive-maintenance-for-a-large-industrial-manufacturer",
+    banner: "/services-page/11_Cover-1-1.png",
+    name: "IoT · AI · Enterprise",
+    title: "AI-powered predictive maintenance for a large industrial manufacturer",
+    text: "An AIoT upgrade that cut unplanned downtime by 50% within 8 months, adding explainable ML and context analysis to the existing IoT platform.",
+    tags: ["IoT", "AI inside", "Enterprise", "AI-powered stack"],
   },
 ];
 
-const reviews = [
-  {
-    text: "From the early stages of the project, Nexterse LLC demonstrated a proactive attitude, actively seeking opportunities to enhance the solution and anticipate our needs. They consistently took the initiative to address any potential issues, provide timely updates, and offer solutions to challenges that arose during development. This proactiveness greatly contributed to the project's success and exceeded our expectations.",
-    logo: "/mvp/08_protech_solutions_inc_logo.jpg",
-    photo: null,
-    name: "Dave Alce",
-    role: "COO",
-  },
-  {
-    text: "Working with Nexterse LLC has been an outstanding experience. Their team is not only highly skilled but also incredibly responsive, collaborative, and committed to delivering quality results. I can't recommend them enough! Thank you team Nexterse for bringing my vision to life.",
-    logo: null,
-    photo: "/mvp/08_Julia-C-300x300.jpg",
-    name: "Julie Crawford",
-    role: "Founder",
-  },
-  {
-    text: "The system has produced a significant competitive advantage in the industry thanks to Nexterse LLC's well-thought opinions. They shouldered the burden of constantly updating a project management tool with a high level of detail and were committed to producing the best possible solution.",
-    logo: null,
-    photo: "/mvp/01_photo.png",
-    name: "Alexander McCaig",
-    role: "Co-Founder & CEO, Tartle",
-  },
-  {
-    text: "I was impressed by Nexterse LLC's prices, especially for the project I wanted to do and in comparison to the quotes I received from a lot of other companies. Also, their communication skills were great; it never felt like a long-distance project. It felt like Nexterse was working next door because their project manager was always keeping me updated.",
-    logo: null,
-    photo: "/mvp/12_5cc8378b669af259c74ec736_b_dorsinvil-2-1-1.jpg",
-    name: "Benjamin Dorsinvil",
-    role: "Founder, SellBig",
-  },
-  {
-    text: "We tried another company that one of our partners had used but they didn't work out. I feel that Nexterse LLC does a better investigation of what we're asking for. They tell us how they plan to do a task and ask if that works for us. We chose them because their method worked with us.",
-    logo: null,
-    photo: "/mvp/01_photo6.png",
-    name: "Damian Gevertz",
-    role: "Founder & CEO, Widgety",
-  },
-  {
-    text: "Nexterse LLC is the firm to work with if you want to keep up to high standards. The professional workflows they stick to result in exceptional quality. Important, they help you think with the business logic of your application and they don't blindly follow what you are saying. Which is super important.",
-    logo: null,
-    photo: "/mvp/01_photo2.png",
-    name: "Domien Van Eynde",
-    role: "Team Lead, Daiokan.com",
-  },
-  {
-    text: "Together with the team, we have turned the MVP version of the service into a modern full-featured platform for online marketers. We are very satisfied with the work the Nexterse LLC team has performed, and we would like to highlight the high level of technical expertise, coherence and efficiency of communication and flexibility in work.",
-    logo: null,
-    photo: "/mvp/01_photo7.png",
-    name: "Katerina Bromberg",
-    role: "Co-Founder, MyMediAds.com",
-  },
-  {
-    text: "We are absolutely convinced that cooperation between companies is only successful when based on effective teamwork. But the teams may vary on the degree of their cohesion.",
-    logo: null,
-    photo: "/mvp/01_photo10.png",
-    name: "Maria Duyunova",
-    role: "Director, Simplimagine LLC",
-  },
-  {
-    text: "They are very sharp and have a high-quality team. I expect quality from people, and they have the kind of team I can work with. They were upfront about everything that needed to be done. I appreciated that the cost of the project turned out to be smaller than what we expected because they made some very good suggestions.",
-    logo: null,
-    photo: "/mvp/01_photo11.png",
-    name: "Michael Karbushev",
-    role: "Senior Director of Engineering, Evolv",
-  },
-  {
-    text: "Nexterse LLC succeeded in building a more manageable solution that is much easier to maintain.",
-    logo: null,
-    photo: "/mvp/01_photo3.png",
-    name: "Yevgeniy Rozenblat",
-    role: "Program Manager, TL Nika",
-  },
-  {
-    text: "Thanks to Nexterse LLC's can-do attitude, amazing work ethic, and willingness to tackle clients' problems as their own, they've become an integral part of our team. We've been truly impressed with their professionalism and performance and continue to work with the team on developing new applications. We are completely satisfied with the results of our cooperation.",
-    logo: "/mvp/01_logo.svg",
-    photo: null,
-    name: "Yury Haverman",
-    role: "Founder, BoxForward",
-  },
-  {
-    text: "Nexterse LLC is flexible, efficient, and extremely good at planning and being proactive. They have also been very proactive in their approach throughout the project, seeking to understand the needs and the reasons behind them before launching into development.",
-    logo: null,
-    photo: "/mvp/08_639b8502f91be05f5bf099be_Paul-276x300.png",
-    name: "Paul Fardoe",
-    role: "Director",
-  },
-  {
-    text: "We brought in Nexterse LLC to help us reduce unexpected turbine failures, and the result met our expectations.",
-    logo: null,
-    photo: "/mvp/01_Markus-Keller-300x300.png",
-    name: "Markus Keller",
-    role: "Head of Operations",
-  },
-];
 
 const techStackRows = [
   {
     label: "AI foundational models",
-    techs: ["OpenAI GPT-4o", "Claude 3.5 Sonnet", "Gemini 1.5 Pro", "Llama 3.1", "Mistral Large"],
+    tools: [
+      { src: "/adlc/03_OpenAI.svg",                     alt: "OpenAI GPT-4o" },
+      { src: "/ai-consulting/tech-logos/claude.svg",     alt: "Claude 3.5 Sonnet" },
+      { src: "/ai-consulting/tech-logos/gemini.svg",     alt: "Gemini 1.5 Pro" },
+      { src: "/adlc/03_Meta-Llama-1.svg",               alt: "Llama 3.1" },
+      { src: "/adlc/03_mistral-ai-2.svg",               alt: "Mistral Large" },
+    ],
   },
   {
     label: "AI orchestration",
-    techs: ["LangChain", "LlamaIndex", "Haystack", "CrewAI", "AutoGen"],
+    tools: [
+      { src: "/ai-consulting/tech-logos/langchain.svg",  alt: "LangChain" },
+      { src: "/ai-consulting/tech-logos/llamaindex.svg", alt: "LlamaIndex" },
+      { src: "/ai-consulting/tech-logos/crewai.svg",     alt: "CrewAI" },
+      { src: "/ai-consulting/tech-logos/autogen.svg",    alt: "AutoGen" },
+    ],
   },
   {
     label: "Vector & search",
-    techs: ["Pinecone", "Weaviate", "Qdrant", "pgvector", "Elasticsearch"],
+    tools: [
+      { src: "/ai-consulting/tech-logos/pinecone.svg",   alt: "Pinecone" },
+      { src: "/ai-consulting/tech-logos/weaviate.svg",   alt: "Weaviate" },
+      { src: "/ai-consulting/tech-logos/qdrant.svg",     alt: "Qdrant" },
+      { src: "/ai-consulting/tech-logos/chroma.svg",     alt: "Chroma" },
+    ],
   },
   {
-    label: "Backend & APIs",
-    techs: ["Node.js", "Python", "FastAPI", "NestJS", "GraphQL"],
-  },
-  {
-    label: "Frontend",
-    techs: ["React", "Next.js", "TypeScript", "Vue.js", "React Native"],
+    label: "Software development",
+    tools: [
+      { src: "/custom-software/tech/tool_15.svg",        alt: "Python" },
+      { src: "/custom-software/tech/tool_16.svg",        alt: "Node.js" },
+      { src: "/custom-software/tech/tool_11.svg",        alt: "Java" },
+      { src: "/custom-software/tech/tool_12.svg",        alt: ".NET" },
+      { src: "/custom-software/tech/tool_13.svg",        alt: "PHP" },
+      { src: "/custom-software/tech/tool_17.svg",        alt: "JavaScript" },
+    ],
   },
   {
     label: "Cloud & DevOps",
-    techs: ["AWS", "GCP", "Azure", "Docker", "Kubernetes", "Terraform"],
+    tools: [
+      { src: "/ai-consulting/tech-logos/aws.svg",        alt: "AWS" },
+      { src: "/ai-consulting/tech-logos/gcp.svg",        alt: "GCP" },
+      { src: "/ai-consulting/tech-logos/azure.svg",      alt: "Azure" },
+      { src: "/ai-consulting/tech-logos/docker.svg",     alt: "Docker" },
+    ],
   },
   {
-    label: "Databases",
-    techs: ["PostgreSQL", "MongoDB", "Redis", "DynamoDB", "Supabase"],
-  },
-];
-
-const achievementBadges = [
-  { src: "/mvp/06_techreviewer_badge_2026-13.svg", alt: "techreviewer.co 2026 — Top MVP Development Companies" },
-  { src: "/mvp/06_top-software-development-companies.svg", alt: "GoodFirms — Top Software Development Company" },
-  { src: "/mvp/06_techreviewer_badge_2026-12.svg", alt: "techreviewer.co 2026 — Top Software Development Companies" },
-  { src: "/mvp/12_5ca49c9f6cb37e33319e1162_Goodfirms.svg", alt: "Goodfirms badge" },
-  { src: "/mvp/12_5ca49c9f8ff5ad26d13b6845_TDA.svg", alt: "TDA badge" },
-  { src: "/mvp/12_5ca49c9f6cb37e49a79e1163_changed.svg", alt: "AWS partner badge" },
-  { src: "/mvp/12_Responsive-Design-Development-2025.svg", alt: "Responsive Design Development 2025" },
-  { src: "/mvp/12_Mobile-Software-Development-2025.svg", alt: "Mobile Software Development 2025" },
-  { src: "/mvp/12_Machine-Learning-Development-2024.svg", alt: "Machine Learning Development 2024" },
-  { src: "/mvp/12_IoT-Services-2025.svg", alt: "IoT Services 2025" },
-  { src: "/mvp/12_Data-Mining-Development-2024.svg", alt: "Data Mining Development 2024" },
-  { src: "/mvp/12_Data-Migration-Services-2025.svg", alt: "Data Migration Services 2025" },
-  { src: "/mvp/12_Branding-Services-2024.svg", alt: "Branding Services 2024" },
-];
-
-const faqs = [
-  {
-    q: "What is the difference between a PoC and an MVP for an AI product?",
-    a: "A PoC answers the technical question: Can this model or retrieval setup do the job inside your data and workflow constraints? An MVP answers the market and product question: will users adopt and pay for this workflow once it is packaged as software?",
-  },
-  {
-    q: "How do you estimate AI operating costs before launch?",
-    a: "We test model usage on a bounded dataset, estimate token and retrieval patterns, and decide where caching, routing, or smaller models should sit. The result is an operating-cost model based on the intended workflow, not guesswork.",
-  },
-  {
-    q: "Can you build an AI MVP with HIPAA-aligned handling or SOC 2-ready controls?",
-    a: "Yes. We can design the MVP around private hosting options, role-based access, logging, retention rules, tenant separation, and stricter model-provider terms. Formal audits and attestations still happen outside the product build itself.",
-  },
-  {
-    q: "How do you test an AI MVP if outputs vary?",
-    a: "We combine normal QA with dataset-based AI evaluation. The system is scored on retrieval quality, faithfulness, latency, refusal behavior, and failure modes. We also test prompt injection and other abuse scenarios before release.",
-  },
-  {
-    q: "How do you avoid building a thin wrapper with no moat?",
-    a: "By putting your value in the product logic, the data flow, the retrieval layer, the permission model, and the workflow.",
-  },
-  {
-    q: "How do you keep tenant data separated in a B2B AI MVP?",
-    a: "By separating data at the storage and retrieval level, attaching tenant metadata to indexed content, and enforcing access rules before any generation step happens. The model only receives context that the user can access.",
-  },
-  {
-    q: "Should we start with OpenAI or Claude, or move straight to an open-source model?",
-    a: "That depends on speed, quality, hosting constraints, and budget. Many teams start with a strong hosted model to validate the product faster, then revisit routing or self-hosted options once real usage data exists.",
-  },
-  {
-    q: "Will we need to rewrite the MVP when the product grows?",
-    a: "Not if the MVP is scoped well and built on a stable architecture. The first release should stay lean, but the codebase, deployment model, and data layer should still support the next stage instead of forcing a reset.",
+    label: "Mobile",
+    tools: [
+      { src: "/custom-software/tech/tool_18.svg",        alt: "React Native" },
+      { src: "/custom-software/tech/tool_19.svg",        alt: "iOS" },
+      { src: "/custom-software/tech/tool_20.svg",        alt: "Android" },
+    ],
   },
 ];
 
 const crosslinks = [
-  { label: "Full software product development" },
-  { label: "Web MVP development" },
-  { label: "Mobile MVP development" },
-  { label: "MVP in Scrum methodology" },
-  { label: "Top MVP development companies" },
-  { label: "SaaS MVP development" },
-  { label: "AI product development" },
-  { label: "Startup software development" },
-];
-
-const blogPosts = [
   {
-    featured: true,
-    image: "/mvp/06_Agentic-RAG-The-Complete-Enterprise-Implementation-Guide-1024x578.jpg",
-    title: "Agentic RAG: The Complete Enterprise Implementation Guide for 2026",
-    readTime: "35 mins",
-    date: "July 3, 2026",
-    href: "#",
+    heading: "MVP development",
+    links: [
+      { text: "Full software product ", last: "development", href: "/services/custom-software-development" },
+      { text: "Web MVP ", last: "development", href: "/services/web-development" },
+      { text: "Mobile MVP ", last: "development", href: "/services/mobile-app-development" },
+    ],
   },
   {
-    featured: false,
-    image: null,
-    title: "The AI Cost Reduction Playbook – 9 Mechanisms, 7 Hidden Drivers, and Real-World Case Studies (2026 Edition)",
-    readTime: "32 mins",
-    date: "July 1, 2026",
-    href: "#",
+    heading: "Related services",
+    links: [
+      { text: "MVP in Scrum ", last: "methodology", href: "/sdlc" },
+      { text: "SaaS MVP ", last: "development", href: "/services/custom-software-development" },
+      { text: "AI product ", last: "development", href: "/services/ai-software-development" },
+    ],
   },
   {
-    featured: false,
-    image: null,
-    title: "How to modernize legacy systems with custom AI",
-    readTime: "26 mins",
-    date: "June 24, 2026",
-    href: "#",
-  },
-  {
-    featured: false,
-    image: null,
-    title: "How to Deliver Software on Time with Agile and Release Planning in the AI Era",
-    readTime: "18 mins",
-    date: "June 22, 2026",
-    href: "#",
+    heading: "About Nexterse LLC",
+    links: [
+      { text: "Top MVP development ", last: "companies", href: "/blog/top-mvp-development-companies" },
+      { text: "Startup software ", last: "development", href: "/services/custom-software-development" },
+      { text: "Get a free project ", last: "estimate", href: "/contact-us" },
+    ],
   },
 ];
-
-const ClockIcon = () => (
-  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <path d="M8 15C11.866 15 15 11.866 15 8C15 4.13401 11.866 1 8 1C4.13401 1 1 4.13401 1 8C1 11.866 4.13401 15 8 15Z" stroke="#5E6D8E" strokeWidth="1.5" strokeMiterlimit="10" />
-    <path d="M8 4.98V8.48L10.33 10.65" stroke="#5E6D8E" strokeWidth="1.5" strokeLinecap="square" />
-  </svg>
-);
 
 /* ══════════════════════════════════════════════════════════════════════════
    MAIN COMPONENT
@@ -348,11 +220,6 @@ const ClockIcon = () => (
 export default function MvpPage() {
   const [serviceTab, setServiceTab] = useState(0);
   const [devTab, setDevTab] = useState(0);
-  const [reviewIdx, setReviewIdx] = useState(0);
-  const [openFaq, setOpenFaq] = useState<number | null>(0);
-  const [showMoreFaq, setShowMoreFaq] = useState(false);
-
-  const visibleFaqs = showMoreFaq ? faqs : faqs.slice(0, 5);
 
   return (
     <div className={s.page}>
@@ -442,7 +309,7 @@ export default function MvpPage() {
               <p className={s.downloadCtaDesc}>Turn it into a working MVP with our expert dev team.</p>
             </div>
             <div className={s.downloadCtaBtn}>
-              <a href="/contact" className={s.btnPrimary}>Start your MVP</a>
+              <a href="/contact-us" className={`btn btn-accent ${s.btnPrimary}`}>Start your MVP</a>
             </div>
           </div>
         </div>
@@ -460,23 +327,23 @@ export default function MvpPage() {
           <div className={s.wdSteps}>
             {[
               {
-                n: "1", title: "1. Discovery and scope",
+                n: "1", title: "Discovery and scope",
                 body: "Using business analysis for MVP scoping, we define the use case, user roles, workflows, success metrics, integrations, release scope, and hosting constraints. The output is a scoped first release, UI/UX design for MVP and an architecture direction.\n\nTypical duration: 2 to 4 weeks",
               },
               {
-                n: "2", title: "2. AI pilot and prove program",
+                n: "2", title: "AI pilot and prove program",
                 body: "This phase applies when AI is central to the product or carries material delivery risk. Traditional software can move from discovery into build. AI products usually should not. Before we commit to the public MVP, we test the model on a bounded slice of real or sanitized data, estimate operating cost, define permissions, and set evaluation rules.\n\nTypical duration: 2 to 4 weeks",
               },
               {
-                n: "3", title: "3. Architecture and delivery planning",
+                n: "3", title: "Architecture and delivery planning",
                 body: "We lock the release scope, development environments, repo structure, integration plan, QA approach, rollout path, and reporting cadence. For AI products, we also define observability, abuse testing, and evaluation checkpoints.\n\nTypical duration: 1 to 2 weeks",
               },
               {
-                n: "4", title: "4. MVP build",
+                n: "4", title: "MVP build",
                 body: "We design and build the product, connect integrations, prepare the release environment, and test throughout the build. For AI products, this phase includes retrieval setup, model integration, prompt controls, tracing, and feedback mechanisms inside the UI.\n\nTypical duration: 8 to 12 weeks, depending on scope",
               },
               {
-                n: "5", title: "5. Launch and next release",
+                n: "5", title: "Launch and next release",
                 body: "After a thorough QA and testing, we ship the MVP, observe how it performs, fix what the first users expose, and define the next release based on usage data, support signals, and business goals.",
               },
             ].map((step) => (
@@ -497,7 +364,7 @@ export default function MvpPage() {
       </section>
 
       {/* ── 6. SERVICES BLOCK 1 (90-day pipeline header) ────────────────── */}
-      <section id="mvp-pipeline" className={`${s.servicesBlock} ${s.ptMedium} ${s.pbSmall}`}>
+      <section id="mvp-pipeline" className={`${s.servicesBlock} ${s.pipelineSection} ${s.ptMedium} ${s.pbSmall}`}>
         <div className={s.container}>
           <h2 className={s.sbTitle}>
             90-day <span className={s.accent}>AI vs traditional MVP </span>pipeline
@@ -540,7 +407,7 @@ export default function MvpPage() {
       </div>
 
       {/* ── 8. SERVICES BLOCK 2 (MVP deliverables) ──────────────────────── */}
-      <section id="mvp-deliverables" className={`${s.servicesBlock} ${s.ptMedium} ${s.pbMedium}`}>
+      <section id="mvp-deliverables" className={`${s.servicesBlock} ${s.deliverablesSection} ${s.ptMedium} ${s.pbMedium}`}>
         <div className={s.container}>
           <h2 className={s.sbTitle}>
             MVP <span className={s.accent}>deliverables</span> we prepare
@@ -623,113 +490,23 @@ export default function MvpPage() {
               <p className={s.downloadCtaDesc}>Book a free strategy call and get expert feedback on your MVP scope.</p>
             </div>
             <div className={s.downloadCtaBtn}>
-              <a href="/contact" className={s.btnPrimary}>Book a call</a>
+              <a href="/contact" className={`btn btn-accent ${s.btnPrimary}`}>Book a call</a>
             </div>
           </div>
         </div>
       </section>
 
       {/* ── 11. CASES BLOCK ─────────────────────────────────────────────── */}
-      <section id="mvp-cases" className={`${s.casesBlock} ${s.ptSmall} ${s.pbSmall}`}>
-        <div className={s.container}>
-          <h2 className={s.casesTitle}>
-            Our recent <span className={s.accent}>works</span>
-          </h2>
-          <div className={s.casesSlider} id="cases-slider">
-            {cases.map((c, i) => (
-              <a
-                key={i}
-                href={c.href}
-                className={s.caseCard}
-                style={{ background: c.bg }}
-              >
-                <div className={s.caseCardContent}>
-                  {c.logo && (
-                    <img src={c.logo} alt={c.logoAlt} className={s.caseCardLogo} />
-                  )}
-                  <span className={s.caseCardTechBadge}>{c.tech}</span>
-                  <h3 className={s.caseCardTitle}>{c.title}</h3>
-                  <p className={s.caseCardDesc}>{c.desc}</p>
-                  <div className={s.caseCardTags}>
-                    {c.tags.map((tag) => <span key={tag} className={s.caseTag}>{tag}</span>)}
-                  </div>
-                </div>
-                <div className={s.caseCardImages} style={{ position: "relative", overflow: "hidden" }}>
-                  <img src={c.imgRight} alt={c.title} style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover" }} />
-                </div>
-              </a>
-            ))}
-          </div>
-          <div className={s.casesNav}>
-            <div className={s.casesNavBtns}>
-              <button
-                className={s.casesNavBtn}
-                aria-label="Previous case"
-                onClick={() => {
-                  const slider = document.getElementById("cases-slider");
-                  if (slider) slider.scrollBy({ left: -slider.clientWidth * 0.85, behavior: "smooth" });
-                }}
-              >
-                ←
-              </button>
-              <button
-                className={s.casesNavBtn}
-                aria-label="Next case"
-                onClick={() => {
-                  const slider = document.getElementById("cases-slider");
-                  if (slider) slider.scrollBy({ left: slider.clientWidth * 0.85, behavior: "smooth" });
-                }}
-              >
-                →
-              </button>
-            </div>
-            <a href="/portfolio" className={s.linkPrimary}>View all case studies</a>
-          </div>
-        </div>
-      </section>
+      <div id="mvp-cases">
+        <CaseCards
+          cards={cases}
+          heading={<><span className={s.accent}>Case</span> studies</>}
+          windowed
+        />
+      </div>
 
       {/* ── 12. REVIEW SLIDER ───────────────────────────────────────────── */}
-      <section className={`${s.reviewSlider} ${s.ptMedium} ${s.pbMedium}`}>
-        <div className={s.container}>
-          <div className={s.reviewWrap}>
-            <div className={s.reviewSlide}>
-              <div
-                className={s.reviewText}
-                dangerouslySetInnerHTML={{ __html: `<p>${reviews[reviewIdx].text}</p>` }}
-              />
-              <div className={s.reviewMeta}>
-                {reviews[reviewIdx].logo && (
-                  <img src={reviews[reviewIdx].logo!} alt={reviews[reviewIdx].name} className={s.reviewLogo} />
-                )}
-                {reviews[reviewIdx].photo && (
-                  <img src={reviews[reviewIdx].photo!} alt={reviews[reviewIdx].name} className={s.reviewPhoto} />
-                )}
-                <div className={s.reviewName}>{reviews[reviewIdx].name}</div>
-                <div className={s.reviewPosition}>{reviews[reviewIdx].role}</div>
-              </div>
-            </div>
-            <div className={s.reviewControls}>
-              <div className={s.reviewNavBtns}>
-                <button
-                  className={s.reviewNavBtn}
-                  aria-label="Previous review"
-                  onClick={() => setReviewIdx((i) => (i === 0 ? reviews.length - 1 : i - 1))}
-                >
-                  ←
-                </button>
-                <button
-                  className={s.reviewNavBtn}
-                  aria-label="Next review"
-                  onClick={() => setReviewIdx((i) => (i === reviews.length - 1 ? 0 : i + 1))}
-                >
-                  →
-                </button>
-              </div>
-              <a href="/testimonials" className={s.linkPrimary}>All Reviews</a>
-            </div>
-          </div>
-        </div>
-      </section>
+      <MvpReviewSlider />
 
       {/* ── 13. TECH STACK BLOCK ────────────────────────────────────────── */}
       <section id="mvp-tech-stack" className={`${s.techStack} ${s.ptMedium} ${s.pbMedium}`}>
@@ -742,8 +519,11 @@ export default function MvpPage() {
               <div key={row.label} className={s.tsRow}>
                 <div className={s.tsRowLabel}>{row.label}</div>
                 <div className={s.tsLogos}>
-                  {row.techs.map((tech) => (
-                    <span key={tech} className={s.tsTechPill}>{tech}</span>
+                  {row.tools.map((tool) => (
+                    // eslint-disable-next-line @next/next/no-img-element
+                    <span key={tool.src} className={s.tsLogoSlot}>
+                      <img src={tool.src} alt={tool.alt} className={s.tsLogoImg} loading="lazy" />
+                    </span>
                   ))}
                 </div>
               </div>
@@ -761,7 +541,7 @@ export default function MvpPage() {
               <p className={s.downloadCtaDesc}>Let&apos;s discuss your project and define the right scope for your first release.</p>
             </div>
             <div className={s.downloadCtaBtn}>
-              <a href="/contact" className={s.btnPrimary}>Get a free quote</a>
+              <a href="/contact" className={`btn btn-accent ${s.btnPrimary}`}>Get a free quote</a>
             </div>
           </div>
         </div>
@@ -773,12 +553,14 @@ export default function MvpPage() {
           <h2 className={s.csTitle}>
             From MVP to enterprise <span className={s.accent}>scale</span>
           </h2>
-          <p className={s.csDesc}>
-            Buyers often worry that an MVP is only a temporary build and that real growth will require a rewrite. We avoid that problem by engineering the MVP on a production-ready foundation from day one.
-          </p>
-          <p className={s.csDesc}>
-            We use scalable cloud infrastructure, structured service architecture, stable APIs, and CI/CD so the product can grow without being rebuilt.
-          </p>
+          <div className={s.csCopy}>
+            <p>
+              Buyers often worry that an MVP is only a temporary build and that real growth will require a rewrite. We avoid that problem by engineering the MVP on a production-ready foundation from day one.
+            </p>
+            <p>
+              We use scalable cloud infrastructure, structured service architecture, stable APIs, and CI/CD so the product can grow without being rebuilt.
+            </p>
+          </div>
           <div className={s.csImage}>
             <Image
               src="/mvp/04_From-MVP-to-enterprise-scale-progression.png"
@@ -791,7 +573,7 @@ export default function MvpPage() {
       </section>
 
       {/* ── 16. SERVICES RESULTS 2 (Why entrust MVP) ────────────────────── */}
-      <section className={`${s.servicesResults} ${s.ptSmall} ${s.pbSmall}`}>
+      <section className={`${s.servicesResults} ${s.entrustSection} ${s.ptSmall} ${s.pbSmall}`}>
         <div className={s.container}>
           <div className={s.srTitleWrap} style={{ textAlign: "center" }}>
             <h2 className={s.srTitle}>
@@ -833,60 +615,35 @@ export default function MvpPage() {
       </section>
 
       {/* ── 17. ACHIEVEMENTS BLOCK ──────────────────────────────────────── */}
-      <section className={`${s.achievements} ${s.ptSmall} ${s.pbSmall}`}>
-        <div className={s.container}>
-          <h2 className={s.achTitle}>
-            <span className={s.accent}>Awards</span> &amp; recognitions
-          </h2>
-          <p className={s.achDesc}>
-            Nexterse LLC has been recognized by leading analytics agencies for its transparency, reliability, startup-centric mindset, and consistent ability to deliver value quickly. Our approach combines lean principles with senior-level technical expertise that helps us to provide the best MVP software development services for startups in the field.
-          </p>
-          <div className={s.achGrid}>
-            {achievementBadges.map((badge) => (
-              <img key={badge.src} src={badge.src} alt={badge.alt} className={s.achBadge} />
-            ))}
-          </div>
-        </div>
-      </section>
+      <MvpAchievements />
 
       {/* ── 18. FAQ BLOCK ───────────────────────────────────────────────── */}
-      <section id="mvp-faq" className={`${s.faqBlock} ${s.ptSmall} ${s.pbSmall}`}>
-        <div className={s.container}>
-          <h2 className={s.faqTitle}>FAQ</h2>
-          <div className={s.faqList}>
-            {visibleFaqs.map((faq, i) => (
-              <div key={i} className={`${s.faqItem} ${openFaq === i ? s.faqItemOpen : ""}`}>
-                <button
-                  className={s.faqQuestion}
-                  onClick={() => setOpenFaq(openFaq === i ? null : i)}
-                  aria-expanded={openFaq === i}
-                >
-                  {faq.q}
-                </button>
-                <div className={s.faqAnswer}>
-                  <div className={s.faqAnswerInner}>
-                    <p>{faq.a}</p>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-          {!showMoreFaq && faqs.length > 5 && (
-            <button className={s.faqLoadMore} onClick={() => setShowMoreFaq(true)}>
-              Load more
-            </button>
-          )}
-        </div>
-      </section>
+      <MvpFaqBlock />
 
       {/* ── 19. CROSSLINKS BLOCK ────────────────────────────────────────── */}
-      <section className={`${s.crosslinks} ${s.ptSmall} ${s.pbSmall}`}>
+      <section className={s.clSection}>
+        <div className={s.clBg} />
         <div className={s.container}>
-          <h2 className={s.crosslinksTitle}>More about Nexterse LLC MVP development</h2>
-          <div className={s.crosslinksGrid}>
-            {crosslinks.map((link) => (
-              <div key={link.label} className={s.crosslinkItem}>
-                <a href="#">{link.label}</a>
+          <h2 className={s.clTitle}>
+            More about <span className={s.accent}>Nexterse LLC</span> MVP development
+          </h2>
+          <div className={s.clGrid}>
+            {crosslinks.map((col) => (
+              <div key={col.heading}>
+                <p className={s.clColTitle}>{col.heading}</p>
+                <ul className={s.clList}>
+                  {col.links.map((link) => (
+                    <li key={link.text + link.last} className={s.clItem}>
+                      <a href={link.href} className={s.clLink}>
+                        {link.text}
+                        <span className={s.clLinkLast}>
+                          {link.last}
+                          <span className={s.clArrow} />
+                        </span>
+                      </a>
+                    </li>
+                  ))}
+                </ul>
               </div>
             ))}
           </div>
@@ -894,48 +651,7 @@ export default function MvpPage() {
       </section>
 
       {/* ── 20. BLOG SECTION ────────────────────────────────────────────── */}
-      <section className={`${s.blogSection} ${s.ptMedium} ${s.pbLarge}`}>
-        <div className={s.container}>
-          <h2 className={s.blogTitle}>
-            We have awesome <span className={s.accent}>stories</span> to tell you
-          </h2>
-          <div className={s.blogGrid}>
-            <a href={blogPosts[0].href} className={s.blogPostFeatured}>
-              <div className={s.blogPostImage}>
-                <Image
-                  src={blogPosts[0].image!}
-                  alt={blogPosts[0].title}
-                  width={1024} height={578}
-                  style={{ width: "100%", height: "auto", display: "block" }}
-                />
-              </div>
-              <div className={s.blogPostTitle}>{blogPosts[0].title}</div>
-              <div className={s.blogPostMeta}>
-                <ClockIcon />
-                <span>{blogPosts[0].readTime}</span>
-                <span>|</span>
-                <span>{blogPosts[0].date}</span>
-              </div>
-            </a>
-            <div className={s.blogSideList}>
-              {blogPosts.slice(1).map((post) => (
-                <a key={post.title} href={post.href} className={s.blogPostSmall}>
-                  <div className={s.blogPostSmallTitle}>{post.title}</div>
-                  <div className={s.blogPostSmallMeta}>
-                    <ClockIcon />
-                    <span>{post.readTime}</span>
-                    <span>|</span>
-                    <span>{post.date}</span>
-                  </div>
-                </a>
-              ))}
-              <div className={s.blogAllLink}>
-                <a href="/blog" className={s.linkPrimary}>All articles</a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+      <MvpBlogSection />
 
     </div>
   );

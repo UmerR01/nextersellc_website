@@ -67,7 +67,7 @@ export default function AIWontForce() {
             <tbody>
               {TABLE_ROWS.map((row) => (
                 <tr key={row.dim}>
-                  <td><strong>{row.dim}</strong></td>
+                  <td>{row.dim}</td>
                   <td>{row.sdlc}</td>
                   <td>{row.adlc}</td>
                 </tr>

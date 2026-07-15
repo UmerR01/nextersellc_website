@@ -1,27 +1,36 @@
-import styles from "./ARMoreAbout.module.css";
+import Link from "next/link";
+import styles from "@/components/engagement/EngCrosslinksBlock.module.css";
 
 const LINKS = [
-  { label: "AI consulting services", href: "/ai-consulting" },
-  { label: "Agentic Development Lifecycle (ADLC)", href: "#" },
-  { label: "AI development cost factors", href: "#" },
-  { label: "About Nexterse LLC AI expertise", href: "/team" },
+  { text: "AI consulting ", last: "services", href: "/ai-consulting" },
+  { text: "Agentic Development Lifecycle ", last: "(ADLC)", href: "#" },
+  { text: "AI development cost ", last: "factors", href: "#" },
+  { text: "About Nexterse LLC AI ", last: "expertise", href: "/team" },
 ];
 
 export default function ARMoreAbout() {
   return (
     <section className={styles.section} id="more-about">
-      <div className="container">
-        <h2 className={styles.title}>More about Nexterse LLC AI services</h2>
-        <ul className={styles.list}>
-          {LINKS.map((l) => (
-            <li key={l.label} className={styles.item}>
-              <a href={l.href} className={styles.link}>
-                {l.label}
-                <span className={styles.arrow}>&rsaquo;</span>
-              </a>
-            </li>
-          ))}
-        </ul>
+      <div className={styles.bg} />
+      <div className={styles.container}>
+        <div className={styles.grid}>
+          <div className={styles.col}>
+            <div className={styles.colTitle}>More about Nexterse LLC AI services</div>
+            <div className={styles.list}>
+              {LINKS.map((l, i) => (
+                <div key={i} className={styles.item}>
+                  <Link href={l.href} className={styles.itemLink}>
+                    {l.text}
+                    <span className={styles.itemLinkLast}>
+                      {l.last}
+                      <span className={styles.linkArrow} />
+                    </span>
+                  </Link>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
       </div>
     </section>
   );

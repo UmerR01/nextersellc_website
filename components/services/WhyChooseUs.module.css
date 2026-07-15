@@ -1,0 +1,129 @@
+.section {
+  position: relative;
+  padding: clamp(64px, 6vw, 92px) 0;
+  overflow: hidden;
+}
+
+.bg {
+  position: absolute;
+  inset: 0;
+  background: #fff;
+  z-index: 0;
+}
+
+.container {
+  position: relative;
+  z-index: 1;
+  max-width: 1150px;
+  margin: 0 auto;
+  padding: 0 clamp(1rem, 4vw, 3rem);
+}
+
+.title {
+  font-family: var(--font-inter-tight);
+  font-size: clamp(2.25rem, 3.6vw, 3.75rem);
+  font-weight: 400;
+  color: #000;
+  line-height: 1.15;
+  margin: 0 0 64px;
+  text-align: center;
+}
+
+.accent {
+  color: var(--color-accent);
+}
+
+.row {
+  display: grid;
+  grid-template-columns: minmax(0, 34rem) minmax(0, 32.125rem);
+  gap: 6.25rem;
+  align-items: start;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+
+.listItem {
+  padding-left: 32px;
+  border-left: 0;
+  position: relative;
+}
+
+.listItem::before {
+  content: "";
+  position: absolute;
+  top: 0.05rem;
+  left: 0;
+  width: 20px;
+  height: 20px;
+  background: url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M16.8 5.5L8.2 14.1L3.9 9.8' stroke='%233CC4E5' stroke-width='1.5'/%3E%3C/svg%3E") center/contain no-repeat;
+}
+
+.aboutLabel {
+  margin: 0 0 24px;
+  color: var(--color-accent);
+  font-family: var(--font-inter-tight);
+  font-size: 1.25rem;
+  line-height: 1.4;
+}
+
+.listHeading {
+  font-family: var(--font-inter-tight);
+  font-size: 1.375rem;
+  font-weight: 400;
+  color: #112244;
+  margin: 0 0 20px;
+  line-height: 1.3;
+}
+
+.listText {
+  font-family: var(--font-inter-tight);
+  font-size: 1.25rem;
+  line-height: 1.7;
+  color: #112244;
+  margin: 0;
+}
+
+.right {
+  position: relative;
+}
+
+.imageWrap {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 2 / 3;
+  overflow: hidden;
+}
+
+.imageWrap::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(105deg, rgba(229, 101, 125, 0.22), rgba(77, 143, 230, 0.25));
+  mix-blend-mode: multiply;
+  pointer-events: none;
+}
+
+.image {
+  object-fit: cover;
+  object-position: center top;
+}
+
+@media (max-width: 767px) {
+  .title {
+    text-align: left;
+    margin-bottom: 44px;
+  }
+
+  .row {
+    grid-template-columns: 1fr;
+  }
+
+  .right {
+    display: none;
+  }
+}

@@ -154,8 +154,13 @@
 @media (min-width: 1024px) and (max-width: 1680px) {
   .hero {
     margin-left: 0;
-    padding-top: 160px;
+    padding-top: 96px;
     width: 100%;
+  }
+
+  .inner {
+    padding-top: 56px;
+    padding-bottom: 112px;
   }
 }
 

@@ -721,3 +721,30 @@
     text-align: left;
   }
 }
+
+/* Nexterse process-page theme normalization */
+.hero {
+  padding: clamp(5rem, 8vw, 7.5rem) 1.25rem clamp(4rem, 6vw, 6rem);
+  background: #fff;
+}
+.heroGradient { display: none; }
+.heroBgVideo { display: none; }
+.heroCard {
+  max-width: 71.875rem;
+  padding: clamp(2rem, 4vw, 4rem) 0;
+  border: 0;
+  background: transparent;
+  box-shadow: none;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+}
+.heroTitle { font-size: clamp(2.5rem, 4vw, 3.5rem); font-weight: 400; }
+.timelineSection { padding-inline: 1.25rem; }
+.timelineContainer { max-width: 71.875rem; }
+.cardBox,
+.finalCard {
+  background: #f7f9fe;
+  border: 0;
+  box-shadow: none;
+}
+.finalCardOuter { box-shadow: none; }

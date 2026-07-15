@@ -14,7 +14,7 @@ export default function ESDDownloadCTA2() {
             </p>
           </div>
           <div className={styles.btnCol}>
-            <a href="#" className={styles.btn} target="_blank" rel="noopener noreferrer" aria-label="Download">
+            <a href="#" className={`btn btn-accent ${styles.btn}`} target="_blank" rel="noopener noreferrer" aria-label="Download">
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M4.50001 12V3.75001C4.50001 3.5511 4.5 3 4.5 3C4.5 3 5.0511 3.00001 5.25001 3.00001H14.25L19.5 8.25001V12" stroke="white" strokeWidth="1.5" strokeLinecap="square" />
                 <path d="M13.793 3V8.25H19.043" stroke="white" strokeWidth="1.5" strokeLinecap="square" />

@@ -4,14 +4,14 @@ import styles from "./ARQuiz.module.css";
 
 const QUESTIONS = [
   {
-    q: "How would you describe the state of your business data?",
+    q: "What is the primary business problem you are trying to solve right now?",
     options: [
-      "Structured, centralized, and well-documented",
-      "Mostly organized but spread across several systems",
-      "Siloed across departments with limited access controls",
-      "Unstructured, scattered, or largely undocumented",
+      "We need a reliable, highly secure core software platform (e.g., ERP, portal, or mobile app). (Score: 0)",
+      "We need to unlock our internal knowledge and make our documents instantly searchable. (Score: 2)",
+      "We want to automate complex, multi-step workflows that currently require human reasoning. (Score: 3)",
+      "We aren’t sure yet; we just know we need to explore AI before our competitors do. (Score: 1)",
     ],
-    scores: [3, 2, 1, 0],
+    scores: [0, 2, 3, 1],
   },
   {
     q: "How mature is your cloud infrastructure?",
@@ -131,7 +131,9 @@ export default function ARQuiz() {
         <div className={styles.left}>
           <p className={styles.eyebrow}>Take a basic AI readiness assessment</p>
           <h2 className={styles.title}>
-            Take a <span>free basic AI readiness</span> assessment
+            How AI-ready is your business?
+            <br />
+            (free assessment)
           </h2>
         </div>
 

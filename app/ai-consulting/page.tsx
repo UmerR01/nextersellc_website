@@ -37,7 +37,7 @@ export default function AIConsultingPage() {
         <div className={styles.layout}>
           {/* ── Left: all page sections ── */}
           <div className={styles.mainContent}>
-            <LogosMarquee />
+            <LogosMarquee edgeFade />
             <AIDualRisks />
             <AIWhyFails />
             <div id="services"><AIConsultingServices /></div>

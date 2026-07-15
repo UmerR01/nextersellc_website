@@ -45,39 +45,35 @@
 .menu {
   display: flex;
   flex-direction: column;
-  border-left: 1px solid #e6eff7;
+  background: #eaf3ff;
+  padding-top: 1rem;
 }
 
 .menuItem {
   font-family: var(--font-inter-tight), sans-serif;
   font-size: clamp(0.9375rem, 1.1vw, 1rem);
   font-weight: 400;
-  color: #02102C;
+  color: #64748b;
   background: none;
   border: none;
-  border-left: 3px solid transparent;
-  margin-left: -1px;
   text-align: left;
   padding: 1.125rem 1.5rem;
   cursor: pointer;
-  transition: color 0.2s, background 0.2s, border-color 0.2s;
+  transition: color 0.2s, background 0.2s;
   line-height: 1.4;
 }
 
 .menuItem:hover {
-  color: #3CC4E5;
-  background: rgba(60, 196, 229, 0.05);
+  color: #02102C;
 }
 
 .menuItemActive {
-  background: #3CC4E5;
+  background: var(--color-accent);
   color: #fff;
   font-weight: 600;
-  border-left-color: #3CC4E5;
 }
 
 .menuItemActive:hover {
-  background: #3CC4E5;
   color: #fff;
 }
 
@@ -113,23 +109,9 @@
 }
 
 .panelBtn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
   font-family: var(--font-inter-tight), sans-serif;
-  font-size: 0.9375rem;
-  font-weight: 600;
-  color: #fff;
-  background: #3CC4E5;
-  border-radius: 6px;
-  padding: 0.75rem 1.5rem;
   text-decoration: none;
   align-self: flex-start;
-  transition: background 0.2s;
-}
-
-.panelBtn:hover {
-  background: #2aa8c9;
 }
 
 /* Mobile accordion */

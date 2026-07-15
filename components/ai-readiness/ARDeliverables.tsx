@@ -25,7 +25,7 @@ export default function ARDeliverables() {
     <section className={styles.section} id="deliverables">
       <div className="container">
         <h2 className={styles.title}>
-          No-hidden-agenda guarantee and <span>deliverables</span>
+          What do you get on day 14?
         </h2>
         <div className={styles.intro}>
           <p>

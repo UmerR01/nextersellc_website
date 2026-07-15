@@ -8,10 +8,10 @@
 <path d="M0 3.8147e-06H56V56H0V3.8147e-06Z" fill="white"/>
 </mask>
 <g mask="url(#mask1_908_594)">
-<path d="M39.9219 49.875C36.4963 52.3682 32.4473 53.8125 28.1094 53.8125C15.7865 53.8125 5.79688 41.6353 5.79688 29.3125V12.1406L28 2.1875L50.4219 12.1406V29.3125C50.4219 33.832 49.0781 38.332 46.7684 42.2188" stroke="#127AFF" stroke-width="2.7" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M28.1074 37.6835V40.4688" stroke="#127AFF" stroke-width="2.7" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M28.1074 16.5152V19.6836" stroke="#127AFF" stroke-width="2.7" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M32.5923 23.2002C32.5923 21.392 31.077 20.0156 29.2714 20.0156H27.376C25.1793 20.0156 23.4106 21.721 23.4106 23.921V24.7188C23.4106 26.9187 25.1793 28.7656 27.376 28.7656H29.3805C31.5772 28.7656 33.3579 30.4857 33.3579 32.6857V33.2225C33.3579 35.4225 31.5772 37.0781 29.3805 37.0781H26.1227C24.3172 37.0781 22.8535 35.7144 22.8535 33.9062" stroke="#127AFF" stroke-width="2.7" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M39.9219 49.875C36.4963 52.3682 32.4473 53.8125 28.1094 53.8125C15.7865 53.8125 5.79688 41.6353 5.79688 29.3125V12.1406L28 2.1875L50.4219 12.1406V29.3125C50.4219 33.832 49.0781 38.332 46.7684 42.2188" stroke="#3CC4E5" stroke-width="2.7" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M28.1074 37.6835V40.4688" stroke="#3CC4E5" stroke-width="2.7" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M28.1074 16.5152V19.6836" stroke="#3CC4E5" stroke-width="2.7" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M32.5923 23.2002C32.5923 21.392 31.077 20.0156 29.2714 20.0156H27.376C25.1793 20.0156 23.4106 21.721 23.4106 23.921V24.7188C23.4106 26.9187 25.1793 28.7656 27.376 28.7656H29.3805C31.5772 28.7656 33.3579 30.4857 33.3579 32.6857V33.2225C33.3579 35.4225 31.5772 37.0781 29.3805 37.0781H26.1227C24.3172 37.0781 22.8535 35.7144 22.8535 33.9062" stroke="#3CC4E5" stroke-width="2.7" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
 </g>
 </g>
 </g>

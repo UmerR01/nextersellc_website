@@ -37,12 +37,7 @@
   min-height: 380px;
   padding: clamp(2.5rem, 5vw, 4rem) clamp(1.5rem, 5vw, 4.5rem);
   align-items: flex-start;
-  background: linear-gradient(
-    110deg,
-    rgba(255, 238, 241, 0.72) 0%,
-    rgba(255, 255, 255, 0.94) 48%,
-    rgba(232, 245, 255, 0.78) 100%
-  );
+  background: linear-gradient(to right, rgba(60, 196, 229, 0.10) 0%, rgba(60, 196, 229, 0.03) 100%);
 }
 
 /* Right column: author */
@@ -69,6 +64,7 @@
   max-height: 72px;
   max-width: 172px;
   width: auto;
+  height: auto;
   object-fit: contain;
   display: block;
 }

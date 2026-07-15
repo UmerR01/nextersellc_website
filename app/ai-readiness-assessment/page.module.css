@@ -1,7 +1,9 @@
-﻿.layout {
+.layout {
   display: grid;
-  grid-template-columns: 1fr 240px;
-  align-items: start;
+  grid-template-columns: 100%;
+  gap: 1.5rem;
+  max-width: 1772px;
+  margin: 0 auto;
 }
 
 .mainContent {
@@ -9,19 +11,45 @@
   overflow: hidden;
 }
 
+.mainContent :global(section[id]),
+.mainContent :global(div[id]) {
+  scroll-margin-top: calc(var(--header-height) + 2rem);
+}
+
+/* Uniform vertical rhythm: every section gets the same top/bottom padding,
+   so the gap between any two adjacent sections is identical page-wide. */
+.mainContent :global(section) {
+  padding-top: 5rem;
+  padding-bottom: 5rem;
+}
+
+@media (max-width: 768px) {
+  .mainContent :global(section) {
+    padding-top: 3.25rem;
+    padding-bottom: 3.25rem;
+  }
+}
+
 .tocColumn {
-  position: sticky;
-  top: calc(var(--header-height) + 2rem);
-  align-self: start;
-  padding: 4rem 1.5rem 0;
+  display: none;
+  min-width: 0;
 }
 
-@media (max-width: 1100px) {
+@media (min-width: 1366px) {
   .layout {
-    grid-template-columns: 1fr;
+    align-items: stretch;
+    grid-template-columns: minmax(200px, 1420px) minmax(220px, 16.242%);
+    padding-right: 1.5rem;
   }
+
   .tocColumn {
-    display: none;
+    display: block;
+    padding-top: 2.5rem;
   }
 }
 
+@media (min-width: 1024px) and (max-width: 1680px) {
+  .layout {
+    max-width: 100%;
+  }
+}

@@ -1,0 +1,215 @@
+.section {
+  background: #fff;
+  padding: clamp(4.5rem, 7vw, 6rem) 0;
+}
+
+.container {
+  width: min(calc(100% - clamp(2.5rem, 8vw, 6rem)), 76.875rem);
+  margin: 0 auto;
+}
+
+.swiper {
+  width: 100%;
+}
+
+.slide {
+  display: flex;
+  flex-direction: row-reverse;
+  gap: clamp(2rem, 5vw, 4.5rem);
+  min-height: clamp(17rem, 25vw, 20rem);
+  padding: clamp(2.5rem, 5vw, 4rem) clamp(1.5rem, 5vw, 4.5rem);
+  align-items: flex-start;
+  background: linear-gradient(to right, rgba(60, 196, 229, 0.10) 0%, rgba(60, 196, 229, 0.03) 100%);
+  border-radius: 4px;
+}
+
+.rightContent {
+  width: clamp(11rem, 18vw, 13.75rem);
+  max-width: 13.75rem;
+  flex-shrink: 0;
+}
+
+.authorMedia {
+  margin-bottom: 16px;
+}
+
+.authorPhoto {
+  width: 72px;
+  height: 72px;
+  object-fit: cover;
+  border-radius: 50%;
+  display: block;
+}
+
+.authorLogo {
+  max-height: 72px;
+  max-width: 172px;
+  width: auto;
+  object-fit: contain;
+  display: block;
+}
+
+.authorName {
+  font-size: clamp(1.125rem, 1.5vw, 1.375rem);
+  font-weight: 400;
+  line-height: 36px;
+  color: #112244;
+  margin: 0;
+  font-family: var(--font-inter-tight), sans-serif;
+}
+
+.authorPosition {
+  font-size: 14px;
+  color: #5e6d8e;
+  line-height: 20px;
+  margin: 4px 0 0;
+  font-family: var(--font-inter-tight), sans-serif;
+}
+
+.leftContent {
+  flex: 1;
+  position: relative;
+  padding-left: clamp(3rem, 5vw, 4.5rem);
+}
+
+.quoteIcon {
+  position: absolute;
+  left: 0;
+  top: -4px;
+  width: 52px;
+  height: 52px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+
+.quoteText {
+  font-size: clamp(1rem, 1.4vw, 1.375rem);
+  font-style: italic;
+  font-weight: 400;
+  line-height: 36px;
+  color: #112244;
+  margin: 0;
+  font-family: var(--font-inter-tight), sans-serif;
+}
+
+.bottomNav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: clamp(2rem, 3vw, 2.5rem);
+  padding: 0 clamp(1.5rem, 5vw, 4.5rem);
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.navButtons {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.navBtn {
+  width: 48px;
+  height: 24px;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-accent);
+  transition: color 0.2s;
+  padding: 0;
+}
+
+.navBtn:hover {
+  color: var(--color-blue);
+}
+
+.navBtn:disabled {
+  color: #b8c7d8;
+  cursor: default;
+  opacity: 0.55;
+}
+
+.testimonialsLink {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--color-accent);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  white-space: nowrap;
+  font-family: var(--font-inter-tight), sans-serif;
+}
+
+.linkArrow {
+  display: inline-block;
+  position: relative;
+  width: 6px;
+  height: 10px;
+  margin-left: 8px;
+}
+
+.linkArrow::before,
+.linkArrow::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: url("data:image/svg+xml;charset=utf8,%3Csvg width='6' height='10' viewBox='0 0 6 10' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 8.59L3.59 5L0 1.41L1 .5L5.5 5L1 9.5L0 8.59Z' fill='%233CC4E5'/%3E%3C/svg%3E") center no-repeat;
+}
+
+.linkArrow::after { opacity: 0; }
+
+.testimonialsLink:hover .linkArrow::before {
+  animation: reviewArrowBefore 1s linear infinite;
+}
+
+.testimonialsLink:hover .linkArrow::after {
+  animation: reviewArrowAfter 1s linear infinite;
+}
+
+@keyframes reviewArrowBefore {
+  0% { opacity: 1; transform: translateX(0); }
+  49% { opacity: 0; transform: translateX(7px); }
+  52% { opacity: 0; transform: translateX(-7px); }
+  100% { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes reviewArrowAfter {
+  0% { opacity: 0; transform: translateX(-7px); }
+  49% { opacity: 1; transform: translateX(0); }
+  99% { opacity: 0; transform: translateX(7px); }
+  100% { opacity: 0; transform: translateX(-7px); }
+}
+
+@media (max-width: 768px) {
+  .section {
+    padding: 72px 0;
+  }
+
+  .slide {
+    flex-direction: column-reverse;
+    padding: 40px 24px;
+    gap: 24px;
+    min-height: 0;
+  }
+
+  .rightContent {
+    max-width: 100%;
+  }
+
+  .leftContent {
+    padding-left: 48px;
+  }
+
+  .quoteText {
+    font-size: 16px;
+    line-height: 26px;
+  }
+
+  .bottomNav {
+    padding: 0 24px;
+  }
+}

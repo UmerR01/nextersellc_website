@@ -12,7 +12,7 @@ export const metadata: Metadata = {
 export default function DevelopmentRoute() {
   return (
     <>
-      <Header startTransparent />
+      <Header forceSolid />
       <main>
         <DevelopmentPage />
         <LetsStart variant="process" />

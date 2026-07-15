@@ -12,6 +12,13 @@
   margin: 0 auto;
 }
 
+.whitepapers {
+  width: calc(100% - (2 * var(--page-gutter)));
+  max-width: 90rem;
+  margin-right: auto;
+  margin-left: auto;
+}
+
 .library {
   background: var(--color-accent-dark);
 }

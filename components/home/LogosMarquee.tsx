@@ -16,9 +16,9 @@ const LOGOS = [
   { src: "/logos/daiokan.svg", alt: "Daiokan", w: 115 },
 ];
 
-export default function LogosMarquee() {
+export default function LogosMarquee({ edgeFade = false }: { edgeFade?: boolean } = {}) {
   return (
-    <section className={styles.section} aria-label="Trusted by">
+    <section className={`${styles.section} ${edgeFade ? styles.edgeFade : ""}`} aria-label="Trusted by">
       <div className={styles.marquee}>
         {/* Two identical tracks create a seamless loop */}
         <Track />

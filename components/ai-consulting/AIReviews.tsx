@@ -1,15 +1,13 @@
-"use client";
-import { useState } from "react";
-import Image from "next/image";
-import styles from "./AIReviews.module.css";
+import ServicesReviewSlider, { type Review } from "@/components/services/ServicesReviewSlider";
 
-const REVIEWS = [
+const AI_REVIEWS: Review[] = [
   {
     quote:
       "The system has produced a significant competitive advantage in the industry thanks to their well-thought opinions. They shouldered the burden of constantly updating a project management tool with a high level of detail and were committed to producing the best possible solution.",
     name: "Alexander McCaig",
     role: "Co-Founder & CEO, Tartle",
     photo: "/ai-consulting/imgs/01_photo.png",
+    photoAlt: "Alexander McCaig",
   },
   {
     quote:
@@ -17,6 +15,7 @@ const REVIEWS = [
     name: "Benjamin Dorsinvil",
     role: "Founder, SellBig",
     photo: "/ai-consulting/imgs/12_5cc8378b669af259c74ec736_b_dorsinvil-2-1-1.jpg",
+    photoAlt: "Benjamin Dorsinvil",
   },
   {
     quote:
@@ -24,6 +23,7 @@ const REVIEWS = [
     name: "Markus Keller",
     role: "Head of Operations",
     photo: "/ai-consulting/imgs/01_Markus-Keller-300x300.png",
+    photoAlt: "Markus Keller",
   },
   {
     quote:
@@ -31,6 +31,7 @@ const REVIEWS = [
     name: "Damian Gevertz",
     role: "Founder & CEO, Widgety",
     photo: "/ai-consulting/imgs/01_photo6.png",
+    photoAlt: "Damian Gevertz",
   },
   {
     quote:
@@ -38,6 +39,7 @@ const REVIEWS = [
     name: "Michael Karbushev",
     role: "Senior Director of Engineering, Evolv",
     photo: "/ai-consulting/imgs/01_photo11.png",
+    photoAlt: "Michael Karbushev",
   },
   {
     quote:
@@ -45,65 +47,10 @@ const REVIEWS = [
     name: "Julie Crawford",
     role: "Founder",
     photo: "/ai-consulting/imgs/08_Julia-C-300x300.jpg",
+    photoAlt: "Julie Crawford",
   },
 ];
 
 export default function AIReviews() {
-  const [active, setActive] = useState(0);
-  const n = REVIEWS.length;
-  const go = (dir: number) => setActive((i) => (i + dir + n) % n);
-  const r = REVIEWS[active];
-
-  const isPrevDisabled = active === 0;
-  const isNextDisabled = active === n - 1;
-
-  return (
-    <section className={styles.section}>
-      <div className={styles.wrapper}>
-        <div className={styles.slide}>
-          <div className={styles.leftContent}>
-            <p className={styles.quoteText}>{r.quote}</p>
-          </div>
-
-          <div className={styles.rightContent}>
-            <div className={styles.authorData}>
-              <Image
-                src={r.photo}
-                alt={r.name}
-                width={72}
-                height={72}
-                className={styles.photo}
-              />
-              <div className={styles.authorText}>
-                <div className={styles.name}>{r.name}</div>
-                <div className={styles.role}>{r.role}</div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div className={styles.bottomContent}>
-          <div className={styles.navigation}>
-            <button
-              className={`${styles.btnPrev} ${isPrevDisabled ? styles.disabled : ""}`}
-              onClick={() => go(-1)}
-              aria-label="Previous review"
-              disabled={isPrevDisabled}
-            />
-            <button
-              className={`${styles.btnNext} ${isNextDisabled ? styles.disabled : ""}`}
-              onClick={() => go(1)}
-              aria-label="Next review"
-              disabled={isNextDisabled}
-            />
-          </div>
-          <div className={styles.allReviewsWrap}>
-            <a href="#" className={styles.allReviews}>
-              All Reviews <span aria-hidden="true">→</span>
-            </a>
-          </div>
-        </div>
-      </div>
-    </section>
-  );
+  return <ServicesReviewSlider reviews={AI_REVIEWS} />;
 }

@@ -38,11 +38,11 @@ export default function AIReadinessPage() {
 
         <div className={styles.layout}>
           <div className={styles.mainContent}>
-            <LogosMarquee />
+            <LogosMarquee edgeFade />
             <div id="foundation"><ARFoundation /></div>
             <ARQuiz />
-            <ARStakeholders />
             <div id="audit-scope"><ARWhatsInit /></div>
+            <ARStakeholders />
             <ARChecklist />
             <div id="architecture"><ARArchitecture /></div>
             <div id="timeline"><ARTimeline /></div>
