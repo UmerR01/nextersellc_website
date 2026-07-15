@@ -163,25 +163,31 @@ export default function AIConsultingServices() {
         </p>
 
         <div className={styles.grid}>
-          {SERVICES.map((s) => (
-            <div key={s.title} className={styles.card}>
-              <Image
-                src={s.icon}
-                alt={s.iconAlt}
-                width={56}
-                height={56}
-                className={styles.cardIcon}
-              />
-              <h3 className={styles.cardTitle}>{s.title}</h3>
-              <div className={styles.cardBody}>{s.body}</div>
-              {s.linkLabel && s.href && (
-                <a href={s.href} className={styles.cardLink}>
-                  {s.linkLabel}
-                  <span>→</span>
-                </a>
-              )}
-            </div>
-          ))}
+          {SERVICES.map((s) => {
+            const linkable = Boolean(s.linkLabel && s.href);
+            return (
+              <div
+                key={s.title}
+                className={`${styles.card} ${linkable ? styles.cardLinkable : ""}`}
+              >
+                <Image
+                  src={s.icon}
+                  alt={s.iconAlt}
+                  width={56}
+                  height={56}
+                  className={styles.cardIcon}
+                />
+                <h3 className={styles.cardTitle}>{s.title}</h3>
+                <div className={styles.cardBody}>{s.body}</div>
+                {linkable && (
+                  <a href={s.href!} className={styles.cardLink}>
+                    {s.linkLabel}
+                    <span className={styles.arrow} aria-hidden="true" />
+                  </a>
+                )}
+              </div>
+            );
+          })}
         </div>
       </div>
     </section>

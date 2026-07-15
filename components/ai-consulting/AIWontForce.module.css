@@ -51,7 +51,7 @@
   padding: 16px;
   background: var(--color-bg-elevated);
   color: var(--color-text);
-  font-weight: 600;
+  font-weight: 400;
   text-align: left;
   vertical-align: top;
   border: 1px solid var(--color-border);
@@ -71,7 +71,7 @@
   vertical-align: top;
 }
 .table tbody td strong {
-  font-weight: 700;
+  font-weight: 400;
 }
 
 @media (max-width: 768px) {

@@ -48,11 +48,11 @@ export default function ARWhatsInit() {
     <section className={styles.section} id="whats-in-it">
       <div className="container">
         <h2 className={styles.title}>
-          AI readiness assessment: <span>what&apos;s</span> in it
+          What does the AI readiness assessment cover?
         </h2>
         <p className={styles.desc}>
           Our AI assessment is a technical review of the four conditions that decide whether
-          artificial intelligence can work inside your business and whether its work will be beneficial.
+          artificial intelligence can work inside your business, and whether its work will pay off.
         </p>
         <div className={styles.grid}>
           {CARDS.map((card) => (

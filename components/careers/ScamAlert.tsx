@@ -1,8 +1,11 @@
 "use client";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import FilterIcon from "@/components/helpers/FilterIcon";
+import SelectDropdown from "@/components/helpers/SelectDropdown";
+import { getCareerJobs } from "@/data/careerJobs";
 import styles from "./ScamAlert.module.css";
 
-const JOBS = [
+const JOB_LISTING_ORDER = [
   {
     category: "Design",
     title: "Product Designer",
@@ -41,7 +44,7 @@ const JOBS = [
       { label: "100% remote", icon: "location" },
       { label: "Full-time", icon: "clock" },
     ],
-    href: "mailto:hr@nexterse.com?subject=Application: Full-Stack Developer",
+    href: "/careers/full-stack-developer",
   },
   {
     category: "Design",
@@ -95,8 +98,38 @@ const JOBS = [
   },
 ];
 
+const JOB_DETAILS = new Map(getCareerJobs().map((job) => [job.title, job]));
+const JOBS = JOB_LISTING_ORDER.map((listing) => {
+  const job = JOB_DETAILS.get(listing.title);
+  if (!job) return listing;
+  return {
+    category: job.category,
+    title: job.title,
+    desc: job.summary,
+    tags: [
+      { label: job.location, icon: "location" },
+      { label: job.employmentType, icon: "clock" },
+    ],
+    href: `/careers/${job.slug}`,
+  };
+});
+
 const INITIAL_COUNT = 4;
-const CATEGORIES = ["View all", "Development", "Design", "Marketing", "Customer Service", "Operations", "Finance", "Management"];
+const TYPES = ["All types", "Remote", "On-site"];
+const LOCATIONS = ["All locations", "Lahore", "Islamabad", "Karachi"];
+const ROLES = ["All roles", "Development", "Design", "Marketing", "Customer Service", "Operations", "Finance", "Management"];
+
+type JobFilters = {
+  type: string;
+  location: string;
+  role: string;
+};
+
+const EMPTY_FILTERS: JobFilters = {
+  type: "All types",
+  location: "All locations",
+  role: "All roles",
+};
 
 function LocationIcon() {
   return (
@@ -126,15 +159,43 @@ function ArrowUpRight() {
 
 export default function ScamAlert() {
   const [showAll, setShowAll] = useState(false);
-  const [activeCategory, setActiveCategory] = useState("View all");
+  const [search, setSearch] = useState("");
+  const [filterOpen, setFilterOpen] = useState(false);
+  const [filters, setFilters] = useState<JobFilters>(EMPTY_FILTERS);
+  const [draftFilters, setDraftFilters] = useState<JobFilters>(EMPTY_FILTERS);
+  const filterRef = useRef<HTMLDivElement>(null);
 
-  const filteredJobs = activeCategory === "View all"
-    ? JOBS
-    : JOBS.filter((job) => job.category === activeCategory);
+  useEffect(() => {
+    const close = (event: MouseEvent) => {
+      if (filterRef.current && !filterRef.current.contains(event.target as Node)) setFilterOpen(false);
+    };
+    const closeOnEscape = (event: KeyboardEvent) => {
+      if (event.key === "Escape") setFilterOpen(false);
+    };
+    document.addEventListener("mousedown", close);
+    document.addEventListener("keydown", closeOnEscape);
+    return () => {
+      document.removeEventListener("mousedown", close);
+      document.removeEventListener("keydown", closeOnEscape);
+    };
+  }, []);
+
+  const normalizedSearch = search.trim().toLowerCase();
+  const filteredJobs = JOBS.filter((job) => {
+    const location = job.tags.find((tag) => tag.icon === "location")?.label ?? "";
+    const type = job.tags.find((tag) => tag.icon === "clock")?.label ?? "";
+    const matchesSearch = !normalizedSearch || `${job.title} ${job.desc} ${job.category}`.toLowerCase().includes(normalizedSearch);
+    const matchesType = filters.type === "All types" || type === filters.type;
+    const matchesLocation = filters.location === "All locations" || location === filters.location;
+    const matchesRole = filters.role === "All roles" || job.category === filters.role;
+    return matchesSearch && matchesType && matchesLocation && matchesRole;
+  });
   const visibleJobs = showAll ? filteredJobs : filteredJobs.slice(0, INITIAL_COUNT);
+  const activeFilterCount = Object.entries(filters).filter(([key, value]) => value !== EMPTY_FILTERS[key as keyof JobFilters]).length;
 
-  const selectCategory = (category: string) => {
-    setActiveCategory(category);
+  const resetFilters = () => {
+    setDraftFilters(EMPTY_FILTERS);
+    setFilters(EMPTY_FILTERS);
     setShowAll(false);
   };
 
@@ -161,18 +222,56 @@ export default function ScamAlert() {
 
           {/* Jobs listing replaces the image */}
           <div className={styles.jobsWrap}>
-            <div className={styles.filters} aria-label="Filter job openings by department">
-              {CATEGORIES.map((category) => (
+            <div className={styles.searchToolbar}>
+              <label className={styles.searchBox}>
+                <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7" /><path d="m16.5 16.5 4 4" /></svg>
+                <input
+                  type="search"
+                  value={search}
+                  onChange={(event) => { setSearch(event.target.value); setShowAll(false); }}
+                  placeholder="Search jobs"
+                  aria-label="Search job openings"
+                />
+              </label>
+
+              <div className={styles.filterControl} ref={filterRef}>
                 <button
-                  key={category}
                   type="button"
-                  className={`${styles.filterButton} ${activeCategory === category ? styles.filterActive : ""}`}
-                  onClick={() => selectCategory(category)}
-                  aria-pressed={activeCategory === category}
+                  className={`${styles.filterTrigger} ${filterOpen ? styles.filterTriggerActive : ""}`}
+                  onClick={() => { setDraftFilters(filters); setFilterOpen((open) => !open); }}
+                  aria-expanded={filterOpen}
+                  aria-haspopup="dialog"
                 >
-                  {category}
+                  <FilterIcon />
+                  Filter {activeFilterCount > 0 && <span>{activeFilterCount}</span>}
                 </button>
-              ))}
+
+                {filterOpen && (
+                  <div className={styles.filterPanel} role="dialog" aria-label="Filter job openings">
+                    <div className={styles.filterPanelHead}>
+                      <strong>Filter jobs</strong>
+                      <button type="button" onClick={() => setFilterOpen(false)} aria-label="Close filters">×</button>
+                    </div>
+
+                    <div className={styles.filterFields}>
+                      <SelectDropdown label="Type" options={TYPES} value={draftFilters.type} onChange={(type) => setDraftFilters((current) => ({ ...current, type }))} />
+                      <SelectDropdown label="Location" options={LOCATIONS} value={draftFilters.location} onChange={(location) => setDraftFilters((current) => ({ ...current, location }))} />
+                      <SelectDropdown label="Role" options={ROLES} value={draftFilters.role} onChange={(role) => setDraftFilters((current) => ({ ...current, role }))} />
+                    </div>
+
+                    <div className={styles.filterActions}>
+                      <button type="button" className={styles.resetButton} onClick={resetFilters}>Reset</button>
+                      <button
+                        type="button"
+                        className={styles.applyFilterButton}
+                        onClick={() => { setFilters(draftFilters); setShowAll(false); setFilterOpen(false); }}
+                      >
+                        Apply filters
+                      </button>
+                    </div>
+                  </div>
+                )}
+              </div>
             </div>
 
             <div className={styles.jobList}>
@@ -196,6 +295,9 @@ export default function ScamAlert() {
                 </div>
               ))}
             </div>
+            {filteredJobs.length === 0 && (
+              <div className={styles.emptyJobs}>No openings match your search and filters.</div>
+            )}
             {!showAll && filteredJobs.length > INITIAL_COUNT && (
               <div className={styles.viewMoreWrap}>
                 <button className={styles.viewMoreBtn} onClick={() => setShowAll(true)}>

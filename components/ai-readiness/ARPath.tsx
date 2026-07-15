@@ -12,7 +12,7 @@ export default function ARPath() {
     <section className={styles.section} id="path">
       <div className="container">
         <h2 className={styles.title}>
-          <span>Path</span> from assessment to deployment
+          What happens after the assessment?
         </h2>
         <div className={styles.steps}>
           {STEPS.map((s, i) => (

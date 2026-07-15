@@ -29,8 +29,7 @@ export default function ARUseCases() {
     <section className={styles.section} id="use-cases">
       <div className="container">
         <h2 className={styles.title}>
-          What we tend to find during AI assessments:{" "}
-          <span>use cases</span>
+          What do AI readiness assessments usually uncover?
         </h2>
         <div className={styles.grid}>
           {CASES.map((c) => (

@@ -1,0 +1,297 @@
+/* ── FintechHero.module.css — MVP hero UI, Nexterse branding ─────────────── */
+
+:root {
+  --fin-accent: #3cc4e5;
+  --fin-navy: #02102c;
+  --fin-navy2: #112244;
+  --fin-fg: #ffffff;
+  --fin-font: var(--font-inter-tight), "Inter Tight", sans-serif;
+}
+
+.accent { color: var(--fin-accent); }
+
+.hero {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(135deg, var(--fin-navy) 0%, var(--fin-navy2) 100%);
+  padding-top: calc(var(--header-height) + 56px);
+  padding-bottom: 5.5rem;
+  color: var(--fin-fg);
+  font-family: var(--fin-font);
+}
+
+@media (max-width: 768px) {
+  .hero {
+    padding-top: 5.5rem;
+    padding-bottom: 4.5rem;
+  }
+}
+
+/* Glowing circles */
+.hero::before {
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+  width: 75rem;
+  height: 75rem;
+  background: var(--fin-accent);
+  opacity: 0.15;
+  filter: blur(8.5rem);
+  bottom: -30rem;
+  right: -20rem;
+  pointer-events: none;
+}
+
+.hero::after {
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+  width: 50rem;
+  height: 50rem;
+  background: var(--fin-accent);
+  opacity: 0.1;
+  filter: blur(6.5rem);
+  top: -15rem;
+  right: 15%;
+  pointer-events: none;
+}
+
+.heroBgSvg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.serviceRating {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  flex-shrink: 0;
+  color: #fff;
+  font-family: var(--fin-font);
+}
+
+.ratingLabel {
+  font-size: 0.92rem;
+  line-height: 1.2;
+}
+
+.ratingScore {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+}
+
+.ratingStars {
+  color: #ffa000;
+  font-size: 1.1rem;
+  letter-spacing: 0.08em;
+  line-height: 1;
+}
+
+.ratingScore strong {
+  color: #ffa000;
+  font-size: 1rem;
+}
+
+.heroInner {
+  position: relative;
+  z-index: 1;
+  max-width: min(100%, 1470px);
+  margin: 0 auto;
+  padding-left: clamp(1.25rem, 3vw, 2.5rem);
+  padding-right: clamp(1.25rem, 3vw, 2.5rem);
+}
+
+.heroBreadcrumbs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.125rem;
+  margin-bottom: 1.5rem;
+}
+
+.heroBreadcrumbs a {
+  color: rgba(255, 255, 255, 0.7);
+  text-decoration: none;
+  font-size: 0.875rem;
+  line-height: 1.4;
+  transition: color 0.2s;
+}
+.heroBreadcrumbs a:hover { color: var(--fin-fg); }
+
+.heroBreadcrumbs a::after {
+  content: " ›";
+  color: rgba(255, 255, 255, 0.4);
+  margin-left: 0.25rem;
+}
+
+.heroBreadcrumbs span {
+  color: rgba(255, 255, 255, 0.45);
+  font-size: 0.875rem;
+  line-height: 1.4;
+}
+
+.heroTitle {
+  font-size: clamp(2.25rem, 5vw, 4rem);
+  font-weight: 400;
+  line-height: 1.2;
+  color: var(--fin-fg);
+  max-width: 61.25rem;
+  margin: 0 0 1.5rem;
+}
+
+.heroDescription {
+  font-size: clamp(1rem, 2vw, 1.375rem);
+  line-height: 1.65;
+  color: rgba(255, 255, 255, 0.85);
+  max-width: 55rem;
+  margin: 0 0 2.5rem;
+}
+
+.heroPoints {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem 2rem;
+  margin-bottom: 3rem;
+  max-width: 80rem;
+}
+
+@media (max-width: 768px) {
+  .heroPoints {
+    flex-direction: column;
+    gap: 0.75rem;
+    margin-bottom: 2rem;
+  }
+}
+
+.heroPoint {
+  flex: 1 1 calc(33.333% - 2rem);
+  min-width: 14rem;
+  display: flex;
+  align-items: flex-start;
+  gap: 0.625rem;
+  color: rgba(255, 255, 255, 0.9);
+  font-size: clamp(1rem, 1.5vw, 1.375rem);
+  line-height: 1.55;
+}
+
+.heroPoint::before {
+  content: "";
+  flex-shrink: 0;
+  width: 1.5rem;
+  height: 1.5rem;
+  margin-top: 0.25rem;
+  background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' fill='none'%3E%3Cpath stroke='%233CC4E5' stroke-linecap='square' stroke-width='1.5' d='m20.25 6.75-10.5 10.5L4.5 12'/%3E%3C/svg%3E");
+  background-size: cover;
+}
+
+.heroButtons {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 2rem;
+}
+
+@media (max-width: 768px) {
+  .heroButtons { gap: 1rem; }
+}
+
+.btnPrimary {
+  text-decoration: none;
+  font-family: var(--fin-font);
+  min-height: 2.625rem;
+  padding-inline: 1.5rem;
+}
+
+/* AI agents hero reference override */
+.hero {
+  min-height: 710px;
+  padding-top: calc(var(--header-height) + 56px);
+  padding-bottom: 5.25rem;
+  background:
+    radial-gradient(circle at 92% 8%, rgba(255, 62, 92, 0.22), transparent 27%),
+    radial-gradient(circle at 56% 78%, rgba(60, 196, 229, 0.28), transparent 34%),
+    linear-gradient(122deg, #02102c 0%, #102243 54%, #4d244f 100%);
+}
+
+.hero::before,
+.hero::after {
+  display: none;
+}
+
+.heroBgSvg {
+  opacity: 0.62;
+  mix-blend-mode: screen;
+}
+
+.heroInner {
+  max-width: 94rem;
+  padding-left: clamp(1.5rem, 9vw, 9rem);
+  padding-right: clamp(1.5rem, 5vw, 4rem);
+}
+
+.heroBreadcrumbs {
+  margin-bottom: clamp(3.25rem, 6vw, 5rem);
+}
+
+.heroTitle {
+  max-width: 66rem;
+  margin-bottom: 1.65rem;
+  font-size: clamp(3.4rem, 5.4vw, 4.8rem);
+  font-weight: 300;
+  line-height: 1.18;
+  letter-spacing: 0;
+}
+
+.heroDescription {
+  max-width: 58rem;
+  margin-bottom: clamp(3.2rem, 5vw, 4rem);
+  font-size: clamp(1.15rem, 1.5vw, 1.45rem);
+  line-height: 1.55;
+  color: rgba(255,255,255,0.92);
+}
+
+.heroButtons {
+  gap: clamp(2.5rem, 5vw, 4.5rem);
+}
+
+.btnPrimary {
+  min-width: 10rem;
+  min-height: 3.6rem;
+  padding: 0 2rem;
+  border-radius: 0;
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+.serviceRating {
+  align-items: flex-start;
+  text-align: left;
+}
+
+@media (max-width: 900px) {
+  .hero {
+    min-height: auto;
+    padding-top: 6.5rem;
+    padding-bottom: 4.5rem;
+  }
+
+  .heroInner {
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
+  }
+
+  .heroBreadcrumbs {
+    margin-bottom: 2.75rem;
+  }
+
+  .heroButtons {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 1.4rem;
+  }
+}

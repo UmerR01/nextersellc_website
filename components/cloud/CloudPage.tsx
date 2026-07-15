@@ -1,0 +1,1055 @@
+"use client";
+
+import { useState } from "react";
+import Image from "next/image";
+import CaseCards, { type CaseCard } from "@/components/home/CaseCards";
+import ServicesReviewSlider from "@/components/services/ServicesReviewSlider";
+import ServicesAchievements from "@/components/services/ServicesAchievements";
+import ServicesFaqBlock, { type FaqItem } from "@/components/services/ServicesFaqBlock";
+import ServicesBlogSection, { type FeaturedPost, type BlogPost } from "@/components/services/ServicesBlogSection";
+import LetsStart from "@/components/home/LetsStart";
+import CloudArticleLayout from "./CloudArticleLayout";
+import styles from "./CloudPage.module.css";
+
+// ─── Cases ────────────────────────────────────────────────────────────────────
+const CLOUD_CASES: CaseCard[] = [
+  {
+    banner: "/web-app-development/02_Frame-1787-1.png",
+    name: "Dexai Robotics",
+    title: "Cloud control interface for robot operation",
+    text: "A cloud-connected control platform that freed Dexai Robotics' restaurant staff from engineer dependency – cutting robot setup time per shift by ~65% and reducing interaction errors by ~50% through real-time state monitoring and offline-capable edge sync.",
+    href: "/portfolio/dexai-robotics-graphical-user-interface",
+    tags: ["IoT", "Startups"],
+  },
+  {
+    banner: "/web-app-development/09_inbound_transportation_kanban_board011@2x.png",
+    name: "Toyota ERP/CRM",
+    title: "Cloud ERP/CRM platform for Toyota dealers",
+    text: "A cloud-hosted ERP/CRM for Business Car Group – Russia's largest Toyota and Lexus dealer network – that replaced decade-old disjointed tools with a unified, scalable platform, cutting sales cycles by 30% across 20 dealer centers.",
+    href: "/portfolio/toyota-custom-erp-crm-system",
+    tags: ["Enterprise"],
+  },
+  {
+    banner: "/web-app-development/07_Cover-right-2.png",
+    name: "AI Knowledge Base",
+    title: "Cloud-native AI knowledge base for a global nonprofit",
+    text: "A Middle Eastern nonprofit working in cultural preservation needed a single searchable repository for fragmented research. We built a multilingual, cloud-native AI platform that now indexes 12,000+ artifacts across 18 countries with elastic scaling.",
+    href: "/portfolio/ai-powered-knowledge-base",
+    tags: ["AI inside", "Enterprise"],
+  },
+  {
+    banner: "/web-app-development/10_Cover-1-1.png",
+    name: "AI Route Optimization",
+    title: "Cloud AI/ML route optimization for a freight service",
+    text: "Lifted on-time delivery to 98% – without expanding the fleet. A cloud-based AI/ML platform that plans and reoptimizes B2B/B2C routes in real time with traffic, weather, and capacity constraints, cutting last-mile costs by 22%.",
+    href: "/portfolio/ai-route-optimization",
+    tags: ["AI inside", "Enterprise"],
+  },
+  {
+    banner: "/web-app-development/10_Cover-2-1.png",
+    name: "Dental AI Platform",
+    title: "HIPAA-aligned cloud AI platform for dental imaging",
+    text: "A HIPAA-aligned, cloud-hosted AI platform for a dental imaging provider that reduced wait times by 37%, increased daily throughput by 22%, and lowered no-shows by 29%.",
+    href: "/portfolio/ai-patient-flow-dental",
+    tags: ["AI inside", "Enterprise"],
+  },
+  {
+    banner: "/web-app-development/12_cover-2.png",
+    name: "Real Estate Platform",
+    title: "Cloud migration and enhancement of a property platform",
+    text: "A 5-year enhancement and cloud migration of a franchise property platform that brought ~30% more property enquiries through a redesign and CoreLogic data integration – without rebuilding the platform from the ground up.",
+    href: "/portfolio/real-estate-platform",
+    tags: ["Enterprise"],
+  },
+];
+
+// ─── Services tabs ────────────────────────────────────────────────────────────
+const SERVICE_TABS = [
+  {
+    icon: "/cloud/12_RD-Analysis.svg",
+    label: "Cloud consulting",
+    title: "Cloud consulting & assessment",
+    image: "/web-app-development/01_RD-Analysis.jpg",
+    desc: "Our cloud architects assess your current infrastructure, applications, and goals before any migration or build starts. We define the target cloud strategy, estimate total cost of ownership, and identify the workloads that benefit most from the cloud. If AI is part of the plan, we map where managed AI services and data pipelines fit into the architecture from day one.",
+    bullets: [
+      "Assess current infrastructure, workloads, and dependencies",
+      "Choose the right cloud model — public, private, hybrid, or multi-cloud",
+      "Estimate migration effort, TCO, and expected savings",
+      "Define the target architecture and cloud landing zone",
+      "Map AI and data services into the cloud roadmap",
+      "Reduce avoidable rework and lock-in risk",
+    ],
+    linkLabel: "Cloud consulting",
+    href: "/services/cloud-development",
+  },
+  {
+    icon: "/cloud/12_App-Design.svg",
+    label: "Cloud migration",
+    title: "Cloud architecture & migration",
+    image: "/web-app-development/01_App-Design.jpg",
+    desc: "We design well-architected cloud environments and migrate your applications and data with minimal disruption. We follow proven patterns for reliability, security, performance, and cost, and choose the right migration approach for each workload — rehost, replatform, or refactor. For AI features, we account for data residency, managed model endpoints, and controlled access.",
+    bullets: [
+      "Design landing zones, networking, and account structure",
+      "Plan rehost, replatform, refactor, or re-architect per workload",
+      "Migrate applications, databases, and storage with validation",
+      "Design for high availability, disaster recovery, and multi-region",
+      "Set up identity, access, and secure network boundaries",
+      "Preserve business continuity throughout the migration",
+    ],
+    linkLabel: "Cloud migration services",
+    href: "/services/cloud-development",
+  },
+  {
+    icon: "/cloud/12_Frontend-Backend-Development.svg",
+    label: "Cloud-native dev",
+    title: "Cloud-native development",
+    image: "/web-app-development/01_Web-Development.jpg",
+    desc: "Our engineers build cloud-native applications using containers, microservices, and serverless where they fit. We focus on scalable architecture, automated infrastructure, and maintainable code. When AI is required, we add model-facing services, retrieval flows, and monitoring through managed cloud AI platforms.",
+    bullets: [
+      "Build with containers (Docker, Kubernetes) and serverless functions",
+      "Design microservices, event-driven, and API-first architectures",
+      "Automate infrastructure as code (Terraform, CloudFormation)",
+      "Process, store, and expose large volumes of data at scale",
+      "Integrate managed databases, queues, caches, and AI services",
+      "Keep systems elastic, resilient, and cost-aware under load",
+    ],
+    linkLabel: "Cloud-native development",
+    href: "/services/cloud-development",
+  },
+  {
+    icon: "/cloud/12_QA-Testing.svg",
+    label: "DevOps & QA",
+    title: "Cloud DevOps, security & QA",
+    image: "/web-app-development/01_QA-Testing.jpg",
+    desc: "Our DevOps and QA teams join the project from day one. We build CI/CD pipelines, automated testing, and observability so releases stay fast and safe. We cover functional quality, performance, security, and cost. For AI-enabled features, we also test output quality, grounding, fallback behavior, and monitoring rules.",
+    bullets: [
+      "Build CI/CD pipelines and automated deployments",
+      "Add monitoring, logging, tracing, and alerting (observability)",
+      "Run performance, load, security, and resilience testing",
+      "Embed security scanning and compliance into pipelines (DevSecOps)",
+      "Apply FinOps practices to keep cloud spend under control",
+      "Shorten release cycles through earlier defect detection",
+    ],
+    linkLabel: "Cloud DevOps services",
+    href: "/services/cloud-development",
+  },
+];
+
+// ─── Solutions ────────────────────────────────────────────────────────────────
+const SOLUTIONS = [
+  {
+    label: "Cloud migration & modernization",
+    title: "Cloud migration & modernization",
+    desc: "We migrate on-premise and legacy applications to AWS, Azure, or Google Cloud with a workload-by-workload strategy. We rehost, replatform, or refactor based on business value and risk, modernize data stores, and re-architect toward managed services. The result is lower infrastructure cost, better scalability, and a foundation ready for automation and AI.",
+    ctaLabel: "Cloud migration services",
+    ctaHref: "/services/cloud-development",
+  },
+  {
+    label: "Cloud-native app development",
+    title: "Cloud-native application development",
+    desc: "We build new applications designed for the cloud from the start — containerized, elastic, and observable. Using microservices, serverless functions, and managed data services, we deliver systems that scale with demand and stay resilient. AI capabilities such as retrieval, classification, and assistants are integrated through managed cloud AI platforms.",
+    ctaLabel: "Cloud-native development",
+    ctaHref: "/services/cloud-development",
+  },
+  {
+    label: "SaaS on the cloud",
+    title: "SaaS product development on the cloud",
+    desc: "We design and develop multi-tenant SaaS products with tenant-aware architecture, elastic scaling, usage metering, and secure isolation. We build the release foundations, admin controls, and integration layers SaaS teams need. AI can be added for support automation, account insights, and embedded assistants that respect each tenant's data boundaries.",
+    ctaLabel: "SaaS development services",
+    ctaHref: "/services/saas-development",
+  },
+  {
+    label: "Serverless & microservices",
+    title: "Serverless & microservices",
+    desc: "We build event-driven, serverless, and microservice architectures that scale automatically and reduce operational overhead. Using functions, managed queues, API gateways, and container orchestration, we deliver systems that are cost-efficient at low load and elastic at peak, with clear service boundaries and independent deployability.",
+    ctaLabel: "Cloud architecture services",
+    ctaHref: "/services/cloud-development",
+  },
+  {
+    label: "Cloud data platforms & AI",
+    title: "Cloud data platforms & AI",
+    desc: "We build cloud data platforms — data lakes, warehouses, and streaming pipelines — that turn raw data into a governed, usable asset. On top of that foundation we add analytics and AI: retrieval, forecasting, and model endpoints running on managed cloud services with access control and cost visibility built in.",
+    ctaLabel: "Data & AI development",
+    ctaHref: "/services/ai-software-development",
+  },
+];
+
+// ─── Process steps ────────────────────────────────────────────────────────────
+const PROCESS_STEPS = [
+  {
+    title: "Assessment",
+    bullets: [
+      "Review current infrastructure, workloads, and dependencies",
+      "Define goals, constraints, compliance needs, and cloud scope",
+    ],
+  },
+  {
+    title: "Architecture & planning",
+    bullets: [
+      "Set target architecture, landing zone, and migration approach",
+      "Outline networking, security, data flows, and release logic",
+    ],
+  },
+  {
+    title: "Design",
+    bullets: [
+      "Design services, data stores, and integration boundaries",
+      "Define scaling, resilience, and disaster-recovery patterns",
+    ],
+  },
+  {
+    title: "Build & migrate",
+    bullets: [
+      "Build cloud-native services, APIs, and infrastructure as code",
+      "Migrate applications and data with validation and rollback paths",
+    ],
+  },
+  {
+    title: "Testing & security",
+    bullets: [
+      "Test performance, resilience, security, and permissions",
+      "Run load, failover, and compliance checks before release",
+    ],
+  },
+  {
+    title: "Deployment",
+    bullets: [
+      "Automate CI/CD, blue-green or canary releases, and monitoring",
+      "Cut over workloads and track system health and cost",
+    ],
+  },
+  {
+    title: "Optimization & FinOps",
+    bullets: [
+      "Right-size resources and tune autoscaling and storage tiers",
+      "Track spend, set budgets, and continuously reduce cloud cost",
+    ],
+  },
+];
+
+// ─── Security cards ───────────────────────────────────────────────────────────
+const SECURITY_CARDS = [
+  {
+    icon: "/cloud/02_Client-security-1.svg",
+    title: "Client security",
+    bullets: [
+      "Signing NDA and SLA from the start",
+      "Clear policies that secure your intellectual property",
+      "Secure authentication and access control for cloud accounts",
+    ],
+  },
+  {
+    icon: "/cloud/02_Data-security-2.svg",
+    title: "Data security",
+    bullets: [
+      "Adherence to GDPR, HIPAA, SOC 2, ISO 27001",
+      "AES-256 encryption at rest and TLS 1.2+ in transit",
+      "Zero trust security model",
+      "Automated backups, snapshots, and disaster recovery",
+    ],
+  },
+  {
+    icon: "/cloud/02_Application-security-2.svg",
+    title: "Application security",
+    bullets: [
+      "Automated continuous scanning for vulnerabilities",
+      "Real-time DDoS & bot protection (WAF)",
+      "Compliance with OWASP's Top 10 guidelines",
+      "Regular security patches and automated updates",
+    ],
+  },
+  {
+    icon: "/cloud/02_Network-security-1.svg",
+    title: "Cloud network security",
+    bullets: [
+      "VPCs, security groups, firewalls, and intrusion detection",
+      "Network segmentation and private subnets for isolation",
+      "Encrypted tunnels and VPN for secure remote access",
+      "OAuth 2.0, JWT tokens, and API gateways",
+    ],
+  },
+  {
+    icon: "/cloud/02_DevSecOps-1.svg",
+    title: "DevSecOps",
+    bullets: [
+      "Automated security checks in CI/CD pipelines",
+      "Infrastructure-as-code scanning and policy as code",
+      "Safeguarding containerized workloads against misconfigurations",
+      "Centralized logging & real-time security monitoring",
+    ],
+  },
+];
+
+// ─── Tech stack ───────────────────────────────────────────────────────────────
+const TECH_ROWS: { label: string; compact?: boolean; logos: { src: string; alt: string }[] }[] = [
+  {
+    label: "Backend & cloud services",
+    logos: [
+      { src: "/web-app-development/tech/row1_1.svg", alt: "Java" },
+      { src: "/web-app-development/tech/row1_2.svg", alt: ".NET" },
+      { src: "/web-app-development/tech/row1_3.svg", alt: "Node.js" },
+      { src: "/web-app-development/tech/row1_4.svg", alt: "Python" },
+      { src: "/web-app-development/tech/row1_5.svg", alt: "PostgreSQL" },
+      { src: "/web-app-development/tech/row1_6.svg", alt: "MongoDB" },
+      { src: "/ai-consulting/tech-logos/aws.svg", alt: "AWS" },
+      { src: "/ai-consulting/tech-logos/azure.svg", alt: "Microsoft Azure" },
+      { src: "/ai-consulting/tech-logos/gcp.svg", alt: "Google Cloud" },
+      { src: "/ai-consulting/tech-logos/docker.svg", alt: "Docker" },
+    ],
+  },
+  {
+    label: "Frontend & interfaces",
+    logos: [
+      { src: "/web-app-development/tech/row2_1.svg", alt: "React" },
+      { src: "/web-app-development/tech/row2_2.svg", alt: "Angular" },
+      { src: "/web-app-development/tech/row2_3.svg", alt: "Vue.js" },
+      { src: "/web-app-development/tech/row2_4.svg", alt: "Next.js" },
+      { src: "/web-app-development/tech/row2_5.svg", alt: "TypeScript" },
+      { src: "/web-app-development/tech/row2_6.svg", alt: "Redux" },
+      { src: "/web-app-development/tech/row2_7.svg", alt: "GraphQL" },
+    ],
+  },
+  {
+    label: "Data & AI",
+    compact: true,
+    logos: [
+      { src: "/web-app-development/tech/row3_1.svg", alt: "LangChain" },
+      { src: "/web-app-development/tech/row3_2.svg", alt: "LlamaIndex" },
+      { src: "/web-app-development/tech/row3_3.svg", alt: "OpenAI" },
+      { src: "/web-app-development/tech/row3_4.svg", alt: "HuggingFace" },
+      { src: "/web-app-development/tech/row3_5.svg", alt: "PyTorch" },
+    ],
+  },
+];
+
+// ─── Cloud-specific FAQ ───────────────────────────────────────────────────────
+const CLOUD_FAQ: FaqItem[] = [
+  {
+    question: "Which cloud provider should we choose — AWS, Azure, or Google Cloud?",
+    answer: "It depends on your existing stack, team skills, compliance needs, and the managed services you rely on. AWS offers the broadest service catalog, Azure integrates tightly with Microsoft environments, and Google Cloud is strong for data and AI workloads. We assess your requirements and recommend a single-cloud, hybrid, or multi-cloud approach — and design so you are not unnecessarily locked in.",
+  },
+  {
+    question: "How do you migrate our applications to the cloud without downtime?",
+    answer: "We migrate workload by workload rather than all at once. Depending on each application, we rehost, replatform, or refactor, run the old and new environments in parallel, and cut over using controlled traffic routing and validated rollback paths. Data is migrated in staged, verified batches so business operations continue throughout.",
+  },
+  {
+    question: "How do you keep our cloud costs under control?",
+    answer: "We apply FinOps from the architecture stage. That includes right-sizing resources, autoscaling, reserved or spot capacity where it fits, storage tiering, and cost dashboards with budgets and alerts. We make spend visible per service and team, so the cost profile stays understandable as usage grows.",
+  },
+  {
+    question: "Is the cloud secure enough for regulated data like healthcare or finance?",
+    answer: "Yes, when it is architected correctly. Major cloud providers offer compliance-ready services and certifications (HIPAA, SOC 2, ISO 27001, PCI DSS). We implement encryption at rest and in transit, least-privilege access, network isolation, audit logging, and data-residency controls so regulated workloads meet their requirements.",
+  },
+  {
+    question: "What is the difference between lift-and-shift and cloud-native modernization?",
+    answer: "Lift-and-shift (rehosting) moves an application to the cloud with minimal changes — fast, but it carries existing inefficiencies. Cloud-native modernization refactors the application to use containers, managed services, and autoscaling, which improves scalability and cost efficiency and prepares it for AI. We often combine both: rehost first for speed, then modernize the highest-value workloads.",
+  },
+  {
+    question: "Can you build serverless or containerized architectures?",
+    answer: "Yes. We design event-driven serverless systems (functions, managed queues, API gateways) for elastic, low-overhead workloads, and containerized microservices on Kubernetes for services that need more control. We choose the right model per workload and often mix both within one platform.",
+  },
+  {
+    question: "How do you add AI to a cloud application without exposing sensitive data?",
+    answer: "We connect AI to a governed data layer with role-based access, protected service boundaries, and controlled retrieval rules. We use managed model endpoints or private deployments depending on data sensitivity, and design data-handling flows that restrict what leaves protected systems. AI outputs are monitored and, where needed, reviewed before they drive actions.",
+  },
+  {
+    question: "Do you provide ongoing cloud management and support after launch?",
+    answer: "Yes. We offer managed cloud operations — monitoring, cost optimization, security patching, scaling, incident response, and continuous improvement. You can run operations in-house with our support, or have our team manage the environment under a defined SLA.",
+  },
+];
+
+// ─── Cloud-specific blog posts ────────────────────────────────────────────────
+const CLOUD_BLOG_FEATURED: FeaturedPost = {
+  href: "/blog/cloud-migration-strategy-guide",
+  title: "Cloud Migration Strategy: The Complete Enterprise Playbook for 2026",
+  image: "/web-app-development/07_Score-answers-not-impressions-1024x576.jpg",
+  imageAlt: "Cloud Migration Strategy Enterprise Playbook",
+  readTime: "35 mins",
+  date: "July 3, 2026",
+};
+
+const CLOUD_BLOG_SIDE: BlogPost[] = [
+  {
+    href: "/blog/10-questions-cloud-development-company",
+    title: "10 Questions to Ask a Cloud Development Company before Signing",
+    readTime: "18 mins",
+    date: "July 7, 2026",
+  },
+  {
+    href: "/blog/cloud-cost-optimization-playbook",
+    title: "The Cloud Cost Optimization Playbook – FinOps Mechanisms and Real-World Case Studies (2026 Edition)",
+    readTime: "32 mins",
+    date: "July 1, 2026",
+  },
+];
+
+// ─── Engagement models ────────────────────────────────────────────────────────
+const ENGAGEMENT_MODELS = [
+  {
+    label: "Outsourcing",
+    title: "Outsourcing",
+    desc: "This is a classic approach in which we take complete responsibility for the entire cloud development and migration process. Our project management team organizes the work for our cloud architects, engineers, DevOps, and QA specialists. You act as a stakeholder who focuses on strategic goals, communicating with our business analysts on requirements and with our project managers on status.",
+  },
+  {
+    label: "Outstaffing",
+    title: "Outstaffing",
+    desc: "We strengthen your in-house team with our highly skilled cloud engineers, architects, DevOps specialists, and QA experts. Our specialists work alongside your team shoulder to shoulder without the overhead of hiring full-time employees.",
+  },
+  {
+    label: "Dedicated team",
+    title: "Dedicated team",
+    desc: "A team of cloud architects, engineers, DevOps, and QA specialists working exclusively on your project under your supervision. You retain complete control over team management and oversight while our experts take care of the project execution.",
+  },
+];
+
+// ─── Industries ───────────────────────────────────────────────────────────────
+const INDUSTRIES = [
+  {
+    icon: "/cloud/01_E-learning-applications.svg",
+    title: "E-learning",
+    desc: "We build scalable cloud platforms for e-learning portals, LMS systems, and content delivery. The cloud handles traffic spikes during peak enrollment, while AI can support learner assistance, content search, and Q&A over internal materials.",
+    linkLabel: "Edtech cloud development",
+    href: "/industries/elearning-software-development",
+  },
+  {
+    icon: "/cloud/01_Ecommerce.svg",
+    title: "E-commerce & Retail",
+    desc: "We develop elastic cloud commerce platforms, catalog systems, and order management that scale for seasonal peaks. AI can support product discovery, pricing analysis, support workflows, and demand forecasting on top of cloud data pipelines.",
+    linkLabel: "E-commerce development",
+    href: "/services/retail-ecommerce-development",
+  },
+  {
+    icon: "/cloud/01_Transport-Logistics.svg",
+    title: "Transport & Logistics",
+    desc: "We build cloud platforms for freight booking, warehouse operations, fleet management, and delivery control. The cloud handles high-volume telemetry and events, while AI can help with route planning, exception handling, and demand prediction.",
+    linkLabel: "Logistics cloud development",
+    href: "/industries/logistics-software-development",
+  },
+  {
+    icon: "/cloud/01_Marketing-automation.svg",
+    title: "Marketing Automation",
+    desc: "We develop cloud marketing platforms for campaign management, audience segmentation, reporting, and analytics. Elastic infrastructure processes large event streams, and AI can support content classification, lead routing, and customer insights.",
+    linkLabel: "MarTech cloud development",
+    href: "/industries/marketing-automation",
+  },
+  {
+    icon: "/cloud/01_Healthcare.svg",
+    title: "Healthcare & Lifestyle",
+    desc: "We build secure, compliant cloud applications for patient services, records management, and internal workflows. Where policy allows, AI can support document intake, search, triage, and staff knowledge access within HIPAA-aligned cloud environments.",
+    linkLabel: "Healthcare cloud development",
+    href: "/services/healthcare-development",
+  },
+  {
+    icon: "/cloud/01_Fintech-applications.svg",
+    title: "Fintech",
+    desc: "We build secure cloud applications for payments, compliance, risk control, and operational workflows. Compliance-ready cloud services and strong isolation support regulated workloads, while AI can support investigations, document review, and transaction analysis.",
+    linkLabel: "Fintech cloud development",
+    href: "/industries/fintech-software-development",
+  },
+];
+
+// ─── Approach items ───────────────────────────────────────────────────────────
+const APPROACH_ITEMS = [
+  {
+    label: "Project scoping",
+    title: "Project scoping",
+    desc: "We define cloud goals, business requirements, migration scope, and delivery boundaries before development starts.",
+    bullets: [
+      "Run stakeholder interviews and architecture workshops",
+      "Document workloads, dependencies, integration points, and success metrics",
+      "Define the target cloud model and where AI and data services fit",
+      "Prepare a roadmap with milestones, migration waves, dependencies, and priorities",
+    ],
+  },
+  {
+    label: "Resource allocation",
+    title: "Project resource allocation",
+    desc: "We assign the team structure based on project scope, architecture choices, migration complexity, and delivery pace.",
+    bullets: [],
+  },
+  {
+    label: "Cost estimation",
+    title: "Project cost estimation",
+    desc: "We estimate costs against scope, team mix, infrastructure choices, and cloud usage patterns, including expected run-rate.",
+    bullets: [],
+  },
+  {
+    label: "Risk management",
+    title: "Risk management",
+    desc: "We track delivery, security, migration, and cost risks from the first phase to release and steady-state operation.",
+    bullets: [],
+  },
+  {
+    label: "Knowledge management",
+    title: "Knowledge management & sharing",
+    desc: "We document the architecture and runbooks so your team can operate, extend, audit, and govern the environment after release.",
+    bullets: [],
+  },
+  {
+    label: "Code review",
+    title: "Code & infrastructure review",
+    desc: "We review code and infrastructure as code for maintainability, security, performance, and fit with the agreed architecture.",
+    bullets: [],
+  },
+  {
+    label: "Reporting",
+    title: "Reporting",
+    desc: "We keep reporting structured so the team can track progress, risks, spend, and release status across migration waves.",
+    bullets: [
+      "Report on scope changes, milestone status, budget impact, and risk shifts",
+    ],
+  },
+  {
+    label: "Post-launch support",
+    title: "Post-launch support & operations",
+    desc: "We support the environment after release — monitoring, patching, scaling, and fixing issues tied to the agreed scope.",
+    bullets: [],
+  },
+  {
+    label: "Predictable operating costs",
+    title: "Predictable operating costs",
+    desc: "Cloud and AI features can distort a product's cost profile if resources are over-provisioned or each request triggers heavy calls. We design for control and FinOps from the start.",
+    bullets: [],
+  },
+];
+
+export default function CloudPage() {
+  const [activeServiceTab, setActiveServiceTab] = useState(0);
+  const [activeSolutionTab, setActiveSolutionTab] = useState(0);
+  const [activeEngagementTab, setActiveEngagementTab] = useState(0);
+  const [activeApproachTab, setActiveApproachTab] = useState(0);
+
+  return (
+    <>
+      {/* ── Hero ─────────────────────────────────────────────────────────── */}
+      <section className={styles.hero}>
+        <div className="container">
+          <div className={styles.heroInner}>
+            <nav className={styles.breadcrumbs} aria-label="Breadcrumb">
+              <a href="/">Home</a>
+              <a href="/services">Services</a>
+              <span>Cloud Development</span>
+            </nav>
+            <h1 className={styles.heroTitle}>
+              Custom <span className={styles.accent}>cloud development</span> for scalable, AI-ready products
+            </h1>
+            <p className={styles.heroDesc}>
+              Nexterse designs, migrates, and builds cloud platforms that scale with demand, stay secure, and are ready for AI. We architect cloud-native systems, move legacy workloads to AWS, Azure, or Google Cloud, and prepare your data and infrastructure for copilots, retrieval, automation, and model-driven features.
+            </p>
+            <div className={styles.heroActions}>
+              <a href="#get-modal-popup" className={`btn btn-accent ${styles.heroBtn}`}>
+                Book Free Consultation
+              </a>
+              <div className={styles.ratings} aria-label="Clients rate our services five out of five">
+                <p className={styles.ratingsLabel}>Clients rate our services</p>
+                <div className={styles.ratingsBadge}>
+                  <span className={styles.ratingStars} aria-hidden="true">★★★★★</span>
+                  <span className={styles.ratingsScore}>5,0</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ── Logos ────────────────────────────────────────────────────────── */}
+      <section className={styles.logosSection}>
+        <div className="container">
+          <div className={styles.logosWrapper}>
+            {[
+              { src: "/web-app-development/12_5c98e3297e3bc92bd580af14_toyota_l-1.svg", alt: "Toyota" },
+              { src: "/web-app-development/12_5ecce35506c123c4936b0303_dexai-logo-1.svg", alt: "Dexai" },
+              { src: "/web-app-development/12_5ecba50d2b50b63a7a1871ad_beiersdorf-logo-1.svg", alt: "Beiersdorf" },
+              { src: "/web-app-development/01_ClimeCo.svg", alt: "ClimeCo" },
+              { src: "/web-app-development/01_TL-Nika.svg", alt: "TL Nika" },
+              { src: "/web-app-development/10_SMI_Logo-1-2-2.svg", alt: "SMI" },
+            ].map((logo) => (
+              <Image key={logo.alt} src={logo.src} alt={logo.alt} width={120} height={38} className={styles.logoImg} />
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <CloudArticleLayout>
+        {/* ── Benefits ─────────────────────────────────────────────────── */}
+        <section id="cloud-benefits" className={styles.benefitSection}>
+          <div className="container">
+            <h2 className={styles.benefitTitle}>
+              Why build on the cloud with <span className={styles.accent}>Nexterse</span>?
+            </h2>
+            <p className={styles.benefitDesc}>
+              Our team builds and migrates cloud platforms for companies across industries and regions. We choose the cloud model and services based on business logic, scale, compliance constraints, and long-term run cost.
+              <br />
+              We use our ADLC alongside a well-architected cloud process. We define the workload, prepare the data and infrastructure, set evaluation and cost criteria, and add monitoring. This reduces rework and makes it easier to move AI features from PoC to production.
+            </p>
+            <div className={styles.benefitStats}>
+              {[
+                {
+                  icon: "/cloud/01_Less-time-or-cost.svg",
+                  stat: "30%",
+                  title: "less time to market",
+                  desc: "with cloud-native development",
+                },
+                {
+                  icon: "/cloud/03_AI-consulting-03.svg",
+                  stat: "40%",
+                  title: "lower infrastructure cost",
+                  desc: "through cloud optimization & FinOps",
+                },
+                {
+                  icon: "/cloud/03_Audit-rescue-mission-1.svg",
+                  stat: "99.9%",
+                  title: "uptime and availability",
+                  desc: "with resilient cloud architecture",
+                },
+              ].map((item) => (
+                <div key={item.stat} className={styles.benefitItem}>
+                  <Image src={item.icon} alt={item.title} width={64} height={64} className={styles.benefitIcon} />
+                  <p className={styles.benefitItemTitle}>
+                    <span className={styles.accent}>{item.stat}</span> {item.title}
+                    <br />
+                    {item.desc}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* ── Services tabs ─────────────────────────────────────────────── */}
+        <section id="cloud-services" className={`${styles.blockDark} ${styles.serviceBlock}`}>
+          <div className="container">
+            <h2 className={styles.svcTitle}>
+              Cloud development <span className={styles.accent}>services</span>
+            </h2>
+            <div className={styles.tabsWrap}>
+              <div className={styles.tabsNav} role="tablist">
+                {SERVICE_TABS.map((tab, i) => (
+                  <button
+                    key={tab.label}
+                    role="tab"
+                    aria-selected={activeServiceTab === i}
+                    className={`${styles.tabBtn} ${activeServiceTab === i ? styles.tabBtnActive : ""}`}
+                    onClick={() => setActiveServiceTab(i)}
+                  >
+                    <Image src={tab.icon} alt={tab.label} width={40} height={40} className={styles.tabIcon} />
+                    {tab.label}
+                  </button>
+                ))}
+              </div>
+              {SERVICE_TABS.map((tab, i) => (
+                <div
+                  key={tab.label}
+                  role="tabpanel"
+                  className={activeServiceTab === i ? styles.tabPanelActive : styles.tabPanel}
+                >
+                  <div className={styles.tabPanelContent}>
+                    <h3 className={styles.tabPanelTitle}>{tab.title}</h3>
+                    <p className={styles.tabPanelDesc}>{tab.desc}</p>
+                    <ul className={styles.tabBullets}>
+                      {tab.bullets.map((b) => <li key={b}>{b}</li>)}
+                    </ul>
+                    {tab.linkLabel && (
+                      <a href={tab.href} className={styles.tabPanelLink}>
+                        {tab.linkLabel} →
+                      </a>
+                    )}
+                  </div>
+                  <Image
+                    src={tab.image}
+                    alt={tab.title}
+                    width={600}
+                    height={400}
+                    className={styles.tabPanelImg}
+                  />
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* ── Solutions ─────────────────────────────────────────────────── */}
+        <section id="cloud-solutions" className={`${styles.blockLight} ${styles.solutionsBlock}`}>
+          <div className="container">
+            <h2 className={styles.sectionTitle}>
+              Cloud <span className={styles.accent}>solutions</span> we build
+            </h2>
+            <p className={styles.sectionDesc}>
+              We build cloud solutions tailored to specific business needs. We consider workloads, data structure, access rights, compliance, and integrations. If a project requires AI, we build it into the architecture from the start: we define scenarios, restrict data access, and establish quality, cost, and control rules.
+            </p>
+            <div className={styles.vertTabsWrap}>
+              <div className={styles.vertTabList} role="tablist" aria-label="Cloud solutions">
+                {SOLUTIONS.map((s, i) => (
+                  <button
+                    key={s.label}
+                    role="tab"
+                    aria-selected={activeSolutionTab === i}
+                    className={`${styles.vertTabBtn} ${activeSolutionTab === i ? styles.vertTabBtnActive : ""}`}
+                    onClick={() => setActiveSolutionTab(i)}
+                  >
+                    {s.label}
+                  </button>
+                ))}
+              </div>
+              <div className={styles.vertTabContent}>
+                <h3 className={styles.vertTabTitle}>{SOLUTIONS[activeSolutionTab].title}</h3>
+                <p className={styles.vertTabDesc}>{SOLUTIONS[activeSolutionTab].desc}</p>
+                <a href={SOLUTIONS[activeSolutionTab].ctaHref} className={`btn btn-outline ${styles.vertTabCta}`}>
+                  {SOLUTIONS[activeSolutionTab].ctaLabel}
+                </a>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* ── Inline CTA ────────────────────────────────────────────────── */}
+        <div className={`${styles.inlineCta} ${styles.cloudGradientCta}`}>
+          <div className="container">
+            <div className={styles.inlineCtaInner}>
+              <div>
+                <h2 className={styles.inlineCtaTitle}>Get Your Free Consultation</h2>
+                <p className={styles.inlineCtaDesc}>Unlock the potential of scalable cloud solutions today!</p>
+              </div>
+              <a href="#get-modal-popup" className={`btn btn-accent ${styles.inlineCtaBtn}`}>
+                Get in Touch
+              </a>
+            </div>
+          </div>
+        </div>
+
+        {/* ── AI Services 3 cards ───────────────────────────────────────── */}
+        <section className={styles.aiCardsSection}>
+          <div className="container">
+            <div className={styles.aiCardsGrid}>
+              {[
+                {
+                  icon: "/cloud/03_Generative-AI-integration-02.svg",
+                  title: "Cloud AI & ML services",
+                  desc: "We integrate managed cloud AI — language models, retrieval, classifiers, and automation flows — into products where they support a defined business task.",
+                  linkLabel: "AI integration on the cloud",
+                },
+                {
+                  icon: "/cloud/03_Zero-Data-Leakage-03.svg",
+                  title: "Zero-leakage security (RBAC)",
+                  desc: "We enforce role-based access control and strict data boundaries so users, services, and AI features only access what they are allowed to use.",
+                  linkLabel: null,
+                },
+                {
+                  icon: "/cloud/03_LLM-agentic-architecture-design-03.svg",
+                  title: "Cloud-native microservices",
+                  desc: "We structure services so components — including AI — can be added, scaled, or updated independently without disrupting the core platform.",
+                  linkLabel: null,
+                },
+              ].map((card) => (
+                <div key={card.title} className={styles.aiCard}>
+                  <Image src={card.icon} alt={card.title} width={56} height={56} className={styles.cardIcon} />
+                  <h3 className={styles.aiCardTitle}>{card.title}</h3>
+                  <p className={styles.aiCardDesc}>{card.desc}</p>
+                  {card.linkLabel && (
+                    <a href="/services/ai-integration" className={styles.cardLink}>
+                      {card.linkLabel}
+                      <span className={styles.aiCardArrow} />
+                    </a>
+                  )}
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* ── Process ───────────────────────────────────────────────────── */}
+        <section id="cloud-process" className={`${styles.blockDark} ${styles.processBlock} ${styles.cloudGradientBlock}`}>
+          <div className="container">
+            <h2 className={styles.sectionTitleWhite}>
+              Cloud development <span className={styles.accent}>process</span>
+            </h2>
+            <p className={styles.sectionDescWhite}>
+              We run SDLC and ADLC as one process, so the cloud platform and its AI layer are scoped, designed, built, migrated, tested, and released together.
+            </p>
+            <div className={styles.processGrid}>
+              {PROCESS_STEPS.map((step, i) => (
+                <div key={step.title} className={styles.processStep}>
+                  <div className={styles.processNum}>{i + 1}</div>
+                  <div className={styles.processStepBody}>
+                    <h3 className={styles.processStepTitle}>{step.title}</h3>
+                    {step.bullets.length > 0 && (
+                      <ul className={styles.processStepBullets}>
+                        {step.bullets.map((b) => <li key={b}>{b}</li>)}
+                      </ul>
+                    )}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* ── Process testimonial (own white section) ───────────────────── */}
+        <section className={styles.processTestimonialSection}>
+          <div className="container">
+            <div className={styles.processTestimonial}>
+              <div className={styles.ptRight}>
+                <span className={styles.ptQuoteMark}>&ldquo;&ldquo;</span>
+                <blockquote className={styles.ptQuote}>
+                  A well-structured development process is the foundation of successful software projects. By combining clear planning, an agile approach, and continuous early feedback from the Client, we ensure that every product we build perfectly aligns with business goals. Our approach minimizes risks, optimizes resources, and delivers high-quality applications on time and within budget.
+                </blockquote>
+              </div>
+              <div className={styles.ptLeft}>
+                <Image
+                  src="/web-app-development/01_Frame-101745.png"
+                  alt="Irina Baryshnaya"
+                  width={72}
+                  height={72}
+                  className={styles.ptPhoto}
+                />
+                <span className={styles.ptName}>Irina Baryshnaya</span>
+                <span className={styles.ptPosition}>Unit Coordinator / Head of PM</span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* ── Case Studies ──────────────────────────────────────────────── */}
+        <div id="cloud-cases">
+          <CaseCards
+            heading={<>Our recent <span>works</span></>}
+            cards={CLOUD_CASES}
+            windowed
+          />
+        </div>
+
+        {/* ── Review Slider ─────────────────────────────────────────────── */}
+        <ServicesReviewSlider />
+
+        {/* ── PDF Guide CTA ─────────────────────────────────────────────── */}
+        <div id="cloud-guide" className={styles.pdfCta}>
+          <div className="container">
+            <div className={styles.pdfCtaInner}>
+              <div className={styles.pdfCtaBody}>
+                <h2 className={styles.pdfCtaTitle}>
+                  Quick playbook: selecting a cloud development partner [pdf]
+                </h2>
+                <p className={styles.pdfCtaDesc}>
+                  Get a free playbook that will help you find the right cloud development partner. No email required.
+                </p>
+              </div>
+              <a href="#" className={`btn btn-accent ${styles.pdfCtaBtn}`}>
+                <span className={styles.pdfIcon}>PDF</span>
+                Get in Touch
+              </a>
+            </div>
+          </div>
+        </div>
+
+        {/* ── Security ──────────────────────────────────────────────────── */}
+        <section className={`${styles.blockLight} ${styles.securityBlock}`}>
+          <div className="container">
+            <h2 className={styles.sectionTitle}>
+              Comprehensive multi-layer <span className={styles.accent}>cloud security</span> measures
+            </h2>
+            <div className={styles.securityGrid}>
+              {SECURITY_CARDS.map((card) => (
+                <div key={card.title} className={styles.securityCard}>
+                  <Image src={card.icon} alt={card.title} width={48} height={48} className={styles.securityIcon} />
+                  <h3 className={styles.securityCardTitle}>{card.title}</h3>
+                  <ul className={styles.securityBullets}>
+                    {card.bullets.map((b) => <li key={b}>{b}</li>)}
+                  </ul>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* ── Tech Stack ────────────────────────────────────────────────── */}
+        <section id="cloud-tech-stack" className={styles.techStackSection}>
+          <div className="container">
+            <h2 className={styles.techStackTitle}>
+              Core <span className={styles.accent}>tech stack</span> we use
+            </h2>
+            <div className={styles.techRows}>
+              {TECH_ROWS.map((row) => (
+                <div key={row.label} className={styles.techRow}>
+                  <div className={styles.techRowLabel}>{row.label}</div>
+                  <div className={styles.techLogos}>
+                    {row.logos.map((logo) => (
+                      <Image
+                        key={logo.src}
+                        src={logo.src}
+                        alt={logo.alt}
+                        width={120}
+                        height={48}
+                        className={`${styles.techLogoImg} ${row.compact ? styles.techLogoImgSm : ""}`}
+                      />
+                    ))}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* ── Engagement Models ─────────────────────────────────────────── */}
+        <div id="cloud-engagement-models" className={styles.engagementWrap}>
+          <div className="container">
+            <h2 className={styles.sectionTitleWhite}>
+              Cloud development <span className={styles.accent}>engagement models</span>
+            </h2>
+            <p className={styles.sectionDescWhite}>
+              Depending on your business needs, project scope, and team structure, we offer three flexible cooperation models for our cloud development services.
+            </p>
+            <div className={styles.engVertTabsWrap}>
+              <div className={styles.engVertTabList} role="tablist" aria-label="Engagement models">
+                {ENGAGEMENT_MODELS.map((m, i) => (
+                  <button
+                    key={m.label}
+                    role="tab"
+                    aria-selected={activeEngagementTab === i}
+                    className={`${styles.engVertTabBtn} ${activeEngagementTab === i ? styles.engVertTabBtnActive : ""}`}
+                    onClick={() => setActiveEngagementTab(i)}
+                  >
+                    {m.label}
+                  </button>
+                ))}
+                <a href="#cloud-engagement-models" className={styles.engModelLink}>
+                  Engagement models
+                  <span className={styles.engModelArrow} />
+                </a>
+              </div>
+              <div className={styles.engVertTabContent}>
+                <h3 className={styles.engVertTabTitle}>{ENGAGEMENT_MODELS[activeEngagementTab].title}</h3>
+                <p className={styles.engVertTabDesc}>{ENGAGEMENT_MODELS[activeEngagementTab].desc}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* ── Industries ────────────────────────────────────────────────── */}
+        <section id="cloud-industries" className={`${styles.blockLight} ${styles.industriesBlock}`}>
+          <div className="container">
+            <h2 className={styles.sectionTitle}>
+              <span className={styles.accent}>Industry</span>-specific cloud development
+            </h2>
+            <p className={styles.sectionDesc}>
+              We specialize in developing multi-integrated, easily customizable, and fully controllable cloud solutions. Where the use case supports it, we add AI for search, classification, and forecasting on top of scalable cloud data.
+            </p>
+            <div className={styles.industryGrid}>
+              {INDUSTRIES.map((ind) => (
+                <a key={ind.title} href={ind.href} className={styles.industryCard}>
+                  <Image src={ind.icon} alt={ind.title} width={48} height={48} className={styles.industryCardIcon} />
+                  <h3 className={styles.industryCardTitle}>{ind.title}</h3>
+                  <p className={styles.industryCardDesc}>{ind.desc}</p>
+                  <span className={styles.industryCardLink}>
+                    {ind.linkLabel}
+                    <span className={styles.industryArrow} />
+                  </span>
+                </a>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* ── Approach ──────────────────────────────────────────────────── */}
+        <section id="cloud-approach" className={`${styles.blockWhite} ${styles.approachBlock}`}>
+          <div className="container">
+            <h2 className={styles.sectionTitle}>
+              Our cloud development <span className={styles.accent}>approach</span>
+            </h2>
+            <p className={styles.sectionDesc}>
+              We run cloud development and migration through a structured process that covers scope, team setup, cost control, and post-launch operations. When AI is part of the product, we extend SDLC with ADLC, so use case design, data preparation, evaluation, and rollout are handled inside the same process.
+            </p>
+            <div className={styles.approachVertTabsWrap}>
+              <div className={styles.approachVertTabList} role="tablist" aria-label="Development approach">
+                {APPROACH_ITEMS.map((item, i) => (
+                  <button
+                    key={item.label}
+                    role="tab"
+                    aria-selected={activeApproachTab === i}
+                    className={`${styles.approachVertTabBtn} ${activeApproachTab === i ? styles.approachVertTabBtnActive : ""}`}
+                    onClick={() => setActiveApproachTab(i)}
+                  >
+                    {item.label}
+                  </button>
+                ))}
+              </div>
+              <div className={styles.approachVertTabContent}>
+                <h3 className={styles.approachVertTabTitle}>{APPROACH_ITEMS[activeApproachTab].title}</h3>
+                <p className={styles.approachVertTabDesc}>{APPROACH_ITEMS[activeApproachTab].desc}</p>
+                {APPROACH_ITEMS[activeApproachTab].bullets.length > 0 && (
+                  <ul className={styles.approachVertTabBullets}>
+                    {APPROACH_ITEMS[activeApproachTab].bullets.map((b) => <li key={b}>{b}</li>)}
+                  </ul>
+                )}
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* ── Awards & Recognitions ─────────────────────────────────────── */}
+        <ServicesAchievements />
+
+        {/* ── FAQ ───────────────────────────────────────────────────────── */}
+        <div id="cloud-faq">
+          <ServicesFaqBlock items={CLOUD_FAQ} />
+        </div>
+
+        {/* ── Cross-links ───────────────────────────────────────────────── */}
+        <section className={styles.clSection}>
+          <div className={styles.clBg} />
+          <div className="container">
+            <h2 className={styles.clTitle}>More about Nexterse LLC</h2>
+            <div className={styles.clGrid}>
+              <div>
+                <p className={styles.clColTitle}>Services</p>
+                <ul className={styles.clList}>
+                  {[
+                    { text: "Enterprise software ", last: "development", href: "/services/enterprise-software-development" },
+                    { text: "Custom software product ", last: "development", href: "/services/custom-software-development" },
+                    { text: "Web app ", last: "development", href: "/services/web-app-development" },
+                    { text: "SaaS ", last: "development", href: "/services/saas-development" },
+                  ].map((link) => (
+                    <li key={link.last + link.text} className={styles.clItem}>
+                      <a href={link.href} className={styles.clLink}>
+                        {link.text}
+                        <span className={styles.clLinkLast}>
+                          {link.last}
+                          <span className={styles.clArrow} />
+                        </span>
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+              <div>
+                <p className={styles.clColTitle}>Insights</p>
+                <ul className={styles.clList}>
+                  {[
+                    { text: "Top cloud development ", last: "companies", href: "/blog/top-cloud-development-companies" },
+                    { text: "", last: "FAQ", href: "/about/faq" },
+                    { text: "Guides & checklists ", last: "library", href: "/guides-templates" },
+                  ].map((link) => (
+                    <li key={link.last + link.text} className={styles.clItem}>
+                      <a href={link.href} className={styles.clLink}>
+                        {link.text}
+                        <span className={styles.clLinkLast}>
+                          {link.last}
+                          <span className={styles.clArrow} />
+                        </span>
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* ── Let's Start ───────────────────────────────────────────────── */}
+        <LetsStart />
+
+        {/* ── Blog ──────────────────────────────────────────────────────── */}
+        <ServicesBlogSection featured={CLOUD_BLOG_FEATURED} sidePosts={CLOUD_BLOG_SIDE} />
+      </CloudArticleLayout>
+    </>
+  );
+}

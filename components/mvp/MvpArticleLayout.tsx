@@ -54,7 +54,7 @@ export default function MvpArticleLayout({ children }: { children: ReactNode }) 
   return (
     <div className={styles.articleContent}>
       <div className={styles.articleBody}>{children}</div>
-      <aside className={styles.navigation} aria-label="MVP page contents">
+      <aside className={`${styles.navigation} ${s.navigation}`} aria-label="MVP page contents">
         {/* Single sticky wrapper so both cards move together */}
         <div className={s.stickyWrapper}>
           {/* Contents card */}
@@ -78,12 +78,12 @@ export default function MvpArticleLayout({ children }: { children: ReactNode }) 
           <div className={s.ctaBanner}>
             <div className={s.ctaBannerBg} aria-hidden="true">
               <svg preserveAspectRatio="xMidYMid slice" width="100%" height="100%" viewBox="0 0 400 280" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <rect width="400" height="280" fill="#02102C" />
-                <g opacity="0.3" filter="url(#bfp_f0)">
-                  <circle cx="340" cy="130" r="120" fill="#3CC4E5" />
+                <rect width="400" height="280" fill="#F8F9FD" />
+                <g opacity="0.32" filter="url(#bfp_f0)">
+                  <circle cx="340" cy="130" r="120" fill="#FF8FB1" />
                 </g>
-                <g opacity="0.2" filter="url(#bfp_f1)">
-                  <circle cx="260" cy="240" r="160" fill="#3CC4E5" />
+                <g opacity="0.34" filter="url(#bfp_f1)">
+                  <circle cx="260" cy="240" r="160" fill="#7BB8FF" />
                 </g>
                 <defs>
                   <filter id="bfp_f0" x="140" y="-70" width="400" height="400" filterUnits="userSpaceOnUse" colorInterpolationFilters="sRGB">
@@ -96,7 +96,7 @@ export default function MvpArticleLayout({ children }: { children: ReactNode }) 
               </svg>
             </div>
             <p className={s.ctaBannerTitle}>From Concept to Clicks – Get Your MVP to Market Fast</p>
-            <a href="/contact" className={s.ctaBannerBtn}>Schedule a Call</a>
+            <a href="/contact-us" className={`btn btn-accent ${s.ctaBannerBtn}`}>Schedule a Call</a>
           </div>
         </div>
       </aside>

@@ -14,7 +14,7 @@ export default function CSDownloadCTA() {
             </p>
           </div>
           <div className={styles.action}>
-            <a href="#get-modal-popup" className={styles.button}>
+            <a href="#get-modal-popup" className={`btn btn-accent ${styles.button}`}>
               Get in Touch
             </a>
           </div>

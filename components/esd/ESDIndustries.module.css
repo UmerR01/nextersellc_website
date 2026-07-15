@@ -94,7 +94,9 @@
 }
 
 .cardLink:hover {
-  color: var(--color-accent-dark);
+  text-decoration: underline;
+  text-decoration-thickness: 0.5px;
+  text-underline-offset: 4px;
 }
 
 .linkArrow {

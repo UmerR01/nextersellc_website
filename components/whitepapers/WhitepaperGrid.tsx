@@ -29,7 +29,7 @@ const papers = [
     imgBottom: "/whitepapers/02_IoT-Ecosystem-back.jpg",
     imgBottomAlt: "IoT Ecosystem back",
     title: "IoT 7 Components: Structure Overview",
-    href: "#",
+    href: "/whitepapers/iot-7-components-structure-overview",
   },
   {
     gradient: "linear-gradient(280.31deg, #8F1500 -2.24%, #E45B44 76.47%)",
@@ -38,7 +38,7 @@ const papers = [
     imgBottom: "/whitepapers/02_Bottom-1.jpg",
     imgBottomAlt: "Complete Software Development Process in 14 Steps",
     title: "Mastering the Software Development Process: Our Methodology",
-    href: "#",
+    href: "/whitepapers/mastering-software-development-process",
   },
   {
     gradient: "linear-gradient(281.09deg, #003482 2.55%, #2F77D2 72.04%)",
@@ -47,7 +47,7 @@ const papers = [
     imgBottom: "/whitepapers/01_6-stops-bottom.png",
     imgBottomAlt: "6 stops to best software development companies",
     title: "How to find the best software development partner",
-    href: "#",
+    href: "/whitepapers/how-to-find-the-best-software-development-partner",
   },
   {
     gradient: "linear-gradient(259.16deg, #02102C -0.49%, #112244 100%)",
@@ -56,7 +56,7 @@ const papers = [
     imgBottom: "/whitepapers/01_bsp-bottom.png",
     imgBottomAlt: "Building SaaS contents",
     title: "Building SaaS platforms. Trends, challenges, our expertise",
-    href: "#",
+    href: "/whitepapers/building-saas-platforms-trends-challenges-our-expertise",
   },
   {
     gradient: "linear-gradient(280.31deg, #8F1500 -2.24%, #E45B44 76.47%)",
@@ -65,7 +65,7 @@ const papers = [
     imgBottom: "/whitepapers/01_Estimation-bottom.png",
     imgBottomAlt: "Estimation contents",
     title: "Estimation of software development cost — process & techniques",
-    href: "#",
+    href: "/whitepapers/software-development-cost-estimation-process-techniques",
   },
   {
     gradient: "linear-gradient(281.09deg, #36185F 2.55%, #7349AC 72.04%)",
@@ -74,7 +74,7 @@ const papers = [
     imgBottom: "/whitepapers/01_Discovery-phase-bottom.png",
     imgBottomAlt: "Discovery phase",
     title: "Discovery Phase: the business benefits it brings",
-    href: "#",
+    href: "/whitepapers/discovery-phase-the-business-benefits-it-brings",
   },
   {
     gradient: "linear-gradient(281.09deg, #36185F 2.55%, #7349AC 72.04%)",
@@ -83,7 +83,7 @@ const papers = [
     imgBottom: "/whitepapers/11_Bottom-2.jpg",
     imgBottomAlt: "Expert Guide Into the Design Process background",
     title: "Expert Guide Into the Design Process",
-    href: "#",
+    href: "/whitepapers/expert-guide-into-ux-ui-design-process",
   },
 ];
 

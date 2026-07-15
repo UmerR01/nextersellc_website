@@ -12,7 +12,7 @@ export const metadata: Metadata = {
 export default function OnboardRoute() {
   return (
     <>
-      <Header startTransparent />
+      <Header forceSolid />
       <main>
         <OnboardPage />
         <LetsStart variant="process" />

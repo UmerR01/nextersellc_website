@@ -30,7 +30,7 @@ export default function ESDLogos() {
         allowTouchMove={false}
         className={styles.swiper}
       >
-        {[...LOGOS, ...LOGOS].map((logo, i) => (
+        {[...LOGOS, ...LOGOS, ...LOGOS].map((logo, i) => (
           <SwiperSlide key={i} className={styles.slide}>
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img

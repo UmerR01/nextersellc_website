@@ -8,9 +8,37 @@
   overflow: hidden;
 }
 
+/* Optional left/right fade at the section edges */
+.edgeFade {
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, #000 13%, #000 87%, transparent 100%);
+  mask-image: linear-gradient(to right, transparent 0%, #000 13%, #000 87%, transparent 100%);
+}
+
+.edgeFade::before,
+.edgeFade::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  z-index: 2;
+  width: clamp(4rem, 11vw, 10rem);
+  pointer-events: none;
+}
+
+.edgeFade::before {
+  left: 0;
+  background: linear-gradient(90deg, #fff 0%, rgba(255, 255, 255, 0) 100%);
+}
+
+.edgeFade::after {
+  right: 0;
+  background: linear-gradient(270deg, #fff 0%, rgba(255, 255, 255, 0) 100%);
+}
+
 .marquee {
   display: flex;
   width: max-content;
+  min-width: 100%;
   animation: scroll 40s linear infinite;
 }
 .marquee:hover {
@@ -20,6 +48,7 @@
 .track {
   display: flex;
   align-items: center;
+  justify-content: center;
   list-style: none;
 }
 

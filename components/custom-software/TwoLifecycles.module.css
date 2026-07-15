@@ -88,7 +88,7 @@
 }
 
 .card:hover .cardTitle {
-  color: var(--color-accent);
+  color: #112244;
 }
 
 .cardDesc {

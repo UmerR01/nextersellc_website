@@ -244,18 +244,7 @@ export default function ProcessPage() {
       <div className={styles.main}>
         {/* ── HERO ───────────────────────────────────────────────────── */}
         <section className={styles.hero}>
-          {/* Video background */}
-          <div className={styles.heroBgVideo} aria-hidden>
-            <video
-              autoPlay
-              loop
-              muted
-              playsInline
-              src="/process/radar-bg.webm"
-              aria-hidden
-            />
-          </div>
-          {/* Gradient overlay */}
+          {/* Theme background */}
           <div className={styles.heroGradient} aria-hidden />
 
           {/* Hero card */}

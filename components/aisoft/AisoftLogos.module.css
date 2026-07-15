@@ -1,0 +1,93 @@
+.section {
+  position: relative;
+  overflow: hidden;
+  padding: 34px 0 40px;
+  border-top: 0;
+  border-bottom: 0;
+  background: #fff;
+  font-family: var(--font-inter-tight), sans-serif;
+}
+
+.section::before,
+.section::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  z-index: 2;
+  width: clamp(4rem, 9vw, 8rem);
+  height: 100%;
+  pointer-events: none;
+}
+
+.section::before {
+  left: 0;
+  background: linear-gradient(90deg, #fff 0%, rgba(255,255,255,0.94) 35%, rgba(255,255,255,0) 100%);
+}
+
+.section::after {
+  right: 0;
+  background: linear-gradient(270deg, #fff 0%, rgba(255,255,255,0.94) 35%, rgba(255,255,255,0) 100%);
+}
+
+.overflow {
+  overflow: hidden;
+  width: 100%;
+}
+
+.marquee {
+  display: flex;
+  align-items: center;
+  gap: clamp(2.75rem, 5vw, 5rem);
+  width: max-content;
+  min-width: 200%;
+  animation: aisoftLogoMarquee 34s linear infinite;
+  will-change: transform;
+}
+
+.overflow:hover .marquee {
+  animation-play-state: paused;
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 38px;
+  flex: 0 0 auto;
+  opacity: 0.72;
+  transition: opacity 0.2s ease;
+}
+
+.item:hover {
+  opacity: 1;
+}
+
+.logo {
+  height: 38px;
+  width: auto;
+  max-width: 220px;
+  object-fit: contain;
+  filter: grayscale(1);
+  transition: filter 0.2s ease;
+}
+
+.item:hover .logo {
+  filter: none;
+}
+
+@keyframes aisoftLogoMarquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .marquee {
+    animation: none;
+    transform: none;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 100%;
+    min-width: 0;
+    padding-inline: 1rem;
+  }
+}

@@ -93,7 +93,7 @@ export default function ESDVerticalTabs() {
                   <h3 className={styles.panelTitle}>{tab.title}</h3>
                   <p className={styles.panelDesc}>{tab.desc}</p>
                   {tab.link && tab.linkText && (
-                    <a href={tab.link} className={styles.panelBtn}>
+                    <a href={tab.link} className={`btn btn-accent ${styles.panelBtn}`}>
                       <span>{tab.linkText}</span>
                     </a>
                   )}
@@ -110,7 +110,7 @@ export default function ESDVerticalTabs() {
                 <div className={styles.detailContent}>
                   <p className={styles.panelDesc}>{tab.desc}</p>
                   {tab.link && tab.linkText && (
-                    <a href={tab.link} className={styles.panelBtn}>
+                    <a href={tab.link} className={`btn btn-accent ${styles.panelBtn}`}>
                       <span>{tab.linkText}</span>
                     </a>
                   )}

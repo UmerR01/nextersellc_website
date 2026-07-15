@@ -1,38 +1,75 @@
-﻿.section {
-  padding: 96px 0;
+.section {
+  padding: clamp(5.25rem, 7vw, 6.25rem) 0 clamp(5rem, 7vw, 6.5rem);
   background: var(--color-bg);
 }
+
 .title {
-  font-size: clamp(2rem, 4vw, 3.5rem);
+  max-width: 68rem;
+  margin: 0 auto clamp(4.45rem, 6vw, 5rem);
+  color: #000;
+  font-size: clamp(2.75rem, 4.25vw, 3.55rem);
   font-weight: 300;
-  letter-spacing: -0.02em;
-  line-height: 1.1;
-  color: var(--color-text);
+  letter-spacing: 0;
+  line-height: 1.12;
   text-align: center;
-  margin-bottom: 4rem;
 }
-.title span { color: var(--color-blue); }
+
+.title span {
+  color: var(--color-accent);
+}
 
 .grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 48px 64px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  column-gap: clamp(5rem, 9vw, 9rem);
+  row-gap: clamp(3.8rem, 6vw, 4.5rem);
+  max-width: 71.875rem;
+  margin: 0 auto;
 }
-.card {}
-.icon { width: 56px; height: 56px; margin-bottom: 1.5rem; display: block; }
+
+.card {
+  min-width: 0;
+}
+
+.icon {
+  display: block;
+  width: 3.5rem;
+  height: 3.5rem;
+  margin-bottom: 1.55rem;
+}
+
 .cardTitle {
-  font-size: clamp(1.1rem, 1.6vw, 1.5rem);
-  font-weight: 400;
-  color: var(--color-text);
-  margin-bottom: 0.75rem;
+  margin: 0 0 1.15rem;
+  color: #000;
+  font-size: clamp(1.45rem, 2vw, 1.75rem);
+  font-weight: 500;
+  line-height: 1.25;
 }
+
 .cardDesc {
-  font-size: clamp(0.9rem, 1.1vw, 1.0625rem);
-  line-height: 1.75;
-  color: var(--color-text-muted);
+  margin: 0;
+  color: var(--color-text);
+  font-size: clamp(1rem, 1.15vw, 1.08rem);
+  line-height: 1.65;
+}
+
+@media (max-width: 1100px) {
+  .grid {
+    column-gap: 3.5rem;
+  }
 }
 
 @media (max-width: 768px) {
-  .section { padding: 64px 0; }
-  .grid { grid-template-columns: 1fr; gap: 32px; }
+  .section {
+    padding: 4.5rem 0;
+  }
+
+  .title {
+    text-align: left;
+  }
+
+  .grid {
+    grid-template-columns: 1fr;
+    gap: 2.75rem;
+  }
 }

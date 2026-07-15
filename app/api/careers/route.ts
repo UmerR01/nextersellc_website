@@ -8,6 +8,11 @@ export async function POST(req: NextRequest) {
     const email = formData.get("email")?.toString().trim() ?? "";
     const position = formData.get("position")?.toString().trim() ?? "";
     const message = formData.get("message")?.toString().trim() ?? "";
+    const phone = formData.get("phone")?.toString().trim() ?? "";
+    const linkedinUrl = formData.get("linkedinUrl")?.toString().trim() ?? "";
+    const githubUrl = formData.get("githubUrl")?.toString().trim() ?? "";
+    const portfolioUrl = formData.get("portfolioUrl")?.toString().trim() ?? "";
+    const resume = formData.get("resume");
 
     if (!name || !email || !position || !message) {
       return NextResponse.json({ error: "Missing required fields" }, { status: 400 });
@@ -19,7 +24,17 @@ export async function POST(req: NextRequest) {
     }
 
     // TODO: Send to HR email via nodemailer/Resend/SendGrid
-    console.log("[Careers Application]", { name, email, position, message });
+    console.log("[Careers Application]", {
+      name,
+      email,
+      phone,
+      linkedinUrl,
+      githubUrl,
+      portfolioUrl,
+      position,
+      message,
+      resume: resume instanceof File ? { name: resume.name, size: resume.size, type: resume.type } : null,
+    });
 
     return NextResponse.json({ success: true });
   } catch (err) {

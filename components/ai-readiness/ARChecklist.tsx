@@ -9,8 +9,8 @@ export default function ARChecklist() {
           <p className={styles.desc}>Partner with reliable AI experts to build your software.</p>
         </div>
         <div className={styles.right}>
-          <a href="#contact" className="btn btn-accent">
-            Book your AI readiness assessment
+          <a href="#contact" className={`btn btn-accent ${styles.ctaButton}`}>
+            Book your assessment
           </a>
         </div>
       </div>

@@ -18,7 +18,29 @@ const ClockIcon = () => (
   </svg>
 );
 
-const sidePosts = [
+export type AdlcBlogPost = {
+  href: string;
+  title: string;
+  readTime: string;
+  date: string;
+};
+
+export type AdlcFeaturedPost = AdlcBlogPost & {
+  image: string;
+  imageAlt: string;
+};
+
+const DEFAULT_FEATURED: AdlcFeaturedPost = {
+  href: "https://sumatosoft.com/blog/ai-cost-reduction-playbook",
+  title:
+    "The AI Cost Reduction Playbook – 9 Mechanisms, 7 Hidden Drivers, and Real-World Case Studies (2026 Edition)",
+  image: "/adlc/06_The-AI-Cost-Spiral-7-Hidden-Drivers-1024x578.jpg",
+  imageAlt: "The AI Cost Spiral - 7 Hidden Drivers",
+  readTime: "32 mins",
+  date: "July 1, 2026",
+};
+
+const DEFAULT_SIDE_POSTS: AdlcBlogPost[] = [
   {
     href: "https://sumatosoft.com/blog/modernize-legacy-systems-with-custom-ai",
     title: "How to modernize legacy systems with custom AI",
@@ -39,7 +61,13 @@ const sidePosts = [
   },
 ];
 
-export default function AdlcBlog() {
+export default function AdlcBlog({
+  featured,
+  sidePosts,
+}: { featured?: AdlcFeaturedPost; sidePosts?: AdlcBlogPost[] } = {}) {
+  const featuredPost = featured ?? DEFAULT_FEATURED;
+  const posts = sidePosts ?? DEFAULT_SIDE_POSTS;
+
   return (
     <section className={styles.section}>
       <div className="container">
@@ -52,36 +80,33 @@ export default function AdlcBlog() {
             <a
               rel="dofollow"
               className={styles.featuredPost}
-              href="https://sumatosoft.com/blog/ai-cost-reduction-playbook"
+              href={featuredPost.href}
             >
               <div className={styles.featuredImageWrapper}>
                 <div className={styles.featuredImgInner}>
                   <Image
-                    src="/adlc/06_The-AI-Cost-Spiral-7-Hidden-Drivers-1024x578.jpg"
-                    alt="The AI Cost Spiral - 7 Hidden Drivers"
+                    src={featuredPost.image}
+                    alt={featuredPost.imageAlt}
                     width={1024}
                     height={578}
                     className={styles.featuredImg}
                   />
                 </div>
               </div>
-              <div className={styles.postTitle}>
-                The AI Cost Reduction Playbook – 9 Mechanisms, 7 Hidden Drivers, and Real-World
-                Case Studies (2026 Edition)
-              </div>
+              <div className={styles.postTitle}>{featuredPost.title}</div>
               <div className={styles.postMeta}>
                 <span className={styles.readTime}>
                   <ClockIcon />
-                  32 mins
+                  {featuredPost.readTime}
                 </span>
                 <span className={styles.metaSep}>|</span>
-                <span className={styles.postDate}>July 1, 2026</span>
+                <span className={styles.postDate}>{featuredPost.date}</span>
               </div>
             </a>
           </div>
 
           <div className={styles.sideCol}>
-            {sidePosts.map((post) => (
+            {posts.map((post) => (
               <a
                 key={post.href}
                 rel="dofollow"

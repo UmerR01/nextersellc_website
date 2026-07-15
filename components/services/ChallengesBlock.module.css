@@ -1,0 +1,97 @@
+.section {
+  background: #fff;
+}
+
+.wrapper {
+  padding: clamp(64px, 5vw, 92px) 0 88px;
+}
+
+.container {
+  max-width: 1150px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.title {
+  font-family: var(--font-inter-tight);
+  font-size: clamp(2.25rem, 3.2vw, 3.5rem);
+  font-weight: 400;
+  color: #000;
+  line-height: 1.15;
+  margin: 0 0 24px;
+  text-align: center;
+}
+
+.accent {
+  color: var(--color-accent);
+}
+
+.description {
+  font-family: var(--font-inter-tight);
+  font-size: clamp(1rem, 1.35vw, 1.375rem);
+  line-height: 1.65;
+  color: #112244;
+  margin: 0 auto 64px;
+  max-width: 1120px;
+  text-align: center;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 6.5rem;
+  row-gap: 3.25rem;
+}
+
+.card {
+  background: transparent;
+  border: 0;
+  padding: 0;
+}
+
+.icon {
+  margin-bottom: 22px;
+}
+
+.icon img {
+  width: 56px;
+  height: 56px;
+  object-fit: contain;
+}
+
+.cardTitle {
+  font-family: var(--font-inter-tight);
+  font-size: clamp(1.25rem, 1.6vw, 1.75rem);
+  font-weight: 400;
+  color: #000;
+  line-height: 1.3;
+  margin: 0 0 14px;
+}
+
+.cardText {
+  font-family: var(--font-inter-tight);
+  font-size: 1.125rem;
+  line-height: 1.55;
+  color: #112244;
+  margin: 0;
+}
+
+@media (max-width: 767px) {
+  .wrapper {
+    padding: 56px 0;
+  }
+
+  .title,
+  .description {
+    text-align: left;
+  }
+
+  .description {
+    margin-bottom: 44px;
+  }
+
+  .grid {
+    grid-template-columns: 1fr;
+    row-gap: 2.75rem;
+  }
+}

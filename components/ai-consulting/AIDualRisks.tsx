@@ -56,7 +56,7 @@ export default function AIDualRisks() {
             <h3>Start your AI journey today</h3>
             <p>Contact our experts to discuss how AI can transform your business.</p>
           </div>
-          <a href="#contact" className="btn btn-accent">Book a call</a>
+          <a href="#contact" className={`btn btn-accent ${styles.ctaBtn}`}>Book a call</a>
         </div>
       </div>
     </section>

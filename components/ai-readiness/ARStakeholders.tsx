@@ -2,45 +2,46 @@ import styles from "./ARStakeholders.module.css";
 
 const CARDS = [
   {
-    title: "Technical fit",
-    desc: "We assess whether your systems, integrations, cloud setup, and access model can support AI without creating architectural debt.",
+    title: "Data for retrieval",
+    desc: "Whether your documents, wikis, and records are clean, current, and permissioned enough for a RAG system to trust.",
     icon: (
-      <svg width="48" height="48" viewBox="0 0 48 48" fill="none" aria-hidden>
-        <rect x="8" y="8" width="14" height="14" rx="2" stroke="currentColor" strokeWidth="1.5"/>
-        <rect x="26" y="8" width="14" height="14" rx="2" stroke="currentColor" strokeWidth="1.5"/>
-        <rect x="8" y="26" width="14" height="14" rx="2" stroke="currentColor" strokeWidth="1.5"/>
-        <rect x="26" y="26" width="14" height="14" rx="2" stroke="currentColor" strokeWidth="1.5"/>
+      <svg width="56" height="56" viewBox="0 0 56 56" fill="none" aria-hidden>
+        <path d="M12 31h17M12 37h17M12 43h17" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
+        <rect x="8" y="28" width="22" height="4" rx="1.5" stroke="currentColor" strokeWidth="2"/>
+        <rect x="8" y="34" width="22" height="4" rx="1.5" stroke="currentColor" strokeWidth="2"/>
+        <rect x="8" y="40" width="22" height="4" rx="1.5" stroke="currentColor" strokeWidth="2"/>
+        <path d="M37 10 47 14v9.5c0 7-4.4 12.6-10 15-5.6-2.4-10-8-10-15V14l10-4Z" stroke="currentColor" strokeWidth="2" strokeLinejoin="round"/>
+        <path d="m33 25 3 3 6-7" stroke="currentColor" strokeWidth="2" strokeLinecap="square"/>
       </svg>
     ),
   },
   {
-    title: "Budget clarity",
-    desc: "We estimate the likely cost of the target use case, including infrastructure, model usage, and delivery effort.",
+    title: "Guardrails",
+    desc: "Whether you have the access controls and grounding to stop a model leaking data or inventing answers.",
     icon: (
-      <svg width="48" height="48" viewBox="0 0 48 48" fill="none" aria-hidden>
-        <circle cx="24" cy="24" r="18" stroke="currentColor" strokeWidth="1.5"/>
-        <path d="M24 12v3m0 18v3M18 21c0-3.3 2.7-6 6-6s6 2.7 6 6c0 2.5-1.5 4.7-3.7 5.6L24 28v2" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
-        <circle cx="24" cy="33" r="1" fill="currentColor"/>
+      <svg width="56" height="56" viewBox="0 0 56 56" fill="none" aria-hidden>
+        <rect x="12" y="23" width="22" height="16" rx="4" stroke="currentColor" strokeWidth="2"/>
+        <path d="M17 23v-6a6 6 0 0 1 12 0v6M34 27h7l5-5M34 35h7l5 5M46 22a3 3 0 1 0 0-6 3 3 0 0 0 0 6ZM46 46a3 3 0 1 0 0-6 3 3 0 0 0 0 6ZM43 31h6M49 34a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
       </svg>
     ),
   },
   {
-    title: "Operational value",
-    desc: "We identify where AI can reduce delays, remove manual work, improve throughput, or where it can be integrated into legacy software.",
+    title: "Token economics",
+    desc: "Projected monthly cost at your expected usage, so a pilot does not turn into an open-ended bill.",
     icon: (
-      <svg width="48" height="48" viewBox="0 0 48 48" fill="none" aria-hidden>
-        <path d="M8 36l10-12 8 8 6-8 8 10" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-        <path d="M40 12v8h-8" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+      <svg width="56" height="56" viewBox="0 0 56 56" fill="none" aria-hidden>
+        <path d="M28 11v7M28 38v7M18 45a5 5 0 1 0 0-10 5 5 0 0 0 0 10ZM28 45a5 5 0 1 0 0-10 5 5 0 0 0 0 10ZM38 45a5 5 0 1 0 0-10 5 5 0 0 0 0 10ZM18 31v-6a10 10 0 0 1 20 0v6" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
+        <path d="M28 18c-2.5 0-4.5 1.5-4.5 3.5S25.5 25 28 25s4.5 1.5 4.5 3.5S30.5 32 28 32M28 18v-3M28 35v-3" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
       </svg>
     ),
   },
   {
-    title: "Security and compliance",
-    desc: "We map the controls needed to protect sensitive data and support regulated workflows.",
+    title: "Use-case fit",
+    desc: "Whether a copilot, a RAG assistant, or an agent is the right pattern, or whether classical ML solves it for less.",
     icon: (
-      <svg width="48" height="48" viewBox="0 0 48 48" fill="none" aria-hidden>
-        <path d="M24 6L10 12v14c0 9.4 6.2 18.2 14 20.4C31.8 44.2 38 35.4 38 26V12L24 6z" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-        <path d="M18 24l4 4 8-8" stroke="currentColor" strokeWidth="1.5" strokeLinecap="square"/>
+      <svg width="56" height="56" viewBox="0 0 56 56" fill="none" aria-hidden>
+        <rect x="16" y="13" width="24" height="32" rx="4" stroke="currentColor" strokeWidth="2"/>
+        <path d="M23 13.5c.8-3.2 9.2-3.2 10 0M23 30l4 4 8-9" stroke="currentColor" strokeWidth="2" strokeLinecap="square"/>
       </svg>
     ),
   },
@@ -50,9 +51,14 @@ export default function ARStakeholders() {
   return (
     <section className={styles.section} id="stakeholders">
       <div className="container">
-        <h2 className={styles.title}>
-          <span>Answers</span> each stakeholder needs before approving AI use
-        </h2>
+        <h2 className={styles.title}>Are you ready for generative AI?</h2>
+        <p className={styles.desc}>
+          Generative AI has its own readiness bar, separate from classical AI and ML. A model that
+          reasons over your documents needs clean, permissioned, well-structured content to retrieve
+          from. It needs guardrails against hallucination and data leakage. And it needs a cost
+          model, because token usage grows with every user. Our Gen AI readiness assessment checks
+          four things on top of the core audit:
+        </p>
         <div className={styles.grid}>
           {CARDS.map((card) => (
             <div key={card.title} className={styles.card}>

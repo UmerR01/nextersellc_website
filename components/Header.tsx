@@ -15,7 +15,7 @@ const Chevron = ({ className }: { className?: string }) => (
 
 const PANEL_LINKS = [
   { label: "About", href: "/team" },
-  { label: "Services", href: "#services" },
+  { label: "Services", href: "/services" },
   { label: "Process", href: "/process" },
   { label: "Work", href: "#work" },
   { label: "Applied AI", href: "#applied-ai" },
@@ -142,6 +142,36 @@ export default function Header({ forceSolid = false, startTransparent = false }:
     return () => window.removeEventListener("keydown", onKey);
   }, []);
 
+  useEffect(() => {
+    const openContactModal = () => {
+      setModalOpen(true);
+      if (window.location.hash === "#get-modal-popup") {
+        window.history.replaceState(null, "", window.location.pathname + window.location.search);
+      }
+    };
+
+    const onDocumentClick = (event: MouseEvent) => {
+      const target = event.target as Element | null;
+      const trigger = target?.closest?.('a[href="#get-modal-popup"]');
+      if (!trigger) return;
+      event.preventDefault();
+      openContactModal();
+    };
+
+    const onHashChange = () => {
+      if (window.location.hash === "#get-modal-popup") openContactModal();
+    };
+
+    document.addEventListener("click", onDocumentClick);
+    window.addEventListener("hashchange", onHashChange);
+    onHashChange();
+
+    return () => {
+      document.removeEventListener("click", onDocumentClick);
+      window.removeEventListener("hashchange", onHashChange);
+    };
+  }, []);
+
   return (
     <>
       <header
@@ -173,31 +203,31 @@ export default function Header({ forceSolid = false, startTransparent = false }:
                     {
                       title: "Strategy",
                       links: [
-                        { label: "AI Consulting",           href: "/ai-consulting" },
-                        { label: "AI Readiness Assessment", href: "/ai-readiness-assessment" },
-                        { label: "AI PoC Development",      href: "/ai-consulting#services" },
+                        { label: "AI Consulting",           href: "/" },
+                        { label: "AI Readiness Assessment", href: "/" },
+                        { label: "AI PoC Development",      href: "/" },
                       ],
                     },
                     {
                       title: "Development",
                       links: [
-                        { label: "AI Software Development", href: "#applied-ai" },
-                        { label: "AI Agents Development",   href: "#applied-ai" },
-                        { label: "RAG Development",         href: "#applied-ai" },
-                        { label: "LLM Development",         href: "#applied-ai" },
-                        { label: "GenAI Development",       href: "#applied-ai" },
-                        { label: "OpenAI Development",      href: "#applied-ai" },
-                        { label: "AIoT Development",        href: "#applied-ai" },
+                        { label: "AI Software Development", href: "/" },
+                        { label: "AI Agents Development",   href: "/" },
+                        { label: "RAG Development",         href: "/" },
+                        { label: "LLM Development",         href: "/" },
+                        { label: "GenAI Development",       href: "/" },
+                        { label: "OpenAI Development",      href: "/" },
+                        { label: "AIoT Development",        href: "/" },
                       ],
                     },
                     {
                       title: "Operations",
                       links: [
-                        { label: "AI Integration",          href: "#applied-ai" },
-                        { label: "GenAI Integration",       href: "#applied-ai" },
-                        { label: "Big Data Development",    href: "#applied-ai" },
-                        { label: "ML Development",          href: "#applied-ai" },
-                        { label: "AIoT & Data Analytics",   href: "#applied-ai" },
+                        { label: "AI Integration",          href: "/" },
+                        { label: "GenAI Integration",       href: "/" },
+                        { label: "Big Data Development",    href: "/" },
+                        { label: "ML Development",          href: "/" },
+                        { label: "AIoT & Data Analytics",   href: "/" },
                       ],
                     },
                   ].map((col) => (
@@ -215,7 +245,7 @@ export default function Header({ forceSolid = false, startTransparent = false }:
 
               {/* ── Services (3 columns) ── */}
               <li className={dd.item}>
-                <a href="#services" className={dd.link}>
+                <a href="/services" className={dd.link}>
                   Services <Chevron className={dd.chevron} />
                 </a>
                 <div className={`${dd.panel} ${dd.panelServices} ${dd.cols3}`}>
@@ -223,42 +253,40 @@ export default function Header({ forceSolid = false, startTransparent = false }:
                     <p className={dd.colTitle}>Key Services</p>
                     <div className={dd.colLinks}>
                       {[
-                        { label: "Custom Software Development", href: "/services/custom-software-development", locked: true },
-                        { label: "Enterprise Software Development", href: "/services/enterprise-software-development", locked: true },
-                        { label: "CRM Development", href: "#services" },
-                        { label: "Legacy Software Modernization", href: "/legacy-modernization", locked: true },
-                        { label: "MVP Development", href: "/process/mvp" },
-                      ].map((l) => l.locked
-                        ? <span key={l.label} className={dd.colLinkLocked}>{l.label}</span>
-                        : <a key={l.label} href={l.href} className={dd.colLink}>{l.label}</a>
-                      )}
+                        { label: "Custom Software Development", href: "/services/custom-software-development" },
+                        { label: "Enterprise Software Development", href: "/services/enterprise-software-development" },
+                        { label: "Cloud Development", href: "/services/cloud-development" },
+                        { label: "Predictive Maintenance", href: "/services/predictive-maintenance" },
+                      ].map((l) => (
+                        <a key={l.label} href={l.href} className={dd.colLink}>{l.label}</a>
+                      ))}
                     </div>
-                    <a href="#services" className={dd.allLink}>All Services</a>
+                    <a href="/services" className={dd.allLink}>All Services</a>
                   </div>
                   <div className={dd.col}>
-                    <p className={dd.colTitle}>AI & Advanced Tech</p>
+                    <p className={`${dd.colTitle} ${dd.colTitleSpacer}`} aria-hidden="true">Services</p>
                     <div className={dd.colLinks}>
                       {[
-                        "AI Software Development",
-                        "AI Agents Development",
-                        "RAG Development",
-                        "LLM Development",
-                        "GenAI Development",
-                        "AIoT Development",
-                        "AI Integration",
-                      ].map((l) => <a key={l} href="#services" className={dd.colLink}>{l}</a>)}
+                        { label: "Mobile App Development", href: "/services/mobile-app-development" },
+                        { label: "Web App Development", href: "/services/web-app-development" },
+                        { label: "CRM Development", href: "/services/crm-development" },
+                        { label: "MVP Development", href: "/process/mvp" },
+                      ].map((l) => <a key={l.label} href={l.href} className={dd.colLink}>{l.label}</a>)}
                     </div>
                   </div>
                   <div className={dd.col}>
                     <p className={dd.colTitle}>Industry Solutions</p>
                     <div className={dd.colLinks}>
                       {[
-                        "Healthcare",
-                        "Logistics",
-                        "Retail & E-Commerce",
-                        "Cybersecurity",
-                        "EdTech",
-                      ].map((l) => <a key={l} href="#services" className={dd.colLink}>{l}</a>)}
+                        { label: "Healthcare", href: "/services/healthcare-development" },
+                        { label: "Logistics", href: "/services/logistics-development" },
+                        { label: "Retail & E-Commerce", href: "/services/retail-ecommerce-development" },
+                        { label: "EdTech", href: "/services/edtech-development" },
+                        { label: "InsurTech", href: "/services/insurtech-development" },
+                        { label: "AdTech", href: "/services/adtech-development" },
+                        { label: "FinTech", href: "/services/financial-development" },
+                        { label: "PropTech", href: "/services/proptech-development" },
+                      ].map((l) => <a key={l.label} href={l.href} className={dd.colLink}>{l.label}</a>)}
                     </div>
                   </div>
                 </div>

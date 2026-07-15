@@ -12,7 +12,7 @@ export const metadata: Metadata = {
 export default function VettingRoute() {
   return (
     <>
-      <Header startTransparent />
+      <Header forceSolid />
       <main>
         <VettingPage />
         <LetsStart variant="process" />
