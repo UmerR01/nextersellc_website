@@ -19,7 +19,7 @@
 
 .row {
   display: grid;
-  grid-template-columns: 2fr 1fr;
+  grid-template-columns: minmax(0, 1fr) auto;
   gap: 3rem;
   align-items: center;
 }
@@ -60,12 +60,8 @@
   align-items: center;
   gap: 0.5rem;
   font-family: var(--font-inter-tight), sans-serif;
-  font-size: 1rem;
-  font-weight: 600;
-  color: #fff;
-  justify-content: center;
-  min-height: 3.5rem;
-  width: 17.125rem;
-  max-width: 100%;
+  min-height: 2.625rem;
+  padding: 0.4rem 1.5rem;
   text-decoration: none;
+  white-space: nowrap;
 }

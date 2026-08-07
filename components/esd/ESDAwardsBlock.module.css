@@ -65,18 +65,14 @@
 
 .navBtn {
   flex-shrink: 0;
+  width: 40px;
+  height: 24px;
   border: none;
   background: none;
   cursor: pointer;
   padding: 0;
-  color: #3CC4E5;
   display: flex;
   align-items: center;
-  transition: color 0.2s;
-}
-
-.navBtn:hover {
-  color: #2aa8c9;
 }
 
 @media (max-width: 640px) {
@@ -84,3 +80,44 @@
     display: none;
   }
 }
+
+.arrowBox {
+  position: relative;
+  width: 40px;
+  height: 24px;
+  display: block;
+  flex-shrink: 0;
+}
+
+.arrowBox::before {
+  background: var(--color-accent);
+  content: "";
+  display: block;
+  height: 2px;
+  position: absolute;
+  top: 11px;
+  transition: width 0.3s ease-in-out;
+  width: 38px;
+}
+
+.arrowBox::after {
+  box-sizing: border-box;
+  border-bottom: 2px solid var(--color-accent);
+  border-right: 2px solid var(--color-accent);
+  content: "";
+  display: block;
+  height: 10px;
+  position: absolute;
+  top: 7px;
+  transition: 0.3s ease-in-out;
+  width: 10px;
+}
+
+.navNext .arrowBox::before { left: 1px; }
+.navNext .arrowBox::after  { right: 3px; transform: rotate(-45deg); }
+.navPrev .arrowBox::before { right: 1px; }
+.navPrev .arrowBox::after  { left: 3px; transform: rotate(135deg); }
+
+.navBtn:hover .arrowBox::before { width: 42px; }
+.navNext:hover .arrowBox::after { right: -3px; }
+.navPrev:hover .arrowBox::after { left: -3px; }

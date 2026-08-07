@@ -50,25 +50,29 @@ const CHALLENGES = [
 ];
 
 // ─── GenAI ecosystem (4 vertical tabs) ────────────────────────────────────────
-const ECOSYSTEM: { label: string; intro: string; bullets?: string[]; impact: string[] }[] = [
+const ECOSYSTEM: { icon: string; label: string; intro: string; bullets?: string[]; impact: string[] }[] = [
   {
+    icon: "/genai-development/03_Secure-data-indexing-and-retrieval-01.svg",
     label: "RAG systems",
     intro: "It's about secure chatting with your proprietary data. We build secure generative AI systems that enable teams to query internal knowledge instantly across contracts, policies, technical documentation, regulatory files, and databases.",
     impact: ["Reduce internal knowledge search time by 60-80%.", "Eliminate document chaos across departments.", "Enable compliance-safe querying of regulatory documents.", "Accelerate onboarding for new employees.", "No data leakage. No fine-tuning required. No public model exposure."],
   },
   {
+    icon: "/genai-development/03_Controlled-AI.svg",
     label: "Custom copilots and AI assistants",
     intro: "We design AI copilots tailored to your workflows – no generic chatbots. These assistants operate inside your secure environment and connect directly to your internal tools.",
     bullets: ["Legal copilot that drafts contract summaries inside your internal portal.", "Customer support assistant integrated directly into your CRM.", "Finance copilot that explains KPI variance using internal data.", "HR assistant that navigates policy documentation instantly."],
     impact: ["Reduce manual drafting effort by up to 50%.", "Increase employee productivity without increasing headcount.", "Standardize internal knowledge responses.", "Minimize human error in repetitive workflows."],
   },
   {
+    icon: "/genai-development/03_Algorithmic-evaluation-before-human-review-01.svg",
     label: "Agentic workflows and autonomous systems",
     intro: "Move beyond text generation into operational automation. Generative AI delivers measurable value when it can take action.",
     bullets: ["Interpret complex tasks.", "Break them into execution steps.", "Retrieve required data.", "Trigger actions in ERP, CRM, or internal APIs.", "Validate outputs before completion."],
     impact: ["Automate workflows previously handled by 3-5 employees.", "Shorten operational cycles.", "Reduce process bottlenecks.", "Increase execution speed across departments."],
   },
   {
+    icon: "/genai-development/04_What-you-get-01.svg",
     label: "LLM fine-tuning and private model customization",
     intro: "Your own specialized AI model. Fully controlled. When your use case requires domain precision, we customize models specifically for your industry. Your intellectual property remains fully isolated.",
     bullets: ["Fine-tune open-source models such as Llama or Mistral.", "Train them on structured and unstructured proprietary datasets.", "Deploy them privately in your cloud or on-premise.", "Optimize for latency, cost, and inference efficiency."],
@@ -175,14 +179,21 @@ const GENAI_CASES: CaseCard[] = [
 ];
 
 // ─── Industries (7 vertical tabs) ──────────────────────────────────────────────
-const INDUSTRIES: { label: string; intro: string; bullets: string[]; impact: string[] }[] = [
-  { label: "Fintech and insurance", intro: "In financial services, decisions move at the speed of regulation. Underwriters, compliance officers, and risk teams operate under constant pressure – navigating policy documents, regulatory updates, and fragmented internal data. Generative AI delivers value here when it understands both quantitative models and regulatory mandates. We build:", bullets: ["SOC2-ready RAG systems that query 500-page regulatory PDFs in seconds.", "Automated underwriting copilots trained on internal policy frameworks.", "Risk summarization assistants integrated into claims management platforms."], impact: ["Faster underwriting cycles.", "Reduced manual document review.", "Improved audit traceability."] },
-  { label: "Healthcare", intro: "Healthcare teams manage extensive documentation. Clinicians and administrators handle discharge notes, compliance forms, and internal protocols while patient care requires speed and precision. AI systems in this environment must improve efficiency while maintaining strict privacy protection at all times. We engineer:", bullets: ["HIPAA-compliant, VPC-isolated LLM deployments.", "On-premise models that summarize discharge notes without exposing PII.", "Clinical knowledge assistants grounded in internal medical protocols."], impact: ["Reduced administrative workload.", "Faster documentation turnaround.", "Zero public cloud exposure."] },
-  { label: "Logistics and supply chain", intro: "When shipments stall, revenue slows. Supply chain leaders work in environments where delays cascade, data exists in silos, and decisions must be made within minutes rather than waiting for periodic reports. We build:", bullets: ["AI assistants that analyze shipment delays in real time.", "Multi-agent systems that reconcile ERP and warehouse data.", "Predictive document processing for invoices and customs paperwork."], impact: ["Shorter response times.", "Improved operational visibility.", "Reduced manual reconciliation effort."] },
-  { label: "Energy and utilities", intro: "In energy and utilities, downtime represents operational risk. Engineers rely on decades of maintenance logs, compliance documentation, and technical manuals to diagnose incidents quickly and prevent escalation. We implement:", bullets: ["Secure RAG systems querying maintenance manuals and compliance reports.", "Incident analysis copilots trained on historical outage logs.", "AI-driven reporting tools for regulatory submissions."], impact: ["Faster root-cause analysis.", "Reduced downtime investigation effort.", "Improved compliance reporting speed."] },
-  { label: "Life sciences", intro: "Research advances rapidly. Documentation progresses at a different pace. Life sciences teams navigate complex trial data, regulatory frameworks, and dense scientific literature where timely insight influences product timelines. We develop:", bullets: ["Scientific literature intelligence systems grounded in internal research data.", "AI summarization tools for clinical trial documentation.", "Secure GenAI assistants supporting regulatory submission preparation."], impact: ["Accelerated research workflows.", "Reduced document synthesis time.", "Improved regulatory readiness."] },
-  { label: "AdTech and media", intro: "Marketing teams generate vast amounts of campaign metrics, audience data, and performance dashboards. Insights must be extracted in time to guide the next strategic move. We design:", bullets: ["Campaign performance copilots grounded in proprietary analytics.", "Automated reporting systems integrated with ad platforms.", "AI assistants for content adaptation across channels."], impact: ["Faster campaign iteration cycles.", "Reduced manual reporting overhead.", "Increased data-driven decision velocity."] },
-  { label: "IoT and industrial systems", intro: "Factories and industrial sites produce continuous streams of telemetry. Machine logs, sensor data, and maintenance records accumulate faster than teams can review them. Operational decisions depend on accurate and timely interpretation of that data. We build:", bullets: ["AI copilots that interpret machine logs and telemetry streams.", "Incident summarization systems grounded in historical maintenance data.", "Secure GenAI interfaces for industrial dashboards."], impact: ["Reduced troubleshooting time.", "Improved operational transparency.", "Faster maintenance decision cycles."] },
+const INDUSTRIES: { icon: string; label: string; intro: string; bullets: string[]; impact: string[] }[] = [
+  { icon: "/web-app-development/01_Fintech-applications.svg",
+  label: "Fintech and insurance", intro: "In financial services, decisions move at the speed of regulation. Underwriters, compliance officers, and risk teams operate under constant pressure – navigating policy documents, regulatory updates, and fragmented internal data. Generative AI delivers value here when it understands both quantitative models and regulatory mandates. We build:", bullets: ["SOC2-ready RAG systems that query 500-page regulatory PDFs in seconds.", "Automated underwriting copilots trained on internal policy frameworks.", "Risk summarization assistants integrated into claims management platforms."], impact: ["Faster underwriting cycles.", "Reduced manual document review.", "Improved audit traceability."] },
+  { icon: "/web-app-development/01_Healthcare.svg",
+  label: "Healthcare", intro: "Healthcare teams manage extensive documentation. Clinicians and administrators handle discharge notes, compliance forms, and internal protocols while patient care requires speed and precision. AI systems in this environment must improve efficiency while maintaining strict privacy protection at all times. We engineer:", bullets: ["HIPAA-compliant, VPC-isolated LLM deployments.", "On-premise models that summarize discharge notes without exposing PII.", "Clinical knowledge assistants grounded in internal medical protocols."], impact: ["Reduced administrative workload.", "Faster documentation turnaround.", "Zero public cloud exposure."] },
+  { icon: "/custom-software/05_Logistics-and-supply-chain-02.svg",
+  label: "Logistics and supply chain", intro: "When shipments stall, revenue slows. Supply chain leaders work in environments where delays cascade, data exists in silos, and decisions must be made within minutes rather than waiting for periodic reports. We build:", bullets: ["AI assistants that analyze shipment delays in real time.", "Multi-agent systems that reconcile ERP and warehouse data.", "Predictive document processing for invoices and customs paperwork."], impact: ["Shorter response times.", "Improved operational visibility.", "Reduced manual reconciliation effort."] },
+  { icon: "/predictive-maintenance/04_Edge-first-architecture-for-industrial-operations-01.svg",
+  label: "Energy and utilities", intro: "In energy and utilities, downtime represents operational risk. Engineers rely on decades of maintenance logs, compliance documentation, and technical manuals to diagnose incidents quickly and prevent escalation. We implement:", bullets: ["Secure RAG systems querying maintenance manuals and compliance reports.", "Incident analysis copilots trained on historical outage logs.", "AI-driven reporting tools for regulatory submissions."], impact: ["Faster root-cause analysis.", "Reduced downtime investigation effort.", "Improved compliance reporting speed."] },
+  { icon: "/custom-software/05_Healthcare-and-medical-devices-03.svg",
+  label: "Life sciences", intro: "Research advances rapidly. Documentation progresses at a different pace. Life sciences teams navigate complex trial data, regulatory frameworks, and dense scientific literature where timely insight influences product timelines. We develop:", bullets: ["Scientific literature intelligence systems grounded in internal research data.", "AI summarization tools for clinical trial documentation.", "Secure GenAI assistants supporting regulatory submission preparation."], impact: ["Accelerated research workflows.", "Reduced document synthesis time.", "Improved regulatory readiness."] },
+  { icon: "/adtech-development/06_Omnichannel-retail-media-network-platforms-03.svg",
+  label: "AdTech and media", intro: "Marketing teams generate vast amounts of campaign metrics, audience data, and performance dashboards. Insights must be extracted in time to guide the next strategic move. We design:", bullets: ["Campaign performance copilots grounded in proprietary analytics.", "Automated reporting systems integrated with ad platforms.", "AI assistants for content adaptation across channels."], impact: ["Faster campaign iteration cycles.", "Reduced manual reporting overhead.", "Increased data-driven decision velocity."] },
+  { icon: "/services-page/04_IoT-Integration-02.svg",
+  label: "IoT and industrial systems", intro: "Factories and industrial sites produce continuous streams of telemetry. Machine logs, sensor data, and maintenance records accumulate faster than teams can review them. Operational decisions depend on accurate and timely interpretation of that data. We build:", bullets: ["AI copilots that interpret machine logs and telemetry streams.", "Incident summarization systems grounded in historical maintenance data.", "Secure GenAI interfaces for industrial dashboards."], impact: ["Reduced troubleshooting time.", "Improved operational transparency.", "Faster maintenance decision cycles."] },
 ];
 
 // ─── ADLC process (7 phases) ──────────────────────────────────────────────────
@@ -198,13 +209,41 @@ const ADLC = [
 
 // ─── Zero-hallucination systems (4 cards) ─────────────────────────────────────
 const HALLUCINATION = [
-  { title: "Deterministic grounding – RAG architecture", desc: "We restrict the model to retrieved, verified data only. Your documents, databases, intranet knowledge, policies, contracts, and technical manuals are securely indexed inside your private infrastructure. If the answer does not exist in approved data sources, the system is programmed to respond: “Insufficient data available.” No guessing. No fabrication. No invented citations. Every response can be source-linked and auditable." },
-  { title: "Algorithmic evaluation before human review", desc: "We replace subjective validation with quantifiable accuracy thresholds before production approval. Before business users interact with the system, we measure it mathematically. Using structured evaluation frameworks such as RAGAS and custom scoring pipelines, we assess context precision, faithfulness to source documents, retrieval accuracy, and response consistency." },
-  { title: "Adversarial red-teaming and prompt injection testing", desc: "Enterprise AI must withstand hostile inputs besides normal expected usage. With our approach, if the system can be manipulated into unsafe behavior, it does not pass deployment review. Before deployment, our engineers simulate prompt injection attacks, data exfiltration attempts, context override exploits, and policy bypass scenarios. We attempt to break the system before users interact with it, ensuring it can withstand attacks." },
-  { title: "Controlled AI", desc: "Many vendors deploy a working prototype and move directly to production, assuming issues will surface and be corrected later. In enterprise environments, that approach creates legal, compliance, and financial exposure. We deploy governed systems with retrieval-restricted reasoning, enforced response policies, quantitative evaluation thresholds, red-team validated security controls, and pre-modeled token consumption limits. The GenAI software we develop is auditable, measurable, and economically predictable." },
+  {
+    icon: "/genai-development/03_Deterministic-grounding-01-2.svg",
+    title: "Deterministic grounding - RAG architecture",
+    paragraphs: [
+      "We restrict the model to retrieved, verified data only. Your documents, databases, intranet knowledge, policies, contracts, and technical manuals are securely indexed inside your private infrastructure. If the answer does not exist in approved data sources, the system is programmed to respond: \"Insufficient data available.\"",
+    ],
+    bullets: ["No guessing.", "No fabrication.", "No invented citations.", "Every response can be source-linked and auditable."],
+  },
+  {
+    icon: "/genai-development/03_Algorithmic-evaluation-before-human-review-01.svg",
+    title: "Algorithmic evaluation before human review",
+    paragraphs: [
+      "We replace subjective validation with quantifiable accuracy thresholds before production approval. Before business users interact with the system, we measure it mathematically. Using structured evaluation frameworks such as RAGAS and custom scoring pipelines, we assess:",
+    ],
+    bullets: ["Context precision.", "Faithfulness to source documents.", "Retrieval accuracy.", "Response consistency."],
+  },
+  {
+    icon: "/genai-development/03_Adversarial-red-teaming-and-prompt-injection-testing-02.svg",
+    title: "Adversarial red-teaming and prompt injection testing",
+    paragraphs: [
+      "Enterprise AI must withstand hostile inputs besides normal expected usage. With our approach, if the system can be manipulated into unsafe behavior, it does not pass deployment review.",
+      "Before deployment, our engineers simulate prompt injection attacks, data exfiltration attempts, context override exploits, and policy bypass scenarios. We attempt to break the system before users interact with it, ensuring it can withstand attacks.",
+    ],
+    bullets: [],
+  },
+  {
+    icon: "/genai-development/03_Controlled-AI.svg",
+    title: "Controlled AI",
+    paragraphs: [
+      "Many vendors deploy a working prototype and move directly to production, assuming issues will surface and be corrected later. In enterprise environments, that approach creates legal, compliance, and financial exposure.",
+      "We deploy governed systems with retrieval-restricted reasoning, enforced response policies, quantitative evaluation thresholds, red-team validated security controls, and pre-modeled token consumption limits. The GenAI software we develop is auditable, measurable, and economically predictable.",
+    ],
+    bullets: [],
+  },
 ];
-
-// ─── FAQ (10) ──────────────────────────────────────────────────────────────────
 const GENAI_FAQ: FaqItem[] = [
   { question: "How much does generative AI development cost?", answer: "Cost depends on the use case, how ready your data is, and how many systems the AI connects to. As a guide, a RAG or copilot pilot runs in the low-to-mid five figures. A full production build usually falls between roughly $80,000 and $350,000+, set by the model approach (hosted API vs. fine-tuned private model), integrations, and compliance scope. Token usage is a running cost on top, which is why we model it before you commit. Our 4–6 week pilot puts a firm cost boundary around the work, including projected token spend." },
   { question: "How long does a generative AI build take?", answer: "A pilot can be delivered in four to six weeks. A production build follows once the pilot proves feasibility. It usually takes two to six months, set by integration depth and how ready your data is. Data readiness is the biggest variable, and we surface it during the pilot rather than mid-build." },
@@ -244,24 +283,24 @@ export default function GenaiPage() {
   return (
     <>
       <GenaiHero />
-      <GenaiLogos />
 
       <GenaiArticleLayout>
+        <GenaiLogos />
         {/* ── Why 80% of prototypes fail (4 cards) ────────────────────────── */}
-        <section id="genai-challenges" className={styles.blockWhite}>
+        <section id="genai-challenges" className={`${styles.blockWhite} ${styles.genaiChallengesBlock}`}>
           <div className="container">
             <h2 className={styles.sectionTitle}>Why 80% of generative AI prototypes never reach production</h2>
             <p className={styles.sectionDesc}>
               Generative AI demos create excitement. Production environments expose operational reality. Across industries, companies launch promising generative AI pilots, then watch them stall once real users, real data, and formal governance enter the picture. Here is where projects break.
             </p>
-            <div className={styles.ecomServicesGrid}>
+            <div className={styles.genaiChallengesGrid}>
               {CHALLENGES.map((c) => (
-                <div key={c.title} className={styles.ecomServiceCard}>
-                  <Image src={c.icon} alt={c.title} width={56} height={56} className={styles.ecomServiceIcon} />
-                  <h3 className={styles.ecomServiceTitle}>{c.title}</h3>
-                  {c.paragraphs.map((p) => <p key={p} className={styles.ecomServiceIntro}>{p}</p>)}
-                  <ul className={styles.ecomBullets}>{c.bullets.map((b) => <li key={b}>{b}</li>)}</ul>
-                  <p className={styles.ecomServiceIntro}>{c.outro}</p>
+                <div key={c.title} className={styles.genaiChallengeItem}>
+                  <Image src={c.icon} alt={c.title} width={56} height={56} className={styles.genaiChallengeIcon} />
+                  <h3 className={styles.genaiChallengeTitle}>{c.title}</h3>
+                  {c.paragraphs.map((p) => <p key={p} className={styles.genaiChallengeText}>{p}</p>)}
+                  <ul className={styles.genaiChallengeBullets}>{c.bullets.map((b) => <li key={b}>{b}</li>)}</ul>
+                  <p className={styles.genaiChallengeText}>{c.outro}</p>
                 </div>
               ))}
             </div>
@@ -269,13 +308,24 @@ export default function GenaiPage() {
         </section>
 
         {/* ── GenAI ecosystem (vertical tabs) ─────────────────────────────── */}
-        <section id="genai-ecosystem" className={styles.blockLight}>
+        <section id="genai-ecosystem" className={`${styles.blockLight} ${styles.genaiEcosystemBlock}`}>
           <div className="container">
             <h2 className={styles.sectionTitle}>What generative AI systems does <span className={styles.accent}>Nexterse LLC</span> build?</h2>
             <p className={styles.sectionDesc}>
               As a professional gen AI development company, we design, engineer, secure, and scale GenAI systems. Every solution is production-ready, governance-controlled, and economically modeled before deployment.
             </p>
-            <div className={styles.vertTabsWrap}>
+            <div className={styles.genaiEcosystemLayout}>
+              <div className={styles.vertTabContent}>
+                <h3 className={styles.vertTabTitle}>{ECOSYSTEM[activeEco].label}</h3>
+                <p className={styles.vertTabDesc}>{ECOSYSTEM[activeEco].intro}</p>
+                {ECOSYSTEM[activeEco].bullets && (
+                  <ul className={styles.ecomBullets}>{ECOSYSTEM[activeEco].bullets!.map((b) => <li key={b}>{b}</li>)}</ul>
+                )}
+                <ul className={styles.ecomBullets}>
+                  <li><strong>Business impact</strong></li>
+                  {ECOSYSTEM[activeEco].impact.map((b) => <li key={b}>{b}</li>)}
+                </ul>
+              </div>
               <div className={styles.vertTabList} role="tablist" aria-label="GenAI ecosystem">
                 {ECOSYSTEM.map((t, i) => (
                   <button
@@ -285,18 +335,10 @@ export default function GenaiPage() {
                     className={`${styles.vertTabBtn} ${activeEco === i ? styles.vertTabBtnActive : ""}`}
                     onClick={() => setActiveEco(i)}
                   >
-                    {t.label}
+                    <Image src={t.icon} alt="" width={24} height={24} className={styles.vertTabIcon} />
+                    <span>{t.label}</span>
                   </button>
                 ))}
-              </div>
-              <div className={styles.vertTabContent}>
-                <h3 className={styles.vertTabTitle}>{ECOSYSTEM[activeEco].label}</h3>
-                <p className={styles.vertTabDesc}>{ECOSYSTEM[activeEco].intro}</p>
-                {ECOSYSTEM[activeEco].bullets && (
-                  <ul className={styles.ecomBullets}>{ECOSYSTEM[activeEco].bullets!.map((b) => <li key={b}>{b}</li>)}</ul>
-                )}
-                <p className={styles.vertTabDesc}><strong>Business impact:</strong></p>
-                <ul className={styles.ecomBullets}>{ECOSYSTEM[activeEco].impact.map((b) => <li key={b}>{b}</li>)}</ul>
               </div>
             </div>
           </div>
@@ -309,7 +351,7 @@ export default function GenaiPage() {
         />
 
         {/* ── ROI & TCO modeling (horizontal tabs w/ image) ────────────────── */}
-        <section id="genai-roi" className={styles.serviceBlock}>
+        <section id="genai-roi" className={`${styles.serviceBlock} ${styles.genaiRoiBlock}`}>
           <div className="container">
             <h2 className={styles.svcTitle}>How do you model the <span className={styles.accent}>ROI and total cost</span> of generative AI?</h2>
             <p className={styles.svcDesc}>
@@ -357,7 +399,7 @@ export default function GenaiPage() {
         </div>
 
         {/* ── Pilot & prove program (dark process) ─────────────────────────── */}
-        <section id="genai-pilot" className={styles.blockDark}>
+        <section id="genai-pilot" className={`${styles.blockDark} ${styles.genaiPilotBlock}`}>
           <div className="container">
             <h2 className={styles.sectionTitleWhite}>Start small: the <span className={styles.accent}>4-6 week pilot</span> & prove program</h2>
             <p className={styles.sectionDescWhite}>
@@ -382,20 +424,20 @@ export default function GenaiPage() {
         </section>
 
         {/* ── Zero data leakage (4 cards) ──────────────────────────────────── */}
-        <section id="genai-leakage" className={styles.blockWhite}>
+        <section id="genai-leakage" className={`${styles.blockWhite} ${styles.genaiLeakageBlock}`}>
           <div className="container">
             <h2 className={styles.sectionTitle}>How does Nexterse LLC prevent data leakage in <span className={styles.accent}>generative AI?</span></h2>
             <p className={styles.sectionDesc}>
               Generative AI should strengthen your infrastructure – not weaken it. We never route sensitive company data through consumer-grade interfaces or uncontrolled public endpoints. Every GenAI system we build is deployed inside secure, governance-controlled environments designed for compliance, isolation, and auditability.
             </p>
-            <div className={styles.ecomServicesGrid}>
+            <div className={styles.genaiLeakageGrid}>
               {LEAKAGE.map((c) => (
-                <div key={c.title} className={styles.ecomServiceCard}>
-                  <Image src={c.icon} alt={c.title} width={56} height={56} className={styles.ecomServiceIcon} />
-                  <h3 className={styles.ecomServiceTitle}>{c.title}</h3>
-                  {c.paragraphs.map((p) => <p key={p} className={styles.ecomServiceIntro}>{p}</p>)}
-                  <ul className={styles.ecomBullets}>{c.bullets.map((b) => <li key={b}>{b}</li>)}</ul>
-                  {c.outro && <p className={styles.ecomServiceIntro}>{c.outro}</p>}
+                <div key={c.title} className={styles.genaiLeakageItem}>
+                  <Image src={c.icon} alt={c.title} width={56} height={56} className={styles.genaiLeakageIcon} />
+                  <h3 className={styles.genaiLeakageTitle}>{c.title}</h3>
+                  {c.paragraphs.map((p) => <p key={p} className={styles.genaiLeakageText}>{p}</p>)}
+                  <ul className={styles.genaiLeakageBullets}>{c.bullets.map((b) => <li key={b}>{b}</li>)}</ul>
+                  {c.outro && <p className={styles.genaiLeakageText}>{c.outro}</p>}
                 </div>
               ))}
             </div>
@@ -413,13 +455,13 @@ export default function GenaiPage() {
         <ServicesReviewSlider />
 
         {/* ── Industries (vertical tabs) ───────────────────────────────────── */}
-        <section id="genai-industries" className={styles.blockLight}>
+        <section id="genai-industries" className={`${styles.blockLight} ${styles.genaiIndustriesBlock}`}>
           <div className="container">
             <h2 className={styles.sectionTitle}>Which industries does Nexterse LLC build <span className={styles.accent}>generative AI</span> for?</h2>
             <p className={styles.sectionDesc}>
               Generative AI creates measurable value when it understands operational constraints, regulatory pressure, and data architecture specific to your industry. We build industry-calibrated GenAI systems that integrate directly into real workflows.
             </p>
-            <div className={styles.vertTabsWrap}>
+            <div className={styles.genaiIndustriesLayout}>
               <div className={styles.vertTabList} role="tablist" aria-label="Industries">
                 {INDUSTRIES.map((t, i) => (
                   <button
@@ -429,16 +471,24 @@ export default function GenaiPage() {
                     className={`${styles.vertTabBtn} ${activeIndustry === i ? styles.vertTabBtnActive : ""}`}
                     onClick={() => setActiveIndustry(i)}
                   >
-                    {t.label}
+                    <Image src={t.icon} alt="" width={56} height={56} className={styles.vertTabIcon} />
+                    <span>{t.label}</span>
                   </button>
                 ))}
               </div>
               <div className={styles.vertTabContent}>
                 <h3 className={styles.vertTabTitle}>{INDUSTRIES[activeIndustry].label}</h3>
                 <p className={styles.vertTabDesc}>{INDUSTRIES[activeIndustry].intro}</p>
-                <ul className={styles.ecomBullets}>{INDUSTRIES[activeIndustry].bullets.map((b) => <li key={b}>{b}</li>)}</ul>
-                <p className={styles.vertTabDesc}><strong>Impact:</strong></p>
-                <ul className={styles.ecomBullets}>{INDUSTRIES[activeIndustry].impact.map((b) => <li key={b}>{b}</li>)}</ul>
+                <div className={styles.genaiIndustryLists}>
+                  <ul className={styles.ecomBullets}>
+                    <li><strong>We build:</strong></li>
+                    {INDUSTRIES[activeIndustry].bullets.map((b) => <li key={b}>{b}</li>)}
+                  </ul>
+                  <ul className={styles.ecomBullets}>
+                    <li><strong>Impact:</strong></li>
+                    {INDUSTRIES[activeIndustry].impact.map((b) => <li key={b}>{b}</li>)}
+                  </ul>
+                </div>
               </div>
             </div>
           </div>
@@ -448,7 +498,7 @@ export default function GenaiPage() {
         <GenaiTechStack />
 
         {/* ── ADLC process (dark, 7 phases) ────────────────────────────────── */}
-        <section id="genai-adlc" className={styles.blockDark}>
+        <section id="genai-adlc" className={`${styles.blockDark} ${styles.genaiAdlcBlock}`}>
           <div className="container">
             <h2 className={styles.sectionTitleWhite}>How does Nexterse LLC engineer production of generative AI? <span className={styles.accent}>(ADLC)</span></h2>
             <p className={styles.sectionDescWhite}>
@@ -469,14 +519,21 @@ export default function GenaiPage() {
         </section>
 
         {/* ── Zero-hallucination systems (4 cards) ─────────────────────────── */}
-        <section id="genai-hallucination" className={styles.blockWhite}>
+        <section id="genai-hallucination" className={`${styles.blockWhite} ${styles.genaiHallucinationBlock}`}>
           <div className="container">
-            <h2 className={styles.sectionTitle}>How does Nexterse LLC prevent <span className={styles.accent}>hallucinations?</span></h2>
-            <div className={styles.ecomServicesGrid}>
+            <h2 className={styles.sectionTitle}>How does Nexterse LLC prevent hallucinations?</h2>
+            <p className={styles.sectionDesc}>
+              Legal teams block GenAI initiatives for one reason: uncontrolled outputs. We engineer systems that operate inside measurable, enforceable accuracy boundaries. Generative models are probabilistic by nature. Enterprise systems operate within defined, verifiable constraints. So we make hallucination control a part of software architecture.
+            </p>
+            <div className={styles.genaiHallucinationGrid}>
               {HALLUCINATION.map((c) => (
-                <div key={c.title} className={styles.ecomServiceCard}>
-                  <h3 className={styles.ecomServiceTitle}>{c.title}</h3>
-                  <p className={styles.ecomServiceIntro}>{c.desc}</p>
+                <div key={c.title} className={styles.genaiHallucinationItem}>
+                  <Image src={c.icon} alt={c.title} width={56} height={56} className={styles.genaiHallucinationIcon} />
+                  <h3 className={styles.genaiHallucinationTitle}>{c.title}</h3>
+                  {c.paragraphs.map((p) => <p key={p} className={styles.genaiHallucinationText}>{p}</p>)}
+                  {c.bullets.length > 0 && (
+                    <ul className={styles.genaiHallucinationBullets}>{c.bullets.map((b) => <li key={b}>{b}</li>)}</ul>
+                  )}
                 </div>
               ))}
             </div>

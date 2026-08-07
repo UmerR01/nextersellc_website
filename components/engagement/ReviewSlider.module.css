@@ -1,6 +1,6 @@
 .section {
   background: #fff;
-  padding: clamp(4.5rem, 7vw, 6rem) 0;
+  padding: clamp(4.5rem, 6vw, 6rem) 0;
 }
 
 .container {
@@ -115,19 +115,64 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--color-accent);
-  transition: color 0.2s;
   padding: 0;
 }
 
-.navBtn:hover {
-  color: var(--color-blue);
+/* ── Arrow stretch: horizontal tail (::before) + rotated arrowhead (::after),
+   no color change on hover — the tail grows and the head shifts outward. ── */
+.arrowBox {
+  position: relative;
+  width: 40px;
+  height: 24px;
+  display: block;
+  flex-shrink: 0;
 }
 
+.arrowBox::before {
+  background: var(--color-accent);
+  content: "";
+  display: block;
+  height: 2px;
+  position: absolute;
+  top: 11px;
+  transition: width 0.3s ease-in-out;
+  width: 38px;
+}
+
+.arrowBox::after {
+  box-sizing: border-box;
+  border-bottom: 2px solid var(--color-accent);
+  border-right: 2px solid var(--color-accent);
+  content: "";
+  display: block;
+  height: 10px;
+  position: absolute;
+  top: 7px;
+  transition: 0.3s ease-in-out;
+  width: 10px;
+}
+
+.navNext .arrowBox::before { left: 1px; }
+.navNext .arrowBox::after  { right: 3px; transform: rotate(-45deg); }
+
+.navPrev .arrowBox::before { right: 1px; }
+.navPrev .arrowBox::after  { left: 3px; transform: rotate(135deg); }
+
+.navBtn:not(:disabled):hover .arrowBox::before { width: 42px; }
+.navNext:not(:disabled):hover .arrowBox::after { right: -3px; }
+.navPrev:not(:disabled):hover .arrowBox::after { left: -3px; }
+
 .navBtn:disabled {
-  color: #b8c7d8;
   cursor: default;
   opacity: 0.55;
+}
+
+.navBtn:disabled .arrowBox::before {
+  background: #b8c7d8;
+}
+
+.navBtn:disabled .arrowBox::after {
+  border-color: #b8c7d8;
 }
 
 .testimonialsLink {
@@ -148,15 +193,49 @@
   width: 17px;
 }
 
-.linkArrow::before {
+.linkArrow::before,
+.linkArrow::after {
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg width='6' height='10' viewBox='0 0 6 10' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M7.94319e-08 8.59L3.59 5L-3.53625e-07 1.41L1 0.5L5.5 5L1 9.5L7.94319e-08 8.59Z' fill='%233CC4E5'/%3E%3C/svg%3E");
+  background-position: 50%;
+  background-repeat: no-repeat;
+  background-size: cover;
   content: "";
-  background: url("data:image/svg+xml;charset=utf8,%3Csvg width='6' height='10' viewBox='0 0 6 10' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 8.59L3.59 5L0 1.41L1 .5L5.5 5L1 9.5L0 8.59Z' fill='%233CC4E5'/%3E%3C/svg%3E") center / cover no-repeat;
-  height: 0.5em;
+  display: block;
+  height: 9px;
   position: absolute;
   right: 10px;
   top: 50%;
   transform: translateY(-50%);
+  transition: 0.1s;
   width: 6px;
+}
+
+.linkArrow::after {
+  opacity: 0;
+}
+
+.testimonialsLink:hover .linkArrow::before {
+  animation: bounceBefore 1s linear infinite;
+  right: 6px;
+}
+
+.testimonialsLink:hover .linkArrow::after {
+  animation: bounceAfter 1s linear infinite;
+  right: 6px;
+}
+
+@keyframes bounceBefore {
+  0%   { opacity: 1; transform: translateX(0)    translateY(-50%); }
+  49%  { opacity: 0; transform: translateX(7px)  translateY(-50%); }
+  52%  { opacity: 0; transform: translateX(-7px) translateY(-50%); }
+  100% { opacity: 1; transform: translateX(0)    translateY(-50%); }
+}
+
+@keyframes bounceAfter {
+  0%   { opacity: 0; transform: translateX(-7px) translateY(-50%); }
+  49%  { opacity: 1; transform: translateX(0)    translateY(-50%); }
+  99%  { opacity: 0; transform: translateX(7px)  translateY(-50%); }
+  100% { opacity: 0; transform: translateX(-7px) translateY(-50%); }
 }
 
 @media (max-width: 768px) {

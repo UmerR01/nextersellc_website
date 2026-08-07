@@ -66,8 +66,10 @@
 
 .check {
   flex-shrink: 0;
-  margin-top: 4px;
-  line-height: 1;
+  margin-top: 6px;
+  width: 19px;
+  height: 14px;
+  background: url("data:image/svg+xml;charset=utf8,%3Csvg width='19' height='14' viewBox='0 0 19 14' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M17.25 1.75037L6.75 12.2504L1.5 7.00037' stroke='%233CC4E5' stroke-width='1.5' stroke-linecap='square'/%3E%3C/svg%3E") center / contain no-repeat;
 }
 
 .listBody {
@@ -111,7 +113,7 @@
 
 @media (max-width: 768px) {
   .section {
-    padding: 64px 0;
+    padding: 72px 0;
   }
 
   .row {

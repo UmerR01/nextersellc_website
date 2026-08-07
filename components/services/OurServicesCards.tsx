@@ -10,11 +10,11 @@ const SERVICES = [
     linkLabel: "Enterprise software development",
   },
   {
-    icon: "/services-page/04_IoT-Integration-02.svg",
-    title: "IoT and AIoT development",
-    text: "IoT and AIoT development services cover the software layer behind connected operations: device firmware, edge computing, secure data transfer, device management, dashboards, analytics, and operational intelligence. These systems give companies a clearer view of assets, environments, equipment, and field activity.\n\nAIoT development adds machine learning capabilities on top of connected data streams. This makes it possible to support predictive maintenance, anomaly detection, operational forecasting, and smarter decision-making across distributed infrastructure. The result is a managed IoT software ecosystem.",
-    link: "/services/iot-development",
-    linkLabel: "IoT development services",
+    icon: "/cloud/02_Network-security-1.svg",
+    title: "Cloud development",
+    text: "Cloud development services help companies build, migrate, and operate secure software environments on scalable infrastructure. The work can include cloud-native applications, backend platforms, API ecosystems, data pipelines, DevOps automation, monitoring, access control, and cost-aware architecture.\n\nThe result is software that is easier to deploy, scale, secure, and improve over time. Nexterse LLC designs cloud systems around reliability, business workflows, integration needs, and long-term operating control.",
+    link: "/services/cloud-development",
+    linkLabel: "Cloud development services",
   },
   {
     icon: "/services-page/05_AI-agent-development-02.svg",
@@ -24,11 +24,11 @@ const SERVICES = [
     linkLabel: "Explore AI services",
   },
   {
-    icon: "/services-page/04_Legacy-code-01.svg",
-    title: "Legacy software modernization services",
-    text: "Our legacy software modernization services help companies extend the value of existing systems while improving architecture, maintainability, performance, and integration capacity. The work can include refactoring, re-platforming, cloud migration, database modernization, API development, UX redesign, and phased replacement of outdated components.\n\nThe modernization path is selected after reviewing the current system, business priorities, technical constraints, and future product roadmap. This allows the company to keep useful business logic, improve the parts that limit progress, and prepare the platform for new digital, AI, IoT, or analytics capabilities.",
-    link: "/services/crm-development",
-    linkLabel: "Modernization services",
+    icon: "/predictive-maintenance/04_Cloud-based-predictive-analytics-platforms-02.svg",
+    title: "Predictive maintenance",
+    text: "Predictive maintenance development helps companies turn equipment, sensor, maintenance, and operational data into systems that forecast failures, prioritize service work, and reduce unplanned downtime.\n\nThe work can include asset monitoring, analytics dashboards, anomaly detection, remaining useful life models, alerting workflows, and integrations with maintenance, ERP, or operational software. Teams get clearer maintenance signals, while leadership gains better control over reliability and service costs.",
+    link: "/services/predictive-maintenance",
+    linkLabel: "Predictive maintenance development",
   },
   {
     icon: "/services-page/03_Product-MVP-Definition-02.svg",

@@ -66,7 +66,17 @@ export default function OpenaiHero() {
       <div className={s.heroInner}>
         <nav className={s.heroBreadcrumbs} aria-label="Breadcrumb">
           <a href="/">Home</a>
+          <span className={s.breadcrumbSep}>
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden>
+              <path stroke="rgba(255,255,255,0.5)" strokeLinecap="square" d="m6 4 4 4-4 4" />
+            </svg>
+          </span>
           <a href="/services">Services</a>
+          <span className={s.breadcrumbSep}>
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden>
+              <path stroke="rgba(255,255,255,0.5)" strokeLinecap="square" d="m6 4 4 4-4 4" />
+            </svg>
+          </span>
           <span>ChatGPT software development</span>
         </nav>
         <h1 className={s.heroTitle}>
@@ -81,6 +91,13 @@ export default function OpenaiHero() {
         </ul>
         <div className={s.heroButtons}>
           <a href="#get-modal-popup" className={`btn btn-accent ${s.btnPrimary}`}>Request an LLM architecture blueprint</a>
+          <div className={s.serviceRating}>
+            <span className={s.ratingLabel}>Clients rate our services</span>
+            <span className={s.ratingScore}>
+              <span className={s.ratingStars}>{Array.from({ length: 5 }, (_, i) => <span key={i}>&#9733;</span>)}</span>
+              <strong>5,0</strong>
+            </span>
+          </div>
         </div>
       </div>
     </section>

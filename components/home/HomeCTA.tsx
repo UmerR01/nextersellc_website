@@ -30,7 +30,7 @@ export default function HomeCTA() {
             </h2>
           </div>
           <div className={styles.right}>
-            <Link href="/contact" className={styles.btn}>
+            <Link href="/contact-us" className={styles.btn}>
               Hire Dedicated Developers <IconArrow />
             </Link>
           </div>

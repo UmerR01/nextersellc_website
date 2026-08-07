@@ -300,7 +300,7 @@ export default function ScamAlert() {
             )}
             {!showAll && filteredJobs.length > INITIAL_COUNT && (
               <div className={styles.viewMoreWrap}>
-                <button className={styles.viewMoreBtn} onClick={() => setShowAll(true)}>
+                <button className={`btn btn-outline ${styles.viewMoreBtn}`} onClick={() => setShowAll(true)}>
                   View more positions
                 </button>
               </div>

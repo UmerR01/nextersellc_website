@@ -1,4 +1,4 @@
-.section {
+﻿.section {
   padding: 96px 0;
   background: var(--color-bg);
   overflow: visible;
@@ -13,7 +13,7 @@
   margin-bottom: 1rem;
   text-align: center;
 }
-.title span { color: var(--color-blue); }
+.title span { color: var(--color-accent); margin-right: 0.5rem; }
 
 .desc {
   font-size: clamp(0.95rem, 1.2vw, 1.125rem);
@@ -25,7 +25,7 @@
   margin: 0 auto;
 }
 
-/* ── Slider — mirrors Certificates achievements-block ── */
+/* â”€â”€ Slider â€” mirrors Certificates achievements-block â”€â”€ */
 .achievements {
   position: relative;
   margin: 64px auto 0;
@@ -56,12 +56,12 @@
   object-fit: contain;
 }
 
-/* ── Arrows ── */
+/* â”€â”€ Arrows â”€â”€ */
 .btnPrev,
 .btnNext {
   cursor: pointer;
   height: 24px;
-  width: 48px;
+  width: 40px;
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
@@ -69,7 +69,7 @@
   background: none;
   padding: 0;
   appearance: none;
-  color: #3CC4E5;
+  color: var(--color-accent);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -79,11 +79,52 @@
 .btnPrev { right: calc(100% + 24px); }
 .btnNext { left:  calc(100% + 24px); }
 
-.btnPrev:hover,
-.btnNext:hover { color: var(--color-accent-dark, #127aff); }
+.arrowBox {
+  display: block;
+  flex-shrink: 0;
+  height: 24px;
+  position: relative;
+  width: 40px;
+}
+
+.arrowBox::before {
+  background: var(--color-accent);
+  content: "";
+  display: block;
+  height: 2px;
+  position: absolute;
+  top: 11px;
+  transition: width 0.3s ease-in-out;
+  width: 38px;
+}
+
+.arrowBox::after {
+  border-bottom: 2px solid var(--color-accent);
+  border-right: 2px solid var(--color-accent);
+  box-sizing: border-box;
+  content: "";
+  display: block;
+  height: 10px;
+  position: absolute;
+  top: 7px;
+  transition: 0.3s ease-in-out;
+  width: 10px;
+}
+
+.btnNext .arrowBox::before { left: 1px; }
+.btnNext .arrowBox::after { right: 3px; transform: rotate(-45deg); }
+.btnPrev .arrowBox::before { right: 1px; }
+.btnPrev .arrowBox::after { left: 3px; transform: rotate(135deg); }
+
+.btnNext:not(:disabled):hover .arrowBox::before,
+.btnPrev:not(:disabled):hover .arrowBox::before { width: 42px; }
+.btnNext:not(:disabled):hover .arrowBox::after { right: -3px; }
+.btnPrev:not(:disabled):hover .arrowBox::after { left: -3px; }
 
 /* Disabled */
 .disabled { cursor: default; pointer-events: none; color: #b8c7d8; }
+.disabled .arrowBox::before { background: #b8c7d8; }
+.disabled .arrowBox::after { border-color: #b8c7d8; }
 
 /* Mobile nav */
 .nav { display: none; }
@@ -119,4 +160,11 @@
 
 @media (max-width: 480px) {
   .slide { flex: 0 0 calc(100% / 2); }
+}
+
+.arrowBoxSmall {
+  height: 18px;
+  transform: scale(0.9);
+  transform-origin: center;
+  width: 36px;
 }

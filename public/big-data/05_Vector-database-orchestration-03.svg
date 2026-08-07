@@ -1,0 +1,18 @@
+<svg width="56" height="56" viewBox="0 0 56 56" fill="none" xmlns="http://www.w3.org/2000/svg">
+<mask id="mask0_2315_868" style="mask-type:luminance" maskUnits="userSpaceOnUse" x="4" y="4" width="48" height="48">
+<path d="M4.70947 4.71192H51.2905V51.293H4.70947V4.71192Z" fill="white"/>
+</mask>
+<g mask="url(#mask0_2315_868)">
+<path d="M30.8204 15.6286C30.8204 17.8897 25.2306 19.7227 18.4473 19.7227C11.664 19.7227 6.07422 17.8897 6.07422 15.6286C6.07422 13.3675 11.664 11.5346 18.4473 11.5346C25.2306 11.5346 30.8204 13.3675 30.8204 15.6286Z" stroke="#3CC4E5" stroke-width="2.7" stroke-miterlimit="10" stroke-linejoin="round"/>
+<path d="M6.07422 15.6246V40.3708C6.07422 42.6319 11.664 44.4648 18.4473 44.4648C25.2306 44.4648 30.8204 42.6319 30.8204 40.3708V15.6246" stroke="#3CC4E5" stroke-width="2.7" stroke-miterlimit="10" stroke-linejoin="round"/>
+<path d="M30.8204 23.906C30.8204 26.1671 25.2306 28 18.4473 28C11.664 28 6.07422 26.1671 6.07422 23.906" stroke="#3CC4E5" stroke-width="2.7" stroke-miterlimit="10" stroke-linejoin="round"/>
+<path d="M30.8204 32.0935C30.8204 34.3546 25.2306 36.1875 18.4473 36.1875C11.664 36.1875 6.07422 34.3546 6.07422 32.0935" stroke="#3CC4E5" stroke-width="2.7" stroke-miterlimit="10" stroke-linejoin="round"/>
+<path d="M49.9257 11.5352H39.0083V6.07644H49.9257V11.5352Z" stroke="#3CC4E5" stroke-width="2.7" stroke-miterlimit="10" stroke-linejoin="round"/>
+<path d="M44.4668 11.5347V24.4727" stroke="#3CC4E5" stroke-width="2.7" stroke-miterlimit="10" stroke-linejoin="round"/>
+<path d="M44.4668 34.2564V44.4648" stroke="#3CC4E5" stroke-width="2.7" stroke-miterlimit="10" stroke-linejoin="round"/>
+<path d="M39.5732 29.3642L44.4669 24.4705L49.3605 29.3642L44.4669 34.2578L39.5732 29.3642Z" stroke="#3CC4E5" stroke-width="2.7" stroke-miterlimit="10" stroke-linejoin="round"/>
+<path d="M49.9257 47.1964C49.9257 48.7038 47.4818 49.9258 44.467 49.9258C41.4523 49.9258 39.0083 48.7038 39.0083 47.1964C39.0083 45.6891 41.4523 44.4671 44.467 44.4671C47.4818 44.4671 49.9257 45.6891 49.9257 47.1964Z" stroke="#3CC4E5" stroke-width="2.7" stroke-miterlimit="10" stroke-linejoin="round"/>
+<path d="M44.4671 49.9258H18.4473V44.4421" stroke="#3CC4E5" stroke-width="2.7" stroke-miterlimit="10" stroke-linejoin="round"/>
+<path d="M18.4473 11.5586V6.07495H39.0084" stroke="#3CC4E5" stroke-width="2.7" stroke-miterlimit="10" stroke-linejoin="round"/>
+</g>
+</svg>

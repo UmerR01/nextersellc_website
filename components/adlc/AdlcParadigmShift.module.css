@@ -11,7 +11,7 @@
   position: absolute;
   inset: 0;
   z-index: 0;
-  background-color: #112244;
+  background-color: var(--color-accent-dark);
 }
 
 .bg::before {

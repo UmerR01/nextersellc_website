@@ -1,14 +1,14 @@
-"use client";
+﻿"use client";
 
 import { useState } from "react";
 import Image from "next/image";
 import styles from "./AIAwards.module.css";
 
 const BADGES = [
-  { src: "/ai-consulting/imgs/06_techreviewer_badge_2026-01.svg",                              alt: "Techreviewer 2026 — Top AI Consulting Company" },
-  { src: "/ai-consulting/imgs/05_top_clutch.co_artificial_intelligence_company_boston_2026-2.svg", alt: "Clutch 2026 — Top AI Company Boston" },
-  { src: "/ai-consulting/imgs/06_top-ai-development-companies.svg",                            alt: "GoodFirms — Top AI Development Company" },
-  { src: "/ai-consulting/imgs/06_techreviewer_badge_2026-02.svg",                              alt: "Techreviewer 2026 — Top AI Readiness Assessment" },
+  { src: "/ai-consulting/imgs/06_techreviewer_badge_2026-01.svg",                              alt: "Techreviewer 2026 â€” Top AI Consulting Company" },
+  { src: "/ai-consulting/imgs/05_top_clutch.co_artificial_intelligence_company_boston_2026-2.svg", alt: "Clutch 2026 â€” Top AI Company Boston" },
+  { src: "/ai-consulting/imgs/06_top-ai-development-companies.svg",                            alt: "GoodFirms â€” Top AI Development Company" },
+  { src: "/ai-consulting/imgs/06_techreviewer_badge_2026-02.svg",                              alt: "Techreviewer 2026 â€” Top AI Readiness Assessment" },
   { src: "/ai-consulting/imgs/03_Badge-1-1.svg",                                               alt: "Top Software Development Company Massachusetts" },
   { src: "/ai-consulting/imgs/12_5ca49c9f6cb37e33319e1162_Goodfirms.svg",                     alt: "GoodFirms badge" },
   { src: "/ai-consulting/imgs/12_5ca49c9f8ff5ad26d13b6845_TDA.svg",                           alt: "TDA badge" },
@@ -45,7 +45,7 @@ export default function AIAwards() {
           best services in the field.
         </p>
 
-        {/* Slider — same structure as Certificates achievements-block */}
+        {/* Slider â€” same structure as Certificates achievements-block */}
         <div className={styles.achievements}>
           <button
             className={`${styles.btnPrev} ${isPrevDisabled ? styles.disabled : ""}`}
@@ -53,9 +53,7 @@ export default function AIAwards() {
             aria-label="Previous"
             disabled={isPrevDisabled}
           >
-            <svg width="48" height="24" viewBox="0 0 48 24" fill="none" aria-hidden>
-              <path d="M47 12H3M10 5L3 12L10 19" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-            </svg>
+            <span className={styles.arrowBox} aria-hidden="true" />
           </button>
 
           <div className={styles.sliderOuter}>
@@ -83,9 +81,7 @@ export default function AIAwards() {
             aria-label="Next"
             disabled={isNextDisabled}
           >
-            <svg width="48" height="24" viewBox="0 0 48 24" fill="none" aria-hidden>
-              <path d="M1 12H45M38 5L45 12L38 19" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-            </svg>
+            <span className={styles.arrowBox} aria-hidden="true" />
           </button>
         </div>
 
@@ -97,9 +93,7 @@ export default function AIAwards() {
             aria-label="Previous"
             disabled={isPrevDisabled}
           >
-            <svg width="36" height="18" viewBox="0 0 48 24" fill="none" aria-hidden>
-              <path d="M47 12H3M10 5L3 12L10 19" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-            </svg>
+            <span className={`${styles.arrowBox} ${styles.arrowBoxSmall}`} aria-hidden="true" />
           </button>
           <button
             className={`${styles.btnNext} ${isNextDisabled ? styles.disabled : ""}`}
@@ -107,12 +101,11 @@ export default function AIAwards() {
             aria-label="Next"
             disabled={isNextDisabled}
           >
-            <svg width="36" height="18" viewBox="0 0 48 24" fill="none" aria-hidden>
-              <path d="M1 12H45M38 5L45 12L38 19" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-            </svg>
+            <span className={`${styles.arrowBox} ${styles.arrowBoxSmall}`} aria-hidden="true" />
           </button>
         </div>
       </div>
     </section>
   );
 }
+

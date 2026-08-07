@@ -15,7 +15,7 @@ export default function DownloadCTA() {
             </div>
           </div>
           <div className={styles.right}>
-            <Link href="/contact" className={styles.btn}>
+            <Link href="/contact" className={`btn btn-accent ${styles.btn}`}>
               Schedule a 30-minute discovery call
             </Link>
           </div>

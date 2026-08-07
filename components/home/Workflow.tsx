@@ -68,7 +68,7 @@ export default function Workflow() {
               Have a project in mind? Tell us what you&apos;re building and we&apos;ll
               map out the fastest path to getting it done right.
             </p>
-            <a href="#contact" className={styles.ctaBtn}>
+            <a href="#get-modal-popup" className={styles.ctaBtn}>
               Start the conversation →
             </a>
           </div>

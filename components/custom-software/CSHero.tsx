@@ -7,145 +7,97 @@ export default function CSHero() {
     <section className={styles.hero}>
       <div className={styles.bgWrapper}>
         <div className={styles.desktopImage}>
-          <svg
-            preserveAspectRatio="xMidYMid slice"
-            className={styles.bgSvg}
-            width="1920"
-            height="843"
-            viewBox="0 0 1920 843"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <g clipPath="url(#cs_clip0)">
-              <rect width="1920" height="843" fill="url(#cs_paint0_linear)" />
-              <g filter="url(#cs_filter0)">
-                <circle cx="1460" cy="712" r="460" fill="#3CC4E5" fillOpacity="0.64" />
+          <svg preserveAspectRatio="xMidYMid slice" className={styles.bgSvg} width="1920" height="703" viewBox="0 0 1920 703" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect width="1920" height="703" fill="url(#cs_d_paint0)" />
+            <g clipPath="url(#cs_d_clip0)">
+              <rect width="1920" height="703" fill="url(#cs_d_paint0)" />
+              <g opacity="0.08">
+                <path fillRule="evenodd" clipRule="evenodd" d="M-845.628 744.916L-688.82 -101.049L-883.335 -131.999L-1166 744.916L-845.628 744.916ZM-78.6641 352.883L-10.577 744.917L289.163 744.916L150.925 377.643L-78.6641 352.883ZM-588.25 744.917L-466.518 -82.4796L412.996 28.9404L825.646 744.916L544.475 744.916L309.265 237.337L-305.016 183.69L-267.877 744.916L-588.25 744.917Z" fill="#3CC4E5" />
               </g>
-              <g filter="url(#cs_filter1)">
-                <circle cx="1798.5" cy="443.5" r="314.5" fill="#3CC4E5" fillOpacity="0.5" />
+              <g opacity="0.08">
+                <path fillRule="evenodd" clipRule="evenodd" d="M874.988 -647.181L1388.56 -730.869L1655.22 -246.923L1928.98 -316.113L1484.69 -947.631L656.166 -844.49L599.943 19.784L892.548 -54.1681L874.988 -647.181ZM1254.33 -550.397L1420.26 -187.351L1127.66 -113.399L1098.77 -529.125L1254.33 -550.397ZM1687.01 -978.365L1877.46 -996.427L2419.14 -439.644L2162.34 -374.741L1687.01 -978.365Z" fill="#3CC4E5" />
+                <path fillRule="evenodd" clipRule="evenodd" d="M892.663 -53.7166L1231.16 682.73L1060.64 755.898L600.059 20.2355L892.663 -53.7166ZM1683.65 127.297L1655.34 -246.473L1929.1 -315.663L1887.62 51.6869L1683.65 127.297ZM1127.73 -113.128L1429.9 614.455L2207.46 309.673L2419.08 -439.5L2162.28 -374.597L2064.62 143.284L1515.96 334.075L1420.34 -187.08L1127.73 -113.128Z" fill="#3CC4E5" />
               </g>
-              <path
-                fillRule="evenodd"
-                clipRule="evenodd"
-                opacity="0.16"
-                d="M2123.93 405.428L1625.04 448.449L1490.37 962.835L1218.64 962.835L1484.24 268.882L2281.56 169.746L2537.8 962.836L2247.37 962.835L2123.93 405.428ZM1792.82 585.171L1723.62 963.011L2014.05 963.011L1942.97 568.337L1792.82 585.171ZM1288.23 287.913L1106.28 315.97L732.2 963.16L987.092 963.16L1288.23 287.913Z"
-                fill="url(#cs_paint1_linear)"
-              />
+              <g filter="url(#cs_d_f0)">
+                <ellipse cx="960" cy="401.5" rx="590" ry="289.5" fill="url(#cs_d_paint1)" />
+              </g>
+              <g opacity="0.32" filter="url(#cs_d_f1)">
+                <circle cx="2010" cy="205" r="460" fill="#3CC4E5" />
+              </g>
+              <g opacity="0.32" filter="url(#cs_d_f2)">
+                <circle cx="19" cy="691" r="460" fill="#3CC4E5" />
+              </g>
             </g>
             <defs>
-              <filter
-                id="cs_filter0"
-                x="865"
-                y="117"
-                width="1190"
-                height="1190"
-                filterUnits="userSpaceOnUse"
-                colorInterpolationFilters="sRGB"
-              >
+              <filter id="cs_d_f0" x="70" y="-188" width="1780" height="1179" filterUnits="userSpaceOnUse" colorInterpolationFilters="sRGB">
                 <feFlood floodOpacity="0" result="BackgroundImageFix" />
                 <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape" />
-                <feGaussianBlur stdDeviation="67.5" result="effect1_foregroundBlur" />
+                <feGaussianBlur stdDeviation="135" result="effect1_foregroundBlur" />
               </filter>
-              <filter
-                id="cs_filter1"
-                x="1348"
-                y="129"
-                width="901"
-                height="901"
-                filterUnits="userSpaceOnUse"
-                colorInterpolationFilters="sRGB"
-              >
+              <filter id="cs_d_f1" x="1050" y="-755" width="1920" height="1920" filterUnits="userSpaceOnUse" colorInterpolationFilters="sRGB">
                 <feFlood floodOpacity="0" result="BackgroundImageFix" />
                 <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape" />
-                <feGaussianBlur stdDeviation="68" result="effect1_foregroundBlur" />
+                <feGaussianBlur stdDeviation="136" result="effect1_foregroundBlur" />
               </filter>
-              <linearGradient
-                id="cs_paint0_linear"
-                x1="1920"
-                y1="-25.5455"
-                x2="8.96"
-                y2="861.4"
-                gradientUnits="userSpaceOnUse"
-              >
+              <filter id="cs_d_f2" x="-941" y="-269" width="1920" height="1920" filterUnits="userSpaceOnUse" colorInterpolationFilters="sRGB">
+                <feFlood floodOpacity="0" result="BackgroundImageFix" />
+                <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape" />
+                <feGaussianBlur stdDeviation="136" result="effect1_foregroundBlur" />
+              </filter>
+              <linearGradient id="cs_d_paint0" x1="1920" y1="-21.3031" x2="114.684" y2="922.394" gradientUnits="userSpaceOnUse">
                 <stop stopColor="#02102C" />
                 <stop offset="1" stopColor="#112244" />
               </linearGradient>
-              <linearGradient
-                id="cs_paint1_linear"
-                x1="1625.04"
-                y1="169.746"
-                x2="1625.04"
-                y2="963.16"
-                gradientUnits="userSpaceOnUse"
-              >
-                <stop stopColor="#112244" />
-                <stop offset="1" stopColor="#112244" stopOpacity="0" />
+              <linearGradient id="cs_d_paint1" x1="1550" y1="94.4545" x2="323.866" y2="572.726" gradientUnits="userSpaceOnUse">
+                <stop stopColor="#02102C" />
+                <stop offset="1" stopColor="#112244" />
               </linearGradient>
-              <clipPath id="cs_clip0">
-                <rect width="1920" height="843" fill="white" />
+              <clipPath id="cs_d_clip0">
+                <rect width="1920" height="703" fill="white" />
               </clipPath>
             </defs>
           </svg>
         </div>
         <div className={styles.mobileImage}>
-          <svg
-            preserveAspectRatio="xMidYMid slice"
-            className={styles.bgSvg}
-            width="375"
-            height="1512"
-            viewBox="0 0 375 1512"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <g clipPath="url(#cs_mob_clip0)">
-              <rect width="375" height="1512" fill="url(#cs_mob_paint0)" />
-              <g filter="url(#cs_mob_filter0)">
-                <circle cx="46" cy="819" r="150" fill="#3CC4E5" fillOpacity="0.48" />
+          <svg preserveAspectRatio="xMidYMid slice" className={styles.bgSvg} width="375" height="559" viewBox="0 0 375 559" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <g clipPath="url(#cs_m_clip0)">
+              <rect width="375" height="559" fill="url(#cs_m_paint0)" />
+              <g opacity="0.48" filter="url(#cs_m_f0)">
+                <circle cx="254" cy="592" r="200" fill="#3CC4E5" />
               </g>
-              <g filter="url(#cs_mob_filter1)">
-                <circle cx="329" cy="1386" r="150" fill="#3CC4E5" fillOpacity="0.64" />
+              <g opacity="0.48" filter="url(#cs_m_f1)">
+                <circle cx="450" cy="464" r="200" fill="#3CC4E5" />
+              </g>
+              <g opacity="0.04">
+                <path fillRule="evenodd" clipRule="evenodd" d="M494.863 277.841L245.42 299.352L178.085 556.545L42.2216 556.545L175.021 209.568L573.679 160L701.803 556.545L556.587 556.545L494.863 277.841ZM329.311 367.713L294.708 556.633L439.924 556.633L404.386 359.296L329.311 367.713ZM77.0156 219.084L-13.9575 233.113L-201 556.708L-73.5534 556.708L77.0156 219.084Z" fill="url(#cs_m_paint1)" />
+                <path fillRule="evenodd" clipRule="evenodd" d="M556.585 556.774L485.509 940.226L573.677 954.254L701.801 556.774L556.585 556.774ZM208.943 734.474L178.082 556.777L42.2183 556.777L104.877 723.251L208.943 734.474ZM439.928 556.779L384.75 931.813L-13.9071 881.31L-200.949 556.779L-73.5029 556.779L33.1111 786.85L311.546 811.166L294.712 556.779L439.928 556.779Z" fill="url(#cs_m_paint2)" />
               </g>
             </g>
             <defs>
-              <filter
-                id="cs_mob_filter0"
-                x="-329"
-                y="444"
-                width="750"
-                height="750"
-                filterUnits="userSpaceOnUse"
-                colorInterpolationFilters="sRGB"
-              >
+              <filter id="cs_m_f0" x="-146" y="192" width="800" height="800" filterUnits="userSpaceOnUse" colorInterpolationFilters="sRGB">
                 <feFlood floodOpacity="0" result="BackgroundImageFix" />
                 <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape" />
-                <feGaussianBlur stdDeviation="62.5" result="effect1_foregroundBlur" />
+                <feGaussianBlur stdDeviation="100" result="effect1_foregroundBlur" />
               </filter>
-              <filter
-                id="cs_mob_filter1"
-                x="-46"
-                y="1011"
-                width="750"
-                height="750"
-                filterUnits="userSpaceOnUse"
-                colorInterpolationFilters="sRGB"
-              >
+              <filter id="cs_m_f1" x="50" y="64" width="800" height="800" filterUnits="userSpaceOnUse" colorInterpolationFilters="sRGB">
                 <feFlood floodOpacity="0" result="BackgroundImageFix" />
                 <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape" />
-                <feGaussianBlur stdDeviation="62.5" result="effect1_foregroundBlur" />
+                <feGaussianBlur stdDeviation="100" result="effect1_foregroundBlur" />
               </filter>
-              <linearGradient
-                id="cs_mob_paint0"
-                x1="375"
-                y1="-45.8182"
-                x2="-66.56"
-                y2="40.29"
-                gradientUnits="userSpaceOnUse"
-              >
+              <linearGradient id="cs_m_paint0" x1="375" y1="-16.9394" x2="-66.6674" y2="39.7691" gradientUnits="userSpaceOnUse">
                 <stop stopColor="#02102C" />
                 <stop offset="1" stopColor="#112244" />
               </linearGradient>
-              <clipPath id="cs_mob_clip0">
-                <rect width="375" height="1512" fill="white" />
+              <linearGradient id="cs_m_paint1" x1="336.884" y1="360.195" x2="339.506" y2="120.051" gradientUnits="userSpaceOnUse">
+                <stop offset="0.325638" stopColor="white" />
+                <stop offset="1" stopColor="white" stopOpacity="0" />
+              </linearGradient>
+              <linearGradient id="cs_m_paint2" x1="372.84" y1="1019.42" x2="376.294" y2="567.487" gradientUnits="userSpaceOnUse">
+                <stop offset="0.0301665" stopColor="white" />
+                <stop offset="1" stopColor="white" stopOpacity="0" />
+              </linearGradient>
+              <clipPath id="cs_m_clip0">
+                <rect width="375" height="559" fill="white" />
               </clipPath>
             </defs>
           </svg>
@@ -157,11 +109,21 @@ export default function CSHero() {
       <div className={styles.heroWrapper}>
         <div className={styles.container}>
           <div className={styles.content}>
-            <div className={styles.breadcrumbs}>
+            <nav className={styles.breadcrumbs} aria-label="Breadcrumb">
               <Link href="/">Home</Link>
+              <span className={styles.breadcrumbSep}>
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden>
+                  <path stroke="rgba(255,255,255,0.5)" strokeLinecap="square" d="m6 4 4 4-4 4" />
+                </svg>
+              </span>
               <Link href="/services">Services</Link>
+              <span className={styles.breadcrumbSep}>
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden>
+                  <path stroke="rgba(255,255,255,0.5)" strokeLinecap="square" d="m6 4 4 4-4 4" />
+                </svg>
+              </span>
               <span>Software Product Development Company</span>
-            </div>
+            </nav>
 
             <h1 className={styles.title}>Software product development company</h1>
 

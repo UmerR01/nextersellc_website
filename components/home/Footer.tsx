@@ -76,16 +76,16 @@ export default function Footer() {
                   <li><Link href="/">Home</Link></li>
                   <li><Link href="/team">About Us</Link></li>
                   <li><Link href="/engagement-models-process">Engagement Models</Link></li>
-                  <li><Link href="/blog">Blog</Link></li>
-                  <li><Link href="/case-study">Case Study</Link></li>
+                  <li><Link href="/services">Services</Link></li>
+                  <li><Link href="/adlc">ADLC</Link></li>
                 </ul>
               </div>
               <div className={styles.colPolicy}>
-                <h3>Privacy &amp; Policy</h3>
+                <h3>About Us</h3>
                 <ul>
-                  <li><Link href="/terms-of-service">Terms of Use</Link></li>
-                  <li><Link href="/privacy-policy">Privacy Policy</Link></li>
-                  <li><Link href="/confidentiality">Confidentiality</Link></li>
+                  <li><Link href="/team">Team</Link></li>
+                  <li><Link href="/contact-us">Contact Us</Link></li>
+                  <li><Link href="/blog">Insights</Link></li>
                 </ul>
               </div>
             </div>
@@ -275,17 +275,16 @@ export default function Footer() {
                   <li><Link href="/">Home</Link></li>
                   <li><Link href="/team">About Us</Link></li>
                   <li><Link href="/engagement-models-process">Engagement Models</Link></li>
-                  <li><Link href="/blog">Blog</Link></li>
-                  <li><Link href="/case-study">Case Study</Link></li>
+                  <li><Link href="/services">Services</Link></li>
+                  <li><Link href="/adlc">ADLC</Link></li>
                 </ul>
               </div>
               <div className={styles.colPolicy}>
-                <h3>Privacy &amp; Policy</h3>
+                <h3>About Us</h3>
                 <ul>
-                  <li><Link href="/terms-of-service">Terms of Use</Link></li>
-                  <li><Link href="/privacy-policy">Privacy Policy</Link></li>
-                  <li><Link href="/confidentiality">Confidentiality</Link></li>
-                  <li><Link href="/sitemap">Sitemap</Link></li>
+                  <li><Link href="/team">Team</Link></li>
+                  <li><Link href="/contact-us">Contact Us</Link></li>
+                  <li><Link href="/blog">Insights</Link></li>
                 </ul>
               </div>
             </div>

@@ -2,7 +2,7 @@ import styles from "./CSAdvancedTech.module.css";
 
 const TECHS = [
   {
-    href: "/ai-development",
+    href: "/adlc",
     icon: "/custom-software/03_AI-development-03.svg",
     title: "AI development",
     description:
@@ -10,7 +10,7 @@ const TECHS = [
     linkText: "AI development",
   },
   {
-    href: "/big-data-development",
+    href: "/services/big-data-development",
     icon: "/custom-software/06_Big-Data-and-machine-learning-01.svg",
     title: "Big Data development",
     description:
@@ -18,12 +18,12 @@ const TECHS = [
     linkText: "Big Data services",
   },
   {
-    href: "/iot-development",
-    icon: "/custom-software/06_Internet-of-Things-and-telematics-systems-02.svg",
-    title: "Internet of Things development",
+    href: "/services/ml-development",
+    icon: "/ml/04_Model-development-aligned-with-business-metrics-02.svg",
+    title: "Machine Learning development",
     description:
-      "IoT is our core specialization. We build platforms from small systems to networks with hundreds of devices, covering connectivity, cloud infrastructure, integration, and dashboards. Work includes custom IoT builds, real-time data collection, predictive maintenance, smart-manufacturing automation, and fleet tracking.",
-    linkText: "Internet of Things development",
+      "We build ML systems that hold up in production, not just in a notebook. Work spans model development aligned to business metrics, data pipeline engineering, MLOps for continuous training and monitoring, and integration into your existing operational workflows.",
+    linkText: "Machine Learning development",
   },
 ];
 

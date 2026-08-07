@@ -41,11 +41,7 @@ export default function AIProjectsBlock() {
             <ul className={styles.list}>
               {LIST_ITEMS.map((item) => (
                 <li key={item.label} className={styles.listItem}>
-                  <span className={styles.check}>
-                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-                      <path d="M3 8.5L6.5 12L13 5" stroke="#3CC4E5" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                    </svg>
-                  </span>
+                  <span className={styles.check} aria-hidden="true" />
                   <span className={styles.listBody}>
                     <strong className={styles.listLabel}>{item.label}</strong>
                     <span className={styles.listText}>{item.text}</span>

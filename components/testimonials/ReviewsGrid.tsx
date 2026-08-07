@@ -1,4 +1,3 @@
-import Link from "next/link";
 import { REVIEWS } from "./reviewsData";
 import styles from "./ReviewsGrid.module.css";
 
@@ -37,20 +36,8 @@ export default function ReviewsGrid() {
                 <div className={styles.authorData}>
                   <div className={styles.authorName}>{r.name}</div>
                   <div className={styles.authorPosition}>{r.position}</div>
-                  {r.caseStudy && (
-                    <Link href={r.caseStudy} className={styles.linkPrimary}>
-                      View case study
-                      <span className={styles.linkArrow} />
-                    </Link>
-                  )}
                 </div>
               </div>
-              {r.caseStudy && (
-                <Link href={r.caseStudy} className={`${styles.linkPrimary} ${styles.linkMobile}`}>
-                  View case study
-                  <span className={styles.linkArrow} />
-                </Link>
-              )}
             </div>
           ))}
         </div>

@@ -1,22 +1,22 @@
-.section {
+﻿.section {
   padding: 96px 0;
   background: var(--color-bg);
 }
 
-/* Inner wrapper — matches clone's 100px left inset for quote mark */
+/* Inner wrapper â€” matches clone's 100px left inset for quote mark */
 .wrapper {
   max-width: 1180px;
   margin: 0 auto;
   padding: 0 32px 0 124px; /* 124 = 100px quote space + 24px gutter */
 }
 
-/* ── Slide row ── */
+/* â”€â”€ Slide row â”€â”€ */
 .slide {
   display: flex;
   align-items: flex-start;
 }
 
-/* ── Left: quote ── */
+/* â”€â”€ Left: quote â”€â”€ */
 .leftContent {
   flex: 1;
   min-width: 0;
@@ -46,7 +46,7 @@
   margin: 0;
 }
 
-/* ── Right: author ── */
+/* â”€â”€ Right: author â”€â”€ */
 .rightContent {
   width: 252px;
   flex-shrink: 0;
@@ -83,7 +83,7 @@
   color: var(--color-text-muted);
 }
 
-/* ── Bottom navigation bar ── */
+/* â”€â”€ Bottom navigation bar â”€â”€ */
 .bottomContent {
   display: flex;
   align-items: center;
@@ -110,7 +110,7 @@
 }
 .allReviews:hover { opacity: 0.75; }
 
-/* ── Arrows — same style as AIAwards / Certificates ── */
+/* â”€â”€ Arrows â€” same style as AIAwards / Certificates â”€â”€ */
 .btnPrev,
 .btnNext {
   cursor: pointer;
@@ -169,7 +169,7 @@
 .disabled::before { background: #899fb6 !important; }
 .disabled::after  { border-color: #899fb6 !important; }
 
-/* ── Responsive ── */
+/* â”€â”€ Responsive â”€â”€ */
 @media (max-width: 1024px) {
   .wrapper { padding: 0 32px 0 100px; }
 }
@@ -205,4 +205,14 @@
   .name { font-size: 1rem; line-height: 1.625; }
 
   .allReviewsWrap { width: auto; }
+}
+
+.reviewSpacing {
+  margin-bottom: 96px;
+}
+
+@media (max-width: 768px) {
+  .reviewSpacing {
+    margin-bottom: 72px;
+  }
 }

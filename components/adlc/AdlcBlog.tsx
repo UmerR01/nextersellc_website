@@ -77,11 +77,7 @@ export default function AdlcBlog({
 
         <div className={styles.postsGrid}>
           <div className={styles.featuredCol}>
-            <a
-              rel="dofollow"
-              className={styles.featuredPost}
-              href={featuredPost.href}
-            >
+            <div className={styles.featuredPost}>
               <div className={styles.featuredImageWrapper}>
                 <div className={styles.featuredImgInner}>
                   <Image
@@ -102,16 +98,14 @@ export default function AdlcBlog({
                 <span className={styles.metaSep}>|</span>
                 <span className={styles.postDate}>{featuredPost.date}</span>
               </div>
-            </a>
+            </div>
           </div>
 
           <div className={styles.sideCol}>
             {posts.map((post) => (
-              <a
+              <div
                 key={post.href}
-                rel="dofollow"
                 className={styles.sidePost}
-                href={post.href}
               >
                 <div className={styles.postTitle}>{post.title}</div>
                 <div className={styles.postMeta}>
@@ -122,21 +116,16 @@ export default function AdlcBlog({
                   <span className={styles.metaSep}>|</span>
                   <span className={styles.postDate}>{post.date}</span>
                 </div>
-              </a>
+              </div>
             ))}
 
             <div className={styles.allArticlesLink}>
               <a
-                rel="dofollow"
-                href="https://sumatosoft.com/blog"
+                href="/blog"
                 className={styles.linkPrimary}
               >
                 All articles
-                <span className={styles.linkArrow} aria-hidden>
-                  <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden>
-                    <path stroke="currentColor" strokeWidth="1.5" strokeLinecap="square" d="M4 10h12M11 5l5 5-5 5" />
-                  </svg>
-                </span>
+                <span className={styles.linkArrow} aria-hidden="true" />
               </a>
             </div>
           </div>

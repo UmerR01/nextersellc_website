@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Header from "@/components/Header";
 import CSHero from "@/components/custom-software/CSHero";
 import CSArticleLayout from "@/components/custom-software/CSArticleLayout";
-import CSLogos from "@/components/custom-software/CSLogos";
+import AipocLogos from "@/components/aipoc/AipocLogos";
 import CSServicesBlock from "@/components/custom-software/CSServicesBlock";
 import ComplianceBadges from "@/components/custom-software/ComplianceBadges";
 import DeliveryModels from "@/components/custom-software/DeliveryModels";
@@ -36,7 +36,7 @@ export default function CustomSoftwareDevelopmentPage() {
       <main>
         <CSHero />
         <CSArticleLayout>
-          <CSLogos />
+          <AipocLogos />
           <CSServicesBlock />
           <ComplianceBadges />
           <DeliveryModels />

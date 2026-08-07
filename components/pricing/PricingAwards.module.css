@@ -1,0 +1,245 @@
+.section {
+  background: #fff;
+  padding: 0 0 26px;
+}
+
+.container {
+  margin: 0 auto;
+  max-width: 1200px;
+  padding: 0 24px;
+}
+
+.accent {
+  color: var(--color-accent);
+}
+
+.title {
+  color: #000;
+  font-family: var(--font-inter-tight), sans-serif;
+  font-size: clamp(2.75rem, 4vw, 3.6rem);
+  font-weight: 400;
+  letter-spacing: 0;
+  line-height: 1.15;
+  margin: 0 0 56px;
+  text-align: center;
+  word-spacing: 0.08em;
+}
+
+.sliderArea {
+  margin: 0 auto;
+  max-width: calc(100% - 168px);
+  position: relative;
+}
+
+.slider {
+  overflow: hidden;
+}
+
+.track {
+  display: flex;
+  gap: 56px;
+  transition: transform 0.4s ease;
+  width: 100%;
+}
+
+.slide {
+  align-items: center;
+  display: flex;
+  flex: 0 0 calc((100% - (var(--visible, 6) - 1) * 56px) / var(--visible, 6));
+  justify-content: center;
+  min-width: calc((100% - (var(--visible, 6) - 1) * 56px) / var(--visible, 6));
+}
+
+.awardWrap {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  min-height: 118px;
+  width: 100%;
+}
+
+.awardImg {
+  height: auto;
+  max-height: 118px;
+  max-width: 118px;
+  object-fit: contain;
+  width: 100%;
+}
+
+.navBtn {
+  align-items: center;
+  appearance: none;
+  background: none;
+  border: none;
+  color: var(--color-accent);
+  cursor: pointer;
+  display: flex;
+  height: 24px;
+  justify-content: center;
+  padding: 0;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  transition: color 0.2s ease;
+  width: 48px;
+}
+
+.navBtn:hover {
+  color: var(--color-accent-dark, #127aff);
+}
+
+.navBtn:disabled {
+  color: #9fb3c9;
+  cursor: default;
+  pointer-events: none;
+}
+
+.navPrev {
+  right: calc(100% + 24px);
+}
+
+.navNext {
+  left: calc(100% + 24px);
+}
+
+.mobileNav {
+  display: none;
+}
+
+@media (max-width: 1024px) {
+  .sliderArea {
+    max-width: none;
+  }
+
+  .sliderArea > .navBtn {
+    display: none;
+  }
+
+  .mobileNav {
+    display: flex;
+    gap: 12px;
+    margin-top: 24px;
+  }
+
+  .mobileNav .navBtn {
+    height: 18px;
+    inset: auto;
+    position: relative;
+    transform: none;
+    width: 36px;
+  }
+}
+
+@media (max-width: 768px) {
+  .section {
+    padding-bottom: 24px;
+  }
+
+  .title {
+    margin-bottom: 40px;
+    text-align: left;
+  }
+
+  .track {
+    gap: 32px;
+  }
+
+  .slide {
+    flex-basis: calc((100% - (var(--visible, 4) - 1) * 32px) / var(--visible, 4));
+    min-width: calc((100% - (var(--visible, 4) - 1) * 32px) / var(--visible, 4));
+  }
+
+  .awardImg {
+    max-height: 88px;
+    max-width: 88px;
+  }
+}
+
+/* Requested awards arrow stretch/color fix */
+.navBtn:hover {
+  color: var(--color-accent);
+}
+
+.arrowBox {
+  position: relative;
+  width: 40px;
+  height: 24px;
+  display: block;
+  flex-shrink: 0;
+}
+
+.arrowBox::before {
+  content: "";
+  position: absolute;
+  top: 11px;
+  width: 38px;
+  height: 2px;
+  background: var(--color-accent);
+  transition: width 0.3s ease-in-out;
+}
+
+.arrowBox::after {
+  content: "";
+  position: absolute;
+  top: 7px;
+  width: 10px;
+  height: 10px;
+  box-sizing: border-box;
+  border-bottom: 2px solid var(--color-accent);
+  border-right: 2px solid var(--color-accent);
+  transition: 0.3s ease-in-out;
+}
+
+.navNext .arrowBox::before { left: 1px; }
+.navNext .arrowBox::after { right: 3px; transform: rotate(-45deg); }
+.navPrev .arrowBox::before { right: 1px; }
+.navPrev .arrowBox::after { left: 3px; transform: rotate(135deg); }
+
+.navBtn:not(:disabled):hover .arrowBox::before { width: 42px; }
+.navNext:not(:disabled):hover .arrowBox::after { right: -3px; }
+.navPrev:not(:disabled):hover .arrowBox::after { left: -3px; }
+
+.navBtn:disabled .arrowBox::before { background: #b8c7d8; }
+.navBtn:disabled .arrowBox::after { border-color: #b8c7d8; }
+
+.arrowBoxSmall {
+  transform: scale(0.75);
+}
+/* Requested pricing awards section spacing */
+.section {
+  padding: clamp(1rem, 2vw, 1.5rem) 0 clamp(5rem, 7vw, 6rem);
+}
+
+@media (max-width: 768px) {
+  .section {
+    padding: 3.5rem 0 4rem;
+  }
+}
+/* Reinforced requested arrow stretch/color fix */
+.navBtn:not(:disabled) .arrowBox::before {
+  background: var(--color-accent, #3cc4e5) !important;
+}
+
+.navBtn:not(:disabled) .arrowBox::after {
+  border-color: var(--color-accent, #3cc4e5) !important;
+}
+
+.navBtn:not(:disabled):hover .arrowBox::before {
+  width: 42px;
+}
+
+.navNext:not(:disabled):hover .arrowBox::after {
+  right: -3px;
+}
+
+.navPrev:not(:disabled):hover .arrowBox::after {
+  left: -3px;
+}
+
+.navBtn:disabled .arrowBox::before {
+  background: #b8c7d8 !important;
+}
+
+.navBtn:disabled .arrowBox::after {
+  border-color: #b8c7d8 !important;
+}

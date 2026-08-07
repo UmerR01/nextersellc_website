@@ -27,12 +27,12 @@ const SERVICES = [
     linkText: null,
   },
   {
-    icon: "/esd/03_Legacy-System-Modernization-Planning.svg",
-    title: "Legacy system modernization",
+    icon: "/crm-development/03_Incremental-modernization-with-architectural-continuity-01.svg",
+    title: "CRM development",
     description:
-      "We modernize legacy software by updating the architecture, cutting dependencies on outdated components, improving maintainability, and removing brittle integrations. That work includes refactoring monoliths, defining service boundaries, exposing stable APIs, and rebuilding data flows to support new digital functions and AI use cases.",
-    link: "#",
-    linkText: "Legacy software modernization",
+      "We build and modernize CRM platforms that fit how your sales, support, and account teams actually work. That includes custom CRM builds, migrations off legacy systems, and integrations with your existing ERP, marketing, and support tools, so customer data stays consistent across the business.",
+    link: "/services/crm-development",
+    linkText: "CRM development services",
   },
   {
     icon: "/esd/04_Cloud-based-predictive-analytics-platforms-03.svg",
@@ -43,12 +43,12 @@ const SERVICES = [
     linkText: null,
   },
   {
-    icon: "/esd/04_Synthetic-test-data-generation-02.svg",
-    title: "Data management and BI",
+    icon: "/big-data/05_Real-time-data-platforms-02.svg",
+    title: "Big Data development",
     description:
-      "We help enterprises govern their data and use it more effectively through data management and business intelligence (BI) solutions. That includes reporting, analytics, data-quality work, and preparing the data foundations for search, recommendation, forecasting, and decision-support systems.",
-    link: "#",
-    linkText: "Data Analytics services",
+      "We help enterprises govern and use their data effectively through Big Data engineering and business intelligence. That includes pipeline development, data governance, warehouse and lake design, and preparing the data foundations for search, recommendation, forecasting, and decision-support systems.",
+    link: "/services/big-data-development",
+    linkText: "Big Data development services",
   },
 ];
 
@@ -65,20 +65,27 @@ export default function ESDServicesBlock() {
           work inside your existing operations.
         </p>
         <div className={styles.grid}>
-          {SERVICES.map((s, i) => (
-            <div key={i} className={`${styles.card}${"featured" in s && s.featured ? ` ${styles.cardFeatured}` : ""}`}>
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src={s.icon} alt={s.title} width={56} height={56} className={styles.icon} loading="lazy" />
-              <h3 className={styles.cardTitle}>{s.title}</h3>
-              <p className={styles.cardDesc}>{s.description}</p>
-              {s.link && s.linkText && (
-                <a href={s.link} className={styles.cardLink}>
-                  {s.linkText}
-                  <span className={styles.linkArrow} aria-hidden />
-                </a>
-              )}
-            </div>
-          ))}
+          {SERVICES.map((s, i) => {
+            const Tag = s.link ? "a" : "div";
+            return (
+              <Tag
+                key={i}
+                href={s.link ?? undefined}
+                className={`${styles.card}${"featured" in s && s.featured ? ` ${styles.cardFeatured}` : ""}${s.link ? ` ${styles.cardLinked}` : ""}`}
+              >
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src={s.icon} alt={s.title} width={56} height={56} className={styles.icon} loading="lazy" />
+                <h3 className={styles.cardTitle}>{s.title}</h3>
+                <p className={styles.cardDesc}>{s.description}</p>
+                {s.link && s.linkText && (
+                  <span className={styles.cardLink}>
+                    {s.linkText}
+                    <span className={styles.linkArrow} aria-hidden />
+                  </span>
+                )}
+              </Tag>
+            );
+          })}
         </div>
       </div>
     </section>

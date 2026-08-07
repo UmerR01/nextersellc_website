@@ -1,39 +1,15 @@
 .hero {
   font-family: var(--font-inter-tight), "Inter Tight", sans-serif;
   overflow: hidden;
-  padding-top: 50px;
+  padding-top: calc(var(--header-height) + 26px);
   position: relative;
   width: 100%;
-  background:
-    radial-gradient(circle at 105% 29%, rgba(60, 196, 229, 0.32), transparent 35%),
-    radial-gradient(circle at -2% 98%, rgba(60, 196, 229, 0.32), transparent 35%),
-    linear-gradient(152deg, #02102c 0%, #112244 100%);
-}
-
-.hero::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-  pointer-events: none;
-  background:
-    linear-gradient(108deg, transparent 0 56%, rgba(60, 196, 229, 0.08) 56% 66%, transparent 66%),
-    linear-gradient(108deg, transparent 0 72%, rgba(60, 196, 229, 0.08) 72% 83%, transparent 83%);
-}
-
-.hero::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-  pointer-events: none;
-  background: transparent;
 }
 
 @media (min-width: 1024px) and (max-width: 1680px) {
   .hero {
     margin-left: 0;
-    padding-top: 96px;
+    padding-top: calc(var(--header-height) + 26px);
     width: 100%;
   }
 }
@@ -60,7 +36,6 @@
   height: calc(100% + 224px);
   width: 100%;
   z-index: 0;
-  opacity: 0.35;
 }
 
 @media (max-width: 768px) {
@@ -101,9 +76,9 @@
 }
 
 .container {
-  max-width: min(100%, 1504px);
+  max-width: min(100%, 1540px);
   margin: 0 auto;
-  padding: 0 40px;
+  padding-inline: clamp(1.25rem, 3vw, 2.5rem);
 }
 
 @media (max-width: 768px) {
@@ -114,7 +89,7 @@
 
 .inner {
   color: #fff;
-  padding: 96px 0 136px;
+  padding: 0 0 8.5rem;
   position: relative;
   text-align: left;
 }
@@ -128,28 +103,38 @@
 .breadcrumbs {
   display: flex;
   align-items: center;
-  gap: 0;
-  margin-bottom: 24px;
-  font-size: 14px;
-  color: rgba(255, 255, 255, 0.7);
   flex-wrap: wrap;
+  gap: 4px;
+  margin: 0 0 5rem;
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 14px;
+  line-height: 20px;
+}
+
+.breadcrumbs a,
+.breadcrumbs span {
+  display: inline-flex;
+  align-items: center;
+  color: inherit;
+  text-decoration: none;
 }
 
 .breadcrumbs a {
-  color: #fff;
+  color: rgba(255, 255, 255, 0.5);
+  transition: color 0.2s ease;
 }
 
-.breadcrumbs a::after {
-  content: "";
-  display: inline-block;
-  width: 12px;
-  height: 12px;
-  margin: 0 6px;
-  background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none'%3E%3Cpath d='M6 4l4 4-4 4' stroke='rgba(255,255,255,0.5)' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: contain;
-  vertical-align: middle;
+.breadcrumbs a:hover {
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.breadcrumbs span {
+  color: rgba(255, 255, 255, 0.35);
+}
+
+.breadcrumbSep {
+  display: flex;
+  align-items: center;
 }
 
 .title {
@@ -157,7 +142,7 @@
   font-weight: 400;
   line-height: 77px;
   text-align: left;
-  max-width: 980px;
+  max-width: 85rem;
   margin: 0;
   color: #fff;
 }

@@ -263,12 +263,8 @@ export default function ProcessPage() {
               <p className={styles.heroDesc}>
                 Our process outlines, in clearly defined phases, our plan to develop a solution to transform your business or its processes. It allows us to produce high-quality, cost efficient applications in the shortest possible time. Each phase is delivered to you to review and approve before we move onto the next one.
               </p>
-              <a href="/contact-us" className={styles.heroCta}>
+              <a href="#get-modal-popup" className={`btn btn-accent ${styles.heroCta}`}>
                 Let&apos;s talk
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
-                  <line x1="5" y1="12" x2="19" y2="12" />
-                  <polyline points="12 5 19 12 12 19" />
-                </svg>
               </a>
             </div>
           </div>

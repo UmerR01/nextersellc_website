@@ -2616,6 +2616,16 @@
   height: 56px;
   object-fit: contain;
   width: 56px;
+  filter: grayscale(1) opacity(0.55);
+  transition: filter 0.2s ease;
+}
+
+.cooperationTab:hover .cooperationTabIcon {
+  filter: grayscale(1) opacity(0.8);
+}
+
+.cooperationTabActive .cooperationTabIcon {
+  filter: none;
 }
 
 .cooperationContent {
@@ -2724,20 +2734,22 @@
 }
 
 .deliveryOpen .processStep:not(:last-child)::after {
-  background: #e9f1f8;
-  height: calc(100% + 64px - 104px);
-  left: 51px;
-  top: 104px;
+  background: #e3edf7;
+  height: calc(100% + 64px - 118px);
+  left: 59px;
+  top: 118px;
   width: 1px;
 }
 
 .deliveryOpen .processNum {
   background: #f7f9fe;
-  box-shadow: inset 0 0 0 2px #e3edf7, 0 0 0 4px #fff, 0 0 0 6px #e3edf7;
+  border: 2px solid #e3edf7;
+  box-shadow: 0 0 0 6px #fff, 0 0 0 8px #e3edf7;
   color: var(--color-accent);
   font-size: 1.625rem;
   height: 102px;
   width: 102px;
+  margin: 8px;
 }
 
 .deliveryOpen .processStepBody {
@@ -2915,15 +2927,16 @@
   }
 
   .deliveryOpen .processStep:not(:last-child)::after {
-    height: calc(100% + 42px - 62px);
-    left: 31px;
-    top: 62px;
+    height: calc(100% + 42px - 72px);
+    left: 36px;
+    top: 72px;
   }
 
   .deliveryOpen .processNum {
-    box-shadow: inset 0 0 0 1px #e3edf7, 0 0 0 3px #fff, 0 0 0 5px #e3edf7;
+    box-shadow: 0 0 0 3px #fff, 0 0 0 5px #e3edf7;
     height: 62px;
     width: 62px;
+    margin: 5px;
   }
 
   .deliveryOpen .processStepBody {

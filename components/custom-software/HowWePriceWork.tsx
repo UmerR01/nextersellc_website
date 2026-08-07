@@ -8,7 +8,7 @@ const CARDS = [
     linkText: "See how each model works in our engagement models",
   },
   {
-    href: "/cost-calculator",
+    href: "/pricing",
     title: "Budget framing",
     desc: "We don’t hide the money question. For most product builds, a one-to-three-week discovery sprint scopes the budget before you commit to the full build.",
     linkText: "You can also size a project yourself with our free project estimate",
@@ -31,23 +31,7 @@ export default function HowWePriceWork() {
               <p className={styles.cardDesc}>{card.desc}</p>
               <span className={styles.cardLink}>
                 {card.linkText}
-                <svg
-                  className={styles.arrow}
-                  width="16"
-                  height="16"
-                  viewBox="0 0 16 16"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                  aria-hidden="true"
-                >
-                  <path
-                    d="M3 8h10M9 4l4 4-4 4"
-                    stroke="currentColor"
-                    strokeWidth="1.5"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                </svg>
+                <span className={styles.linkArrow} aria-hidden="true" />
               </span>
             </a>
           ))}

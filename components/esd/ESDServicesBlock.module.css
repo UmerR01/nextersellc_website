@@ -59,13 +59,18 @@
   display: flex;
   flex-direction: column;
   border: none;
-  cursor: default;
   background: transparent;
+  text-decoration: none;
+  color: inherit;
   transition: background 0.25s ease;
 }
 
 .card:hover {
   background: rgba(60, 196, 229, 0.06);
+}
+
+.cardLinked:hover {
+  cursor: pointer;
 }
 
 

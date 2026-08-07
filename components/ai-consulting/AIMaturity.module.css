@@ -54,21 +54,20 @@
   color: rgba(255, 255, 255, 0.6);
 }
 .tab:hover .tabLabel { color: var(--color-accent); }
-.tab:hover .tabIcon { opacity: 1; }
+.tab:hover .tabIcon { filter: none; }
 
 .tabActive {
   border-bottom-color: var(--color-accent);
 }
 .tabActive .tabLabel { color: var(--color-accent); }
-.tabActive .tabIcon { opacity: 1; }
+.tabActive .tabIcon { filter: none; }
 
 .tabIcon {
   width: 56px;
   height: 56px;
   object-fit: contain;
-  filter: brightness(0) invert(1);
-  opacity: 0.55;
-  transition: opacity 0.2s;
+  filter: brightness(0) invert(1) opacity(0.55);
+  transition: filter 0.2s;
   display: block;
 }
 

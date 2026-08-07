@@ -22,14 +22,16 @@
 
 .review {
   border-bottom: 1px solid var(--color-border);
-  display: flex;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 252px;
+  column-gap: 48px;
   max-width: 1180px;
   padding: 0 100px 56px;
 }
 
 @media screen and (max-width: 991px) {
   .review {
+    display: flex;
     flex-direction: column;
     padding: 0 0 40px;
   }
@@ -51,15 +53,12 @@
   font-style: italic;
   font-weight: 400;
   line-height: 36px;
-  margin-right: 48px;
-  max-width: 680px;
   padding-left: 64px;
   position: relative;
 }
 
 @media screen and (max-width: 991px) {
   .text {
-    margin-right: 0;
     max-width: 100%;
     padding-left: 0;
     padding-top: 48px;
@@ -117,8 +116,7 @@
 .author {
   display: flex;
   flex-direction: column;
-  max-width: 252px;
-  width: 82%;
+  width: 100%;
 }
 
 @media screen and (max-width: 991px) {
@@ -201,91 +199,3 @@
   }
 }
 
-/* link__primary style */
-.linkPrimary {
-  color: var(--color-accent);
-  cursor: pointer;
-  display: inline-block;
-  font-size: 18px;
-  font-weight: 600;
-  line-height: 22px;
-  position: relative;
-  text-decoration: none;
-  margin-top: 24px;
-}
-
-.linkArrow {
-  display: inline-block;
-  font-size: 18px;
-  line-height: 22px;
-  padding-left: 6px;
-  padding-right: 17px;
-  position: relative;
-  width: 17px;
-}
-
-.linkArrow::before,
-.linkArrow::after {
-  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg width='6' height='10' viewBox='0 0 6 10' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M7.94319e-08 8.59L3.59 5L-3.53625e-07 1.41L1 0.5L5.5 5L1 9.5L7.94319e-08 8.59Z' fill='%233CC4E5'/%3E%3C/svg%3E");
-  background-position: 50%;
-  background-repeat: no-repeat;
-  background-size: cover;
-  content: "";
-  display: block;
-  height: 9px;
-  position: absolute;
-  right: 10px;
-  top: 9px;
-  transition: 0.1s;
-  width: 6px;
-}
-
-.linkArrow::after {
-  opacity: 0;
-}
-
-@media (min-width: 769px) {
-  .linkPrimary:hover .linkArrow::before {
-    animation: bounceBefore 1s linear infinite;
-    right: 6px;
-  }
-  .linkPrimary:hover .linkArrow::after {
-    animation: bounceAfter 1s linear infinite;
-    right: 6px;
-  }
-}
-
-.authorData .linkPrimary {
-  display: flex;
-}
-
-@media screen and (max-width: 991px) {
-  .authorData .linkPrimary {
-    display: none;
-  }
-}
-
-.linkMobile {
-  display: none;
-}
-
-@media screen and (max-width: 991px) {
-  .linkMobile {
-    display: inline-flex;
-    margin-top: 32px;
-  }
-}
-
-@keyframes bounceBefore {
-  0% { opacity: 1; transform: translateX(0); }
-  49% { opacity: 0; transform: translateX(7px); }
-  52% { opacity: 0; transform: translateX(-7px); }
-  to { opacity: 1; transform: translateX(0); }
-}
-
-@keyframes bounceAfter {
-  0% { opacity: 0; transform: translateX(-7px); }
-  49% { opacity: 1; transform: translateX(0); }
-  99% { opacity: 0; transform: translateX(7px); }
-  to { opacity: 0; transform: translateX(-7px); }
-}

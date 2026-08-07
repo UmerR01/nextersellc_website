@@ -4,25 +4,22 @@ const COLS = [
   {
     title: "Key services",
     links: [
-      { text: "RAG development for PoCs", href: "/services/ai-software-development" },
-      { text: "AI agents PoC", href: "/services/ai-software-development" },
-      { text: "AI integration PoC", href: "/services/ai-software-development" },
-      { text: "Business analysis for PoC scoping", href: "/services/custom-software-development" },
+      { text: "RAG development", href: "/services/rag-development" },
+      { text: "AI agents", href: "/services/ai-agents-development" },
+      { text: "AI integration", href: "/services/ai-integration" },
     ],
   },
   {
     title: "Processes",
     links: [
-      { text: "Pricing", href: "/contact-us" },
-      { text: "FAQ", href: "/services" },
+      { text: "Pricing", href: "/pricing" },
+      { text: "FAQ", href: "/faq" },
     ],
   },
   {
     title: "Guides",
     links: [
-      { text: "All useful resources", href: "/library" },
-      { text: "AI development costs", href: "/blog/ai-development-costs" },
-      { text: "Integrating AI into business", href: "/blog/integrating-ai-into-business" },
+      { text: "Blog", href: "/blog" },
     ],
   },
 ];

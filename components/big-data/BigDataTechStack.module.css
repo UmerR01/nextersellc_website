@@ -1,0 +1,108 @@
+.section {
+  background: #fff;
+  overflow: hidden;
+  position: relative;
+}
+
+.inner {
+  max-width: 72rem;
+  margin: 0 auto;
+  padding: clamp(4.2rem, 5.4vw, 5.7rem) 24px clamp(4.5rem, 6vw, 6.5rem);
+  width: 100%;
+}
+
+.title {
+  max-width: 72rem;
+  margin: 0 auto;
+  color: #000;
+  font-family: var(--font-inter-tight), sans-serif;
+  font-size: clamp(3rem, 4.45vw, 3.65rem);
+  font-weight: 400;
+  line-height: 1.12;
+  letter-spacing: 0;
+  text-align: center;
+}
+
+.accent {
+  color: var(--color-accent);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.25rem;
+  margin: 4.4rem auto 0;
+}
+
+.card {
+  min-height: 15.75rem;
+  background: #f5f8fc;
+  padding: 2.35rem 2.5rem 2.25rem;
+}
+
+.cardTitle {
+  margin: 0 0 1.35rem;
+  color: #000;
+  font-family: var(--font-inter-tight), sans-serif;
+  font-size: clamp(1.55rem, 2vw, 1.9rem);
+  font-weight: 400;
+  line-height: 1.22;
+  letter-spacing: 0;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.72rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.list li {
+  position: relative;
+  padding-left: 2rem;
+  color: #172b4d;
+  font-family: var(--font-inter-tight), sans-serif;
+  font-size: clamp(1rem, 1.2vw, 1.08rem);
+  font-weight: 400;
+  line-height: 1.35;
+}
+
+.list li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.28em;
+  width: 1.1875rem;
+  height: 0.875rem;
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg width='19' height='14' viewBox='0 0 19 14' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M17.25 1.75037L6.75 12.2504L1.5 7.00037' stroke='%233CC4E5' stroke-width='1.5' stroke-linecap='square'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+@media screen and (max-width: 900px) {
+  .grid {
+    grid-template-columns: 1fr;
+    max-width: 38rem;
+  }
+}
+
+@media screen and (max-width: 640px) {
+  .inner {
+    padding: 4rem 24px 4.5rem;
+  }
+
+  .title {
+    text-align: left;
+  }
+
+  .grid {
+    margin-top: 3rem;
+  }
+
+  .card {
+    min-height: 0;
+    padding: 2rem 1.5rem;
+  }
+}

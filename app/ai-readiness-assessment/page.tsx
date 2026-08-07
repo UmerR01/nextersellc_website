@@ -18,7 +18,7 @@ import ARTableOfContents from "@/components/ai-readiness/ARTableOfContents";
 import AIAwards from "@/components/ai-consulting/AIAwards";
 import AIRecentWorks from "@/components/ai-consulting/AIRecentWorks";
 import AIReviews from "@/components/ai-consulting/AIReviews";
-import LogosMarquee from "@/components/home/LogosMarquee";
+import AipocLogos from "@/components/aipoc/AipocLogos";
 import LetsStart from "@/components/home/LetsStart";
 import Stories from "@/components/home/Stories";
 import styles from "./page.module.css";
@@ -38,7 +38,7 @@ export default function AIReadinessPage() {
 
         <div className={styles.layout}>
           <div className={styles.mainContent}>
-            <LogosMarquee edgeFade />
+            <AipocLogos />
             <div id="foundation"><ARFoundation /></div>
             <ARQuiz />
             <div id="audit-scope"><ARWhatsInit /></div>

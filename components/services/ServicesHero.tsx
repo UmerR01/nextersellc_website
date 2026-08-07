@@ -114,12 +114,13 @@ export default function ServicesHero() {
       <div className={styles.heroWrapper}>
         <div className={styles.container}>
           <div className={styles.content}>
-            <div className={styles.breadcrumbs}>
+            <nav className={styles.breadcrumbs} aria-label="Breadcrumb">
               <Link href="/">Home</Link>
-              <span>Software development services</span>
-            </div>
+              <span className={styles.breadcrumbSep} aria-hidden="true">&gt;</span>
+              <span>Services</span>
+            </nav>
 
-            <h1 className={styles.title}>AI, IoT and custom software development services</h1>
+            <h1 className={styles.title}>AI and custom software development services</h1>
 
             <div className={styles.numbers}>
               <div className={styles.numberItem}>

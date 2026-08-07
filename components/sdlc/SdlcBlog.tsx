@@ -8,27 +8,18 @@ const ClockIcon = () => (
   </svg>
 );
 
-const ArrowIcon = () => (
-  <svg width="6" height="10" viewBox="0 0 6 10" fill="none" aria-hidden>
-    <path d="M7.94319e-08 8.59L3.59 5L-3.53625e-07 1.41L1 0.5L5.5 5L1 9.5L7.94319e-08 8.59Z" fill="currentColor" />
-  </svg>
-);
-
 const sidePosts = [
   {
-    href: "https://sumatosoft.com/blog/modernize-legacy-systems-with-custom-ai",
     title: "How to modernize legacy systems with custom AI",
     readTime: "26 mins",
     date: "June 24, 2026",
   },
   {
-    href: "https://sumatosoft.com/blog/what-is-release-planning-in-scrum-the-way-to-deliver-project-on-time",
     title: "How to Deliver Software on Time with Agile and Release Planning in the AI Era",
     readTime: "18 mins",
     date: "June 22, 2026",
   },
   {
-    href: "https://sumatosoft.com/blog/from-pilot-to-production",
     title: "From Pilot to Production: Why Enterprise AI Stalls. The Framework to Scale It (2026)",
     readTime: "31 mins",
     date: "June 16, 2026",
@@ -44,11 +35,7 @@ export default function SdlcBlog() {
         </h2>
         <div className={styles.postsGrid}>
           <div className={styles.featuredCol}>
-            <a
-              rel="dofollow"
-              className={styles.featuredPost}
-              href="https://sumatosoft.com/blog/ai-cost-reduction-playbook"
-            >
+            <div className={styles.featuredPost}>
               <div className={styles.featuredImage}>
                 <div className={styles.featuredImageWrapper}>
                   <Image
@@ -71,11 +58,11 @@ export default function SdlcBlog() {
                 <span className={styles.metaSep}>|</span>
                 <span className={styles.postDate}>July 1, 2026</span>
               </div>
-            </a>
+            </div>
           </div>
           <div className={styles.sideCol}>
             {sidePosts.map((post, i) => (
-              <a key={i} rel="dofollow" className={styles.sidePost} href={post.href}>
+              <div key={i} className={styles.sidePost}>
                 <div className={styles.sidePostTitle}>{post.title}</div>
                 <div className={styles.postMeta}>
                   <span className={styles.readTime}>
@@ -85,14 +72,12 @@ export default function SdlcBlog() {
                   <span className={styles.metaSep}>|</span>
                   <span className={styles.postDate}>{post.date}</span>
                 </div>
-              </a>
+              </div>
             ))}
             <div className={styles.allLink}>
               <a href="/blog" className={styles.link}>
-                All articles{" "}
-                <span className={styles.linkArrow}>
-                  <ArrowIcon />
-                </span>
+                All articles
+                <span className={styles.linkArrow} aria-hidden="true" />
               </a>
             </div>
           </div>

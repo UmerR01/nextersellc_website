@@ -66,7 +66,17 @@ export default function AiagentsHero() {
       <div className={s.heroInner}>
         <nav className={s.heroBreadcrumbs} aria-label="Breadcrumb">
           <a href="/">Home</a>
+          <span className={s.breadcrumbSep}>
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden>
+              <path stroke="rgba(255,255,255,0.5)" strokeLinecap="square" d="m6 4 4 4-4 4" />
+            </svg>
+          </span>
           <a href="/services">Services</a>
+          <span className={s.breadcrumbSep}>
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden>
+              <path stroke="rgba(255,255,255,0.5)" strokeLinecap="square" d="m6 4 4 4-4 4" />
+            </svg>
+          </span>
           <span>AI agents development</span>
         </nav>
         <h1 className={s.heroTitle}>

@@ -86,9 +86,9 @@ export default function FAQHero() {
             </div>
 
             <div className={styles.buttons}>
-              <Link href="/contact" className={styles.btn}>
+              <a href="#get-modal-popup" className={styles.btn}>
                 <span>Get in touch</span>
-              </Link>
+              </a>
             </div>
           </div>
         </div>

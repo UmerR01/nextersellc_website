@@ -9,7 +9,7 @@ import ServicesFaqBlock, { type FaqItem } from "@/components/services/ServicesFa
 import LetsStart from "@/components/home/LetsStart";
 import AdlcBlog, { type AdlcFeaturedPost, type AdlcBlogPost } from "@/components/adlc/AdlcBlog";
 import InsurtechHero from "./InsurtechHero";
-import InsurtechLogos from "./InsurtechLogos";
+import AipocLogos from "@/components/aipoc/AipocLogos";
 import InsurtechArticleLayout from "./InsurtechArticleLayout";
 import styles from "./InsurtechPage.module.css";
 
@@ -81,8 +81,8 @@ const IMPROVES = [
     icon: "/insurtech-development/06_Internet-of-Things-and-telematics-systems-02.svg",
     title: "IoT and telematics for usage-based insurance",
     desc: "Connected vehicles, homes, and wearables continuously generate the data that defines risk, pricing, and prevention. Our telematics solutions create a single environment across underwriting and claims, giving actuaries, underwriters, and leadership full visibility into how policyholders behave and how risk changes over time.",
-    linkLabel: "IoT development services",
-    href: "/services/predictive-maintenance",
+    linkLabel: "Custom software development",
+    href: "/services/custom-software-development",
   },
   {
     icon: "/insurtech-development/06_Artificial-intelligence-and-agentic-workflows-01.svg",
@@ -96,7 +96,7 @@ const IMPROVES = [
     title: "Big Data and ML",
     desc: "Our Big Data and machine learning solutions turn fragmented policy and claims data into a continuous optimization layer across the insurance lifecycle. Pricing, reserving, and portfolio management move into one continuous process, so results stay predictable, loss ratios improve, and capital allocation becomes significantly more precise.",
     linkLabel: "Big Data development",
-    href: "/services/ai-software-development",
+    href: "/services/big-data-development",
   },
 ];
 
@@ -289,7 +289,7 @@ export default function InsurtechPage() {
       <InsurtechHero />
 
       <InsurtechArticleLayout>
-        <InsurtechLogos />
+        <AipocLogos />
 
         {/* ── Challenges ─────────────────────────────────────────────────── */}
         <section id="ins-challenges" className={`${styles.blockLight} ${styles.logisticsChallengesBlock}`}>
@@ -530,7 +530,6 @@ export default function InsurtechPage() {
                     { text: "AI ", last: "development", href: "/services/ai-software-development" },
                     { text: "Predictive ", last: "maintenance", href: "/services/predictive-maintenance" },
                     { text: "Enterprise software ", last: "development", href: "/services/enterprise-software-development" },
-                    { text: "Business analysis ", last: "services", href: "/services/custom-software-development" },
                   ].map((link) => (
                     <li key={link.last + link.text} className={styles.clItem}>
                       <a href={link.href} className={styles.clLink}>

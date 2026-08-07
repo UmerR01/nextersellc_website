@@ -1,4 +1,4 @@
-/* Awesome stories — exact pixel match to Sumatosoft blog-section CSS (line 102) */
+﻿/* Awesome stories â€” exact pixel match to Sumatosoft blog-section CSS (line 102) */
 
 .section {
   position: relative;
@@ -8,7 +8,7 @@
   padding: 96px 0 40px;
 }
 
-/* "We have awesome stories to tell you" — "stories" in blue */
+/* "We have awesome stories to tell you" â€” "stories" in blue */
 .title {
   font-size: clamp(2rem, 4vw, 3rem);
   font-weight: 300;
@@ -29,7 +29,7 @@
   align-items: start;
 }
 
-/* ── Left column: feature post ── */
+/* â”€â”€ Left column: feature post â”€â”€ */
 .feature {
   display: block;
   margin-bottom: 32px;
@@ -37,17 +37,7 @@
   color: inherit;
 }
 
-/* Sumatosoft: image zooms on hover */
-.feature:hover .featureImage img {
-  transform: scale(1.2);
-}
-
-/* Sumatosoft: post title turns red (#ff415c) on hover */
-.feature:hover .featureTitle {
-  color: var(--color-accent);
-}
-
-/* blog-section__post-image — uses padding-top trick for 56.21% aspect ratio */
+/* blog-section__post-image â€” uses padding-top trick for 56.21% aspect ratio */
 .featureImage {
   position: relative;
   margin-bottom: 24px;
@@ -91,7 +81,7 @@
   transition: color 0.3s;
 }
 
-/* ── Right column: sidebar (text-only posts) ──
+/* â”€â”€ Right column: sidebar (text-only posts) â”€â”€
    Sumatosoft: padding-left: 62px on last col-md-6 */
 .sidebar {
   display: flex;
@@ -111,11 +101,6 @@
   margin-bottom: 0;
 }
 
-/* Sumatosoft: title turns red on hover */
-.sidePost:hover .sideTitle {
-  color: var(--color-accent);
-}
-
 /* blog-section__post-title: 28px / 36px / black */
 .sideTitle {
   color: #000000;
@@ -126,7 +111,7 @@
   transition: color 0.3s;
 }
 
-/* ── Post meta: clock icon + separator + date ──
+/* â”€â”€ Post meta: clock icon + separator + date â”€â”€
    blog-section__post-meta: color #5e6d8e; font-size 16px; line-height 22px */
 .meta {
   display: flex;
@@ -157,7 +142,7 @@
   opacity: 0.6;
 }
 
-/* ── "All articles ›" link ──
+/* â”€â”€ "All articles â€º" link â”€â”€
    blog-section__link: align-items flex-end, flex: 1 */
 .allLinkWrap {
   display: flex;
@@ -169,19 +154,52 @@
 .allLink {
   display: inline-flex;
   align-items: center;
-  gap: 4px;
+  gap: 8px;
   font-size: 16px;
   font-weight: 600;
   color: var(--color-accent);
   text-decoration: none;
-  transition: opacity 0.2s;
+  transition: color 0.2s;
+  line-height: 1.2;
 }
 
-.allLink:hover {
-  opacity: 0.75;
+.allLinkArrow {
+  display: inline-block;
+  height: 10px;
+  position: relative;
+  width: 6px;
+  align-self: center;
+  flex: 0 0 6px;
+  transform: translateY(1px);
 }
 
-/* ── Responsive ── */
+.allLinkArrow::before,
+.allLinkArrow::after {
+  background: url("data:image/svg+xml;charset=utf8,%3Csvg width='6' height='10' viewBox='0 0 6 10' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 8.59L3.59 5L0 1.41L1 .5L5.5 5L1 9.5L0 8.59Z' fill='%233CC4E5'/%3E%3C/svg%3E") center no-repeat;
+  content: "";
+  inset: 0;
+  position: absolute;
+}
+
+.allLinkArrow::after { opacity: 0; }
+.allLink:hover .allLinkArrow::before { animation: storiesArrowBefore 1s linear infinite; }
+.allLink:hover .allLinkArrow::after { animation: storiesArrowAfter 1s linear infinite; }
+
+@keyframes storiesArrowBefore {
+  0% { opacity: 1; transform: translateX(0); }
+  49% { opacity: 0; transform: translateX(7px); }
+  52% { opacity: 0; transform: translateX(-7px); }
+  100% { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes storiesArrowAfter {
+  0% { opacity: 0; transform: translateX(-7px); }
+  49% { opacity: 1; transform: translateX(0); }
+  99% { opacity: 0; transform: translateX(7px); }
+  100% { opacity: 0; transform: translateX(-7px); }
+}
+
+/* â”€â”€ Responsive â”€â”€ */
 @media (max-width: 768px) {
   .section {
     padding: 72px 0 34px;
@@ -209,3 +227,6 @@
     margin-bottom: 16px;
   }
 }
+
+
+

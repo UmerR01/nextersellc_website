@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import styles from "./CaseCards.module.css";
 
@@ -82,43 +82,46 @@ export default function CaseCards({
     go(distance > 0 ? 1 : -1);
   };
 
-  // In windowed mode: always render exactly 4 cards.
-  // Window = [active-1, active, active+1, active+2]
-  // active is pinned at window position 1 (2nd slot — open).
-  // Clicking a closed card shifts the window so that card becomes active.
+  // In windowed mode: render a sliding window of up to 4 cards at a time.
+  // The window only shifts when the active card would otherwise fall
+  // outside it — clicking a card that is already visible just moves the
+  // "active" flag to that same DOM node, so the flex-grow transition
+  // (same one non-windowed mode relies on) actually plays.
+  const windowSize = windowed ? Math.min(4, count) : count;
+  const [windowStart, setWindowStart] = useState(0);
+
+  useEffect(() => {
+    if (!windowed) return;
+    setWindowStart((start) => {
+      const offset = (active - start + count) % count;
+      if (offset < windowSize) return start;
+      const preferredOffset = windowSize > 1 ? 1 : 0;
+      return (active - preferredOffset + count) % count;
+    });
+  }, [active, windowed, windowSize, count]);
+
   const windowIndices = windowed
-    ? [
-        (active - 1 + count) % count,  // pos 0 — closed left
-        active,                          // pos 1 — open
-        (active + 1) % count,           // pos 2 — closed right
-        (active + 2) % count,           // pos 3 — closed far right
-      ]
+    ? Array.from({ length: windowSize }, (_, pos) => (windowStart + pos) % count)
     : cards.map((_, i) => i);
 
   const renderCards = windowIndices.map((cardIdx, windowPos) => {
     const card = cards[cardIdx];
-    // In windowed mode the active is always windowPos 1; otherwise match by index
-    const isActive = windowed ? windowPos === 1 : cardIdx === active;
-    const isTabletNext = windowed ? windowPos === 2 : cardIdx === (active + 1) % count;
+    const isActive = cardIdx === active;
+    const isTabletNext = cardIdx === (active + 1) % count;
 
     const handleClick = () => {
       if (isActive) return;
-      if (windowed) {
-        // steps = how far this window position is from the active slot (pos 1)
-        go(windowPos - 1);
-      } else {
-        setDirection(1);
-        setActive(cardIdx);
-      }
+      setDirection(1);
+      setActive(cardIdx);
     };
 
     return (
       <article
-        key={windowed ? `w${windowPos}-${cardIdx}` : card.name}
+        key={windowed ? `w${windowPos}` : card.name}
         className={`${styles.card} ${isActive ? styles.active : ""} ${
-          !windowed && isActive && direction === 1
+          isActive && direction === 1
             ? styles.slideNext
-            : !windowed && isActive && direction === -1
+            : isActive && direction === -1
               ? styles.slidePrev
               : ""
         } ${isTabletNext ? styles.tabletNext : ""}`}
@@ -138,9 +141,6 @@ export default function CaseCards({
         <div className={styles.body}>
           <h3 className={styles.title}>{card.title}</h3>
           <p className={styles.text}>{card.text}</p>
-          <a href={card.href ?? "#contact"} className={styles.viewMore}>
-            View More <span aria-hidden>↗</span>
-          </a>
         </div>
 
         <div className={styles.meta}>

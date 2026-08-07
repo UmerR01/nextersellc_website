@@ -1,4 +1,3 @@
-import Link from "next/link";
 import styles from "./DownloadCTA.module.css";
 
 export default function DownloadCTA() {
@@ -14,9 +13,9 @@ export default function DownloadCTA() {
             </p>
           </div>
           <div className={styles.right}>
-            <Link href="/contact-us" className={styles.btn}>
+            <a href="#get-modal-popup" className={`btn btn-accent ${styles.btn}`}>
               Get in touch
-            </Link>
+            </a>
           </div>
         </div>
       </div>

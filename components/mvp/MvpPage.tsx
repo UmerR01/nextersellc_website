@@ -192,24 +192,24 @@ const crosslinks = [
     heading: "MVP development",
     links: [
       { text: "Full software product ", last: "development", href: "/services/custom-software-development" },
-      { text: "Web MVP ", last: "development", href: "/services/web-development" },
+      { text: "Web MVP ", last: "development", href: "/services/web-app-development" },
       { text: "Mobile MVP ", last: "development", href: "/services/mobile-app-development" },
     ],
   },
   {
     heading: "Related services",
     links: [
-      { text: "MVP in Scrum ", last: "methodology", href: "/sdlc" },
-      { text: "SaaS MVP ", last: "development", href: "/services/custom-software-development" },
-      { text: "AI product ", last: "development", href: "/services/ai-software-development" },
+      { text: "AI ", last: "consulting", href: "/ai-consulting" },
+      { text: "Big data ", last: "development", href: "/services/big-data-development" },
+      { text: "ML ", last: "development", href: "/services/ml-development" },
     ],
   },
   {
     heading: "About Nexterse LLC",
     links: [
-      { text: "Top MVP development ", last: "companies", href: "/blog/top-mvp-development-companies" },
-      { text: "Startup software ", last: "development", href: "/services/custom-software-development" },
-      { text: "Get a free project ", last: "estimate", href: "/contact-us" },
+      { text: "About ", last: "us", href: "/team" },
+      { text: "Contact ", last: "us", href: "/contact-us" },
+      { text: "Get a free project ", last: "estimate", href: "/pricing" },
     ],
   },
 ];
@@ -309,7 +309,7 @@ export default function MvpPage() {
               <p className={s.downloadCtaDesc}>Turn it into a working MVP with our expert dev team.</p>
             </div>
             <div className={s.downloadCtaBtn}>
-              <a href="/contact-us" className={`btn btn-accent ${s.btnPrimary}`}>Start your MVP</a>
+              <a href="#get-modal-popup" className={`btn btn-accent ${s.btnPrimary}`}>Start your MVP</a>
             </div>
           </div>
         </div>
@@ -490,7 +490,7 @@ export default function MvpPage() {
               <p className={s.downloadCtaDesc}>Book a free strategy call and get expert feedback on your MVP scope.</p>
             </div>
             <div className={s.downloadCtaBtn}>
-              <a href="/contact" className={`btn btn-accent ${s.btnPrimary}`}>Book a call</a>
+              <a href="#get-modal-popup" className={`btn btn-accent ${s.btnPrimary}`}>Book a call</a>
             </div>
           </div>
         </div>

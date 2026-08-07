@@ -111,10 +111,15 @@ export default function EngagementHero() {
       <div className={styles.heroWrapper}>
         <div className={styles.container}>
           <div className={styles.content}>
-            <div className={styles.breadcrumbs}>
+            <nav className={styles.breadcrumbs} aria-label="Breadcrumb">
               <Link href="/">Home</Link>
+              <span className={styles.breadcrumbSep}>
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden>
+                  <path stroke="rgba(255,255,255,0.5)" strokeLinecap="square" d="m6 4 4 4-4 4" />
+                </svg>
+              </span>
               <span>Engagement models &amp; process</span>
-            </div>
+            </nav>
             <h1 className={styles.title}>Flexible and client-oriented engagement models</h1>
             <div className={styles.description}>
               <p>Choose the engagement model that fits your project shape and engage Nexterse LLC to build it: Time and Materials, Time and Materials with a cap, Fixed Price, or a Dedicated Team.</p>

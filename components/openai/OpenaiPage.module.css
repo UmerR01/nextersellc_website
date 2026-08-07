@@ -801,31 +801,21 @@
 }
 
 .inlineCtaInner {
-  background:
-    linear-gradient(116deg, transparent 0 43%, rgba(60, 196, 229, 0.06) 43% 55%, transparent 55%),
-    linear-gradient(116deg, transparent 0 70%, rgba(255, 255, 255, 0.05) 70% 86%, transparent 86%),
-    linear-gradient(115deg, #102f63 0%, #07162f 52%, #46203f 100%);
+  background: linear-gradient(115deg, var(--color-accent-dark) 0%, #17163f 100%);
   min-height: 234px;
   padding: 64px 134px;
-  display: flex;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
   align-items: center;
   justify-content: space-between;
   gap: 72px;
-  flex-wrap: wrap;
-}
-
-.adtechGradientCta .inlineCtaInner {
-  background: linear-gradient(115deg, var(--color-accent-dark) 0%, #17163f 100%);
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) auto;
-  flex-wrap: nowrap;
+  overflow: hidden;
 }
 
 @media (max-width: 700px) {
-  .inlineCtaInner { padding: 40px 28px; }
-
-  .adtechGradientCta .inlineCtaInner {
+  .inlineCtaInner {
     grid-template-columns: 1fr;
+    padding: 40px 28px;
   }
 }
 
@@ -846,32 +836,11 @@
 
 .inlineCtaBtn {
   font-family: var(--font-inter-tight), sans-serif;
-  font-size: 1rem;
-  font-weight: 600;
-  color: #fff;
-  background: var(--color-accent);
-  border-radius: var(--border-radius);
-  
-  padding: 16px 36px;
-  cursor: pointer;
+  min-height: 2.625rem;
+  padding: 0.4rem 1.5rem;
   text-decoration: none;
   white-space: nowrap;
   flex-shrink: 0;
-  transition: background 0.2s;
-}
-
-.inlineCtaBtn:hover { background: #2aaccc; }
-
-.adtechGradientCta .inlineCtaBtn {
-  border-radius: var(--radius-button);
-  border: 2px solid var(--color-accent);
-  min-height: 2.625rem;
-  padding: 0.4rem 1.5rem;
-}
-
-.adtechGradientCta .inlineCtaBtn:hover {
-  background: transparent;
-  color: var(--color-accent);
 }
 
 /* ── Process steps (dark, connected circles) ───────────────────────────────── */
@@ -3685,5 +3654,1171 @@
   .quickFactsGrid {
     grid-template-columns: 1fr;
     gap: 2.5rem;
+  }
+}
+/* OpenAI services reference layout */
+.openaiServicesBlock {
+  background: #f5f8fc;
+  padding: 3.9rem 0 5.5rem;
+}
+
+.openaiServicesBlock :global(.container) {
+  max-width: 88.75rem;
+}
+
+.openaiServicesBlock .sectionTitle {
+  max-width: 58rem;
+  margin: 0 auto;
+  color: #000;
+  font-size: clamp(3rem, 4.2vw, 3.65rem);
+  line-height: 1.08;
+  font-weight: 400;
+  letter-spacing: 0;
+  text-align: center;
+}
+
+.openaiServicesBlock .sectionTitle .accent {
+  display: block;
+  color: var(--color-accent);
+}
+
+.openaiServicesBlock .ecomServicesGrid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  column-gap: clamp(3.5rem, 6.5vw, 6.6rem);
+  row-gap: 5.9rem;
+  max-width: 71.25rem;
+  margin: 4.9rem auto 0;
+}
+
+.openaiServicesBlock .ecomServiceCard {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  isolation: isolate;
+  padding: 0 0 1.3rem;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+  transition: none;
+}
+
+.openaiServicesBlock .ecomServiceCard::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  inset: -1.75rem -2.25rem;
+  background: linear-gradient(135deg, rgba(60, 196, 229, 0.11), rgba(60, 196, 229, 0.025));
+  opacity: 0;
+  transition: opacity 0.25s ease;
+  pointer-events: none;
+}
+
+.openaiServicesBlock .ecomServiceCard:hover {
+  border-color: transparent;
+  box-shadow: none;
+  transform: none;
+}
+
+.openaiServicesBlock .ecomServiceCard:hover::before,
+.openaiServicesBlock .ecomServiceCard:focus-within::before {
+  opacity: 1;
+}
+
+.openaiServicesBlock .ecomServiceIcon {
+  width: 3.5rem;
+  height: 3.5rem;
+  margin: 0 0 1.65rem;
+  object-fit: contain;
+}
+
+.openaiServicesBlock .ecomServiceTitle {
+  margin: 0 0 1.25rem;
+  color: #000;
+  font-size: clamp(1.55rem, 2vw, 1.8rem);
+  line-height: 1.18;
+  font-weight: 400;
+  letter-spacing: 0;
+}
+
+.openaiServicesBlock .ecomServiceIntro {
+  margin: 0 0 0.15rem;
+  color: #172b4d;
+  font-size: 1.12rem;
+  line-height: 1.55;
+  font-weight: 400;
+}
+
+.openaiServicesBlock .ecomServiceIntro + .ecomServiceIntro {
+  margin-top: 0.2rem;
+}
+
+.openaiServicesBlock .cardLink {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  align-self: flex-start;
+  gap: 0.5rem;
+  margin-top: 1.35rem;
+  padding: 0.45rem 0.65rem;
+  color: var(--color-accent);
+  font-family: var(--font-inter-tight), sans-serif;
+  font-size: 1.12rem;
+  font-weight: 500;
+  line-height: 1.2;
+  text-decoration: none;
+  isolation: isolate;
+}
+
+.openaiServicesBlock .cardLink::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(60, 196, 229, 0.15), rgba(60, 196, 229, 0.035));
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.openaiServicesBlock .cardLink:hover::before,
+.openaiServicesBlock .cardLink:focus-visible::before {
+  opacity: 1;
+}
+
+.cardArrow {
+  display: inline-block;
+  position: relative;
+  width: 6px;
+  height: 10px;
+  margin-left: 2px;
+  flex: 0 0 auto;
+}
+
+.cardArrow::before,
+.cardArrow::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: url("data:image/svg+xml,%3Csvg width='6' height='10' viewBox='0 0 6 10' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 8.59L3.59 5L0 1.41L1 0.5L5.5 5L1 9.5L0 8.59Z' fill='%233CC4E5'/%3E%3C/svg%3E") center no-repeat;
+}
+
+.cardArrow::after {
+  opacity: 0;
+}
+
+.openaiServicesBlock .cardLink:hover .cardArrow::before,
+.openaiServicesBlock .ecomServiceCard:hover .cardLink .cardArrow::before {
+  animation: openaiServiceArrowBefore 1s linear infinite;
+}
+
+.openaiServicesBlock .cardLink:hover .cardArrow::after,
+.openaiServicesBlock .ecomServiceCard:hover .cardLink .cardArrow::after {
+  animation: openaiServiceArrowAfter 1s linear infinite;
+}
+
+@keyframes openaiServiceArrowBefore {
+  0% { opacity: 1; transform: translateX(0); }
+  49% { opacity: 0; transform: translateX(7px); }
+  52% { opacity: 0; transform: translateX(-7px); }
+  100% { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes openaiServiceArrowAfter {
+  0% { opacity: 0; transform: translateX(-7px); }
+  49% { opacity: 1; transform: translateX(0); }
+  99% { opacity: 0; transform: translateX(7px); }
+  100% { opacity: 0; transform: translateX(-7px); }
+}
+
+.openaiServicesBlock .compareWrap {
+  margin-top: 5.5rem;
+}
+
+@media (max-width: 1024px) {
+  .openaiServicesBlock .ecomServicesGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: 3.5rem;
+  }
+}
+
+@media (max-width: 700px) {
+  .openaiServicesBlock {
+    padding: 3.5rem 0 4.5rem;
+  }
+
+  .openaiServicesBlock .sectionTitle {
+    text-align: left;
+  }
+
+  .openaiServicesBlock .ecomServicesGrid {
+    grid-template-columns: 1fr;
+    row-gap: 3.5rem;
+    margin-top: 3rem;
+  }
+
+  .openaiServicesBlock .ecomServiceCard::before {
+    inset: -1.25rem -0.75rem;
+  }
+}
+
+/* OpenAI services comparison table reference layout */
+.openaiServicesBlock .compareWrap {
+  max-width: 71.875rem;
+  margin: 5.4rem auto 0;
+  overflow-x: auto;
+  border: 1px solid #c5d2e4;
+  border-radius: 0;
+  background: #fff;
+}
+
+.openaiServicesBlock .compareTable {
+  width: 100%;
+  min-width: 720px;
+  border-collapse: collapse;
+  font-family: var(--font-inter-tight), sans-serif;
+}
+
+.openaiServicesBlock .compareTable th,
+.openaiServicesBlock .compareTable td {
+  text-align: left;
+  vertical-align: middle;
+  padding: 1.02rem 1.05rem;
+  border-right: 1px solid #c5d2e4;
+  border-bottom: 1px solid #c5d2e4;
+  color: #172b4d;
+  font-size: 1.05rem;
+  line-height: 1.35;
+  font-weight: 400;
+  background: #fff;
+  white-space: normal;
+}
+
+.openaiServicesBlock .compareTable th:last-child,
+.openaiServicesBlock .compareTable td:last-child {
+  border-right: 0;
+}
+
+.openaiServicesBlock .compareTable thead th {
+  background: #f5f8fc;
+  color: #172b4d;
+  font-size: 1.05rem;
+  font-weight: 400;
+}
+
+.openaiServicesBlock .compareTable thead th:last-child {
+  background: #f5f8fc;
+  color: #172b4d;
+}
+
+.openaiServicesBlock .compareTable tbody tr:nth-child(even) td {
+  background: #f5f8fc;
+}
+
+.openaiServicesBlock .compareTable tbody td,
+.openaiServicesBlock .compareTable tbody td:first-child,
+.openaiServicesBlock .compareTable tbody td:last-child {
+  color: #172b4d;
+  font-weight: 400;
+}
+
+.openaiServicesBlock .compareTable tbody tr:last-child td {
+  border-bottom: 0;
+}
+
+@media (max-width: 700px) {
+  .openaiServicesBlock .compareWrap {
+    margin-top: 4rem;
+  }
+}
+
+/* OpenAI comparison table color cleanup */
+.openaiServicesBlock {
+  background: #fff;
+}
+
+.openaiServicesBlock .compareTable thead th,
+.openaiServicesBlock .compareTable thead th:last-child {
+  background: #f5f8fc;
+  color: #172b4d;
+  font-weight: 400;
+}
+
+.openaiServicesBlock .compareTable tbody tr:nth-child(odd) td,
+.openaiServicesBlock .compareTable tbody tr:nth-child(odd) td:first-child,
+.openaiServicesBlock .compareTable tbody tr:nth-child(odd) td:last-child {
+  background: #fff;
+  color: #172b4d;
+  font-weight: 400;
+}
+
+.openaiServicesBlock .compareTable tbody tr:nth-child(even) td,
+.openaiServicesBlock .compareTable tbody tr:nth-child(even) td:first-child,
+.openaiServicesBlock .compareTable tbody tr:nth-child(even) td:last-child {
+  background: #f5f8fc;
+  color: #172b4d;
+  font-weight: 400;
+}
+
+/* OpenAI services/table section split */
+.openaiServicesBlock {
+  background: #f5f8fc;
+}
+
+.openaiCompareSection {
+  background: #fff;
+  padding: 4.5rem 0 5.5rem;
+}
+
+.openaiCompareSection :global(.container) {
+  max-width: 88.75rem;
+}
+
+.openaiCompareSection .compareWrap {
+  max-width: 71.875rem;
+  margin: 0 auto;
+  overflow-x: auto;
+  border: 1px solid #c5d2e4;
+  border-radius: 0;
+  background: #fff;
+}
+
+.openaiCompareSection .compareTable {
+  width: 100%;
+  min-width: 720px;
+  border-collapse: collapse;
+  font-family: var(--font-inter-tight), sans-serif;
+}
+
+.openaiCompareSection .compareTable th,
+.openaiCompareSection .compareTable td {
+  text-align: left;
+  vertical-align: middle;
+  padding: 1.02rem 1.05rem;
+  border-right: 1px solid #c5d2e4;
+  border-bottom: 1px solid #c5d2e4;
+  color: #172b4d;
+  font-size: 1.05rem;
+  line-height: 1.35;
+  font-weight: 400;
+  white-space: normal;
+}
+
+.openaiCompareSection .compareTable th:last-child,
+.openaiCompareSection .compareTable td:last-child {
+  border-right: 0;
+}
+
+.openaiCompareSection .compareTable thead th,
+.openaiCompareSection .compareTable thead th:last-child {
+  background: #f5f8fc;
+  color: #172b4d;
+  font-weight: 400;
+}
+
+.openaiCompareSection .compareTable tbody tr:nth-child(odd) td,
+.openaiCompareSection .compareTable tbody tr:nth-child(odd) td:first-child,
+.openaiCompareSection .compareTable tbody tr:nth-child(odd) td:last-child {
+  background: #fff;
+  color: #172b4d;
+  font-weight: 400;
+}
+
+.openaiCompareSection .compareTable tbody tr:nth-child(even) td,
+.openaiCompareSection .compareTable tbody tr:nth-child(even) td:first-child,
+.openaiCompareSection .compareTable tbody tr:nth-child(even) td:last-child {
+  background: #f5f8fc;
+  color: #172b4d;
+  font-weight: 400;
+}
+
+.openaiCompareSection .compareTable tbody tr:last-child td {
+  border-bottom: 0;
+}
+
+@media (max-width: 700px) {
+  .openaiCompareSection {
+    padding: 3.5rem 0 4.5rem;
+  }
+}
+
+/* OpenAI tech stack reference layout */
+.openaiTechStackBlock {
+  background: #fff;
+  padding: 3.9rem 0 5.25rem;
+}
+
+.openaiTechStackBlock :global(.container) {
+  max-width: 88.75rem;
+}
+
+.openaiTechStackBlock .sectionTitle {
+  max-width: 62rem;
+  margin: 0 auto;
+  color: #000;
+  font-size: clamp(3rem, 4.2vw, 3.6rem);
+  line-height: 1.12;
+  font-weight: 400;
+  letter-spacing: 0;
+  text-align: center;
+}
+
+.openaiTechStackBlock .sectionTitle .accent {
+  color: #000;
+}
+
+.openaiTechStackBlock .techListGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.45rem 1.3rem;
+  max-width: 71.875rem;
+  margin: 4.35rem auto 0;
+}
+
+.openaiTechStackBlock .techListCard {
+  min-height: 15.75rem;
+  border-radius: 0;
+  background: #f5f8fc;
+  padding: 2.3rem 2.5rem 2.2rem;
+}
+
+.openaiTechStackBlock .techListTitle {
+  margin: 0 0 1.45rem;
+  color: #000;
+  font-size: clamp(1.55rem, 2vw, 1.8rem);
+  line-height: 1.2;
+  font-weight: 400;
+  letter-spacing: 0;
+}
+
+.openaiTechStackBlock .techListCard ul {
+  display: grid;
+  gap: 0.88rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.openaiTechStackBlock .techListCard li {
+  position: relative;
+  padding-left: 2rem;
+  color: #172b4d;
+  font-size: 1.05rem;
+  line-height: 1.35;
+  font-weight: 400;
+}
+
+.openaiTechStackBlock .techListCard li::before {
+  content: "?";
+  position: absolute;
+  left: 0;
+  top: -0.05rem;
+  width: auto;
+  height: auto;
+  border-radius: 0;
+  background: none;
+  color: var(--color-accent);
+  font-size: 1.3rem;
+  line-height: 1;
+}
+
+@media (max-width: 900px) {
+  .openaiTechStackBlock {
+    padding: 3.5rem 0 4.5rem;
+  }
+
+  .openaiTechStackBlock .sectionTitle {
+    text-align: left;
+  }
+
+  .openaiTechStackBlock .techListGrid {
+    grid-template-columns: 1fr;
+    margin-top: 3rem;
+  }
+
+  .openaiTechStackBlock .techListCard {
+    min-height: 0;
+    padding: 2rem 1.5rem;
+  }
+}
+
+/* OpenAI tech stack SVG tick cleanup */
+.openaiTechStackBlock .techListCard li::before {
+  content: "";
+  top: 0.15rem;
+  width: 19px;
+  height: 14px;
+  background: url("data:image/svg+xml;charset=utf8,%3Csvg width='19' height='14' viewBox='0 0 19 14' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M17.25 1.75037L6.75 12.2504L1.5 7.00037' stroke='%233CC4E5' stroke-width='1.5' stroke-linecap='square'/%3E%3C/svg%3E") center / contain no-repeat;
+  color: transparent;
+  font-size: 0;
+  line-height: 0;
+}
+
+/* OpenAI benefits reference layout */
+.openaiBenefitsBlock {
+  overflow: hidden;
+  margin: 0;
+  background: var(--color-accent-dark, #02102c);
+  padding: 4.55rem 0 0;
+}
+
+.openaiBenefitsBlock::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(108deg, transparent 0 72%, rgba(60, 196, 229, 0.04) 72% 82%, transparent 82%),
+    linear-gradient(18deg, rgba(115, 71, 125, 0.18) 0 14%, transparent 14%),
+    linear-gradient(24deg, transparent 0 86%, rgba(60, 196, 229, 0.045) 86% 100%);
+  pointer-events: none;
+}
+
+.openaiBenefitsBlock :global(.container) {
+  position: relative;
+  z-index: 1;
+  max-width: 88.75rem;
+}
+
+.openaiBenefitsBlock .sectionTitleWhite {
+  max-width: 58rem;
+  margin: 0 auto;
+  color: #fff;
+  font-size: clamp(3rem, 4.2vw, 3.7rem);
+  line-height: 1.12;
+  font-weight: 400;
+  letter-spacing: 0;
+  text-align: center;
+}
+
+.openaiBenefitsBlock .sectionTitleWhite .accent {
+  color: var(--color-accent);
+}
+
+.openaiBenefitsBlock .cardsRow3 {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  column-gap: clamp(4rem, 7vw, 7.2rem);
+  row-gap: clamp(4.8rem, 7vw, 6.5rem);
+  max-width: 71.25rem;
+  margin: 4.95rem auto 0;
+}
+
+.openaiBenefitsBlock .serviceCardDark {
+  min-width: 0;
+  min-height: 0;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+}
+
+.openaiBenefitsBlock .serviceCardDark:hover {
+  border-color: transparent;
+  box-shadow: none;
+  transform: none;
+}
+
+.openaiBenefitsBlock .cardIcon {
+  display: block;
+  width: 3.5rem;
+  height: 3.5rem;
+  margin: 0 0 1.7rem;
+  object-fit: contain;
+  filter: brightness(0) invert(1);
+}
+
+.openaiBenefitsBlock .cardTitleWhite {
+  margin: 0 0 1.35rem;
+  color: #fff;
+  font-size: clamp(1.55rem, 2vw, 1.85rem);
+  line-height: 1.22;
+  font-weight: 600;
+  letter-spacing: 0;
+}
+
+.openaiBenefitsBlock .cardDescWhite {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.92);
+  font-size: 1.12rem;
+  line-height: 1.45;
+  font-weight: 400;
+}
+
+@media (max-width: 1024px) {
+  .openaiBenefitsBlock .cardsRow3 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: 3.5rem;
+  }
+}
+
+@media (max-width: 700px) {
+  .openaiBenefitsBlock {
+    padding: 3.5rem 0 4.5rem;
+  }
+
+  .openaiBenefitsBlock .sectionTitleWhite {
+    text-align: left;
+  }
+
+  .openaiBenefitsBlock .cardsRow3 {
+    grid-template-columns: 1fr;
+    row-gap: 3.5rem;
+    margin-top: 3rem;
+  }
+}
+
+/* OpenAI benefits cleanup */
+.openaiBenefitsBlock {
+  background: var(--color-accent-dark, #02102c);
+  padding-bottom: 5.25rem;
+}
+
+.openaiBenefitsBlock::before {
+  display: none;
+}
+
+@media (max-width: 700px) {
+  .openaiBenefitsBlock {
+    padding-bottom: 4.5rem;
+  }
+}
+
+/* OpenAI agentic blueprints reference layout */
+.openaiBlueprintsBlock {
+  background: #f5f8fc;
+  padding: 4.55rem 0;
+}
+
+.openaiBlueprintsBlock :global(.container) {
+  max-width: 88.75rem;
+}
+
+.openaiBlueprintsBlock .sectionTitle {
+  max-width: 68rem;
+  margin: 0 auto;
+  color: #000;
+  font-size: clamp(3rem, 4.2vw, 3.65rem);
+  line-height: 1.12;
+  font-weight: 400;
+  letter-spacing: 0;
+  text-align: center;
+}
+
+.openaiBlueprintsBlock .ecomServicesGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  column-gap: clamp(4.5rem, 8vw, 8.3rem);
+  row-gap: clamp(4.5rem, 7vw, 5.8rem);
+  max-width: 68rem;
+  margin: 4.65rem auto 0;
+}
+
+.openaiBlueprintsBlock .ecomServiceCard {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  isolation: isolate;
+  padding: 0 0 1.35rem;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+  transition: none;
+}
+
+.openaiBlueprintsBlock .ecomServiceIcon {
+  width: 3.5rem;
+  height: 3.5rem;
+  margin: 0 0 1.55rem;
+  object-fit: contain;
+}
+
+.openaiBlueprintsBlock .ecomServiceTitle {
+  margin: 0 0 1.35rem;
+  color: #000;
+  font-size: clamp(1.55rem, 2vw, 1.85rem);
+  line-height: 1.22;
+  font-weight: 400;
+  letter-spacing: 0;
+}
+
+.openaiBlueprintsBlock .ecomServiceIntro {
+  margin: 0;
+  color: #172b4d;
+  font-size: 1.12rem;
+  line-height: 1.55;
+  font-weight: 400;
+}
+
+.openaiBlueprintsBlock .ecomServiceIntro + .ecomServiceIntro {
+  margin-top: 0.25rem;
+}
+
+.openaiBlueprintsBlock .cardLink {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  align-self: flex-start;
+  gap: 0.5rem;
+  margin-top: 1.45rem;
+  padding: 0.45rem 0.65rem;
+  color: var(--color-accent);
+  font-family: var(--font-inter-tight), sans-serif;
+  font-size: 1.12rem;
+  font-weight: 500;
+  line-height: 1.2;
+  text-decoration: none;
+  isolation: isolate;
+}
+
+.openaiBlueprintsBlock .cardLink::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(60, 196, 229, 0.15), rgba(60, 196, 229, 0.035));
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.openaiBlueprintsBlock .cardLink:hover::before,
+.openaiBlueprintsBlock .cardLink:focus-visible::before {
+  opacity: 1;
+}
+
+.openaiBlueprintsBlock .cardLink:hover .cardArrow::before,
+.openaiBlueprintsBlock .ecomServiceCard:hover .cardLink .cardArrow::before {
+  animation: openaiServiceArrowBefore 1s linear infinite;
+}
+
+.openaiBlueprintsBlock .cardLink:hover .cardArrow::after,
+.openaiBlueprintsBlock .ecomServiceCard:hover .cardLink .cardArrow::after {
+  animation: openaiServiceArrowAfter 1s linear infinite;
+}
+
+@media (max-width: 900px) {
+  .openaiBlueprintsBlock {
+    padding: 3.5rem 0 4.5rem;
+  }
+
+  .openaiBlueprintsBlock .sectionTitle {
+    text-align: left;
+  }
+
+  .openaiBlueprintsBlock .ecomServicesGrid {
+    grid-template-columns: 1fr;
+    row-gap: 3.5rem;
+    margin-top: 3rem;
+  }
+}
+
+/* OpenAI services hover cleanup: keep card gradient, remove link-only gradient */
+.openaiServicesBlock .ecomServiceCard::before {
+  display: block;
+  opacity: 0;
+}
+
+.openaiServicesBlock .ecomServiceCard:hover::before,
+.openaiServicesBlock .ecomServiceCard:focus-within::before {
+  display: block;
+  opacity: 1;
+}
+
+.openaiServicesBlock .cardLink::before,
+.openaiServicesBlock .cardLink:hover::before,
+.openaiServicesBlock .cardLink:focus-visible::before {
+  display: none;
+  opacity: 0;
+}
+
+/* OpenAI ADLC process reference timeline */
+.openaiProcessBlock {
+  margin: 0;
+  overflow: visible;
+  background: #fff;
+  padding: 3.9rem 0 5.5rem;
+}
+
+.openaiProcessBlock :global(.container) {
+  max-width: 88.75rem;
+}
+
+.openaiProcessBlock .sectionTitleWhite {
+  max-width: 64rem;
+  margin: 0 auto;
+  color: #000;
+  font-size: clamp(3rem, 4.2vw, 3.75rem);
+  line-height: 1.12;
+  font-weight: 400;
+  letter-spacing: 0;
+  text-align: center;
+}
+
+.openaiProcessBlock .sectionTitleWhite .accent {
+  color: #000;
+}
+
+.openaiProcessBlock .processGrid {
+  display: flex;
+  flex-direction: column;
+  max-width: 48.5rem;
+  margin: 4.45rem auto 0;
+}
+
+.openaiProcessBlock .processStep {
+  display: flex;
+  align-items: flex-start;
+  position: relative;
+}
+
+.openaiProcessBlock .processStep:not(:first-child) {
+  margin-top: 4.4rem;
+}
+
+.openaiProcessBlock .processStep:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  left: 50px;
+  top: 102px;
+  width: 1px;
+  height: calc(100% + 4.4rem - 102px);
+  background: #e9f1fa;
+}
+
+.openaiProcessBlock .processNum {
+  width: 102px;
+  height: 102px;
+  flex: 0 0 102px;
+  border-radius: 50%;
+  background: #f5f8fc;
+  box-shadow: 0 0 0 3px #fff, 0 0 0 5px #e6eff7;
+  color: var(--color-accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-inter-tight), sans-serif;
+  font-size: 1.6rem;
+  font-weight: 400;
+  line-height: 1;
+  position: relative;
+  z-index: 1;
+}
+
+.openaiProcessBlock .processStepBody {
+  margin-left: 2.15rem;
+  padding-top: 0.25rem;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.openaiProcessBlock .processStepTitle {
+  margin: 0;
+  color: #000;
+  font-size: clamp(1.75rem, 2.35vw, 1.95rem);
+  line-height: 1.22;
+  font-weight: 400;
+  letter-spacing: 0;
+}
+
+.openaiProcessBlock .processStepText {
+  margin: 0;
+  color: #172b4d;
+  font-size: 1.12rem;
+  line-height: 1.48;
+  font-weight: 400;
+}
+
+@media (max-width: 760px) {
+  .openaiProcessBlock {
+    padding: 3.5rem 0 4.5rem;
+  }
+
+  .openaiProcessBlock .sectionTitleWhite {
+    text-align: left;
+  }
+
+  .openaiProcessBlock .processGrid {
+    margin-top: 3rem;
+  }
+
+  .openaiProcessBlock .processStep:not(:first-child) {
+    margin-top: 3rem;
+  }
+
+  .openaiProcessBlock .processStep:not(:last-child)::after {
+    left: 24px;
+    top: 56px;
+    height: calc(100% + 3rem - 56px);
+  }
+
+  .openaiProcessBlock .processNum {
+    width: 50px;
+    height: 50px;
+    flex-basis: 50px;
+    font-size: 1rem;
+    box-shadow: 0 0 0 3px #fff, 0 0 0 5px #e6eff7;
+  }
+
+  .openaiProcessBlock .processStepBody {
+    margin-left: 1.35rem;
+    gap: 0.9rem;
+  }
+}
+
+/* OpenAI Why reference dark feature grid */
+.openaiWhyBlock {
+  margin: 0;
+  overflow: hidden;
+  background: var(--color-accent-dark, #02102c);
+  padding: 4.55rem 0 5.25rem;
+}
+
+.openaiWhyBlock::before {
+  display: none;
+}
+
+.openaiWhyBlock :global(.container) {
+  max-width: 88.75rem;
+}
+
+.openaiWhyBlock .sectionTitleWhite {
+  max-width: 52rem;
+  margin: 0 auto;
+  color: #fff;
+  font-size: clamp(3rem, 4.2vw, 3.75rem);
+  line-height: 1.12;
+  font-weight: 400;
+  letter-spacing: 0;
+  text-align: center;
+}
+
+.openaiWhyBlock .sectionTitleWhite .accent {
+  color: var(--color-accent);
+}
+
+.openaiWhyBlock .cardsRow3 {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(4.8rem, 7vw, 6.4rem) clamp(4rem, 7vw, 7.1rem);
+  max-width: 71.5rem;
+  margin: 4.95rem auto 0;
+}
+
+.openaiWhyBlock .serviceCardDark {
+  min-height: 0;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+  transform: none;
+}
+
+.openaiWhyBlock .serviceCardDark:hover {
+  transform: none;
+  border-color: transparent;
+  background: transparent;
+}
+
+.openaiWhyBlock .cardIcon {
+  width: 56px;
+  height: 56px;
+  margin: 0 0 1.65rem;
+  filter: brightness(0) invert(1);
+}
+
+.openaiWhyBlock .cardTitleWhite {
+  margin: 0 0 1.25rem;
+  color: #fff;
+  font-size: clamp(1.55rem, 2vw, 1.86rem);
+  line-height: 1.22;
+  font-weight: 600;
+  letter-spacing: 0;
+}
+
+.openaiWhyBlock .cardDescWhite {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.92);
+  font-size: 1.12rem;
+  line-height: 1.45;
+  font-weight: 400;
+}
+
+@media (max-width: 1024px) {
+  .openaiWhyBlock .cardsRow3 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    max-width: 52rem;
+  }
+}
+
+@media (max-width: 700px) {
+  .openaiWhyBlock {
+    padding: 3.6rem 0 4.5rem;
+  }
+
+  .openaiWhyBlock .sectionTitleWhite {
+    text-align: left;
+  }
+
+  .openaiWhyBlock .cardsRow3 {
+    grid-template-columns: 1fr;
+    gap: 3.5rem;
+    margin-top: 3.5rem;
+  }
+}
+
+/* OpenAI key numbers reference cards */
+.openaiQuickFactsBlock {
+  margin: 0;
+  background: #fff;
+  padding: 5.1rem 0 5.45rem;
+}
+
+.openaiQuickFactsBlock :global(.container) {
+  max-width: 72.5rem;
+}
+
+.openaiQuickFactsBlock .sectionTitle {
+  max-width: 62rem;
+  margin: 0 auto;
+  color: #000;
+  font-size: clamp(3rem, 4.2vw, 3.65rem);
+  line-height: 1.12;
+  font-weight: 400;
+  letter-spacing: 0;
+  text-align: center;
+}
+
+.openaiQuickFactsBlock .sectionTitle .accent {
+  color: var(--color-accent);
+}
+
+.openaiQuickFactsBlock .quickFactsGrid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.25rem;
+  margin-top: 4.4rem;
+  text-align: center;
+}
+
+.openaiQuickFactsBlock .quickFactCard {
+  min-height: 11.6rem;
+  padding: 2.55rem 1.25rem 2.65rem;
+  border: 1px solid #dce8f3;
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.openaiQuickFactsBlock .quickFactNumber {
+  color: var(--color-accent);
+  font-family: var(--font-inter-tight), sans-serif;
+  font-size: clamp(3.1rem, 4.3vw, 3.65rem);
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: 0;
+}
+
+.openaiQuickFactsBlock .quickFactNumber span {
+  color: var(--color-accent);
+}
+
+.openaiQuickFactsBlock .quickFactTitle {
+  margin-top: 1rem;
+  color: #000;
+  font-size: clamp(1.2rem, 1.6vw, 1.45rem);
+  line-height: 1.25;
+  font-weight: 400;
+}
+
+@media (max-width: 900px) {
+  .openaiQuickFactsBlock .quickFactsGrid {
+    grid-template-columns: 1fr;
+    max-width: 28rem;
+    margin: 3rem auto 0;
+  }
+}
+
+@media (max-width: 700px) {
+  .openaiQuickFactsBlock {
+    padding: 3.8rem 0 4.3rem;
+  }
+
+  .openaiQuickFactsBlock .sectionTitle {
+    text-align: left;
+  }
+}
+
+/* OpenAI requested card, CTA, and SDLC circle overrides */
+.openaiServicesBlock .ecomServiceCard:has(.cardLink),
+.openaiBlueprintsBlock .ecomServiceCard:has(.cardLink) {
+  cursor: pointer;
+}
+
+.openaiBlueprintsBlock .ecomServiceCard::before {
+  content: "";
+  position: absolute;
+  inset: -1.4rem;
+  z-index: -1;
+  background: linear-gradient(135deg, rgba(60, 196, 229, 0.15), rgba(60, 196, 229, 0.035));
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.openaiBlueprintsBlock .ecomServiceCard:hover::before,
+.openaiBlueprintsBlock .ecomServiceCard:focus-within::before {
+  opacity: 1;
+}
+
+.openaiBlueprintsBlock .cardLink::before,
+.openaiBlueprintsBlock .cardLink:hover::before,
+.openaiBlueprintsBlock .cardLink:focus-visible::before {
+  display: none;
+  opacity: 0;
+}
+
+.openaiProcessBlock .processStep:not(:last-child)::after {
+  left: 60px;
+  top: 120px;
+  width: 2px;
+  height: calc(100% + 4.4rem - 120px);
+  background: #e3ecf5;
+}
+
+.openaiProcessBlock .processNum {
+  width: 104px;
+  height: 104px;
+  flex-basis: 104px;
+  margin: 8px;
+  border: 2px solid #e3ecf5;
+  background: #f4f7fd;
+  box-shadow: 0 0 0 6px #fff, 0 0 0 8px #e3ecf5;
+  color: var(--color-accent);
+  font-size: 1.75rem;
+  font-weight: 500;
+}
+
+@media (max-width: 760px) {
+  .openaiProcessBlock .processStep:not(:last-child)::after {
+    left: 29px;
+    top: 53px;
+    height: calc(100% + 3rem - 53px);
+  }
+
+  .openaiProcessBlock .processNum {
+    width: 48px;
+    height: 48px;
+    flex-basis: 48px;
+    margin: 5px;
+    border: 2px solid #e3ecf5;
+    box-shadow: 0 0 0 3px #fff, 0 0 0 5px #e3ecf5;
+    font-size: 1rem;
   }
 }

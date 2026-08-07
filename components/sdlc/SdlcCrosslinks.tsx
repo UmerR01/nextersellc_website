@@ -3,9 +3,9 @@ import styles from "@/components/engagement/EngCrosslinksBlock.module.css";
 
 // SDLC-specific links rendered with the shared engagement crosslinks UI.
 const links = [
-  { text: "Our software development ", last: "services", href: "/services" },
+  { text: "Our software development ", last: "services", href: "/services/custom-software-development" },
   { text: "ADLC for AI-powered ", last: "systems", href: "/adlc" },
-  { text: "Lifecycle in action – case ", last: "studies", href: "/cases" },
+  { text: "More about ", last: "Nexterse LLC", href: "/team#management-team" },
 ];
 
 export default function SdlcCrosslinks() {

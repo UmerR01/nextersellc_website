@@ -1,7 +1,8 @@
 .section {
   position: relative;
   overflow: hidden;
-  padding: 34px 0 40px;
+  z-index: 4;
+  padding: 32px 0;
   border-top: 0;
   border-bottom: 0;
   background: #fff;
@@ -14,36 +15,38 @@
   position: absolute;
   top: 0;
   z-index: 2;
-  width: clamp(4rem, 9vw, 8rem);
+  width: clamp(4rem, 11vw, 10rem);
   height: 100%;
   pointer-events: none;
 }
 
 .section::before {
   left: 0;
-  background: linear-gradient(90deg, #fff 0%, rgba(255,255,255,0.94) 35%, rgba(255,255,255,0) 100%);
+  background: linear-gradient(90deg, #fff 0%, rgba(255, 255, 255, 0) 100%);
 }
 
 .section::after {
   right: 0;
-  background: linear-gradient(270deg, #fff 0%, rgba(255,255,255,0.94) 35%, rgba(255,255,255,0) 100%);
+  background: linear-gradient(270deg, #fff 0%, rgba(255, 255, 255, 0) 100%);
 }
 
 .overflow {
   overflow: hidden;
   width: 100%;
+  max-width: 100%;
+  margin: 0 auto;
 }
 
 .marquee {
   display: flex;
   align-items: center;
-  gap: clamp(2.75rem, 5vw, 5rem);
   width: max-content;
-  min-width: 200%;
-  animation: aisoftLogoMarquee 34s linear infinite;
+  min-width: 100%;
+  animation: llmLogoMarquee 40s linear infinite;
   will-change: transform;
 }
 
+.marquee:hover,
 .overflow:hover .marquee {
   animation-play-state: paused;
 }
@@ -52,30 +55,24 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 38px;
   flex: 0 0 auto;
-  opacity: 0.72;
-  transition: opacity 0.2s ease;
-}
-
-.item:hover {
-  opacity: 1;
+  padding: 12px 28px;
 }
 
 .logo {
-  height: 38px;
+  max-height: 38px;
   width: auto;
-  max-width: 220px;
+  max-width: 320px;
   object-fit: contain;
-  filter: grayscale(1);
-  transition: filter 0.2s ease;
+  filter: brightness(0) saturate(0) invert(35%) sepia(16%) saturate(10) hue-rotate(175deg) brightness(75%) contrast(100%);
+  transition: filter 0.25s ease;
 }
 
 .item:hover .logo {
   filter: none;
 }
 
-@keyframes aisoftLogoMarquee {
+@keyframes llmLogoMarquee {
   from { transform: translateX(0); }
   to { transform: translateX(-50%); }
 }
@@ -86,32 +83,5 @@
     transform: none;
     flex-wrap: wrap;
     justify-content: center;
-    width: 100%;
-    min-width: 0;
-    padding-inline: 1rem;
   }
-}
-/* LLM logos article-column placement override */
-.section {
-  width: 100%;
-  max-width: 100%;
-  margin: 0 auto;
-  padding: 32px 0 38px;
-  border-top: 0;
-  border-bottom: 1px solid #e6eff7;
-  background: #fff;
-}
-
-.overflow {
-  max-width: 100%;
-  margin: 0 auto;
-}
-
-.marquee {
-  align-items: center;
-  gap: clamp(2.75rem, 5vw, 5rem);
-}
-
-.item {
-  padding: 0;
 }

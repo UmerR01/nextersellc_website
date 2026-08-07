@@ -3,7 +3,7 @@ import styles from "./CSServicesBlock.module.css";
 
 const SERVICES = [
   {
-    href: "/enterprise-software-development",
+    href: "/services/enterprise-software-development",
     icon: "/custom-software/03_Enterprises-01.svg",
     title: "Enterprise software development",
     description:
@@ -11,7 +11,7 @@ const SERVICES = [
     linkText: "Enterprise software development",
   },
   {
-    href: "/mobile-app-development",
+    href: "/services/mobile-app-development",
     icon: "/custom-software/04_AI-for-existing-mobile-apps-02.svg",
     title: "Mobile app development",
     description:
@@ -19,7 +19,7 @@ const SERVICES = [
     linkText: "Mobile application development",
   },
   {
-    href: "/web-development",
+    href: "/services/web-app-development",
     icon: "/custom-software/03_Traditional-software-03.svg",
     title: "Web application development",
     description:
@@ -38,7 +38,7 @@ export default function CSServicesBlock() {
         </h2>
         <div className={styles.grid}>
           {SERVICES.map((service) => (
-            <div key={service.href} className={styles.card}>
+            <Link key={service.href} href={service.href} className={styles.card}>
               <div className={styles.iconWrap}>
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
@@ -52,11 +52,11 @@ export default function CSServicesBlock() {
               </div>
               <h3 className={styles.cardTitle}>{service.title}</h3>
               <p className={styles.cardDesc}>{service.description}</p>
-              <Link href={service.href} className={styles.cardLink}>
+              <span className={styles.cardLink}>
                 {service.linkText}
                 <span className={styles.linkArrow} aria-hidden />
-              </Link>
-            </div>
+              </span>
+            </Link>
           ))}
         </div>
       </div>

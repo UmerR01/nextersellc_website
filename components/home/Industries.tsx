@@ -4,15 +4,14 @@ import { useRef, useState, useEffect, useCallback } from "react";
 import styles from "./Industries.module.css";
 
 const INDUSTRIES = [
-  { name: "Retail & E-Commerce", text: "Powering commerce, fulfillment, and AI-driven personalization platforms that improve conversion, efficiency, and customer lifetime value at scale." },
-  { name: "Cybersecurity", text: "Building intelligent threat detection, identity management, and compliance automation systems that protect enterprise data and infrastructure in real time." },
-  { name: "Software and Platforms", text: "Building scalable SaaS and enterprise platforms with reliable architecture, modern tooling, and long-term performance in mind." },
-  { name: "HealthTech", text: "Modernizing regulated healthcare and life-science systems with secure data platforms, automation, and zero-disruption delivery." },
-  { name: "Telecom", text: "Building cloud-native communication platforms with strong reliability, automation, and real-time data capabilities." },
-  { name: "Media & Entertainment", text: "Engineering content delivery, recommendation engines, and AI-powered personalization platforms that scale to millions of users without performance compromise." },
-  { name: "Travel", text: "Developing scalable platforms that enhance booking experiences, personalization, and real-time customer engagement." },
-  { name: "Logistics", text: "Developing data-driven systems that improve supply chain visibility, operational efficiency, and delivery performance." },
-  { name: "Education Technology", text: "Designing adaptive learning platforms, AI tutoring systems, and intelligent assessment tools that personalize education and improve measurable outcomes." },
+  { name: "Healthcare", href: "/services/healthcare-development", text: "Modernizing regulated healthcare and life-science systems with secure data platforms, automation, and zero-disruption delivery." },
+  { name: "Logistics", href: "/services/logistics-development", text: "Developing data-driven systems that improve supply chain visibility, operational efficiency, and delivery performance." },
+  { name: "EdTech", href: "/services/edtech-development", text: "Designing adaptive learning platforms, AI tutoring systems, and intelligent assessment tools that personalize education and improve measurable outcomes." },
+  { name: "InsurTech", href: "/services/insurtech-development", text: "Building insurance platforms for policy workflows, claims automation, risk scoring, and customer self-service." },
+  { name: "AdTech", href: "/services/adtech-development", text: "Engineering campaign, attribution, data activation, and AI-powered personalization systems for marketing operations." },
+  { name: "FinTech", href: "/services/financial-development", text: "Creating secure financial platforms for payments, analytics, reporting, automation, and compliant customer experiences." },
+  { name: "PropTech", href: "/services/proptech-development", text: "Building real estate systems for listings, property operations, tenant portals, analytics, and workflow automation." },
+  { name: "Retail & E-Commerce", href: "/services/retail-ecommerce-development", text: "Powering commerce, fulfillment, and AI-driven personalization platforms that improve conversion, efficiency, and customer lifetime value at scale." },
 ];
 
 export default function Industries() {
@@ -59,7 +58,7 @@ export default function Industries() {
             We apply deep engineering expertise across industries to solve
             complex, domain-specific challenges.
           </p>
-          <a href="#contact" className={styles.exploreLink}>
+          <a href="/services" className={styles.exploreLink}>
             Explore All Industries <span aria-hidden>→</span>
           </a>
         </div>
@@ -73,7 +72,7 @@ export default function Industries() {
       >
         <div className={styles.track}>
           {INDUSTRIES.map((ind) => (
-            <a key={ind.name} href="#contact" className={styles.card}>
+            <a key={ind.name} href={ind.href} className={styles.card}>
               <div className={styles.cardBody}>
                 <h3 className={styles.cardTitle}>{ind.name}</h3>
                 <p className={styles.cardDesc}>{ind.text}</p>

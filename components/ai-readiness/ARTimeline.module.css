@@ -15,7 +15,7 @@
   letter-spacing: 0;
   color: var(--color-text);
 }
-.title span { color: var(--color-blue); }
+.title span { color: var(--color-accent); }
 
 /* ── Steps — vertical list ── */
 .steps {
@@ -37,11 +37,11 @@
 .stepWithLine::after {
   content: "";
   position: absolute;
-  left: 43px;
-  top: 88px;
+  left: 60px;
+  top: 120px;
   width: 2px;
-  height: calc(100% - 88px + 24px);
-  background: var(--color-border);
+  height: calc(100% - 120px + 24px);
+  background: #e3ecf5;
 }
 
 .step:last-child {
@@ -50,26 +50,27 @@
 
 /* ── Circle badge ── */
 .stepNum {
-  width: 88px;
-  height: 88px;
+  width: 104px;
+  height: 104px;
   flex-shrink: 0;
   border-radius: 50%;
-  background: var(--color-accent-dark);
-  color: #fff;
+  background: #f4f7fd;
+  border: 2px solid #e3ecf5;
+  color: var(--color-accent);
   font-size: 1.75rem;
-  font-weight: 600;
+  font-weight: 500;
   line-height: 1;
   display: flex;
   align-items: center;
   justify-content: center;
   position: relative;
   z-index: 1;
-  box-shadow: 0 0 0 6px var(--color-bg), 0 0 0 8px var(--color-border);
+  box-shadow: 0 0 0 6px #fff, 0 0 0 8px #e3ecf5;
 }
 
 .stepContent {
   flex: 1;
-  padding-top: 1.25rem;
+  padding-top: 1.05rem;
 }
 
 .stepTitle {
@@ -92,16 +93,17 @@
   .section { padding: 72px 0; }
 
   .stepWithLine::after {
-    left: 23px;
-    top: 54px;
-    height: calc(100% - 54px + 24px);
+    left: 29px;
+    top: 53px;
+    height: calc(100% - 53px + 24px);
   }
 
   .stepNum {
     width: 48px;
     height: 48px;
     font-size: 1rem;
-    box-shadow: 0 0 0 4px var(--color-bg), 0 0 0 6px var(--color-border);
+    border: 2px solid #e3ecf5;
+    box-shadow: 0 0 0 3px #fff, 0 0 0 5px #e3ecf5;
   }
 
   .stepContent {
@@ -109,3 +111,5 @@
     margin-left: -0.5rem;
   }
 }
+
+

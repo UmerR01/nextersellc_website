@@ -33,10 +33,10 @@ function CalendarIcon() {
 }
 
 const STEPS = [
-  "Tell us your vision",
-  "Expert discovery session",
-  "Receive your custom roadmap",
-  "Launch your project",
+  "Share your requirements",
+  "Analyze them with our experts",
+  "Get a detailed pricing",
+  "Kick off the project",
 ];
 
 const LIBRARY_STEPS = [
@@ -56,37 +56,37 @@ export default function LetsStart({ variant }: LetsStartProps = {}) {
 
   return (
     <section
-      className={`${styles.section} ${variant === "library" ? styles.library : ""} ${variant === "process" ? styles.process : ""} ${variant === "whitepapers" ? styles.whitepapers : ""}`}
+      className={`lets-start ${styles.section} ${variant === "library" ? styles.library : ""} ${variant === "process" ? styles.process : ""} ${variant === "whitepapers" ? styles.whitepapers : ""}`}
       id="lets-start"
     >
-      <div className={styles.wrapper}>
-        <div className={styles.content}>
+      <div className={`lets-start-wrapper ${styles.wrapper}`}>
+        <div className={`lets-start-content ${styles.content}`}>
           {/* Left: title + content */}
-          <div className={styles.left}>
+          <div className={`lets-start-left ${styles.left}`}>
             {variant === "library" ? (
               <>
-                <p className={styles.title}>Let&rsquo;s start your project</p>
-                <div className={styles.steps}>
-                  <span className={styles.stepsEyebrow}>You are here</span>
+                <p className={`lets-start-title ${styles.title}`}>Let&rsquo;s start your project</p>
+                <div className={`lets-start-steps ${styles.steps}`}>
+                  <span className={`lets-start-eyebrow ${styles.stepsEyebrow}`}>You are here</span>
                   {LIBRARY_STEPS.map((s, i) => (
-                    <div key={s} className={styles.step}>
+                    <div key={s} className={`lets-start-step ${styles.step}`}>
                       {i === LIBRARY_STEPS.length - 1 && (
-                        <span className={styles.timelineArrow} aria-hidden />
+                        <span className={`lets-start-timeline-arrow ${styles.timelineArrow}`} aria-hidden />
                       )}
-                      <span className={styles.stepText}>
+                      <span className={`lets-start-step-text ${styles.stepText}`}>
                         {i + 1} {s}
                       </span>
                     </div>
                   ))}
                 </div>
-                <div className={styles.description}>
+                <div className={`lets-start-description ${styles.description}`}>
                   If you have any questions, email us{" "}
                   <a href="mailto:info@nexterse.com">info@nexterse.com</a>
                 </div>
               </>
             ) : variant === "testimonials" ? (
               <>
-                <p className={styles.title}>Become our next happy Client</p>
+                <p className={`lets-start-title ${styles.title}`}>Become our next happy Client</p>
                 <div className={`${styles.description} ${styles.descriptionLarge}`}>
                   Contact us and we&rsquo;ll provide additional case studies for
                   your business domain!
@@ -94,66 +94,65 @@ export default function LetsStart({ variant }: LetsStartProps = {}) {
               </>
             ) : variant === "whitepapers" ? (
               <>
-                <p className={styles.title}>Let's start</p>
-                <div className={styles.description}>
+                <p className={`lets-start-title ${styles.title}`}>Let's start</p>
+                <div className={`lets-start-description ${styles.description}`}>
                   If you have any questions, email us{" "}
                   <a href="mailto:info@nexterse.com">info@nexterse.com</a>
                 </div>
               </>
             ) : (
               <>
-                <p className={styles.title}>Let's start</p>
-                <div className={styles.steps}>
-                  <span className={styles.stepsEyebrow}>What's next</span>
+                <p className={`lets-start-title ${styles.title}`}>Let's start</p>
+                <div className={`lets-start-steps ${styles.steps}`}>
+                  <span className={`lets-start-eyebrow ${styles.stepsEyebrow}`}>What's next</span>
                   {STEPS.map((s, i) => (
-                    <div key={s} className={styles.step}>
+                    <div key={s} className={`lets-start-step ${styles.step}`}>
                       {i === STEPS.length - 1 && (
-                        <span className={styles.timelineArrow} aria-hidden />
+                        <span className={`lets-start-timeline-arrow ${styles.timelineArrow}`} aria-hidden />
                       )}
-                      <span className={styles.stepText}>
+                      <span className={`lets-start-step-text ${styles.stepText}`}>
                         {i + 1}. {s}
                       </span>
                     </div>
                   ))}
                 </div>
-                <div className={styles.description}>
+                <div className={`lets-start-description ${styles.description}`}>
                   If you have any questions, email us{" "}
-                  <a href="mailto:hello@nexterse.com">info@nexterse.com
-</a>
+                  <a href="mailto:hello@nexterse.com">info@nexterse.com</a>
                 </div>
               </>
             )}
           </div>
 
           {/* Right: form */}
-          <div className={styles.right}>
+          <div className={`lets-start-right ${styles.right}`}>
             <form
-              className={styles.form}
+              className={`lets-start-form ${styles.form}`}
               onSubmit={(e) => {
                 e.preventDefault();
                 setSent(true);
               }}
             >
-              <label className={styles.field}>
-                <span className={styles.label}>My Name*</span>
+              <label className={`lets-start-field ${styles.field}`}>
+                <span className={`lets-start-label ${styles.label}`}>My Name*</span>
                 <input type="text" name="name" placeholder="John Smith" required />
               </label>
-              <label className={styles.field}>
-                <span className={styles.label}>Email Address*</span>
+              <label className={`lets-start-field ${styles.field}`}>
+                <span className={`lets-start-label ${styles.label}`}>Email Address*</span>
                 <input type="email" name="email" placeholder="name@company.com" required />
               </label>
-              <label className={styles.field}>
-                <span className={styles.label}>Message*</span>
+              <label className={`lets-start-field ${styles.field}`}>
+                <span className={`lets-start-label ${styles.label}`}>Message*</span>
                 <textarea name="message" rows={2} placeholder="Describe your idea" required />
               </label>
 
-              <p className={styles.privacy}>
+              <p className={`lets-start-privacy ${styles.privacy}`}>
                 When you click Send, Nexterse LLC will process your personal data in accordance
                 with our <a href="#">Privacy notice</a> to respond to your enquiry.
               </p>
 
-              <div className={styles.bottom}>
-                <label className={styles.attach}>
+              <div className={`lets-start-bottom ${styles.bottom}`}>
+                <label className={`lets-start-attach ${styles.attach}`}>
                   <ClipIcon />
                   {fileName || "Attach file"}
                   <input
@@ -162,27 +161,27 @@ export default function LetsStart({ variant }: LetsStartProps = {}) {
                     onChange={(e) => setFileName(e.target.files?.[0]?.name ?? "")}
                   />
                 </label>
-                <button type="submit" className={styles.send}>
+                <button type="submit" className={`lets-start-send ${styles.send}`}>
                   {sent ? "Thank you!" : "Send"}
                 </button>
               </div>
 
-              <div className={styles.manager}>
-                <div className={styles.managerInfo}>
+              <div className={`lets-start-manager ${styles.manager}`}>
+                <div className={`lets-start-manager-info ${styles.managerInfo}`}>
                   <Image
                     src="/cases/woman.jpg"
                     alt="Account manager"
                     width={56}
                     height={56}
-                    className={styles.avatar}
+                    className={`lets-start-avatar ${styles.avatar}`}
                   />
                   <div>
-                    <div className={styles.managerName}>Alex Morgan</div>
-                    <div className={styles.managerRole}>Account Manager</div>
+                    <div className={`lets-start-manager-name ${styles.managerName}`}>Alex Morgan</div>
+                    <div className={`lets-start-manager-role ${styles.managerRole}`}>Account Manager</div>
                   </div>
                 </div>
-                <a href="https://calendly.com/nexterse-meeting-schedule22/30min" target="_blank" rel="noreferrer noopener" className={styles.book}>
-                  <CalendarIcon /> Book a consultation
+                <a href="https://calendly.com/nexterse-meeting-schedule22/30min" target="_blank" rel="noreferrer noopener" className={`lets-start-book ${styles.book}`}>
+                  <CalendarIcon /> Book an intro call
                 </a>
               </div>
             </form>
@@ -192,3 +191,6 @@ export default function LetsStart({ variant }: LetsStartProps = {}) {
     </section>
   );
 }
+
+
+

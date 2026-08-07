@@ -426,22 +426,8 @@ export default function VettingPage() {
                   candidate&apos;s profile, focusing on their expertise, achievements
                   and experience.
                 </div>
-                <a href="/contact" className={styles.heroCta}>
+                <a href="#get-modal-popup" className={`btn btn-accent ${styles.heroCta}`}>
                   Let&apos;s talk
-                  <svg
-                    width="14"
-                    height="14"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    aria-hidden
-                  >
-                    <line x1="5" y1="12" x2="19" y2="12" />
-                    <polyline points="12 5 19 12 12 19" />
-                  </svg>
                 </a>
               </div>
             </div>

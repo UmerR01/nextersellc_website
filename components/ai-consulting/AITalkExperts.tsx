@@ -1,4 +1,4 @@
-import styles from "./AITalkExperts.module.css";
+﻿import styles from "./AITalkExperts.module.css";
 
 export default function AITalkExperts() {
   return (
@@ -11,7 +11,7 @@ export default function AITalkExperts() {
               Get personalized advice for your unique project needs.
             </p>
           </div>
-          <a href="#contact" className={`btn btn-accent ${styles.btn}`}>
+          <a href="#get-modal-popup" className={`btn btn-accent ${styles.btn}`}>
             Book a consulting session
           </a>
         </div>
@@ -19,3 +19,4 @@ export default function AITalkExperts() {
     </section>
   );
 }
+

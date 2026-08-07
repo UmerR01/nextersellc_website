@@ -1,6 +1,6 @@
 import Header from "@/components/Header";
 import Hero from "@/components/home/Hero";
-import LogosMarquee from "@/components/home/LogosMarquee";
+import AipocLogos from "@/components/aipoc/AipocLogos";
 import StatsBlock from "@/components/home/StatsBlock";
 import Testimonials from "@/components/home/Testimonials";
 import Services from "@/components/home/Services";
@@ -22,7 +22,7 @@ export default function Home() {
       <Header />
       <main>
         <Hero />
-        <LogosMarquee />
+        <AipocLogos />
         <StatsBlock />
         <Testimonials />
         <Services />

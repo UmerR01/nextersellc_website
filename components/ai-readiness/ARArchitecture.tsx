@@ -1,3 +1,4 @@
+import Image from "next/image";
 import styles from "./ARArchitecture.module.css";
 
 const LEFT_ITEMS = [
@@ -26,13 +27,7 @@ export default function ARArchitecture() {
         </h2>
         <div className={styles.cols}>
           <div className={styles.col}>
-            <div className={styles.icon} aria-hidden>
-              <svg width="56" height="56" viewBox="0 0 56 56" fill="none">
-                <path d="M28 8v7M28 41v7M12 28h7M37 28h7M16.7 16.7l5 5M34.3 34.3l5 5M39.3 16.7l-5 5M21.7 34.3l-5 5" stroke="currentColor" strokeWidth="2" strokeLinecap="square"/>
-                <path d="M28 19.5a8.5 8.5 0 1 1 0 17 8.5 8.5 0 0 1 0-17Z" stroke="currentColor" strokeWidth="2"/>
-                <path d="M28 3.5 33 8l-5 4.5L23 8l5-4.5ZM28 43.5 33 48l-5 4.5L23 48l5-4.5ZM3.5 28 8 23l4.5 5L8 33l-4.5-5ZM43.5 28 48 23l4.5 5L48 33l-4.5-5Z" stroke="currentColor" strokeWidth="2" strokeLinejoin="round"/>
-              </svg>
-            </div>
+            <Image src="/ai-readiness/imgs/03_Legacy-system-integration-complexity-01.svg" alt="" width={56} height={56} className={styles.icon} unoptimized />
             <h3 className={styles.colTitle}>Disconnected systems</h3>
             <ul className={styles.list}>
               {LEFT_ITEMS.map((item) => (
@@ -47,14 +42,7 @@ export default function ARArchitecture() {
           </div>
           <div className={styles.divider} aria-hidden />
           <div className={styles.col}>
-            <div className={styles.icon} aria-hidden>
-              <svg width="56" height="56" viewBox="0 0 56 56" fill="none">
-                <path d="M17 16.5 27 8h9a4 4 0 0 1 4 4v28a4 4 0 0 1-4 4H20a4 4 0 0 1-4-4V19.5c0-1.2.4-2.2 1-3Z" stroke="currentColor" strokeWidth="2" strokeLinejoin="round"/>
-                <path d="M18 18h8a2 2 0 0 0 2-2V9" stroke="currentColor" strokeWidth="2" strokeLinejoin="round"/>
-                <path d="M28 22 36 25v6.5c0 5-3.4 8.4-8 10-4.6-1.6-8-5-8-10V25l8-3Z" stroke="currentColor" strokeWidth="2" strokeLinejoin="round"/>
-                <path d="m24.5 31 2.5 2.5 5-5" stroke="currentColor" strokeWidth="2" strokeLinecap="square"/>
-              </svg>
-            </div>
+            <Image src="/ai-readiness/imgs/03_Security-architecture-blueprint-2.svg" alt="" width={56} height={56} className={styles.icon} unoptimized />
             <h3 className={styles.colTitle}>Secure AI-ready blueprint</h3>
             <ul className={styles.list}>
               {RIGHT_ITEMS.map((item) => (
@@ -71,3 +59,4 @@ export default function ARArchitecture() {
     </section>
   );
 }
+

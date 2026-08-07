@@ -5,21 +5,37 @@
 .hero {
   position: relative;
   overflow: hidden;
-  background:
-    radial-gradient(circle at 105% 29%, rgba(60,196,229,0.32), transparent 35%),
-    radial-gradient(circle at -2% 98%, rgba(60,196,229,0.32), transparent 35%),
-    linear-gradient(152deg, #02102c 0%, #112244 100%);
-  padding-top: calc(var(--header-height) + 56px);
-  padding-bottom: 64px;
+  padding-top: calc(var(--header-height) + 26px);
+  padding-bottom: 8.5rem;
 }
 
-.hero::before {
-  content: "";
+.heroBgWrapper {
   position: absolute;
   inset: 0;
-  background:
-    linear-gradient(108deg, transparent 0 58%, rgba(60,196,229,0.08) 58% 66%, transparent 66%),
-    linear-gradient(108deg, transparent 0 74%, rgba(60,196,229,0.06) 74% 83%, transparent 83%);
+  z-index: 0;
+}
+
+.heroBgDesktop {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.heroBgMobile {
+  display: none;
+  width: 100%;
+  height: 100%;
+}
+
+@media (max-width: 768px) {
+  .heroBgDesktop { display: none; }
+  .heroBgMobile { display: block; }
+}
+
+.heroBgSvg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
   pointer-events: none;
 }
 
@@ -38,7 +54,8 @@
 
 .hero :global(.container),
 .logosSection :global(.container) {
-  max-width: min(100%, 1470px);
+  max-width: min(100%, 1540px);
+  margin: 0 auto;
   padding-inline: clamp(1.25rem, 3vw, 2.5rem);
 }
 
@@ -47,30 +64,38 @@
   align-items: center;
   flex-wrap: wrap;
   gap: 4px;
-  margin-bottom: 24px;
+  margin: 0 0 5rem;
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 14px;
+  line-height: 20px;
+}
+
+.breadcrumbs a,
+.breadcrumbs span {
+  display: inline-flex;
+  align-items: center;
+  color: inherit;
+  text-decoration: none;
 }
 
 .breadcrumbs a {
-  color: rgba(255,255,255,0.6);
+  color: rgba(255, 255, 255, 0.5);
   font-family: var(--font-inter-tight), sans-serif;
-  font-size: 14px;
-  font-weight: 400;
-  text-decoration: none;
-  transition: color 0.3s;
+  transition: color 0.2s ease;
 }
 
-.breadcrumbs a:hover { color: var(--color-accent); }
-
-.breadcrumbs a::after {
-  content: "›";
-  margin-left: 6px;
-  color: rgba(255,255,255,0.4);
+.breadcrumbs a:hover {
+  color: rgba(255, 255, 255, 0.9);
 }
 
 .breadcrumbs span {
-  color: rgba(255,255,255,0.4);
+  color: rgba(255, 255, 255, 0.35);
   font-family: var(--font-inter-tight), sans-serif;
-  font-size: 14px;
+}
+
+.breadcrumbSep {
+  display: flex;
+  align-items: center;
 }
 
 .heroTitle {
@@ -81,7 +106,7 @@
   color: #fff;
   margin: 0 0 28px;
   letter-spacing: -0.01em;
-  max-width: 860px;
+  max-width: 85rem;
 }
 
 .heroDesc {
@@ -385,7 +410,7 @@
   text-align: center;
   margin: 0 auto 40px;
   letter-spacing: -0.02em;
-  max-width: 860px;
+  max-width: 85rem;
 }
 
 .benefitDesc {
@@ -521,6 +546,18 @@
   height: 56px;
   object-fit: contain;
   flex-shrink: 0;
+  filter: brightness(0) invert(1);
+  opacity: 0.6;
+  transition: filter 0.2s, opacity 0.2s;
+}
+
+.tabBtn:hover .tabIcon {
+  opacity: 0.85;
+}
+
+.tabBtnActive .tabIcon {
+  filter: none;
+  opacity: 1;
 }
 
 .tabPanel {
@@ -604,16 +641,66 @@
 .tabPanelLink {
   display: inline-flex;
   align-items: center;
-  gap: 6px;
   font-family: var(--font-inter-tight), sans-serif;
   font-size: 1rem;
   font-weight: 600;
   color: var(--color-accent);
   text-decoration: none;
-  transition: gap 0.2s;
+  position: relative;
 }
 
-.tabPanelLink:hover { gap: 10px; }
+.linkArrow {
+  display: inline-block;
+  padding-left: 6px;
+  padding-right: 17px;
+  position: relative;
+  width: 17px;
+}
+
+.linkArrow::before,
+.linkArrow::after {
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg width='6' height='10' viewBox='0 0 6 10' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M7.94319e-08 8.59L3.59 5L-3.53625e-07 1.41L1 0.5L5.5 5L1 9.5L7.94319e-08 8.59Z' fill='%233CC4E5'/%3E%3C/svg%3E");
+  background-position: 50%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  content: "";
+  display: block;
+  height: 9px;
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  transition: 0.1s;
+  width: 6px;
+}
+
+.linkArrow::after {
+  opacity: 0;
+}
+
+.tabPanelLink:hover .linkArrow::before {
+  animation: bounceBefore 1s linear infinite;
+  right: 6px;
+}
+
+.tabPanelLink:hover .linkArrow::after {
+  animation: bounceAfter 1s linear infinite;
+  right: 6px;
+}
+
+@keyframes bounceBefore {
+  0%   { opacity: 1; transform: translateX(0)    translateY(-50%); }
+  49%  { opacity: 0; transform: translateX(7px)  translateY(-50%); }
+  52%  { opacity: 0; transform: translateX(-7px) translateY(-50%); }
+  100% { opacity: 1; transform: translateX(0)    translateY(-50%); }
+}
+
+@keyframes bounceAfter {
+  0%   { opacity: 0; transform: translateX(-7px) translateY(-50%); }
+  49%  { opacity: 1; transform: translateX(0)    translateY(-50%); }
+  99%  { opacity: 0; transform: translateX(7px)  translateY(-50%); }
+  100% { opacity: 0; transform: translateX(-7px) translateY(-50%); }
+}
 
 @media (max-width: 900px) {
   .serviceBlock {
@@ -841,10 +928,7 @@
   margin: 0 20px;
   padding: 96px 0 70px;
   overflow: hidden;
-  background:
-    linear-gradient(108deg, transparent 0 88%, rgba(60, 196, 229, 0.05) 88% 100%),
-    linear-gradient(108deg, transparent 0 92%, rgba(255, 255, 255, 0.04) 92% 100%),
-    linear-gradient(135deg, #112750 0%, #06132b 62%, #07152f 100%);
+  background: linear-gradient(115deg, var(--color-accent-dark) 0%, #17163f 100%);
 }
 
 .processBlock :global(.container) {
@@ -882,21 +966,23 @@
 .processStep:not(:last-child)::after {
   content: "";
   position: absolute;
-  left: 47px;
+  left: 56px;
   top: 112px;
   width: 2px;
   height: calc(100% + 48px - 112px);
-  background: rgba(255, 255, 255, 0.18);
+  background: rgba(255, 255, 255, 0.22);
 }
 
 .processNum {
   width: 96px;
   height: 96px;
   flex-shrink: 0;
+  margin: 8px;
+  border: 2px solid rgba(255, 255, 255, 0.14);
   border-radius: 50%;
   /* Filled inner circle → gap ring → outer ring (circle-within-a-circle) */
-  background: #3f506f;
-  box-shadow: 0 0 0 6px #13223f, 0 0 0 8px rgba(255, 255, 255, 0.18);
+  background: rgba(255, 255, 255, 0.07);
+  box-shadow: 0 0 0 6px rgba(255, 255, 255, 0.025), 0 0 0 8px rgba(255, 255, 255, 0.12);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -964,15 +1050,16 @@
   .processGrid { margin-top: 40px; }
   .processStep:not(:first-child) { margin-top: 40px; }
   .processStep:not(:last-child)::after {
-    left: 27px;
-    top: 68px;
-    height: calc(100% + 40px - 68px);
+    left: 33px;
+    top: 66px;
+    height: calc(100% + 40px - 66px);
   }
   .processNum {
     width: 56px;
     height: 56px;
+    margin: 5px;
     font-size: 1.125rem;
-    box-shadow: 0 0 0 4px #081530, 0 0 0 6px rgba(255, 255, 255, 0.22);
+    box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.025), 0 0 0 6px rgba(255, 255, 255, 0.12);
   }
   .processStepBody { margin-left: 28px; }
 }
@@ -1072,20 +1159,13 @@
 
 .pdfCtaInner {
   min-height: 317px;
-  background:
-    linear-gradient(116deg, transparent 0 49%, rgba(60, 196, 229, 0.07) 49% 61%, transparent 61%),
-    linear-gradient(133deg, transparent 0 67%, rgba(255, 255, 255, 0.07) 67% 83%, transparent 83%),
-    linear-gradient(115deg, #123468 0%, #06142e 58%, #562342 100%);
+  background: linear-gradient(115deg, var(--color-accent-dark) 0%, #17163f 100%);
   padding: 64px 122px;
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 72px;
   flex-wrap: wrap;
-}
-
-.pdfCtaInner {
-  background: linear-gradient(115deg, var(--color-accent-dark) 0%, #17163f 100%);
 }
 
 .pdfCtaBody { display: flex; flex-direction: column; gap: 24px; max-width: 520px; }
@@ -1108,25 +1188,14 @@
 }
 
 .pdfCtaBtn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
   gap: 10px;
-  min-width: 246px;
-  min-height: 49px;
   font-family: var(--font-inter-tight), sans-serif;
-  font-size: 1rem;
-  font-weight: 600;
-  color: #fff;
-  background: var(--color-accent);
-  padding: 16px 32px;
+  min-height: 2.625rem;
+  padding: 0.4rem 1.5rem;
   text-decoration: none;
   white-space: nowrap;
   flex-shrink: 0;
-  transition: background 0.2s;
 }
-
-.pdfCtaBtn:hover { background: #2aaccc; }
 
 .pdfIcon {
   display: inline-flex;
@@ -2048,4 +2117,33 @@
   49% { opacity: 1; transform: translateX(0) translateY(-50%); }
   99% { opacity: 0; transform: translateX(7px) translateY(-50%); }
   100% { opacity: 0; transform: translateX(-7px) translateY(-50%); }
+}
+/* Requested logo module color/alignment normalization */
+.logosSection :global(.container) {
+  max-width: min(100%, 1420px);
+  margin: 0 auto;
+  padding-inline: clamp(1.25rem, 3vw, 2.5rem);
+}
+
+.logosWrapper {
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  gap: 24px clamp(28px, 3.2vw, 56px);
+}
+
+.logoImg {
+  display: block;
+  max-height: 38px;
+  width: auto;
+  height: auto;
+  opacity: 1;
+  object-fit: contain;
+  filter: brightness(0) saturate(0) invert(35%) sepia(16%) saturate(10) hue-rotate(175deg) brightness(75%) contrast(100%);
+  transition: filter 0.25s ease;
+}
+
+.logoImg:hover {
+  opacity: 1;
+  filter: none;
 }

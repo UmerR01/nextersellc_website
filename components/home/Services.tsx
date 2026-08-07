@@ -12,7 +12,7 @@ const TABS = [
   {
     title: "Applied AI and GenAI systems",
     description:
-      "We engineer governed AI systems. Using our proprietary Agentic Development Lifecycle (ADLC), we design secure, production-ready AI architectures that operate inside enterprise guardrails — with hallucination control, token modeling, red-teaming, and strict access governance.",
+      "We engineer governed AI systems. Using our proprietary Agentic Development Lifecycle (ADLC), we design secure, production-ready AI architectures that operate inside enterprise guardrails - with hallucination control, token modeling, red-teaming, and strict access governance.",
     points: [
       "Enterprise RAG systems",
       "Custom copilots & AI assistants",
@@ -21,6 +21,7 @@ const TABS = [
       "AI readiness & pilot & prove programs",
     ],
     cta: "Custom AI software development services",
+    href: "/services/ai-software-development",
   },
   {
     title: "Customer Relationship Management",
@@ -34,11 +35,12 @@ const TABS = [
       "Customer analytics & retention dashboards",
     ],
     cta: "Custom CRM development",
+    href: "/services/crm-development",
   },
   {
     title: "AI-powered software development",
     description:
-      "We design and build scalable, high-performance software engineered for long-term stability and growth. From MVPs to complex enterprise platforms, we deliver structured architectures, clean codebases, and predictable development timelines — accelerated by our internal AI-augmented engineering.",
+      "We design and build scalable, high-performance software engineered for long-term stability and growth. From MVPs to complex enterprise platforms, we deliver structured architectures, clean codebases, and predictable development timelines - accelerated by our internal AI-augmented engineering.",
     points: [
       "Architecture validation",
       "Code generation and review",
@@ -47,6 +49,7 @@ const TABS = [
       "Refactoring",
     ],
     cta: "AI-powered software product development",
+    href: "/services/custom-software-development",
   },
   {
     title: "Enterprise software development",
@@ -60,6 +63,7 @@ const TABS = [
       "High-load platform engineering",
     ],
     cta: "Enterprise software development",
+    href: "/services/enterprise-software-development",
   },
 ];
 
@@ -111,7 +115,7 @@ export default function Services() {
                   <li key={p}>{p}</li>
                 ))}
               </ul>
-              <a href="#contact" className={styles.ctaBtn}>
+              <a href={tab.href} className={styles.ctaBtn}>
                 {tab.cta}
               </a>
             </div>
@@ -135,7 +139,7 @@ export default function Services() {
                         <li key={p}>{p}</li>
                       ))}
                     </ul>
-                    <a href="#contact" className={styles.ctaBtn}>
+                    <a href={t.href} className={styles.ctaBtn}>
                       {t.cta}
                     </a>
                   </div>

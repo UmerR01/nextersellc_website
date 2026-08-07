@@ -1,7 +1,6 @@
 .section {
   padding: 32px 0;
   border-top: 1px solid #e6eff7;
-  border-bottom: 1px solid #e6eff7;
   background: #fff;
   font-family: var(--font-inter-tight), sans-serif;
 }
@@ -15,7 +14,7 @@
 .marquee {
   display: flex;
   width: max-content;
-  animation: marquee 45s linear infinite;
+  animation: marquee 40s linear infinite;
 }
 
 .marquee:hover {

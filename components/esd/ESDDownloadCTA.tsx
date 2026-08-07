@@ -10,7 +10,7 @@ export default function ESDDownloadCTA() {
             <p className={styles.desc}>Start your custom AI enterprise software journey.</p>
           </div>
           <div className={styles.btnCol}>
-            <a href="/contacts" className={`btn btn-accent ${styles.btn}`}>
+            <a href="#get-modal-popup" className={`btn btn-accent ${styles.btn}`}>
               Plan your enterprise software project
             </a>
           </div>

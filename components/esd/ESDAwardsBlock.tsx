@@ -30,9 +30,7 @@ export default function ESDAwardsBlock() {
             aria-label="Previous"
             onClick={() => swiperRef.current?.slidePrev()}
           >
-            <svg width="48" height="24" viewBox="0 0 48 24" fill="none">
-              <path d="M47 12H3M10 5L3 12L10 19" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-            </svg>
+            <span className={styles.arrowBox} aria-hidden="true" />
           </button>
 
           <Swiper
@@ -64,9 +62,7 @@ export default function ESDAwardsBlock() {
             aria-label="Next"
             onClick={() => swiperRef.current?.slideNext()}
           >
-            <svg width="48" height="24" viewBox="0 0 48 24" fill="none">
-              <path d="M1 12H45M38 5L45 12L38 19" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-            </svg>
+            <span className={styles.arrowBox} aria-hidden="true" />
           </button>
         </div>
       </div>

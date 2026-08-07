@@ -1,5 +1,5 @@
 .section {
-  padding: clamp(4.5rem, 7vw, 7.5rem) 0;
+  padding: clamp(4.5rem, 6vw, 6rem) 0;
 }
 
 @media (max-width: 768px) {
@@ -226,5 +226,5 @@
 }
 
 .colLink:hover .ctaArrow {
-  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg width='16' height='16' viewBox='0 0 16 16' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M3 8h10M9 4l4 4-4 4' stroke='%23127aff' stroke-width='1.5' stroke-linecap='square'/%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg width='16' height='16' viewBox='0 0 16 16' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M3 8h10M9 4l4 4-4 4' stroke='%233CC4E5' stroke-width='1.5' stroke-linecap='square'/%3E%3C/svg%3E");
 }

@@ -1,6 +1,6 @@
 .hero {
   overflow: hidden;
-  padding-top: 50px;
+  padding-top: calc(var(--header-height) + 26px);
   position: relative;
   width: 100%;
 }
@@ -13,7 +13,7 @@
 
 @media screen and (min-width: 1024px) and (max-width: 1680px) {
   .hero {
-    padding-top: 96px;
+    padding-top: calc(var(--header-height) + 26px);
   }
 }
 
@@ -79,8 +79,8 @@
 
 .container {
   margin: 0 auto;
-  max-width: 1504px;
-  padding-inline: clamp(1.25rem, 4vw, 3.75rem);
+  max-width: min(100%, 1540px);
+  padding-inline: clamp(1.25rem, 3vw, 2.5rem);
 }
 
 @media (max-width: 768px) {
@@ -91,7 +91,7 @@
 
 .inner {
   color: #fff;
-  padding: 96px 0 clamp(4.5rem, 6vw, 6rem);
+  padding: 0 0 8.5rem;
   position: relative;
 }
 
@@ -107,7 +107,7 @@
   display: flex;
   align-items: center;
   gap: 0;
-  margin-bottom: 24px;
+  margin-bottom: 5rem;
   font-size: 14px;
   color: rgba(255, 255, 255, 0.7);
   flex-wrap: wrap;

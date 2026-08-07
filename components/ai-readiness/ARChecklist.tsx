@@ -9,7 +9,7 @@ export default function ARChecklist() {
           <p className={styles.desc}>Partner with reliable AI experts to build your software.</p>
         </div>
         <div className={styles.right}>
-          <a href="#contact" className={`btn btn-accent ${styles.ctaButton}`}>
+          <a href="#get-modal-popup" className={`btn btn-accent ${styles.ctaButton}`}>
             Book your assessment
           </a>
         </div>
@@ -17,3 +17,4 @@ export default function ARChecklist() {
     </section>
   );
 }
+

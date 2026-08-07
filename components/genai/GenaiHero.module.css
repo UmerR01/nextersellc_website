@@ -14,8 +14,8 @@
   position: relative;
   overflow: hidden;
   background: linear-gradient(135deg, var(--fin-navy) 0%, var(--fin-navy2) 100%);
-  padding-top: calc(var(--header-height) + 56px);
-  padding-bottom: 5.5rem;
+  padding-top: calc(var(--header-height) + 26px);
+  padding-bottom: 8.5rem;
   color: var(--fin-fg);
   font-family: var(--fin-font);
 }
@@ -101,38 +101,46 @@
 .heroInner {
   position: relative;
   z-index: 1;
-  max-width: min(100%, 1470px);
+  width: 100%;
+  max-width: min(100%, 1540px);
   margin: 0 auto;
-  padding-left: clamp(1.25rem, 3vw, 2.5rem);
-  padding-right: clamp(1.25rem, 3vw, 2.5rem);
+  padding-inline: clamp(1.25rem, 3vw, 2.5rem);
 }
 
 .heroBreadcrumbs {
   display: flex;
+  align-items: center;
   flex-wrap: wrap;
-  gap: 0.125rem;
-  margin-bottom: 1.5rem;
+  gap: 4px;
+  margin-bottom: 5rem;
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 0.85rem;
+}
+
+.heroBreadcrumbs a,
+.heroBreadcrumbs span {
+  display: inline-flex;
+  align-items: center;
+  color: inherit;
+  text-decoration: none;
 }
 
 .heroBreadcrumbs a {
-  color: rgba(255, 255, 255, 0.7);
-  text-decoration: none;
-  font-size: 0.875rem;
-  line-height: 1.4;
-  transition: color 0.2s;
+  color: rgba(255, 255, 255, 0.5);
+  transition: color 0.2s ease;
 }
-.heroBreadcrumbs a:hover { color: var(--fin-fg); }
 
-.heroBreadcrumbs a::after {
-  content: " ›";
-  color: rgba(255, 255, 255, 0.4);
-  margin-left: 0.25rem;
+.heroBreadcrumbs a:hover {
+  color: rgba(255, 255, 255, 0.9);
 }
 
 .heroBreadcrumbs span {
-  color: rgba(255, 255, 255, 0.45);
-  font-size: 0.875rem;
-  line-height: 1.4;
+  color: rgba(255, 255, 255, 0.35);
+}
+
+.breadcrumbSep {
+  display: flex;
+  align-items: center;
 }
 
 .heroTitle {
@@ -140,7 +148,7 @@
   font-weight: 400;
   line-height: 1.2;
   color: var(--fin-fg);
-  max-width: 61.25rem;
+  max-width: 85rem;
   margin: 0 0 1.5rem;
 }
 
@@ -207,15 +215,11 @@
   padding-inline: 1.5rem;
 }
 
-/* AI software hero reference override */
+/* GenAI hero reference override — career bg, placement matched to AI Readiness hero */
 .hero {
-  min-height: 790px;
-  padding-top: calc(var(--header-height) + 56px);
-  padding-bottom: 5.25rem;
-  background:
-    radial-gradient(circle at 92% 8%, rgba(255, 62, 92, 0.22), transparent 27%),
-    radial-gradient(circle at 56% 78%, rgba(60, 196, 229, 0.28), transparent 34%),
-    linear-gradient(122deg, #02102c 0%, #102243 54%, #4d244f 100%);
+  padding-top: calc(var(--header-height) + 26px);
+  padding-bottom: 8.5rem;
+  background: #02102c;
 }
 
 .hero::before,
@@ -223,74 +227,35 @@
   display: none;
 }
 
-.heroBgSvg {
-  opacity: 0.62;
-  mix-blend-mode: screen;
-}
-
-.heroInner {
-  max-width: 94rem;
-  text-align: center;
-}
-
 .heroBreadcrumbs {
-  max-width: 70rem;
-  margin: 0 auto clamp(4rem, 7vw, 5.25rem);
-  justify-content: flex-start;
+  margin-bottom: 5rem;
 }
 
 .heroTitle {
-  max-width: 82rem;
-  margin: 0 auto 1.65rem;
-  font-size: clamp(3.2rem, 5vw, 4.7rem);
+  max-width: 85rem;
+  margin: 0 auto 2.25rem;
+  font-size: clamp(2.75rem, 5.2vw, 4rem);
   font-weight: 300;
-  line-height: 1.16;
+  line-height: 1.18;
   letter-spacing: 0;
+  text-align: center;
 }
 
 .heroDescription {
-  max-width: 56rem;
-  margin: 0 auto clamp(3.2rem, 5vw, 4rem);
-  font-size: clamp(1.15rem, 1.5vw, 1.45rem);
-  line-height: 1.55;
-  color: rgba(255,255,255,0.92);
-}
-
-.heroPoints {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 1rem clamp(3rem, 6vw, 6rem);
-  max-width: 71rem;
-  margin: 0 auto clamp(2.75rem, 4vw, 3.25rem);
-  padding: 0;
-  list-style: none;
-  text-align: left;
-}
-
-.heroPoint {
-  flex: none;
-  min-width: 0;
-  color: rgba(255,255,255,0.96);
-  font-size: clamp(1.15rem, 1.45vw, 1.45rem);
-  line-height: 1.45;
-}
-
-.heroPoint::before {
-  width: 1.25rem;
-  height: 1.25rem;
-  margin-top: 0.18rem;
+  max-width: 76rem;
+  margin: 0 auto 4rem;
+  font-size: clamp(1.05rem, 1.55vw, 1.375rem);
+  line-height: 1.65;
+  color: rgba(255, 255, 255, 0.95);
+  text-align: center;
 }
 
 .heroButtons {
   justify-content: center;
-  gap: clamp(2.5rem, 5vw, 4.5rem);
+  gap: clamp(2.5rem, 4.5vw, 4.5rem);
 }
 
 .btnPrimary {
-  min-width: 10rem;
-  min-height: 3.6rem;
-  padding: 0 2rem;
-  border-radius: 0;
   font-size: 1rem;
   font-weight: 500;
 }
@@ -300,6 +265,30 @@
   text-align: left;
 }
 
+.ratingLabel {
+  color: #fff;
+  font-size: 1rem;
+  line-height: 1.35;
+}
+
+.ratingScore {
+  gap: 0.5rem;
+}
+
+.ratingStars {
+  display: inline-flex;
+  gap: 0.12rem;
+  color: #ffab00;
+  font-size: 1rem;
+  letter-spacing: 0;
+}
+
+.ratingScore strong {
+  color: #ffab00;
+  font-size: 1rem;
+  font-weight: 700;
+}
+
 @media (max-width: 900px) {
   .hero {
     min-height: auto;
@@ -307,8 +296,6 @@
     padding-bottom: 4.5rem;
   }
 
-  .heroInner,
-  .heroBreadcrumbs,
   .heroTitle,
   .heroDescription {
     text-align: left;
@@ -316,11 +303,6 @@
 
   .heroBreadcrumbs {
     margin-bottom: 2.75rem;
-  }
-
-  .heroPoints {
-    grid-template-columns: 1fr;
-    gap: 0.8rem;
   }
 
   .heroButtons {

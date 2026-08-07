@@ -3,7 +3,7 @@
   position: relative;
   z-index: 4;
   background: var(--color-bg);
-  padding: 90px 0;
+  padding: clamp(4.5rem, 6vw, 6rem) 0;
   overflow: hidden;
 }
 
@@ -142,22 +142,6 @@
   line-height: 1.55;
   margin-bottom: 1.75rem;
   max-width: 460px;
-}
-.viewMore {
-  align-self: flex-start;
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  padding: 0.3rem 1.25rem;
-  border-radius: var(--radius-button);
-  border: 1px solid var(--color-accent);
-  color: #fff;
-  font-weight: 600;
-  transition: background-color 0.25s ease, color 0.25s ease;
-}
-.viewMore:hover {
-  background: var(--color-accent);
-  color: var(--color-text);
 }
 
 /* Active meta row (tags / stats + nav) pinned to bottom */
@@ -372,8 +356,5 @@
   .text {
     font-size: 0.95rem;
     margin-bottom: 1.25rem;
-  }
-  .viewMore {
-    padding-inline: 1rem;
   }
 }

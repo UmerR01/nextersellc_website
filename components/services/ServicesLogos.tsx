@@ -1,9 +1,3 @@
-"use client";
-
-import { useRef } from "react";
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Autoplay } from "swiper/modules";
-import "swiper/css";
 import styles from "./ServicesLogos.module.css";
 
 const LOGOS = [
@@ -18,30 +12,27 @@ const LOGOS = [
 ];
 
 export default function ServicesLogos() {
-  const swiperRef = useRef(null);
-
   return (
     <section className={styles.section}>
-      <div className={styles.inner}>
-        <Swiper
-          ref={swiperRef}
-          modules={[Autoplay]}
-          slidesPerView="auto"
-          spaceBetween={48}
-          loop={true}
-          speed={4000}
-          autoplay={{ delay: 0, disableOnInteraction: false }}
-          allowTouchMove={false}
-          className={styles.swiper}
-        >
-          {[...LOGOS, ...LOGOS, ...LOGOS].map((logo, i) => (
-            <SwiperSlide key={i} className={styles.slide}>
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src={logo.src} alt={logo.alt} width={logo.width} height={logo.height} loading="lazy" className={styles.logo} />
-            </SwiperSlide>
-          ))}
-        </Swiper>
+      <div className={styles.overflow}>
+        <div className={styles.marquee}>
+          <Track />
+          <Track ariaHidden />
+        </div>
       </div>
     </section>
+  );
+}
+
+function Track({ ariaHidden }: { ariaHidden?: boolean }) {
+  return (
+    <div className={styles.track} aria-hidden={ariaHidden}>
+      {LOGOS.map((logo, i) => (
+        <div key={`${logo.src}-${i}`} className={styles.item}>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src={logo.src} alt={logo.alt} width={logo.width} height={logo.height} loading="lazy" className={styles.logo} />
+        </div>
+      ))}
+    </div>
   );
 }

@@ -1,7 +1,7 @@
 import Image from "next/image";
 import styles from "./LogosMarquee.module.css";
 
-/** Client logos — Sumato's continuous, linear-scrolling logo strip. */
+/** Client logos - continuous, linear-scrolling logo strip. */
 const LOGOS = [
   { src: "/logos/toyota.svg", alt: "Toyota", w: 124 },
   { src: "/logos/dexai.svg", alt: "Dexai", w: 73 },
@@ -19,10 +19,11 @@ const LOGOS = [
 export default function LogosMarquee({ edgeFade = false }: { edgeFade?: boolean } = {}) {
   return (
     <section className={`${styles.section} ${edgeFade ? styles.edgeFade : ""}`} aria-label="Trusted by">
-      <div className={styles.marquee}>
-        {/* Two identical tracks create a seamless loop */}
-        <Track />
-        <Track ariaHidden />
+      <div className={styles.overflow}>
+        <div className={styles.marquee}>
+          <Track />
+          <Track ariaHidden />
+        </div>
       </div>
     </section>
   );

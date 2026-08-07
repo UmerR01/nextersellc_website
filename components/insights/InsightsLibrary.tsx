@@ -140,16 +140,10 @@ export default function InsightsLibrary({ afterContent }: { afterContent?: React
                     {/* Right — col-xl-3 col-md-4 offset-xl-1 align-self-center justify-content-center */}
                     <div className={styles.colRight}>
                       <div className={styles.downloadBtnWrap}>
-                        <a
-                          href={item.href}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className={styles.downloadBtn}
-                          aria-label="Download"
-                        >
+                        <span className={styles.downloadBtn}>
                           <PdfIcon />
                           Download
-                        </a>
+                        </span>
                       </div>
                     </div>
                   </div>
