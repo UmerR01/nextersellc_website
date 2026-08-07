@@ -3,7 +3,7 @@ import styles from "./LlmLogos.module.css";
 const LOGOS = [
   { src: "/llm-development/12_5c98e3297e3bc92bd580af14_toyota_l-1.svg", alt: "Toyota logo", width: 124, height: 38 },
   { src: "/llm-development/12_5ecba50d2b50b63a7a1871ad_beiersdorf-logo-1.svg", alt: "Beiersdorf logo", width: 126, height: 38 },
-  { src: "/llm-development/01_ClimeCo.svg", alt: "ClimeCo logo", width: 210, height: 38 },
+  { src: "/llm-development/01_ClimeCo.svg", alt: "ClimeCo logo", width: 132, height: 38 },
   { src: "/llm-development/12_5ecce35506c123c4936b0303_dexai-logo-1.svg", alt: "Dexai logo", width: 73, height: 38 },
   { src: "/llm-development/10_SMI_Logo-1-2-2.svg", alt: "SMI logo", width: 91, height: 38 },
   { src: "/llm-development/01_Tartle.svg", alt: "Tartle logo", width: 150, height: 38 },

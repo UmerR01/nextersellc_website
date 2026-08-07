@@ -1,7 +1,7 @@
 .hero {
   font-family: var(--font-inter-tight), "Inter Tight", sans-serif;
   overflow: hidden;
-  padding-top: 50px;
+  padding-top: calc(var(--header-height) + 26px);
   position: relative;
   width: 100%;
 }
@@ -9,7 +9,7 @@
 @media (min-width: 1024px) and (max-width: 1680px) {
   .hero {
     margin-left: 0;
-    padding-top: 96px;
+    padding-top: calc(var(--header-height) + 26px);
     width: 100%;
   }
 }
@@ -74,9 +74,9 @@
 }
 
 .container {
-  max-width: min(100%, 1504px);
+  max-width: min(100%, 1540px);
   margin: 0 auto;
-  padding: 0 40px;
+  padding-inline: clamp(1.25rem, 3vw, 2.5rem);
 }
 
 @media (max-width: 768px) {
@@ -87,7 +87,7 @@
 
 .inner {
   color: #fff;
-  padding: 96px 0 136px;
+  padding: 0 0 8.5rem;
   position: relative;
   text-align: left;
 }
@@ -102,7 +102,7 @@
   display: flex;
   align-items: center;
   gap: 0;
-  margin-bottom: 24px;
+  margin-bottom: 5rem;
   font-size: 14px;
   color: rgba(255, 255, 255, 0.7);
   flex-wrap: wrap;

@@ -5,9 +5,8 @@
 .hero {
   position: relative;
   overflow: hidden;
-  padding-top: calc(var(--header-height) + 56px);
-  padding-bottom: 88px;
-  min-height: min(843px, 100svh);
+  padding-top: calc(var(--header-height) + 26px);
+  padding-bottom: 8.5rem;
 }
 
 .bgWrapper {
@@ -38,7 +37,8 @@
 }
 
 .hero :global(.container) {
-  max-width: min(100%, 1470px);
+  max-width: min(100%, 1540px);
+  margin: 0 auto;
   padding-inline: clamp(1.25rem, 3vw, 2.5rem);
 }
 
@@ -47,30 +47,38 @@
   align-items: center;
   flex-wrap: wrap;
   gap: 4px;
-  margin-bottom: 24px;
+  margin: 0 0 5rem;
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 14px;
+  line-height: 20px;
+}
+
+.breadcrumbs a,
+.breadcrumbs span {
+  display: inline-flex;
+  align-items: center;
+  color: inherit;
+  text-decoration: none;
 }
 
 .breadcrumbs a {
-  color: rgba(255,255,255,0.6);
+  color: rgba(255, 255, 255, 0.5);
   font-family: var(--font-inter-tight), sans-serif;
-  font-size: 14px;
-  font-weight: 400;
-  text-decoration: none;
-  transition: color 0.3s;
+  transition: color 0.2s ease;
 }
 
-.breadcrumbs a:hover { color: var(--color-accent); }
-
-.breadcrumbs a::after {
-  content: "›";
-  margin-left: 6px;
-  color: rgba(255,255,255,0.4);
+.breadcrumbs a:hover {
+  color: rgba(255, 255, 255, 0.9);
 }
 
 .breadcrumbs span {
-  color: rgba(255,255,255,0.4);
+  color: rgba(255, 255, 255, 0.35);
   font-family: var(--font-inter-tight), sans-serif;
-  font-size: 14px;
+}
+
+.breadcrumbSep {
+  display: flex;
+  align-items: center;
 }
 
 .heroTitle {
@@ -81,7 +89,7 @@
   color: #fff;
   margin: 0 0 28px;
   letter-spacing: -0.01em;
-  max-width: 860px;
+  max-width: 85rem;
 }
 
 .heroDesc {
@@ -373,7 +381,7 @@
   text-align: center;
   margin: 0 auto 40px;
   letter-spacing: -0.02em;
-  max-width: 860px;
+  max-width: 85rem;
 }
 
 .benefitDesc {
@@ -509,6 +517,18 @@
   height: 56px;
   object-fit: contain;
   flex-shrink: 0;
+  filter: brightness(0) invert(1);
+  opacity: 0.6;
+  transition: filter 0.2s, opacity 0.2s;
+}
+
+.tabBtn:hover .tabIcon {
+  opacity: 0.85;
+}
+
+.tabBtnActive .tabIcon {
+  filter: none;
+  opacity: 1;
 }
 
 .tabPanel {
@@ -592,16 +612,66 @@
 .tabPanelLink {
   display: inline-flex;
   align-items: center;
-  gap: 6px;
   font-family: var(--font-inter-tight), sans-serif;
   font-size: 1rem;
   font-weight: 600;
   color: var(--color-accent);
   text-decoration: none;
-  transition: gap 0.2s;
+  position: relative;
 }
 
-.tabPanelLink:hover { gap: 10px; }
+.linkArrow {
+  display: inline-block;
+  padding-left: 6px;
+  padding-right: 17px;
+  position: relative;
+  width: 17px;
+}
+
+.linkArrow::before,
+.linkArrow::after {
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg width='6' height='10' viewBox='0 0 6 10' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M7.94319e-08 8.59L3.59 5L-3.53625e-07 1.41L1 0.5L5.5 5L1 9.5L7.94319e-08 8.59Z' fill='%233CC4E5'/%3E%3C/svg%3E");
+  background-position: 50%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  content: "";
+  display: block;
+  height: 9px;
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  transition: 0.1s;
+  width: 6px;
+}
+
+.linkArrow::after {
+  opacity: 0;
+}
+
+.tabPanelLink:hover .linkArrow::before {
+  animation: bounceBefore 1s linear infinite;
+  right: 6px;
+}
+
+.tabPanelLink:hover .linkArrow::after {
+  animation: bounceAfter 1s linear infinite;
+  right: 6px;
+}
+
+@keyframes bounceBefore {
+  0%   { opacity: 1; transform: translateX(0)    translateY(-50%); }
+  49%  { opacity: 0; transform: translateX(7px)  translateY(-50%); }
+  52%  { opacity: 0; transform: translateX(-7px) translateY(-50%); }
+  100% { opacity: 1; transform: translateX(0)    translateY(-50%); }
+}
+
+@keyframes bounceAfter {
+  0%   { opacity: 0; transform: translateX(-7px) translateY(-50%); }
+  49%  { opacity: 1; transform: translateX(0)    translateY(-50%); }
+  99%  { opacity: 0; transform: translateX(7px)  translateY(-50%); }
+  100% { opacity: 0; transform: translateX(-7px) translateY(-50%); }
+}
 
 @media (max-width: 900px) {
   .serviceBlock {
@@ -867,21 +937,23 @@
 .processStep:not(:last-child)::after {
   content: "";
   position: absolute;
-  left: 47px;
+  left: 56px;
   top: 112px;
   width: 2px;
   height: calc(100% + 48px - 112px);
-  background: rgba(255, 255, 255, 0.18);
+  background: rgba(255, 255, 255, 0.22);
 }
 
 .processNum {
   width: 96px;
   height: 96px;
   flex-shrink: 0;
+  margin: 8px;
+  border: 2px solid rgba(255, 255, 255, 0.14);
   border-radius: 50%;
   /* Filled inner circle → gap ring → outer ring (circle-within-a-circle) */
-  background: #3f506f;
-  box-shadow: 0 0 0 6px #13223f, 0 0 0 8px rgba(255, 255, 255, 0.18);
+  background: rgba(255, 255, 255, 0.07);
+  box-shadow: 0 0 0 6px rgba(255, 255, 255, 0.025), 0 0 0 8px rgba(255, 255, 255, 0.12);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -949,15 +1021,16 @@
   .processGrid { margin-top: 40px; }
   .processStep:not(:first-child) { margin-top: 40px; }
   .processStep:not(:last-child)::after {
-    left: 27px;
-    top: 68px;
-    height: calc(100% + 40px - 68px);
+    left: 33px;
+    top: 66px;
+    height: calc(100% + 40px - 66px);
   }
   .processNum {
     width: 56px;
     height: 56px;
+    margin: 5px;
     font-size: 1.125rem;
-    box-shadow: 0 0 0 4px #081530, 0 0 0 6px rgba(255, 255, 255, 0.22);
+    box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.025), 0 0 0 6px rgba(255, 255, 255, 0.12);
   }
   .processStepBody { margin-left: 28px; }
 }
@@ -2011,4 +2084,33 @@
   49% { opacity: 1; transform: translateX(0) translateY(-50%); }
   99% { opacity: 0; transform: translateX(7px) translateY(-50%); }
   100% { opacity: 0; transform: translateX(-7px) translateY(-50%); }
+}
+/* Requested logo module color/alignment normalization */
+.logosSection :global(.container) {
+  max-width: min(100%, 1420px);
+  margin: 0 auto;
+  padding-inline: clamp(1.25rem, 3vw, 2.5rem);
+}
+
+.logosWrapper {
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  gap: 24px clamp(28px, 3.2vw, 56px);
+}
+
+.logoImg {
+  display: block;
+  max-height: 38px;
+  width: auto;
+  height: auto;
+  opacity: 1;
+  object-fit: contain;
+  filter: brightness(0) saturate(0) invert(35%) sepia(16%) saturate(10) hue-rotate(175deg) brightness(75%) contrast(100%);
+  transition: filter 0.25s ease;
+}
+
+.logoImg:hover {
+  opacity: 1;
+  filter: none;
 }

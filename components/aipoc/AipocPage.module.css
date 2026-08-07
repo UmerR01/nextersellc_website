@@ -1,7 +1,7 @@
-/* ── Shared ────────────────────────────────────────────────────────────────── */
+/* Section */
 .accent { color: var(--color-accent); }
 
-/* ── Hero ──────────────────────────────────────────────────────────────────── */
+/* Section */
 .hero {
   position: relative;
   overflow: hidden;
@@ -57,7 +57,7 @@
 .breadcrumbs a:hover { color: var(--color-accent); }
 
 .breadcrumbs a::after {
-  content: "›";
+  content: "\203A";
   margin-left: 6px;
   color: rgba(255,255,255,0.4);
 }
@@ -165,7 +165,7 @@
   .ratings { margin-left: 0; }
 }
 
-/* ── Logos ─────────────────────────────────────────────────────────────────── */
+/* Section */
 .logosSection {
   background: #fff;
   padding: 32px 0;
@@ -189,7 +189,7 @@
 
 .logoImg:hover { opacity: 1; filter: grayscale(0); }
 
-/* ── Section header shared ─────────────────────────────────────────────────── */
+/* Section */
 .sectionTitle {
   font-family: var(--font-inter-tight), sans-serif;
   font-size: clamp(1.75rem, 3.5vw, 3.5rem);
@@ -234,7 +234,7 @@
   margin: 0 auto;
 }
 
-/* ── Light block ───────────────────────────────────────────────────────────── */
+/* Section */
 .blockLight {
   background: #f7f9fe;
   padding: 96px 0;
@@ -313,20 +313,20 @@
   object-position: center;
 }
 
-/* ── Dark block ────────────────────────────────────────────────────────────── */
+/* Section */
 .blockDark {
   background: linear-gradient(135deg, #02102c 0%, #112244 100%);
   padding: 96px 0;
   position: relative;
 }
 
-/* ── White block ───────────────────────────────────────────────────────────── */
+/* Section */
 .blockWhite {
   background: #fff;
   padding: 96px 0;
 }
 
-/* ── 3-col card grid ───────────────────────────────────────────────────────── */
+/* Section */
 .cardsGrid {
   margin-top: 64px;
 }
@@ -436,7 +436,7 @@
 
 .cardLink:hover { gap: 10px; }
 
-/* ── Benefits (centered, reference layout) ─────────────────────────────────── */
+/* Section */
 .benefitSection {
   background: #fff;
   padding: 130px 0 70px;
@@ -502,7 +502,7 @@
   .benefitDesc { margin-bottom: 56px; }
 }
 
-/* ── Horizontal tabs (Services, dark) ──────────────────────────────────────── */
+/* Section */
 .serviceBlock {
   margin: 0 26px;
   padding: 96px 0 64px;
@@ -702,7 +702,7 @@
   }
 }
 
-/* ── Vertical tabs (Solutions) ─────────────────────────────────────────────── */
+/* Section */
 .solutionsBlock {
   background: #fff;
   padding: 122px 0 48px;
@@ -809,7 +809,7 @@
 }
 
 .vertTabBullets li::before {
-  content: "—";
+  content: "\2014";
   position: absolute;
   left: 0;
   color: var(--color-accent);
@@ -866,7 +866,7 @@
   }
 }
 
-/* ── Inline CTA ────────────────────────────────────────────────────────────── */
+/* Section */
 .inlineCta {
   background: #fff;
   padding: 48px 0 74px;
@@ -942,7 +942,7 @@
   color: var(--color-accent);
 }
 
-/* ── Process steps (dark, connected circles) ───────────────────────────────── */
+/* Section */
 .processBlock {
   margin: 0 20px;
   padding: 96px 0 70px;
@@ -1000,7 +1000,7 @@
   height: 96px;
   flex-shrink: 0;
   border-radius: 50%;
-  /* Filled inner circle → gap ring → outer ring (circle-within-a-circle) */
+  /* Section */
   background: var(--color-accent-dark);
   box-shadow: 0 0 0 6px #13223f, 0 0 0 8px rgba(255, 255, 255, 0.18);
   display: flex;
@@ -1083,7 +1083,7 @@
   .processStepBody { margin-left: 28px; }
 }
 
-/* ── Process testimonial (CSCitation quote style, own white section) ───────── */
+/* Section */
 .processTestimonialSection {
   background: #fff;
   padding: 96px 0;
@@ -1099,7 +1099,7 @@
   max-width: 1180px;
 }
 
-/* Person column (photo + name + position) — right side */
+/* Section */
 .ptLeft {
   display: flex;
   flex-direction: column;
@@ -1132,7 +1132,7 @@
   margin-top: 4px;
 }
 
-/* Quote column (mark + quote) — left side */
+/* Section */
 .ptRight {
   flex: 1;
   display: flex;
@@ -1170,7 +1170,7 @@
   .ptQuoteMark { font-size: 2.5rem; }
 }
 
-/* ── PDF CTA ───────────────────────────────────────────────────────────────── */
+/* Section */
 .pdfCta {
   background: #fff;
   padding: 0 0 44px;
@@ -1243,7 +1243,7 @@
   letter-spacing: 0.03em;
 }
 
-/* ── Security section ──────────────────────────────────────────────────────── */
+/* Section */
 @media (max-width: 900px) {
   .pdfCta {
     padding-bottom: 32px;
@@ -1341,7 +1341,7 @@
   background-size: contain;
 }
 
-/* ── Tech stack ────────────────────────────────────────────────────────────── */
+/* Section */
 .techStackSection {
   background: #fff;
   padding: 96px 0;
@@ -1425,7 +1425,7 @@
   margin: 0 auto;
 }
 
-/* ── Engagement models (dark, vertical tabs) ───────────────────────────────── */
+/* Section */
 .engagementWrap {
   background: #fff;
   padding: 106px 0 144px;
@@ -1552,7 +1552,7 @@
   }
 }
 
-/* ── Industry cards (3-col with icon) ─────────────────────────────────────── */
+/* Section */
 .industriesBlock {
   background: #f7f9fe;
   padding: 94px 0 112px;
@@ -1705,7 +1705,7 @@
   100% { opacity: 0; transform: translateX(-7px); }
 }
 
-/* ── Approach section (vertical tabs, numbered, light bg) ──────────────────── */
+/* Section */
 .approachBlock {
   background: #fff;
   padding: 92px 0 0;
@@ -1865,7 +1865,7 @@
   }
 }
 
-/* ── AI-specific cards (3 dark cards in dark section) ──────────────────────── */
+/* Section */
 .aiCardsSection {
   background: #fff;
   padding: 86px 0 86px;
@@ -1927,7 +1927,7 @@
   font-weight: 400;
 }
 
-/* ── Cross-links (engagement-style hover + accent gradient bg) ──────────────── */
+/* Section */
 .clSection {
   position: relative;
   overflow: hidden;
@@ -2094,9 +2094,9 @@
   100% { opacity: 0; transform: translateX(-7px) translateY(-50%); }
 }
 
-/* ═══ eCommerce-specific sections ═══════════════════════════════════════════ */
+/* Section */
 
-/* ── Hero points (3 ISO badges) ────────────────────────────────────────────── */
+/* Section */
 .heroPoints {
   list-style: none;
   padding: 0;
@@ -2120,7 +2120,7 @@
   .heroPoints { grid-template-columns: 1fr; gap: 16px; }
 }
 
-/* ── Why choose (results) ──────────────────────────────────────────────────── */
+/* Section */
 .resultsRow {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -2173,7 +2173,7 @@
   object-fit: cover;
 }
 
-/* ── Services (6 cards) ────────────────────────────────────────────────────── */
+/* Section */
 .ecomServicesGrid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -2259,7 +2259,7 @@
   background-size: contain;
 }
 
-/* ── Solutions (6 dark cards) ──────────────────────────────────────────────── */
+/* Section */
 .solutionsGrid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -2338,7 +2338,7 @@
   background-size: contain;
 }
 
-/* ── Cost factors (5 cards) ────────────────────────────────────────────────── */
+/* Section */
 .costGrid {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
@@ -2379,9 +2379,9 @@
   margin: 0;
 }
 
-/* ═══ Logistics-specific ════════════════════════════════════════════════════ */
+/* Section */
 
-/* ── 2-col card grid (challenges / solutions / why) ────────────────────────── */
+/* Section */
 .hcAudienceGrid {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -2393,7 +2393,7 @@
   .hcAudienceGrid { grid-template-columns: 1fr; }
 }
 
-/* ── Solutions rich card (title + sub-blocks) ──────────────────────────────── */
+/* Section */
 .solRichCard {
   background: #f7f9fe;
   border: 1px solid #e6eff7;
@@ -2418,7 +2418,7 @@
   margin: 0;
 }
 
-/* ── Improves-itself card link ─────────────────────────────────────────────── */
+/* Section */
 .improvesLink {
   font-family: var(--font-inter-tight), sans-serif;
   font-size: 0.9375rem;
@@ -2427,7 +2427,7 @@
   margin-top: auto;
 }
 
-/* ── Process step paragraph (dark, roadmap) ────────────────────────────────── */
+/* Section */
 .processStepText {
   font-family: var(--font-inter-tight), sans-serif;
   font-size: 1rem;
@@ -2436,7 +2436,7 @@
   margin: 0 0 8px;
 }
 
-/* ── Fintech: industry cards with image ────────────────────────────────────── */
+/* Section */
 .finIndustryImg {
   width: 100%;
   height: 180px;
@@ -2445,7 +2445,7 @@
   margin-bottom: 4px;
 }
 
-/* ── Fintech: integration split (text + image) ─────────────────────────────── */
+/* Section */
 .finSplit {
   display: grid;
   grid-template-columns: 1.15fr 0.85fr;
@@ -2473,7 +2473,7 @@
   object-fit: cover;
 }
 
-/* ── Fintech: quick-facts stats ────────────────────────────────────────────── */
+/* Section */
 .finStats {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -2510,7 +2510,7 @@
   margin-top: 10px;
 }
 
-/* ── Adtech: results-in-numbers multi-column bullet grid ───────────────────── */
+/* Section */
 .adtResultsGrid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -2531,7 +2531,7 @@
   .adtResultsGrid { grid-template-columns: 1fr; }
 }
 
-/* ── AI PoC: Build vs Buy comparison table ─────────────────────────────────── */
+/* Section */
 .compareWrap {
   margin-top: 40px;
   overflow-x: auto;
@@ -2588,7 +2588,7 @@
   border-bottom: none;
 }
 
-/* ── AI PoC: compliance badge strip ────────────────────────────────────────── */
+/* Section */
 .badgeStrip {
   display: flex;
   flex-wrap: wrap;
@@ -2603,13 +2603,13 @@
   width: auto;
   object-fit: contain;
   opacity: 0.85;
-  filter: grayscale(1);
+  filter: brightness(0) saturate(0) invert(35%) sepia(16%) saturate(10) hue-rotate(175deg) brightness(75%) contrast(100%);
   transition: opacity 0.2s ease, filter 0.2s ease;
 }
 
-.badgeStripImg:hover { opacity: 1; filter: none; }
+.badgeStripImg:hover { opacity: 1; filter: brightness(0) saturate(0) invert(26%) sepia(18%) saturate(12) hue-rotate(175deg) brightness(63%) contrast(105%); }
 
-/* ── AI PoC: why-ADLC icon+title card ──────────────────────────────────────── */
+/* Section */
 .whyIconCard {
   background: #fff;
   border: 1px solid #e6eff7;
@@ -2670,6 +2670,7 @@
   grid-template-columns: 8.5rem minmax(0, 1fr);
   gap: 0;
   position: relative;
+  margin-top: 0;
   padding: 0 0 4.5rem;
   background: transparent;
   border: 0;
@@ -2682,25 +2683,27 @@
 .processBlock .processStep:not(:last-child)::after {
   content: "";
   position: absolute;
-  left: 51px;
-  top: 102px;
-  width: 1px;
-  height: calc(100% - 102px);
-  background: #e6eff7;
+  left: 60px;
+  top: 120px;
+  width: 2px;
+  height: calc(100% - 120px);
+  background: #e3ecf5;
 }
 
 .processBlock .processNum {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 102px;
-  height: 102px;
+  width: 104px;
+  height: 104px;
+  margin: 8px;
+  border: 2px solid #e3ecf5;
   border-radius: 50%;
-  background: var(--color-accent-dark);
-  box-shadow: 0 0 0 6px var(--color-bg), 0 0 0 8px var(--color-border);
-  color: #fff;
+  background: #f4f7fd;
+  box-shadow: 0 0 0 6px #fff, 0 0 0 8px #e3ecf5;
+  color: var(--color-accent);
   font-size: 1.75rem;
-  font-weight: 600;
+  font-weight: 500;
   line-height: 1;
   position: relative;
   z-index: 1;
@@ -2766,15 +2769,18 @@
   }
 
   .processBlock .processStep:not(:last-child)::after {
-    left: 28px;
-    top: 64px;
-    height: calc(100% - 64px);
+    left: 29px;
+    top: 53px;
+    height: calc(100% - 53px);
   }
 
   .processBlock .processNum {
-    width: 56px;
-    height: 56px;
-    font-size: 1.25rem;
+    width: 48px;
+    height: 48px;
+    margin: 5px;
+    border: 2px solid #e3ecf5;
+    box-shadow: 0 0 0 3px #fff, 0 0 0 5px #e3ecf5;
+    font-size: 1rem;
   }
 }
 /* AI PoC Build vs Buy reference override */
@@ -2954,7 +2960,7 @@
   width: 3.5rem;
   height: 3.5rem;
   object-fit: contain;
-  filter: none;
+  filter: brightness(0);
 }
 
 .vertTabBtnActive .deliverableIcon {
@@ -3186,7 +3192,12 @@
   max-height: 3.75rem;
   height: auto;
   opacity: 0.9;
-  filter: grayscale(1);
+  filter: brightness(0) saturate(0) invert(35%) sepia(16%) saturate(10) hue-rotate(175deg) brightness(75%) contrast(100%);
+}
+
+.whyAdlcBlock .badgeStripImg:hover {
+  opacity: 1;
+  filter: brightness(0) saturate(0) invert(26%) sepia(18%) saturate(12) hue-rotate(175deg) brightness(63%) contrast(105%);
 }
 
 @media (max-width: 900px) {
@@ -3289,7 +3300,7 @@
 }
 
 .techStackBlock .ecomBullets li::before {
-  content: "✓";
+  content: "\2713";
   position: absolute;
   left: 0;
   top: 0;
@@ -3319,7 +3330,7 @@
 /* AI PoC single tick icon override */
 .processBlock .processStepBullets li::before,
 .techStackBlock .ecomBullets li::before {
-  content: "";
+  content: "\2713";
   position: absolute;
   left: 0;
   top: 0.38em;

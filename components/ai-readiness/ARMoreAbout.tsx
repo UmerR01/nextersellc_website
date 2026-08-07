@@ -3,14 +3,14 @@ import styles from "@/components/engagement/EngCrosslinksBlock.module.css";
 
 const LINKS = [
   { text: "AI consulting ", last: "services", href: "/ai-consulting" },
-  { text: "Agentic Development Lifecycle ", last: "(ADLC)", href: "#" },
-  { text: "AI development cost ", last: "factors", href: "#" },
+  { text: "Agentic Development Lifecycle ", last: "(ADLC)", href: "/adlc" },
+  { text: "AI integration", last: "", href: "/services/ai-integration" },
   { text: "About Nexterse LLC AI ", last: "expertise", href: "/team" },
 ];
 
 export default function ARMoreAbout() {
   return (
-    <section className={styles.section} id="more-about">
+    <section className={`${styles.section} ${styles.aiReadinessSection}`} id="more-about">
       <div className={styles.bg} />
       <div className={styles.container}>
         <div className={styles.grid}>
@@ -35,3 +35,4 @@ export default function ARMoreAbout() {
     </section>
   );
 }
+

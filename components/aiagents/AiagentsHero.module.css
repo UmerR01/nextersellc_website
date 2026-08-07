@@ -14,8 +14,8 @@
   position: relative;
   overflow: hidden;
   background: linear-gradient(135deg, var(--fin-navy) 0%, var(--fin-navy2) 100%);
-  padding-top: calc(var(--header-height) + 56px);
-  padding-bottom: 5.5rem;
+  padding-top: calc(var(--header-height) + 26px);
+  padding-bottom: 8.5rem;
   color: var(--fin-fg);
   font-family: var(--fin-font);
 }
@@ -101,38 +101,46 @@
 .heroInner {
   position: relative;
   z-index: 1;
-  max-width: min(100%, 1470px);
+  max-width: min(100%, 1540px);
   margin: 0 auto;
-  padding-left: clamp(1.25rem, 3vw, 2.5rem);
-  padding-right: clamp(1.25rem, 3vw, 2.5rem);
+  padding-inline: clamp(1.25rem, 3vw, 2.5rem);
 }
 
 .heroBreadcrumbs {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.125rem;
+  align-items: center;
+  gap: 4px;
   margin-bottom: 1.5rem;
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 0.875rem;
+  line-height: 1.4;
+}
+
+.heroBreadcrumbs a,
+.heroBreadcrumbs span {
+  display: inline-flex;
+  align-items: center;
+  color: inherit;
+  text-decoration: none;
 }
 
 .heroBreadcrumbs a {
-  color: rgba(255, 255, 255, 0.7);
-  text-decoration: none;
-  font-size: 0.875rem;
-  line-height: 1.4;
-  transition: color 0.2s;
+  color: rgba(255, 255, 255, 0.5);
+  transition: color 0.2s ease;
 }
-.heroBreadcrumbs a:hover { color: var(--fin-fg); }
 
-.heroBreadcrumbs a::after {
-  content: " ›";
-  color: rgba(255, 255, 255, 0.4);
-  margin-left: 0.25rem;
+.heroBreadcrumbs a:hover {
+  color: rgba(255, 255, 255, 0.9);
 }
 
 .heroBreadcrumbs span {
-  color: rgba(255, 255, 255, 0.45);
-  font-size: 0.875rem;
-  line-height: 1.4;
+  color: rgba(255, 255, 255, 0.35);
+}
+
+.breadcrumbSep {
+  display: flex;
+  align-items: center;
 }
 
 .heroTitle {
@@ -140,7 +148,7 @@
   font-weight: 400;
   line-height: 1.2;
   color: var(--fin-fg);
-  max-width: 61.25rem;
+  max-width: 85rem;
   margin: 0 0 1.5rem;
 }
 
@@ -209,13 +217,9 @@
 
 /* AI agents hero reference override */
 .hero {
-  min-height: 710px;
-  padding-top: calc(var(--header-height) + 56px);
-  padding-bottom: 5.25rem;
-  background:
-    radial-gradient(circle at 92% 8%, rgba(255, 62, 92, 0.22), transparent 27%),
-    radial-gradient(circle at 56% 78%, rgba(60, 196, 229, 0.28), transparent 34%),
-    linear-gradient(122deg, #02102c 0%, #102243 54%, #4d244f 100%);
+  padding-top: calc(var(--header-height) + 26px);
+  padding-bottom: 8.5rem;
+  background: #02102c;
 }
 
 .hero::before,
@@ -223,36 +227,25 @@
   display: none;
 }
 
-.heroBgSvg {
-  opacity: 0.62;
-  mix-blend-mode: screen;
-}
-
-.heroInner {
-  max-width: 94rem;
-  padding-left: clamp(1.5rem, 9vw, 9rem);
-  padding-right: clamp(1.5rem, 5vw, 4rem);
-}
-
 .heroBreadcrumbs {
-  margin-bottom: clamp(3.25rem, 6vw, 5rem);
+  margin-bottom: 4.5rem;
 }
 
 .heroTitle {
-  max-width: 66rem;
-  margin-bottom: 1.65rem;
-  font-size: clamp(3.4rem, 5.4vw, 4.8rem);
-  font-weight: 300;
+  max-width: 85rem;
+  margin-bottom: 1.75rem;
+  font-size: clamp(3rem, 5vw, 4rem);
+  font-weight: 400;
   line-height: 1.18;
   letter-spacing: 0;
 }
 
 .heroDescription {
   max-width: 58rem;
-  margin-bottom: clamp(3.2rem, 5vw, 4rem);
-  font-size: clamp(1.15rem, 1.5vw, 1.45rem);
-  line-height: 1.55;
-  color: rgba(255,255,255,0.92);
+  margin-bottom: 2.25rem;
+  font-size: clamp(1.15rem, 1.8vw, 1.5rem);
+  line-height: 1.5;
+  color: rgba(255,255,255,0.9);
 }
 
 .heroButtons {
@@ -260,10 +253,6 @@
 }
 
 .btnPrimary {
-  min-width: 10rem;
-  min-height: 3.6rem;
-  padding: 0 2rem;
-  border-radius: 0;
   font-size: 1rem;
   font-weight: 500;
 }

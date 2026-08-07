@@ -1,17 +1,11 @@
-/* Logos strip — matched to Sumato (.logos): white background, muted slate
-   logos via Sumato's exact filter, continuous linear marquee. */
+/* Shared client logo strip used below AI Consulting and AI Readiness heroes. */
 .section {
   position: relative;
   z-index: 4;
   background: #fff;
   padding: 32px 0;
   overflow: hidden;
-}
-
-/* Optional left/right fade at the section edges */
-.edgeFade {
-  -webkit-mask-image: linear-gradient(to right, transparent 0%, #000 13%, #000 87%, transparent 100%);
-  mask-image: linear-gradient(to right, transparent 0%, #000 13%, #000 87%, transparent 100%);
+  font-family: var(--font-inter-tight), sans-serif;
 }
 
 .edgeFade::before,
@@ -35,12 +29,20 @@
   background: linear-gradient(270deg, #fff 0%, rgba(255, 255, 255, 0) 100%);
 }
 
+.overflow {
+  overflow: hidden;
+  width: 100%;
+}
+
 .marquee {
   display: flex;
+  align-items: center;
   width: max-content;
   min-width: 100%;
   animation: scroll 40s linear infinite;
+  will-change: transform;
 }
+
 .marquee:hover {
   animation-play-state: paused;
 }
@@ -49,43 +51,47 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  gap: 0;
+  margin: 0;
+  padding: 0;
   list-style: none;
 }
 
 .item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   flex: 0 0 auto;
-  display: grid;
-  place-items: center;
   padding: 12px 28px;
 }
 
 .logo {
+  display: block;
   max-height: 38px;
   width: auto;
+  max-width: 320px;
   object-fit: contain;
-  /* Sumato's exact logo treatment: muted slate-blue, full colour on hover */
-  filter: brightness(0) saturate(0) invert(35%) sepia(16%) saturate(10)
-    hue-rotate(175deg) brightness(75%) contrast(100%);
+  filter: brightness(0) saturate(0) invert(35%) sepia(16%) saturate(10) hue-rotate(175deg) brightness(75%) contrast(100%);
   transition: filter 0.25s ease;
 }
+
 .item:hover .logo {
   filter: none;
 }
 
 @keyframes scroll {
-  from {
-    transform: translateX(0);
-  }
-  to {
-    /* Each track is half the marquee, so -50% loops seamlessly */
-    transform: translateX(-50%);
-  }
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
 }
 
 @media (prefers-reduced-motion: reduce) {
   .marquee {
     animation: none;
+    transform: none;
     flex-wrap: wrap;
     justify-content: center;
+    width: 100%;
+    min-width: 0;
+    padding-inline: 1rem;
   }
 }

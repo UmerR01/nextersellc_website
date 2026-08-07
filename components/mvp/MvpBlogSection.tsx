@@ -17,14 +17,7 @@ const ClockIcon = () => (
   </svg>
 );
 
-const ArrowIcon = () => (
-  <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden>
-    <path stroke="currentColor" strokeWidth="1.5" strokeLinecap="square" d="M4 10h12M11 5l5 5-5 5" />
-  </svg>
-);
-
 const FEATURED = {
-  href: "#",
   image: "/mvp/06_Agentic-RAG-The-Complete-Enterprise-Implementation-Guide-1024x578.jpg",
   title: "Agentic RAG: The Complete Enterprise Implementation Guide for 2026",
   readTime: "35 mins",
@@ -33,19 +26,16 @@ const FEATURED = {
 
 const SIDE_POSTS = [
   {
-    href: "#",
     title: "The AI Cost Reduction Playbook – 9 Mechanisms, 7 Hidden Drivers, and Real-World Case Studies (2026 Edition)",
     readTime: "32 mins",
     date: "July 1, 2026",
   },
   {
-    href: "#",
     title: "How to modernize legacy systems with custom AI",
     readTime: "26 mins",
     date: "June 24, 2026",
   },
   {
-    href: "#",
     title: "How to Deliver Software on Time with Agile and Release Planning in the AI Era",
     readTime: "18 mins",
     date: "June 22, 2026",
@@ -61,7 +51,7 @@ export default function MvpBlogSection() {
         </h2>
         <div className={styles.postsGrid}>
           <div className={styles.featuredCol}>
-            <a href={FEATURED.href} className={styles.featuredPost}>
+            <div className={styles.featuredPost}>
               <div className={styles.featuredImageWrapper}>
                 <div className={styles.featuredImgInner}>
                   {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -82,12 +72,12 @@ export default function MvpBlogSection() {
                 <span className={styles.metaSep}>|</span>
                 <span className={styles.postDate}>{FEATURED.date}</span>
               </div>
-            </a>
+            </div>
           </div>
 
           <div className={styles.sideCol}>
             {SIDE_POSTS.map((post) => (
-              <a key={post.href + post.title} href={post.href} className={styles.sidePost}>
+              <div key={post.title} className={styles.sidePost}>
                 <div className={styles.sidePostTitle}>{post.title}</div>
                 <div className={styles.postMeta}>
                   <span className={styles.readTime}>
@@ -97,14 +87,12 @@ export default function MvpBlogSection() {
                   <span className={styles.metaSep}>|</span>
                   <span className={styles.postDate}>{post.date}</span>
                 </div>
-              </a>
+              </div>
             ))}
             <div className={styles.allArticlesWrapper}>
               <a href="/blog" className={styles.allArticlesLink}>
                 All articles
-                <span className={styles.linkArrow} aria-hidden>
-                  <ArrowIcon />
-                </span>
+                <span className={styles.linkArrow} aria-hidden="true" />
               </a>
             </div>
           </div>

@@ -2,14 +2,14 @@
   position: relative;
   width: 100%;
   overflow: hidden;
-  padding-top: 50px;
+  padding-top: calc(var(--header-height) + 26px);
   background: #fff;
   font-family: var(--font-inter-tight), "Inter Tight", sans-serif;
 }
 
 @media (min-width: 1024px) and (max-width: 1680px) {
   .hero {
-    padding-top: 96px;
+    padding-top: calc(var(--header-height) + 26px);
   }
 }
 
@@ -22,9 +22,9 @@
 .container {
   position: relative;
   z-index: 1;
-  max-width: min(100%, 1504px);
+  max-width: min(100%, 1540px);
   margin: 0 auto;
-  padding: 0 40px;
+  padding-inline: clamp(1.25rem, 3vw, 2.5rem);
 }
 
 @media screen and (max-width: 768px) {
@@ -35,7 +35,7 @@
 
 .wrapper {
   color: #112244;
-  padding: 96px 0 112px;
+  padding: 0 0 8.5rem;
   text-align: left;
 }
 
@@ -52,7 +52,7 @@
   font-size: 14px;
   font-weight: 400;
   color: #5e6d8e;
-  margin-bottom: 24px;
+  margin-bottom: 5rem;
   flex-wrap: wrap;
 }
 

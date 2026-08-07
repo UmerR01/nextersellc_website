@@ -63,12 +63,20 @@ export default function ARHero() {
   return (
     <section className={styles.section}>
       <HeroBg />
-      <div className={`container ${styles.inner}`}>
+      <div className={styles.inner}>
         <nav className={styles.breadcrumb} aria-label="Breadcrumb">
           <a href="/">Home</a>
-          <span>&gt;</span>
+          <span className={styles.breadcrumbSep}>
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden>
+              <path stroke="rgba(255,255,255,0.5)" strokeLinecap="square" d="m6 4 4 4-4 4" />
+            </svg>
+          </span>
           <a href="/#applied-ai">Services</a>
-          <span>&gt;</span>
+          <span className={styles.breadcrumbSep}>
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden>
+              <path stroke="rgba(255,255,255,0.5)" strokeLinecap="square" d="m6 4 4 4-4 4" />
+            </svg>
+          </span>
           <span>AI Readiness Assessment</span>
         </nav>
 
@@ -87,7 +95,7 @@ export default function ARHero() {
         </p>
 
         <div className={styles.buttons}>
-          <a href="#contact" className={`btn btn-accent ${styles.btnPrimary}`}>
+          <a href="#get-modal-popup" className={`btn btn-accent ${styles.btnPrimary}`}>
             Get a free AI Readiness Assessment
           </a>
         </div>
@@ -95,3 +103,4 @@ export default function ARHero() {
     </section>
   );
 }
+

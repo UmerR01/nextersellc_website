@@ -9,7 +9,7 @@ import ServicesFaqBlock, { type FaqItem } from "@/components/services/ServicesFa
 import LetsStart from "@/components/home/LetsStart";
 import AdlcBlog, { type AdlcFeaturedPost, type AdlcBlogPost } from "@/components/adlc/AdlcBlog";
 import AdtechHero from "./AdtechHero";
-import AdtechLogos from "./AdtechLogos";
+import AipocLogos from "@/components/aipoc/AipocLogos";
 import AdtechTechStack from "./AdtechTechStack";
 import AdtechArticleLayout from "./AdtechArticleLayout";
 import styles from "./AdtechPage.module.css";
@@ -241,26 +241,25 @@ const CROSSLINKS = [
   {
     heading: "Key AI services",
     links: [
-      { text: "Enterprise RAG ", last: "systems", href: "/services/ai-software-development" },
-      { text: "Custom AI copilots and ", last: "agents", href: "/services/ai-software-development" },
+      { text: "Enterprise RAG ", last: "systems", href: "/services/rag-development" },
+      { text: "Custom AI copilots and ", last: "agents", href: "/services/ai-agents-development" },
       { text: "Enterprise software ", last: "development", href: "/services/enterprise-software-development" },
     ],
   },
   {
     heading: "Other enterprise services",
     links: [
-      { text: "Legacy software ", last: "modernization", href: "/services/custom-software-development" },
-      { text: "IoT security & compliance ", last: "frameworks", href: "/services/predictive-maintenance" },
+      { text: "MVP ", last: "development", href: "/process/mvp" },
+      { text: "CRM ", last: "development", href: "/services/crm-development" },
       { text: "Predictive maintenance ", last: "systems", href: "/services/predictive-maintenance" },
     ],
   },
   {
     heading: "About Nexterse LLC",
     links: [
-      { text: "350+ delivered software ", last: "projects", href: "/portfolio" },
-      { text: "98% client satisfaction — read our ", last: "reviews", href: "/testimonials" },
-      { text: "Get a free project ", last: "estimate", href: "/contact-us" },
-      { text: "14+ years in custom software ", last: "development", href: "/about" },
+      { text: "About ", last: "us", href: "/team" },
+      { text: "Contact ", last: "us", href: "/contact-us" },
+      { text: "", last: "Careers", href: "/careers" },
     ],
   },
 ];
@@ -275,7 +274,7 @@ export default function AdtechPage() {
       <AdtechHero />
 
       <AdtechArticleLayout>
-        <AdtechLogos />
+        <AipocLogos />
 
         {/* ── Solutions ──────────────────────────────────────────────────── */}
         <section id="adt-solutions" className={`${styles.blockWhite} ${styles.solutionsOpen}`}>

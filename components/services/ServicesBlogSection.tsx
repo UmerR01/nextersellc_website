@@ -44,12 +44,6 @@ const ClockIcon = () => (
   </svg>
 );
 
-const ArrowIcon = () => (
-  <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden>
-    <path stroke="currentColor" strokeWidth="1.5" strokeLinecap="square" d="M4 10h12M11 5l5 5-5 5" />
-  </svg>
-);
-
 export default function ServicesBlogSection({
   featured,
   sidePosts,
@@ -68,7 +62,7 @@ export default function ServicesBlogSection({
         </h2>
         <div className={styles.postsGrid}>
           <div className={styles.featuredCol}>
-            <a href={featuredPost.href} className={styles.featuredPost}>
+            <div className={styles.featuredPost}>
               <div className={styles.featuredImageWrapper}>
                 <div className={styles.featuredImgInner}>
                   {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -91,12 +85,12 @@ export default function ServicesBlogSection({
                 <span className={styles.metaSep}>|</span>
                 <span className={styles.postDate}>{featuredPost.date}</span>
               </div>
-            </a>
+            </div>
           </div>
 
           <div className={styles.sideCol}>
             {sidePostList.map((post) => (
-              <a key={post.href} href={post.href} className={styles.sidePost}>
+              <div key={post.href} className={styles.sidePost}>
                 <div className={styles.sidePostTitle}>{post.title}</div>
                 <div className={styles.postMeta}>
                   <span className={styles.readTime}>
@@ -106,14 +100,12 @@ export default function ServicesBlogSection({
                   <span className={styles.metaSep}>|</span>
                   <span className={styles.postDate}>{post.date}</span>
                 </div>
-              </a>
+              </div>
             ))}
             <div className={styles.allArticlesWrapper}>
               <a href="/blog" className={styles.allArticlesLink}>
                 All articles
-                <span className={styles.linkArrow} aria-hidden>
-                  <ArrowIcon />
-                </span>
+                <span className={styles.linkArrow} aria-hidden="true" />
               </a>
             </div>
           </div>

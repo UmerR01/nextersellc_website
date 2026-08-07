@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Header from "@/components/Header";
 import EngagementHero from "@/components/engagement/EngagementHero";
-import EngagementLogos from "@/components/engagement/EngagementLogos";
+import AipocLogos from "@/components/aipoc/AipocLogos";
 import AchievementsBlock from "@/components/engagement/AchievementsBlock";
 import WhyModelMatters from "@/components/engagement/WhyModelMatters";
 import OurServicesBlock from "@/components/engagement/OurServicesBlock";
@@ -34,7 +34,7 @@ export default function EngagementModelsPage() {
     <>
       <Header />
       <EngagementHero />
-      <EngagementLogos />
+      <AipocLogos />
       <AchievementsBlock />
       <WhyModelMatters />
       <OurServicesBlock />

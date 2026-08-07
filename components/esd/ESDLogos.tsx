@@ -1,8 +1,3 @@
-"use client";
-import { useEffect, useRef } from "react";
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Autoplay } from "swiper/modules";
-import "swiper/css";
 import styles from "./ESDLogos.module.css";
 
 const LOGOS = [
@@ -17,34 +12,27 @@ const LOGOS = [
 ];
 
 export default function ESDLogos() {
+  const doubled = [...LOGOS, ...LOGOS];
+
   return (
-    <div className={styles.wrapper}>
+    <section className={styles.wrapper}>
       <div className={styles.overflow}>
-      <Swiper
-        modules={[Autoplay]}
-        slidesPerView="auto"
-        spaceBetween={48}
-        loop
-        autoplay={{ delay: 0, disableOnInteraction: false, pauseOnMouseEnter: true }}
-        speed={4000}
-        allowTouchMove={false}
-        className={styles.swiper}
-      >
-        {[...LOGOS, ...LOGOS, ...LOGOS].map((logo, i) => (
-          <SwiperSlide key={i} className={styles.slide}>
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src={logo.src}
-              alt={logo.alt}
-              width={logo.width}
-              height={logo.height}
-              className={styles.logoImg}
-              loading="lazy"
-            />
-          </SwiperSlide>
-        ))}
-      </Swiper>
+        <div className={styles.marquee}>
+          {doubled.map((logo, i) => (
+            <div key={i} className={styles.slide}>
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src={logo.src}
+                alt={logo.alt}
+                width={logo.width}
+                height={logo.height}
+                className={styles.logoImg}
+                loading="lazy"
+              />
+            </div>
+          ))}
+        </div>
       </div>
-    </div>
+    </section>
   );
 }

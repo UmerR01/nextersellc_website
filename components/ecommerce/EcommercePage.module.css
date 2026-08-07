@@ -5,30 +5,37 @@
 .hero {
   position: relative;
   overflow: hidden;
-  background:
-    radial-gradient(circle at 105% 29%, rgba(60, 196, 229, 0.32), transparent 35%),
-    radial-gradient(circle at -2% 98%, rgba(60, 196, 229, 0.32), transparent 35%),
-    linear-gradient(152deg, #02102c 0%, #112244 100%);
-  padding-top: calc(var(--header-height) + 72px);
-  padding-bottom: 88px;
-  min-height: 843px;
+  padding-top: calc(var(--header-height) + 26px);
+  padding-bottom: 8.5rem;
 }
 
-.hero::before {
-  content: "";
+.heroBgWrapper {
   position: absolute;
   inset: 0;
-  background:
-    linear-gradient(108deg, transparent 0 57%, rgba(60, 196, 229, 0.08) 57% 66%, transparent 66%),
-    linear-gradient(108deg, transparent 0 72%, rgba(60, 196, 229, 0.08) 72% 83%, transparent 83%);
-  pointer-events: none;
+  z-index: 0;
 }
 
-.hero::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: transparent;
+.heroBgDesktop {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.heroBgMobile {
+  display: none;
+  width: 100%;
+  height: 100%;
+}
+
+@media (max-width: 768px) {
+  .heroBgDesktop { display: none; }
+  .heroBgMobile { display: block; }
+}
+
+.heroBgSvg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
   pointer-events: none;
 }
 
@@ -37,35 +44,49 @@
   z-index: 1;
 }
 
+.hero :global(.container) {
+  max-width: min(100%, 1540px);
+  margin: 0 auto;
+  padding-inline: clamp(1.25rem, 3vw, 2.5rem);
+}
+
 .breadcrumbs {
   display: flex;
   align-items: center;
   flex-wrap: wrap;
   gap: 4px;
-  margin-bottom: 24px;
+  margin: 0 0 5rem;
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 14px;
+  line-height: 20px;
+}
+
+.breadcrumbs a,
+.breadcrumbs span {
+  display: inline-flex;
+  align-items: center;
+  color: inherit;
+  text-decoration: none;
 }
 
 .breadcrumbs a {
-  color: rgba(255,255,255,0.6);
+  color: rgba(255, 255, 255, 0.5);
   font-family: var(--font-inter-tight), sans-serif;
-  font-size: 14px;
-  font-weight: 400;
-  text-decoration: none;
-  transition: color 0.3s;
+  transition: color 0.2s ease;
 }
 
-.breadcrumbs a:hover { color: var(--color-accent); }
-
-.breadcrumbs a::after {
-  content: "›";
-  margin-left: 6px;
-  color: rgba(255,255,255,0.4);
+.breadcrumbs a:hover {
+  color: rgba(255, 255, 255, 0.9);
 }
 
 .breadcrumbs span {
-  color: rgba(255,255,255,0.4);
+  color: rgba(255, 255, 255, 0.35);
   font-family: var(--font-inter-tight), sans-serif;
-  font-size: 14px;
+}
+
+.breadcrumbSep {
+  display: flex;
+  align-items: center;
 }
 
 .heroTitle {
@@ -76,7 +97,7 @@
   color: #fff;
   margin: 0 0 28px;
   letter-spacing: -0.01em;
-  max-width: 860px;
+  max-width: 85rem;
 }
 
 .heroDesc {
@@ -379,7 +400,7 @@
   text-align: center;
   margin: 0 auto 40px;
   letter-spacing: -0.02em;
-  max-width: 860px;
+  max-width: 85rem;
 }
 
 .benefitDesc {
@@ -520,6 +541,16 @@
   height: 56px;
   object-fit: contain;
   flex-shrink: 0;
+  filter: grayscale(1) opacity(0.55);
+  transition: filter 0.2s;
+}
+
+.tabBtn:hover .tabIcon {
+  filter: grayscale(1) opacity(0.8);
+}
+
+.tabBtnActive .tabIcon {
+  filter: none;
 }
 
 .tabPanel {
@@ -917,21 +948,23 @@
 .processStep:not(:last-child)::after {
   content: "";
   position: absolute;
-  left: 47px;
-  top: 96px;
+  left: 56px;
+  top: 112px;
   width: 2px;
-  height: calc(100% + 48px - 96px);
-  background: #e8f0fb;
+  height: calc(100% + 48px - 112px);
+  background: #e4eef9;
 }
 
 .processNum {
   width: 96px;
   height: 96px;
   flex-shrink: 0;
+  margin: 8px;
+  border: 2px solid #e4eef9;
   border-radius: 50%;
   /* Filled inner circle → gap ring → outer ring (circle-within-a-circle) */
   background: #f7faff;
-  box-shadow: 0 0 0 4px #fff, 0 0 0 6px #e4eef9;
+  box-shadow: 0 0 0 6px #fff, 0 0 0 8px #e4eef9;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -999,13 +1032,14 @@
   .processGrid { margin-top: 40px; }
   .processStep:not(:first-child) { margin-top: 40px; }
   .processStep:not(:last-child)::after {
-    left: 27px;
-    top: 56px;
-    height: calc(100% + 40px - 56px);
+    left: 33px;
+    top: 66px;
+    height: calc(100% + 40px - 66px);
   }
   .processNum {
     width: 56px;
     height: 56px;
+    margin: 5px;
     font-size: 1.125rem;
     box-shadow: 0 0 0 3px #fff, 0 0 0 5px #e4eef9;
   }

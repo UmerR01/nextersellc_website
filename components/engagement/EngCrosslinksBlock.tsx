@@ -2,11 +2,11 @@ import Link from "next/link";
 import styles from "./EngCrosslinksBlock.module.css";
 
 const LINKS = [
-  { text: "Explore all our ", last: "services", href: "/ai-consulting" },
-  { text: "See projects delivered with each ", last: "model", href: "/portfolio" },
-  { text: "Our development ", last: "lifecycle", href: "/ai-consulting" },
+  { text: "Explore all our ", last: "services", href: "/services" },
+  { text: "See our ", last: "pricing", href: "/pricing" },
+  { text: "Our development ", last: "lifecycle", href: "/sdlc" },
   { text: "Engagement models ", last: "FAQ", href: "/faq" },
-  { text: "About Nexterse LLC ", last: "team", href: "/about" },
+  { text: "About Nexterse LLC ", last: "team", href: "/team#management-team" },
 ];
 
 export default function EngCrosslinksBlock() {

@@ -4,7 +4,6 @@ export interface Review {
   position: string;
   photo?: string;
   logo?: string;
-  caseStudy?: string;
 }
 
 export const REVIEWS: Review[] = [
@@ -13,28 +12,24 @@ export const REVIEWS: Review[] = [
     name: "Alexander McCaig",
     position: "Co-Founder & CEO, Tartle",
     photo: "/testimonials/01_photo.png",
-    caseStudy: "/portfolio",
   },
   {
     text: `<p>From the early stages, their team demonstrated a strong understanding of our business domain and the constraints of working with existing SCADA systems. They took a proactive approach, carefully analyzing our requirements and proposing a solution that enhanced our infrastructure without disrupting it. Communication was clear and structured, and the project was managed professionally, with all milestones delivered on time.</p><p>The resulting platform gave us a unified view of turbine health and enabled early detection of gearbox and generator issues. This helped reduce unplanned downtime and emergency maintenance activities. Overall, Nexterse LLC proved to be a reliable and knowledgeable technology partner focused on delivering real business value.</p>`,
     name: "Markus Keller",
     position: "Head of Operations",
     photo: "/testimonials/01_Markus-Keller-300x300.png",
-    caseStudy: "/portfolio",
   },
   {
     text: `<p><strong>We tried another company that one of our partners had used but they didn't work out. I feel that Nexterse LLC does a better investigation of what we're asking for. They tell us how they plan to do a task and ask if that works for us. We chose them because their method worked with us.</strong></p>`,
     name: "Damian Gevertz",
     position: "Founder & CEO, Widgety",
     photo: "/testimonials/01_photo6.png",
-    caseStudy: "/portfolio",
   },
   {
     text: `<p><strong>We've been working with Nexterse LLC for a few years, starting from the initial monitoring system, so they already understood our environment quite well. At the same time, they still managed to surprise us with their professionalism.</strong><br/>As our production expanded and the equipment list grew, we needed to adapt the existing system to new machine types. Nexterse LLC handled that in the best possible way.<br/>Their approach to the upgrade was honestly impressive. They didn't overpromise, just went step by step, tested things in real conditions, and rolled it out gradually. That made a difference for us, especially given how sensitive our operations are.<br/>The system is now running at full capacity again. Nexterse LLC has been supporting our operations with their software for almost five years, and we expect our cooperation to continue.</p>`,
     name: "Alex Phelps",
     position: "CEO",
     photo: "/testimonials/05_Alex-Phelps.png",
-    caseStudy: "/portfolio",
   },
   {
     text: `<p><strong>From the early stages of the project, Nexterse LLC demonstrated a proactive attitude, actively seeking opportunities to enhance the solution and anticipate our needs. They consistently took the initiative to address any potential issues, provide timely updates, and offer solutions to challenges that arose during development. This proactiveness greatly contributed to the project's success and exceeded our expectations.</strong></p><p>Nexterse LLC's project management was commendable. They consistently delivered items on time, meeting project milestones as planned. Moreover, their responsiveness to our needs was exceptional. They were proactive in addressing any concerns or adjustments required throughout the project.</p>`,
@@ -47,7 +42,6 @@ export const REVIEWS: Review[] = [
     name: "Domien Van Eynde",
     position: "Team Lead, Daiokan.com",
     photo: "/testimonials/01_photo2.png",
-    caseStudy: "/portfolio",
   },
   {
     text: `<p><strong>Working with Nexterse LLC has been an outstanding experience.</strong></p><p>Their team is not only highly skilled but also incredibly responsive, collaborative, and committed to delivering quality results. I can't recommend them enough! Thank you team Nexterse LLC for bringing my vision to life.</p>`,
@@ -60,7 +54,6 @@ export const REVIEWS: Review[] = [
     name: "Paul S. Chun",
     position: "CTO, Rivalfox GmbH",
     photo: "/testimonials/01_photo5.png",
-    caseStudy: "/portfolio",
   },
   {
     text: `<p><strong>Nexterse LLC is flexible, efficient, and extremely good at planning and being proactive.</strong></p><p>Nexterse LLC is more flexible than other development companies I've worked with. They have also been very proactive in their approach throughout the project, seeking to understand the needs and the reasons behind them before launching into development, which has been helpful for maintaining direction and consistency, especially because the end client is regularly generating new ideas for added features.</p>`,
@@ -73,35 +66,30 @@ export const REVIEWS: Review[] = [
     name: "Yevgeniy Rozenblat",
     position: "Program Manager, TL Nika",
     photo: "/testimonials/01_photo3.png",
-    caseStudy: "/portfolio",
   },
   {
     text: `<p><strong>We'd like to sincerely thank Nexterse LLC for the work they've done on our maintenance system. At one point, our maintenance efforts became inefficient – long downtimes and rising repair costs became the norm.</strong></p><p>Nexterse LLC stepped in and helped us bring clarity back by introducing predictive maintenance and AI intelligence into our system. They didn't rush the process, took the time to understand how we work, and carefully improved what we already had. You could feel that they were fully engaged and treated the problem as their own.</p>`,
     name: "Dillon Christensen",
     position: "CEO",
     photo: "/testimonials/05_Dillon-Christensen.png",
-    caseStudy: "/portfolio",
   },
   {
     text: `<p><strong>Nexterse LLC was chosen to replace our previous development team and to work on relaunching our freight forwarding logistics web-service after careful research and several conversations.</strong></p><p>From the start and throughout the project, all communications and project management were very professional and the quality of code was very good and consistent. Nexterse LLC team managed to improve the existing service architecture, add important features to our new site and warehouse management system and quickly respond to troubleshooting requests related to both the older and the newly launched versions of our service.</p><p>Thanks to Nexterse LLC's can-do attitude, amazing work ethic, and willingness to tackle clients' problems as their own, they've become an integral part of our team. We've been truly impressed with their professionalism and performance and continue to work with the team on developing new applications.</p><p>We would definitely recommend Nexterse LLC as a reliable technology partner for demanding development web projects.</p>`,
     name: "Yury Haverman",
     position: "Founder, BoxForward",
     logo: "/testimonials/01_logo.svg",
-    caseStudy: "/portfolio",
   },
   {
     text: `<p><strong>When looking for a strategic IT-partner for the development of a corporate ERP solution, we chose Nexterse LLC. The company proved itself a reliable provider of IT services.</strong></p><p>We are pleased to mention that the work is done to the full extent, on time and on a high quality level. It complies with the requirements due to the highly skilled project team of our chosen partner.</p><p>The work is fulfilled with due regard for the peculiarities of the project, namely:</p><ul><li>Domain complexity of the business solution;</li><li>Raised standards for the implementation rate;</li><li>Early consideration of the system's scope and complexity when developing the solution's architecture.</li></ul><p>We recommend Nexterse LLC as a reliable partner in the sphere of development and implementation of complex business solutions.</p>`,
     name: "Yuriy Semenchuk",
     position: "General Director, Business Car",
     photo: "/testimonials/01_photo9.png",
-    caseStudy: "/portfolio",
   },
   {
     text: `<p><strong>Nexterse LLC developed a new version of our service. When we turned to the Nexterse LLC experts, we had already been using an MVP version, which we would like to improve.</strong></p><p>Together with the team, we have turned the MVP version of the service into a modern full-featured platform for online marketers. We are very satisfied with the work the Nexterse LLC team has performed, and we would like to highlight the high level of technical expertise, coherence and efficiency of communication and flexibility in work.</p><p>We can confidently say that Nexterse LLC has put all our ideas into practice. We will highly recommend Nexterse LLC to those who want to successfully plan and implement a truly quality project.</p>`,
     name: "Katerina Bromberg",
     position: "Co-Founder, MyMediAds.com",
     photo: "/testimonials/01_photo7.png",
-    caseStudy: "/portfolio",
   },
   {
     text: `<p><strong>They are very sharp and have a high-quality team. I expect quality from people, and they have the kind of team I can work with. They were upfront about everything that needed to be done.</strong></p><p>I appreciated that the cost of the project turned out to be smaller than what we expected because they made some very good suggestions. They are very pleasant to work with.</p>`,
@@ -114,14 +102,12 @@ export const REVIEWS: Review[] = [
     name: "Erica Lindsay",
     position: "Manager",
     photo: "/testimonials/05_Erica-Lindsay.png",
-    caseStudy: "/portfolio",
   },
   {
     text: `<p><strong>We are absolutely convinced that cooperation between companies is only successful when based on effective teamwork. But the teams may vary on the degree of their cohesion.</strong></p><p>With Nexterse LLC, we feel like a bobsled team — together in the same cockpit, aimed at the same targets. And this feeling is off the chart.</p><p>We are sure that by aligning our efforts we will set new records and grab new medals.</p>`,
     name: "Maria Duyunova",
     position: "Director, Simplimagine LLC",
     photo: "/testimonials/01_photo10.png",
-    caseStudy: "/portfolio",
   },
   {
     text: `<p><strong>We had a large volume of repetitive support requests, and Nexterse LLC helped us address that with an AI chatbot that now handles most of them. It automated about 90% of incoming queries and allowed our team to focus on more important work.</strong></p><p>The team was easy to work with, very responsive, and flexible when we introduced new requirements along the way. They clearly understood what we were trying to achieve and helped improve the solution beyond the initial scope.</p>`,
@@ -134,6 +120,5 @@ export const REVIEWS: Review[] = [
     name: "Benjamin Dorsinvil",
     position: "Founder, SellBig",
     photo: "/testimonials/12_5cc8378b669af259c74ec736_b_dorsinvil-2-1-1.jpg",
-    caseStudy: "/portfolio",
   },
 ];

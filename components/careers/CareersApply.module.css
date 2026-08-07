@@ -1,6 +1,6 @@
 /* ── Section ── */
 .section {
-  background: linear-gradient(259.16deg, #02102c -0.49%, #112244 100%);
+  background: linear-gradient(115deg, var(--color-accent-dark) 0%, #17163f 100%);
   color: #fff;
   max-width: 100%;
   width: 100vw;
@@ -16,7 +16,7 @@
 
 .wrapper {
   margin: 0 auto;
-  max-width: 1420px;
+  max-width: 1504px;
   padding: clamp(4rem, 7vw, 6rem) clamp(1.25rem, 4vw, 3.75rem);
 }
 

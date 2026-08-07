@@ -1,4 +1,5 @@
-import ServicesReviewSlider, { type Review } from "@/components/services/ServicesReviewSlider";
+﻿import ServicesReviewSlider, { type Review } from "@/components/services/ServicesReviewSlider";
+import styles from "./AIReviews.module.css";
 
 const AI_REVIEWS: Review[] = [
   {
@@ -52,5 +53,11 @@ const AI_REVIEWS: Review[] = [
 ];
 
 export default function AIReviews() {
-  return <ServicesReviewSlider reviews={AI_REVIEWS} />;
+  return (
+    <div className={styles.reviewSpacing}>
+      <ServicesReviewSlider reviews={AI_REVIEWS} />
+    </div>
+  );
 }
+
+

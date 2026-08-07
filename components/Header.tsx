@@ -18,7 +18,7 @@ const PANEL_LINKS = [
   { label: "Services", href: "/services" },
   { label: "Process", href: "/process" },
   { label: "Work", href: "#work" },
-  { label: "Applied AI", href: "#applied-ai" },
+  { label: "Applied AI", href: "/adlc" },
   { label: "Insights", href: "/library" },
   { label: "Products", href: "#products" },
   { label: "Contact", href: "#contact" },
@@ -195,7 +195,7 @@ export default function Header({ forceSolid = false, startTransparent = false }:
 
               {/* ── Applied AI (3 columns) ── */}
               <li className={dd.item}>
-                <a href="#applied-ai" className={dd.link}>
+                <a href="/adlc" className={dd.link}>
                   Applied AI <Chevron className={dd.chevron} />
                 </a>
                 <div className={`${dd.panel} ${dd.panelAppliedAI} ${dd.cols3}`}>
@@ -203,32 +203,28 @@ export default function Header({ forceSolid = false, startTransparent = false }:
                     {
                       title: "Strategy",
                       links: [
-                        { label: "AI Consulting",           href: "/" },
-                        { label: "AI Readiness Assessment", href: "/" },
-                        { label: "AI PoC Development",      href: "/" },
+                        { label: "AI Consulting",           href: "/ai-consulting" },
+                        { label: "AI Readiness Assessment", href: "/ai-readiness-assessment" },
+                        { label: "AI PoC Development",      href: "/services/ai-poc-development" },
                       ],
                     },
                     {
                       title: "Development",
                       links: [
-                        { label: "AI Software Development", href: "/" },
-                        { label: "AI Agents Development",   href: "/" },
-                        { label: "RAG Development",         href: "/" },
-                        { label: "LLM Development",         href: "/" },
-                        { label: "GenAI Development",       href: "/" },
-                        { label: "OpenAI Development",      href: "/" },
-                        { label: "AIoT Development",        href: "/" },
-                      ],
+                        { label: "AI Software Development", href: "/services/ai-software-development" },
+                        { label: "AI Agents Development",   href: "/services/ai-agents-development" },
+                        { label: "RAG Development",         href: "/services/rag-development" },
+                        { label: "LLM Development",         href: "/services/llm-development" },
+                        { label: "GenAI Development",       href: "/services/genai-development" },
+                        { label: "OpenAI Development",      href: "/services/openai-development" },                      ],
                     },
                     {
                       title: "Operations",
                       links: [
-                        { label: "AI Integration",          href: "/" },
-                        { label: "GenAI Integration",       href: "/" },
-                        { label: "Big Data Development",    href: "/" },
-                        { label: "ML Development",          href: "/" },
-                        { label: "AIoT & Data Analytics",   href: "/" },
-                      ],
+                        { label: "AI Integration",          href: "/services/ai-integration" },
+                        { label: "GenAI Integration",       href: "/services/genai-integration" },
+                        { label: "Big Data Development",    href: "/services/big-data-development" },
+                        { label: "ML Development",          href: "/services/ml-development" },                      ],
                     },
                   ].map((col) => (
                     <div key={col.title} className={dd.col}>
@@ -304,8 +300,7 @@ export default function Header({ forceSolid = false, startTransparent = false }:
                       Working collaboratively with clients to develop outstanding solutions
                     </p>
                     <a href="/process" className={dd.processCtaLink}>
-                      Our Process →
-                    </a>
+                      Our Process</a>
                   </div>
 
                   {/* Right: 3 image cards using Next.js Image fill */}
@@ -339,7 +334,7 @@ export default function Header({ forceSolid = false, startTransparent = false }:
 
               {/* ── Pricing (no dropdown) ── */}
               <li className={dd.item}>
-                <a href="#pricing" className={dd.link}>Pricing</a>
+                <a href="/pricing" className={dd.link}>Pricing</a>
               </li>
 
               {/* ── About us ── */}

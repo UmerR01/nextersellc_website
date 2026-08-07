@@ -1,4 +1,4 @@
-﻿import styles from "./ARTalkExpert.module.css";
+import styles from "./ARTalkExpert.module.css";
 
 export default function ARTalkExpert() {
   return (
@@ -9,9 +9,10 @@ export default function ARTalkExpert() {
           <p className={styles.desc}>Get personalized advice for your AI project needs.</p>
         </div>
         <div className={styles.right}>
-          <a href="#contact" className={styles.ctaButton}>Get in Touch</a>
+          <a href="#get-modal-popup" className={styles.ctaButton}>Get in Touch</a>
         </div>
       </div>
     </section>
   );
 }
+

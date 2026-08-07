@@ -4,70 +4,102 @@ export default function PredictiveHero() {
   return (
     <section className={styles.section}>
       <div className={styles.bgWrapper} aria-hidden>
-        <svg
-          preserveAspectRatio="xMidYMid slice"
-          className={styles.bgSvg}
-          width="375"
-          height="265"
-          viewBox="0 0 375 265"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <g clipPath="url(#pdm-clip0)">
-            <rect width="375" height="265" fill="url(#pdm-grad0)" />
-            <g opacity="0.04">
-              <path
-                fillRule="evenodd"
-                clipRule="evenodd"
-                d="M-277.143 -354.726L-253.415 -79.5667L30.2935 -5.28967V144.58L-352.454 -1.91046L-407.133 -441.667L30.2935 -583V-422.814L-277.143 -354.726ZM-178.004 -172.109L30.3923 -133.939V-294.125L-187.289 -254.923L-178.004 -172.109ZM-341.957 106.195L-326.482 206.547L30.4742 412.873V272.287L-341.957 106.195Z"
-                fill="white"
-              />
-              <path
-                fillRule="evenodd"
-                clipRule="evenodd"
-                d="M30.5391 -422.814L453.522 -344.41L468.997 -441.667L30.5391 -583V-422.814ZM226.556 -39.332L30.5391 -5.28851V144.582L214.176 75.4626L226.556 -39.332ZM30.5391 -294.125L444.237 -233.259L388.527 206.498L30.5391 412.823V272.238L284.329 154.632L311.152 -152.508L30.5391 -133.939V-294.125Z"
-                fill="white"
-              />
+        <div className={styles.bgDesktop}>
+          <svg preserveAspectRatio="xMidYMid slice" className={styles.bgSvg} width="1920" height="703" viewBox="0 0 1920 703" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect width="1920" height="703" fill="url(#pdm_d_paint0)" />
+            <g clipPath="url(#pdm_d_clip0)">
+              <rect width="1920" height="703" fill="url(#pdm_d_paint0)" />
+              <g opacity="0.08">
+                <path fillRule="evenodd" clipRule="evenodd" d="M-845.628 744.916L-688.82 -101.049L-883.335 -131.999L-1166 744.916L-845.628 744.916ZM-78.6641 352.883L-10.577 744.917L289.163 744.916L150.925 377.643L-78.6641 352.883ZM-588.25 744.917L-466.518 -82.4796L412.996 28.9404L825.646 744.916L544.475 744.916L309.265 237.337L-305.016 183.69L-267.877 744.916L-588.25 744.917Z" fill="#3CC4E5" />
+              </g>
+              <g opacity="0.08">
+                <path fillRule="evenodd" clipRule="evenodd" d="M874.988 -647.181L1388.56 -730.869L1655.22 -246.923L1928.98 -316.113L1484.69 -947.631L656.166 -844.49L599.943 19.784L892.548 -54.1681L874.988 -647.181ZM1254.33 -550.397L1420.26 -187.351L1127.66 -113.399L1098.77 -529.125L1254.33 -550.397ZM1687.01 -978.365L1877.46 -996.427L2419.14 -439.644L2162.34 -374.741L1687.01 -978.365Z" fill="#3CC4E5" />
+                <path fillRule="evenodd" clipRule="evenodd" d="M892.663 -53.7166L1231.16 682.73L1060.64 755.898L600.059 20.2355L892.663 -53.7166ZM1683.65 127.297L1655.34 -246.473L1929.1 -315.663L1887.62 51.6869L1683.65 127.297ZM1127.73 -113.128L1429.9 614.455L2207.46 309.673L2419.08 -439.5L2162.28 -374.597L2064.62 143.284L1515.96 334.075L1420.34 -187.08L1127.73 -113.128Z" fill="#3CC4E5" />
+              </g>
+              <g filter="url(#pdm_d_f0)">
+                <ellipse cx="960" cy="401.5" rx="590" ry="289.5" fill="url(#pdm_d_paint1)" />
+              </g>
+              <g opacity="0.32" filter="url(#pdm_d_f1)">
+                <circle cx="2010" cy="205" r="460" fill="#3CC4E5" />
+              </g>
+              <g opacity="0.32" filter="url(#pdm_d_f2)">
+                <circle cx="19" cy="691" r="460" fill="#3CC4E5" />
+              </g>
             </g>
-            <g opacity="0.32" filter="url(#pdm-filter0)">
-              <ellipse cx="61" cy="-88" rx="311" ry="312" transform="rotate(90 61 -88)" fill="#3CC4E5" />
+            <defs>
+              <filter id="pdm_d_f0" x="70" y="-188" width="1780" height="1179" filterUnits="userSpaceOnUse" colorInterpolationFilters="sRGB">
+                <feFlood floodOpacity="0" result="BackgroundImageFix" />
+                <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape" />
+                <feGaussianBlur stdDeviation="135" result="effect1_foregroundBlur" />
+              </filter>
+              <filter id="pdm_d_f1" x="1050" y="-755" width="1920" height="1920" filterUnits="userSpaceOnUse" colorInterpolationFilters="sRGB">
+                <feFlood floodOpacity="0" result="BackgroundImageFix" />
+                <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape" />
+                <feGaussianBlur stdDeviation="136" result="effect1_foregroundBlur" />
+              </filter>
+              <filter id="pdm_d_f2" x="-941" y="-269" width="1920" height="1920" filterUnits="userSpaceOnUse" colorInterpolationFilters="sRGB">
+                <feFlood floodOpacity="0" result="BackgroundImageFix" />
+                <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape" />
+                <feGaussianBlur stdDeviation="136" result="effect1_foregroundBlur" />
+              </filter>
+              <linearGradient id="pdm_d_paint0" x1="1920" y1="-21.3031" x2="114.684" y2="922.394" gradientUnits="userSpaceOnUse">
+                <stop stopColor="#02102C" />
+                <stop offset="1" stopColor="#112244" />
+              </linearGradient>
+              <linearGradient id="pdm_d_paint1" x1="1550" y1="94.4545" x2="323.866" y2="572.726" gradientUnits="userSpaceOnUse">
+                <stop stopColor="#02102C" />
+                <stop offset="1" stopColor="#112244" />
+              </linearGradient>
+              <clipPath id="pdm_d_clip0">
+                <rect width="1920" height="703" fill="white" />
+              </clipPath>
+            </defs>
+          </svg>
+        </div>
+        <div className={styles.bgMobile}>
+          <svg preserveAspectRatio="xMidYMid slice" className={styles.bgSvg} width="375" height="559" viewBox="0 0 375 559" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <g clipPath="url(#pdm_m_clip0)">
+              <rect width="375" height="559" fill="url(#pdm_m_paint0)" />
+              <g opacity="0.48" filter="url(#pdm_m_f0)">
+                <circle cx="254" cy="592" r="200" fill="#3CC4E5" />
+              </g>
+              <g opacity="0.48" filter="url(#pdm_m_f1)">
+                <circle cx="450" cy="464" r="200" fill="#3CC4E5" />
+              </g>
+              <g opacity="0.04">
+                <path fillRule="evenodd" clipRule="evenodd" d="M494.863 277.841L245.42 299.352L178.085 556.545L42.2216 556.545L175.021 209.568L573.679 160L701.803 556.545L556.587 556.545L494.863 277.841ZM329.311 367.713L294.708 556.633L439.924 556.633L404.386 359.296L329.311 367.713ZM77.0156 219.084L-13.9575 233.113L-201 556.708L-73.5534 556.708L77.0156 219.084Z" fill="url(#pdm_m_paint1)" />
+                <path fillRule="evenodd" clipRule="evenodd" d="M556.585 556.774L485.509 940.226L573.677 954.254L701.801 556.774L556.585 556.774ZM208.943 734.474L178.082 556.777L42.2183 556.777L104.877 723.251L208.943 734.474ZM439.928 556.779L384.75 931.813L-13.9071 881.31L-200.949 556.779L-73.5029 556.779L33.1111 786.85L311.546 811.166L294.712 556.779L439.928 556.779Z" fill="url(#pdm_m_paint2)" />
+              </g>
             </g>
-            <g opacity="0.32" filter="url(#pdm-filter1)">
-              <ellipse cx="387" cy="454" rx="311" ry="312" transform="rotate(90 387 454)" fill="#3CC4E5" />
-            </g>
-            <g filter="url(#pdm-filter2)">
-              <ellipse cx="114" cy="161.5" rx="103.5" ry="179" transform="rotate(90 114 161.5)" fill="url(#pdm-grad1)" />
-            </g>
-          </g>
-          <defs>
-            <filter id="pdm-filter0" x="-491" y="-639" width="1104" height="1102" filterUnits="userSpaceOnUse" colorInterpolationFilters="sRGB">
-              <feFlood floodOpacity="0" result="BackgroundImageFix" />
-              <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape" />
-              <feGaussianBlur stdDeviation="120" result="effect1_foregroundBlur" />
-            </filter>
-            <filter id="pdm-filter1" x="-165" y="-97" width="1104" height="1102" filterUnits="userSpaceOnUse" colorInterpolationFilters="sRGB">
-              <feFlood floodOpacity="0" result="BackgroundImageFix" />
-              <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape" />
-              <feGaussianBlur stdDeviation="120" result="effect1_foregroundBlur" />
-            </filter>
-            <filter id="pdm-filter2" x="-195" y="-72" width="618" height="467" filterUnits="userSpaceOnUse" colorInterpolationFilters="sRGB">
-              <feFlood floodOpacity="0" result="BackgroundImageFix" />
-              <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape" />
-              <feGaussianBlur stdDeviation="65" result="effect1_foregroundBlur" />
-            </filter>
-            <linearGradient id="pdm-grad0" x1="375" y1="-8.03032" x2="-43.2661" y2="105.254" gradientUnits="userSpaceOnUse">
-              <stop stopColor="#02102C" />
-              <stop offset="1" stopColor="#112244" />
-            </linearGradient>
-            <linearGradient id="pdm-grad1" x1="217.5" y1="-28.3485" x2="-27.3212" y2="-1.25472" gradientUnits="userSpaceOnUse">
-              <stop stopColor="#02102C" />
-              <stop offset="1" stopColor="#112244" />
-            </linearGradient>
-            <clipPath id="pdm-clip0">
-              <rect width="375" height="265" fill="white" />
-            </clipPath>
-          </defs>
-        </svg>
+            <defs>
+              <filter id="pdm_m_f0" x="-146" y="192" width="800" height="800" filterUnits="userSpaceOnUse" colorInterpolationFilters="sRGB">
+                <feFlood floodOpacity="0" result="BackgroundImageFix" />
+                <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape" />
+                <feGaussianBlur stdDeviation="100" result="effect1_foregroundBlur" />
+              </filter>
+              <filter id="pdm_m_f1" x="50" y="64" width="800" height="800" filterUnits="userSpaceOnUse" colorInterpolationFilters="sRGB">
+                <feFlood floodOpacity="0" result="BackgroundImageFix" />
+                <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape" />
+                <feGaussianBlur stdDeviation="100" result="effect1_foregroundBlur" />
+              </filter>
+              <linearGradient id="pdm_m_paint0" x1="375" y1="-16.9394" x2="-66.6674" y2="39.7691" gradientUnits="userSpaceOnUse">
+                <stop stopColor="#02102C" />
+                <stop offset="1" stopColor="#112244" />
+              </linearGradient>
+              <linearGradient id="pdm_m_paint1" x1="336.884" y1="360.195" x2="339.506" y2="120.051" gradientUnits="userSpaceOnUse">
+                <stop offset="0.325638" stopColor="white" />
+                <stop offset="1" stopColor="white" stopOpacity="0" />
+              </linearGradient>
+              <linearGradient id="pdm_m_paint2" x1="372.84" y1="1019.42" x2="376.294" y2="567.487" gradientUnits="userSpaceOnUse">
+                <stop offset="0.0301665" stopColor="white" />
+                <stop offset="1" stopColor="white" stopOpacity="0" />
+              </linearGradient>
+              <clipPath id="pdm_m_clip0">
+                <rect width="375" height="559" fill="white" />
+              </clipPath>
+            </defs>
+          </svg>
+        </div>
       </div>
 
       <div className={styles.heroWrapper}>
@@ -75,7 +107,17 @@ export default function PredictiveHero() {
           <div className={styles.content}>
             <nav className={styles.breadcrumbs} aria-label="Breadcrumb">
               <a href="/">Home</a>
+              <span className={styles.breadcrumbSep}>
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden>
+                  <path stroke="rgba(255,255,255,0.5)" strokeLinecap="square" d="m6 4 4 4-4 4" />
+                </svg>
+              </span>
               <a href="/services">Services</a>
+              <span className={styles.breadcrumbSep}>
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden>
+                  <path stroke="rgba(255,255,255,0.5)" strokeLinecap="square" d="m6 4 4 4-4 4" />
+                </svg>
+              </span>
               <span>Predictive Maintenance development</span>
             </nav>
 

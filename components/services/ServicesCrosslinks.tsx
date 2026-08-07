@@ -5,7 +5,7 @@ const COLS = [
     title: "Key services",
     items: [
       { label: "Custom software development", desc: "End-to-end product engineering for complex business problems", href: "/services/custom-software-development" },
-      { label: "IoT development", desc: "Enterprise IoT, AIoT, and connected systems", href: "/services/iot-development" },
+      { label: "Cloud development", desc: "Cloud-native platforms, migrations, and DevOps foundations", href: "/services/cloud-development" },
       { label: "AI software development", desc: "Agentic AI, RAG, LLM, and ML systems", href: "/services/ai-software-development" },
       { label: "Enterprise software development", desc: "Large-scale platforms and system integrations", href: "/services/enterprise-software-development" },
     ],
@@ -13,8 +13,8 @@ const COLS = [
   {
     title: "Processes",
     items: [
-      { label: "How we work", desc: "Our delivery process and project management approach", href: "/how-we-work" },
-      { label: "Engagement models", desc: "Fixed budget, dedicated team, staff augmentation", href: "/engagement-models" },
+      { label: "How we work", desc: "Our delivery process and project management approach", href: "/about-us" },
+      { label: "Engagement models", desc: "Fixed budget, dedicated team, staff augmentation", href: "/engagement-models-process" },
       { label: "Pricing calculator", desc: "Estimate your software development budget", href: "/pricing" },
       { label: "FAQ", desc: "Common questions about working with Nexterse LLC", href: "/faq" },
     ],
@@ -22,10 +22,7 @@ const COLS = [
   {
     title: "Guides",
     items: [
-      { label: "Guides & templates", desc: "Free resources for software buyers and product teams", href: "/guides" },
-      { label: "Software development process", desc: "14-step delivery guide", href: "/blog/software-development-process" },
-      { label: "IoT app development costs", desc: "How to budget an IoT engagement", href: "/blog/iot-app-development-costs" },
-      { label: "Integrating AI into business", desc: "Practical AI adoption framework", href: "/blog/integrating-ai-into-business" },
+      { label: "Blog", desc: "Articles and guides from Nexterse LLC", href: "/blog" },
     ],
   },
 ];

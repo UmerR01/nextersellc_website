@@ -9,7 +9,7 @@ import ServicesFaqBlock, { type FaqItem } from "@/components/services/ServicesFa
 import LetsStart from "@/components/home/LetsStart";
 import AdlcBlog, { type AdlcFeaturedPost, type AdlcBlogPost } from "@/components/adlc/AdlcBlog";
 import LogisticsHero from "./LogisticsHero";
-import LogisticsLogos from "./LogisticsLogos";
+import AipocLogos from "@/components/aipoc/AipocLogos";
 import LogisticsArticleLayout from "./LogisticsArticleLayout";
 import styles from "./LogisticsPage.module.css";
 
@@ -289,7 +289,7 @@ export default function LogisticsPage() {
       <LogisticsHero />
 
       <LogisticsArticleLayout>
-        <LogisticsLogos />
+        <AipocLogos />
 
         {/* ── Challenges ─────────────────────────────────────────────────── */}
         <section id="log-challenges" className={`${styles.blockLight} ${styles.logisticsChallengesBlock}`}>
@@ -530,7 +530,6 @@ export default function LogisticsPage() {
                     { text: "AI ", last: "development", href: "/services/ai-software-development" },
                     { text: "Predictive ", last: "maintenance", href: "/services/predictive-maintenance" },
                     { text: "Enterprise software ", last: "development", href: "/services/enterprise-software-development" },
-                    { text: "Business analysis ", last: "services", href: "/services/custom-software-development" },
                   ].map((link) => (
                     <li key={link.last + link.text} className={styles.clItem}>
                       <a href={link.href} className={styles.clLink}>

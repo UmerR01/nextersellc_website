@@ -307,12 +307,6 @@
   }
 }
 
-.downloadBtn:hover {
-  background: transparent;
-  border-color: var(--color-accent, #3cc4e5);
-  color: var(--color-accent, #3cc4e5);
-}
-
 /* SVG icon inherits currentColor so it follows text color automatically */
 
 /* ──────────────────────────────────────────────────

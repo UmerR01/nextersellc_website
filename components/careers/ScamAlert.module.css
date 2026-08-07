@@ -431,24 +431,9 @@
 }
 
 .viewMoreBtn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: 14px 36px;
-  border: 2px solid #3cc4e5;
-  border-radius: 999px;
-  background: transparent;
-  color: #3cc4e5;
   font-family: var(--font-inter-tight), sans-serif;
-  font-size: 16px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: background-color 0.25s ease, color 0.25s ease;
-}
-
-.viewMoreBtn:hover {
-  background: #3cc4e5;
-  color: #fff;
+  min-height: 2.625rem;
+  padding: 0.4rem 1.5rem;
 }
 
 @media screen and (max-width: 640px) {

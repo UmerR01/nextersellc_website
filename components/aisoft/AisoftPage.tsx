@@ -42,7 +42,7 @@ const TIERS: Tier[] = [
       "Projected token consumption and cloud costs.",
     ],
     linkText: "AI Readiness Assessment",
-    linkHref: "/services/ai-software-development",
+    linkHref: "/ai-readiness-assessment",
     image: "/aisoft-development/07_software-development-team-in-the-office-1024x683.jpg",
   },
   {
@@ -53,7 +53,7 @@ const TIERS: Tier[] = [
       "They run inside isolated cloud infrastructure (VPC), answer only from verified sources, cite where each answer came from, and enforce role-based access at the data layer. This tier turns static knowledge into working intelligence, and it never trains public models on your data.",
     ],
     linkText: "RAG as a Service",
-    linkHref: "/services/ai-software-development",
+    linkHref: "/services/rag-development",
     image: "/aisoft-development/11_aws-features-1024x684.jpg",
   },
   {
@@ -64,7 +64,7 @@ const TIERS: Tier[] = [
       "We govern each workflow with evaluation pipelines, adversarial testing, and cost simulations before it goes live. The multi-agent systems we design retrieve data, reason over your business rules, call APIs, trigger downstream actions, and hand off to a human whenever confidence drops too low.",
     ],
     linkText: "AI Agents Development",
-    linkHref: "/services/ai-software-development",
+    linkHref: "/services/ai-agents-development",
     image: "/aisoft-development/11_gains-of-the-cloud-1024x684.jpg",
   },
   {
@@ -74,6 +74,8 @@ const TIERS: Tier[] = [
       "This tier usually suits organizations that process large volumes of data or work under heavy regulation. For them, we design and deploy private model strategies.",
       "That includes fine-tuning small and large language models (SLMs and LLMs), adapting them to your domain, hosting them privately on AWS, Azure, or on-premise, routing between models, and optimizing token costs.",
     ],
+    linkText: "Custom LLM development",
+    linkHref: "/services/llm-development",
     image: "/aisoft-development/07_software-development-team-1024x683.jpg",
   },
 ];
@@ -233,7 +235,7 @@ const INDUSTRIES: { icon: string; title: string; bullets: string[]; linkText?: s
     title: "Banking and finance",
     bullets: ["trading solutions", "advisory services", "customer service automation", "personalization solutions", "pattern recognition and fraud prevention"],
     linkText: "AI in fintech",
-    href: "/services/fintech-development",
+    href: "/services/financial-development",
   },
   {
     icon: "/aisoft-development/11_Marketing-automation.png",
@@ -247,7 +249,7 @@ const INDUSTRIES: { icon: string; title: string; bullets: string[]; linkText?: s
     title: "Healthcare",
     bullets: ["nursing assistants development", "AI-assisted consultation, diagnosis & treatment", "managing medical records and other data", "health monitoring", "healthcare system analysis"],
     linkText: "AI in healthcare",
-    href: "/services/healthcare-software-development",
+    href: "/services/healthcare-development",
   },
   {
     icon: "/aisoft-development/11_Education.png",
@@ -261,25 +263,25 @@ const INDUSTRIES: { icon: string; title: string; bullets: string[]; linkText?: s
     title: "Logistics & Transportation",
     bullets: ["AI-driven route optimization", "predictive fleet maintenance", "intelligent demand forecasting", "real-time tracking and visibility", "automated logistics management"],
     linkText: "AI in logistics",
-    href: "/services",
+    href: "/services/logistics-development",
   },
   {
     icon: "/aisoft-development/03_Retail.svg",
     title: "Retail",
     bullets: ["personalized product recommendations", "inventory forecasting and management", "dynamic pricing optimization", "customer behavior analytics", "AI-powered virtual assistants and chatbots"],
-    href: "/services",
+    href: "/services/retail-ecommerce-development",
   },
   {
     icon: "/aisoft-development/03_Manufacturing.svg",
     title: "Manufacturing",
     bullets: ["predictive maintenance and asset optimization", "AI-powered quality inspection and defect detection", "robotic process automation (RPA)", "supply-chain forecasting and planning", "automated quality assurance"],
-    href: "/services",
+    href: "/services/predictive-maintenance",
   },
   {
     icon: "/aisoft-development/11_eCommerce-cart-1-1.png",
     title: "Ecommerce",
     bullets: ["AI-assisted search", "speech recognition services", "relevant offers for buyers", "virtual agents and intelligent automation tools", "personalized shopping experience"],
-    href: "/services",
+    href: "/services/retail-ecommerce-development",
   },
 ];
 
@@ -407,7 +409,10 @@ export default function AisoftPage() {
                     </ul>
                   )}
                   {tier.linkText && tier.linkHref && (
-                    <a href={tier.linkHref} className={styles.tabPanelLink}>{tier.linkText} →</a>
+                    <a href={tier.linkHref} className={styles.tabPanelLink}>
+                      {tier.linkText}
+                      <span className={styles.tabPanelLinkArrow} aria-hidden="true" />
+                    </a>
                   )}
                 </div>
                 {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -425,7 +430,7 @@ export default function AisoftPage() {
                 <h2 className={styles.inlineCtaTitle}>AI that delivers business value</h2>
                 <p className={styles.inlineCtaDesc}>Contact us and get a roadmap tailored to your needs.</p>
               </div>
-              <a href="#get-modal-popup" className={styles.inlineCtaBtn}>Get an AI project estimate</a>
+              <a href="#get-modal-popup" className={`btn btn-accent ${styles.inlineCtaBtn}`}>Get an AI project estimate</a>
             </div>
           </div>
         </div>

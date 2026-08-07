@@ -47,12 +47,12 @@
   width: auto;
   object-fit: contain;
   display: block;
-  filter: grayscale(1) opacity(0.6);
+  filter: brightness(0) saturate(0) invert(35%) sepia(16%) saturate(10) hue-rotate(175deg) brightness(75%) contrast(100%);
   transition: filter 0.25s ease;
 }
 
 .logoItem:hover .logoImage {
-  filter: grayscale(0) opacity(1);
+  filter: none;
 }
 
 @media screen and (max-width: 768px) {

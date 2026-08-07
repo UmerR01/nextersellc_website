@@ -1,4 +1,4 @@
-import Image from "next/image";
+﻿import Image from "next/image";
 import styles from "./AIConsultingServices.module.css";
 
 const SERVICES = [
@@ -6,7 +6,7 @@ const SERVICES = [
     icon: "/ai-consulting/imgs/03_AI-generative-AI-readiness-assessment-01.svg",
     iconAlt: "AI readiness assessment",
     title: "AI & generative AI readiness assessment",
-    href: "/ai-consulting#services",
+    href: "/ai-readiness-assessment",
     body: (
       <>
         <p>
@@ -77,7 +77,7 @@ const SERVICES = [
     icon: "/ai-consulting/imgs/03_Data-engineering-AI-foundations-02.svg",
     iconAlt: "Data engineering AI foundations",
     title: "Data engineering & AI foundations",
-    href: "/ai-consulting#services",
+    href: "/services/big-data-development",
     body: (
       <>
         <p>
@@ -165,11 +165,8 @@ export default function AIConsultingServices() {
         <div className={styles.grid}>
           {SERVICES.map((s) => {
             const linkable = Boolean(s.linkLabel && s.href);
-            return (
-              <div
-                key={s.title}
-                className={`${styles.card} ${linkable ? styles.cardLinkable : ""}`}
-              >
+            const content = (
+              <>
                 <Image
                   src={s.icon}
                   alt={s.iconAlt}
@@ -180,11 +177,25 @@ export default function AIConsultingServices() {
                 <h3 className={styles.cardTitle}>{s.title}</h3>
                 <div className={styles.cardBody}>{s.body}</div>
                 {linkable && (
-                  <a href={s.href!} className={styles.cardLink}>
+                  <span className={styles.cardLink}>
                     {s.linkLabel}
                     <span className={styles.arrow} aria-hidden="true" />
-                  </a>
+                  </span>
                 )}
+              </>
+            );
+
+            return linkable ? (
+              <a
+                key={s.title}
+                href={s.href!}
+                className={`${styles.card} ${styles.cardLinkable}`}
+              >
+                {content}
+              </a>
+            ) : (
+              <div key={s.title} className={styles.card}>
+                {content}
               </div>
             );
           })}
@@ -193,3 +204,5 @@ export default function AIConsultingServices() {
     </section>
   );
 }
+
+

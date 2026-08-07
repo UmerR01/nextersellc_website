@@ -176,7 +176,11 @@ export default function TeamHero() {
           <div className={styles.inner}>
             <nav className={styles.breadcrumbs} aria-label="Breadcrumb">
               <Link href="/" className={styles.breadcrumbLink}>Home</Link>
-              <span className={styles.breadcrumbSep}>&gt;</span>
+              <span className={styles.breadcrumbSep}>
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden>
+                  <path stroke="rgba(255,255,255,0.5)" strokeLinecap="square" d="m6 4 4 4-4 4" />
+                </svg>
+              </span>
               <span className={styles.breadcrumbCurrent}>About Nexterse LLC</span>
             </nav>
 

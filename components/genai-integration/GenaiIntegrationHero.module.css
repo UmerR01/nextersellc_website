@@ -1,0 +1,162 @@
+:root {
+  --gaii-accent: var(--color-accent, #3cc4e5);
+  --gaii-navy: #02102c;
+  --gaii-fg: #ffffff;
+  --gaii-font: var(--font-inter-tight), "Inter Tight", sans-serif;
+}
+
+.accent {
+  color: var(--gaii-accent);
+}
+
+.hero {
+  position: relative;
+  overflow: hidden;
+  padding-top: calc(var(--header-height) + 26px);
+  padding-bottom: 8.5rem;
+  background: var(--gaii-navy);
+  color: var(--gaii-fg);
+  font-family: var(--gaii-font);
+}
+
+.heroBgSvg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  pointer-events: none;
+}
+
+.heroInner {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: min(100%, 1540px);
+  margin: 0 auto;
+  padding-inline: clamp(1.25rem, 3vw, 2.5rem);
+  text-align: left;
+}
+
+.heroBreadcrumbs {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 4px;
+  margin: 0 0 4.5rem;
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 14px;
+  line-height: 20px;
+}
+
+.heroBreadcrumbs a,
+.heroBreadcrumbs span {
+  display: inline-flex;
+  align-items: center;
+  color: inherit;
+  text-decoration: none;
+}
+
+.heroBreadcrumbs a {
+  color: rgba(255, 255, 255, 0.5);
+  transition: color 0.2s ease;
+}
+
+.heroBreadcrumbs a:hover {
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.heroBreadcrumbs span {
+  color: rgba(255, 255, 255, 0.35);
+}
+
+.breadcrumbSep {
+  display: flex;
+  align-items: center;
+}
+
+.heroTitle {
+  max-width: 85rem;
+  margin: 0 0 1.75rem;
+  color: #fff;
+  font-size: clamp(3rem, 5vw, 4rem);
+  font-weight: 400;
+  line-height: 1.18;
+  letter-spacing: 0;
+}
+
+.heroDescription {
+  max-width: 58rem;
+  margin: 0 0 2.25rem;
+  color: rgba(255, 255, 255, 0.9);
+  font-size: clamp(1.15rem, 1.8vw, 1.5rem);
+  line-height: 1.5;
+}
+
+.heroPoints {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.85rem;
+  max-width: 40rem;
+  margin: 0 0 2.75rem;
+  padding: 0;
+  list-style: none;
+}
+
+.heroPoint {
+  position: relative;
+  padding-left: 2rem;
+  color: rgba(255, 255, 255, 0.96);
+  font-size: clamp(1.05rem, 1.35vw, 1.25rem);
+  font-weight: 400;
+  line-height: 1.45;
+}
+
+.heroPoint::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.28rem;
+  width: 1.25rem;
+  height: 1.25rem;
+  background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' fill='none'%3E%3Cpath stroke='%233CC4E5' stroke-linecap='square' stroke-width='1.5' d='m16.875 5.625-8.75 8.75-4.375-4.375'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+.heroButtons {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 2.25rem 4.5rem;
+}
+
+.btnPrimary {
+  font-family: var(--gaii-font);
+  min-height: 2.625rem;
+  padding: 0.4rem 1.5rem;
+  text-decoration: none;
+}
+
+@media (max-width: 900px) {
+  .hero {
+    min-height: auto;
+    padding-top: 6rem;
+    padding-bottom: 4.5rem;
+  }
+
+  .heroBreadcrumbs {
+    margin-bottom: 2rem;
+  }
+
+  .heroTitle {
+    font-size: clamp(2.25rem, 9vw, 3rem);
+  }
+
+  .heroButtons {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+}

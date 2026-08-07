@@ -9,7 +9,7 @@ import ServicesFaqBlock, { type FaqItem } from "@/components/services/ServicesFa
 import LetsStart from "@/components/home/LetsStart";
 import AdlcBlog, { type AdlcFeaturedPost, type AdlcBlogPost } from "@/components/adlc/AdlcBlog";
 import EdtechHero from "./EdtechHero";
-import EdtechLogos from "./EdtechLogos";
+import AipocLogos from "@/components/aipoc/AipocLogos";
 import EdtechArticleLayout from "./EdtechArticleLayout";
 import styles from "./EdtechPage.module.css";
 
@@ -43,8 +43,8 @@ const DUAL_ENGINE = [
 
 // ─── Autonomous learning ecosystems (5 cards) ─────────────────────────────────
 const ECOSYSTEMS: { icon: string; title: string; desc: string; link?: string; href?: string }[] = [
-  { icon: "/edtech-development/06_Enterprise-RAG-02.svg", title: "Enterprise RAG generation", desc: "We engineer Enterprise RAG (Retrieval-Augmented Generation) pipelines that transform your internal knowledge into structured learning content. Your wikis, PDFs, and technical documentation are vectorized and organized into a unified knowledge layer.", link: "RAG development", href: "/services/ai-software-development" },
-  { icon: "/edtech-development/06_Agentic-AI-01.svg", title: "Agentic AI tutors & adaptive mentorship", desc: "Agentic AI tutors that are designed for adaptive guided learning. These systems analyze learner behavior in real time, including interaction patterns and response timing, and adapt the learning path accordingly.", link: "AI agent development", href: "/services/ai-software-development" },
+  { icon: "/edtech-development/06_Enterprise-RAG-02.svg", title: "Enterprise RAG generation", desc: "We engineer Enterprise RAG (Retrieval-Augmented Generation) pipelines that transform your internal knowledge into structured learning content. Your wikis, PDFs, and technical documentation are vectorized and organized into a unified knowledge layer.", link: "RAG development", href: "/services/rag-development" },
+  { icon: "/edtech-development/06_Agentic-AI-01.svg", title: "Agentic AI tutors & adaptive mentorship", desc: "Agentic AI tutors that are designed for adaptive guided learning. These systems analyze learner behavior in real time, including interaction patterns and response timing, and adapt the learning path accordingly.", link: "AI agent development", href: "/services/ai-agents-development" },
   { icon: "/edtech-development/06_Spatial-computing-02.svg", title: "Spatial computing & XR training environments", desc: "For this edtech solution type, we design immersive training systems that handle operational and technical scenarios. Digital environments replicate real-world conditions, allowing users to train through interaction rather than observation." },
   { icon: "/edtech-development/06_Predictive-skill-gap-telemetry-1.svg", title: "Predictive skill-gap telemetry", desc: "These analytics systems connect learning activity with business performance. Machine learning models analyze micro-interactions, assessment results, and operational data from ERP systems to identify emerging skill gaps and performance patterns." },
   { icon: "/edtech-development/06_Learning-orchestration-01.svg", title: "Learning orchestration & adaptive delivery systems", desc: "We design learning orchestration systems that coordinate how content, AI, and user interactions work together in real time. These systems manage learning flows across courses, modules, and AI-driven interactions, ensuring that each learner receives the right content at the right moment." },
@@ -213,7 +213,7 @@ export default function EdtechPage() {
       <EdtechHero />
 
       <EdtechArticleLayout>
-        <EdtechLogos />
+        <AipocLogos />
 
         {/* ── Dual-engine education software ─────────────────────────────── */}
         <section className={`${styles.blockLight} ${styles.edtechDualEngine}`}>

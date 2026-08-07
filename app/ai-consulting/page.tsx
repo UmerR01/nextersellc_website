@@ -16,7 +16,7 @@ import AIMaturity from "@/components/ai-consulting/AIMaturity";
 import AIFaq from "@/components/ai-consulting/AIFaq";
 import AIAwards from "@/components/ai-consulting/AIAwards";
 import AITableOfContents from "@/components/ai-consulting/AITableOfContents";
-import LogosMarquee from "@/components/home/LogosMarquee";
+import AipocLogos from "@/components/aipoc/AipocLogos";
 import LetsStart from "@/components/home/LetsStart";
 import Stories from "@/components/home/Stories";
 import styles from "./page.module.css";
@@ -37,7 +37,7 @@ export default function AIConsultingPage() {
         <div className={styles.layout}>
           {/* ── Left: all page sections ── */}
           <div className={styles.mainContent}>
-            <LogosMarquee edgeFade />
+            <AipocLogos />
             <AIDualRisks />
             <AIWhyFails />
             <div id="services"><AIConsultingServices /></div>

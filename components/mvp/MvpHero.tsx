@@ -120,7 +120,17 @@ export default function MvpHero() {
       <div className={`${s.container} ${s.heroInner}`}>
         <nav className={s.heroBreadcrumbs} aria-label="Breadcrumb">
           <a href="/">Home</a>
+          <span className={s.breadcrumbSep}>
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden>
+              <path stroke="rgba(255,255,255,0.5)" strokeLinecap="square" d="m6 4 4 4-4 4" />
+            </svg>
+          </span>
           <a href="/services">Services</a>
+          <span className={s.breadcrumbSep}>
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden>
+              <path stroke="rgba(255,255,255,0.5)" strokeLinecap="square" d="m6 4 4 4-4 4" />
+            </svg>
+          </span>
           <span>MVP development</span>
         </nav>
         <h1 className={s.heroTitle}>
@@ -135,7 +145,7 @@ export default function MvpHero() {
           <div className={s.heroPoint}>Dual-engine engineering</div>
         </div>
         <div className={s.heroButtons}>
-          <a href="/contact-us" className={`btn btn-accent ${s.btnPrimary}`}>Free quote</a>
+          <a href="#get-modal-popup" className={`btn btn-accent ${s.btnPrimary}`}>Free quote</a>
           <ServiceRating />
         </div>
       </div>

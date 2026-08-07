@@ -1,6 +1,6 @@
 .section {
   background: #fff;
-  border-top: 1px solid #e6eff7;
+  border-top: 0;
   padding: clamp(64px, 6vw, 92px) 0;
 }
 
@@ -65,7 +65,7 @@
 
 .tab:hover {
   border-bottom-color: var(--color-accent);
-  color: #112244;
+  color: var(--color-accent);
 }
 
 .tabActive {
@@ -78,6 +78,12 @@
   width: 56px;
   height: 56px;
   object-fit: contain;
+  transition: filter 0.2s ease;
+}
+
+.tab:hover .tabIcon,
+.tabActive .tabIcon {
+  filter: brightness(0) saturate(100%) invert(68%) sepia(91%) saturate(1118%) hue-rotate(157deg) brightness(94%) contrast(92%);
 }
 
 .panel { display: block; }

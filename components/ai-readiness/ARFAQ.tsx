@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 import { useState } from "react";
 import styles from "./ARFAQ.module.css";
 
@@ -99,7 +99,8 @@ export default function ARFAQ() {
         {!showAll && (
           <div className={styles.loadMore}>
             <button className={styles.loadMoreBtn} onClick={() => setShowAll(true)}>
-              Load more &rsaquo;
+              Load more
+              <span className={styles.arrow} aria-hidden="true" />
             </button>
           </div>
         )}

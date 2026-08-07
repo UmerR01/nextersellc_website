@@ -604,10 +604,44 @@
   font-weight: 600;
   color: var(--color-accent);
   text-decoration: none;
-  transition: gap 0.2s;
 }
 
-.tabPanelLink:hover { gap: 10px; }
+.tabPanelLinkArrow {
+  display: inline-block;
+  position: relative;
+  width: 6px;
+  height: 10px;
+  margin-left: 2px;
+}
+.tabPanelLinkArrow::before,
+.tabPanelLinkArrow::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: url("data:image/svg+xml,%3Csvg width='6' height='10' viewBox='0 0 6 10' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 8.59L3.59 5L0 1.41L1 0.5L5.5 5L1 9.5L0 8.59Z' fill='%233CC4E5'/%3E%3C/svg%3E") center no-repeat;
+}
+.tabPanelLinkArrow::after {
+  opacity: 0;
+}
+.tabPanelLink:hover .tabPanelLinkArrow::before {
+  animation: aisTabLinkArrowBefore 1s linear infinite;
+}
+.tabPanelLink:hover .tabPanelLinkArrow::after {
+  animation: aisTabLinkArrowAfter 1s linear infinite;
+}
+
+@keyframes aisTabLinkArrowBefore {
+  0% { opacity: 1; transform: translateX(0); }
+  49% { opacity: 0; transform: translateX(7px); }
+  52% { opacity: 0; transform: translateX(-7px); }
+  100% { opacity: 1; transform: translateX(0); }
+}
+@keyframes aisTabLinkArrowAfter {
+  0% { opacity: 0; transform: translateX(-7px); }
+  49% { opacity: 1; transform: translateX(0); }
+  99% { opacity: 0; transform: translateX(7px); }
+  100% { opacity: 0; transform: translateX(-7px); }
+}
 
 @media (max-width: 900px) {
   .serviceBlock {
@@ -801,10 +835,7 @@
 }
 
 .inlineCtaInner {
-  background:
-    linear-gradient(116deg, transparent 0 43%, rgba(60, 196, 229, 0.06) 43% 55%, transparent 55%),
-    linear-gradient(116deg, transparent 0 70%, rgba(255, 255, 255, 0.05) 70% 86%, transparent 86%),
-    linear-gradient(115deg, #102f63 0%, #07162f 52%, #46203f 100%);
+  background: linear-gradient(115deg, var(--color-accent-dark) 0%, #17163f 100%);
   min-height: 234px;
   padding: 64px 134px;
   display: flex;
@@ -846,21 +877,10 @@
 
 .inlineCtaBtn {
   font-family: var(--font-inter-tight), sans-serif;
-  font-size: 1rem;
-  font-weight: 600;
-  color: #fff;
-  background: var(--color-accent);
-  border-radius: var(--border-radius);
-  
-  padding: 16px 36px;
-  cursor: pointer;
   text-decoration: none;
   white-space: nowrap;
   flex-shrink: 0;
-  transition: background 0.2s;
 }
-
-.inlineCtaBtn:hover { background: #2aaccc; }
 
 .adtechGradientCta .inlineCtaBtn {
   border-radius: var(--radius-button);
@@ -2664,7 +2684,7 @@
 }
 
 .tabBtn:hover {
-  color: #000;
+  color: var(--color-accent);
 }
 
 .tabBtnActive {
@@ -2676,10 +2696,12 @@
   width: 3.5rem;
   height: 3.5rem;
   filter: grayscale(1) opacity(0.75);
+  transition: filter 0.2s ease;
 }
 
+.tabBtn:hover .tabIcon,
 .tabBtnActive .tabIcon {
-  filter: none;
+  filter: brightness(0) saturate(100%) invert(69%) sepia(61%) saturate(643%) hue-rotate(148deg) brightness(91%) contrast(91%);
 }
 
 .tabPanelActive {
@@ -3142,24 +3164,26 @@
 .processBlock .processStep:not(:last-child)::after {
   content: "";
   position: absolute;
-  left: 43px;
-  top: 96px;
+  left: 60px;
+  top: 120px;
   width: 2px;
-  height: calc(100% + 4.15rem - 96px);
-  background: var(--color-border);
+  height: calc(100% + 4.15rem - 120px);
+  background: #e3ecf5;
 }
 
 .processBlock .processNum {
-  width: 88px;
-  height: 88px;
+  width: 104px;
+  height: 104px;
+  margin: 8px;
   flex-shrink: 0;
+  border: 2px solid #e3ecf5;
   border-radius: 50%;
-  background: var(--color-accent-dark);
-  box-shadow: 0 0 0 6px var(--color-bg), 0 0 0 8px var(--color-border);
-  color: #fff;
+  background: #f4f7fd;
+  box-shadow: 0 0 0 6px #fff, 0 0 0 8px #e3ecf5;
+  color: var(--color-accent);
   font-family: var(--font-inter-tight), sans-serif;
   font-size: 1.75rem;
-  font-weight: 600;
+  font-weight: 500;
   line-height: 1;
   display: flex;
   align-items: center;
@@ -3210,16 +3234,18 @@
   }
 
   .processBlock .processStep:not(:last-child)::after {
-    left: 23px;
-    top: 54px;
-    height: calc(100% + 2.75rem - 54px);
+    left: 29px;
+    top: 53px;
+    height: calc(100% + 2.75rem - 53px);
   }
 
   .processBlock .processNum {
     width: 48px;
     height: 48px;
+    margin: 5px;
+    border: 2px solid #e3ecf5;
+    box-shadow: 0 0 0 3px #fff, 0 0 0 5px #e3ecf5;
     font-size: 1rem;
-    box-shadow: 0 0 0 4px var(--color-bg), 0 0 0 6px var(--color-border);
   }
 
   .processBlock .processStepBody {
@@ -3293,14 +3319,18 @@
 
 .securityTabsBlock .engVertTabList {
   grid-area: tabs;
-  min-height: 21.5rem;
-  padding: 0;
+  display: flex;
+  flex-direction: column;
+  min-height: 28.3rem;
+  padding: 1rem 0 1.5rem;
   background: linear-gradient(180deg, #eaf2fd 0%, #dae7f7 100%);
 }
 
 .securityTabsBlock .engVertTabBtn {
-  min-height: 4.8rem;
-  padding: 1.35rem 2rem;
+  display: flex;
+  align-items: center;
+  min-height: 6.45rem;
+  padding: 1.45rem 2rem;
   color: #000;
   background: transparent;
   border: 0;
@@ -3349,10 +3379,7 @@
 }
 /* AI software industries dark reference override */
 .industriesBlock {
-  background:
-    linear-gradient(116deg, transparent 0 43%, rgba(60, 196, 229, 0.06) 43% 55%, transparent 55%),
-    linear-gradient(116deg, transparent 0 70%, rgba(255, 255, 255, 0.05) 70% 86%, transparent 86%),
-    linear-gradient(115deg, var(--color-accent-dark) 0%, #07162f 58%, #17163f 100%);
+  background: var(--color-accent-dark);
   padding: clamp(5.5rem, 7vw, 6.75rem) 0 clamp(6rem, 8vw, 7.5rem);
 }
 

@@ -17,27 +17,18 @@ const ClockIcon = () => (
   </svg>
 );
 
-const ArrowIcon = () => (
-  <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden>
-    <path stroke="currentColor" strokeWidth="1.5" strokeLinecap="square" d="M4 10h12M11 5l5 5-5 5" />
-  </svg>
-);
-
 const SIDE_POSTS = [
   {
-    href: "/blog/modernize-legacy-systems-with-custom-ai",
     title: "How to modernize legacy systems with custom AI",
     readTime: "26 mins",
     date: "June 24, 2026",
   },
   {
-    href: "/blog/what-is-release-planning-in-scrum-the-way-to-deliver-project-on-time",
     title: "How to Deliver Software on Time with Agile and Release Planning in the AI Era",
     readTime: "18 mins",
     date: "June 22, 2026",
   },
   {
-    href: "/blog/from-pilot-to-production",
     title: "From Pilot to Production: Why Enterprise AI Stalls. The Framework to Scale It (2026)",
     readTime: "31 mins",
     date: "June 16, 2026",
@@ -53,7 +44,7 @@ export default function BlogSection() {
         </h2>
         <div className={styles.postsGrid}>
           <div className={styles.featuredCol}>
-            <a href="/blog/ai-cost-reduction-playbook" className={styles.featuredPost}>
+            <div className={styles.featuredPost}>
               <div className={styles.featuredImageWrapper}>
                 <div className={styles.featuredImgInner}>
                   {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -76,11 +67,11 @@ export default function BlogSection() {
                 <span className={styles.metaSep}>|</span>
                 <span className={styles.postDate}>July 1, 2026</span>
               </div>
-            </a>
+            </div>
           </div>
           <div className={styles.sideCol}>
             {SIDE_POSTS.map((post) => (
-              <a key={post.href} href={post.href} className={styles.sidePost}>
+              <div key={post.title} className={styles.sidePost}>
                 <div className={styles.sidePostTitle}>{post.title}</div>
                 <div className={styles.postMeta}>
                   <span className={styles.readTime}>
@@ -90,14 +81,12 @@ export default function BlogSection() {
                   <span className={styles.metaSep}>|</span>
                   <span className={styles.postDate}>{post.date}</span>
                 </div>
-              </a>
+              </div>
             ))}
             <div className={styles.allArticlesWrapper}>
               <a href="/blog" className={styles.allArticlesLink}>
                 All articles
-                <span className={styles.linkArrow} aria-hidden>
-                  <ArrowIcon />
-                </span>
+                <span className={styles.linkArrow} aria-hidden="true" />
               </a>
             </div>
           </div>

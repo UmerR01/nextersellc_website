@@ -10,27 +10,18 @@ const ClockIcon = () => (
   </svg>
 );
 
-const ArrowIcon = () => (
-  <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden>
-    <path stroke="currentColor" strokeWidth="1.5" strokeLinecap="square" d="M4 10h12M11 5l5 5-5 5" />
-  </svg>
-);
-
 const SIDE_POSTS = [
   {
-    href: "#",
     title: "What Affects AI Development Cost in 2026",
     readTime: "40 mins",
     date: "March 11, 2026",
   },
   {
-    href: "#",
     title: "Custom CRM development for enterprises: when to build, what it takes, and why it matters more in the AI-agent era",
     readTime: "27 mins",
     date: "January 15, 2026",
   },
   {
-    href: "#",
     title: "Complete Guide: Software Development Process in 14 Steps",
     readTime: "53 mins",
     date: "November 19, 2025",
@@ -46,7 +37,7 @@ export default function ESDBlogSection() {
         </h2>
         <div className={styles.postsGrid}>
           <div className={styles.featuredCol}>
-            <a href="#" className={styles.featuredPost}>
+            <div className={styles.featuredPost}>
               <div className={styles.featuredImageWrapper}>
                 <div className={styles.featuredImgInner}>
                   {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -69,12 +60,12 @@ export default function ESDBlogSection() {
                 <span className={styles.metaSep}>|</span>
                 <span className={styles.postDate}>November 5, 2024</span>
               </div>
-            </a>
+            </div>
           </div>
 
           <div className={styles.sideCol}>
             {SIDE_POSTS.map((post) => (
-              <a key={post.href + post.title} href={post.href} className={styles.sidePost}>
+              <div key={post.title} className={styles.sidePost}>
                 <div className={styles.sidePostTitle}>{post.title}</div>
                 <div className={styles.postMeta}>
                   <span className={styles.readTime}>
@@ -84,14 +75,12 @@ export default function ESDBlogSection() {
                   <span className={styles.metaSep}>|</span>
                   <span className={styles.postDate}>{post.date}</span>
                 </div>
-              </a>
+              </div>
             ))}
             <div className={styles.allArticlesWrapper}>
               <a href="/blog" className={styles.allArticlesLink}>
                 All articles
-                <span className={styles.linkArrow} aria-hidden>
-                  <ArrowIcon />
-                </span>
+                <span className={styles.linkArrow} aria-hidden="true" />
               </a>
             </div>
           </div>

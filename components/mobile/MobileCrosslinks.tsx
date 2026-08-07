@@ -6,7 +6,7 @@ const COLS = [
     links: [
       { text: "Custom software development", href: "/services/custom-software-development" },
       { text: "Enterprise software development", href: "/services/enterprise-software-development" },
-      { text: "Legacy software modernization", href: "/services/crm-development" },
+      { text: "CRM development", href: "/services/crm-development" },
       { text: "MVP development", href: "/process/mvp" },
       { text: "AI software development", href: "/services/ai-software-development" },
     ],
@@ -14,17 +14,16 @@ const COLS = [
   {
     title: "Industries",
     links: [
-      { text: "Healthcare", href: "/industries/healthcare-software-development" },
-      { text: "FinTech", href: "/services/financial-software-development" },
-      { text: "Logistics", href: "/industries/logistics-software-development" },
-      { text: "EdTech", href: "/industries/elearning-software-development" },
+      { text: "Healthcare", href: "/services/healthcare-development" },
+      { text: "FinTech", href: "/services/financial-development" },
+      { text: "Logistics", href: "/services/logistics-development" },
+      { text: "EdTech", href: "/services/edtech-development" },
     ],
   },
   {
     title: "Processes",
     links: [
-      { text: "How we work", href: "/how-we-work" },
-      { text: "Engagement models", href: "/engagement-models" },
+      { text: "Engagement models", href: "/engagement-models-process" },
       { text: "Pricing", href: "/pricing" },
     ],
   },

@@ -461,7 +461,7 @@ export default function RagPage() {
         </section>
 
         {/* ── RAG vs Fine-tuning (image) ──────────────────────────────────── */}
-        <section id="rag-vsft" className={styles.blockLight}>
+        <section id="rag-vsft" className={styles.blockWhite}>
           <div className="container">
             <h2 className={styles.sectionTitle}>RAG vs. Fine-tuning – strategic decision <span className={styles.accent}>matrix</span></h2>
             <p className={styles.sectionDesc}>

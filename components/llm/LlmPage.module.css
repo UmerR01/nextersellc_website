@@ -801,31 +801,21 @@
 }
 
 .inlineCtaInner {
-  background:
-    linear-gradient(116deg, transparent 0 43%, rgba(60, 196, 229, 0.06) 43% 55%, transparent 55%),
-    linear-gradient(116deg, transparent 0 70%, rgba(255, 255, 255, 0.05) 70% 86%, transparent 86%),
-    linear-gradient(115deg, #102f63 0%, #07162f 52%, #46203f 100%);
+  background: linear-gradient(115deg, var(--color-accent-dark) 0%, #17163f 100%);
   min-height: 234px;
   padding: 64px 134px;
-  display: flex;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
   align-items: center;
   justify-content: space-between;
   gap: 72px;
-  flex-wrap: wrap;
-}
-
-.adtechGradientCta .inlineCtaInner {
-  background: linear-gradient(115deg, var(--color-accent-dark) 0%, #17163f 100%);
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) auto;
-  flex-wrap: nowrap;
+  overflow: hidden;
 }
 
 @media (max-width: 700px) {
-  .inlineCtaInner { padding: 40px 28px; }
-
-  .adtechGradientCta .inlineCtaInner {
+  .inlineCtaInner {
     grid-template-columns: 1fr;
+    padding: 40px 28px;
   }
 }
 
@@ -846,32 +836,11 @@
 
 .inlineCtaBtn {
   font-family: var(--font-inter-tight), sans-serif;
-  font-size: 1rem;
-  font-weight: 600;
-  color: #fff;
-  background: var(--color-accent);
-  border-radius: var(--border-radius);
-  
-  padding: 16px 36px;
-  cursor: pointer;
+  min-height: 2.625rem;
+  padding: 0.4rem 1.5rem;
   text-decoration: none;
   white-space: nowrap;
   flex-shrink: 0;
-  transition: background 0.2s;
-}
-
-.inlineCtaBtn:hover { background: #2aaccc; }
-
-.adtechGradientCta .inlineCtaBtn {
-  border-radius: var(--radius-button);
-  border: 2px solid var(--color-accent);
-  min-height: 2.625rem;
-  padding: 0.4rem 1.5rem;
-}
-
-.adtechGradientCta .inlineCtaBtn:hover {
-  background: transparent;
-  color: var(--color-accent);
 }
 
 /* ── Process steps (dark, connected circles) ───────────────────────────────── */
@@ -4181,6 +4150,256 @@
     padding-top: 0;
   }
 }
+/* LLM ADLC process reference layout */
+.llmAdlcBlock {
+  margin: 0;
+  padding: clamp(5rem, 7vw, 6.4rem) 0 clamp(5.4rem, 7.5vw, 6.8rem);
+  background: #fff;
+  overflow: visible;
+}
+
+.llmAdlcBlock :global(.container) {
+  max-width: 76rem;
+}
+
+.llmAdlcBlock .sectionTitleWhite {
+  max-width: 74rem;
+  margin: 0 auto 1.6rem;
+  color: #000;
+  font-size: clamp(3rem, 4.6vw, 4rem);
+  font-weight: 300;
+  line-height: 1.12;
+  letter-spacing: 0;
+  text-align: center;
+}
+
+.llmAdlcBlock .sectionTitleWhite .accent {
+  color: var(--color-accent);
+}
+
+.llmAdlcBlock .sectionDescWhite {
+  max-width: 74rem;
+  margin: 0 auto clamp(4.55rem, 6.5vw, 5.25rem);
+  color: var(--color-text);
+  font-size: clamp(1.1rem, 1.48vw, 1.35rem);
+  line-height: 1.58;
+  text-align: center;
+}
+
+.llmAdlcBlock .processGrid {
+  display: flex;
+  flex-direction: column;
+  max-width: 54.5rem;
+  margin: 0 auto;
+}
+
+.llmAdlcBlock .processStep {
+  display: flex;
+  align-items: flex-start;
+  position: relative;
+}
+
+.llmAdlcBlock .processStep:not(:first-child) {
+  margin-top: 4.25rem;
+}
+
+.llmAdlcBlock .processStep:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  left: 50px;
+  top: 104px;
+  width: 1px;
+  height: calc(100% + 4.25rem - 104px);
+  background: #edf3fb;
+}
+
+.llmAdlcBlock .processNum {
+  width: 100px;
+  height: 100px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  background: #f7f9fe;
+  box-shadow: 0 0 0 4px #fff, 0 0 0 6px #e6eff7;
+  color: var(--color-accent);
+  font-family: var(--font-inter-tight), sans-serif;
+  font-size: 1.55rem;
+  font-weight: 400;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  z-index: 1;
+}
+
+.llmAdlcBlock .processStepBody {
+  margin-left: 2rem;
+  padding-top: 0.1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.llmAdlcBlock .processStepTitle {
+  margin: 0;
+  color: #000;
+  font-size: clamp(1.55rem, 2.2vw, 1.85rem);
+  font-weight: 500;
+  line-height: 1.25;
+  letter-spacing: 0;
+}
+
+.llmAdlcBlock .processStepText {
+  max-width: 43.5rem;
+  margin: 0;
+  color: var(--color-text);
+  font-size: clamp(1rem, 1.15vw, 1.08rem);
+  line-height: 1.55;
+}
+
+@media (max-width: 768px) {
+  .llmAdlcBlock {
+    padding: 4.5rem 0 5rem;
+  }
+
+  .llmAdlcBlock .sectionTitleWhite,
+  .llmAdlcBlock .sectionDescWhite {
+    text-align: left;
+  }
+
+  .llmAdlcBlock .sectionDescWhite {
+    margin-bottom: 3.5rem;
+  }
+
+  .llmAdlcBlock .processGrid {
+    max-width: none;
+  }
+
+  .llmAdlcBlock .processStep:not(:first-child) {
+    margin-top: 2.9rem;
+  }
+
+  .llmAdlcBlock .processStep:not(:last-child)::after {
+    left: 27px;
+    top: 62px;
+    height: calc(100% + 2.9rem - 62px);
+  }
+
+  .llmAdlcBlock .processNum {
+    width: 56px;
+    height: 56px;
+    font-size: 1rem;
+    box-shadow: 0 0 0 4px #fff, 0 0 0 6px #e6eff7;
+  }
+
+  .llmAdlcBlock .processStepBody {
+    margin-left: 1.5rem;
+    gap: 0.85rem;
+  }
+}
+/* LLM who builds reference layout */
+.llmWhoBlock {
+  background: #fff;
+  padding: clamp(5.2rem, 7vw, 6.4rem) 0 clamp(4.2rem, 6vw, 5.4rem);
+}
+
+.llmWhoBlock :global(.container) {
+  max-width: 74rem;
+}
+
+.llmWhoBlock .sectionTitle {
+  max-width: 74rem;
+  margin: 0 auto 1.5rem;
+  color: #000;
+  font-size: clamp(2.9rem, 4.4vw, 3.75rem);
+  font-weight: 300;
+  line-height: 1.12;
+  letter-spacing: 0;
+  text-align: center;
+}
+
+.llmWhoBlock .accent {
+  color: var(--color-accent);
+}
+
+.llmWhoBlock .sectionDesc {
+  max-width: 70rem;
+  margin: 0 auto;
+  color: var(--color-text);
+  font-size: clamp(1.08rem, 1.45vw, 1.35rem);
+  line-height: 1.55;
+  text-align: center;
+}
+
+.llmWhoGrid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: clamp(2.4rem, 4.5vw, 4.25rem);
+  margin: clamp(4.6rem, 6vw, 5.4rem) auto 0;
+}
+
+.llmWhoCard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.llmWhoIcon {
+  width: 3.5rem;
+  height: 3.5rem;
+  margin: 0 0 1.45rem;
+  object-fit: contain;
+  filter: brightness(0) saturate(100%) invert(62%) sepia(74%) saturate(895%) hue-rotate(151deg) brightness(94%) contrast(91%);
+}
+
+.llmWhoTitle {
+  margin: 0 0 1.45rem;
+  color: #000;
+  font-family: var(--font-inter-tight), sans-serif;
+  font-size: clamp(1.25rem, 1.65vw, 1.5rem);
+  font-weight: 500;
+  line-height: 1.25;
+  letter-spacing: 0;
+}
+
+.llmWhoDesc {
+  margin: 0;
+  color: var(--color-text);
+  font-family: var(--font-inter-tight), sans-serif;
+  font-size: clamp(1rem, 1.18vw, 1.08rem);
+  line-height: 1.55;
+}
+
+@media (max-width: 1020px) {
+  .llmWhoGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 3.5rem 4rem;
+    max-width: 46rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .llmWhoBlock {
+    padding: 4.5rem 0 4.75rem;
+  }
+
+  .llmWhoBlock .sectionTitle,
+  .llmWhoBlock .sectionDesc {
+    text-align: left;
+  }
+
+  .llmWhoGrid {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+    margin-top: 3.6rem;
+  }
+
+  .llmWhoCard {
+    align-items: flex-start;
+    text-align: left;
+  }
+}
 /* LLM flexible deployment reference layout */
 .llmDeploymentBlock {
   background: #fff;
@@ -4320,5 +4539,69 @@
   .llmDeploymentBlock .tabPanelContent {
     margin: 0;
     padding-top: 3rem;
+  }
+}
+/* LLM requested interaction and SDLC circle overrides */
+.llmDualBlock .vertTabIcon {
+  filter: brightness(0);
+  transition: filter 0.2s ease;
+}
+
+.llmDualBlock .vertTabBtn:hover .vertTabIcon {
+  filter: brightness(0) saturate(100%) invert(69%) sepia(61%) saturate(643%) hue-rotate(148deg) brightness(91%) contrast(91%);
+}
+
+.llmDualBlock .vertTabBtnActive .vertTabIcon,
+.llmDualBlock .vertTabBtnActive:hover .vertTabIcon {
+  filter: brightness(0) invert(1);
+}
+
+.llmDeploymentBlock .tabBtn:hover {
+  color: var(--color-accent);
+}
+
+.llmDeploymentBlock .tabIcon {
+  transition: filter 0.2s ease;
+}
+
+.llmDeploymentBlock .tabBtn:hover .tabIcon,
+.llmDeploymentBlock .tabBtnActive .tabIcon {
+  filter: brightness(0) saturate(100%) invert(69%) sepia(61%) saturate(643%) hue-rotate(148deg) brightness(91%) contrast(91%);
+}
+
+.llmAdlcBlock .processStep:not(:last-child)::after {
+  left: 60px;
+  top: 120px;
+  width: 2px;
+  height: calc(100% + 4.25rem - 120px);
+  background: #e3ecf5;
+}
+
+.llmAdlcBlock .processNum {
+  width: 104px;
+  height: 104px;
+  margin: 8px;
+  border: 2px solid #e3ecf5;
+  background: #f4f7fd;
+  box-shadow: 0 0 0 6px #fff, 0 0 0 8px #e3ecf5;
+  color: var(--color-accent);
+  font-size: 1.75rem;
+  font-weight: 500;
+}
+
+@media (max-width: 768px) {
+  .llmAdlcBlock .processStep:not(:last-child)::after {
+    left: 29px;
+    top: 53px;
+    height: calc(100% + 2.9rem - 53px);
+  }
+
+  .llmAdlcBlock .processNum {
+    width: 48px;
+    height: 48px;
+    margin: 5px;
+    border: 2px solid #e3ecf5;
+    box-shadow: 0 0 0 3px #fff, 0 0 0 5px #e3ecf5;
+    font-size: 1rem;
   }
 }

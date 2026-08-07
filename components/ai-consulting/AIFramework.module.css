@@ -1,9 +1,9 @@
-.section {
+﻿.section {
   padding: 96px 0;
   background: var(--color-bg);
 }
 
-/* ── Header — centred like clone ── */
+/* â”€â”€ Header â€” centred like clone â”€â”€ */
 .header {
   text-align: center;
   margin-bottom: 0;
@@ -28,7 +28,7 @@
   margin: 0 auto;
 }
 
-/* ── Steps container — narrow + centred ── */
+/* â”€â”€ Steps container â€” narrow + centred â”€â”€ */
 .steps {
   display: flex;
   flex-direction: column;
@@ -36,7 +36,7 @@
   margin: 64px auto 0;
 }
 
-/* ── Individual step ── */
+/* â”€â”€ Individual step â”€â”€ */
 .step {
   display: flex;
   align-items: flex-start;
@@ -48,33 +48,35 @@
 .step:not(:last-child)::after {
   content: "";
   position: absolute;
-  left: 43px;
-  top: 96px;
+  left: 60px;
+  top: 120px;
   width: 2px;
-  height: calc(100% + 56px - 96px);
-  background: var(--color-border);
+  height: calc(100% + 56px - 120px);
+  background: #e3ecf5;
 }
 
-/* ── Circle number badge — inner filled circle + white gap + outer ring ── */
+/* â”€â”€ Circle number badge â€” inner filled circle + white gap + outer ring â”€â”€ */
 .stepNum {
-  width: 88px;
-  height: 88px;
-  flex-shrink: 0;
-  border-radius: 50%;
-  background: var(--color-accent-dark);
-  color: #fff;
-  font-size: 1.75rem;
-  font-weight: 600;
-  line-height: 1;
-  display: flex;
   align-items: center;
+  background: #f4f7fd;
+  border: 2px solid #e3ecf5;
+  border-radius: 50%;
+  box-shadow: 0 0 0 6px #fff, 0 0 0 8px #e3ecf5;
+  color: var(--color-accent, #3cc4e5);
+  display: flex;
+  flex-shrink: 0;
+  font-size: 1.75rem;
+  font-weight: 500;
+  height: 104px;
   justify-content: center;
+  line-height: 1;
+  margin: 8px;
   position: relative;
+  width: 104px;
   z-index: 1;
-  box-shadow: 0 0 0 6px var(--color-bg), 0 0 0 8px var(--color-border);
 }
 
-/* ── Step content — top aligned with circle top ── */
+/* â”€â”€ Step content â€” top aligned with circle top â”€â”€ */
 .stepContent {
   margin-left: 32px;
   flex: 1;
@@ -97,7 +99,7 @@
 }
 .stepDesc p + p { padding-top: 8px; }
 
-/* ── Checklist for Step 5 ── */
+/* â”€â”€ Checklist for Step 5 â”€â”€ */
 .stepList {
   list-style: none;
   margin: 12px 0 8px;
@@ -128,7 +130,7 @@
   background-size: contain;
 }
 
-/* ── Responsive ── */
+/* â”€â”€ Responsive â”€â”€ */
 @media (max-width: 768px) {
   .section { padding: 64px 0; }
   .header { text-align: left; }
@@ -137,16 +139,17 @@
 
   .step:not(:first-child) { margin-top: 40px; }
   .step:not(:last-child)::after {
-    left: 23px;
-    top: 54px;
-    height: calc(100% + 40px - 54px);
+    left: 29px;
+    top: 53px;
+    height: calc(100% + 40px - 53px);
   }
 
   .stepNum {
-    width: 48px;
-    height: 48px;
+    box-shadow: 0 0 0 3px #fff, 0 0 0 5px #e3ecf5;
     font-size: 1rem;
-    box-shadow: 0 0 0 4px var(--color-bg), 0 0 0 6px var(--color-border);
+    height: 48px;
+    margin: 5px;
+    width: 48px;
   }
 
   .stepContent {

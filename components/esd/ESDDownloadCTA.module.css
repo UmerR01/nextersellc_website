@@ -19,7 +19,7 @@
 
 .row {
   display: grid;
-  grid-template-columns: 1fr auto;
+  grid-template-columns: minmax(0, 1fr) auto;
   gap: 3rem;
   align-items: center;
 }
@@ -40,11 +40,6 @@
 
   .title {
     white-space: normal;
-  }
-
-  .btn {
-    max-width: 100%;
-    width: 100%;
   }
 }
 
@@ -76,17 +71,9 @@
 }
 
 .btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
   font-family: var(--font-inter-tight), sans-serif;
-  font-size: 1rem;
-  font-weight: 600;
-  color: #fff;
+  min-height: 2.625rem;
+  padding: 0.4rem 1.5rem;
   text-decoration: none;
-  text-align: center;
-  white-space: normal;
-  min-height: 4.875rem;
-  width: 17.125rem;
-  max-width: 100%;
+  white-space: nowrap;
 }

@@ -134,7 +134,7 @@ export default function Hero() {
               title="Custom Software Development"
               desc="Purpose-built applications engineered for performance, scalability, and reliability—crafted to solve real business challenges."
               cta="Custom Software Development"
-              href="#contact"
+              href="/services/custom-software-development"
             />
           </div>
         </div>
@@ -154,7 +154,7 @@ export default function Hero() {
               title="Custom AI Development"
               desc="Intelligent solutions powered by machine learning, generative AI, automation, and AI agents—designed to enhance productivity and unlock innovation."
               cta="Custom AI Development"
-              href="#contact"
+              href="/services/ai-software-development"
             />
           </div>
         </div>

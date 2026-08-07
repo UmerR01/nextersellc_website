@@ -509,42 +509,42 @@ const INDUSTRIES = [
     title: "E-learning",
     desc: "We build e-learning portals, LMS platforms, knowledge systems, and content management tools. AI can support learner assistance, document search, content tagging, and Q&A over internal materials.",
     linkLabel: "Edtech web development",
-    href: "/industries/elearning-software-development",
+    href: "/services/edtech-development",
   },
   {
     icon: "/web-app-development/01_Ecommerce.svg",
     title: "E-commerce & Retail",
     desc: "We develop commerce platforms, catalog systems, inventory tools, and order management applications. AI can support product discovery, pricing analysis, support workflows, and demand forecasting.",
     linkLabel: "E-commerce development",
-    href: "/industries/ecommerce-development",
+    href: "/services/retail-ecommerce-development",
   },
   {
     icon: "/web-app-development/01_Transport-Logistics.svg",
     title: "Transport & Logistics",
     desc: "We build web applications for freight booking, warehouse operations, fleet management, and delivery control. AI can help with route planning, exception handling, document processing, and demand prediction.",
     linkLabel: "Logistics web development",
-    href: "/industries/logistics-software-development",
+    href: "/services/logistics-development",
   },
   {
     icon: "/web-app-development/01_Marketing-automation.svg",
-    title: "Marketing Automation",
-    desc: "We develop marketing platforms for campaign management, audience segmentation, reporting, and analytics. AI can support content classification, lead routing, performance analysis, and customer insights.",
-    linkLabel: "MarTech development",
-    href: "/industries/marketing-automation",
+    title: "AdTech",
+    desc: "We develop advertising platforms for campaign management, audience segmentation, reporting, and analytics. AI can support content classification, lead routing, performance analysis, and customer insights.",
+    linkLabel: "AdTech development",
+    href: "/services/adtech-development",
   },
   {
     icon: "/web-app-development/01_Healthcare.svg",
     title: "Healthcare & Lifestyle",
     desc: "We build secure web applications for patient services, records management, medical inventory, and internal workflows. Where policy allows, AI can support document intake, search, triage, and staff knowledge access.",
     linkLabel: "Healthcare web development",
-    href: "/industries/healthcare-software-development",
+    href: "/services/healthcare-development",
   },
   {
     icon: "/web-app-development/01_Fintech-applications.svg",
     title: "Fintech",
     desc: "We build secure web applications for payments, compliance, risk control, and operational workflows. AI can support investigations, document review, transaction analysis, and internal knowledge retrieval.",
     linkLabel: "Fintech web development",
-    href: "/industries/fintech-software-development",
+    href: "/services/financial-development",
   },
 ];
 
@@ -630,7 +630,17 @@ export default function WebPage() {
           <div className={styles.heroInner}>
             <nav className={styles.breadcrumbs} aria-label="Breadcrumb">
               <a href="/">Home</a>
+              <span className={styles.breadcrumbSep}>
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden>
+                  <path stroke="rgba(255,255,255,0.5)" strokeLinecap="square" d="m6 4 4 4-4 4" />
+                </svg>
+              </span>
               <a href="/services">Services</a>
+              <span className={styles.breadcrumbSep}>
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden>
+                  <path stroke="rgba(255,255,255,0.5)" strokeLinecap="square" d="m6 4 4 4-4 4" />
+                </svg>
+              </span>
               <span>Web App Development</span>
             </nav>
             <h1 className={styles.heroTitle}>
@@ -658,7 +668,10 @@ export default function WebPage() {
         </div>
       </section>
 
-      {/* ── Logos ────────────────────────────────────────────────────────── */}
+      
+
+      <WebArticleLayout>
+        {/* ── Logos ────────────────────────────────────────────────────────── */}
       <section className={styles.logosSection}>
         <div className="container">
           <div className={styles.logosWrapper}>
@@ -676,7 +689,6 @@ export default function WebPage() {
         </div>
       </section>
 
-      <WebArticleLayout>
         {/* ── Benefits ─────────────────────────────────────────────────── */}
         <section id="web-benefits" className={styles.benefitSection}>
           <div className="container">
@@ -757,7 +769,8 @@ export default function WebPage() {
                     </ul>
                     {tab.linkLabel && (
                       <a href={tab.href} className={styles.tabPanelLink}>
-                        {tab.linkLabel} →
+                        {tab.linkLabel}
+                        <span className={styles.linkArrow} aria-hidden="true" />
                       </a>
                     )}
                   </div>
@@ -1120,8 +1133,8 @@ export default function WebPage() {
                   {[
                     { text: "Enterprise web ", last: "development", href: "/services/enterprise-software-development" },
                     { text: "Custom software product ", last: "development", href: "/services/custom-software-development" },
-                    { text: "Legacy web ", last: "modernization", href: "/services/crm-development" },
-                    { text: "SaaS ", last: "development", href: "/services/saas-development" },
+                    { text: "CRM ", last: "development", href: "/services/crm-development" },
+                    { text: "Mobile app ", last: "development", href: "/services/mobile-app-development" },
                   ].map((link) => (
                     <li key={link.last + link.text} className={styles.clItem}>
                       <a href={link.href} className={styles.clLink}>
@@ -1139,9 +1152,8 @@ export default function WebPage() {
                 <p className={styles.clColTitle}>Insights</p>
                 <ul className={styles.clList}>
                   {[
-                    { text: "Top web development ", last: "companies", href: "/blog/top-web-development-companies" },
-                    { text: "", last: "FAQ", href: "/about/faq" },
-                    { text: "Guides & checklists ", last: "library", href: "/guides-templates" },
+                    { text: "", last: "FAQ", href: "/faq" },
+                    { text: "Guides & checklists ", last: "library", href: "/library" },
                   ].map((link) => (
                     <li key={link.last + link.text} className={styles.clItem}>
                       <a href={link.href} className={styles.clLink}>

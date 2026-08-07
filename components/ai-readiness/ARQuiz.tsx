@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import styles from "./ARQuiz.module.css";
 
 const QUESTIONS = [
@@ -9,125 +9,98 @@ const QUESTIONS = [
       "We need a reliable, highly secure core software platform (e.g., ERP, portal, or mobile app). (Score: 0)",
       "We need to unlock our internal knowledge and make our documents instantly searchable. (Score: 2)",
       "We want to automate complex, multi-step workflows that currently require human reasoning. (Score: 3)",
-      "We aren’t sure yet; we just know we need to explore AI before our competitors do. (Score: 1)",
+      "We aren't sure yet; we just know we need to explore AI before our competitors do. (Score: 1)",
     ],
     scores: [0, 2, 3, 1],
   },
   {
-    q: "How mature is your cloud infrastructure?",
+    q: "AI is only as smart as the data it accesses. How would you describe the current state of your proprietary data?",
     options: [
-      "Cloud-native with modern CI/CD and observability",
-      "Partially migrated with some legacy components",
-      "Mostly on-premise with limited cloud usage",
-      "No cloud infrastructure yet",
+      "Highly centralized, clean, and easily accessible via modern APIs or cloud databases. (Score: 3)",
+      "Mostly digitized, but siloed across several different SaaS tools and legacy systems. (Score: 2)",
+      "Fragmented, unstructured, highly manual, or trapped in legacy on-premise servers. (Score: 0)",
     ],
-    scores: [3, 2, 1, 0],
+    scores: [3, 2, 0],
   },
   {
-    q: "Do you have defined data access controls and role-based permissions?",
+    q: "What level of security and regulatory compliance does your industry require?",
     options: [
-      "Yes, fully implemented and regularly reviewed",
-      "Partially — some areas have controls, others do not",
-      "Access is mostly informal and historically accumulated",
-      "No formal access control model exists",
+      "Extremely strict (HIPAA, SOC2, FinServ). Data cannot ever leave our private environment. (Score: 3)",
+      "Standard corporate privacy. We want to protect IP, but aren't heavily regulated. (Score: 2)",
+      "Low risk. We are mostly dealing with public or non-sensitive data. (Score: 1)",
     ],
-    scores: [3, 2, 1, 0],
+    scores: [3, 2, 1],
   },
   {
-    q: "Have you identified a specific AI use case you want to validate?",
+    q: "Where does your primary technology stack currently live?",
     options: [
-      "Yes, with clear success criteria and stakeholder alignment",
-      "We have a general idea but haven't scoped it fully",
-      "We're exploring several options without a clear priority",
-      "We don't yet know what problem we want to solve with AI",
+      "Fully cloud-native (AWS, Azure, GCP). (Score: 3)",
+      "A mix of cloud and off-the-shelf SaaS applications. (Score: 2)",
+      "Heavily reliant on legacy, on-premise architecture. (Score: 0)",
     ],
-    scores: [3, 2, 1, 0],
+    scores: [3, 2, 0],
   },
   {
-    q: "What compliance frameworks apply to your data?",
+    q: "How does your leadership team view the financial investment into new technology?",
     options: [
-      "None — data is not regulated",
-      "We follow general best practices but no formal framework",
-      "One or more frameworks apply (GDPR, HIPAA, SOC 2, etc.)",
-      "We're unsure what frameworks apply to us",
+      "We need guaranteed, deterministic outcomes and exact budgets before starting. (Score: 0)",
+      "We are willing to fund a short, structured Proof of Concept to calculate ROI before scaling. (Score: 3)",
+      "We want immediate, plug-and-play AI features without custom engineering. (Score: 1)",
     ],
-    scores: [3, 2, 1, 0],
-  },
-  {
-    q: "Have you estimated the ROI or business impact of your target AI use case?",
-    options: [
-      "Yes, with quantified metrics and a business case",
-      "Informally — we have a sense but no numbers",
-      "No — we haven't thought about ROI yet",
-      "We're focused on the technology, not the business case",
-    ],
-    scores: [3, 2, 1, 0],
-  },
-  {
-    q: "How does leadership view AI adoption in your organization?",
-    options: [
-      "Fully aligned and sponsoring specific initiatives",
-      "Supportive but not yet committed to a budget",
-      "Curious but skeptical — still needs convincing",
-      "No executive visibility on AI yet",
-    ],
-    scores: [3, 2, 1, 0],
+    scores: [0, 3, 1],
   },
 ];
 
-function getResult(score: number): { label: string; desc: string } {
-  if (score >= 17) {
-    return {
-      label: "High readiness",
-      desc: "Your organization has strong foundations for AI. A focused assessment can help you validate architecture choices and move quickly to a proof-of-concept.",
-    };
-  }
-  if (score >= 11) {
-    return {
-      label: "Moderate readiness",
-      desc: "You have a good starting point but some gaps to address. A readiness assessment will identify the specific blockers and give you a prioritized action plan.",
-    };
-  }
-  if (score >= 5) {
-    return {
-      label: "Early stage",
-      desc: "There are foundational elements to put in place before AI development begins. An assessment will show you where to invest first to maximize your chances of success.",
-    };
-  }
-  return {
-    label: "Foundation needed",
-    desc: "A data and infrastructure foundation must come before AI. Our assessment will define a pragmatic roadmap starting from where you are today.",
-  };
-}
+const CONTACT_STEPS = [
+  { field: "name", placeholder: "Your name", type: "text" },
+  { field: "email", placeholder: "Your email", type: "email" },
+] as const;
+
+const TOTAL_STEPS = QUESTIONS.length + CONTACT_STEPS.length;
 
 export default function ARQuiz() {
   const [currentQ, setCurrentQ] = useState(0);
   const [answers, setAnswers] = useState<number[]>([]);
   const [selected, setSelected] = useState<number | null>(null);
-  const [done, setDone] = useState(false);
+  const [contact, setContact] = useState({ name: "", email: "" });
+  const [isLoading, setIsLoading] = useState(false);
+  const [submitted, setSubmitted] = useState(false);
 
-  const total = QUESTIONS.length;
+  useEffect(() => {
+    if (!isLoading) return;
+    const timer = window.setTimeout(() => {
+      setIsLoading(false);
+      setSubmitted(true);
+    }, 1200);
+    return () => window.clearTimeout(timer);
+  }, [isLoading]);
+
+  const isQuestionStep = currentQ < QUESTIONS.length;
+  const contactStep = isQuestionStep ? null : CONTACT_STEPS[currentQ - QUESTIONS.length];
+  const contactValue = contactStep ? contact[contactStep.field] : "";
 
   const handleNext = () => {
-    if (selected === null) return;
-    const newAnswers = [...answers, QUESTIONS[currentQ].scores[selected]];
-    if (currentQ + 1 < total) {
-      setAnswers(newAnswers);
-      setCurrentQ(currentQ + 1);
+    if (isQuestionStep) {
+      if (selected === null) return;
+      setAnswers((current) => [...current, QUESTIONS[currentQ].scores[selected]]);
       setSelected(null);
-    } else {
-      setAnswers(newAnswers);
-      setDone(true);
+      setCurrentQ((value) => value + 1);
+      return;
     }
+
+    if (!contactStep || !contactValue.trim()) return;
+    if (currentQ + 1 < TOTAL_STEPS) {
+      setCurrentQ((value) => value + 1);
+      return;
+    }
+    setIsLoading(true);
   };
 
-  const totalScore = answers.reduce((a, b) => a + b, 0);
-  const result = done ? getResult(totalScore) : null;
+  const isNextDisabled = isQuestionStep ? selected === null : !contactValue.trim();
 
   return (
     <section className={styles.section} id="quiz">
       <div className={`container ${styles.inner}`}>
-        {/* Left panel */}
         <div className={styles.left}>
           <p className={styles.eyebrow}>Take a basic AI readiness assessment</p>
           <h2 className={styles.title}>
@@ -137,19 +110,31 @@ export default function ARQuiz() {
           </h2>
         </div>
 
-        {/* Right panel */}
         <div className={styles.right}>
-          <div className={styles.card}>
+          <div className={`${styles.card} ${isLoading ? styles.loadingCard : ""}`}>
             <div className={styles.cardHeader}>
               <span className={styles.cardLabel}>AI Readiness Assessment</span>
-              {!done && (
+              {!isLoading && !submitted && (
                 <span className={styles.progress}>
-                  Question {currentQ + 1} / {total}
+                  Question {currentQ + 1} <span>/ {TOTAL_STEPS}</span>
                 </span>
               )}
             </div>
 
-            {!done ? (
+            {isLoading ? (
+              <div className={styles.loadingPanel} aria-label="Loading assessment result"><span /><span /><span /></div>
+            ) : submitted ? (
+              <div className={styles.result}>
+                <div className={styles.successIcon} aria-hidden>
+                  <svg viewBox="0 0 120 120" fill="none">
+                    <circle cx="60" cy="60" r="42" stroke="currentColor" strokeWidth="2" />
+                    <path d="M43 61.5L56 74.5L83 45" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
+                  </svg>
+                </div>
+                <div className={styles.resultLabel}>Thank you for submission!</div>
+                <p className={styles.resultDesc}>We will send score to your email.</p>
+              </div>
+            ) : isQuestionStep ? (
               <>
                 <p className={styles.question}>{QUESTIONS[currentQ].q}</p>
                 <div className={styles.options}>
@@ -167,22 +152,25 @@ export default function ARQuiz() {
                     </label>
                   ))}
                 </div>
-                <button
-                  className={`btn btn-accent ${styles.nextBtn}`}
-                  onClick={handleNext}
-                  disabled={selected === null}
-                >
-                  {currentQ + 1 < total ? "Next" : "See results"}
+                <button className={`btn btn-accent ${styles.nextBtn}`} onClick={handleNext} disabled={isNextDisabled}>
+                  Next
                 </button>
               </>
             ) : (
-              <div className={styles.result}>
-                <div className={styles.resultLabel}>{result!.label}</div>
-                <p className={styles.resultDesc}>{result!.desc}</p>
-                <a href="#contact" className="btn btn-accent">
-                  Book your AI readiness assessment
-                </a>
-              </div>
+              <>
+                <div className={styles.inputStep}>
+                  <input
+                    type={contactStep!.type}
+                    value={contactValue}
+                    onChange={(event) => setContact((current) => ({ ...current, [contactStep!.field]: event.target.value }))}
+                    placeholder={contactStep!.placeholder}
+                    aria-label={contactStep!.placeholder}
+                  />
+                </div>
+                <button className={`btn btn-accent ${styles.nextBtn}`} onClick={handleNext} disabled={isNextDisabled}>
+                  {currentQ + 1 < TOTAL_STEPS ? "Next" : "Finish"}
+                </button>
+              </>
             )}
           </div>
         </div>

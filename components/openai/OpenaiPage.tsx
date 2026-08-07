@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import CaseCards, { type CaseCard } from "@/components/home/CaseCards";
 import ServicesReviewSlider from "@/components/services/ServicesReviewSlider";
@@ -41,7 +42,7 @@ const SERVICES: { icon: string; title: string; desc: string[]; linkText?: string
       "The work can include API design, authentication, logging, permission checks, admin panels, prompt management, monitoring, and fallback logic. We also connect the LLM to business systems so it can assist with tasks rather than only answer questions.",
     ],
     linkText: "AI integration services",
-    href: "/services/ai-software-development",
+    href: "/services/ai-integration",
   },
   {
     icon: "/openai-development/05_LLM-agnostic-abstraction-layers-02.svg",
@@ -60,7 +61,7 @@ const SERVICES: { icon: string; title: string; desc: string[]; linkText?: string
       "These agents can support workflows such as quote generation, vendor comparison, document review, order processing, internal support, and report drafting. For sensitive actions, we add human approval steps before the agent writes data back to a system.",
     ],
     linkText: "AI agent development",
-    href: "/services/ai-software-development",
+    href: "/services/ai-agents-development",
   },
   {
     icon: "/openai-development/05_Security-guardrails-and-prompt-injection-defense-03.svg",
@@ -112,7 +113,7 @@ const INDUSTRIES: { icon: string; title: string; desc: string[]; linkText?: stri
       "Risk and compliance teams can ask questions across large document sets, compare contract language against internal rules, and prepare review notes with source references. Access controls restrict which records each user can retrieve.",
     ],
     linkText: "Fintech software development",
-    href: "/services/financial-software-development",
+    href: "/services/financial-development",
   },
   {
     icon: "/openai-development/05_Logistics-and-supply-chain-02.svg",
@@ -122,7 +123,7 @@ const INDUSTRIES: { icon: string; title: string; desc: string[]; linkText?: stri
       "A human reviewer can approve the response before the system sends it or updates the CRM. This keeps procurement teams in control while reducing manual comparison work.",
     ],
     linkText: "Logistics software development",
-    href: "/industries/logistics-software-development",
+    href: "/services/logistics-development",
   },
   {
     icon: "/openai-development/05_Healthcare-01.svg",
@@ -132,7 +133,7 @@ const INDUSTRIES: { icon: string; title: string; desc: string[]; linkText?: stri
       "For regulated environments, we design access controls, PII masking, audit logs, and deployment architecture to meet the organization's compliance requirements.",
     ],
     linkText: "Healthcare software development",
-    href: "/industries/healthcare-software-development",
+    href: "/services/healthcare-development",
   },
   {
     icon: "/openai-development/05_Manufacturing-04.svg",
@@ -229,33 +230,95 @@ const QUICK_FACTS = [
   { number: "3", suffix: "+", title: "Years' Client engagement" },
 ];
 
+type CountUpNumberProps = {
+  value: number;
+  duration?: number;
+};
+
+function CountUpNumber({ value, duration = 1200 }: CountUpNumberProps) {
+  const ref = useRef<HTMLSpanElement | null>(null);
+  const frameRef = useRef<number | null>(null);
+  const [display, setDisplay] = useState(0);
+  const [started, setStarted] = useState(false);
+
+  useEffect(() => {
+    const node = ref.current;
+    if (!node || started) return;
+
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      setDisplay(value);
+      setStarted(true);
+      return;
+    }
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setStarted(true);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.45 }
+    );
+
+    observer.observe(node);
+    return () => observer.disconnect();
+  }, [started, value]);
+
+  useEffect(() => {
+    if (!started) return;
+
+    const start = performance.now();
+    const tick = (now: number) => {
+      const progress = Math.min((now - start) / duration, 1);
+      const eased = 1 - Math.pow(1 - progress, 3);
+      setDisplay(Math.round(value * eased));
+
+      if (progress < 1) {
+        frameRef.current = requestAnimationFrame(tick);
+      }
+    };
+
+    frameRef.current = requestAnimationFrame(tick);
+    return () => {
+      if (frameRef.current !== null) cancelAnimationFrame(frameRef.current);
+    };
+  }, [duration, started, value]);
+
+  return <span ref={ref}>{display}</span>;
+}
+
 export default function OpenaiPage() {
   return (
     <>
       <OpenaiHero />
-      <OpenaiLogos />
 
       <OpenaiArticleLayout>
+        <OpenaiLogos />
         {/* ── ChatGPT-based software development services (6 cards) ────────── */}
-        <section id="oai-services" className={styles.blockWhite}>
+        <section id="oai-services" className={`${styles.blockWhite} ${styles.openaiServicesBlock}`}>
           <div className="container">
             <h2 className={styles.sectionTitle}>ChatGPT-based software development <span className={styles.accent}>services</span></h2>
             <div className={styles.ecomServicesGrid}>
               {SERVICES.map((c) => (
-                <div key={c.title} className={styles.ecomServiceCard}>
+                <div key={c.title} className={styles.ecomServiceCard} onClick={() => { if (c.href) window.location.href = c.href; }} onKeyDown={(event) => { if (c.href && (event.key === "Enter" || event.key === " ")) { event.preventDefault(); window.location.href = c.href; } }} role={c.href ? "link" : undefined} tabIndex={c.href ? 0 : undefined}>
                   <Image src={c.icon} alt={c.title} width={56} height={56} className={styles.ecomServiceIcon} />
                   <h3 className={styles.ecomServiceTitle}>{c.title}</h3>
                   {c.desc.map((p) => <p key={p} className={styles.ecomServiceIntro}>{p}</p>)}
                   {c.href && (
                     <a href={c.href} className={styles.cardLink}>
-                      {c.linkText} <span aria-hidden>&rarr;</span>
+                      <span>{c.linkText}</span><span className={styles.cardArrow} aria-hidden="true" />
                     </a>
                   )}
                 </div>
               ))}
             </div>
+          </div>
+        </section>
 
-            {/* ── Wrapper approach vs Dual-Engine LLM architecture (table) ──── */}
+        {/* ── Wrapper approach vs Dual-Engine LLM architecture (table) ──── */}
+        <section className={styles.openaiCompareSection}>
+          <div className="container">
             <div className={styles.compareWrap}>
               <table className={styles.compareTable}>
                 <thead>
@@ -282,13 +345,13 @@ export default function OpenaiPage() {
                 <h2 className={styles.inlineCtaTitle}>Let&rsquo;s make OpenAI-powered software designed to solve your specific challenges.</h2>
                 <p className={styles.inlineCtaDesc}>Book a free consultation and let&rsquo;s build something groundbreaking!</p>
               </div>
-              <a href="https://meetings.hubspot.com/elizabeth-khrushchynskaya" target="_blank" rel="noreferrer" className={`btn btn-accent ${styles.inlineCtaBtn}`}>Book a call</a>
+              <a href="#get-modal-popup" className={`btn btn-accent ${styles.inlineCtaBtn}`}>Book a call</a>
             </div>
           </div>
         </div>
 
         {/* ── GenAI technology stack ────────────────────────────────────────── */}
-        <section id="oai-techstack" className={styles.blockLight}>
+        <section id="oai-techstack" className={`${styles.blockLight} ${styles.openaiTechStackBlock}`}>
           <div className="container">
             <h2 className={styles.sectionTitle}>GenAI technology <span className={styles.accent}>stack</span></h2>
             <div className={styles.techListGrid}>
@@ -303,7 +366,7 @@ export default function OpenaiPage() {
         </section>
 
         {/* ── Business benefits of custom ChatGPT software (dark) ───────────── */}
-        <section id="oai-benefits" className={styles.blockDark}>
+        <section id="oai-benefits" className={`${styles.blockDark} ${styles.openaiBenefitsBlock}`}>
           <div className="container">
             <h2 className={styles.sectionTitleWhite}>Business <span className={styles.accent}>benefits</span> of custom ChatGPT software</h2>
             <div className={styles.cardsRow3}>
@@ -332,18 +395,18 @@ export default function OpenaiPage() {
         </div>
 
         {/* ── Agentic blueprints for enterprise use cases (Industries) ──────── */}
-        <section id="oai-industries" className={styles.blockWhite}>
+        <section id="oai-industries" className={`${styles.blockWhite} ${styles.openaiBlueprintsBlock}`}>
           <div className="container">
-            <h2 className={styles.sectionTitle}>Agentic blueprints for <span className={styles.accent}>enterprise use cases</span></h2>
+            <h2 className={styles.sectionTitle}>Agentic blueprints for enterprise use cases</h2>
             <div className={styles.ecomServicesGrid}>
               {INDUSTRIES.map((c) => (
-                <div key={c.title} className={styles.ecomServiceCard}>
+                <div key={c.title} className={styles.ecomServiceCard} onClick={() => { if (c.href) window.location.href = c.href; }} onKeyDown={(event) => { if (c.href && (event.key === "Enter" || event.key === " ")) { event.preventDefault(); window.location.href = c.href; } }} role={c.href ? "link" : undefined} tabIndex={c.href ? 0 : undefined}>
                   <Image src={c.icon} alt={c.title} width={56} height={56} className={styles.ecomServiceIcon} />
                   <h3 className={styles.ecomServiceTitle}>{c.title}</h3>
                   {c.desc.map((p) => <p key={p} className={styles.ecomServiceIntro}>{p}</p>)}
                   {c.href && (
                     <a href={c.href} className={styles.cardLink}>
-                      {c.linkText} <span aria-hidden>&rarr;</span>
+                      <span>{c.linkText}</span><span className={styles.cardArrow} aria-hidden="true" />
                     </a>
                   )}
                 </div>
@@ -382,7 +445,7 @@ export default function OpenaiPage() {
         </div>
 
         {/* ── Our ADLC process for ChatGPT and LLM applications (dark) ─────── */}
-        <section id="oai-process" className={styles.blockDark}>
+        <section id="oai-process" className={`${styles.blockDark} ${styles.openaiProcessBlock}`}>
           <div className="container">
             <h2 className={styles.sectionTitleWhite}>Our ADLC process for ChatGPT and <span className={styles.accent}>LLM applications</span></h2>
             <div className={styles.processGrid}>
@@ -405,7 +468,7 @@ export default function OpenaiPage() {
         </div>
 
         {/* ── Why Nexterse LLC (dark cards) ─────────────────────────────────── */}
-        <section id="oai-why" className={styles.blockDark}>
+        <section id="oai-why" className={`${styles.blockDark} ${styles.openaiWhyBlock}`}>
           <div className="container">
             <h2 className={styles.sectionTitleWhite}><span className={styles.accent}>Why</span> Nexterse LLC</h2>
             <div className={styles.cardsRow3}>
@@ -421,13 +484,13 @@ export default function OpenaiPage() {
         </section>
 
         {/* ── Key numbers about Nexterse LLC ────────────────────────────────── */}
-        <section className={styles.blockWhite}>
+        <section className={`${styles.blockWhite} ${styles.openaiQuickFactsBlock}`}>
           <div className="container">
             <h2 className={styles.sectionTitle}>Key <span className={styles.accent}>numbers</span> about Nexterse LLC</h2>
             <div className={styles.quickFactsGrid}>
               {QUICK_FACTS.map((f) => (
-                <div key={f.title}>
-                  <div className={styles.quickFactNumber}>{f.number}<span>{f.suffix}</span></div>
+                <div key={f.title} className={styles.quickFactCard}>
+                  <div className={styles.quickFactNumber}><CountUpNumber value={Number(f.number)} /><span>{f.suffix}</span></div>
                   <div className={styles.quickFactTitle}>{f.title}</div>
                 </div>
               ))}

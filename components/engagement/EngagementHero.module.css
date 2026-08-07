@@ -2,7 +2,7 @@
   position: relative;
   overflow: hidden;
   width: 100%;
-  padding-top: 50px;
+  padding-top: calc(var(--header-height) + 26px);
 }
 
 @media screen and (max-width: 768px) {
@@ -13,7 +13,7 @@
 
 @media screen and (min-width: 1024px) and (max-width: 1680px) {
   .hero {
-    padding-top: 96px;
+    padding-top: calc(var(--header-height) + 26px);
   }
 }
 
@@ -60,7 +60,7 @@
   position: relative;
   z-index: 1;
   width: 100%;
-  padding: clamp(6rem, 7vw, 7rem) 0 clamp(6rem, 9vw, 8.5rem);
+  padding: 0 0 8.5rem;
 }
 
 @media (max-width: 768px) {
@@ -71,7 +71,7 @@
 }
 
 .container {
-  max-width: min(100%, 1504px);
+  max-width: min(100%, 1540px);
   margin: 0 auto;
   padding-inline: clamp(1.25rem, 3vw, 2.5rem);
 }
@@ -83,39 +83,34 @@
 .breadcrumbs {
   display: flex;
   align-items: center;
-  gap: 0;
-  margin-bottom: 24px;
   flex-wrap: wrap;
+  gap: 4px;
+  margin-bottom: 5rem;
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 14px;
+  line-height: 20px;
 }
 
 .breadcrumbs a {
-  color: #fff;
+  color: rgba(255, 255, 255, 0.5);
   font-size: 14px;
   font-weight: 400;
   line-height: 20px;
   text-decoration: none;
-  padding-right: 24px;
-  position: relative;
-}
-
-.breadcrumbs a::after {
-  content: "";
-  position: absolute;
-  right: 0;
-  top: 0;
-  bottom: 0;
-  margin: auto 0;
-  width: 16px;
-  height: 16px;
-  background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='none'%3E%3Cpath stroke='%23fff' stroke-linecap='square' d='m6 4 4 4-4 4'/%3E%3C/svg%3E");
+  transition: color 0.2s ease;
 }
 
 .breadcrumbs a:hover {
-  color: var(--color-accent);
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.breadcrumbSep {
+  display: flex;
+  align-items: center;
 }
 
 .breadcrumbs span {
-  color: #899fb6;
+  color: rgba(255, 255, 255, 0.35);
   font-size: 14px;
   font-weight: 400;
   line-height: 20px;

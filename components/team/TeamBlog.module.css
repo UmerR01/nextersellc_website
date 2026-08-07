@@ -49,11 +49,6 @@
   height: 100%;
   object-fit: cover;
   display: block;
-  transition: transform 0.3s ease;
-}
-
-.featuredPost:hover .featuredImg {
-  transform: scale(1.02);
 }
 
 .postTitle {
@@ -64,11 +59,6 @@
   line-height: 1.4;
   margin-bottom: 8px;
   margin-top: 0;
-  transition: color 0.2s;
-}
-
-.featuredPost:hover .postTitle {
-  color: #3CC4E5;
 }
 
 .postMeta {
@@ -106,10 +96,6 @@
   font-size: clamp(1.125rem, 2vw, 1.75rem);
 }
 
-.smallPost:hover .postTitle {
-  color: #3CC4E5;
-}
-
 .moreLink {
   display: block;
   margin-top: 24px;
@@ -128,8 +114,6 @@
 
 .linkArrow {
   display: inline-block;
-  font-size: 1em;
-  line-height: 1;
   padding-left: 6px;
   padding-right: 17px;
   position: relative;
@@ -138,13 +122,18 @@
 
 .linkArrow::before,
 .linkArrow::after {
-  background: url("data:image/svg+xml;charset=utf8,%3Csvg width='6' height='10' viewBox='0 0 6 10' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 8.59L3.59 5L0 1.41L1 .5L5.5 5L1 9.5L0 8.59Z' fill='%233CC4E5'/%3E%3C/svg%3E") center / cover no-repeat;
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg width='6' height='10' viewBox='0 0 6 10' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M7.94319e-08 8.59L3.59 5L-3.53625e-07 1.41L1 0.5L5.5 5L1 9.5L7.94319e-08 8.59Z' fill='%233CC4E5'/%3E%3C/svg%3E");
+  background-position: 50%;
+  background-repeat: no-repeat;
+  background-size: cover;
   content: "";
-  height: 0.5em;
+  display: block;
+  height: 9px;
   position: absolute;
   right: 10px;
   top: 50%;
   transform: translateY(-50%);
+  transition: 0.1s;
   width: 6px;
 }
 

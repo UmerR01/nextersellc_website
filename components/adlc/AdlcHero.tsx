@@ -255,7 +255,7 @@ export default function AdlcHero() {
           </div>
 
           <div className={styles.buttons}>
-            <a href="#contact" className={styles.btnPrimary}>
+            <a href="#get-modal-popup" className={styles.btnPrimary}>
               Calculate your AI ROI
             </a>
           </div>

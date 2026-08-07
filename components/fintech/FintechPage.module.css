@@ -355,13 +355,16 @@
   width: 56px;
   height: 56px;
   object-fit: contain;
-  opacity: 0.52;
-  transition: opacity 0.2s ease;
+  filter: grayscale(1) opacity(0.55);
+  transition: filter 0.2s ease;
 }
 
-.dualEngineTab:hover .dualEngineIcon,
+.dualEngineTab:hover .dualEngineIcon {
+  filter: grayscale(1) opacity(0.8);
+}
+
 .dualEngineTabActive .dualEngineIcon {
-  opacity: 1;
+  filter: none;
 }
 
 .dualEnginePanel {
@@ -2518,8 +2521,8 @@
 }
 
 .pilotProcessSection .processStep:not(:last-child)::after {
-  left: 47px;
-  top: 96px;
+  left: 56px;
+  top: 112px;
   height: calc(100% + 48px);
   background: #e7eef7;
   z-index: 0;
@@ -2528,7 +2531,9 @@
 .pilotProcessSection .processNum {
   color: var(--color-accent);
   background: #f5f8fc;
-  box-shadow: 0 0 0 4px #fff, 0 0 0 6px #e7eef7;
+  border: 2px solid #e7eef7;
+  box-shadow: 0 0 0 6px #fff, 0 0 0 8px #e7eef7;
+  margin: 8px;
 }
 
 .pilotProcessSection .processStepTitle {
@@ -2557,13 +2562,14 @@
   }
 
   .pilotProcessSection .processStep:not(:last-child)::after {
-    left: 27px;
-    top: 56px;
+    left: 33px;
+    top: 66px;
     height: calc(100% + 40px);
   }
 
   .pilotProcessSection .processNum {
     box-shadow: 0 0 0 3px #fff, 0 0 0 5px #e7eef7;
+    margin: 5px;
   }
 }
 

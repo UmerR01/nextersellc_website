@@ -111,6 +111,7 @@
 /* Arrowhead (rotated square corner) */
 .navPrev::after,
 .navNext::after {
+  box-sizing: border-box;
   border-bottom: 2px solid var(--color-accent);
   border-right: 2px solid var(--color-accent);
   content: "";

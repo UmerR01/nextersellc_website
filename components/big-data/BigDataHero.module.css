@@ -1,0 +1,131 @@
+:root {
+  --bd-accent: var(--color-accent, #3cc4e5);
+  --bd-navy: #02102c;
+  --bd-fg: #ffffff;
+  --bd-font: var(--font-inter-tight), "Inter Tight", sans-serif;
+}
+
+.accent {
+  color: var(--bd-accent);
+}
+
+.hero {
+  position: relative;
+  overflow: hidden;
+  padding-top: calc(var(--header-height) + 26px);
+  padding-bottom: 8.5rem;
+  background: var(--bd-navy);
+  color: var(--bd-fg);
+  font-family: var(--bd-font);
+}
+
+.heroBgSvg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  pointer-events: none;
+}
+
+.heroInner {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: min(100%, 1540px);
+  margin: 0 auto;
+  padding-inline: clamp(1.25rem, 3vw, 2.5rem);
+  text-align: left;
+}
+
+.heroBreadcrumbs {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 4px;
+  margin: 0 0 4.5rem;
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 14px;
+  line-height: 20px;
+}
+
+.heroBreadcrumbs a,
+.heroBreadcrumbs span {
+  display: inline-flex;
+  align-items: center;
+  color: inherit;
+  text-decoration: none;
+}
+
+.heroBreadcrumbs a {
+  color: rgba(255, 255, 255, 0.5);
+  transition: color 0.2s ease;
+}
+
+.heroBreadcrumbs a:hover {
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.heroBreadcrumbs span {
+  color: rgba(255, 255, 255, 0.35);
+}
+
+.breadcrumbSep {
+  display: flex;
+  align-items: center;
+}
+
+.heroTitle {
+  max-width: 85rem;
+  margin: 0 0 1.75rem;
+  color: #fff;
+  font-size: clamp(3rem, 5vw, 4rem);
+  font-weight: 400;
+  line-height: 1.18;
+  letter-spacing: 0;
+}
+
+.heroDescription {
+  max-width: 58rem;
+  margin: 0 0 2.75rem;
+  color: rgba(255, 255, 255, 0.9);
+  font-size: clamp(1.15rem, 1.8vw, 1.5rem);
+  line-height: 1.5;
+}
+
+.heroButtons {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 2.25rem 4.5rem;
+}
+
+.btnPrimary {
+  font-family: var(--bd-font);
+  min-height: 2.625rem;
+  padding: 0.4rem 1.5rem;
+  text-decoration: none;
+}
+
+@media (max-width: 900px) {
+  .hero {
+    min-height: auto;
+    padding-top: 6rem;
+    padding-bottom: 4.5rem;
+  }
+
+  .heroBreadcrumbs {
+    margin-bottom: 2rem;
+  }
+
+  .heroTitle {
+    font-size: clamp(2.25rem, 9vw, 3rem);
+  }
+
+  .heroButtons {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+}

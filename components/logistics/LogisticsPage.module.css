@@ -906,22 +906,23 @@
 .processStep:not(:last-child)::after {
   content: "";
   position: absolute;
-  left: 51px;
-  top: 104px;
+  left: 60px;
+  top: 120px;
   width: 1px;
-  height: calc(100% + 50px - 104px);
-  background: #e8eef6;
+  height: calc(100% + 50px - 120px);
+  background: #e3ecf5;
 }
 
 .processNum {
   width: 104px;
   height: 104px;
   flex-shrink: 0;
+  margin: 8px;
   border-radius: 50%;
   /* Filled inner circle → gap ring → outer ring (circle-within-a-circle) */
-  background: #f8fbff;
-  border: 2px solid #e2ebf5;
-  box-shadow: inset 0 0 0 4px #fff;
+  background: #f4f7fd;
+  border: 2px solid #e3ecf5;
+  box-shadow: 0 0 0 6px #fff, 0 0 0 8px #e3ecf5;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -988,15 +989,16 @@
   .processGrid { margin-top: 40px; }
   .processStep:not(:first-child) { margin-top: 40px; }
   .processStep:not(:last-child)::after {
-    left: 28px;
-    top: 56px;
-    height: calc(100% + 40px - 56px);
+    left: 33px;
+    top: 66px;
+    height: calc(100% + 40px - 66px);
   }
   .processNum {
     width: 56px;
     height: 56px;
+    margin: 5px;
     font-size: 1.125rem;
-    box-shadow: inset 0 0 0 3px #fff;
+    box-shadow: 0 0 0 3px #fff, 0 0 0 5px #e3ecf5;
   }
   .processStepBody { margin-left: 28px; }
 }

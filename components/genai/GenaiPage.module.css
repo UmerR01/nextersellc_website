@@ -801,31 +801,21 @@
 }
 
 .inlineCtaInner {
-  background:
-    linear-gradient(116deg, transparent 0 43%, rgba(60, 196, 229, 0.06) 43% 55%, transparent 55%),
-    linear-gradient(116deg, transparent 0 70%, rgba(255, 255, 255, 0.05) 70% 86%, transparent 86%),
-    linear-gradient(115deg, #102f63 0%, #07162f 52%, #46203f 100%);
+  background: linear-gradient(115deg, var(--color-accent-dark) 0%, #17163f 100%);
   min-height: 234px;
   padding: 64px 134px;
-  display: flex;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
   align-items: center;
   justify-content: space-between;
   gap: 72px;
-  flex-wrap: wrap;
-}
-
-.adtechGradientCta .inlineCtaInner {
-  background: linear-gradient(115deg, var(--color-accent-dark) 0%, #17163f 100%);
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) auto;
-  flex-wrap: nowrap;
+  overflow: hidden;
 }
 
 @media (max-width: 700px) {
-  .inlineCtaInner { padding: 40px 28px; }
-
-  .adtechGradientCta .inlineCtaInner {
+  .inlineCtaInner {
     grid-template-columns: 1fr;
+    padding: 40px 28px;
   }
 }
 
@@ -846,32 +836,11 @@
 
 .inlineCtaBtn {
   font-family: var(--font-inter-tight), sans-serif;
-  font-size: 1rem;
-  font-weight: 600;
-  color: #fff;
-  background: var(--color-accent);
-  border-radius: var(--border-radius);
-  
-  padding: 16px 36px;
-  cursor: pointer;
+  min-height: 2.625rem;
+  padding: 0.4rem 1.5rem;
   text-decoration: none;
   white-space: nowrap;
   flex-shrink: 0;
-  transition: background 0.2s;
-}
-
-.inlineCtaBtn:hover { background: #2aaccc; }
-
-.adtechGradientCta .inlineCtaBtn {
-  border-radius: var(--radius-button);
-  border: 2px solid var(--color-accent);
-  min-height: 2.625rem;
-  padding: 0.4rem 1.5rem;
-}
-
-.adtechGradientCta .inlineCtaBtn:hover {
-  background: transparent;
-  color: var(--color-accent);
 }
 
 /* ── Process steps (dark, connected circles) ───────────────────────────────── */
@@ -3542,5 +3511,1325 @@
   .privacyBlock .ecomServicesGrid {
     grid-template-columns: 1fr;
     gap: 3rem;
+  }
+}
+/* GenAI challenges reference layout */
+.genaiChallengesBlock {
+  background: #f7f9fe;
+  padding: clamp(4.25rem, 6vw, 5.5rem) 0 clamp(5.5rem, 7.5vw, 6.8rem);
+}
+
+.genaiChallengesBlock :global(.container) {
+  max-width: 76rem;
+}
+
+.genaiChallengesBlock .sectionTitle {
+  max-width: 68rem;
+  margin: 0 auto 1.7rem;
+  color: #000;
+  font-size: clamp(2.8rem, 4.4vw, 3.75rem);
+  font-weight: 300;
+  line-height: 1.12;
+  letter-spacing: 0;
+  text-align: center;
+}
+
+.genaiChallengesBlock .sectionDesc {
+  max-width: 70rem;
+  margin: 0 auto;
+  color: var(--color-text);
+  font-size: clamp(1.08rem, 1.45vw, 1.35rem);
+  line-height: 1.58;
+  text-align: center;
+}
+
+.genaiChallengesGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(4rem, 7vw, 6.25rem) clamp(4rem, 8vw, 7rem);
+  margin: clamp(4.6rem, 6.5vw, 5.6rem) auto 0;
+}
+
+.genaiChallengeItem {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  min-width: 0;
+}
+
+.genaiChallengeIcon {
+  width: 3.5rem;
+  height: 3.5rem;
+  margin: 0 0 1.55rem;
+  object-fit: contain;
+  filter: brightness(0) saturate(100%) invert(62%) sepia(74%) saturate(895%) hue-rotate(151deg) brightness(94%) contrast(91%);
+}
+
+.genaiChallengeTitle {
+  margin: 0 0 1.35rem;
+  color: #000;
+  font-family: var(--font-inter-tight), sans-serif;
+  font-size: clamp(1.45rem, 2vw, 1.8rem);
+  font-weight: 500;
+  line-height: 1.25;
+  letter-spacing: 0;
+}
+
+.genaiChallengeText {
+  margin: 0 0 1.25rem;
+  color: var(--color-text);
+  font-family: var(--font-inter-tight), sans-serif;
+  font-size: clamp(1rem, 1.15vw, 1.08rem);
+  line-height: 1.58;
+}
+
+.genaiChallengeText:last-child {
+  margin-bottom: 0;
+}
+
+.genaiChallengeBullets {
+  display: grid;
+  gap: 0.85rem;
+  margin: 0 0 1.45rem;
+  padding: 0;
+  list-style: none;
+}
+
+.genaiChallengeBullets li {
+  position: relative;
+  padding-left: 2rem;
+  color: var(--color-text);
+  font-family: var(--font-inter-tight), sans-serif;
+  font-size: clamp(1rem, 1.15vw, 1.08rem);
+  line-height: 1.35;
+}
+
+.genaiChallengeBullets li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.32em;
+  width: 19px;
+  height: 14px;
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg width='19' height='14' viewBox='0 0 19 14' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M17.25 1.75037L6.75 12.2504L1.5 7.00037' stroke='%233CC4E5' stroke-width='1.5' stroke-linecap='square'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+@media (max-width: 900px) {
+  .genaiChallengesBlock {
+    padding: 4.5rem 0 5rem;
+  }
+
+  .genaiChallengesBlock .sectionTitle,
+  .genaiChallengesBlock .sectionDesc {
+    text-align: left;
+  }
+
+  .genaiChallengesGrid {
+    grid-template-columns: 1fr;
+    gap: 3.5rem;
+    margin-top: 3.75rem;
+  }
+}
+
+/* GenAI ecosystem reference layout */
+.genaiEcosystemBlock {
+  background: #fff;
+  padding: clamp(5.6rem, 8vw, 7.1rem) 0 clamp(5.5rem, 7vw, 6.8rem);
+}
+
+.genaiEcosystemBlock :global(.container) {
+  max-width: 76rem;
+}
+
+.genaiEcosystemBlock .sectionTitle {
+  max-width: 75rem;
+  margin: 0 auto 1.55rem;
+  color: #000;
+  font-size: clamp(3rem, 4.5vw, 4rem);
+  font-weight: 300;
+  line-height: 1.12;
+  letter-spacing: 0;
+  text-align: center;
+}
+
+.genaiEcosystemBlock .sectionTitle .accent {
+  color: var(--color-accent);
+}
+
+.genaiEcosystemBlock .sectionDesc {
+  max-width: 70rem;
+  margin: 0 auto;
+  color: #111;
+  font-size: clamp(1.08rem, 1.45vw, 1.35rem);
+  line-height: 1.58;
+  text-align: left;
+}
+
+.genaiEcosystemLayout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 23.75rem;
+  gap: clamp(4rem, 8vw, 6rem);
+  margin: clamp(4.6rem, 6vw, 5.3rem) auto 0;
+  align-items: start;
+}
+
+.genaiEcosystemBlock .vertTabContent {
+  order: 1;
+  padding: 3rem 0 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1.45rem;
+}
+
+.genaiEcosystemBlock .vertTabTitle {
+  margin: 0 0 0.5rem;
+  color: #000;
+  font-size: clamp(2rem, 2.8vw, 2.5rem);
+  font-weight: 400;
+  line-height: 1.2;
+  letter-spacing: 0;
+}
+
+.genaiEcosystemBlock .vertTabDesc {
+  max-width: 42rem;
+  margin: 0;
+  color: #111;
+  font-size: clamp(1rem, 1.15vw, 1.08rem);
+  line-height: 1.58;
+}
+
+.genaiEcosystemBlock .ecomBullets {
+  display: grid;
+  gap: 0.85rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.genaiEcosystemBlock .ecomBullets li {
+  position: relative;
+  padding-left: 2rem;
+  color: #111;
+  font-size: clamp(1rem, 1.15vw, 1.08rem);
+  line-height: 1.45;
+}
+
+.genaiEcosystemBlock .ecomBullets li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.34em;
+  width: 19px;
+  height: 14px;
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg width='19' height='14' viewBox='0 0 19 14' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M17.25 1.75037L6.75 12.2504L1.5 7.00037' stroke='%233CC4E5' stroke-width='1.5' stroke-linecap='square'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+.genaiEcosystemBlock .ecomBullets strong {
+  color: #111;
+  font-weight: 400;
+}
+
+.genaiEcosystemBlock .vertTabList {
+  order: 2;
+  min-height: 25rem;
+  padding: 1rem 0 0;
+  background: linear-gradient(180deg, #eaf2fd 0%, #dbeafe 100%);
+}
+
+.genaiEcosystemBlock .vertTabBtn {
+  display: grid;
+  grid-template-columns: 2rem minmax(0, 1fr);
+  gap: 1rem;
+  align-items: center;
+  min-height: 5.9rem;
+  width: 100%;
+  padding: 1.35rem 2rem;
+  border: 0;
+  background: transparent;
+  color: #000;
+  font-size: clamp(1rem, 1.15vw, 1.08rem);
+  font-weight: 400;
+  line-height: 1.35;
+  text-align: left;
+}
+
+.genaiEcosystemBlock .vertTabBtn:hover {
+  color: var(--color-accent);
+}
+
+.genaiEcosystemBlock .vertTabBtnActive,
+.genaiEcosystemBlock .vertTabBtnActive:hover {
+  background: var(--color-accent);
+  color: #fff;
+  font-weight: 600;
+}
+
+.vertTabIcon {
+  width: 1.5rem;
+  height: 1.5rem;
+  object-fit: contain;
+  filter: brightness(0) saturate(100%) invert(62%) sepia(74%) saturate(895%) hue-rotate(151deg) brightness(94%) contrast(91%);
+}
+
+.genaiEcosystemBlock .vertTabBtnActive .vertTabIcon {
+  filter: brightness(0) invert(1);
+}
+
+@media (max-width: 900px) {
+  .genaiEcosystemBlock {
+    padding: 4.5rem 0 5rem;
+  }
+
+  .genaiEcosystemBlock .sectionTitle,
+  .genaiEcosystemBlock .sectionDesc {
+    text-align: left;
+  }
+
+  .genaiEcosystemLayout {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+    margin-top: 3.5rem;
+  }
+
+  .genaiEcosystemBlock .vertTabList {
+    order: 1;
+    min-height: 0;
+  }
+
+  .genaiEcosystemBlock .vertTabContent {
+    order: 2;
+    padding-top: 0;
+  }
+}
+
+/* GenAI ROI/TCO reference layout */
+.genaiRoiBlock {
+  background: #fff;
+  padding: clamp(5.2rem, 7.5vw, 6.8rem) 0 clamp(4.4rem, 6vw, 5.6rem);
+}
+
+.genaiRoiBlock :global(.container) {
+  max-width: 72rem;
+}
+
+.genaiRoiBlock .svcTitle {
+  max-width: 72rem;
+  margin: 0 auto 1.7rem;
+  color: #000;
+  font-size: clamp(3rem, 4.4vw, 4rem);
+  font-weight: 300;
+  line-height: 1.12;
+  letter-spacing: 0;
+  text-align: center;
+}
+
+.genaiRoiBlock .svcTitle .accent {
+  color: #000;
+}
+
+.genaiRoiBlock .svcDesc {
+  max-width: 70rem;
+  margin: 0 auto;
+  color: var(--color-text);
+  font-size: clamp(1.08rem, 1.45vw, 1.35rem);
+  line-height: 1.6;
+  text-align: center;
+}
+
+.genaiRoiBlock .tabsWrap {
+  margin-top: clamp(4.6rem, 6.2vw, 5.4rem);
+}
+
+.genaiRoiBlock .tabsNav {
+  display: flex;
+  justify-content: space-between;
+  gap: 0;
+  border-bottom: 1px solid #dce8f4;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.genaiRoiBlock .tabBtn {
+  flex: 1 0 0;
+  min-width: 13rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.35rem;
+  padding: 0 1.5rem 1.35rem;
+  color: #8da0b6;
+  background: transparent;
+  border: 0;
+  border-bottom: 2px solid transparent;
+  margin: 0 0 -1px;
+  font-size: clamp(1rem, 1.45vw, 1.28rem);
+  font-weight: 500;
+  line-height: 1.35;
+  white-space: normal;
+}
+
+.genaiRoiBlock .tabBtn:hover {
+  color: #000;
+}
+
+.genaiRoiBlock .tabBtnActive,
+.genaiRoiBlock .tabBtnActive:hover {
+  color: var(--color-accent);
+  border-bottom-color: var(--color-accent);
+}
+
+.genaiRoiBlock .tabIcon {
+  width: 3.5rem;
+  height: 3.5rem;
+  object-fit: contain;
+  filter: grayscale(1) opacity(0.78);
+}
+
+.genaiRoiBlock .tabBtnActive .tabIcon {
+  filter: brightness(0) saturate(100%) invert(62%) sepia(74%) saturate(895%) hue-rotate(151deg) brightness(94%) contrast(91%);
+}
+
+.genaiRoiBlock .tabPanelActive {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(20rem, 26.8rem);
+  gap: clamp(3.5rem, 7vw, 5.3rem);
+  align-items: start;
+  padding-top: clamp(4rem, 5.8vw, 4.8rem);
+}
+
+.genaiRoiBlock .tabPanelContent {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  padding-top: 0.2rem;
+}
+
+.genaiRoiBlock .tabPanelTitle {
+  margin: 0 0 1.65rem;
+  color: #000;
+  font-size: clamp(2rem, 2.85vw, 2.55rem);
+  font-weight: 400;
+  line-height: 1.18;
+  letter-spacing: 0;
+}
+
+.genaiRoiBlock .tabPanelDesc {
+  max-width: 42rem;
+  margin: 0 0 1.35rem;
+  color: var(--color-text);
+  font-size: clamp(1rem, 1.15vw, 1.08rem);
+  line-height: 1.58;
+}
+
+.genaiRoiBlock .tabPanelDesc:last-child {
+  margin-top: 2.1rem;
+  margin-bottom: 0;
+}
+
+.genaiRoiBlock .tabBullets {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.85rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.genaiRoiBlock .tabBullets li {
+  position: relative;
+  padding-left: 2rem;
+  color: var(--color-text);
+  font-size: clamp(1rem, 1.15vw, 1.08rem);
+  line-height: 1.45;
+}
+
+.genaiRoiBlock .tabBullets li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.34em;
+  width: 19px;
+  height: 14px;
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg width='19' height='14' viewBox='0 0 19 14' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M17.25 1.75037L6.75 12.2504L1.5 7.00037' stroke='%233CC4E5' stroke-width='1.5' stroke-linecap='square'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+.genaiRoiBlock .tabPanelImg {
+  width: 100%;
+  height: 20rem;
+  max-height: none;
+  border-radius: 0;
+  object-fit: cover;
+}
+
+@media (max-width: 900px) {
+  .genaiRoiBlock {
+    padding: 4.5rem 0 5rem;
+  }
+
+  .genaiRoiBlock .svcTitle,
+  .genaiRoiBlock .svcDesc {
+    text-align: left;
+  }
+
+  .genaiRoiBlock .tabsNav {
+    justify-content: flex-start;
+  }
+
+  .genaiRoiBlock .tabBtn {
+    flex: 0 0 auto;
+    min-width: 12rem;
+    padding-inline: 1rem;
+  }
+
+  .genaiRoiBlock .tabPanelActive {
+    grid-template-columns: 1fr;
+    gap: 2.75rem;
+    padding-top: 3rem;
+  }
+
+  .genaiRoiBlock .tabPanelImg {
+    display: block;
+    height: auto;
+  }
+}
+
+/* GenAI pilot/prove reference timeline */
+.genaiPilotBlock {
+  margin: 0;
+  padding: clamp(5.2rem, 7.5vw, 6.8rem) 0 clamp(5.7rem, 8vw, 7rem);
+  background: #fff;
+  overflow: visible;
+}
+
+.genaiPilotBlock :global(.container) {
+  max-width: 76rem;
+}
+
+.genaiPilotBlock .sectionTitleWhite {
+  max-width: 72rem;
+  margin: 0 auto 1.7rem;
+  color: #000;
+  font-size: clamp(3rem, 4.45vw, 4rem);
+  font-weight: 300;
+  line-height: 1.12;
+  letter-spacing: 0;
+  text-align: center;
+}
+
+.genaiPilotBlock .sectionTitleWhite .accent {
+  color: var(--color-accent);
+}
+
+.genaiPilotBlock .sectionDescWhite {
+  max-width: 70rem;
+  margin: 0 auto clamp(4.8rem, 6.5vw, 5.5rem);
+  color: var(--color-text);
+  font-size: clamp(1.08rem, 1.45vw, 1.35rem);
+  line-height: 1.62;
+  text-align: center;
+}
+
+.genaiPilotBlock .processGrid {
+  display: flex;
+  flex-direction: column;
+  max-width: 53rem;
+  margin: 0 auto;
+}
+
+.genaiPilotBlock .processStep {
+  display: flex;
+  align-items: flex-start;
+  position: relative;
+}
+
+.genaiPilotBlock .processStep:not(:first-child) {
+  margin-top: 4.2rem;
+}
+
+.genaiPilotBlock .processStep:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  left: 50px;
+  top: 104px;
+  width: 1px;
+  height: calc(100% + 4.2rem - 104px);
+  background: #edf3fb;
+}
+
+.genaiPilotBlock .processNum {
+  width: 100px;
+  height: 100px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  background: #f7f9fe;
+  box-shadow: 0 0 0 4px #fff, 0 0 0 6px #e6eff7;
+  color: var(--color-accent);
+  font-family: var(--font-inter-tight), sans-serif;
+  font-size: 1.55rem;
+  font-weight: 400;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  z-index: 1;
+}
+
+.genaiPilotBlock .processStepBody {
+  margin-left: 2.2rem;
+  padding-top: 0.15rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+}
+
+.genaiPilotBlock .processStepTitle {
+  margin: 0 0 0.15rem;
+  color: #000;
+  font-size: clamp(1.55rem, 2.15vw, 1.85rem);
+  font-weight: 500;
+  line-height: 1.25;
+  letter-spacing: 0;
+}
+
+.genaiPilotBlock .processStepText {
+  max-width: 47rem;
+  margin: 0;
+  color: var(--color-text);
+  font-size: clamp(1rem, 1.15vw, 1.08rem);
+  line-height: 1.58;
+}
+
+.genaiPilotBlock .processStepBullets {
+  display: grid;
+  gap: 0.82rem;
+  margin: 0.1rem 0 0.35rem;
+  padding: 0;
+  list-style: none;
+}
+
+.genaiPilotBlock .processStepBullets li {
+  position: relative;
+  padding-left: 2rem;
+  color: var(--color-text);
+  font-size: clamp(1rem, 1.15vw, 1.08rem);
+  line-height: 1.45;
+}
+
+.genaiPilotBlock .processStepBullets li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.34em;
+  width: 19px;
+  height: 14px;
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg width='19' height='14' viewBox='0 0 19 14' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M17.25 1.75037L6.75 12.2504L1.5 7.00037' stroke='%233CC4E5' stroke-width='1.5' stroke-linecap='square'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+@media (max-width: 768px) {
+  .genaiPilotBlock {
+    padding: 4.5rem 0 5rem;
+  }
+
+  .genaiPilotBlock .sectionTitleWhite,
+  .genaiPilotBlock .sectionDescWhite {
+    text-align: left;
+  }
+
+  .genaiPilotBlock .sectionDescWhite {
+    margin-bottom: 3.5rem;
+  }
+
+  .genaiPilotBlock .processGrid {
+    max-width: none;
+  }
+
+  .genaiPilotBlock .processStep:not(:first-child) {
+    margin-top: 2.9rem;
+  }
+
+  .genaiPilotBlock .processStep:not(:last-child)::after {
+    left: 27px;
+    top: 62px;
+    height: calc(100% + 2.9rem - 62px);
+  }
+
+  .genaiPilotBlock .processNum {
+    width: 56px;
+    height: 56px;
+    font-size: 1rem;
+    box-shadow: 0 0 0 4px #fff, 0 0 0 6px #e6eff7;
+  }
+
+  .genaiPilotBlock .processStepBody {
+    margin-left: 1.5rem;
+    gap: 0.9rem;
+  }
+}
+
+/* GenAI data leakage reference layout */
+.genaiLeakageBlock {
+  background: #fff;
+  padding: clamp(5.1rem, 7vw, 6.6rem) 0 clamp(5.5rem, 7.5vw, 6.8rem);
+}
+
+.genaiLeakageBlock :global(.container) {
+  max-width: 76rem;
+}
+
+.genaiLeakageBlock .sectionTitle {
+  max-width: 72rem;
+  margin: 0 auto 1.65rem;
+  color: #000;
+  font-size: clamp(3rem, 4.45vw, 4rem);
+  font-weight: 300;
+  line-height: 1.12;
+  letter-spacing: 0;
+  text-align: center;
+}
+
+.genaiLeakageBlock .sectionTitle .accent {
+  color: var(--color-accent);
+}
+
+.genaiLeakageBlock .sectionDesc {
+  max-width: 70rem;
+  margin: 0 auto;
+  color: var(--color-text);
+  font-size: clamp(1.08rem, 1.45vw, 1.35rem);
+  line-height: 1.58;
+  text-align: center;
+}
+
+.genaiLeakageGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(4rem, 7vw, 6.25rem) clamp(4rem, 8vw, 7rem);
+  margin: clamp(4.6rem, 6.5vw, 5.6rem) auto 0;
+}
+
+.genaiLeakageItem {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  min-width: 0;
+}
+
+.genaiLeakageIcon {
+  width: 3.5rem;
+  height: 3.5rem;
+  margin: 0 0 1.55rem;
+  object-fit: contain;
+  filter: brightness(0) saturate(100%) invert(62%) sepia(74%) saturate(895%) hue-rotate(151deg) brightness(94%) contrast(91%);
+}
+
+.genaiLeakageTitle {
+  margin: 0 0 1.35rem;
+  color: #000;
+  font-family: var(--font-inter-tight), sans-serif;
+  font-size: clamp(1.45rem, 2vw, 1.8rem);
+  font-weight: 500;
+  line-height: 1.25;
+  letter-spacing: 0;
+}
+
+.genaiLeakageText {
+  margin: 0 0 1.25rem;
+  color: var(--color-text);
+  font-family: var(--font-inter-tight), sans-serif;
+  font-size: clamp(1rem, 1.15vw, 1.08rem);
+  line-height: 1.58;
+}
+
+.genaiLeakageText:last-child {
+  margin-bottom: 0;
+}
+
+.genaiLeakageBullets {
+  display: grid;
+  gap: 0.85rem;
+  margin: 0 0 1.45rem;
+  padding: 0;
+  list-style: none;
+}
+
+.genaiLeakageBullets li {
+  position: relative;
+  padding-left: 2rem;
+  color: var(--color-text);
+  font-family: var(--font-inter-tight), sans-serif;
+  font-size: clamp(1rem, 1.15vw, 1.08rem);
+  line-height: 1.35;
+}
+
+.genaiLeakageBullets li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.32em;
+  width: 19px;
+  height: 14px;
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg width='19' height='14' viewBox='0 0 19 14' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M17.25 1.75037L6.75 12.2504L1.5 7.00037' stroke='%233CC4E5' stroke-width='1.5' stroke-linecap='square'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+@media (max-width: 900px) {
+  .genaiLeakageBlock {
+    padding: 4.5rem 0 5rem;
+  }
+
+  .genaiLeakageBlock .sectionTitle,
+  .genaiLeakageBlock .sectionDesc {
+    text-align: left;
+  }
+
+  .genaiLeakageGrid {
+    grid-template-columns: 1fr;
+    gap: 3.5rem;
+    margin-top: 3.75rem;
+  }
+}
+
+/* GenAI industries reference layout */
+.genaiIndustriesBlock {
+  background: #fff;
+  padding: clamp(5.6rem, 8vw, 7.1rem) 0 clamp(5.5rem, 7vw, 6.8rem);
+}
+
+.genaiIndustriesBlock :global(.container) {
+  max-width: 76rem;
+}
+
+.genaiIndustriesBlock .sectionTitle {
+  max-width: 72rem;
+  margin: 0 auto 1.6rem;
+  color: #000;
+  font-size: clamp(3rem, 4.5vw, 4rem);
+  font-weight: 300;
+  line-height: 1.12;
+  letter-spacing: 0;
+  text-align: center;
+}
+
+.genaiIndustriesBlock .sectionTitle .accent {
+  color: var(--color-accent);
+}
+
+.genaiIndustriesBlock .sectionDesc {
+  max-width: 70rem;
+  margin: 0 auto;
+  color: #111;
+  font-size: clamp(1.08rem, 1.45vw, 1.35rem);
+  line-height: 1.6;
+  text-align: left;
+}
+
+.genaiIndustriesLayout {
+  display: grid;
+  grid-template-columns: 23.75rem minmax(0, 1fr);
+  gap: clamp(4rem, 7vw, 5.75rem);
+  margin: clamp(4.5rem, 6vw, 5.2rem) auto 0;
+  align-items: start;
+}
+
+.genaiIndustriesBlock .vertTabList {
+  min-height: 34.8rem;
+  padding: 1rem 0 0;
+  background: linear-gradient(180deg, #eaf2fd 0%, #dbeafe 100%);
+}
+
+.genaiIndustriesBlock .vertTabBtn {
+  display: grid;
+  grid-template-columns: 3.5rem minmax(0, 1fr);
+  gap: 1.25rem;
+  align-items: center;
+  min-height: 6.55rem;
+  width: 100%;
+  padding: 1.35rem 2rem;
+  border: 0;
+  background: transparent;
+  color: #000;
+  font-size: clamp(1rem, 1.15vw, 1.08rem);
+  font-weight: 400;
+  line-height: 1.35;
+  text-align: left;
+}
+
+.genaiIndustriesBlock .vertTabBtn:hover {
+  color: var(--color-accent);
+}
+
+.genaiIndustriesBlock .vertTabBtnActive,
+.genaiIndustriesBlock .vertTabBtnActive:hover {
+  background: var(--color-accent);
+  color: #fff;
+  font-weight: 600;
+}
+
+.genaiIndustriesBlock .vertTabIcon {
+  width: 3.5rem;
+  height: 3.5rem;
+  object-fit: contain;
+  filter: brightness(0) saturate(100%) invert(62%) sepia(74%) saturate(895%) hue-rotate(151deg) brightness(94%) contrast(91%);
+}
+
+.genaiIndustriesBlock .vertTabBtnActive .vertTabIcon {
+  filter: brightness(0) invert(1);
+}
+
+.genaiIndustriesBlock .vertTabContent {
+  padding: 3rem 0 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1.65rem;
+}
+
+.genaiIndustriesBlock .vertTabTitle {
+  margin: 0;
+  color: #000;
+  font-size: clamp(2rem, 2.8vw, 2.5rem);
+  font-weight: 400;
+  line-height: 1.2;
+  letter-spacing: 0;
+}
+
+.genaiIndustriesBlock .vertTabDesc {
+  max-width: 45rem;
+  margin: 0;
+  color: #111;
+  font-size: clamp(1rem, 1.15vw, 1.08rem);
+  line-height: 1.58;
+}
+
+.genaiIndustryLists {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(12rem, 0.78fr);
+  gap: clamp(2.5rem, 5vw, 4.5rem);
+  margin-top: 0.35rem;
+}
+
+.genaiIndustriesBlock .ecomBullets {
+  display: grid;
+  gap: 0.9rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.genaiIndustriesBlock .ecomBullets li {
+  position: relative;
+  padding-left: 2rem;
+  color: #111;
+  font-size: clamp(1rem, 1.15vw, 1.08rem);
+  line-height: 1.45;
+}
+
+.genaiIndustriesBlock .ecomBullets li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.34em;
+  width: 19px;
+  height: 14px;
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg width='19' height='14' viewBox='0 0 19 14' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M17.25 1.75037L6.75 12.2504L1.5 7.00037' stroke='%233CC4E5' stroke-width='1.5' stroke-linecap='square'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+.genaiIndustriesBlock .ecomBullets strong {
+  color: #111;
+  font-weight: 400;
+}
+
+@media (max-width: 900px) {
+  .genaiIndustriesBlock {
+    padding: 4.5rem 0 5rem;
+  }
+
+  .genaiIndustriesBlock .sectionTitle,
+  .genaiIndustriesBlock .sectionDesc {
+    text-align: left;
+  }
+
+  .genaiIndustriesLayout {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+    margin-top: 3.5rem;
+  }
+
+  .genaiIndustriesBlock .vertTabList {
+    min-height: 0;
+  }
+
+  .genaiIndustriesBlock .vertTabContent {
+    padding-top: 0;
+  }
+
+  .genaiIndustryLists {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+}
+
+/* GenAI ADLC reference timeline */
+.genaiAdlcBlock {
+  margin: 0;
+  padding: clamp(5.2rem, 7.5vw, 6.8rem) 0 clamp(5.8rem, 8vw, 7.2rem);
+  background: #fff;
+  overflow: visible;
+}
+
+.genaiAdlcBlock :global(.container) {
+  max-width: 76rem;
+}
+
+.genaiAdlcBlock .sectionTitleWhite {
+  max-width: 72rem;
+  margin: 0 auto 1.7rem;
+  color: #000;
+  font-size: clamp(3rem, 4.45vw, 4rem);
+  font-weight: 300;
+  line-height: 1.12;
+  letter-spacing: 0;
+  text-align: center;
+}
+
+.genaiAdlcBlock .sectionTitleWhite .accent {
+  color: var(--color-accent);
+}
+
+.genaiAdlcBlock .sectionDescWhite {
+  max-width: 70rem;
+  margin: 0 auto clamp(4.8rem, 6.5vw, 5.5rem);
+  color: var(--color-text);
+  font-size: clamp(1.08rem, 1.45vw, 1.35rem);
+  line-height: 1.62;
+  text-align: center;
+}
+
+.genaiAdlcBlock .processGrid {
+  display: flex;
+  flex-direction: column;
+  max-width: 54rem;
+  margin: 0 auto;
+}
+
+.genaiAdlcBlock .processStep {
+  display: flex;
+  align-items: flex-start;
+  position: relative;
+}
+
+.genaiAdlcBlock .processStep:not(:first-child) {
+  margin-top: 4.25rem;
+}
+
+.genaiAdlcBlock .processStep:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  left: 50px;
+  top: 104px;
+  width: 1px;
+  height: calc(100% + 4.25rem - 104px);
+  background: #edf3fb;
+}
+
+.genaiAdlcBlock .processNum {
+  width: 100px;
+  height: 100px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  background: #f7f9fe;
+  box-shadow: 0 0 0 4px #fff, 0 0 0 6px #e6eff7;
+  color: var(--color-accent);
+  font-family: var(--font-inter-tight), sans-serif;
+  font-size: 1.55rem;
+  font-weight: 400;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  z-index: 1;
+}
+
+.genaiAdlcBlock .processStepBody {
+  margin-left: 2.2rem;
+  padding-top: 0.15rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.genaiAdlcBlock .processStepTitle {
+  margin: 0 0 0.2rem;
+  color: #000;
+  font-size: clamp(1.55rem, 2.15vw, 1.85rem);
+  font-weight: 500;
+  line-height: 1.25;
+  letter-spacing: 0;
+}
+
+.genaiAdlcBlock .processStepText {
+  max-width: 47rem;
+  margin: 0;
+  color: var(--color-text);
+  font-size: clamp(1rem, 1.15vw, 1.08rem);
+  line-height: 1.72;
+}
+
+@media (max-width: 768px) {
+  .genaiAdlcBlock {
+    padding: 4.5rem 0 5rem;
+  }
+
+  .genaiAdlcBlock .sectionTitleWhite,
+  .genaiAdlcBlock .sectionDescWhite {
+    text-align: left;
+  }
+
+  .genaiAdlcBlock .sectionDescWhite {
+    margin-bottom: 3.5rem;
+  }
+
+  .genaiAdlcBlock .processGrid {
+    max-width: none;
+  }
+
+  .genaiAdlcBlock .processStep:not(:first-child) {
+    margin-top: 2.9rem;
+  }
+
+  .genaiAdlcBlock .processStep:not(:last-child)::after {
+    left: 27px;
+    top: 62px;
+    height: calc(100% + 2.9rem - 62px);
+  }
+
+  .genaiAdlcBlock .processNum {
+    width: 56px;
+    height: 56px;
+    font-size: 1rem;
+    box-shadow: 0 0 0 4px #fff, 0 0 0 6px #e6eff7;
+  }
+
+  .genaiAdlcBlock .processStepBody {
+    margin-left: 1.5rem;
+    gap: 0.85rem;
+  }
+}
+
+/* GenAI hallucination reference layout */
+.genaiHallucinationBlock {
+  background: #f5f8fc;
+  padding: 4.5rem 0 1.25rem;
+}
+
+.genaiHallucinationBlock :global(.container) {
+  max-width: 88.75rem;
+}
+
+.genaiHallucinationBlock .sectionTitle {
+  max-width: 54rem;
+  margin: 0 auto;
+  color: #000;
+  font-size: clamp(2.75rem, 4.4vw, 3.75rem);
+  line-height: 1.05;
+  font-weight: 400;
+  letter-spacing: 0;
+  text-align: center;
+}
+
+.genaiHallucinationBlock .sectionDesc {
+  max-width: 70rem;
+  margin: 2.15rem auto 0;
+  color: #172b4d;
+  font-size: 1.45rem;
+  line-height: 1.55;
+  font-weight: 400;
+  text-align: center;
+}
+
+.genaiHallucinationGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  column-gap: clamp(4rem, 8vw, 8.25rem);
+  row-gap: 4.25rem;
+  max-width: 72rem;
+  margin: 4.25rem auto 0;
+}
+
+.genaiHallucinationItem {
+  min-width: 0;
+  background: transparent;
+  border: 0;
+  padding: 0;
+}
+
+.genaiHallucinationIcon {
+  display: block;
+  width: 3.5rem;
+  height: 3.5rem;
+  margin: 0 0 1.75rem;
+  object-fit: contain;
+  filter: none;
+}
+
+.genaiHallucinationTitle {
+  margin: 0 0 1.35rem;
+  color: #000;
+  font-size: 1.8rem;
+  line-height: 1.2;
+  font-weight: 400;
+  letter-spacing: 0;
+}
+
+.genaiHallucinationText {
+  margin: 0 0 1.15rem;
+  color: #172b4d;
+  font-size: 1.12rem;
+  line-height: 1.55;
+  font-weight: 400;
+}
+
+.genaiHallucinationText:last-child {
+  margin-bottom: 0;
+}
+
+.genaiHallucinationBullets {
+  display: grid;
+  gap: 0.85rem;
+  margin: 1.3rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.genaiHallucinationBullets li {
+  position: relative;
+  padding-left: 2rem;
+  color: #172b4d;
+  font-size: 1.12rem;
+  line-height: 1.4;
+  font-weight: 400;
+}
+
+.genaiHallucinationBullets li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.35em;
+  width: 19px;
+  height: 14px;
+  background: url("data:image/svg+xml;charset=utf8,%3Csvg width='19' height='14' viewBox='0 0 19 14' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M17.25 1.75037L6.75 12.2504L1.5 7.00037' stroke='%233CC4E5' stroke-width='1.5' stroke-linecap='square'/%3E%3C/svg%3E") center / contain no-repeat;
+}
+
+@media (max-width: 900px) {
+  .genaiHallucinationBlock {
+    padding: 3.5rem 0 1rem;
+  }
+
+  .genaiHallucinationBlock .sectionTitle,
+  .genaiHallucinationBlock .sectionDesc {
+    text-align: left;
+  }
+
+  .genaiHallucinationBlock .sectionDesc {
+    font-size: 1.1rem;
+    margin-top: 1.5rem;
+  }
+
+  .genaiHallucinationGrid {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+    margin-top: 3rem;
+  }
+}
+
+/* GenAI requested interaction and SDLC circle overrides */
+.genaiEcosystemBlock .vertTabIcon,
+.genaiIndustriesBlock .vertTabIcon {
+  filter: brightness(0);
+  transition: filter 0.2s ease;
+}
+
+.genaiEcosystemBlock .vertTabBtn:hover .vertTabIcon,
+.genaiIndustriesBlock .vertTabBtn:hover .vertTabIcon {
+  filter: brightness(0) saturate(100%) invert(69%) sepia(61%) saturate(643%) hue-rotate(148deg) brightness(91%) contrast(91%);
+}
+
+.genaiEcosystemBlock .vertTabBtnActive .vertTabIcon,
+.genaiEcosystemBlock .vertTabBtnActive:hover .vertTabIcon,
+.genaiIndustriesBlock .vertTabBtnActive .vertTabIcon,
+.genaiIndustriesBlock .vertTabBtnActive:hover .vertTabIcon {
+  filter: brightness(0) invert(1);
+}
+
+.genaiRoiBlock .tabBtn:hover {
+  color: var(--color-accent);
+}
+
+.genaiRoiBlock .tabIcon {
+  transition: filter 0.2s ease;
+}
+
+.genaiRoiBlock .tabBtn:hover .tabIcon,
+.genaiRoiBlock .tabBtnActive .tabIcon {
+  filter: brightness(0) saturate(100%) invert(69%) sepia(61%) saturate(643%) hue-rotate(148deg) brightness(91%) contrast(91%);
+}
+
+.genaiPilotBlock .processStep:not(:last-child)::after,
+.genaiAdlcBlock .processStep:not(:last-child)::after {
+  left: 60px;
+  top: 120px;
+  width: 2px;
+  background: #e3ecf5;
+}
+
+.genaiPilotBlock .processStep:not(:last-child)::after {
+  height: calc(100% + 4.2rem - 120px);
+}
+
+.genaiAdlcBlock .processStep:not(:last-child)::after {
+  height: calc(100% + 4.25rem - 120px);
+}
+
+.genaiPilotBlock .processNum,
+.genaiAdlcBlock .processNum {
+  width: 104px;
+  height: 104px;
+  margin: 8px;
+  border: 2px solid #e3ecf5;
+  background: #f4f7fd;
+  box-shadow: 0 0 0 6px #fff, 0 0 0 8px #e3ecf5;
+  color: var(--color-accent);
+  font-size: 1.75rem;
+  font-weight: 500;
+}
+
+@media (max-width: 768px) {
+  .genaiPilotBlock .processStep:not(:last-child)::after,
+  .genaiAdlcBlock .processStep:not(:last-child)::after {
+    left: 29px;
+    top: 53px;
+    height: calc(100% + 2.9rem - 53px);
+  }
+
+  .genaiPilotBlock .processNum,
+  .genaiAdlcBlock .processNum {
+    width: 48px;
+    height: 48px;
+    margin: 5px;
+    border: 2px solid #e3ecf5;
+    box-shadow: 0 0 0 3px #fff, 0 0 0 5px #e3ecf5;
+    font-size: 1rem;
   }
 }

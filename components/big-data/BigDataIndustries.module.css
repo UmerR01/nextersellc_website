@@ -1,0 +1,206 @@
+.section {
+  padding: 4.85rem 0 5.8rem;
+  background: #fff;
+}
+
+.container {
+  max-width: 72rem;
+  margin: 0 auto;
+  padding-inline: 1.5rem;
+}
+
+.title {
+  max-width: 66rem;
+  margin: 0 auto 1.75rem;
+  color: #000;
+  font-family: var(--font-inter-tight), sans-serif;
+  font-size: clamp(3rem, 4.45vw, 3.65rem);
+  font-weight: 400;
+  line-height: 1.12;
+  letter-spacing: 0;
+  text-align: center;
+}
+
+.accent {
+  color: var(--color-accent);
+}
+
+.desc {
+  max-width: 69rem;
+  margin: 0 auto;
+  color: #172b4d;
+  font-family: var(--font-inter-tight), sans-serif;
+  font-size: clamp(1.15rem, 1.55vw, 1.45rem);
+  font-weight: 400;
+  line-height: 1.52;
+  text-align: center;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.25rem;
+  margin: 4.6rem auto 0;
+}
+
+.card {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 9.1rem;
+  grid-template-rows: auto auto 1fr auto;
+  min-height: 31.25rem;
+  overflow: hidden;
+  background: #f5f8fc;
+}
+
+.icon {
+  grid-column: 2;
+  grid-row: 1 / -1;
+  width: 100%;
+  height: 100%;
+  min-height: 31.25rem;
+  object-fit: cover;
+  margin: 0;
+}
+
+.cardTitle {
+  grid-column: 1;
+  margin: 0;
+  padding: 2.35rem 2.45rem 0;
+  color: #000;
+  font-family: var(--font-inter-tight), sans-serif;
+  font-size: clamp(1.55rem, 2vw, 1.9rem);
+  font-weight: 400;
+  line-height: 1.22;
+  letter-spacing: 0;
+}
+
+.cardDesc {
+  grid-column: 1;
+  margin: 0;
+  padding: 1.35rem 2.45rem 1.3rem;
+  color: #172b4d;
+  font-family: var(--font-inter-tight), sans-serif;
+  font-size: clamp(1rem, 1.2vw, 1.17rem);
+  font-weight: 400;
+  line-height: 1.48;
+}
+
+.cardLink {
+  grid-column: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-self: start;
+  margin: auto 2.45rem 2.1rem;
+  color: var(--color-accent);
+  font-family: var(--font-inter-tight), sans-serif;
+  font-size: 1.06rem;
+  font-weight: 400;
+  line-height: 1.35;
+  text-decoration: none;
+}
+
+.cardLink:hover {
+  text-decoration: underline;
+  text-decoration-thickness: 0.5px;
+  text-underline-offset: 4px;
+}
+
+.linkArrow {
+  display: inline-block;
+  width: 17px;
+  padding-left: 6px;
+  padding-right: 17px;
+  position: relative;
+}
+
+.linkArrow::before,
+.linkArrow::after {
+  content: "";
+  display: block;
+  width: 6px;
+  height: 9px;
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg width='6' height='10' viewBox='0 0 6 10' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M7.94319e-08 8.59L3.59 5L-3.53625e-07 1.41L1 0.5L5.5 5L1 9.5L7.94319e-08 8.59Z' fill='%233CC4E5'/%3E%3C/svg%3E");
+  background-position: 50%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  transition: 0.1s;
+}
+
+.linkArrow::after {
+  opacity: 0;
+}
+
+.cardLink:hover .linkArrow::before {
+  animation: bounceBefore 1s linear infinite;
+  right: 6px;
+}
+
+.cardLink:hover .linkArrow::after {
+  animation: bounceAfter 1s linear infinite;
+  right: 6px;
+}
+
+@keyframes bounceBefore {
+  0% { opacity: 1; transform: translateX(0) translateY(-50%); }
+  49% { opacity: 0; transform: translateX(7px) translateY(-50%); }
+  52% { opacity: 0; transform: translateX(-7px) translateY(-50%); }
+  100% { opacity: 1; transform: translateX(0) translateY(-50%); }
+}
+
+@keyframes bounceAfter {
+  0% { opacity: 0; transform: translateX(-7px) translateY(-50%); }
+  49% { opacity: 1; transform: translateX(0) translateY(-50%); }
+  99% { opacity: 0; transform: translateX(7px) translateY(-50%); }
+  100% { opacity: 0; transform: translateX(-7px) translateY(-50%); }
+}
+
+@media (max-width: 980px) {
+  .grid {
+    grid-template-columns: 1fr;
+    max-width: 36rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .section {
+    padding: 4rem 0 4.5rem;
+  }
+
+  .title,
+  .desc {
+    text-align: left;
+  }
+
+  .grid {
+    margin-top: 3rem;
+  }
+
+  .card {
+    grid-template-columns: 1fr;
+    min-height: 0;
+  }
+
+  .icon {
+    grid-column: 1;
+    grid-row: 1;
+    height: 14rem;
+    min-height: 0;
+  }
+
+  .cardTitle,
+  .cardDesc {
+    grid-column: 1;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+
+  .cardLink {
+    grid-column: 1;
+    margin-left: 1.5rem;
+    margin-right: 1.5rem;
+  }
+}

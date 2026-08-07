@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Header from "@/components/Header";
 import ESDHero from "@/components/esd/ESDHero";
-import ESDLogos from "@/components/esd/ESDLogos";
+import AipocLogos from "@/components/aipoc/AipocLogos";
 import ESDServicesBlock from "@/components/esd/ESDServicesBlock";
 import ESDDataReadiness from "@/components/esd/ESDDataReadiness";
 import ESDArchitectureImage from "@/components/esd/ESDArchitectureImage";
@@ -38,7 +38,7 @@ export default function EnterpriseSDPage() {
       <main>
         <ESDHero />
         <ESDArticleLayout>
-          <ESDLogos />
+          <AipocLogos />
           <ESDServicesBlock />
           <ESDDataReadiness />
           <ESDArchitectureImage />

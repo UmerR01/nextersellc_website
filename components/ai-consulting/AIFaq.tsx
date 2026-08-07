@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 import { useState } from "react";
 import styles from "./AIFaq.module.css";
 
@@ -9,8 +9,8 @@ const FAQS = [
       <p>
         Absolutely not. Nexterse LLC is a &ldquo;Dual-Engine&rdquo; engineering firm, meaning our
         consulting is 100% objective. If our audit reveals that your business bottleneck is better
-        solved with traditional, deterministic software — like a standard ERP upgrade or data
-        modernization — we will tell you. We don&rsquo;t force AI where a conventional SDLC is the
+        solved with traditional, deterministic software â€” like a standard ERP upgrade or data
+        modernization â€” we will tell you. We don&rsquo;t force AI where a conventional SDLC is the
         safer, more cost-effective choice.
       </p>
     ),
@@ -37,8 +37,8 @@ const FAQS = [
     q: "Is your AI consulting an open-ended, hourly engagement?",
     a: (
       <p>
-        No. We know executives need financial predictability. Our core consulting services — like
-        the AI Viability Audit or the ROI Discovery Sprint — are time-boxed (typically 2 to 4
+        No. We know executives need financial predictability. Our core consulting services â€” like
+        the AI Viability Audit or the ROI Discovery Sprint â€” are time-boxed (typically 2 to 4
         weeks) and fixed-price. You will know exactly what the engagement costs and exactly what
         deliverables you will receive on day one.
       </p>
@@ -50,7 +50,7 @@ const FAQS = [
     a: (
       <p>
         You won&rsquo;t just receive a theoretical slide deck. We deliver an actionable Executive
-        AI Blueprint — a prioritized list of AI use cases ranked by fastest ROI, a detailed cloud
+        AI Blueprint â€” a prioritized list of AI use cases ranked by fastest ROI, a detailed cloud
         architecture and security schematic, a cost-per-token cloud hosting projection, and a
         fixed-price proposal to build a 4-week Proof of Concept using our Agentic Development
         Lifecycle (ADLC).
@@ -144,7 +144,7 @@ export default function AIFaq() {
               className={styles.loadMoreBtn}
               onClick={() => setShowAll(true)}
             >
-              Load more ›
+              Load more<span className={styles.loadMoreArrow} aria-hidden="true" />
             </button>
           </div>
         )}
@@ -152,3 +152,5 @@ export default function AIFaq() {
     </section>
   );
 }
+
+

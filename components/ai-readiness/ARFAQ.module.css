@@ -1,4 +1,4 @@
-﻿.section {
+.section {
   background: var(--color-bg);
   padding: 96px 0;
   position: relative;
@@ -13,7 +13,7 @@
   margin-bottom: 4rem;
 }
 
-/* â”€â”€ Card list â”€â”€ */
+/* ── Card list ── */
 .cards {
   display: flex;
   flex-direction: column;
@@ -32,7 +32,7 @@
   border-top-color: var(--color-accent);
 }
 
-/* â”€â”€ Question button â”€â”€ */
+/* ── Question button ── */
 .question {
   width: 100%;
   background: none;
@@ -52,7 +52,7 @@
   transition: color 0.3s;
 }
 
-/* circle bullet â—‹ */
+/* circle bullet ○ */
 .bullet {
   flex: 0 0 10px;
   width: 10px;
@@ -69,7 +69,7 @@
 .card:hover .question { color: var(--color-accent); }
 .card:hover .bullet   { border-color: var(--color-accent); }
 
-/* â”€â”€ Answer â€” grid-row slide â”€â”€ */
+/* ── Answer — grid-row slide ── */
 .answer {
   display: grid;
   grid-template-rows: 0fr;
@@ -95,7 +95,7 @@
   padding-bottom: 1rem;
 }
 
-/* â”€â”€ Load more â”€â”€ */
+/* ── Load more ── */
 .loadMore {
   padding-top: 32px;
   line-height: 22px;
@@ -111,16 +111,55 @@
   padding: 0;
   display: inline-flex;
   align-items: center;
-  gap: 4px;
+  gap: 8px;
   font-family: inherit;
   font-size: 16px;
   font-weight: 400;
   line-height: 22px;
   color: var(--color-accent);
   cursor: pointer;
-  transition: opacity 0.2s;
+  transition: color 0.2s;
 }
-.loadMoreBtn:hover { opacity: 0.75; }
+.loadMoreBtn:hover { color: var(--color-accent); }
+
+.arrow {
+  align-self: center;
+  display: inline-block;
+  flex: 0 0 6px;
+  height: 10px;
+  position: relative;
+  transform: translateY(1px);
+  width: 6px;
+}
+.arrow::before,
+.arrow::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: url("data:image/svg+xml,%3Csvg width='6' height='10' viewBox='0 0 6 10' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 8.59L3.59 5L0 1.41L1 0.5L5.5 5L1 9.5L0 8.59Z' fill='%233CC4E5'/%3E%3C/svg%3E") center no-repeat;
+}
+.arrow::after {
+  opacity: 0;
+}
+.loadMoreBtn:hover .arrow::before {
+  animation: arFaqArrowBefore 1s linear infinite;
+}
+.loadMoreBtn:hover .arrow::after {
+  animation: arFaqArrowAfter 1s linear infinite;
+}
+
+@keyframes arFaqArrowBefore {
+  0% { opacity: 1; transform: translateX(0); }
+  49% { opacity: 0; transform: translateX(7px); }
+  52% { opacity: 0; transform: translateX(-7px); }
+  100% { opacity: 1; transform: translateX(0); }
+}
+@keyframes arFaqArrowAfter {
+  0% { opacity: 0; transform: translateX(-7px); }
+  49% { opacity: 1; transform: translateX(0); }
+  99% { opacity: 0; transform: translateX(7px); }
+  100% { opacity: 0; transform: translateX(-7px); }
+}
 
 @media (max-width: 768px) {
   .section { padding: 72px 0 70px; }
@@ -132,4 +171,6 @@
   }
   .bullet { margin-top: 8px; }
 }
+
+
 

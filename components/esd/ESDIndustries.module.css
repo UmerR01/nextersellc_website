@@ -48,11 +48,17 @@
   border: none;
   display: flex;
   flex-direction: column;
+  text-decoration: none;
+  color: inherit;
   transition: background 0.25s ease;
 }
 
 .card:hover {
   background: linear-gradient(110deg, rgba(60, 196, 229, 0.14), rgba(18, 122, 255, 0.07));
+}
+
+.cardLinked:hover {
+  cursor: pointer;
 }
 
 .icon {
@@ -88,12 +94,10 @@
   font-size: 1.0625rem;
   font-weight: 400;
   color: var(--color-accent);
-  text-decoration: none;
   margin-top: auto;
-  transition: color 0.2s;
 }
 
-.cardLink:hover {
+.cardLinked:hover .cardLink {
   text-decoration: underline;
   text-decoration-thickness: 0.5px;
   text-underline-offset: 4px;
@@ -128,12 +132,12 @@
   opacity: 0;
 }
 
-.cardLink:hover .linkArrow::before {
+.cardLinked:hover .linkArrow::before {
   animation: bounceBefore 1s linear infinite;
   right: 6px;
 }
 
-.cardLink:hover .linkArrow::after {
+.cardLinked:hover .linkArrow::after {
   animation: bounceAfter 1s linear infinite;
   right: 6px;
 }

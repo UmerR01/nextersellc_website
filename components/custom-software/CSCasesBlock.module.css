@@ -124,21 +124,6 @@
   margin-bottom: 1.75rem;
   max-width: 460px;
 }
-.viewMore {
-  align-self: flex-start;
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  padding: 0.3rem 1.25rem;
-  border-radius: var(--radius-button);
-  border: 1px solid var(--color-accent);
-  color: #fff;
-  font-weight: 600;
-  text-decoration: none;
-  transition: background-color 0.25s ease, color 0.25s ease;
-}
-.viewMore:hover { background: var(--color-accent); color: var(--color-text); }
-
 /* Meta: tags + nav pinned to bottom */
 .meta {
   position: absolute;
@@ -276,7 +261,6 @@
   .meta { padding: var(--page-gutter); }
   .title { font-size: clamp(1.65rem, 8vw, 2.25rem); }
   .text { font-size: 0.95rem; margin-bottom: 1.25rem; }
-  .viewMore { padding-inline: 1rem; }
 }
 
 @keyframes caseSlideFromRight {

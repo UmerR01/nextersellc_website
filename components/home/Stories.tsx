@@ -1,10 +1,10 @@
-import Image from "next/image";
+﻿import Image from "next/image";
 import styles from "./Stories.module.css";
 
-/** Awesome stories — pixel-perfect replica of Sumatosoft blog-section:
+/** Awesome stories â€” pixel-perfect replica of Sumatosoft blog-section:
  *  - White background (#fff), padding 96px 0 40px
  *  - Title "stories" in blue
- *  - Left col: feature post — 56.21% aspect-ratio image, 28px/36px title in black → red on hover
+ *  - Left col: feature post â€” 56.21% aspect-ratio image, 28px/36px title in black â†’ red on hover
  *  - Right col: 3 text-only posts + "All articles" link, 62px left padding
  *  - Meta: clock SVG + | + date, 16px/#5e6d8e
  */
@@ -14,7 +14,6 @@ const FEATURE_POST = {
   image: "/stories/pilot.svg",
   read: "31 mins",
   date: "June 16, 2026",
-  href: "#",
 };
 
 const SIDE_POSTS = [
@@ -22,23 +21,20 @@ const SIDE_POSTS = [
     title: "AI Token Cost Calculation: A Pricing-Independent Framework for Forecasting LLM Spend (2026)",
     read: "31 mins",
     date: "June 10, 2026",
-    href: "#",
   },
   {
     title: "AI Adoption in Enterprises: 16 Success Cases and the KPIs They Improved in 2026 [Research]",
     read: "39 mins",
     date: "June 8, 2026",
-    href: "#",
   },
   {
     title: "What Is ADLC? A 2026 Guide to Governing Probabilistic AI Systems",
     read: "34 mins",
     date: "May 12, 2026",
-    href: "#",
   },
 ];
 
-/** Clock SVG — exact copy from Sumatosoft blog-section__post-read-time */
+/** Clock SVG â€” exact copy from Sumatosoft blog-section__post-read-time */
 function ClockIcon() {
   return (
     <svg
@@ -89,9 +85,9 @@ export default function Stories() {
         </h2>
 
         <div className={styles.grid}>
-          {/* ─── Left col: feature post with image ─── */}
-          <a href={FEATURE_POST.href} className={styles.feature}>
-            {/* 56.21% aspect-ratio image container — matches .blog-section__post-image */}
+          {/* â”€â”€â”€ Left col: feature post with image â”€â”€â”€ */}
+          <div className={styles.feature}>
+            {/* 56.21% aspect-ratio image container â€” matches .blog-section__post-image */}
             <div className={styles.featureImage}>
               <div className={styles.featureImageWrapper}>
                 <Image
@@ -105,20 +101,20 @@ export default function Stories() {
             </div>
             <div className={styles.featureTitle}>{FEATURE_POST.title}</div>
             <PostMeta read={FEATURE_POST.read} date={FEATURE_POST.date} />
-          </a>
+          </div>
 
-          {/* ─── Right col: sidebar text posts ─── */}
+          {/* â”€â”€â”€ Right col: sidebar text posts â”€â”€â”€ */}
           <div className={styles.sidebar}>
             {SIDE_POSTS.map((post) => (
-              <a key={post.title} href={post.href} className={styles.sidePost}>
+              <div key={post.title} className={styles.sidePost}>
                 <div className={styles.sideTitle}>{post.title}</div>
                 <PostMeta read={post.read} date={post.date} />
-              </a>
+              </div>
             ))}
 
             <div className={styles.allLinkWrap}>
-              <a href="#" className={styles.allLink}>
-                All articles ›
+              <a href="/blog" className={styles.allLink}>
+                All articles<span className={styles.allLinkArrow} aria-hidden="true" />
               </a>
             </div>
           </div>
@@ -127,3 +123,6 @@ export default function Stories() {
     </section>
   );
 }
+
+
+

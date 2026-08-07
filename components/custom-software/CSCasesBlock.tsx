@@ -122,9 +122,6 @@ export default function CSCasesBlock() {
               <div className={styles.body}>
                 <h3 className={styles.title}>{card.title}</h3>
                 <p className={styles.text}>{card.text}</p>
-                <a href={card.href} className={styles.viewMore} onClick={(e) => e.stopPropagation()}>
-                  View case <span aria-hidden>↗</span>
-                </a>
               </div>
 
               <div className={styles.meta}>
@@ -142,13 +139,6 @@ export default function CSCasesBlock() {
               <span className={styles.arrow} aria-hidden>↗</span>
             </article>
           ))}
-        </div>
-
-        <div className={styles.allRow}>
-          <a href="/portfolio" className={styles.allLink}>
-            All projects
-            <span className={styles.allLinkArrow} aria-hidden />
-          </a>
         </div>
       </div>
     </section>

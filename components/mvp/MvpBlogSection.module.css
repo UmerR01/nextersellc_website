@@ -66,11 +66,6 @@
   height: 100%;
   object-fit: cover;
   display: block;
-  transition: transform 0.3s ease;
-}
-
-.featuredPost:hover .featuredImg {
-  transform: scale(1.2);
 }
 
 .featuredPostTitle {
@@ -79,12 +74,7 @@
   font-weight: 400;
   color: #000;
   margin: 0 0 8px;
-  transition: color 0.3s;
   font-family: var(--font-inter-tight), sans-serif;
-}
-
-.featuredPost:hover .featuredPostTitle {
-  color: var(--color-accent);
 }
 
 /* ── Right column: sidebar ── */
@@ -113,12 +103,7 @@
   font-weight: 400;
   color: #000;
   margin-bottom: 8px;
-  transition: color 0.3s;
   font-family: var(--font-inter-tight), sans-serif;
-}
-
-.sidePost:hover .sidePostTitle {
-  color: var(--color-accent);
 }
 
 /* ── Post meta ── */
@@ -165,22 +150,65 @@
 .allArticlesLink {
   display: inline-flex;
   align-items: center;
-  gap: 4px;
   font-size: 16px;
   font-weight: 600;
   color: var(--color-accent);
   text-decoration: none;
-  transition: opacity 0.2s;
   font-family: var(--font-inter-tight), sans-serif;
-}
-
-.allArticlesLink:hover {
-  opacity: 0.75;
+  position: relative;
 }
 
 .linkArrow {
-  display: flex;
-  align-items: center;
+  display: inline-block;
+  padding-left: 6px;
+  padding-right: 17px;
+  position: relative;
+  width: 17px;
+}
+
+.linkArrow::before,
+.linkArrow::after {
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg width='6' height='10' viewBox='0 0 6 10' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M7.94319e-08 8.59L3.59 5L-3.53625e-07 1.41L1 0.5L5.5 5L1 9.5L7.94319e-08 8.59Z' fill='%233CC4E5'/%3E%3C/svg%3E");
+  background-position: 50%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  content: "";
+  display: block;
+  height: 9px;
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  transition: 0.1s;
+  width: 6px;
+}
+
+.linkArrow::after {
+  opacity: 0;
+}
+
+.allArticlesLink:hover .linkArrow::before {
+  animation: bounceBefore 1s linear infinite;
+  right: 6px;
+}
+
+.allArticlesLink:hover .linkArrow::after {
+  animation: bounceAfter 1s linear infinite;
+  right: 6px;
+}
+
+@keyframes bounceBefore {
+  0%   { opacity: 1; transform: translateX(0)    translateY(-50%); }
+  49%  { opacity: 0; transform: translateX(7px)  translateY(-50%); }
+  52%  { opacity: 0; transform: translateX(-7px) translateY(-50%); }
+  100% { opacity: 1; transform: translateX(0)    translateY(-50%); }
+}
+
+@keyframes bounceAfter {
+  0%   { opacity: 0; transform: translateX(-7px) translateY(-50%); }
+  49%  { opacity: 1; transform: translateX(0)    translateY(-50%); }
+  99%  { opacity: 0; transform: translateX(7px)  translateY(-50%); }
+  100% { opacity: 0; transform: translateX(-7px) translateY(-50%); }
 }
 
 @media (max-width: 768px) {

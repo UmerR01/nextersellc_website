@@ -185,24 +185,20 @@ export default function TeamReviewSlider({
         <div className={styles.bottomNav}>
           <div className={styles.navButtons}>
             <button
-              className={styles.navBtn}
+              className={`${styles.navBtn} ${styles.navPrev}`}
               onClick={() => swiperRef.current?.swiper.slidePrev()}
               aria-label="Previous review"
               disabled={atStart}
             >
-              <svg width="48" height="24" viewBox="0 0 48 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M47 12H3M10 5L3 12L10 19" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-              </svg>
+              <span className={styles.arrowBox} aria-hidden="true" />
             </button>
             <button
-              className={styles.navBtn}
+              className={`${styles.navBtn} ${styles.navNext}`}
               onClick={() => swiperRef.current?.swiper.slideNext()}
               aria-label="Next review"
               disabled={atEnd}
             >
-              <svg width="48" height="24" viewBox="0 0 48 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M1 12H45M38 5L45 12L38 19" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-              </svg>
+              <span className={styles.arrowBox} aria-hidden="true" />
             </button>
           </div>
           <Link href={linkHref} className={styles.testimonialsLink}>

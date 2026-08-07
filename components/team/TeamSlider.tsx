@@ -3,7 +3,7 @@
 import { useRef } from "react";
 import Image from "next/image";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation, Autoplay, FreeMode } from "swiper/modules";
+import { Navigation, FreeMode } from "swiper/modules";
 import type { SwiperRef } from "swiper/react";
 import "swiper/css";
 import "swiper/css/navigation";
@@ -39,30 +39,14 @@ export default function TeamSlider() {
             onClick={() => swiperRef.current?.swiper.slidePrev()}
             aria-label="Previous slide"
           >
-            <svg
-              className={styles.navIcon}
-              width="48"
-              height="24"
-              viewBox="0 0 48 24"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M47 12H3M10 5L3 12L10 19"
-                stroke="currentColor"
-                strokeWidth="1.5"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-            </svg>
+            <span className={styles.arrowBox} aria-hidden="true" />
           </button>
 
           <Swiper
             ref={swiperRef}
-            modules={[Navigation, Autoplay, FreeMode]}
+            modules={[Navigation, FreeMode]}
             freeMode={true}
             speed={1000}
-            autoplay={{ delay: 5000, disableOnInteraction: true, pauseOnMouseEnter: true }}
             breakpoints={{
               0:    { slidesPerView: 2, spaceBetween: 16 },
               650:  { slidesPerView: 3, spaceBetween: 40 },
@@ -96,22 +80,7 @@ export default function TeamSlider() {
             onClick={() => swiperRef.current?.swiper.slideNext()}
             aria-label="Next slide"
           >
-            <svg
-              className={styles.navIcon}
-              width="48"
-              height="24"
-              viewBox="0 0 48 24"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M1 12H45M38 5L45 12L38 19"
-                stroke="currentColor"
-                strokeWidth="1.5"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-            </svg>
+            <span className={styles.arrowBox} aria-hidden="true" />
           </button>
         </div>
       </div>

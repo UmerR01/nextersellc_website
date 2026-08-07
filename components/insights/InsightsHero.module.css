@@ -2,7 +2,7 @@
 .hero {
   margin-left: calc(50% - 50vw);
   overflow: hidden;
-  padding-top: 110px;
+  padding-top: calc(var(--header-height) + 26px);
   position: relative;
   width: 100vw;
 }
@@ -10,7 +10,7 @@
 @media screen and (min-width: 1024px) and (max-width: 1680px) {
   .hero {
     margin-left: 0;
-    padding-top: 96px;
+    padding-top: calc(var(--header-height) + 26px);
     width: 100%;
   }
 }
@@ -91,13 +91,15 @@
 
 /* hero-about .container override — max 1504px */
 .heroWrapper :global(.container) {
-  max-width: 1504px;
+  max-width: min(100%, 1540px);
+  margin: 0 auto;
+  padding-inline: clamp(1.25rem, 3vw, 2.5rem);
 }
 
 /* .hero-about__wrapper — position: relative so breadcrumbs can be absolute */
 .content {
   color: #fff;
-  padding: 96px 0 136px;
+  padding: 88px 0 8.5rem;
   position: relative;
 }
 

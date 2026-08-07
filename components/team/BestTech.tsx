@@ -9,15 +9,15 @@ const CARDS = [
     title: "AI software development",
     body: "We leverage advanced AI technologies, Machine Learning, and NLP to develop various solutions: chatbots, recommendation engines for personalization, video, speech, image and text recognition software, sales intelligence systems, and more.",
     linkLabel: "AI development",
-    href: "#",
+    href: "/services/ai-software-development",
   },
   {
-    icon: "/team/04_IoT-Integration-02.svg",
-    iconAlt: "IoT",
-    title: "IoT software development",
-    body: "We specialize in IoT software development since 2012 and delivering secure custom IoT solutions covering firmware, cloud, and mobile layers to industrial, commercial, and consumer clients.",
-    linkLabel: "IoT development",
-    href: "#",
+    icon: "/esd/04_Cloud-based-predictive-analytics-platforms-03.svg",
+    iconAlt: "Cloud",
+    title: "Cloud development",
+    body: "We design and build scalable cloud architectures, migrations, and managed infrastructure on AWS, Azure, and Google Cloud, covering everything from containerization to cost optimization and ongoing DevOps support.",
+    linkLabel: "Cloud development",
+    href: "/services/cloud-development",
   },
 ];
 

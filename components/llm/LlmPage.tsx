@@ -448,18 +448,18 @@ export default function LlmPage() {
         <LlmTechStack />
 
         {/* ── Who builds the system (4 role cards) ────────────────────────── */}
-        <section className={styles.blockLight}>
+        <section className={`${styles.blockLight} ${styles.llmWhoBlock}`}>
           <div className="container">
             <h2 className={styles.sectionTitle}><span className={styles.accent}>Who</span> builds the system</h2>
             <p className={styles.sectionDesc}>
               LLM delivery takes data engineering, infrastructure design, software integration, and production oversight. For this, our engineering team employs:
             </p>
-            <div className={styles.hcAudienceGrid}>
+            <div className={styles.llmWhoGrid}>
               {WHO.map((c) => (
-                <div key={c.title} className={styles.ecomServiceCard}>
-                  <Image src={c.icon} alt={c.title} width={56} height={56} className={styles.ecomServiceIcon} />
-                  <h3 className={styles.ecomServiceTitle}>{c.title}</h3>
-                  <p className={styles.ecomServiceIntro}>{c.desc}</p>
+                <div key={c.title} className={styles.llmWhoCard}>
+                  <Image src={c.icon} alt={c.title} width={56} height={56} className={styles.llmWhoIcon} />
+                  <h3 className={styles.llmWhoTitle}>{c.title}</h3>
+                  <p className={styles.llmWhoDesc}>{c.desc}</p>
                 </div>
               ))}
             </div>
@@ -467,7 +467,7 @@ export default function LlmPage() {
         </section>
 
         {/* ── ADLC process (dark process) ─────────────────────────────────── */}
-        <section id="llm-adlc" className={styles.blockDark}>
+        <section id="llm-adlc" className={`${styles.processBlock} ${styles.llmAdlcBlock}`}>
           <div className="container">
             <h2 className={styles.sectionTitleWhite}>Our ADLC <span className={styles.accent}>process</span></h2>
             <p className={styles.sectionDescWhite}>

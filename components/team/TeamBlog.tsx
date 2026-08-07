@@ -3,7 +3,6 @@ import Link from "next/link";
 import styles from "./TeamBlog.module.css";
 
 const FEATURED_POST = {
-  href: "#",
   img: "/team/01_careers-photo-6.jpg",
   imgAlt: "Nexterse LLC team workspace",
   title: "How to modernize legacy systems with custom AI",
@@ -13,21 +12,18 @@ const FEATURED_POST = {
 
 const SMALL_POSTS = [
   {
-    href: "#",
     title:
       "How to Deliver Software on Time with Agile and Release Planning in the AI Era",
     readTime: "18 mins",
     date: "June 22, 2026",
   },
   {
-    href: "#",
     title:
       "From Pilot to Production: Why Enterprise AI Stalls. The Framework to Scale It (2026)",
     readTime: "31 mins",
     date: "June 16, 2026",
   },
   {
-    href: "#",
     title:
       "AI Token Cost Calculation: A Pricing-Independent Framework for Forecasting LLM Spend (2026)",
     readTime: "33 mins",
@@ -67,7 +63,7 @@ export default function TeamBlog() {
 
         <div className={styles.grid}>
           {/* Featured post */}
-          <Link href={FEATURED_POST.href} className={styles.featuredPost}>
+          <div className={styles.featuredPost}>
             <div className={styles.featuredImgWrap}>
               <Image
                 src={FEATURED_POST.img}
@@ -84,13 +80,13 @@ export default function TeamBlog() {
               <span aria-hidden="true">&middot;</span>
               <span>{FEATURED_POST.date}</span>
             </div>
-          </Link>
+          </div>
 
           {/* Small posts column */}
           <div className={styles.smallPostsCol}>
             <div className={styles.smallPosts}>
               {SMALL_POSTS.map((post, idx) => (
-                <Link key={idx} href={post.href} className={styles.smallPost}>
+                <div key={idx} className={styles.smallPost}>
                   <p className={styles.postTitle}>{post.title}</p>
                   <div className={styles.postMeta}>
                     <ClockIcon />
@@ -98,7 +94,7 @@ export default function TeamBlog() {
                     <span aria-hidden="true">&middot;</span>
                     <span>{post.date}</span>
                   </div>
-                </Link>
+                </div>
               ))}
             </div>
             <div className={styles.moreLink}>

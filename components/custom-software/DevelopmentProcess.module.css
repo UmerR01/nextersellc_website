@@ -55,26 +55,28 @@
 .step:not(:last-child)::after {
   content: "";
   position: absolute;
-  left: 49px;
-  top: 106px;
+  left: 60px;
+  top: 120px;
   width: 2px;
-  height: calc(100% + clamp(3rem, 5vw, 4.5rem) - 106px);
-  background: rgba(137, 159, 182, 0.45);
+  height: calc(100% + clamp(3rem, 5vw, 4.5rem) - 120px);
+  background: rgba(255, 255, 255, 0.22);
 }
 
 .stepNumber {
   position: relative;
   z-index: 1;
   display: flex;
-  flex: 0 0 100px;
+  flex: 0 0 auto;
   align-items: center;
   justify-content: center;
-  width: 100px;
-  height: 100px;
+  width: 104px;
+  height: 104px;
+  margin: 8px;
+  border: 2px solid rgba(255, 255, 255, 0.14);
   border-radius: 50%;
-  background: #435474;
-  box-shadow: 0 0 0 4px #0b1d40, 0 0 0 6px rgba(137, 159, 182, 0.42);
-  color: var(--color-accent);
+  background: rgba(255, 255, 255, 0.07);
+  box-shadow: 0 0 0 6px rgba(255, 255, 255, 0.025), 0 0 0 8px rgba(255, 255, 255, 0.12);
+  color: var(--color-accent, #3cc4e5);
   font-family: var(--font-inter-tight), sans-serif;
   font-size: 1.75rem;
   font-weight: 500;
@@ -84,7 +86,7 @@
 .stepContent {
   flex: 1;
   min-width: 0;
-  margin-left: clamp(1.75rem, 3vw, 2.25rem);
+  margin-left: clamp(2.5rem, 3.25vw, 3.25rem);
   padding-top: 0.15rem;
 }
 
@@ -125,17 +127,18 @@
   }
 
   .step:not(:last-child)::after {
-    left: 23px;
-    top: 54px;
-    height: calc(100% + 2.5rem - 54px);
+    left: 29px;
+    top: 53px;
+    height: calc(100% + 2.5rem - 53px);
   }
 
   .stepNumber {
-    flex-basis: 48px;
     width: 48px;
     height: 48px;
+    margin: 5px;
+    border-width: 2px;
     font-size: 1rem;
-    box-shadow: 0 0 0 3px #0b1d40, 0 0 0 5px rgba(137, 159, 182, 0.42);
+    box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.025), 0 0 0 5px rgba(255, 255, 255, 0.12);
   }
 
   .stepContent {

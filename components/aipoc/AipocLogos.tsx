@@ -15,14 +15,23 @@ export default function AipocLogos() {
     <section className={styles.section}>
       <div className={styles.overflow}>
         <div className={styles.marquee}>
-          {LOGOS.map((logo) => (
-            <div key={logo.src} className={styles.item}>
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src={logo.src} alt={logo.alt} width={logo.width} height={logo.height} className={styles.logo} loading="lazy" />
-            </div>
-          ))}
+          <Track />
+          <Track ariaHidden />
         </div>
       </div>
     </section>
+  );
+}
+
+function Track({ ariaHidden }: { ariaHidden?: boolean }) {
+  return (
+    <div className={styles.track} aria-hidden={ariaHidden}>
+      {LOGOS.map((logo, i) => (
+        <div key={`${logo.src}-${i}`} className={styles.item}>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src={logo.src} alt={logo.alt} width={logo.width} height={logo.height} className={styles.logo} loading="lazy" />
+        </div>
+      ))}
+    </div>
   );
 }

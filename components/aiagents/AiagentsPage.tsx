@@ -21,8 +21,8 @@ const SERVICES = [
     icon: "/ai-agents-development/05_AI-agent-development-02.svg",
     title: "Custom AI agent development",
     desc: "We design AI agents around your business, from ones that automate repetitive tasks to virtual assistants that give customers a personalized experience. They draw on natural language processing (NLP), computer vision, and machine learning (ML), and they deliver measurable results across industries such as healthcare, finance, retail, and logistics.",
-    linkText: "AI software development",
-    href: "/services/ai-software-development",
+    linkText: "AI agents development",
+    href: "/services/ai-agents-development",
   },
   {
     icon: "/ai-agents-development/03_roadmap-for-PoC-02.svg",
@@ -36,7 +36,7 @@ const SERVICES = [
     title: "Enterprise software integration",
     desc: "We integrate AI agents into your existing systems with minimal downtime or disruption. Whether that means adding predictive analytics to your supply-chain tools or embedding a chatbot in your customer-service platform, we keep the transition smooth so you see efficiency gains from day one.",
     linkText: "AI integration services",
-    href: "/services/ai-software-development",
+    href: "/services/ai-integration",
   },
 ];
 
