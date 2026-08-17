@@ -6,7 +6,7 @@ const CARDS = [
     href: "/sdlc",
     icon: "/custom-software/03_Traditional-software-01.svg",
     title: "SDLC: Our traditional lifecycle",
-    desc: "We apply it to standard builds: web applications, mobile apps, IoT systems without ML on top, enterprise platforms, legacy modernization, and non-AI MVPs. The process stays deterministic. Teams are senior-led, and quality runs through familiar QA gates. If your product does not hinge on model-making decisions, this is the path.",
+    desc: "We apply it to standard builds: web applications, mobile apps, internal tools without ML on top, enterprise platforms, legacy modernization, and non-AI MVPs. The process stays deterministic. Teams are senior-led, and quality runs through familiar QA gates. If your product does not hinge on model-making decisions, this is the path.",
     linkText: "Software development lifecycle (SDLC)",
   },
   {

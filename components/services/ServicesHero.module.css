@@ -49,9 +49,8 @@
   gap: 4px;
   margin: 0 0 5rem;
   color: rgba(255, 255, 255, 0.5);
-  font-family: var(--font-inter-tight);
-  font-size: 0.85rem;
-  line-height: 1.5;
+  font-size: 14px;
+  line-height: 20px;
 }
 
 .breadcrumbs a,
@@ -64,6 +63,7 @@
 
 .breadcrumbs a {
   color: rgba(255, 255, 255, 0.5);
+  font-family: var(--font-inter-tight), sans-serif;
   transition: color 0.2s ease;
 }
 
@@ -73,6 +73,7 @@
 
 .breadcrumbs span {
   color: rgba(255, 255, 255, 0.35);
+  font-family: var(--font-inter-tight), sans-serif;
 }
 
 .breadcrumbSep {
@@ -185,3 +186,4 @@
     margin-bottom: 36px;
   }
 }
+

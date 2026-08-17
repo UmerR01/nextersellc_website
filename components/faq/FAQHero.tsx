@@ -64,7 +64,7 @@ export default function FAQHero() {
           <div className={styles.inner}>
             <nav className={styles.breadcrumbs} aria-label="Breadcrumb">
               <Link href="/">Home</Link>
-              <Link href="/team">About us</Link>
+              <Link href="/about-us">About us</Link>
               <span>Frequently asked questions</span>
             </nav>
 

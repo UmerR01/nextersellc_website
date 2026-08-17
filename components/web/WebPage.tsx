@@ -2,12 +2,13 @@
 
 import { useState } from "react";
 import Image from "next/image";
-import CaseCards, { type CaseCard } from "@/components/home/CaseCards";
+import CaseCards from "@/components/home/CaseCards";
 import ServicesReviewSlider from "@/components/services/ServicesReviewSlider";
 import ServicesAchievements from "@/components/services/ServicesAchievements";
 import ServicesFaqBlock, { type FaqItem } from "@/components/services/ServicesFaqBlock";
 import ServicesBlogSection, { type FeaturedPost, type BlogPost } from "@/components/services/ServicesBlogSection";
 import LetsStart from "@/components/home/LetsStart";
+import AipocLogos from "@/components/aipoc/AipocLogos";
 import WebArticleLayout from "./WebArticleLayout";
 import styles from "./WebPage.module.css";
 
@@ -115,58 +116,6 @@ function HeroBg() {
   );
 }
 
-// ─── Cases ────────────────────────────────────────────────────────────────────
-const WEB_CASES: CaseCard[] = [
-  {
-    banner: "/web-app-development/02_Frame-1787-1.png",
-    name: "Dexai Robotics",
-    title: "Graphical user interface for robot operation",
-    text: "A GUI that freed Dexai Robotics' restaurant staff from engineer dependency – cutting robot setup time per shift by ~65% and reducing interaction errors by ~50% through real-time visual state monitoring and offline operation.",
-    href: "/portfolio/dexai-robotics-graphical-user-interface",
-    tags: ["IoT", "Startups"],
-  },
-  {
-    banner: "/web-app-development/09_inbound_transportation_kanban_board011@2x.png",
-    name: "Toyota ERP/CRM",
-    title: "Toyota custom ERP/CRM system",
-    text: "A custom ERP/CRM for Business Car Group – Russia's largest Toyota and Lexus dealer network – that replaced decade-old disjointed tools with a unified platform, cutting sales cycles by 30% across 20 dealer centers.",
-    href: "/portfolio/toyota-custom-erp-crm-system",
-    tags: ["Enterprise"],
-  },
-  {
-    banner: "/web-app-development/07_Cover-right-2.png",
-    name: "AI Knowledge Base",
-    title: "AI-powered knowledge base for a global rights nonprofit",
-    text: "A Middle Eastern nonprofit working in cultural preservation needed a single searchable repository for fragmented research on ethnic minorities. We built a multilingual AI platform that now indexes 12,000+ artifacts across 18 countries.",
-    href: "/portfolio/ai-powered-knowledge-base",
-    tags: ["AI inside", "Enterprise"],
-  },
-  {
-    banner: "/web-app-development/10_Cover-1-1.png",
-    name: "AI Route Optimization",
-    title: "AI/ML route optimization for a freight delivery service",
-    text: "Lifted on-time delivery to 98% – without expanding the fleet. An AI/ML platform that plans and reoptimizes B2B/B2C routes in real time with traffic, weather, and capacity constraints, cutting last-mile costs by 22%.",
-    href: "/portfolio/ai-route-optimization",
-    tags: ["AI inside", "Enterprise"],
-  },
-  {
-    banner: "/web-app-development/10_Cover-2-1.png",
-    name: "Dental AI Platform",
-    title: "AI patient-flow platform for dental imaging",
-    text: "A HIPAA-aligned AI platform for a dental imaging provider that reduced wait times by 37%, increased daily throughput by 22%, and lowered no-shows by 29%.",
-    href: "/portfolio/ai-patient-flow-dental",
-    tags: ["AI inside", "Enterprise"],
-  },
-  {
-    banner: "/web-app-development/12_cover-2.png",
-    name: "Real Estate Platform",
-    title: "Real estate platform maintenance and enhancement",
-    text: "A 5-year enhancement of a franchise property platform that brought ~30% more property enquiries through a website redesign and CoreLogic data integration – without rebuilding the platform from the ground up.",
-    href: "/portfolio/real-estate-platform",
-    tags: ["Enterprise"],
-  },
-];
-
 // ─── Services tabs ────────────────────────────────────────────────────────────
 const SERVICE_TABS = [
   {
@@ -245,36 +194,26 @@ const SOLUTIONS = [
     label: "Enterprise software",
     title: "Enterprise web apps",
     desc: "We develop corporate web applications for internal operations and complex processes. These include ERP, CRM, HRM, billing systems, approval systems, and other tools that underpin a company's daily operations. We also add AI features when needed: internal assistants, corporate content search, document management, and automation of routine tasks based on roles and access rights.",
-    ctaLabel: "Enterprise software development",
-    ctaHref: "/services/enterprise-software-development",
   },
   {
     label: "MVPs and AI PoCs",
     title: "MVPs and AI PoCs",
     desc: "We help startups and product teams launch MVPs and AI PoCs to validate their ideas before full development. At this stage, we evaluate the use case, technical feasibility, support costs, and the path to the next release. Such a project may include chat interfaces, knowledge-base search, document processing, and highly specialized task-specific assistants.",
-    ctaLabel: "AI PoC development",
-    ctaHref: "/process/mvp",
   },
   {
-    label: "Internet of Things solutions",
-    title: "Internet of Things solutions",
-    desc: "We build IoT web applications for device monitoring, sensor data handling, operational dashboards, and remote system control. We also develop AI applications for anomaly detection, maintenance support, event interpretation, and data-driven recommendations based on live and historical machine data.",
-    ctaLabel: "IoT development",
-    ctaHref: "/services/iot-development",
+    label: "Applied AI solutions",
+    title: "Applied AI solutions",
+    desc: "We build AI-powered web applications for operational dashboards, analytics, and data-driven decision support built on your existing systems. We also develop AI applications for anomaly detection, maintenance support, event interpretation, and data-driven recommendations based on live and historical operational data.",
   },
   {
     label: "SaaS product development",
     title: "SaaS product development",
     desc: "We design and develop SaaS products with tenant-aware architecture, admin controls, integration layers, and stable release foundations. AI can be added to these products for support automation, content handling, account insights, usage analysis, and embedded assistants that work within each tenant's data boundaries.",
-    ctaLabel: "SaaS development services",
-    ctaHref: "/services/saas-development",
   },
   {
     label: "Super apps",
     title: "Super apps",
     desc: "We provide development and consulting services for building all-in-one platforms that integrate multiple services—e-commerce, banking, communication, and transportation—into a unified ecosystem. Super apps eliminate the need for multiple standalone applications and are designed to handle high traffic and diverse functionality.",
-    ctaLabel: "Super App development",
-    ctaHref: "/services/super-app-development",
   },
 ];
 
@@ -671,23 +610,7 @@ export default function WebPage() {
       
 
       <WebArticleLayout>
-        {/* ── Logos ────────────────────────────────────────────────────────── */}
-      <section className={styles.logosSection}>
-        <div className="container">
-          <div className={styles.logosWrapper}>
-            {[
-              { src: "/web-app-development/12_5c98e3297e3bc92bd580af14_toyota_l-1.svg", alt: "Toyota" },
-              { src: "/web-app-development/12_5ecce35506c123c4936b0303_dexai-logo-1.svg", alt: "Dexai" },
-              { src: "/web-app-development/12_5ecba50d2b50b63a7a1871ad_beiersdorf-logo-1.svg", alt: "Beiersdorf" },
-              { src: "/web-app-development/01_ClimeCo.svg", alt: "ClimeCo" },
-              { src: "/web-app-development/01_TL-Nika.svg", alt: "TL Nika" },
-              { src: "/web-app-development/10_SMI_Logo-1-2-2.svg", alt: "SMI" },
-            ].map((logo) => (
-              <Image key={logo.alt} src={logo.src} alt={logo.alt} width={120} height={38} className={styles.logoImg} />
-            ))}
-          </div>
-        </div>
-      </section>
+        <AipocLogos />
 
         {/* ── Benefits ─────────────────────────────────────────────────── */}
         <section id="web-benefits" className={styles.benefitSection}>
@@ -767,12 +690,6 @@ export default function WebPage() {
                     <ul className={styles.tabBullets}>
                       {tab.bullets.map((b) => <li key={b}>{b}</li>)}
                     </ul>
-                    {tab.linkLabel && (
-                      <a href={tab.href} className={styles.tabPanelLink}>
-                        {tab.linkLabel}
-                        <span className={styles.linkArrow} aria-hidden="true" />
-                      </a>
-                    )}
                   </div>
                   <Image
                     src={tab.image}
@@ -813,9 +730,6 @@ export default function WebPage() {
               <div className={styles.vertTabContent}>
                 <h3 className={styles.vertTabTitle}>{SOLUTIONS[activeSolutionTab].title}</h3>
                 <p className={styles.vertTabDesc}>{SOLUTIONS[activeSolutionTab].desc}</p>
-                <a href={SOLUTIONS[activeSolutionTab].ctaHref} className={`btn btn-outline ${styles.vertTabCta}`}>
-                  {SOLUTIONS[activeSolutionTab].ctaLabel}
-                </a>
               </div>
             </div>
           </div>
@@ -903,64 +817,18 @@ export default function WebPage() {
           </div>
         </section>
 
-        {/* ── Process testimonial (own white section) ───────────────────── */}
-        <section className={styles.processTestimonialSection}>
-          <div className="container">
-            <div className={styles.processTestimonial}>
-              <div className={styles.ptRight}>
-                <span className={styles.ptQuoteMark}>&ldquo;&ldquo;</span>
-                <blockquote className={styles.ptQuote}>
-                  A well-structured development process is the foundation of successful software projects. By combining clear planning, an agile approach, and continuous early feedback from the Client, we ensure that every product we build perfectly aligns with business goals. Our approach minimizes risks, optimizes resources, and delivers high-quality applications on time and within budget.
-                </blockquote>
-              </div>
-              <div className={styles.ptLeft}>
-                <Image
-                  src="/web-app-development/01_Frame-101745.png"
-                  alt="Irina Baryshnaya"
-                  width={72}
-                  height={72}
-                  className={styles.ptPhoto}
-                />
-                <span className={styles.ptName}>Irina Baryshnaya</span>
-                <span className={styles.ptPosition}>Unit Coordinator / Head of PM</span>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* ── Case Studies ──────────────────────────────────────────────── */}
+{/* ── Case Studies ──────────────────────────────────────────────── */}
         <div id="web-cases">
           <CaseCards
             heading={<>Our recent <span>works</span></>}
-            cards={WEB_CASES}
             windowed
           />
         </div>
 
         {/* ── Review Slider ─────────────────────────────────────────────── */}
-        <ServicesReviewSlider />
+        <ServicesReviewSlider primary="software" count={7} secondaryCount={2} />
 
-        {/* ── PDF Guide CTA ─────────────────────────────────────────────── */}
-        <div id="web-guide" className={styles.pdfCta}>
-          <div className="container">
-            <div className={styles.pdfCtaInner}>
-              <div className={styles.pdfCtaBody}>
-                <h2 className={styles.pdfCtaTitle}>
-                  Quick playbook: selecting a web development partner [pdf]
-                </h2>
-                <p className={styles.pdfCtaDesc}>
-                  Get a free playbook that will help you find the right web development partner. No email required.
-                </p>
-              </div>
-              <a href="#" className={`btn btn-accent ${styles.pdfCtaBtn}`}>
-                <span className={styles.pdfIcon}>PDF</span>
-                Get in Touch
-              </a>
-            </div>
-          </div>
-        </div>
-
-        {/* ── Security ──────────────────────────────────────────────────── */}
+{/* ── Security ──────────────────────────────────────────────────── */}
         <section className={`${styles.blockLight} ${styles.securityBlock}`}>
           <div className="container">
             <h2 className={styles.sectionTitle}>
@@ -1007,7 +875,7 @@ export default function WebPage() {
             </div>
             <div className={styles.archImgWrap}>
               <Image
-                src="/web-app-development/04_Web-architecture-for-AI-powered-solutions.png"
+                src="/web-app-development/04_Web-architecture-for-AI-powered-solutions-clean.png"
                 alt="Web architecture for AI-powered solutions"
                 width={1200}
                 height={600}
@@ -1039,7 +907,7 @@ export default function WebPage() {
                     {m.label}
                   </button>
                 ))}
-                <a href="#web-engagement-models" className={styles.engModelLink}>
+                <a href="/engagement-models-process" className={styles.engModelLink}>
                   Engagement models
                   <span className={styles.engModelArrow} />
                 </a>

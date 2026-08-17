@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Header from "@/components/Header";
 import AdlcHero from "@/components/adlc/AdlcHero";
-import AdlcLogos from "@/components/adlc/AdlcLogos";
+import AipocLogos from "@/components/aipoc/AipocLogos";
 import AdlcVerticalTabs from "@/components/adlc/AdlcVerticalTabs";
 import AdlcDiagram from "@/components/adlc/AdlcDiagram";
 import AdlcValueCards from "@/components/adlc/AdlcValueCards";
@@ -30,7 +30,7 @@ export default function AdlcPage() {
       <main>
         <AdlcHero />
         <AdlcArticleLayout>
-          <AdlcLogos />
+          <AipocLogos />
           <AdlcVerticalTabs />
           <AdlcDiagram />
           <AdlcValueCards />

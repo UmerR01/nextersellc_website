@@ -56,9 +56,10 @@ interface Props {
 export default function ContactModal({ open, onClose }: Props) {
   const [sent, setSent] = useState(false);
   const [fileName, setFileName] = useState("");
+  const [status, setStatus] = useState<"idle" | "loading" | "error">("idle");
 
   useEffect(() => {
-    if (open) { setSent(false); setFileName(""); }
+    if (open) { setSent(false); setFileName(""); setStatus("idle"); }
   }, [open]);
 
   useEffect(() => {
@@ -141,49 +142,77 @@ export default function ContactModal({ open, onClose }: Props) {
                     Find out more about Nexterse LLC and our services
                   </p>
                   <ul className={styles.successFooterNav}>
-                    <li><a href="/team">About us</a></li>
-                    <li><a href="#faq">FAQ</a></li>
-                    <li><a href="#insights">Guides &amp; insights</a></li>
+                    <li><a href="/about-us">About us</a></li>
+                    <li><a href="/faq">FAQ</a></li>
+                    <li><a href="/library">Guides &amp; insights</a></li>
                   </ul>
                 </div>
               </div>
             ) : (
               <form
                 className={styles.form}
-                onSubmit={(e) => { e.preventDefault(); setSent(true); }}
+                onSubmit={async (e) => {
+                  e.preventDefault();
+                  setStatus("loading");
+                  try {
+                    const res = await fetch("/api/get-in-touch", {
+                      method: "POST",
+                      body: new FormData(e.currentTarget),
+                    });
+                    if (!res.ok) throw new Error("Request failed");
+                    setSent(true);
+                    setStatus("idle");
+                  } catch {
+                    setStatus("error");
+                  }
+                }}
               >
                 <label className={styles.field}>
                   <span className={styles.fieldLabel}>My Name*</span>
-                  <input type="text" name="name" placeholder="John Smith" required />
+                  <input type="text" name="name" placeholder="John Smith" required disabled={status === "loading"} />
                 </label>
                 <label className={styles.field}>
                   <span className={styles.fieldLabel}>Email Address*</span>
-                  <input type="email" name="email" placeholder="name@company.com" required />
+                  <input type="email" name="email" placeholder="name@company.com" required disabled={status === "loading"} />
                 </label>
                 <label className={`${styles.field} ${styles.fieldTextarea}`}>
                   <span className={styles.fieldLabel}>Message*</span>
-                  <textarea name="message" rows={3} placeholder="Describe your idea" required />
+                  <textarea name="message" rows={3} placeholder="Describe your idea" required disabled={status === "loading"} />
                 </label>
 
                 <p className={styles.privacy}>
                   Please be informed that when you click the Send button Nexterse LLC will process
                   your personal data in accordance with our{" "}
-                  <a href="#">Privacy notice</a> for the purpose of providing you with
+                  <a href="/privacy-policy">Privacy & Policy</a> for the purpose of providing you with
                   appropriate information.
                 </p>
 
                 <div className={styles.formBottom}>
-                  <label className={styles.attach}>
+                  <label className={`${styles.attach} ${status === "loading" ? styles.attachDisabled : ""}`}>
                     <ClipIcon />
-                    {fileName || "Attach file"}
+                    <span className={styles.attachText}>{fileName || "Attach file"}</span>
                     <input
                       type="file"
+                      name="file"
                       hidden
+                      disabled={status === "loading"}
                       onChange={(e) => setFileName(e.target.files?.[0]?.name ?? "")}
                     />
                   </label>
-                  <button type="submit" className={styles.sendBtn}>Send</button>
+                  <button
+                    type="submit"
+                    className={`${styles.sendBtn} ${status === "loading" ? styles.sendLoading : ""}`}
+                    disabled={status === "loading"}
+                    aria-busy={status === "loading"}
+                  >
+                    {status === "loading" ? <span className={styles.spinner} aria-hidden="true" /> : "Send"}
+                  </button>
                 </div>
+                {status === "error" && (
+                  <p className={styles.errorText}>
+                    Something went wrong. Please try again.
+                  </p>
+                )}
 
                 <div className={styles.manager}>
                   <div className={styles.managerInfo}>

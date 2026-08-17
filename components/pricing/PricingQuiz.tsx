@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState, type Dispatch, type SetStateAction } from "react";
+import { useState, type Dispatch, type SetStateAction } from "react";
 import styles from "./PricingQuiz.module.css";
 
 const OPTIONS = [
@@ -80,7 +80,7 @@ const CUSTOM_STEPS = [
   {
     kind: "checkbox",
     question: "Which platforms does your app need to support?",
-    options: ["Web", "Mobile", "Desktop", "IoT"],
+    options: ["Web", "Mobile", "Desktop"],
     other: true,
   },
   {
@@ -106,6 +106,15 @@ const CUSTOM_STEPS = [
 
 type Flow = "goal" | "ai" | "custom";
 
+function extractScore(option: string) {
+  const match = option.match(/\(Score:\s*(\d+)\)/);
+  return match ? Number(match[1]) : 0;
+}
+
+function isValidEmail(value: string) {
+  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
+}
+
 export default function PricingQuiz() {
   const [selected, setSelected] = useState<string | null>(null);
   const [flow, setFlow] = useState<Flow>("goal");
@@ -114,18 +123,102 @@ export default function PricingQuiz() {
   const [customAnswers, setCustomAnswers] = useState<Record<string, string | string[]>>({});
   const [isLoading, setIsLoading] = useState(false);
   const [isComplete, setIsComplete] = useState(false);
+  const [submitError, setSubmitError] = useState("");
 
   const isAi = flow === "ai";
   const totalSteps = isAi ? AI_STEPS.length : CUSTOM_STEPS.length;
 
-  useEffect(() => {
-    if (!isLoading) return;
-    const timer = window.setTimeout(() => {
-      setIsLoading(false);
+  const buildAiFields = () => {
+    const fields: { label: string; value: string }[] = [];
+    let score = 0;
+    let maxScore = 0;
+    AI_STEPS.forEach((step, i) => {
+      if (step.type !== "choice") return;
+      const answerIndex = answers[i];
+      const optionText = typeof answerIndex === "number" ? step.options[answerIndex] : undefined;
+      fields.push({ label: `Q${i + 1}. ${step.question}`, value: optionText ?? "-" });
+      if (optionText) score += extractScore(optionText);
+      maxScore += Math.max(...step.options.map(extractScore));
+    });
+    fields.push({ label: "Total score", value: `${score} / ${maxScore}` });
+    return fields;
+  };
+
+  const buildCustomFields = () => {
+    const fields: { label: string; value: string }[] = [];
+    CUSTOM_STEPS.forEach((step, i) => {
+      const key = `custom-${i}`;
+      if (step.kind === "radio") {
+        let value = customAnswers[key] as string | undefined;
+        if (value === "Other") value = (customAnswers[`${key}-other`] as string | undefined) || "Other";
+        fields.push({ label: step.question, value: value || "-" });
+      } else if (step.kind === "checkbox") {
+        const picked = Array.isArray(customAnswers[key]) ? (customAnswers[key] as string[]) : [];
+        const other = customAnswers[`${key}-other`] as string | undefined;
+        const combined = [...picked, ...(other ? [other] : [])];
+        fields.push({ label: step.question, value: combined.length ? combined.join(", ") : "-" });
+      } else if (step.kind === "textarea") {
+        fields.push({ label: step.question, value: (customAnswers[key] as string | undefined) || "-" });
+      } else if (step.kind === "organization") {
+        const priorities = Array.isArray(customAnswers.priorities) ? (customAnswers.priorities as string[]) : [];
+        const priorityOther = customAnswers.prioritiesOther as string | undefined;
+        const combinedPriorities = [...priorities, ...(priorityOther ? [priorityOther] : [])];
+        fields.push({ label: "Company type", value: (customAnswers.companyType as string | undefined) || "-" });
+        fields.push({ label: "Deadline", value: (customAnswers.deadline as string | undefined) || "-" });
+        fields.push({ label: "Budget", value: (customAnswers.budget as string | undefined) || "-" });
+        fields.push({ label: "Top priorities", value: combinedPriorities.length ? combinedPriorities.join(", ") : "-" });
+      }
+    });
+    return fields;
+  };
+
+  const submitAi = async () => {
+    const name = ((answers[5] as string | undefined) ?? "").trim();
+    const email = ((answers[6] as string | undefined) ?? "").trim();
+    if (!name || !email) {
+      setSubmitError("Please fill in your name and email.");
+      return;
+    }
+    setIsLoading(true);
+    setSubmitError("");
+    try {
+      const res = await fetch("/api/pricing", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ formName: "AI readiness assessment", name, email, fields: buildAiFields() }),
+      });
+      if (!res.ok) throw new Error("Request failed");
       setIsComplete(true);
-    }, 1200);
-    return () => window.clearTimeout(timer);
-  }, [isLoading]);
+    } catch {
+      setSubmitError("Something went wrong. Please try again.");
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  const submitCustom = async () => {
+    const name = ((customAnswers.contactName as string | undefined) ?? "").trim();
+    const email = ((customAnswers.contactEmail as string | undefined) ?? "").trim();
+    if (!name || !email) {
+      setSubmitError("Please fill in your name and email.");
+      return;
+    }
+    setIsLoading(true);
+    setSubmitError("");
+    try {
+      const res = await fetch("/api/pricing", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ formName: "Custom software development cost estimate", name, email, fields: buildCustomFields() }),
+      });
+      if (!res.ok) throw new Error("Request failed");
+      setIsComplete(true);
+    } catch {
+      setSubmitError("Something went wrong. Please try again.");
+    } finally {
+      setIsLoading(false);
+    }
+  };
 
   const handleGoalNext = () => {
     if (!selected) return;
@@ -135,6 +228,7 @@ export default function PricingQuiz() {
     setCustomAnswers({});
     setIsComplete(false);
     setIsLoading(false);
+    setSubmitError("");
   };
 
   const goPrev = () => {
@@ -142,24 +236,82 @@ export default function PricingQuiz() {
       setFlow("goal");
       setIsComplete(false);
       setIsLoading(false);
+      setSubmitError("");
       return;
     }
+    setSubmitError("");
     setCurrentStep((value) => value - 1);
   };
 
+  const getCurrentStepError = () => {
+    if (isAi) {
+      const step = AI_STEPS[currentStep];
+      if (step.type === "choice" && typeof answers[currentStep] !== "number") {
+        return "Please select an option to continue.";
+      }
+      if (step.type === "input") {
+        const value = ((answers[currentStep] as string | undefined) ?? "").trim();
+        if (!value) return step.field === "email" ? "Please enter your email." : "Please enter your name.";
+        if (step.field === "email" && !isValidEmail(value)) return "Please enter a valid email.";
+      }
+      return "";
+    }
+
+    const step = CUSTOM_STEPS[currentStep];
+    const key = `custom-${currentStep}`;
+    if (step.kind === "radio") {
+      const value = (customAnswers[key] as string | undefined) ?? "";
+      const other = ((customAnswers[`${key}-other`] as string | undefined) ?? "").trim();
+      if (!value) return "Please select an option to continue.";
+      if (value === "Other" && !other) return "Please enter your other option.";
+    }
+    if (step.kind === "checkbox") {
+      const picked = Array.isArray(customAnswers[key]) ? (customAnswers[key] as string[]) : [];
+      const other = ((customAnswers[`${key}-other`] as string | undefined) ?? "").trim();
+      if (!picked.length && !other) return "Please select at least one option to continue.";
+    }
+    if (step.kind === "textarea") {
+      const value = ((customAnswers[key] as string | undefined) ?? "").trim();
+      if (!value) return "Please enter your answer to continue.";
+    }
+    if (step.kind === "organization") {
+      const priorities = Array.isArray(customAnswers.priorities) ? (customAnswers.priorities as string[]) : [];
+      const priorityOther = ((customAnswers.prioritiesOther as string | undefined) ?? "").trim();
+      if (!((customAnswers.companyType as string | undefined) ?? "").trim()) return "Please choose your company type.";
+      if (!((customAnswers.deadline as string | undefined) ?? "").trim()) return "Please choose your deadline.";
+      if (!((customAnswers.budget as string | undefined) ?? "").trim()) return "Please enter your budget range.";
+      if (!priorities.length && !priorityOther) return "Please select at least one priority.";
+    }
+    if (step.kind === "contact") {
+      const name = ((customAnswers.contactName as string | undefined) ?? "").trim();
+      const email = ((customAnswers.contactEmail as string | undefined) ?? "").trim();
+      if (!name) return "Please enter your name.";
+      if (!email) return "Please enter your email.";
+      if (!isValidEmail(email)) return "Please enter a valid email.";
+    }
+    return "";
+  };
+
   const goNext = () => {
+    const stepError = getCurrentStepError();
+    if (stepError) {
+      setSubmitError(stepError);
+      return;
+    }
+    setSubmitError("");
     if (currentStep < totalSteps - 1) {
       setCurrentStep((value) => value + 1);
       return;
     }
     if (isAi) {
-      setIsLoading(true);
+      submitAi();
     } else {
-      setIsComplete(true);
+      submitCustom();
     }
   };
 
   const toggleCustom = (key: string, option: string) => {
+    setSubmitError("");
     setCustomAnswers((current) => {
       const existing = Array.isArray(current[key]) ? current[key] as string[] : [];
       const next = existing.includes(option) ? existing.filter((item) => item !== option) : [...existing, option];
@@ -217,7 +369,7 @@ export default function PricingQuiz() {
                   <input
                     type={step.field === "email" ? "email" : "text"}
                     value={(answers[currentStep] as string | undefined) ?? ""}
-                    onChange={(event) => setAnswers((current) => ({ ...current, [currentStep]: event.target.value }))}
+                    onChange={(event) => { setSubmitError(""); setAnswers((current) => ({ ...current, [currentStep]: event.target.value })); }}
                     placeholder={step.placeholder}
                     aria-label={step.placeholder}
                   />
@@ -238,7 +390,7 @@ export default function PricingQuiz() {
                           name={`readiness-question-${currentStep}`}
                           value={index}
                           checked={answers[currentStep] === index}
-                          onChange={() => setAnswers((current) => ({ ...current, [currentStep]: index }))}
+                          onChange={() => { setSubmitError(""); setAnswers((current) => ({ ...current, [currentStep]: index })); }}
                         />
                         <span>{option}</span>
                       </label>
@@ -249,6 +401,7 @@ export default function PricingQuiz() {
                   <button type="button" className={`${styles.assessmentBtn} ${styles.prevBtn}`} onClick={goPrev}>Prev</button>
                   <button type="button" className={`${styles.assessmentBtn} ${styles.assessmentNext}`} onClick={goNext}>{currentStep === totalSteps - 1 ? "Finish" : "Next"}</button>
                 </div>
+                {submitError && <p className={styles.submitError}>{submitError}</p>}
               </div>
             )}
           </div>
@@ -263,22 +416,25 @@ export default function PricingQuiz() {
     return (
       <section className={styles.section}>
         <div className="container">
-          <div className={`${styles.inner} ${styles.assessmentInner} ${step.kind === "organization" ? styles.orgInner : ""}`}>
+          <div className={`${styles.inner} ${styles.assessmentInner} ${step.kind === "organization" ? styles.orgInner : ""} ${isLoading ? styles.loadingInner : ""}`}>
             <div className={styles.assessmentCopy}>
               <div className={styles.eyebrow}>Custom software development cost</div>
               <h2 className={styles.assessmentTitle}>{step.question}</h2>
             </div>
+            {isLoading ? (
+              <div className={styles.loadingPanel} aria-label="Loading estimate result"><span /><span /><span /></div>
+            ) : (
             <div className={styles.assessmentPanel}>
               <div className={styles.progress}>Question {currentStep + 1} <span>/ {totalSteps}</span></div>
               {step.kind === "radio" ? (
                 <fieldset className={styles.answerList}>
                   {step.options.map((option) => (
                     <label key={option} className={styles.answerOption}>
-                      <input type="radio" name={key} checked={customAnswers[key] === option} onChange={() => setCustomAnswers((current) => ({ ...current, [key]: option }))} />
+                      <input type="radio" name={key} checked={customAnswers[key] === option} onChange={() => { setSubmitError(""); setCustomAnswers((current) => ({ ...current, [key]: option })); }} />
                       <span>{option}</span>
                     </label>
                   ))}
-                  {"other" in step && step.other ? <OtherField type="radio" name={key} value={customAnswers[`${key}-other`] as string | undefined} onChange={(value) => setCustomAnswers((current) => ({ ...current, [`${key}-other`]: value, [key]: "Other" }))} /> : null}
+                  {"other" in step && step.other ? <OtherField type="radio" name={key} value={customAnswers[`${key}-other`] as string | undefined} onChange={(value) => { setSubmitError(""); setCustomAnswers((current) => ({ ...current, [`${key}-other`]: value, [key]: "Other" })); }} /> : null}
                 </fieldset>
               ) : null}
               {step.kind === "checkbox" ? (
@@ -289,12 +445,12 @@ export default function PricingQuiz() {
                       <span>{option}</span>
                     </label>
                   ))}
-                  {"other" in step && step.other ? <OtherField type="checkbox" name={key} value={customAnswers[`${key}-other`] as string | undefined} onChange={(value) => setCustomAnswers((current) => ({ ...current, [`${key}-other`]: value }))} /> : null}
+                  {"other" in step && step.other ? <OtherField type="checkbox" name={key} value={customAnswers[`${key}-other`] as string | undefined} onChange={(value) => { setSubmitError(""); setCustomAnswers((current) => ({ ...current, [`${key}-other`]: value })); }} /> : null}
                 </fieldset>
               ) : null}
               {step.kind === "textarea" ? (
                 <div className={styles.textAnswer}>
-                  <textarea placeholder={step.placeholder} value={(customAnswers[key] as string | undefined) ?? ""} onChange={(event) => setCustomAnswers((current) => ({ ...current, [key]: event.target.value }))} />
+                  <textarea placeholder={step.placeholder} value={(customAnswers[key] as string | undefined) ?? ""} onChange={(event) => { setSubmitError(""); setCustomAnswers((current) => ({ ...current, [key]: event.target.value })); }} />
                 </div>
               ) : null}
               {step.kind === "organization" ? <OrganizationFields customAnswers={customAnswers} setCustomAnswers={setCustomAnswers} /> : null}
@@ -303,7 +459,9 @@ export default function PricingQuiz() {
                 <button type="button" className={`${styles.assessmentBtn} ${styles.prevBtn}`} onClick={goPrev}>Prev</button>
                 <button type="button" className={`${styles.assessmentBtn} ${styles.assessmentNext}`} onClick={goNext}>{currentStep === totalSteps - 1 ? "Finish" : "Next"}</button>
               </div>
+              {submitError && <p className={styles.submitError}>{submitError}</p>}
             </div>
+            )}
           </div>
         </div>
       </section>
@@ -321,7 +479,7 @@ export default function PricingQuiz() {
           <fieldset className={styles.fieldset}>
             {OPTIONS.map((opt) => (
               <div key={opt.id} className={styles.option}>
-                <input type="radio" id={opt.id} name="quiz" value={opt.id} checked={selected === opt.id} onChange={() => setSelected(opt.id)} />
+                <input type="radio" id={opt.id} name="quiz" value={opt.id} checked={selected === opt.id} onChange={() => { setSubmitError(""); setSelected(opt.id); }} />
                 <label htmlFor={opt.id}>{opt.label}</label>
               </div>
             ))}
@@ -401,11 +559,11 @@ function ContactFields({ customAnswers, setCustomAnswers }: { customAnswers: Rec
     <div className={styles.contactFields}>
       <label className={styles.selectField}>
         <span>Name</span>
-        <input value={(customAnswers.contactName as string | undefined) ?? ""} onChange={(event) => setCustomAnswers((current) => ({ ...current, contactName: event.target.value }))} placeholder="Your name" />
+        <input value={(customAnswers.contactName as string | undefined) ?? ""} onChange={(event) => setCustomAnswers((current) => ({ ...current, contactName: event.target.value }))} placeholder="Your name" required />
       </label>
       <label className={styles.selectField}>
         <span>Corporate email</span>
-        <input type="email" value={(customAnswers.contactEmail as string | undefined) ?? ""} onChange={(event) => setCustomAnswers((current) => ({ ...current, contactEmail: event.target.value }))} placeholder="Your email" />
+        <input type="email" value={(customAnswers.contactEmail as string | undefined) ?? ""} onChange={(event) => setCustomAnswers((current) => ({ ...current, contactEmail: event.target.value }))} placeholder="Your email" required />
       </label>
     </div>
   );

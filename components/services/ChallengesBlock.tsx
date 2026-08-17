@@ -15,7 +15,7 @@ const ITEMS = [
   {
     icon: "/services-page/04_Coordinated-system-architecture-04.svg",
     title: "Disconnected systems reduce visibility",
-    text: "We build integrations that connect CRM, ERP, analytics, IoT, financial, and operational platforms into a unified software environment. Leadership gets cleaner data, clearer reporting, and stronger control over business performance.",
+    text: "We build integrations that connect CRM, ERP, analytics, AI, financial, and operational platforms into a unified software environment. Leadership gets cleaner data, clearer reporting, and stronger control over business performance.",
   },
   {
     icon: "/services-page/05_Business-processes-automation-01.svg",

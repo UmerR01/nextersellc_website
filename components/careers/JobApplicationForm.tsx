@@ -134,7 +134,7 @@ export default function JobApplicationForm({ jobTitle }: { jobTitle: string }) {
             <textarea name="coverLetter" placeholder="Tell us why you’d be a great fit" rows={4} />
           </label>
           <div className={styles.singleAction}>
-            <button className={styles.submitButton} type="button" onClick={goToSecondStep}>Continue <span aria-hidden="true">→</span></button>
+            <button className={styles.submitButton} type="button" onClick={goToSecondStep}>Continue</button>
           </div>
         </div>
 
@@ -168,9 +168,9 @@ export default function JobApplicationForm({ jobTitle }: { jobTitle: string }) {
             <span>I accept the Nexterse <a href="/privacy-policy">privacy policy</a> and terms.</span>
           </label>
           <div className={styles.formFooter}>
-            <button className={styles.backButton} type="button" onClick={() => setStep(1)}>← Back</button>
+            <button className={styles.backButton} type="button" onClick={() => setStep(1)}>Back</button>
             <button className={styles.submitButton} type="submit" disabled={status === "loading"}>
-              {status === "loading" ? "Submitting…" : "Submit application"}<span aria-hidden="true">→</span>
+              {status === "loading" ? "Submitting…" : "Submit application"}
             </button>
           </div>
         </div>

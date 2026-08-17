@@ -1,5 +1,5 @@
 import { redirect } from "next/navigation";
 
 export default function AboutRedirect() {
-  redirect("/team");
+  redirect("/about-us");
 }

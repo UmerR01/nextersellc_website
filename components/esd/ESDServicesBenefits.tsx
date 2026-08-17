@@ -9,7 +9,7 @@ const BENEFITS = [
   {
     icon: "/esd/05_Business-processes-automation-01.svg",
     title: "Business processes automation",
-    desc: "We automate business operations, including payment flows, manufacturing processes, and internal workflows. For businesses that use connected devices, we also apply IoT to track events and automate steps across the operation.",
+    desc: "We automate business operations, including payment flows, manufacturing processes, and internal workflows. For businesses that use connected devices, we also apply AI to track events and automate steps across the operation.",
   },
   {
     icon: "/esd/05_Data-centralization-integration-03.svg",

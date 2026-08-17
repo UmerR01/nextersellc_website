@@ -17,7 +17,7 @@ const FAQ_ITEMS: FaqItem[] = [
   {
     question: "How does Nexterse LLC decide between SDLC and ADLC for my project?",
     answer:
-      "We match the lifecycle to the build. Standard products, web apps, mobile apps, IoT systems, and legacy modernization run on our traditional SDLC, with deterministic processes and senior-led teams. AI-led builds, such as agents, RAG systems, LLM applications, and governed AI deployments run on our ADLC, which adds gates for hallucination control, token modeling, red-teaming, and model governance. Mixed builds use both, and we recommend the fit during scoping.",
+      "We match the lifecycle to the build. Standard products, web apps, mobile apps, and legacy modernization run on our traditional SDLC, with deterministic processes and senior-led teams. AI-led builds, such as agents, RAG systems, LLM applications, and governed AI deployments run on our ADLC, which adds gates for hallucination control, token modeling, red-teaming, and model governance. Mixed builds use both, and we recommend the fit during scoping.",
   },
   {
     question: "What role does UI/UX design play in software product development?",

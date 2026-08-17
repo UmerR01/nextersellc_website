@@ -10,7 +10,6 @@ const CONTENTS = [
   { href: "#web-solutions", label: "Solutions" },
   { href: "#web-process", label: "Process" },
   { href: "#web-cases", label: "Case studies" },
-  { href: "#web-guide", label: "Free guide [pdf]" },
   { href: "#web-tech-stack", label: "Tech stack" },
   { href: "#web-industries", label: "Industries" },
   { href: "#web-approach", label: "Approach" },

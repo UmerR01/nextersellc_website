@@ -10,7 +10,7 @@ const FAQS = [
   },
   {
     q: "How big is Nexterse LLC?",
-    a: "Our team is 100+ specialists. 70% of our engineers are senior-level professionals with deep domain expertise across AI, IoT, and enterprise software.",
+    a: "Our team is 100+ specialists. 70% of our engineers are senior-level professionals with deep domain expertise across AI and enterprise software.",
   },
   {
     q: "Where is Nexterse LLC based?",
@@ -18,7 +18,7 @@ const FAQS = [
   },
   {
     q: "What does Nexterse LLC do?",
-    a: "We build custom software across six lines: AI and agentic systems, IoT and AIoT, custom and enterprise software, legacy modernization, MVP development for funded startups, and software product development. Across all six, we operate as the engineering partner who owns the build from discovery through launch.",
+    a: "We build custom software across five lines: AI and agentic systems, custom and enterprise software, legacy modernization, MVP development for funded startups, and software product development. Across all five, we operate as the engineering partner who owns the build from discovery through launch.",
   },
   {
     q: "What certifications does Nexterse LLC hold?",

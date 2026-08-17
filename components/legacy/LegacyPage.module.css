@@ -1183,63 +1183,6 @@
 
 .achNavBtn:hover { border-color: #3cc4e5; }
 
-/* ─── Citation ───────────────────────────────────────────────────────────── */
-.citeSection {
-  padding: 64px 0;
-  background: #f7f9fe;
-}
-
-.citeSlide {
-  display: grid;
-  grid-template-columns: 1fr 300px;
-  gap: 3rem;
-  align-items: center;
-}
-
-@media (max-width: 768px) {
-  .citeSlide { grid-template-columns: 1fr; gap: 24px; }
-}
-
-.citeText {
-  font-family: var(--font-inter-tight), "Inter Tight", sans-serif;
-  font-size: clamp(1.125rem, 1.5vw, 1.375rem);
-  line-height: 1.7;
-  color: #0b1734;
-  font-style: italic;
-  margin: 0;
-  position: relative;
-  padding-left: 24px;
-  border-left: 3px solid #3cc4e5;
-}
-
-.citeAuthor {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-}
-
-.citePhoto {
-  width: 80px;
-  height: 80px;
-  border-radius: 50%;
-  object-fit: cover;
-  flex-shrink: 0;
-}
-
-.citeName {
-  font-family: var(--font-inter-tight), "Inter Tight", sans-serif;
-  font-size: 1rem;
-  font-weight: 600;
-  color: #0b1734;
-  margin: 0 0 4px;
-}
-
-.citePos {
-  font-family: var(--font-inter-tight), "Inter Tight", sans-serif;
-  font-size: 0.875rem;
-  color: #5e6d8e;
-}
-
 /* ─── Case Solutions (Cost of legacy) ──────────────────────────────────── */
 .csSection {
   padding: 64px 0;

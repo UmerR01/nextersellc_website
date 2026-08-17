@@ -112,6 +112,10 @@
   filter: none;
 }
 
+.tab:hover .tabIcon {
+  filter: brightness(0) saturate(100%) invert(69%) sepia(61%) saturate(643%) hue-rotate(148deg) brightness(91%) contrast(91%);
+}
+
 @media (max-width: 768px) {
   .tabIcon {
     width: 40px;
@@ -132,6 +136,10 @@
 .tabActive .tabLabel {
   color: #3CC4E5;
   font-weight: 500;
+}
+
+.tab:hover .tabLabel {
+  color: var(--color-accent);
 }
 
 .content {

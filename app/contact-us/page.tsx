@@ -4,7 +4,7 @@ import ContactHero from "@/components/contact/ContactHero";
 import ContactFormSection from "@/components/contact/ContactFormSection";
 import AchievementsSlider from "@/components/contact/AchievementsSlider";
 import SlideDesk from "@/components/contact/SlideDesk";
-import VideoSection from "@/components/contact/VideoSection";
+// import VideoSection from "@/components/contact/VideoSection"; // disabled until real Nexterse LLC YouTube video is linked
 
 export const metadata: Metadata = {
   title: "Contact Nexterse LLC - Get a Free Project Quote",
@@ -20,7 +20,7 @@ export default function ContactUsPage() {
       <ContactFormSection />
       <AchievementsSlider />
       <SlideDesk />
-      <VideoSection />
+      {/* <VideoSection /> disabled until real Nexterse LLC YouTube video is linked */}
     </>
   );
 }

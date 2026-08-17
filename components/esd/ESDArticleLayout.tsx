@@ -9,7 +9,6 @@ const CONTENTS = [
   { href: "#ai-starts-with-data-readiness", label: "AI readiness audit" },
   { href: "#recent-works", label: "Case studies" },
   { href: "#enterprise-solution-built-for-your-industry", label: "Industries" },
-  { href: "#quick-playbook-selecting-an-enterprise-development-partner-pdf", label: "Free guide [pdf]" },
   { href: "#enterprise-software-development-approach", label: "Approach" },
   { href: "#our-expertise-in-tools-and-technologies", label: "Key tech stack" },
   { href: "#ai-first-security-posture", label: "AI-first security posture" },

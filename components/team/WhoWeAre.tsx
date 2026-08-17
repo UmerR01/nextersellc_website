@@ -17,10 +17,10 @@ export default function WhoWeAre() {
               <p>
                 Nexterse LLC is an AI-powered software development company for established companies
                 and enterprises, like Toyota, Beiersdorf, and the World Bank, that need custom AI
-                and IoT systems to enter new markets, ship new products, or modernize an existing
-                stack. Our work covers six lines: AI and agentic development, IoT and AIoT
-                solutions, custom and enterprise software, legacy modernization, MVP development,
-                and software product development. Across all six, we operate as the engineering
+                systems to enter new markets, ship new products, or modernize an existing
+                stack. Our work covers five lines: AI and agentic development,
+                custom and enterprise software, legacy modernization, MVP development,
+                and software product development. Across all five, we operate as the engineering
                 partner who owns the build from discovery through launch.
               </p>
               <p>

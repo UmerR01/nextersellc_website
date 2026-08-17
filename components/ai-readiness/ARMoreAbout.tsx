@@ -5,7 +5,7 @@ const LINKS = [
   { text: "AI consulting ", last: "services", href: "/ai-consulting" },
   { text: "Agentic Development Lifecycle ", last: "(ADLC)", href: "/adlc" },
   { text: "AI integration", last: "", href: "/services/ai-integration" },
-  { text: "About Nexterse LLC AI ", last: "expertise", href: "/team" },
+  { text: "About Nexterse LLC AI ", last: "expertise", href: "/about-us" },
 ];
 
 export default function ARMoreAbout() {

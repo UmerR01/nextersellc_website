@@ -195,7 +195,27 @@
   width: 100%;
   text-align: left;
 }
-.privacy a { color: var(--color-accent); }
+.privacy a {
+  color: var(--color-accent);
+  display: inline-block;
+  position: relative;
+  text-decoration: none;
+}
+
+.privacy a::after {
+  background: var(--color-accent);
+  bottom: -2px;
+  content: "";
+  height: 1px;
+  left: 0;
+  position: absolute;
+  transition: width 0.3s ease;
+  width: 0;
+}
+
+.privacy a:hover::after {
+  width: 100%;
+}
 
 /* File + Send row */
 .formBottom {
@@ -218,6 +238,27 @@
 }
 .attach:hover { text-decoration: none; }
 
+.attachText {
+  display: inline-block;
+  padding-bottom: 4px;
+  position: relative;
+}
+
+.attachText::after {
+  background: var(--color-text);
+  bottom: 0;
+  content: "";
+  height: 1px;
+  left: 0;
+  position: absolute;
+  transition: width 0.3s ease;
+  width: 0;
+}
+
+.attach:hover .attachText::after {
+  width: 100%;
+}
+
 .sendBtn {
   padding: 0.4rem 1.25rem;
   border: none;
@@ -234,6 +275,45 @@
   background: #fff;
   color: var(--color-accent); 
 
+}
+
+
+.attachDisabled {
+  opacity: 0.45;
+  pointer-events: none;
+}
+
+.sendLoading {
+  align-items: center;
+  display: inline-flex;
+  justify-content: center;
+  min-height: 42px;
+  min-width: 112px;
+  pointer-events: none;
+}
+
+.spinner {
+  animation: contactSpin 0.75s linear infinite;
+  border: 2px solid rgba(255, 255, 255, 0.35);
+  border-top-color: #fff;
+  border-radius: 50%;
+  display: block;
+  height: 24px;
+  width: 24px;
+}
+
+.errorText {
+  color: #ff415c;
+  font-size: 14px;
+  margin: 8px 0 0;
+  max-width: 632px;
+  width: 100%;
+}
+
+@keyframes contactSpin {
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 /* Manager / booking row */
@@ -436,3 +516,4 @@
   .wrapper { padding: 0; }
   .modal { min-height: 100vh; }
 }
+

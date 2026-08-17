@@ -171,8 +171,10 @@
 .arrowBox::before {
   content: "";
   position: absolute;
-  top: 11px;
-  width: 38px;
+  top: 50%;
+  transform: translateY(-50%);
+  border-radius: 999px;
+  width: 37px;
   height: 2px;
   background: var(--color-accent);
   transition: width 0.3s ease-in-out;
@@ -181,26 +183,26 @@
 .arrowBox::after {
   content: "";
   position: absolute;
-  top: 7px;
+  top: 50%;
   width: 10px;
   height: 10px;
   box-sizing: border-box;
-  border-bottom: 2px solid var(--color-accent);
   border-right: 2px solid var(--color-accent);
+  border-top: 2px solid var(--color-accent);
   transition: 0.3s ease-in-out;
 }
 
 .navNext .arrowBox::before { left: 1px; }
-.navNext .arrowBox::after { right: 3px; transform: rotate(-45deg); }
+.navNext .arrowBox::after { right: 3px; transform: translateY(-50%) rotate(45deg); }
 .navPrev .arrowBox::before { right: 1px; }
-.navPrev .arrowBox::after { left: 3px; transform: rotate(135deg); }
+.navPrev .arrowBox::after { left: 3px; transform: translateY(-50%) rotate(-135deg); }
 
 .navBtn:not(:disabled):hover .arrowBox::before { width: 42px; }
 .navNext:not(:disabled):hover .arrowBox::after { right: -3px; }
 .navPrev:not(:disabled):hover .arrowBox::after { left: -3px; }
 
-.navBtn:disabled .arrowBox::before { background: #b8c7d8; }
-.navBtn:disabled .arrowBox::after { border-color: #b8c7d8; }
+.navBtn:disabled .arrowBox::before { background: #899fb6; }
+.navBtn:disabled .arrowBox::after { border-color: #899fb6; }
 
 .arrowBoxSmall {
   transform: scale(0.75);
@@ -214,32 +216,4 @@
   .section {
     padding: 3.5rem 0 4rem;
   }
-}
-/* Reinforced requested arrow stretch/color fix */
-.navBtn:not(:disabled) .arrowBox::before {
-  background: var(--color-accent, #3cc4e5) !important;
-}
-
-.navBtn:not(:disabled) .arrowBox::after {
-  border-color: var(--color-accent, #3cc4e5) !important;
-}
-
-.navBtn:not(:disabled):hover .arrowBox::before {
-  width: 42px;
-}
-
-.navNext:not(:disabled):hover .arrowBox::after {
-  right: -3px;
-}
-
-.navPrev:not(:disabled):hover .arrowBox::after {
-  left: -3px;
-}
-
-.navBtn:disabled .arrowBox::before {
-  background: #b8c7d8 !important;
-}
-
-.navBtn:disabled .arrowBox::after {
-  border-color: #b8c7d8 !important;
 }

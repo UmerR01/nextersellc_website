@@ -140,7 +140,7 @@ export default function MvpHero() {
           Build the first release on the architecture you can keep. Nexterse LLC helps SaaS teams, enterprise product groups, and founders launch MVPs that test demand, prove technical fit, and set up the next phase without demo-only shortcuts.
         </p>
         <div className={s.heroPoints}>
-          <div className={s.heroPoint}>AI and IoT MVPs</div>
+          <div className={s.heroPoint}>AI-powered MVPs</div>
           <div className={s.heroPoint}>AI copilots, search, document workflows, and internal tools</div>
           <div className={s.heroPoint}>Dual-engine engineering</div>
         </div>

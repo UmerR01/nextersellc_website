@@ -8,7 +8,7 @@ const CONTENTS = [
   { href: "#svc-challenges", label: "Challenges" },
   { href: "#svc-services", label: "Services" },
   { href: "#svc-ai", label: "AI development" },
-  { href: "#svc-iot", label: "IoT and AIoT development" },
+  { href: "#svc-applied-ai", label: "Applied AI services" },
   { href: "#svc-industries", label: "Industries" },
   { href: "#svc-process", label: "Process" },
   { href: "#svc-techstack", label: "Core tech stack" },

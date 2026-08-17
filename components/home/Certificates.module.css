@@ -87,9 +87,11 @@
   display: block;
   height: 2px;
   position: absolute;
-  top: 11px;
+  top: 50%;
+  border-radius: 999px;
+  transform: translateY(-50%);
   transition: width 0.3s ease-in-out;
-  width: calc(100% - 2px);
+  width: calc(100% - 8px);
 }
 
 /* ── ::after — arrowhead (rotated square corner) ──
@@ -99,13 +101,13 @@
 .btnPrev::after,
 .btnNext::after {
   box-sizing: border-box;
-  border-bottom: 2px solid var(--color-accent);
   border-right: 2px solid var(--color-accent);
+  border-top: 2px solid var(--color-accent);
   content: "";
   display: block;
   height: 10px;
   position: absolute;
-  top: 7px;
+  top: 50%;
   transition: 0.3s ease-in-out;
   width: 10px;
 }
@@ -113,17 +115,17 @@
 /* Next arrow: tail left:1px, head right:3px rotate(-45deg) → pointing right
    (right:3px, not 2px — the rotated corner's tip lands ~1px past the box edge,
    so the head is nudged 1px further in to meet the tail's end exactly) */
-.btnNext::before { left: 1px; }
-.btnNext::after  { right: 3px; transform: rotate(-45deg); }
+.btnNext::before { left: 1px; width: 37px; }
+.btnNext::after  { right: 3px; transform: translateY(-50%) rotate(45deg); }
 
 /* Prev arrow: tail right:1px, head left:3px rotate(135deg) → pointing left */
-.btnPrev::before { right: 1px; }
-.btnPrev::after  { left: 3px; transform: rotate(135deg); }
+.btnPrev::before { right: 1px; width: 37px; }
+.btnPrev::after  { left: 3px; transform: translateY(-50%) rotate(-135deg); }
 
 /* ── Hover: tail grows, head shifts (same 1px correction carried through) ── */
-.btnNext:not(.disabled):hover::before { width: calc(100% + 4px); }
+.btnNext:not(.disabled):hover::before { width: 42px; }
 .btnNext:not(.disabled):hover::after  { right: -3px; }
-.btnPrev:not(.disabled):hover::before { width: calc(100% + 4px); }
+.btnPrev:not(.disabled):hover::before { width: 42px; }
 .btnPrev:not(.disabled):hover::after  { left: -3px; }
 
 /* ── Disabled state ── */
@@ -175,9 +177,9 @@
     bottom: auto;
     left: auto;
     transform: none;
-    flex: 0 0 32px;
-    width: 32px;
-    height: 20px;
+    flex: 0 0 40px;
+    width: 40px;
+    height: 24px;
     outline: none;
     box-shadow: none;
     background-color: transparent;
@@ -199,25 +201,8 @@
     background-color: transparent;
   }
 
-  .nav .btnPrev::before,
-  .nav .btnNext::before {
-    top: 9px;
-  }
-
-  .nav .btnPrev::after,
-  .nav .btnNext::after {
-    top: 6px;
-    width: 8px;
-    height: 8px;
-  }
-
   .slide {
     padding: 6px 4px;
   }
   .badge { height: clamp(56px, 10vw, 80px); }
-
-  .btnPrev::before,
-  .btnNext::before { width: calc(100% - 1px); }
-  .btnNext::after  { right: 2px; }
-  .btnPrev::after  { left: 2px; }
 }

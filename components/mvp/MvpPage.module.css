@@ -2166,7 +2166,13 @@
 .clSection {
   position: relative;
   overflow: hidden;
-  padding: clamp(64px, 6vw, 88px) 0;
+  padding: 5rem 0;
+}
+
+@media (max-width: 768px) {
+  .clSection {
+    padding: 4.5rem 0;
+  }
 }
 
 .clBg {

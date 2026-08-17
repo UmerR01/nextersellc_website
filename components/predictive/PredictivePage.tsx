@@ -2,25 +2,16 @@
 
 import { useState } from "react";
 import Image from "next/image";
-import CaseCards, { type CaseCard } from "@/components/home/CaseCards";
+import CaseCards from "@/components/home/CaseCards";
 import ServicesReviewSlider from "@/components/services/ServicesReviewSlider";
 import ServicesAchievements from "@/components/services/ServicesAchievements";
 import ServicesFaqBlock, { type FaqItem } from "@/components/services/ServicesFaqBlock";
 import LetsStart from "@/components/home/LetsStart";
 import AdlcBlog, { type AdlcFeaturedPost, type AdlcBlogPost } from "@/components/adlc/AdlcBlog";
 import PredictiveHero from "./PredictiveHero";
+import AipocLogos from "@/components/aipoc/AipocLogos";
 import PredictiveArticleLayout from "./PredictiveArticleLayout";
 import styles from "./PredictivePage.module.css";
-
-// ─── Client logos ─────────────────────────────────────────────────────────────
-const CLIENT_LOGOS = [
-  { src: "/predictive-maintenance/12_5c98e3297e3bc92bd580af14_toyota_l-1.svg", alt: "Toyota" },
-  { src: "/predictive-maintenance/12_5ecba50d2b50b63a7a1871ad_beiersdorf-logo-1.svg", alt: "Beiersdorf" },
-  { src: "/predictive-maintenance/01_ClimeCo.svg", alt: "ClimeCo" },
-  { src: "/predictive-maintenance/01_TL-Nika.svg", alt: "TL Nika" },
-  { src: "/predictive-maintenance/12_5ecce35506c123c4936b0303_dexai-logo-1.svg", alt: "Dexai" },
-  { src: "/predictive-maintenance/10_SMI_Logo-1-2-2.svg", alt: "SMI" },
-];
 
 // ─── Solutions we develop (8 cards) ───────────────────────────────────────────
 const SOLUTIONS = [
@@ -32,7 +23,7 @@ const SOLUTIONS = [
   {
     icon: "/predictive-maintenance/04_Cloud-based-predictive-analytics-platforms-02.svg",
     title: "Cloud-based predictive analytics platforms",
-    desc: "We build centralized AIoT platforms that aggregate telemetry across facilities and apply predictive models at scale.",
+    desc: "We build centralized AI platforms that aggregate telemetry across facilities and apply predictive models at scale.",
   },
   {
     icon: "/predictive-maintenance/04_Real-time-alerting-and-maintenance-orchestration-01.svg",
@@ -139,42 +130,6 @@ const CHALLENGES = [
   },
 ];
 
-// ─── Cases (4) ────────────────────────────────────────────────────────────────
-const PDM_CASES: CaseCard[] = [
-  {
-    banner: "/predictive-maintenance/12_Cover-2-1.png",
-    name: "Wind Farm PdM",
-    title: "IoT and ML predictive maintenance for a 28-turbine wind farm",
-    text: "A German operator runs 28 onshore turbines. Nexterse LLC built a predictive maintenance layer on top of the existing SCADA. Within 12 months, unplanned downtime fell by 38%, and availability rose to 97.7%.",
-    href: "/portfolio/ml-based-predictive-maintenance-for-wind-farm",
-    tags: ["IoT", "AI inside", "Enterprise"],
-  },
-  {
-    banner: "/predictive-maintenance/11_Cover-1-1.png",
-    name: "Industrial PdM",
-    title: "AI-powered predictive maintenance for a large industrial manufacturer",
-    text: "An AIoT upgrade that cut unplanned downtime by 50% within 8 months, adding explainable ML and context analysis to the existing IoT platform.",
-    href: "/portfolio/ai-powered-predictive-maintenance-for-a-large-industrial-manufacturer",
-    tags: ["IoT", "AI inside", "Enterprise"],
-  },
-  {
-    banner: "/predictive-maintenance/12_ClimaForesee-Cover-1-1.png",
-    name: "HVAC PdM",
-    title: "Predictive maintenance platform for HVAC systems",
-    text: "A cloud-based predictive maintenance solution that cut emergency HVAC repair costs by 45% for a U.S. real estate operator running 20 commercial buildings.",
-    href: "/portfolio/case-study-predictive-maintenance-platform-for-hvac-systems",
-    tags: ["IoT", "AI inside", "Enterprise"],
-  },
-  {
-    banner: "/predictive-maintenance/02_fridge-sensors-home-page-perspective-1.png",
-    name: "Fridge Sensors",
-    title: "Fridge sensors – internet of things application development",
-    text: "An IoT monitoring platform for HoReCa venues that reduced refrigerator-related food spoilage by ~25% and cut emergency maintenance calls by ~40% through real-time anomaly detection and HACCP-compliant automated temperature logging.",
-    href: "/portfolio/fridge-sensors",
-    tags: ["IoT"],
-  },
-];
-
 // ─── FAQ (7) ──────────────────────────────────────────────────────────────────
 const PDM_FAQ: FaqItem[] = [
   {
@@ -234,7 +189,7 @@ const TECH_TABS = [
     points: ["Vibration (MEMS, IEPE via gateways)", "Temperature", "Current (clamp-on CT sensors)", "Pressure", "Acoustic / ultrasound"],
   },
   {
-    label: "Industrial & IoT connectivity",
+    label: "Industrial & sensor connectivity",
     desc: "Chosen for coexistence with OT environments and unreliable networks.",
     points: ["MQTT", "HTTPS / REST", "OPC UA", "Modbus TCP / RTU", "Vendor-specific PLC interfaces (read-only)", "Wi-Fi", "LoRaWAN", "Bluetooth Low Energy"],
   },
@@ -246,7 +201,7 @@ const TECH_TABS = [
   {
     label: "Cloud & backend infrastructure",
     desc: "Designed for predictable cost and gradual scaling.",
-    points: ["AWS / Azure / GCP (cloud-agnostic architecture)", "IoT Core / custom ingestion services", "Object storage for raw signals", "Time-series databases: InfluxDB, TimescaleDB, Amazon Timestream"],
+    points: ["AWS / Azure / GCP (cloud-agnostic architecture)", "Custom data ingestion services", "Object storage for raw signals", "Time-series databases: InfluxDB, TimescaleDB, Amazon Timestream"],
   },
   {
     label: "Data processing & analytics",
@@ -374,7 +329,7 @@ const SECURITY = [
 const WHY_CARDS = [
   {
     icon: "/predictive-maintenance/04_Dual-engine-engineering-02.svg",
-    title: "Dual-engine engineering: software + AIoT in one system",
+    title: "Dual-engine engineering: software + applied AI in one system",
     desc: "We design predictive maintenance as a unified architecture – combining edge ML, cloud systems, and industrial data pipelines into one controlled environment.",
   },
   {
@@ -406,17 +361,17 @@ const WHY_CARDS = [
 
 // ─── Awesome stories (blog, clone content) ────────────────────────────────────
 const PDM_BLOG_FEATURED: AdlcFeaturedPost = {
-  href: "/blog/top-5-trends-in-the-iot-development",
-  title: "9 Trends in IoT Development for 2026 [Updated]",
+  href: "/blog/trends-in-ai-predictive-maintenance",
+  title: "9 Trends in AI-Powered Predictive Maintenance for 2026 [Updated]",
   image: "/predictive-maintenance/12_IoT-Trends-1024x578.png",
-  imageAlt: "IoT Trends",
+  imageAlt: "AI Predictive Maintenance Trends",
   readTime: "30 mins",
   date: "December 18, 2025",
 };
 const PDM_BLOG_SIDE: AdlcBlogPost[] = [
-  { href: "/blog/ai-powered-iot-overview", title: "What's AIoT: The Next Wave of Innovation", readTime: "27 mins", date: "February 27, 2026" },
-  { href: "/blog/aiot-in-manufacturing", title: "AIoT in Manufacturing: Real Cases, ROI, and a Pilot Playbook", readTime: "27 mins", date: "March 2, 2026" },
-  { href: "/blog/top-10-iot-development-companies", title: "Top IoT Development Companies in 2026", readTime: "21 mins", date: "December 30, 2025" },
+  { href: "/blog/applied-ai-predictive-maintenance-overview", title: "What's Applied AI: The Next Wave of Predictive Maintenance", readTime: "27 mins", date: "February 27, 2026" },
+  { href: "/blog/ai-in-manufacturing", title: "AI in Manufacturing: Real Cases, ROI, and a Pilot Playbook", readTime: "27 mins", date: "March 2, 2026" },
+  { href: "/blog/top-ai-predictive-maintenance-companies", title: "Top AI Predictive Maintenance Companies in 2026", readTime: "21 mins", date: "December 30, 2025" },
 ];
 
 // ─── Component ────────────────────────────────────────────────────────────────
@@ -431,16 +386,7 @@ export default function PredictivePage() {
       <PredictiveHero />
 
       <PredictiveArticleLayout>
-        {/* ── Client logos ─────────────────────────────────────────────────── */}
-        <section className={styles.logosSection}>
-          <div className="container">
-            <div className={styles.logosWrapper}>
-              {CLIENT_LOGOS.map((logo) => (
-                <Image key={logo.src} src={logo.src} alt={logo.alt} width={124} height={38} className={styles.logoImg} />
-              ))}
-            </div>
-          </div>
-        </section>
+        <AipocLogos />
 
         {/* ── Solutions we develop ───────────────────────────────────────── */}
         <section className={`${styles.blockWhite} ${styles.solutionsIntroBlock}`}>
@@ -490,13 +436,12 @@ export default function PredictivePage() {
         <div id="pdm-cases">
           <CaseCards
             heading={<>Our recent PdM <span>works</span></>}
-            cards={PDM_CASES}
             windowed
           />
         </div>
 
         {/* ── Reviews ────────────────────────────────────────────────────── */}
-        <ServicesReviewSlider />
+        <ServicesReviewSlider primary="ai" count={7} secondaryCount={2} />
 
         {/* ── FAQ ────────────────────────────────────────────────────────── */}
         <div id="pdm-faq">
@@ -544,7 +489,7 @@ export default function PredictivePage() {
             <div className={styles.inlineCtaInner}>
               <div>
                 <h2 className={styles.inlineCtaTitle}>Book a free consultation</h2>
-                <p className={styles.inlineCtaDesc}>Schedule a 30-minute call with a Senior IoT Architect to discuss your current infrastructure and predictive goals.</p>
+                <p className={styles.inlineCtaDesc}>Schedule a 30-minute call with a Senior AI Architect to discuss your current infrastructure and predictive goals.</p>
               </div>
               <a href="#get-modal-popup" className={`btn btn-accent ${styles.inlineCtaBtn}`}>Get in Touch</a>
             </div>

@@ -299,6 +299,79 @@
   color: #fff;
 }
 
+
+.attachDisabled {
+  opacity: 0.45;
+  pointer-events: none;
+}
+
+.sendLoading {
+  background: var(--color-accent);
+  border-color: var(--color-accent);
+  color: #fff;
+  align-items: center;
+  display: inline-flex;
+  justify-content: center;
+  min-height: 42px;
+  min-width: 174px;
+  pointer-events: none;
+}
+
+.spinner {
+  animation: letsStartSpin 0.75s linear infinite;
+  border: 2px solid rgba(255, 255, 255, 0.35);
+  border-top-color: #fff;
+  border-radius: 50%;
+  display: block;
+  height: 24px;
+  width: 24px;
+}
+
+.success {
+  align-items: center;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 360px;
+  padding-top: clamp(2rem, 5vw, 5rem);
+  text-align: center;
+}
+
+.successIcon {
+  color: #fff;
+  margin-bottom: 2rem;
+}
+
+.successTitle {
+  color: #fff;
+  font-family: var(--font-inter-tight), sans-serif;
+  font-size: clamp(3rem, 5vw, 3.6rem);
+  font-weight: 600;
+  line-height: 1.1;
+  margin: 0 0 1.4rem;
+}
+
+.successText {
+  color: #fff;
+  font-size: 1.4rem;
+  font-weight: 700;
+  line-height: 1.35;
+  margin: 0;
+}
+
+.errorText {
+  color: #ff415c;
+  font-size: 14px;
+  margin: 8px 0 0 133px;
+}
+
+@keyframes letsStartSpin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
 .manager {
   align-items: center;
   border-top: 1px solid rgba(255, 255, 255, 0.14);
@@ -411,7 +484,8 @@
 
   .privacy,
   .bottom,
-  .manager {
+  .manager,
+  .errorText {
     margin-left: 0;
     max-width: none;
     width: 100%;
@@ -450,7 +524,9 @@
     width: 100%;
   }
 
-  .manager {
+  
+
+.manager {
     align-items: flex-start;
     flex-direction: column;
   }
@@ -460,5 +536,6 @@
     white-space: normal;
   }
 }
+
 
 

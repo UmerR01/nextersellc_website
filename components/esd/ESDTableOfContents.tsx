@@ -7,7 +7,6 @@ const TOC_ITEMS = [
   { label: "AI readiness audit", id: "ai-starts-with-data-readiness" },
   { label: "Case studies", id: "recent-works" },
   { label: "Industries", id: "enterprise-solution-built-for-your-industry" },
-  { label: "Free guide [pdf]", id: "quick-playbook-selecting-an-enterprise-development-partner-pdf" },
   { label: "Approach", id: "enterprise-software-development-approach" },
   { label: "Key tech stack", id: "our-expertise-in-tools-and-technologies" },
   { label: "AI-first security posture", id: "ai-first-security-posture" },

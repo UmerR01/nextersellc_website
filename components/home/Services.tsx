@@ -12,7 +12,7 @@ const TABS = [
   {
     title: "Applied AI and GenAI systems",
     description:
-      "We engineer governed AI systems. Using our proprietary Agentic Development Lifecycle (ADLC), we design secure, production-ready AI architectures that operate inside enterprise guardrails - with hallucination control, token modeling, red-teaming, and strict access governance.",
+      "We engineer governed AI systems. Using our proprietary Agentic Development Lifecycle (ADLC), we design secure, production-ready AI architectures that operate inside enterprise guardrails, with hallucination control, token modeling, red-teaming, and strict access governance.",
     points: [
       "Enterprise RAG systems",
       "Custom copilots & AI assistants",
@@ -40,7 +40,7 @@ const TABS = [
   {
     title: "AI-powered software development",
     description:
-      "We design and build scalable, high-performance software engineered for long-term stability and growth. From MVPs to complex enterprise platforms, we deliver structured architectures, clean codebases, and predictable development timelines - accelerated by our internal AI-augmented engineering.",
+      "We design and build scalable, high-performance software engineered for long-term stability and growth. From MVPs to complex enterprise platforms, we deliver structured architectures, clean codebases, and predictable development timelines, accelerated by our internal AI-augmented engineering.",
     points: [
       "Architecture validation",
       "Code generation and review",

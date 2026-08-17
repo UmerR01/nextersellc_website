@@ -10,8 +10,8 @@ export const FAQ_PANELS: FAQPanel[] = [
       {
         q: "How would you briefly describe Nexterse LLC?",
         a: `<p>Nexterse LLC is an AI-powered custom software development company. We operate as a dual-engine engineering firm: we build stable, scalable custom software under a structured SDLC, and we engineer governed AI systems under our Agentic Development Lifecycle (ADLC). Our focus is on engineering you can audit – predictable timelines, clean architectures, and AI that operates inside enterprise guardrails. We have delivered 350+ custom software products across 20+ industries over 14+ years on the market.</p>
-<p><a href="/portfolio">View our case studies</a></p>
-<p><a href="/testimonials">Read Clients' testimonials</a></p>`,
+<p>View our case studies</p>
+<p>Read Clients' testimonials</p>`,
       },
       {
         q: `What does "dual-engine engineering firm" mean in practice?`,
@@ -23,7 +23,7 @@ export const FAQ_PANELS: FAQPanel[] = [
       },
       {
         q: "What is your track record – projects, industries, satisfaction, geography?",
-        a: `<p>We have been on the market for 14+ years and have delivered 350+ custom software products across 20+ industries, with a 98% Client satisfaction rate and Clients in 26 countries. Our deepest experience is in healthcare, education, retail and ecommerce, manufacturing and energy, logistics and transportation, professional services, and marketing. You can browse <a href="/portfolio">case studies</a> and <a href="/testimonials">Client testimonials</a> for examples in your sector.</p>`,
+        a: `<p>We have been on the market for 14+ years and have delivered 350+ custom software products across 20+ industries, with a 98% Client satisfaction rate and Clients in 26 countries. Our deepest experience is in healthcare, education, retail and ecommerce, manufacturing and energy, logistics and transportation, professional services, and marketing. You can browse case studies and Client testimonials for examples in your sector.</p>`,
       },
       {
         q: "Where is your team located and how do time zones work?",
@@ -57,7 +57,7 @@ export const FAQ_PANELS: FAQPanel[] = [
       {
         q: "What pricing models do you offer?",
         a: `<p>Yes, we offer various pricing models, including <strong>Fixed price, Time &amp; Materials (T&amp;M), T&amp;M with budget cap, dedicated team models</strong>, to fit different budgets and project scopes.</p>
-<p>More about <a href="/engagement-models-process">engagement models you can find here</a>.</p>`,
+<p>More about engagement models you can find here.</p>`,
       },
       {
         q: "Can you give a fixed-price bid for the whole project?",
@@ -96,7 +96,7 @@ export const FAQ_PANELS: FAQPanel[] = [
       },
       {
         q: "What ongoing monthly AI/cloud infrastructure costs should we expect?",
-        a: `<p>Monthly cost depends on usage volume, model choice, infrastructure topology, and how much data flows through the system. During discovery, we model projected monthly token consumption, infrastructure cost under different load scenarios, and the cost per interaction so leadership receives a total cost of ownership projection before committing to rollout. Costs are then controlled in production through prompt optimization, model selection (smaller models or private SLMs, where appropriate), caching strategies, and architectural decisions such as edge filtering for IoT use cases.</p>`,
+        a: `<p>Monthly cost depends on usage volume, model choice, infrastructure topology, and how much data flows through the system. During discovery, we model projected monthly token consumption, infrastructure cost under different load scenarios, and the cost per interaction so leadership receives a total cost of ownership projection before committing to rollout. Costs are then controlled in production through prompt optimization, model selection (smaller models or private SLMs, where appropriate), caching strategies, and architectural decisions such as edge filtering for high-frequency sensor use cases.</p>`,
       },
       {
         q: "Are there hidden costs we should expect (support, deployment, third-party tools)?",
@@ -266,7 +266,7 @@ export const FAQ_PANELS: FAQPanel[] = [
       },
       {
         q: "When do you apply SDLC, and when do you apply ADLC?",
-        a: `<p>SDLC governs deterministic systems where the same input must always produce the same output – transactional core systems, ERPs, web apps, IoT control logic, anything where reliability comes from rules. ADLC governs probabilistic AI systems where outputs are generated from context – copilots, RAG, agentic workflows and custom models. In mixed projects, the AI layer runs under ADLC and connects to the deterministic core (built under SDLC) through controlled APIs and middleware. The choice is per component, not per project.</p>`,
+        a: `<p>SDLC governs deterministic systems where the same input must always produce the same output – transactional core systems, ERPs, web apps, and legacy modernization, anything where reliability comes from rules. ADLC governs probabilistic AI systems where outputs are generated from context – copilots, RAG, agentic workflows and custom models. In mixed projects, the AI layer runs under ADLC and connects to the deterministic core (built under SDLC) through controlled APIs and middleware. The choice is per component, not per project.</p>`,
       },
       {
         q: "What are the four AI ROI tiers and which one fits us?",
@@ -429,45 +429,45 @@ export const FAQ_PANELS: FAQPanel[] = [
   },
   {
     id: 7,
-    tab: "IoT / AIoT",
-    title: "IoT / AIoT",
+    tab: "Applied AI / Predictive Maintenance",
+    title: "Applied AI / Predictive Maintenance",
     questions: [
       {
-        q: "What is AIoT and how is it different from traditional IoT?",
-        a: `<p>Traditional IoT collects sensor data and routes it to dashboards for human interpretation. AIoT combines IoT with embedded AI – predictive maintenance, anomaly detection, automated decision-making – so the system can react in real time without waiting for a person to look at a chart. Edge AI runs models close to the device for low-latency response, and the cloud layer handles training, retraining, and cross-fleet analytics. The result is a proactive, intelligent system rather than a reactive monitoring tool.</p>`,
+        q: "What is applied AI and how is it different from traditional monitoring dashboards?",
+        a: `<p>Traditional monitoring collects sensor data and routes it to dashboards for human interpretation. Applied AI combines that operational data with embedded AI – predictive maintenance, anomaly detection, automated decision-making – so the system can react in real time without waiting for a person to look at a chart. Edge AI runs models close to the equipment for low-latency response, and the cloud layer handles training, retraining, and cross-fleet analytics. The result is a proactive, intelligent system rather than a reactive monitoring tool.</p>`,
       },
       {
-        q: "Should we go edge computing or cloud for our IoT deployment?",
+        q: "Should we go edge computing or cloud for our AI deployment?",
         a: `<p>Most asset-heavy deployments are hybrid. Edge handles latency-sensitive logic, offline operation, and bandwidth control – process telemetry close to the source, run lightweight inference, and only push events and aggregated signals upstream. Cloud handles training, fleet-wide analytics, long-term storage, and orchestration. The split depends on connectivity reliability, latency requirements, and the payback math on edge hardware. We typically validate the architecture against your specific deployment profile during discovery before committing to a topology.</p>`,
       },
       {
-        q: "How do you connect LLMs to live IoT telemetry without unreliable answers?",
+        q: "How do you connect LLMs to live operational telemetry without unreliable answers?",
         a: `<p>We do not let an LLM infer answers from raw sensor streams alone. First, telemetry is filtered, structured, validated, and mapped to trusted records, time-series storage, asset metadata, and operational context. Then we place retrieval and validation layers between the model and the data source, so each answer remains tied to system facts rather than relying solely on pattern matching.</p>`,
       },
       {
-        q: "How do you run ML models on low-power IoT devices?",
+        q: "How do you run ML models on low-power edge hardware?",
         a: `<p>We adapt models for constrained environments through compression and quantization. The final model may run on a gateway or a more capable embedded device, depending on memory limits, power budget, response-time targets, and available compute resources.</p>`,
       },
       {
-        q: "What happens if the IoT site loses internet connectivity?",
+        q: "What happens if a remote site loses internet connectivity?",
         a: `<p>Critical logic can continue running locally. We design offline-capable architectures in which edge or gateway components keep processing telemetry and applying local rules even when cloud access is unavailable. Once connectivity returns, buffered data syncs upstream.</p>`,
       },
       {
-        q: "How do you integrate IoT into existing ERP / SCADA / MES?",
-        a: `<p>Integration with existing enterprise systems, such as ERP or CRM, is achieved through <strong>APIs, middleware, or custom integration services,</strong> ensuring seamless connectivity and data flow between IoT solutions and these systems.</p>
-<p>This approach creates a data pipeline that collects, filters and transforms information from IoT devices into a format compatible with your core business software. For example, sensor data indicating a machine needs service can automatically trigger a maintenance ticket in your ERP system. For brownfield environments, we add gateway integration and protocol translation (Modbus, RS-232, Siemens, Fanuc) so legacy equipment participates without being replaced.</p>
+        q: "How do you integrate operational data into existing ERP / SCADA / MES?",
+        a: `<p>Integration with existing enterprise systems, such as ERP or CRM, is achieved through <strong>APIs, middleware, or custom integration services,</strong> ensuring seamless connectivity and data flow between our AI solutions and these systems.</p>
+<p>This approach creates a data pipeline that collects, filters and transforms information from connected sensors and equipment into a format compatible with your core business software. For example, sensor data indicating a machine needs service can automatically trigger a maintenance ticket in your ERP system. For brownfield environments, we add gateway integration and protocol translation (Modbus, RS-232, Siemens, Fanuc) so legacy equipment participates without being replaced.</p>
 <p>The goal is to seamlessly enrich your enterprise workflows with real-time operational data, automating processes as well as enabling smarter decision-making.</p>`,
       },
       {
-        q: "Can AIoT work with legacy industrial equipment?",
+        q: "Can applied AI work with legacy industrial equipment?",
         a: `<p>Yes. In many projects, replacing the equipment is not the first step. We connect legacy assets through gateways and protocol translation layers, then normalize their data into a modern software stack. This allows older machines to take part in monitoring, prediction, automation, and alerting flows.</p>`,
       },
       {
-        q: "Will cloud processing make high-frequency IoT too expensive?",
+        q: "Will cloud processing make high-frequency sensor data too expensive?",
         a: `<p>Not if the architecture filters data before it reaches the cloud. High-frequency telemetry should not be pushed upstream raw. We design edge pipelines that filter noise, normalize, compress, and process data at the edge – only events that matter, state changes, aggregated summaries, and system signals move to the cloud. This reduces cloud traffic, storage load, and latency, and keeps operational cost predictable as fleets scale.</p>`,
       },
       {
-        q: "How do you protect the IoT system from spoofed devices and false telemetry?",
+        q: "How do you protect the system from spoofed devices and false telemetry?",
         a: `<p>We build device trust into the architecture. Every device or gateway authenticates with a unique identity, typically backed by certificate-based authentication; communication is signed and encrypted in transit; and ingestion layers enforce trust rules so the platform only accepts data from authenticated, registered devices. Suspicious or unsigned telemetry is rejected or quarantined for review rather than entering the analytics pipeline.</p>`,
       },
     ],
@@ -509,12 +509,12 @@ export const FAQ_PANELS: FAQPanel[] = [
     title: "Industries & references",
     questions: [
       {
-        q: "Which industries do you have the deepest AI and IoT experience in?",
-        a: `<p>We have delivered software across 20+ industries; our deepest AI and IoT experience is in:</p>
+        q: "Which industries do you have the deepest AI experience in?",
+        a: `<p>We have delivered software across 20+ industries; our deepest AI experience is in:</p>
 <ul>
-<li><strong>Healthcare</strong> – clinical platforms, patient portals, IoT-enabled monitoring, HIPAA-aware AI assistants for clinical documentation and trial matching.</li>
+<li><strong>Healthcare</strong> – clinical platforms, patient portals, connected patient monitoring, HIPAA-aware AI assistants for clinical documentation and trial matching.</li>
 <li><strong>Fintech and insurance</strong> – secure platforms with governed AI for underwriting support, regulatory document retrieval, fraud analytics, and policy summarization.</li>
-<li><strong>Manufacturing and energy</strong> – IoT and predictive maintenance platforms with AI for sensor analysis and anomaly detection in industrial environments.</li>
+<li><strong>Manufacturing and energy</strong> – predictive maintenance platforms with AI for sensor analysis and anomaly detection in industrial environments.</li>
 <li><strong>Logistics and transportation</strong> – TMS and supply chain platforms with AI-driven forecasting, document retrieval, and ERP-integrated agents.</li>
 <li><strong>Retail and ecommerce</strong> – commerce platforms with AI-powered forecasting, customer service automation, and behavioral analytics.</li>
 <li><strong>Education, professional services, engineering &amp; construction, marketing</strong> – additional verticals with specific AI and platform engagements.</li>

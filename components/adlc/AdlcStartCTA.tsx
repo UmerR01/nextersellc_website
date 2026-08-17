@@ -12,7 +12,7 @@ export default function AdlcStartCTA() {
             </div>
           </div>
           <div className={styles.right}>
-            <a href="#contact" className={`btn btn-accent ${styles.btn}`}>
+            <a href="#get-modal-popup" className={`btn btn-accent ${styles.btn}`}>
               Book a call
             </a>
           </div>

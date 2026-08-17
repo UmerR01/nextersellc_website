@@ -62,7 +62,7 @@
 }
 
 .logo {
-  max-height: 38px;
+  max-height: 100px;
   width: auto;
   max-width: 320px;
   object-fit: contain;

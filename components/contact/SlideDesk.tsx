@@ -2,7 +2,7 @@ import styles from "./SlideDesk.module.css";
 
 const LINKS = [
   { label: "Browse all services", href: "/services" },
-  { label: "A closer look at who we are", href: "/team" },
+  { label: "A closer look at who we are", href: "/about-us" },
   { label: "See our work before reaching out", href: "/case-studies" },
   { label: "Read what our Clients say", href: "/testimonials" },
   { label: "Customer reviews on Clutch", href: "https://clutch.co/profile/nexterse#reviews", external: true },

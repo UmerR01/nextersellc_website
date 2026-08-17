@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Image from "next/image";
-import CaseCards, { type CaseCard } from "@/components/home/CaseCards";
+import CaseCards from "@/components/home/CaseCards";
 import ServicesReviewSlider from "@/components/services/ServicesReviewSlider";
 import ServicesAchievements, { type Badge } from "@/components/services/ServicesAchievements";
 import ServicesFaqBlock, { type FaqItem } from "@/components/services/ServicesFaqBlock";
@@ -11,7 +11,6 @@ import AdlcBlog, { type AdlcFeaturedPost, type AdlcBlogPost } from "@/components
 import AipocHero from "./AipocHero";
 import AipocLogos from "./AipocLogos";
 import AipocTechLogos from "./AipocTechLogos";
-import AipocCitation from "./AipocCitation";
 import AipocCrosslinks from "./AipocCrosslinks";
 import AipocArticleLayout from "./AipocArticleLayout";
 import styles from "./AipocPage.module.css";
@@ -86,48 +85,7 @@ const COMPARE_ROWS = [
 ];
 
 // ─── Cases (5, clone content) ─────────────────────────────────────────────────
-const AIP_CASES: CaseCard[] = [
-  {
-    banner: "/aipoc-development/06_Cover-right-1-1.png",
-    name: "E-learning",
-    title: "An AI PoC for an online learning platform",
-    text: "An online learning platform faced rising grading load and flat completion. In four weeks, Nexterse LLC proved ML could grade open answers at human-comparable accuracy and personalize learning paths. The client then moved to a full build.",
-    href: "/portfolio/ai-proof-of-concept-for-an-online-learning-platform",
-    tags: ["SMBs", "AI inside"],
-  },
-  {
-    banner: "/aipoc-development/04_Cover-1-1.png",
-    name: "Insurance",
-    title: "AI readiness assessment for an insurance company",
-    text: "An AI readiness assessment for a European insurance group that identified up to 35% projected cost reduction in claims processing, with two use cases launched in a pilot across three business units.",
-    href: "/portfolio/ai-readiness-assessment-for-insurance-company",
-    tags: ["AI inside", "Enterprise"],
-  },
-  {
-    banner: "/aipoc-development/10_Cover-2-1.png",
-    name: "Dental imaging",
-    title: "AI patient-flow platform for dental imaging",
-    text: "A HIPAA-aligned AI platform for a dental imaging provider that reduced wait times by 37%, increased daily throughput by 22%, and lowered no-shows by 29%.",
-    href: "/portfolio/hipaa-compliant-ai-powered-patient-management-platform-for-a-dental-imaging-provider",
-    tags: ["AI inside", "Enterprise"],
-  },
-  {
-    banner: "/aipoc-development/06_Cover-right-1.png",
-    name: "Legal",
-    title: "Contract review multi-agent platform for a law firm",
-    text: "A multi-agent platform that extracts, scores, and redlines contract clauses against the firm’s own precedent, with attorney review at every step.",
-    href: "/portfolio/contract-review-multi-agent-platform",
-    tags: ["AI inside", "Enterprise"],
-  },
-  {
-    banner: "/aipoc-development/04_Cover-1.png",
-    name: "Real estate",
-    title: "RAG-based knowledge platform for a commercial real estate operator",
-    text: "An internal RAG platform that cut operational retrieval time by 45% across 18 commercial properties. It unifies lease, vendor, maintenance, and compliance documentation into one retrieval layer with citation-based answers and role-based access.",
-    href: "/portfolio/case-study-rag-based-knowledge-platform-for-a-commercial-real-estate-operator",
-    tags: ["AI inside", "Enterprise"],
-  },
-];
+
 
 // ─── Deliverables (vertical tabs) ─────────────────────────────────────────────
 const DELIVERABLES = [
@@ -183,15 +141,6 @@ const WHY_CARDS = [
   { icon: "/aipoc-development/01_Workflow-management-systems.svg", title: "Workflows are human-led but AI-executed." },
 ];
 
-// ─── Compliance badge strip ───────────────────────────────────────────────────
-const COMPLIANCE_BADGES = [
-  { src: "/aipoc-development/05_pci.svg", alt: "PCI" },
-  { src: "/aipoc-development/05_owasp.svg", alt: "OWASP" },
-  { src: "/aipoc-development/05_iso.svg", alt: "ISO" },
-  { src: "/aipoc-development/05_hipaa.svg", alt: "HIPAA" },
-  { src: "/aipoc-development/05_gdpr.svg", alt: "GDPR" },
-  { src: "/aipoc-development/05_fisma.svg", alt: "FISMA" },
-];
 
 // ─── Tech stack (4 cards) ─────────────────────────────────────────────────────
 const TECH = [
@@ -216,18 +165,18 @@ const AIP_FAQ: FaqItem[] = [
 
 // ─── Awards (clone badges) ────────────────────────────────────────────────────
 const AIP_BADGES: Badge[] = [
-  { src: "/aipoc-development/06_techreviewer_badge_2026-03.svg", alt: "techreviewer.co 2026 — Top AI PoC Development Companies" },
-  { src: "/aipoc-development/05_top_clutch.co_artificial_intelligence_company_boston_2026-2.svg", alt: "Clutch 2026 — Top Artificial Intelligence Company in Boston" },
-  { src: "/aipoc-development/06_techreviewer_badge_2026-01.svg", alt: "techreviewer.co 2026 — Top AI Consulting Companies" },
-  { src: "/aipoc-development/06_techreviewer_badge_2026-02.svg", alt: "techreviewer.co 2026 — Top AI Readiness Assessment Companies" },
-  { src: "/aipoc-development/05_top_clutch.co_generative_ai_company_boston_2026-2.svg", alt: "Clutch 2026 — Top Generative AI Company in Boston" },
-  { src: "/aipoc-development/06_top-ai-development-companies.svg", alt: "GoodFirms — Top AI Development Company" },
-  { src: "/aipoc-development/06_techreviewer_badge_2026-04.svg", alt: "techreviewer.co 2026 — Top AI Software Development Companies" },
-  { src: "/aipoc-development/06_techreviewer_badge_2026-16.svg", alt: "techreviewer.co 2026 — Top AI Integration Companies" },
-  { src: "/aipoc-development/06_techreviewer_badge_2026-05.svg", alt: "techreviewer.co 2026 — Top AI Agents Development Companies" },
-  { src: "/aipoc-development/06_techreviewer_badge_2026-06.svg", alt: "techreviewer.co 2026 — Top RAG Development Companies" },
-  { src: "/aipoc-development/06_techreviewer_badge_2026-07.svg", alt: "techreviewer.co 2026 — Top LLM Development Companies" },
-  { src: "/aipoc-development/06_techreviewer_badge_2026-15.svg", alt: "techreviewer.co 2026 — Top GenAI Development Companies" },
+  { src: "/badges_fix/06_techreviewer_badge_2026-03.svg", alt: "techreviewer.co 2026 — Top AI PoC Development Companies" },
+  { src: "/badges_fix/05_top_clutch.co_artificial_intelligence_company_boston_2026-2.svg", alt: "Clutch 2026 — Top Artificial Intelligence Company in Boston" },
+  { src: "/badges_fix/06_techreviewer_badge_2026-01.svg", alt: "techreviewer.co 2026 — Top AI Consulting Companies" },
+  { src: "/badges_fix/06_techreviewer_badge_2026-02.svg", alt: "techreviewer.co 2026 — Top AI Readiness Assessment Companies" },
+  { src: "/badges_fix/05_top_clutch.co_generative_ai_company_boston_2026-2.svg", alt: "Clutch 2026 — Top Generative AI Company in Boston" },
+  { src: "/badges_fix/06_top-ai-development-companies.svg", alt: "GoodFirms — Top AI Development Company" },
+  { src: "/badges_fix/06_techreviewer_badge_2026-04.svg", alt: "techreviewer.co 2026 — Top AI Software Development Companies" },
+  { src: "/badges_fix/06_techreviewer_badge_2026-16.svg", alt: "techreviewer.co 2026 — Top AI Integration Companies" },
+  { src: "/badges_fix/06_techreviewer_badge_2026-05.svg", alt: "techreviewer.co 2026 — Top AI Agents Development Companies" },
+  { src: "/badges_fix/06_techreviewer_badge_2026-06.svg", alt: "techreviewer.co 2026 — Top RAG Development Companies" },
+  { src: "/badges_fix/06_techreviewer_badge_2026-07.svg", alt: "techreviewer.co 2026 — Top LLM Development Companies" },
+  { src: "/badges_fix/06_techreviewer_badge_2026-15.svg", alt: "techreviewer.co 2026 — Top GenAI Development Companies" },
 ];
 
 // ─── Awesome stories (blog) ───────────────────────────────────────────────────
@@ -349,20 +298,16 @@ export default function AipocPage() {
           </div>
         </section>
 
-        {/* ── CEO citation ───────────────────────────────────────────────── */}
-        <AipocCitation />
-
         {/* ── Case studies ───────────────────────────────────────────────── */}
         <div id="ai-cases">
           <CaseCards
             heading={<>What AI PoCs has <span>Nexterse LLC</span> delivered?</>}
-            cards={AIP_CASES}
             windowed
           />
         </div>
 
         {/* ── Reviews ────────────────────────────────────────────────────── */}
-        <ServicesReviewSlider />
+        <ServicesReviewSlider primary="ai" count={7} secondaryCount={2} />
 
         {/* ── Awards & Recognitions ──────────────────────────────────────── */}
         <ServicesAchievements badges={AIP_BADGES} />
@@ -445,12 +390,6 @@ export default function AipocPage() {
                   <Image src={c.icon} alt={c.title} width={56} height={56} className={styles.ecomServiceIcon} />
                   <h3 className={styles.ecomServiceTitle}>{c.title}</h3>
                 </div>
-              ))}
-            </div>
-            <div className={styles.badgeStrip}>
-              {COMPLIANCE_BADGES.map((b) => (
-                // eslint-disable-next-line @next/next/no-img-element
-                <img key={b.alt} src={b.src} alt={b.alt} className={styles.badgeStripImg} loading="lazy" />
               ))}
             </div>
           </div>

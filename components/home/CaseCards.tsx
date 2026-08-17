@@ -16,36 +16,40 @@ export type CaseCard = {
 
 const CARDS: CaseCard[] = [
   {
-    banner: "/cases/si-digital.webp",
-    name: "Who is Nexterse LLC?",
-    title: "Your digital partner for strategic outcomes",
-    text: "We drive business profitability by steering advanced technologies, responsible delivery, and human-centered collaboration toward your endgame.",
+    banner: "/cases/digital.jpg",
+    name: "Better Digital Experiences",
+    title: "A Modern Web Platform Built for Performance & Growth",
+    text: "We partnered with WorkHive to build a modern, responsive web experience focused on usability, performance, and scalability for long-term growth.",
     stats: [
-      "+12% labor productivity for a Fortune Global 500 manufacturer",
-      "+22% logistics hub availability for high-load supply chains",
-      "2× faster time to market for a FinTech startup",
+      "100% Responsive Across All Devices",
+      "Optimized for Speed & Performance",
+      "Scalable Architecture for Future Growth",
     ],
   },
   {
-    banner: "/cases/si-rhythm.webp",
-    name: "Industrial Rhythm Harmonization",
-    title: "An AI-assisted industrial transparency solution for long-term resilience",
-    text: "We restore and stabilize the production and operational rhythm of industrial enterprises by transforming real-time data into actionable insight.",
-    tags: ["Real-time data", "Predictive insight", "Operational resilience", "Process visibility", "Anomaly detection", "Continuous monitoring"],
+    banner: "/cases/automate.jpg",
+    name: "Automate. Connect. Scale.",
+    title: "Transforming Business Operations with CRM & Automation",
+    text: "We helped Lifty streamline operations through CRM customization and intelligent automation, connecting processes and reducing repetitive work.",
+    tags: ["Centralized CRM", "Workflow Automation", "Connected Data Systems"],
   },
   {
-    banner: "/cases/si-tech.webp",
-    name: "The AI Era is Here",
-    title: "We bridge the gap between tech progress and business advantage",
-    text: "AI reshapes how industries think, decide, and grow. Navigate new tech responsibly, strategically, and data-first.",
-    tags: ["AI strategy", "Data for AI", "Secure AI adoption", "AI automation", "Agentic AI", "MLOps & LLMOps"],
+    banner: "/cases/insurance.jpg",
+    name: "Technology Built for Insurance",
+    title: "Building a Custom Software Platform for Insurance Operations",
+    text: "We developed a custom software platform tailored to the insurance business, bringing essential processes into one centralized system for teams.",
+    stats: [
+      "Custom-Built for Insurance Operations",
+      "Centralized Policy & Customer Management",
+      "Streamlined End-to-End Business Workflows",
+    ],
   },
   {
-    banner: "/cases/si-value.webp",
-    name: "Trade & Industry Value Chain",
-    title: "We bring value where industries meet",
-    text: "As boundaries between industries fade, siloed thinking no longer works — success comes from connecting capabilities across the value chain.",
-    tags: ["Supply chain", "Logistics", "Manufacturing", "Fintech", "Retail", "Enterprise"],
+    banner: "/cases/travel.jpg",
+    name: "Digitizing Travel Experiences",
+    title: "Building a Smarter Digital Experience for Travel & Tourism",
+    text: "We helped A to Z Travel and Tours strengthen its digital presence with a modern solution that simplifies interactions and showcases travel services.",
+    tags: ["Digital Travel Services", "Responsive Design", "Customer Engagement"],
   },
 ];
 
@@ -160,16 +164,18 @@ export default function CaseCards({
 
           <div className={styles.nav}>
             <button
+              className={styles.navPrev}
               aria-label="Previous case"
               onClick={(e) => { e.stopPropagation(); go(-1); }}
             >
-              ←
+              <span className={styles.navArrow} aria-hidden="true" />
             </button>
             <button
+              className={styles.navNext}
               aria-label="Next case"
               onClick={(e) => { e.stopPropagation(); go(1); }}
             >
-              →
+              <span className={styles.navArrow} aria-hidden="true" />
             </button>
           </div>
         </div>

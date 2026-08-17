@@ -1,6 +1,6 @@
 "use client";
 
-import CaseCards, { type CaseCard } from "@/components/home/CaseCards";
+import CaseCards from "@/components/home/CaseCards";
 import ServicesReviewSlider from "@/components/services/ServicesReviewSlider";
 import ServicesAchievements from "@/components/services/ServicesAchievements";
 import ServicesFaqBlock, { type FaqItem } from "@/components/services/ServicesFaqBlock";
@@ -13,71 +13,14 @@ import clStyles from "@/components/esd/ESDCrosslinks.module.css";
 import styles from "./MobilePage.module.css";
 
 // ─── Cases ────────────────────────────────────────────────────────────────────
-const MOBILE_CASES: CaseCard[] = [
-  {
-    banner: "/mobile-app-development/01_cover-2-1.png",
-    name: "Farm Animal IoT",
-    title: "Platform for vital farm animals signs monitoring",
-    text: "An IoT platform connecting a matchbox-sized farm animal wearable to a real-time visualization and diagnostics dashboard – reducing monitoring setup time by ~55% and eliminating invasive multi-device procedures for veterinary clinics and farms.",
-    href: "/portfolio/platform-for-vital-farm-animals-signs-monitoring",
-    tags: ["IoT", "Startups"],
-  },
-  {
-    banner: "/mobile-app-development/02_For-preview.png",
-    name: "Renting Boats",
-    title: "Renting Boats app: making boats booking easy",
-    text: "Mobile and web booking service of boat lending and renting that allows users to search and book various types of boats for voyages.",
-    href: "/portfolio/renting-boats-mobile-application",
-    tags: ["Startups"],
-  },
-  {
-    banner: "/mobile-app-development/09_cover-img-1.png",
-    name: "Health Monitoring",
-    title: "Adaptive health monitoring app with 20,000+ downloads",
-    text: "A mobile health app with 98% user satisfaction and ~65% program completion rate, delivering real-time blood pressure and pulse monitoring through a smart cuff across five wellness program categories.",
-    href: "/portfolio/iot-power-mobile-app-for-wellness-programs",
-    tags: ["IoT", "Startups"],
-  },
-  {
-    banner: "/mobile-app-development/02_Right-cover.png",
-    name: "GLAMZ",
-    title: "GLAMZ – platform for beauty professionals",
-    text: "A marketplace platform that brought 1,200+ verified beauty professionals and 13K+ registered clients onto one booking ecosystem in Israel — with scheduling, verified reviews, and an integrated e-commerce module.",
-    href: "/portfolio/glamz-platform-for-beauty-professionals",
-    tags: ["Startups"],
-  },
-  {
-    banner: "/mobile-app-development/01_Cover-1-2.png",
-    name: "Selfiest",
-    title: "Selfiest – mobile backend development",
-    text: "The client launched a selfie-sharing platform with photo ranking, real-time statistics, and moderation fully backed by a scalable server layer; Redis analytics caching delivers photo statistics ~40% faster than a database-only approach.",
-    href: "/portfolio/selfiest-backend-app-development",
-    tags: ["Startups"],
-  },
-  {
-    banner: "/mobile-app-development/01_Right-3.png",
-    name: "Harmony Park",
-    title: "MVP development of Q&A and voting service",
-    text: "A 2-month MVP delivery covering all 7 planned feature modules – yes/no questions, social sharing, statistics, and time management – shipped on a bi-weekly sprint cadence with investor demos at each stage.",
-    href: "/portfolio/qa-service-mvp-development",
-    tags: ["Startups"],
-  },
-  {
-    banner: "/mobile-app-development/02_ushopper_solution.png",
-    name: "UShopper",
-    title: "UShopper – iOS eCommerce platform with Apple Pay",
-    text: "~30% lower checkout drop-off with Apple Pay integration; full iOS storefront from kickoff to launch in 1 month.",
-    href: "/portfolio/ushopper-mobile-ecommerce-app-development",
-    tags: ["Startups"],
-  },
-];
+
 
 // ─── Section 3: Full-cycle services (3-col, 6 items) ─────────────────────────
 const FULL_CYCLE_SERVICES = [
   {
     icon: "/mobile-app-development/03_AI-consulting-03.svg",
     title: "Consulting & Strategy",
-    desc: "We define a clear scope, prioritize features that drive value, and build a tailored roadmap, exploring advanced technologies like AI or IoT to match your vision. You'll get a transparent plan that keeps your project on track and ready to compete.",
+    desc: "We define a clear scope, prioritize features that drive value, and build a tailored roadmap, exploring advanced technologies like AI to match your vision. You'll get a transparent plan that keeps your project on track and ready to compete.",
   },
   {
     icon: "/mobile-app-development/04_Response-state-design-03.svg",
@@ -333,15 +276,15 @@ const TECH_STACKS = [
   },
   {
     title: "Cloud and connected platforms",
-    items: ["AWS", "Microsoft Azure", "Google Cloud", "AWS IoT Core", "Azure IoT Hub", "Amazon S3"],
+    items: ["AWS", "Microsoft Azure", "Google Cloud", "Amazon S3"],
   },
 ];
 
 // ─── Section 18: Advanced tech (dark, 3-col, 6 items, no icons) ──────────────
 const ADVANCED_TECH = [
   {
-    title: "Internet of Things (IoT)",
-    desc: "We connect mobile apps to sensors, gateways, machines, wearables, and smart devices so users can monitor status, receive alerts, send commands, and review device data from one interface. This is useful in smart home products, industrial systems, healthcare devices, and logistics operations where the phone acts as the control point.",
+    title: "Applied AI integration",
+    desc: "We connect mobile apps to AI models, analytics engines, and real-time data pipelines so users can monitor status, receive intelligent alerts, send commands, and review AI-driven insights from one interface. This is useful in smart home products, industrial systems, healthcare devices, and logistics operations where the phone acts as the control point.",
   },
   {
     title: "Augmented reality (AR) & virtual reality (VR)",
@@ -394,12 +337,11 @@ const WHY_CARDS = [
 ];
 
 const MOBILE_AWARDS = [
-  { src: "/services-page/12_5ca49c9f6cb37e33319e1162_Goodfirms.svg", alt: "GoodFirms recognition" },
-  { src: "/services-page/12_5ca49c9f8ff5ad26d13b6845_TDA.svg", alt: "TDA recognition" },
-  { src: "/services-page/12_5ca49c9f6cb37e49a79e1163_changed.svg", alt: "AWS Partner Network" },
-  { src: "/services-page/12_Responsive-Design-Development-2025.svg", alt: "Responsive Design Development 2025" },
-  { src: "/services-page/12_Mobile-Software-Development-2025.svg", alt: "Mobile Software Development 2025" },
-  { src: "/services-page/12_IoT-Services-2025.svg", alt: "IoT Services 2025" },
+  { src: "/badges_fix/12_5ca49c9f6cb37e33319e1162_Goodfirms.svg", alt: "GoodFirms recognition" },
+  { src: "/badges_fix/12_5ca49c9f8ff5ad26d13b6845_TDA.svg", alt: "TDA recognition" },
+  { src: "/badges_fix/12_5ca49c9f6cb37e49a79e1163_changed.svg", alt: "AWS Partner Network" },
+  { src: "/badges_fix/12_Responsive-Design-Development-2025.svg", alt: "Responsive Design Development 2025" },
+  { src: "/badges_fix/12_Mobile-Software-Development-2025.svg", alt: "Mobile Software Development 2025" },
 ];
 
 // ─── FAQ & Blog data ─────────────────────────────────────────────────────────
@@ -871,7 +813,7 @@ export default function MobilePage() {
                 <a href="/services/custom-software-development" className={clStyles.link}>
                   Custom software product development <span className={clStyles.linkArrow} />
                 </a>
-                <a href="/services/web-development" className={clStyles.link}>
+                <a href="/services/web-app-development" className={clStyles.link}>
                   Web development <span className={clStyles.linkArrow} />
                 </a>
                 <a href="/services/enterprise-software-development" className={clStyles.link}>
@@ -917,17 +859,16 @@ export default function MobilePage() {
         {/* ── 15. CASE STUDIES (CaseCards windowed) ───────────────────── */}
         <div id="mobile-cases" className={styles.casesWrapper}>
           <CaseCards
-            cards={MOBILE_CASES}
             heading={<>Check <span>mobile apps</span> we successfully launched</>}
             windowed
           />
         </div>
 
         {/* ── 16. REVIEW SLIDER ────────────────────────────────────────── */}
-        <ServicesReviewSlider />
+        <ServicesReviewSlider primary="software" count={7} secondaryCount={2} />
 
         {/* ── 17. DOWNLOAD CTA 3 ──────────────────────────────────────── */}
-        <section className={styles.downloadCta}>
+        <section className={`${styles.downloadCta} ${styles.reviewCta}`}>
           <div className="container">
             <div className={styles.ctaRow}>
               <div>

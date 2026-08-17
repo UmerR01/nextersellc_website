@@ -36,7 +36,7 @@ const OPTIONS = [
       "Update outdated architecture",
       "Move software to the cloud",
       "Improve performance and usability",
-      "Prepare the system for new integrations, AI, or IoT capabilities",
+      "Prepare the system for new integrations or AI capabilities",
     ],
   },
   {
@@ -46,7 +46,7 @@ const OPTIONS = [
     title: "Integrate your software ecosystem",
     body: [
       "For companies that already use several systems and need them to work as one connected environment.",
-      "Software integration creates reliable data flows and coordinated workflows across ERP, CRM, IoT, analytics, billing, logistics, finance, and operational platforms. Leadership gets better visibility, while teams work with consistent, connected information across the business.",
+      "Software integration creates reliable data flows and coordinated workflows across ERP, CRM, AI, analytics, billing, logistics, finance, and operational platforms. Leadership gets better visibility, while teams work with consistent, connected information across the business.",
     ],
     points: [
       "Connect business-critical systems",

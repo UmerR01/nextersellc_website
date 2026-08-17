@@ -6,7 +6,7 @@ const LINKS = [
   { text: "See our ", last: "pricing", href: "/pricing" },
   { text: "Our development ", last: "lifecycle", href: "/sdlc" },
   { text: "Engagement models ", last: "FAQ", href: "/faq" },
-  { text: "About Nexterse LLC ", last: "team", href: "/team#management-team" },
+  { text: "About Nexterse LLC ", last: "team", href: "/about-us" },
 ];
 
 export default function EngCrosslinksBlock() {

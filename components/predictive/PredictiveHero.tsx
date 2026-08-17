@@ -126,7 +126,7 @@ export default function PredictiveHero() {
             </h1>
 
             <p className={styles.description}>
-              We design and develop predictive maintenance systems for industrial environments with legacy equipment, edge deployment, and modern AIoT architecture. We build locally hosted ML models, connect brownfield assets through secure gateways, and transform vibration, thermal, acoustic, and operational data into reliable maintenance signals your team can act on.
+              We design and develop predictive maintenance systems for industrial environments with legacy equipment, edge deployment, and modern AI-driven architecture. We build locally hosted ML models, ingest data from your existing sensors and control systems, and transform vibration, thermal, acoustic, and operational data into reliable maintenance signals your team can act on.
             </p>
 
             <div className={styles.ctaRow}>

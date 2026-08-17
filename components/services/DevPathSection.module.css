@@ -78,12 +78,13 @@
   width: 56px;
   height: 56px;
   object-fit: contain;
+  filter: brightness(0) saturate(100%) invert(65%) sepia(15%) saturate(675%) hue-rotate(174deg) brightness(93%) contrast(87%);
   transition: filter 0.2s ease;
 }
 
 .tab:hover .tabIcon,
 .tabActive .tabIcon {
-  filter: brightness(0) saturate(100%) invert(68%) sepia(91%) saturate(1118%) hue-rotate(157deg) brightness(94%) contrast(92%);
+  filter: none;
 }
 
 .panel { display: block; }

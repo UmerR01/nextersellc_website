@@ -20,7 +20,7 @@ const cards = [
         <ul>
           <li>Web and mobile platforms.</li>
           <li>Enterprise applications.</li>
-          <li>IoT systems.</li>
+          <li>Legacy software systems.</li>
           <li>Internal business software.</li>
         </ul>
       </>

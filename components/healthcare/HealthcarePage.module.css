@@ -182,29 +182,6 @@
 }
 
 /* ── Logos ─────────────────────────────────────────────────────────────────── */
-.logosSection {
-  background: #fff;
-  padding: 32px 0 36px;
-}
-
-.logosWrapper {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 24px clamp(28px, 4vw, 58px);
-}
-
-.logoImg {
-  max-height: 38px;
-  width: auto;
-  opacity: 0.75;
-  filter: grayscale(1);
-  transition: opacity 0.3s, filter 0.3s;
-}
-
-.logoImg:hover { opacity: 1; filter: grayscale(0); }
-
 /* ── Section header shared ─────────────────────────────────────────────────── */
 .sectionTitle {
   font-family: var(--font-inter-tight), sans-serif;
@@ -2321,16 +2298,6 @@
 /* ═══ Healthcare-specific ════════════════════════════════════════════════════ */
 
 /* ── Compliance logos strip ────────────────────────────────────────────────── */
-.complianceLogo {
-  height: 58px;
-  width: auto;
-  object-fit: contain;
-  opacity: 0.85;
-  transition: opacity 0.3s;
-}
-
-.complianceLogo:hover { opacity: 1; }
-
 /* ── Healthcare services dark open grid ────────────────────────────────────── */
 .healthcareServicesBlock {
   overflow: hidden;

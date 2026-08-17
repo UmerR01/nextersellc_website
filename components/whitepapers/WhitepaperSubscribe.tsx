@@ -6,11 +6,24 @@ import styles from "./WhitepaperSubscribe.module.css";
 export default function WhitepaperSubscribe() {
   const [submitted, setSubmitted] = useState(false);
   const [form, setForm] = useState({ name: "", email: "", agree: false });
+  const [status, setStatus] = useState<"idle" | "loading" | "error">("idle");
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!form.name || !form.email || !form.agree) return;
-    setSubmitted(true);
+    setStatus("loading");
+    try {
+      const res = await fetch("/api/whitepaper-subscribe", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ name: form.name, email: form.email }),
+      });
+      if (!res.ok) throw new Error("Request failed");
+      setSubmitted(true);
+      setStatus("idle");
+    } catch {
+      setStatus("error");
+    }
   };
 
   return (
@@ -62,10 +75,15 @@ export default function WhitepaperSubscribe() {
                       Agree with <a href="/privacy-policy">Privacy Policy</a>
                     </span>
                   </label>
-                  <button type="submit" className={styles.submitBtn}>
-                    Subscribe
+                  <button type="submit" className={styles.submitBtn} disabled={status === "loading"}>
+                    {status === "loading" ? "Subscribing…" : "Subscribe"}
                   </button>
                 </div>
+                {status === "error" && (
+                  <p style={{ color: "#ff415c", fontSize: 14, marginTop: 8 }}>
+                    Something went wrong. Please try again.
+                  </p>
+                )}
               </form>
             </div>
           </div>

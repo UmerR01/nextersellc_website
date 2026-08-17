@@ -101,7 +101,7 @@ export default function Hero() {
           <div className={styles.bgOverlay} />
           <div className={styles.bgCaption}>
             <span className={styles.bgKicker}>Nexterse LLC</span>
-            <p>Software engineering &amp; applied AI, built to outlast launch.</p>
+            <p>Custom software and AI systems engineered to outlast launch.</p>
           </div>
         </div>
 
@@ -132,7 +132,7 @@ export default function Hero() {
               className={styles.cardLeft}
               img="/hero/dev.png"
               title="Custom Software Development"
-              desc="Purpose-built applications engineered for performance, scalability, and reliability—crafted to solve real business challenges."
+              desc="Applications engineered for performance, scalability, and reliability, built to solve real business problems."
               cta="Custom Software Development"
               href="/services/custom-software-development"
             />
@@ -152,7 +152,7 @@ export default function Hero() {
               className={styles.cardRight}
               img="/hero/ai.png"
               title="Custom AI Development"
-              desc="Intelligent solutions powered by machine learning, generative AI, automation, and AI agents—designed to enhance productivity and unlock innovation."
+              desc="Intelligent solutions powered by machine learning, generative AI, automation, and AI agents, designed to boost productivity and unlock innovation."
               cta="Custom AI Development"
               href="/services/ai-software-development"
             />

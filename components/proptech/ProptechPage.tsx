@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Image from "next/image";
-import CaseCards, { type CaseCard } from "@/components/home/CaseCards";
+import CaseCards from "@/components/home/CaseCards";
 import ServicesReviewSlider from "@/components/services/ServicesReviewSlider";
 import ServicesAchievements, { type Badge } from "@/components/services/ServicesAchievements";
 import ServicesFaqBlock, { type FaqItem } from "@/components/services/ServicesFaqBlock";
@@ -19,8 +19,8 @@ const SOLUTIONS = [
   { icon: "/proptech-development/06_Algorithmic-high-frequency-bidding-engines-02.svg", title: "Property & lease management platforms", desc: "We build custom platforms that unify leasing, accounting, maintenance, and tenant communication into one system. Rent rolls, work orders, and general-ledger data stay in sync, so your teams stop re-keying between spreadsheets and disconnected point tools." },
   { icon: "/proptech-development/06_Vectorized-CDPs-and-data-clean-rooms-01.svg", title: "Automated valuation models (AVM)", desc: "We develop AVM engines that price properties from comparable sales, rental yields, location signals, and market trends. Models are trained on your own transaction data and return an explainable valuation with a confidence band, not a black-box number." },
   { icon: "/proptech-development/06_Ad-exchanges-and-ad-servers-01.svg", title: "Listing & marketplace platforms", desc: "We engineer high-traffic listing portals and marketplaces with fast geospatial search, map-based discovery, and real-time availability. You control the matching logic, ranking, and how buyers, renters, and agents transact across your inventory." },
-  { icon: "/proptech-development/06_AI-driven-campaign-orchestration-01.svg", title: "IoT smart-building & energy systems", desc: "We connect building sensors, meters, and BMS data into a single monitoring layer that tracks occupancy, energy, and equipment health in real time. Predictive maintenance workflows flag failures before they turn into costly downtime." },
-  { icon: "/proptech-development/06_Ad-fraud-detection-systems-03.svg", title: "Digital twins & BIM visualization", desc: "We build virtual replicas of buildings and portfolios that combine 3D models, IoT telemetry, and AI to simulate occupancy, energy use, and maintenance scenarios before you commit capital to them in the physical asset." },
+  { icon: "/proptech-development/06_AI-driven-campaign-orchestration-01.svg", title: "AI-powered smart-building & energy systems", desc: "We connect building sensors, meters, and BMS data into a single monitoring layer that tracks occupancy, energy, and equipment health in real time. Predictive maintenance workflows flag failures before they turn into costly downtime." },
+  { icon: "/proptech-development/06_Ad-fraud-detection-systems-03.svg", title: "Digital twins & BIM visualization", desc: "We build virtual replicas of buildings and portfolios that combine 3D models, sensor telemetry, and AI to simulate occupancy, energy use, and maintenance scenarios before you commit capital to them in the physical asset." },
   { icon: "/proptech-development/06_Omnichannel-retail-media-network-platforms-03.svg", title: "Tenant experience & resident apps", desc: "Turn your buildings into a service. We engineer branded resident and tenant apps for payments, bookings, access control, and maintenance requests, backed by the same data layer that runs your operations." },
 ];
 
@@ -29,7 +29,7 @@ const RESULTS = [
   "25-40% lower maintenance costs within 12 months",
   "Month-end close cut from 2 weeks to 3-5 days",
   "Sub-second geospatial search across millions of listings",
-  "Real-time IoT ingestion from thousands of building sensors",
+  "Real-time data ingestion from thousands of building sensors",
   "Unified data across leasing, accounting, and maintenance",
   "AVM valuations returned in under a second",
   "Zero data loss on legacy system migration",
@@ -49,54 +49,13 @@ const MARGINS = [
 // ─── Reliable performance at portfolio scale (4 cards) ────────────────────────
 const SCALE = [
   { icon: "/proptech-development/06_Controlled-latency-in-bidding-execution-02.svg", title: "Consistent response across the portfolio", desc: "Search, dashboards, and tenant-facing flows respond within tight latency thresholds, so experience stays fast whether you manage 500 or 500,000 units." },
-  { icon: "/proptech-development/06_Stable-processing-under-high-bid-volume-02.svg", title: "Stable processing under sensor load", desc: "The system ingests continuous streams of IoT telemetry, transactions, and events without degradation, maintaining reliable performance during peak activity." },
+  { icon: "/proptech-development/06_Stable-processing-under-high-bid-volume-02.svg", title: "Stable processing under sensor load", desc: "The system ingests continuous streams of sensor telemetry, transactions, and events without degradation, maintaining reliable performance during peak activity." },
   { icon: "/proptech-development/06_Efficient-data-handling-at-scale-03.svg", title: "Efficient data handling at scale", desc: "Operational and historical data live in the same system, so leasing, valuation, and reporting all rely on a single, consistent data layer." },
   { icon: "/proptech-development/06_Cost-efficiency-at-the-infrastructure-level-03.svg", title: "Cost efficiency at the infrastructure level", desc: "Data pipelines and processing are structured to avoid unnecessary compute, keeping infrastructure costs aligned with the value each property delivers." },
 ];
 
 // ─── Cases (5) ────────────────────────────────────────────────────────────────
-const PT_CASES: CaseCard[] = [
-  {
-    banner: "/proptech-development/01_Cover.png",
-    name: "Property management",
-    title: "A property management platform for a US multifamily operator",
-    text: "Replaced a patchwork of spreadsheets and a 15-year-old accounting tool with one custom platform covering 100+ leasing, maintenance, and finance workflows – cutting month-end close from two weeks to four days.",
-    href: "/portfolio",
-    tags: ["Enterprise"],
-  },
-  {
-    banner: "/proptech-development/02_Image-Mediatron.png",
-    name: "Valuation",
-    title: "AVM engine for a commercial real estate lender",
-    text: "An explainable automated valuation model that prices commercial assets from comparable sales, rent rolls, and market signals in under a second – standardizing underwriting across a national loan book.",
-    href: "/portfolio",
-    tags: ["Enterprise"],
-  },
-  {
-    banner: "/proptech-development/02_RivalFox-Main-image.png",
-    name: "Smart buildings",
-    title: "IoT smart-building monitoring platform",
-    text: "Server consolidation and a real-time sensor pipeline cut infrastructure costs by ~35% and enabled predictive maintenance across a portfolio of office assets, reducing unplanned equipment downtime.",
-    href: "/portfolio",
-    tags: ["Startups"],
-  },
-  {
-    banner: "/proptech-development/01_fuelz-main-screen-image-persp.png",
-    name: "Marketplace",
-    title: "Property listing & marketplace aggregator",
-    text: "A listing aggregator that cut buyers’ search time with real-time price and availability comparison across 20+ providers, with built-in inquiry management and operator analytics.",
-    href: "/portfolio",
-    tags: ["Enterprise"],
-  },
-  {
-    banner: "/proptech-development/01_Cover-1-1-3.png",
-    name: "Tenant experience",
-    title: "Resident experience and payments app",
-    text: "A branded resident app for payments, bookings, and maintenance requests that improved on-time rent collection by ~35%, delivered in 6 months and integrated with the operator’s core management system.",
-    href: "/portfolio",
-    tags: ["Startups"],
-  },
-];
+
 
 // ─── FAQ ───────────────────────────────────────────────────────────────────────
 const PT_FAQ: FaqItem[] = [
@@ -114,7 +73,7 @@ const PT_FAQ: FaqItem[] = [
   },
   {
     question: "How do you handle the cost of querying years of transaction, sensor, and portfolio data for real-time reporting?",
-    answer: "As an expert PropTech development company, we build analytics on columnar data warehouses with materialized views, rollups, and tiered retention. That lets asset managers query years of leasing, IoT, and financial data in sub-second time with predictable, minimal cloud costs, instead of exporting everything to spreadsheets for manual reconciliation.",
+    answer: "As an expert PropTech development company, we build analytics on columnar data warehouses with materialized views, rollups, and tiered retention. That lets asset managers query years of leasing, sensor, and financial data in sub-second time with predictable, minimal cloud costs, instead of exporting everything to spreadsheets for manual reconciliation.",
   },
   {
     question: "Can AI automate lease abstraction and maintenance triage?",
@@ -126,7 +85,7 @@ const PT_FAQ: FaqItem[] = [
 const DATA = [
   { title: "Single source of property truth", desc: "We consolidate leasing, financial, and asset data into one reliable layer. Rent rolls, work orders, and general-ledger entries form a consistent representation of each property across your systems." },
   { title: "Cross-system reconciliation", desc: "Machine-driven matching connects records that live in different tools – accounting, maintenance, CRM – so the same unit, tenant, and lease resolve to one identity portfolio-wide." },
-  { title: "Real-time signal enrichment", desc: "We incorporate live IoT, occupancy, and market signals to strengthen decisions. Sensor data, timing, and usage patterns are evaluated together to keep operations and valuation current." },
+  { title: "Real-time signal enrichment", desc: "We incorporate live sensor, occupancy, and market signals to strengthen decisions. Sensor data, timing, and usage patterns are evaluated together to keep operations and valuation current." },
   { title: "Secure data collaboration", desc: "Controlled environments let you share data with lenders, investors, and partners under defined access rules, preserving data ownership and integrity while enabling collaboration." },
 ];
 
@@ -144,8 +103,8 @@ const DELIVERY = [
   },
   {
     title: "Full-scale platform",
-    paragraphs: ["6-18+ months, depending on integrations and scale.", "The system handles production portfolios with optimized performance, throughput, and infrastructure cost.", "Advanced capabilities are introduced: AI valuation, IoT monitoring, and multi-property orchestration."],
-    bullets: ["Scaling to portfolio-level data and multiple asset types", "Integrating with accounting, banking, and IoT systems", "Expanding capabilities beyond core management workflows"],
+    paragraphs: ["6-18+ months, depending on integrations and scale.", "The system handles production portfolios with optimized performance, throughput, and infrastructure cost.", "Advanced capabilities are introduced: AI valuation, predictive maintenance, and multi-property orchestration."],
+    bullets: ["Scaling to portfolio-level data and multiple asset types", "Integrating with accounting, banking, and sensor systems", "Expanding capabilities beyond core management workflows"],
   },
   {
     title: "Continuous evolution",
@@ -181,7 +140,7 @@ const COOPERATION = [
     bullets: [
       "Discovery (1-4 weeks): We meet to understand your goals and plan the project, ensuring a strong start.",
       "MVP (3-6 months): We build a core version of your platform, like a management portal or AVM, for quick testing and early results.",
-      "Full platform (6-18+ months): Complex solutions with advanced features like AI valuation or high-volume IoT processing take longer, depending on your needs.",
+      "Full platform (6-18+ months): Complex solutions with advanced features like AI valuation or high-volume sensor data processing take longer, depending on your needs.",
       "Ongoing support: After launch, we add features, update systems, and adapt to your changing goals.",
     ],
     note: "You’ll get a clear roadmap after discovery, with regular updates to track progress.",
@@ -205,20 +164,19 @@ const COOPERATION = [
 
 // ─── Awards (clone badges) ────────────────────────────────────────────────────
 const PT_BADGES: Badge[] = [
-  { src: "/proptech-development/06_techreviewer_badge_2026-12.svg", alt: "techreviewer.co 2026 — Top Software Development Companies" },
-  { src: "/proptech-development/06_techreviewer_badge_2026-04.svg", alt: "techreviewer.co 2026 — Top AI Software Development Companies" },
-  { src: "/proptech-development/06_techreviewer_badge_2026-11.svg", alt: "techreviewer.co 2026 — Top Machine Learning Development Companies" },
-  { src: "/proptech-development/03_Badge-1-1.svg", alt: "Top software development company in Massachusetts" },
-  { src: "/proptech-development/12_5ca49c9f6cb37e33319e1162_Goodfirms.svg", alt: "GoodFirms badge" },
-  { src: "/proptech-development/12_5ca49c9f8ff5ad26d13b6845_TDA.svg", alt: "TDA badge" },
-  { src: "/proptech-development/12_5ca49c9f6cb37e49a79e1163_changed.svg", alt: "AWS partner badge" },
-  { src: "/proptech-development/03_Badge-3.svg", alt: "Top developers reward" },
-  { src: "/proptech-development/12_Mobile-Software-Development-2025.svg", alt: "Mobile Software Development 2025" },
-  { src: "/proptech-development/12_Machine-Learning-Development-2024.svg", alt: "Machine Learning Development 2024" },
-  { src: "/proptech-development/12_Custom-Web-Design-Development-2025.svg", alt: "Custom Web Design Development 2025" },
-  { src: "/proptech-development/12_iOS-Development-2024.svg", alt: "iOS Development 2024" },
-  { src: "/proptech-development/12_Responsive-Design-Development-2025.svg", alt: "Responsive Design Development 2025" },
-  { src: "/proptech-development/12_Data-analysis-development-2024.svg", alt: "Data analysis development 2024" },
+  { src: "/badges_fix/06_techreviewer_badge_2026-12.svg", alt: "techreviewer.co 2026 — Top Software Development Companies" },
+  { src: "/badges_fix/06_techreviewer_badge_2026-04.svg", alt: "techreviewer.co 2026 — Top AI Software Development Companies" },
+  { src: "/badges_fix/06_techreviewer_badge_2026-11.svg", alt: "techreviewer.co 2026 — Top Machine Learning Development Companies" },
+  { src: "/badges_fix/12_5ca49c9f6cb37e33319e1162_Goodfirms.svg", alt: "GoodFirms badge" },
+  { src: "/badges_fix/12_5ca49c9f8ff5ad26d13b6845_TDA.svg", alt: "TDA badge" },
+  { src: "/badges_fix/12_5ca49c9f6cb37e49a79e1163_changed.svg", alt: "AWS partner badge" },
+  { src: "/badges_fix/03_Badge-3.svg", alt: "Top developers reward" },
+  { src: "/badges_fix/12_Mobile-Software-Development-2025.svg", alt: "Mobile Software Development 2025" },
+  { src: "/badges_fix/12_Machine-Learning-Development-2024.svg", alt: "Machine Learning Development 2024" },
+  { src: "/badges_fix/12_Custom-Web-Design-Development-2025.svg", alt: "Custom Web Design Development 2025" },
+  { src: "/badges_fix/12_iOS-Development-2024.svg", alt: "iOS Development 2024" },
+  { src: "/badges_fix/12_Responsive-Design-Development-2025.svg", alt: "Responsive Design Development 2025" },
+  { src: "/badges_fix/12_Data-analysis-development-2024.svg", alt: "Data analysis development 2024" },
 ];
 
 // ─── Awesome stories (blog) ───────────────────────────────────────────────────
@@ -257,7 +215,7 @@ const CROSSLINKS = [
   {
     heading: "About Nexterse LLC",
     links: [
-      { text: "About ", last: "us", href: "/team" },
+      { text: "About ", last: "us", href: "/about-us" },
       { text: "Contact ", last: "us", href: "/contact-us" },
       { text: "", last: "Careers", href: "/careers" },
     ],
@@ -370,13 +328,12 @@ export default function ProptechPage() {
         <div id="pt-cases">
           <CaseCards
             heading={<>PropTech software we <span>made</span></>}
-            cards={PT_CASES}
             windowed
           />
         </div>
 
         {/* ── Reviews ────────────────────────────────────────────────────── */}
-        <ServicesReviewSlider />
+        <ServicesReviewSlider primary="software" count={6} secondaryCount={1} lead={["Justin Clements"]} />
 
         {/* ── CTA: Build competitive edge ────────────────────────────────── */}
         <div className={`${styles.inlineCta} ${styles.adtechGradientCta}`}>

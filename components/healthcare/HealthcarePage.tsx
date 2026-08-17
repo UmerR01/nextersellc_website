@@ -1,24 +1,15 @@
 "use client";
 
 import Image from "next/image";
-import CaseCards, { type CaseCard } from "@/components/home/CaseCards";
+import CaseCards from "@/components/home/CaseCards";
 import ServicesReviewSlider from "@/components/services/ServicesReviewSlider";
 import ServicesAchievements from "@/components/services/ServicesAchievements";
 import ServicesFaqBlock, { type FaqItem } from "@/components/services/ServicesFaqBlock";
 import LetsStart from "@/components/home/LetsStart";
 import AdlcBlog, { type AdlcFeaturedPost, type AdlcBlogPost } from "@/components/adlc/AdlcBlog";
+import AipocLogos from "@/components/aipoc/AipocLogos";
 import HealthcareArticleLayout from "./HealthcareArticleLayout";
 import styles from "./HealthcarePage.module.css";
-
-// ─── Hero compliance logos ────────────────────────────────────────────────────
-const HERO_LOGOS = [
-  { src: "/healthcare-development/05_pci.svg", alt: "PCI badge" },
-  { src: "/healthcare-development/05_owasp.svg", alt: "OWASP badge" },
-  { src: "/healthcare-development/05_iso.svg", alt: "ISO compliance badge" },
-  { src: "/healthcare-development/05_hipaa.svg", alt: "HIPAA badge" },
-  { src: "/healthcare-development/05_gdpr.svg", alt: "GDPR badge" },
-  { src: "/healthcare-development/05_fisma.svg", alt: "FISMA compliance badge" },
-];
 
 // ─── Processes we automate (4 audience cards) ─────────────────────────────────
 const AUDIENCES = [
@@ -111,50 +102,6 @@ const SERVICES = [
   },
 ];
 
-// ─── Cases (5) ────────────────────────────────────────────────────────────────
-const HC_CASES: CaseCard[] = [
-  {
-    banner: "/healthcare-development/10_Cover-2-1.png",
-    name: "Dental Imaging AI",
-    title: "AI patient-flow platform for dental imaging",
-    text: "A HIPAA-aligned AI platform for a dental imaging provider that reduced wait times by 37%, increased daily throughput by 22%, and lowered no-shows by 29%.",
-    href: "/portfolio/hipaa-compliant-ai-powered-patient-management-platform-for-a-dental-imaging-provider",
-    tags: ["AI inside", "Enterprise"],
-  },
-  {
-    banner: "/healthcare-development/08_cover.png",
-    name: "HRV Tracking",
-    title: "Heart rate variability tracking IoT application",
-    text: "Smart lightbulb integration for an HRV biofeedback app that replaces abstract score displays with real-time color feedback – users reach target coherence states ~35% more consistently.",
-    href: "/portfolio/heart-rate-variability-tracking-iot-application",
-    tags: ["IoT"],
-  },
-  {
-    banner: "/healthcare-development/10_cover-img-1-1.png",
-    name: "Glucose Monitoring",
-    title: "Mobile application for 24/7 blood glucose monitoring",
-    text: "Turned a wearable glucose sensor into a complete market-ready product – a HIPAA-compliant iOS and Android app that cuts glucose threshold detection time by up to 60% compared to manual scheduled checks.",
-    href: "/portfolio/real-time-blood-glucose-monitoring-app",
-    tags: ["IoT"],
-  },
-  {
-    banner: "/healthcare-development/09_cover-img-1.png",
-    name: "Health Monitoring",
-    title: "Adaptive health monitoring app with 20,000+ downloads",
-    text: "A mobile health app with 98% user satisfaction and ~65% program completion rate, delivering real-time blood pressure and pulse monitoring through a smart cuff across five wellness program categories.",
-    href: "/portfolio/iot-power-mobile-app-for-wellness-programs",
-    tags: ["IoT", "Startups"],
-  },
-  {
-    banner: "/healthcare-development/01_cover-2.png",
-    name: "Clinical Trials",
-    title: "Clinical trial matching platform for enhanced patient recruitment",
-    text: "AI-powered patient matching for cancer clinical trials, delivered in 3 months – cutting clinician eligibility screening time by 70%. Mobile app for patients, sponsor dashboard for trial management.",
-    href: "/portfolio/clinical-trial-matching-platform",
-    tags: ["AI inside", "Startups"],
-  },
-];
-
 // ─── Process (6 steps, paragraph descriptions) ────────────────────────────────
 const PROCESS_STEPS = [
   {
@@ -219,8 +166,8 @@ const HC_BLOG_FEATURED: AdlcFeaturedPost = {
 
 const HC_BLOG_SIDE: AdlcBlogPost[] = [
   {
-    href: "/blog/top-iot-devices-transforming-the-healthcare-landscape",
-    title: "Top IoT Devices Transforming Healthcare Landscape in 2026",
+    href: "/blog/top-ai-tools-transforming-the-healthcare-landscape",
+    title: "Top AI Tools Transforming Healthcare Landscape in 2026",
     readTime: "24 mins",
     date: "November 29, 2024",
   },
@@ -253,9 +200,9 @@ const HC_COMPLIANCE = [
 // ─── Why Nexterse LLC (services-results) ───────────────────────────────────────
 const HC_WHY = [
   { title: "Healthcare-specific AI architecture", text: "AI workflows are built around PHI controls, auditability, EHR context, source limits, and clinical review. The model’s role is defined before development starts, so the system supports the workflow instead of adding another unmanaged tool." },
-  { title: "Interoperability with medical systems", text: "We integrate with EHRs, PACS, billing platforms, IoMT devices, patient portals, and internal healthcare systems. The integration path depends on the data format, API access, security model, and target workflow." },
+  { title: "Interoperability with medical systems", text: "We integrate with EHRs, PACS, billing platforms, patient portals, and internal healthcare systems. The integration path depends on the data format, API access, security model, and target workflow." },
   { title: "Security built into the system design", text: "Access control, encryption, PHI redaction, audit logging, and deployment boundaries are planned early. This reduces rework later, especially when the system touches patient records or clinical decision support." },
-  { title: "Healthcare and IoT delivery experience", text: "Our team has worked on patient management, remote monitoring, device integration, and healthcare analytics systems. See our case studies with relevant projects." },
+  { title: "Healthcare and applied AI delivery experience", text: "Our team has worked on patient management, remote monitoring, device integration, and healthcare analytics systems. See our case studies with relevant projects." },
   { title: "Documentation for regulated environments", text: "We define requirements, risks, test logic, data flows, and release records in a reviewable format. This gives healthcare, security, and compliance teams a structured way to assess how the system works." },
   { title: "Controlled AI behavior", text: "We add retrieval limits, source references, confidence checks, fallback logic, and human approval where required by the workflow. AI output should stay traceable, reviewable, and bounded by the system’s intended use." },
 ];
@@ -404,24 +351,8 @@ export default function HealthcarePage() {
         </div>
       </section>
 
-      {/* ── Compliance logos ─────────────────────────────────────────────── */}
       <HealthcareArticleLayout>
-        <section className={styles.logosSection}>
-          <div className="container">
-            <div className={styles.logosWrapper}>
-              {HERO_LOGOS.map((logo) => (
-                <Image
-                  key={logo.src}
-                  src={logo.src}
-                  alt={logo.alt}
-                  width={98}
-                  height={64}
-                  className={styles.complianceLogo}
-                />
-              ))}
-            </div>
-          </div>
-        </section>
+        <AipocLogos />
 
         {/* ── Processes we automate ──────────────────────────────────────── */}
         <section id="hc-processes" className={`${styles.blockLight} ${styles.healthcareWorkflowBlock}`}>
@@ -537,13 +468,12 @@ export default function HealthcarePage() {
         <div id="hc-cases">
           <CaseCards
             heading={<>Custom <span>healthcare software</span> we developed</>}
-            cards={HC_CASES}
             windowed
           />
         </div>
 
         {/* ── Reviews ────────────────────────────────────────────────────── */}
-        <ServicesReviewSlider />
+        <ServicesReviewSlider primary="software" count={6} secondaryCount={1} />
 
         {/* ── CTA: Start Your Custom Healthcare Project ──────────────────── */}
         <div className={`${styles.inlineCta} ${styles.projectEstimateCta}`}>
@@ -578,7 +508,7 @@ export default function HealthcarePage() {
           </div>
         </section>
 
-        {/* ── FAQ Video ──────────────────────────────────────────────────── */}
+        {/* FAQ Video — disabled until real Nexterse LLC YouTube video is linked
         <section id="hc-faq-video" className={styles.blockLight}>
           <div className="container">
             <h2 className={styles.sectionTitle}>
@@ -595,6 +525,7 @@ export default function HealthcarePage() {
             </div>
           </div>
         </section>
+        */}
 
         {/* ── Let's Start ────────────────────────────────────────────────── */}
         <LetsStart />

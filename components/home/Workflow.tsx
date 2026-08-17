@@ -9,23 +9,23 @@ import styles from "./Workflow.module.css";
 const STEPS = [
   {
     title: "Initial conversation",
-    text: "We open with a direct discussion to map your business goals, technical environment, constraints, and what success looks like — no sales pitch, just clarity.",
+    text: "We start with an open conversation to understand your business goals, technical environment, constraints, and what success looks like for your team.",
   },
   {
     title: "Requirements & proposal",
-    text: "Our team evaluates your requirements, identifies risks early, and delivers a structured proposal covering scope, team composition, milestones, and engagement model.",
+    text: "We evaluate your requirements, surface risks early, and deliver a clear proposal covering scope, team composition, milestones, and engagement model.",
   },
   {
     title: "Agreement & team setup",
-    text: "We lock in scope, sign off on agreements, and establish delivery ownership — with communication protocols, tooling, and governance ready before the first sprint.",
+    text: "We finalize scope, sign the agreement, and set up the delivery team, with communication protocols, tooling, and governance ready before the first sprint.",
   },
   {
     title: "Build & iterate",
-    text: "Engineering gets underway with quality embedded from sprint one — regular demos, transparent tracking, and early escalation of any blockers.",
+    text: "Development begins with quality built in from sprint one, backed by regular demos, transparent tracking, and fast escalation of any blockers.",
   },
   {
     title: "Grow, tune & sustain",
-    text: "Post-launch, we optimize performance, adapt team capacity as your needs evolve, and remain a long-term partner invested in your continued growth.",
+    text: "After launch, we tune performance, scale team capacity as your needs grow, and stay on as a long-term partner invested in your continued success.",
   },
 ];
 
@@ -37,8 +37,8 @@ export default function Workflow() {
           <span className={styles.eyebrow}>Workflow</span>
           <h2 className={styles.title}>How We Work Together</h2>
           <p className={styles.sub}>
-            A structured, no-surprises engagement model designed to keep every stakeholder
-            aligned from first conversation to long-term delivery.
+            A clear, structured engagement model that keeps every stakeholder aligned
+            from the first conversation through long-term delivery.
           </p>
           <div className={`${styles.media} ${styles.desktopMedia}`}>
             <Image
@@ -69,7 +69,7 @@ export default function Workflow() {
               map out the fastest path to getting it done right.
             </p>
             <a href="#get-modal-popup" className={styles.ctaBtn}>
-              Start the conversation →
+              Start the conversation
             </a>
           </div>
         </div>

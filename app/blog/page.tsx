@@ -6,7 +6,7 @@ import LetsStart from "@/components/home/LetsStart";
 export const metadata: Metadata = {
   title: "Blog – Valuable Insights | Nexterse LLC",
   description:
-    "Read our latest articles on AI, IoT, enterprise software development, research, and engineering guides from the Nexterse LLC team.",
+    "Read our latest articles on AI, enterprise software development, research, and engineering guides from the Nexterse LLC team.",
 };
 
 export default function BlogRoute() {

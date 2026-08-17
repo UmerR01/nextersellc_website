@@ -48,7 +48,7 @@ export default function EngagementModelsPage() {
       <ContractingProcess />
       <HowWeRunProjects />
       <CasesBlock />
-      <ReviewSlider />
+      <ReviewSlider primary="software" count={6} secondaryCount={1} />
       <WhySumatoSoft />
       <EngAwardsBlock />
       <EngFaqBlock />

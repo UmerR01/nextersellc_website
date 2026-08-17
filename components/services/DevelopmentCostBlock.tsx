@@ -15,7 +15,7 @@ const ITEMS = [
   {
     icon: "/services-page/06_Integrations-02.svg",
     title: "Integrations",
-    text: "Most business software connects with existing systems such as CRM, ERP, payment providers, analytics tools, IoT platforms, data warehouses, or third-party APIs. The number and complexity of integrations influence both engineering effort and testing scope.",
+    text: "Most business software connects with existing systems such as CRM, ERP, payment providers, analytics tools, data warehouses, or third-party APIs. The number and complexity of integrations influence both engineering effort and testing scope.",
   },
   {
     icon: "/services-page/06_Data-migration-02.svg",
@@ -24,8 +24,8 @@ const ITEMS = [
   },
   {
     icon: "/services-page/06_AI-IoT-and-advanced-functionality-03.svg",
-    title: "AI, IoT, and advanced functionality",
-    text: "AI agents, RAG systems, predictive analytics, IoT dashboards, device management, and real-time data processing require additional architecture, evaluation, and integration work. We define this scope early so the budget reflects the actual system design.",
+    title: "AI and advanced functionality",
+    text: "AI agents, RAG systems, predictive analytics, admin dashboards, access management, and real-time data processing require additional architecture, evaluation, and integration work. We define this scope early so the budget reflects the actual system design.",
   },
   {
     icon: "/services-page/06_Security-and-compliance-requirements-02.svg",

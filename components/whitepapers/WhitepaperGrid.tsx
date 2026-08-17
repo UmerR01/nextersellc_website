@@ -25,11 +25,11 @@ const papers = [
   {
     gradient: "linear-gradient(259.16deg, #02102C -0.49%, #112244 100%)",
     imgTop: "/whitepapers/02_IoT-Ecosystem-front.jpg",
-    imgTopAlt: "IoT Ecosystem front",
+    imgTopAlt: "AI Agent Architecture front",
     imgBottom: "/whitepapers/02_IoT-Ecosystem-back.jpg",
-    imgBottomAlt: "IoT Ecosystem back",
-    title: "IoT 7 Components: Structure Overview",
-    href: "/whitepapers/iot-7-components-structure-overview",
+    imgBottomAlt: "AI Agent Architecture back",
+    title: "AI Agent Architecture: 7 Components Structure Overview",
+    href: "/whitepapers/ai-agent-architecture-7-components-structure-overview",
   },
   {
     gradient: "linear-gradient(280.31deg, #8F1500 -2.24%, #E45B44 76.47%)",

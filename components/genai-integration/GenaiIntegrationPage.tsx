@@ -2,11 +2,11 @@
 
 import { useState } from "react";
 import Image from "next/image";
-import CaseCards, { type CaseCard } from "@/components/home/CaseCards";
+import CaseCards from "@/components/home/CaseCards";
 import LetsStart from "@/components/home/LetsStart";
 import AdlcBlog, { type AdlcFeaturedPost, type AdlcBlogPost } from "@/components/adlc/AdlcBlog";
 import GenaiIntegrationHero from "./GenaiIntegrationHero";
-import GenaiIntegrationLogos from "./GenaiIntegrationLogos";
+import AipocLogos from "@/components/aipoc/AipocLogos";
 import GenaiIntegrationReviews from "./GenaiIntegrationReviews";
 import GenaiIntegrationAwards from "./GenaiIntegrationAwards";
 import GenaiIntegrationFaq from "./GenaiIntegrationFaq";
@@ -108,40 +108,7 @@ const PROCESS = [
 ];
 
 // ─── Cases (4, clone content) ─────────────────────────────────────────────────
-const GAII_CASES: CaseCard[] = [
-  {
-    banner: "/genai-integration/07_Cover-right-1-1.png",
-    name: "AI-powered stack",
-    title: "GenAI product-description engine for an online retailer",
-    text: "A governed GenAI engine that generates SEO-ready product descriptions grounded in catalog attributes, with brand-tone guardrails, automated claim checks, and human approval before publishing.",
-    href: "/portfolio/genai-product-description-engine-for-a-multi-category-online-retailer",
-    tags: ["SMBs", "AI inside"],
-  },
-  {
-    banner: "/genai-integration/05_Cover-right-1.png",
-    name: "AI-powered stack",
-    title: "AI-driven legacy online retail platform modernization",
-    text: "Nexterse LLC modernized a UK omnichannel retailer's legacy eCommerce platform to headless commerce – without disrupting checkout or payment flows – enabling AI-driven personalization that improved product conversion rates by 25%.",
-    href: "/portfolio/ai-driven-legacy-online-retail-platform-modernization",
-    tags: ["AI inside", "Enterprise"],
-  },
-  {
-    banner: "/genai-integration/10_Cover-1-1.png",
-    name: "AI-powered stack",
-    title: "AI/ML route optimization for a freight delivery service",
-    text: "Lifted on-time delivery to 98% – without expanding the fleet. An AI/ML platform that plans and reoptimizes B2B/B2C routes in real time with traffic, weather, and capacity constraints, cutting last-mile costs by 22%.",
-    href: "/portfolio/ai-ml-route-optimization-for-a-freight-delivery-service",
-    tags: ["AI inside", "Enterprise"],
-  },
-  {
-    banner: "/genai-integration/04_Cover-right-1-1.png",
-    name: "AI-powered stack",
-    title: "AI readiness assessment for an insurance company",
-    text: "An AI readiness assessment for a European insurance group that identified up to 35% projected cost reduction in claims processing, with two use cases launched in a pilot across three business units.",
-    href: "/portfolio/ai-readiness-assessment-for-insurance-company",
-    tags: ["AI inside", "Enterprise"],
-  },
-];
+
 
 // ─── What production-grade GenAI integration delivers (6 cards) ──────────────
 const DELIVERABLES = [
@@ -201,7 +168,7 @@ export default function GenaiIntegrationPage() {
       <GenaiIntegrationHero />
 
       <GenaiIntegrationArticleLayout>
-        <GenaiIntegrationLogos />
+        <AipocLogos />
 
         {/* ── Big Data services built for operational scale ── */}
         <section id="gaii-fail" className={`${styles.blockLight} ${styles.failBlock}`}>
@@ -332,8 +299,7 @@ export default function GenaiIntegrationPage() {
         {/* ── Our recent AI cases ───────────────────────────────────────────── */}
         <div id="gaii-cases">
           <CaseCards
-            heading={<>Our recent AI <span>cases</span></>}
-            cards={GAII_CASES}
+            heading={<>Our recent AI <span>cases</span></>}
             windowed
           />
         </div>

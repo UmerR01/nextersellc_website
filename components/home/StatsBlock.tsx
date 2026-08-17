@@ -17,7 +17,7 @@ export default function StatsBlock() {
         <div className={styles.row}>
           <div className={styles.titleCol}>
             <h2 className={styles.title}>
-              Engineering you can audit. Code you can scale. Partners you can{" "}
+              Software that performs. Systems that scale. Partners you can{" "}
               <span>trust</span>.
             </h2>
           </div>

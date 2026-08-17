@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Image from "next/image";
-import CaseCards, { type CaseCard } from "@/components/home/CaseCards";
+import CaseCards from "@/components/home/CaseCards";
 import ServicesReviewSlider from "@/components/services/ServicesReviewSlider";
 import ServicesAchievements, { type Badge } from "@/components/services/ServicesAchievements";
 import ServicesFaqBlock, { type FaqItem } from "@/components/services/ServicesFaqBlock";
@@ -52,7 +52,7 @@ const SOLUTIONS = [
     blocks: [
       { head: "Agentic quote-to-bind", text: "AI agents process submissions, pull third-party data, apply rating rules, check appetite, and issue a bound policy with minimal manual work." },
       { head: "Policy administration software", text: "Quoting, issuance, endorsements, renewals, billing, and reporting are centralized within one streamlined policy lifecycle." },
-      { head: "Continuous underwriting", text: "Underwriting combines telematics, IoT, and third-party data to reassess risk in real time rather than only at annual renewal." },
+      { head: "Continuous underwriting", text: "Underwriting combines telematics and third-party data to reassess risk in real time rather than only at annual renewal." },
       { head: "Digital distribution and agent portals", text: "Agent, broker, and direct-to-consumer portals handle quoting, document upload, e-signature, and policy servicing in a single flow." },
     ],
   },
@@ -79,7 +79,7 @@ const SOLUTIONS = [
 const IMPROVES = [
   {
     icon: "/insurtech-development/06_Internet-of-Things-and-telematics-systems-02.svg",
-    title: "IoT and telematics for usage-based insurance",
+    title: "Telematics and usage-based insurance analytics",
     desc: "Connected vehicles, homes, and wearables continuously generate the data that defines risk, pricing, and prevention. Our telematics solutions create a single environment across underwriting and claims, giving actuaries, underwriters, and leadership full visibility into how policyholders behave and how risk changes over time.",
     linkLabel: "Custom software development",
     href: "/services/custom-software-development",
@@ -101,48 +101,7 @@ const IMPROVES = [
 ];
 
 // ─── Cases (5) ────────────────────────────────────────────────────────────────
-const INS_CASES: CaseCard[] = [
-  {
-    banner: "/insurtech-development/02_TLNIKA5-1.png",
-    name: "Policy admin",
-    title: "Policy administration platform for an MGA",
-    text: "A comprehensive platform for a managing general agent, covering quoting, issuance, endorsements, billing, and reporting across multiple lines in one unified system.",
-    href: "/portfolio",
-    tags: ["Enterprise"],
-  },
-  {
-    banner: "/insurtech-development/09_inbound_transportation_kanban_board011@2x.png",
-    name: "Carrier ERP/CRM",
-    title: "Custom ERP/CRM for a regional insurance carrier",
-    text: "A custom ERP/CRM that replaced decade-old disjointed tools with a unified platform, cutting new-business cycle times by 30% across distribution and servicing teams.",
-    href: "/portfolio",
-    tags: ["Enterprise"],
-  },
-  {
-    banner: "/insurtech-development/01_Boxfwd-Pers.png",
-    name: "Claims portal",
-    title: "Digital claims and FNOL web service",
-    text: "~40% improvement in service reliability under peak load – rebuilt a glitch-prone claims intake platform into a secure architecture with payment processing rated A+ by ssllabs.",
-    href: "/portfolio",
-    tags: ["Startups"],
-  },
-  {
-    banner: "/insurtech-development/06_Cover-dashboard-1.png",
-    name: "Underwriting workbench",
-    title: "AI underwriting workbench for a specialty insurer",
-    text: "An underwriting workbench that unified third-party data and rating rules into one screen, cutting quote turnaround times and raising straight-through processing across the specialty book.",
-    href: "/portfolio",
-    tags: ["IoT", "Enterprise"],
-  },
-  {
-    banner: "/insurtech-development/01_fuelz-main-screen-image-persp.png",
-    name: "Quote aggregator",
-    title: "Insurance quote aggregator web platform",
-    text: "A comparison platform that cut buyers’ shopping time with real-time quote comparison across 20+ carriers, with built-in lead management and operator analytics.",
-    href: "/portfolio",
-    tags: ["Enterprise"],
-  },
-];
+
 
 // ─── Roadmap (3 phases) ───────────────────────────────────────────────────────
 const ROADMAP = [
@@ -240,30 +199,25 @@ const INS_FAQ: FaqItem[] = [
     answer: "Yes. As deepfake and photo-editing fraud rises, we engineer multi-signal authenticity checks. The system analyzes image metadata, pixel-level manipulation artifacts, document provenance, and claimant behavior patterns, then combines these into a fraud score. Suspicious submissions are routed to your SIU team with the specific signals that triggered the flag, rather than being auto-approved.",
   },
   {
-    question: "How do you handle the massive data volume of continuous underwriting from telematics and IoT devices?",
-    answer: "Sending millions of IoT pings to a central database every second will crash standard applications and inflate cloud costs. We use Distributed Stream Processing Architectures (such as Apache Flink). This lets our systems process, filter, and analyze high-velocity policyholder data in-stream before it hits the database, ensuring your risk models and pricing update in near real-time without runaway infrastructure spend.",
+    question: "How do you handle the massive data volume of continuous underwriting from telematics devices?",
+    answer: "Sending millions of telemetry pings to a central database every second will crash standard applications and inflate cloud costs. We use Distributed Stream Processing Architectures (such as Apache Flink). This lets our systems process, filter, and analyze high-velocity policyholder data in-stream before it hits the database, ensuring your risk models and pricing update in near real-time without runaway infrastructure spend.",
   },
 ];
 
 // ─── Awards (clone badges) ────────────────────────────────────────────────────
 const INS_BADGES: Badge[] = [
-  { src: "/insurtech-development/06_techreviewer_badge_2026-12.svg", alt: "techreviewer.co 2026 — Top Software Development Companies" },
-  { src: "/insurtech-development/06_techreviewer_badge_2026-14.svg", alt: "techreviewer.co 2026 — Top IoT Development Companies" },
-  { src: "/insurtech-development/06_techreviewer_badge_2026-09.svg", alt: "techreviewer.co 2026 — Top Enterprise Software Development Companies" },
-  { src: "/insurtech-development/03_Badge-1-1.svg", alt: "Top software development company in Massachusetts" },
-  { src: "/insurtech-development/12_5ca49c9f6cb37e33319e1162_Goodfirms.svg", alt: "GoodFirms badge" },
-  { src: "/insurtech-development/12_5ca49c9f8ff5ad26d13b6845_TDA.svg", alt: "TDA badge" },
-  { src: "/insurtech-development/12_5ca49c9f6cb37e49a79e1163_changed.svg", alt: "AWS partner badge" },
-  { src: "/insurtech-development/12_IoT-Services-2025.svg", alt: "IoT Services 2025" },
-  { src: "/insurtech-development/12_Custom-Web-Design-Development-2025.svg", alt: "Custom Web Design Development 2025" },
-  { src: "/insurtech-development/12_Mobile-Software-Development-2025.svg", alt: "Mobile Software Development 2025" },
-  { src: "/insurtech-development/12_Responsive-Design-Development-2025.svg", alt: "Responsive Design Development 2025" },
-  { src: "/insurtech-development/12_Business-Intelligence-Services-2024.svg", alt: "Business Intelligence Services 2024" },
-  { src: "/insurtech-development/01_top_clutch.co_user_experience_company_manufacturing_boston.svg", alt: "Clutch — Top UX company Boston" },
-  { src: "/insurtech-development/01_top_clutch.co_software_developers_supply_chain_logistics_and_transport_providence.svg", alt: "Clutch — Top software developers Providence" },
-  { src: "/insurtech-development/01_top_clutch.co_app_development_company_manufacturing_providence.svg", alt: "Clutch — Top app development company Providence" },
-  { src: "/insurtech-development/01_top_clutch.co_user_experience_company_information_technology_boston.svg", alt: "Clutch — Top UX company IT Boston" },
-  { src: "/insurtech-development/01_top_clutch.co_software_developers_supply_chain_logistics_and_transport_boston.svg", alt: "Clutch — Top software developers Boston" },
+  { src: "/badges_fix/06_techreviewer_badge_2026-12.svg", alt: "techreviewer.co 2026 — Top Software Development Companies" },
+  { src: "/badges_fix/06_techreviewer_badge_2026-09.svg", alt: "techreviewer.co 2026 — Top Enterprise Software Development Companies" },
+  { src: "/badges_fix/12_5ca49c9f6cb37e33319e1162_Goodfirms.svg", alt: "GoodFirms badge" },
+  { src: "/badges_fix/12_5ca49c9f8ff5ad26d13b6845_TDA.svg", alt: "TDA badge" },
+  { src: "/badges_fix/12_5ca49c9f6cb37e49a79e1163_changed.svg", alt: "AWS partner badge" },
+  { src: "/badges_fix/12_Custom-Web-Design-Development-2025.svg", alt: "Custom Web Design Development 2025" },
+  { src: "/badges_fix/12_Mobile-Software-Development-2025.svg", alt: "Mobile Software Development 2025" },
+  { src: "/badges_fix/12_Responsive-Design-Development-2025.svg", alt: "Responsive Design Development 2025" },
+  { src: "/badges_fix/12_Business-Intelligence-Services-2024.svg", alt: "Business Intelligence Services 2024" },
+  { src: "/badges_fix/01_top_clutch.co_user_experience_company_manufacturing_boston.svg", alt: "Clutch — Top UX company Boston" },
+  { src: "/badges_fix/01_top_clutch.co_user_experience_company_information_technology_boston.svg", alt: "Clutch — Top UX company IT Boston" },
+  { src: "/badges_fix/01_top_clutch.co_software_developers_supply_chain_logistics_and_transport_boston.svg", alt: "Clutch — Top software developers Boston" },
 ];
 
 // ─── Awesome guides (blog) ────────────────────────────────────────────────────
@@ -347,31 +301,6 @@ export default function InsurtechPage() {
           </div>
         </div>
 
-        {/* ── Citation ───────────────────────────────────────────────────── */}
-        <section className={styles.processTestimonialSection}>
-          <div className="container">
-            <div className={styles.processTestimonial}>
-              <div className={styles.ptRight}>
-                <span className={styles.ptQuoteMark}>&ldquo;&ldquo;</span>
-                <blockquote className={styles.ptQuote}>
-                  In the fast-moving world of insurance, relying on off-the-shelf core systems is like underwriting tomorrow&apos;s risk with yesterday&apos;s data. The true path to efficiency, resilience, and growth is forged with custom software, tailored to the unique exposures of your book. It&apos;s not just a tool; it&apos;s the compass that guides your business to the future.
-                </blockquote>
-              </div>
-              <div className={styles.ptLeft}>
-                <Image
-                  src="/insurtech-development/12_Yury-Shamrey-300x300.png"
-                  alt="Yury Shamrei"
-                  width={72}
-                  height={72}
-                  className={styles.ptPhoto}
-                />
-                <span className={styles.ptName}>Yury Shamrei</span>
-                <span className={styles.ptPosition}>CEO</span>
-              </div>
-            </div>
-          </div>
-        </section>
-
         {/* ── Improves itself (3 cards) ──────────────────────────────────── */}
         <section className={`${styles.blockLight} ${styles.logisticsImprovesBlock}`}>
           <div className="container">
@@ -379,7 +308,7 @@ export default function InsurtechPage() {
               We build an insurance system that <span className={styles.accent}>improves</span> itself
             </h2>
             <p className={styles.sectionDesc}>
-              Insurance performance depends on how quickly operations turn data into decisions. Underwriting, claims handling, distribution, and pricing require systems that function as a single structure. We build insurance environments where policy administration, claims, third-party data, and operational workflows work as one decision layer — IoT, AI, and machine learning support live execution and help the system grow with your business.
+              Insurance performance depends on how quickly operations turn data into decisions. Underwriting, claims handling, distribution, and pricing require systems that function as a single structure. We build insurance environments where policy administration, claims, third-party data, and operational workflows work as one decision layer — AI and machine learning support live execution and help the system grow with your business.
             </p>
             <div className={styles.logisticsImprovesGrid}>
               {IMPROVES.map((c) => (
@@ -401,13 +330,12 @@ export default function InsurtechPage() {
         <div id="ins-cases">
           <CaseCards
             heading={<>InsurTech software we <span>developed</span></>}
-            cards={INS_CASES}
             windowed
           />
         </div>
 
         {/* ── Reviews ────────────────────────────────────────────────────── */}
-        <ServicesReviewSlider />
+        <ServicesReviewSlider primary="software" count={6} secondaryCount={1} />
 
         {/* ── CTA: Start Your Transformation ─────────────────────────────── */}
         <div className={`${styles.inlineCta} ${styles.logisticsGradientCta}`}>

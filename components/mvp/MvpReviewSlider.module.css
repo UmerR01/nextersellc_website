@@ -139,35 +139,37 @@
   display: block;
   height: 2px;
   position: absolute;
-  top: 11px;
+  top: 50%;
+  transform: translateY(-50%);
+  border-radius: 999px;
   transition: width 0.3s ease-in-out;
-  width: 38px;
+  width: 37px;
 }
 
 .arrowBox::after {
   box-sizing: border-box;
-  border-bottom: 2px solid var(--color-accent);
   border-right: 2px solid var(--color-accent);
+  border-top: 2px solid var(--color-accent);
   content: "";
   display: block;
   height: 10px;
   position: absolute;
-  top: 7px;
+  top: 50%;
   transition: 0.3s ease-in-out;
   width: 10px;
 }
 
 .navNext .arrowBox::before { left: 1px; }
-.navNext .arrowBox::after  { right: 3px; transform: rotate(-45deg); }
+.navNext .arrowBox::after  { right: 3px; transform: translateY(-50%) rotate(45deg); }
 .navPrev .arrowBox::before { right: 1px; }
-.navPrev .arrowBox::after  { left: 3px; transform: rotate(135deg); }
+.navPrev .arrowBox::after  { left: 3px; transform: translateY(-50%) rotate(-135deg); }
 
 .navBtn:not(:disabled):hover .arrowBox::before { width: 42px; }
 .navNext:not(:disabled):hover .arrowBox::after { right: -3px; }
 .navPrev:not(:disabled):hover .arrowBox::after { left: -3px; }
 
-.navBtn:disabled .arrowBox::before { background: #b8c7d8; }
-.navBtn:disabled .arrowBox::after { border-color: #b8c7d8; }
+.navBtn:disabled .arrowBox::before { background: #899fb6; }
+.navBtn:disabled .arrowBox::after { border-color: #899fb6; }
 
 .testimonialsLink {
   font-size: 15px;

@@ -6,59 +6,16 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper/modules";
 import type { SwiperRef } from "swiper/react";
 import "swiper/css";
+import { resolveReviews, toPlainText } from "@/components/testimonials/reviewsData";
 import styles from "@/components/custom-software/CSReviewSlider.module.css";
 
-const REVIEWS = [
-  {
-    text: "Nexterse LLC is flexible, efficient, and extremely good at planning and being proactive. They have also been very proactive in their approach throughout the project, seeking to understand the needs and the reasons behind them before launching into development, which has been helpful for maintaining direction and consistency, especially because the end client is regularly generating new ideas for added features.",
-    photo: "/big-data/08_639b8502f91be05f5bf099be_Paul-276x300.png",
-    logo: null,
-    name: "Paul Fardoe",
-    position: "Director",
-  },
-  {
-    text: "We brought in Nexterse LLC to help us reduce unexpected turbine failures, and the result met our expectations.",
-    photo: "/big-data/01_Markus-Keller-300x300.png",
-    logo: null,
-    name: "Markus Keller",
-    position: "Head of Operations",
-  },
-  {
-    text: "We’ve been working with Nexterse LLC for a few years, starting from the initial monitoring system, so they already understood our environment quite well. At the same time, they still managed to surprise us with their professionalism.",
-    photo: "/big-data/05_Alex-Phelps.png",
-    logo: null,
-    name: "Alex Phelps",
-    position: "CEO",
-  },
-  {
-    text: "We’d like to sincerely thank Nexterse LLC for the work they’ve done on our maintenance system. At one point, our maintenance efforts became inefficient – long downtimes and rising repair costs became the norm.",
-    photo: "/big-data/05_Dillon-Christensen.png",
-    logo: null,
-    name: "Dillon Christensen",
-    position: "CEO",
-  },
-  {
-    text: "We had already invested in AI, but the output was unclear. There were multiple initiatives across the company, each showing some promise, but no clear way to evaluate them or connect them to business outcomes.",
-    photo: "/big-data/05_Erica-Lindsay.png",
-    logo: null,
-    name: "Erica Lindsay",
-    position: "Manager",
-  },
-  {
-    text: "Working with Nexterse LLC has been an outstanding experience. Their team is not only highly skilled but also incredibly responsive, collaborative, and committed to delivering quality results. I can’t recommend them enough! Thank you team Nexterse LLC for bringing my vision to life.",
-    photo: "/big-data/08_Julia-C-300x300.jpg",
-    logo: null,
-    name: "Julie Crawford",
-    position: "Founder",
-  },
-  {
-    text: "Nexterse LLC is the firm to work with if you want to keep up to high standards. The professional workflows they stick to result in exceptional quality. Important, they help you think with the business logic of your application and they don’t blindly follow what you are saying. Which is super important. Overall, great skills, good communication, and happy with the results so far.",
-    photo: "/big-data/01_photo2.png",
-    logo: null,
-    name: "Domien Van Eynde",
-    position: "Team Lead, Daiokan.com",
-  },
-];
+const REVIEWS = resolveReviews({ primary: "software", count: 6, secondaryCount: 2 }).map((r) => ({
+  text: toPlainText(r.text),
+  photo: r.photo ?? null,
+  logo: r.logo ?? null,
+  name: r.name,
+  position: r.position,
+}));
 
 export default function BigDataReviews() {
   const swiperRef = useRef<SwiperRef>(null);

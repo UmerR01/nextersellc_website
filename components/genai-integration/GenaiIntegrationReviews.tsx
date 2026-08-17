@@ -6,59 +6,16 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper/modules";
 import type { SwiperRef } from "swiper/react";
 import "swiper/css";
+import { resolveReviews, toPlainText } from "@/components/testimonials/reviewsData";
 import styles from "@/components/custom-software/CSReviewSlider.module.css";
 
-const REVIEWS = [
-  {
-    text: "We’ve been working with Nexterse LLC for a few years, starting from the initial monitoring system, so they already understood our environment quite well. At the same time, they still managed to surprise us with their professionalism.",
-    photo: "/genai-integration/05_Alex-Phelps.png",
-    logo: null,
-    name: "Alex Phelps",
-    position: "CEO",
-  },
-  {
-    text: "From the early stages of the project, Nexterse LLC demonstrated a proactive attitude, actively seeking opportunities to enhance the solution and anticipate our needs. They consistently took the initiative to address any potential issues, provide timely updates, and offer solutions to challenges that arose during development. This proactiveness greatly contributed to the project’s success and exceeded our expectations.",
-    photo: null,
-    logo: "/genai-integration/08_protech_solutions_inc_logo.jpg",
-    name: "Dave Alce",
-    position: "COO",
-  },
-  {
-    text: "We’d like to sincerely thank Nexterse LLC for the work they’ve done on our maintenance system. At one point, our maintenance efforts became inefficient – long downtimes and rising repair costs became the norm.",
-    photo: "/genai-integration/05_Dillon-Christensen.png",
-    logo: null,
-    name: "Dillon Christensen",
-    position: "CEO",
-  },
-  {
-    text: "We had already invested in AI, but the output was unclear. There were multiple initiatives across the company, each showing some promise, but no clear way to evaluate them or connect them to business outcomes.",
-    photo: "/genai-integration/05_Erica-Lindsay.png",
-    logo: null,
-    name: "Erica Lindsay",
-    position: "Manager",
-  },
-  {
-    text: "Working with Nexterse LLC has been an outstanding experience. Their team is not only highly skilled but also incredibly responsive, collaborative, and committed to delivering quality results. I can’t recommend them enough! Thank you team Nexterse LLC for bringing my vision to life.",
-    photo: "/genai-integration/08_Julia-C-300x300.jpg",
-    logo: null,
-    name: "Julie Crawford",
-    position: "Founder",
-  },
-  {
-    text: "Nexterse LLC is the firm to work with if you want to keep up to high standards. The professional workflows they stick to result in exceptional quality. Important, they help you think with the business logic of your application and they don’t blindly follow what you are saying. Which is super important. Overall, great skills, good communication, and happy with the results so far.",
-    photo: "/custom-software/01_photo2.png",
-    logo: null,
-    name: "Domien Van Eynde",
-    position: "Team Lead, Daiokan.com",
-  },
-  {
-    text: "We brought in Nexterse LLC to help us reduce unexpected turbine failures, and the result met our expectations.",
-    photo: "/genai-integration/01_Markus-Keller-300x300.png",
-    logo: null,
-    name: "Markus Keller",
-    position: "Head of Operations",
-  },
-];
+const REVIEWS = resolveReviews({ primary: "ai", count: 6, secondaryCount: 1 }).map((r) => ({
+  text: toPlainText(r.text),
+  photo: r.photo ?? null,
+  logo: r.logo ?? null,
+  name: r.name,
+  position: r.position,
+}));
 
 export default function GenaiIntegrationReviews() {
   const swiperRef = useRef<SwiperRef>(null);

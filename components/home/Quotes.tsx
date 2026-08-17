@@ -99,18 +99,18 @@ export default function Quotes() {
 
         <div className={styles.headerRow}>
           <div className={styles.headerText}>
-            <h2 className={styles.title}>Trusted by Global Clients</h2>
+            <h2 className={styles.title}>Meet Our Team</h2>
             <div className={styles.sub}>
-              Trusted by businesses around the world for their digital transformation journey
+              Senior engineers and AI specialists working together to deliver software our clients trust
             </div>
           </div>
 
           <div className={styles.arrowsWrap}>
             <button className={styles.arrow} type="button" aria-label="Previous slide" onClick={() => go(-1)}>
-              ←
+              <span className={`${styles.arrowIcon} ${styles.arrowPrev}`} aria-hidden="true" />
             </button>
             <button className={styles.arrow} type="button" aria-label="Next slide" onClick={() => go(1)}>
-              →
+              <span className={`${styles.arrowIcon} ${styles.arrowNext}`} aria-hidden="true" />
             </button>
         
           </div>

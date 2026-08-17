@@ -25,7 +25,7 @@ const INDUSTRIES = [
   {
     icon: "/esd/05_Manufacturing-01.svg",
     title: "Manufacturing",
-    desc: "We build solutions for production management, equipment monitoring, maintenance planning, and performance analysis. We bring in the Internet of Things (IoT) and predictive models to track downtime, line load, and asset health.",
+    desc: "We build solutions for production management, equipment monitoring, maintenance planning, and performance analysis. We bring in predictive AI models that analyze operational data to track downtime, line load, and asset health.",
     link: null,
     linkText: null,
   },

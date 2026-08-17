@@ -36,7 +36,7 @@
   max-width: min(100%, 1540px);
   margin: 0 auto;
   padding-inline: clamp(1.25rem, 3vw, 2.5rem);
-  text-align: center;
+  text-align: left;
 }
 
 .heroBreadcrumbs {
@@ -45,7 +45,7 @@
   justify-content: flex-start;
   flex-wrap: wrap;
   gap: 4px;
-  margin: 0 0 5rem;
+  margin: 0 0 4.5rem;
   color: rgba(255, 255, 255, 0.5);
   font-size: 0.875rem;
   line-height: 1.4;
@@ -78,27 +78,27 @@
 }
 
 .heroTitle {
-  max-width: 66rem;
-  margin: 0 auto 1.6rem;
+  max-width: 85rem;
+  margin: 0 0 1.75rem;
   color: #fff;
-  font-size: clamp(3rem, 4.6vw, 4rem);
-  font-weight: 300;
-  line-height: 1.12;
+  font-size: clamp(3rem, 5vw, 4rem);
+  font-weight: 400;
+  line-height: 1.18;
   letter-spacing: 0;
 }
 
 .heroDescription {
   max-width: 76rem;
-  margin: 0 auto;
+  margin: 0;
   color: rgba(255, 255, 255, 0.92);
-  font-size: clamp(1.15rem, 1.45vw, 1.375rem);
+  font-size: clamp(1.15rem, 1.8vw, 1.5rem);
   line-height: 1.6;
 }
 
 @media (max-width: 900px) {
   .hero {
     min-height: auto;
-    padding-top: 6rem;
+    padding-top: calc(var(--header-height) + 48px);
     padding-bottom: 4.5rem;
   }
 

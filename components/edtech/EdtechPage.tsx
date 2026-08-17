@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Image from "next/image";
-import CaseCards, { type CaseCard } from "@/components/home/CaseCards";
+import CaseCards from "@/components/home/CaseCards";
 import ServicesReviewSlider from "@/components/services/ServicesReviewSlider";
 import ServicesAchievements, { type Badge } from "@/components/services/ServicesAchievements";
 import ServicesFaqBlock, { type FaqItem } from "@/components/services/ServicesFaqBlock";
@@ -72,42 +72,8 @@ const SECURITY = [
   { icon: "/edtech-development/06_Accessibility-1-02.svg", title: "Accessibility", desc: "Interfaces and content follow WCAG standards. User interactions are designed to remain consistent and accessible across different environments and user needs. This creates a system that operates with clarity, integrates into existing governance processes, and supports long-term scalability." },
 ];
 
-const COMPLIANCE_BADGES = [
-  { src: "/edtech-development/05_owasp.svg", alt: "OWASP" },
-  { src: "/edtech-development/05_iso.svg", alt: "ISO" },
-  { src: "/edtech-development/05_pci.svg", alt: "PCI" },
-  { src: "/edtech-development/05_gdpr.svg", alt: "GDPR" },
-  { src: "/edtech-development/05_hipaa.svg", alt: "HIPAA" },
-  { src: "/edtech-development/05_fisma.svg", alt: "FISMA" },
-];
-
 // ─── Cases (3, clone content) ─────────────────────────────────────────────────
-const EDT_CASES: CaseCard[] = [
-  {
-    banner: "/edtech-development/01_Image-elerning.png",
-    name: "Language learning",
-    title: "Language learning app development",
-    text: "An AI-powered online language learning platform for a US-based startup that achieved a 43% course completion rate in its first year, taking offline language training into a new international online market.",
-    href: "/portfolio/elearning-app",
-    tags: ["Startups"],
-  },
-  {
-    banner: "/edtech-development/02_Umergence-persp-2.png",
-    name: "Umergence",
-    title: "Umergence crowdfunding and project management platform",
-    text: "~40% less coordination overhead for startup founders – one platform covering fundraising, project management, and talent hiring, with built-in EDGAR compliance.",
-    href: "/portfolio/umergence-startup-platform-development",
-    tags: ["Startups"],
-  },
-  {
-    banner: "/edtech-development/09_cover-img-1.png",
-    name: "Health monitoring",
-    title: "Adaptive health monitoring app with 20,000+ downloads",
-    text: "A mobile health app with 98% user satisfaction and ~65% program completion rate, delivering real-time blood pressure and pulse monitoring through a smart cuff across five wellness program categories.",
-    href: "/portfolio/iot-power-mobile-app-for-wellness-programs",
-    tags: ["IoT", "Startups"],
-  },
-];
+
 
 // ─── Business benefits ────────────────────────────────────────────────────────
 const BENEFIT_STATS = [
@@ -171,27 +137,26 @@ const EDT_FAQ: FaqItem[] = [
 
 // ─── Awards (clone badges) ────────────────────────────────────────────────────
 const EDT_BADGES: Badge[] = [
-  { src: "/edtech-development/06_techreviewer_badge_2026-12.svg", alt: "techreviewer.co 2026 — Top Software Development Companies" },
-  { src: "/edtech-development/06_top-website-development-companies.svg", alt: "GoodFirms — Top Website Development Company" },
-  { src: "/edtech-development/06_top-software-development-companies.svg", alt: "GoodFirms — Top Software Development Company" },
-  { src: "/edtech-development/03_Badge-1-1.svg", alt: "Top software development company in Massachusetts" },
-  { src: "/edtech-development/12_5ca49c9f6cb37e33319e1162_Goodfirms.svg", alt: "GoodFirms badge" },
-  { src: "/edtech-development/12_5ca49c9f8ff5ad26d13b6845_TDA.svg", alt: "TDA badge" },
-  { src: "/edtech-development/12_5ca49c9f6cb37e49a79e1163_changed.svg", alt: "AWS partner badge" },
-  { src: "/edtech-development/12_Custom-Web-Design-Development-2025.svg", alt: "Custom Web Design Development 2025" },
-  { src: "/edtech-development/12_Mobile-Software-Development-2025.svg", alt: "Mobile Software Development 2025" },
-  { src: "/edtech-development/12_Business-Intelligence-Services-2024.svg", alt: "Business Intelligence Services 2024" },
-  { src: "/edtech-development/12_Machine-Learning-Development-2024.svg", alt: "Machine Learning Development 2024" },
-  { src: "/edtech-development/12_Responsive-Design-Development-2025.svg", alt: "Responsive Design Development 2025" },
-  { src: "/edtech-development/12_Branding-Services-2025.svg", alt: "Branding Services 2025" },
-  { src: "/edtech-development/01_top_clutch.co_software_developers_startup_massachusetts.svg", alt: "Clutch — Top startup software developers Massachusetts" },
-  { src: "/edtech-development/01_top_clutch.co_user_experience_company_information_technology_boston.svg", alt: "Clutch — Top UX company IT Boston" },
+  { src: "/badges_fix/06_techreviewer_badge_2026-12.svg", alt: "techreviewer.co 2026 — Top Software Development Companies" },
+  { src: "/badges_fix/06_top-website-development-companies.svg", alt: "GoodFirms — Top Website Development Company" },
+  { src: "/badges_fix/edtech-development__06_top-software-development-companies.svg", alt: "GoodFirms — Top Software Development Company" },
+  { src: "/badges_fix/12_5ca49c9f6cb37e33319e1162_Goodfirms.svg", alt: "GoodFirms badge" },
+  { src: "/badges_fix/12_5ca49c9f8ff5ad26d13b6845_TDA.svg", alt: "TDA badge" },
+  { src: "/badges_fix/12_5ca49c9f6cb37e49a79e1163_changed.svg", alt: "AWS partner badge" },
+  { src: "/badges_fix/12_Custom-Web-Design-Development-2025.svg", alt: "Custom Web Design Development 2025" },
+  { src: "/badges_fix/12_Mobile-Software-Development-2025.svg", alt: "Mobile Software Development 2025" },
+  { src: "/badges_fix/12_Business-Intelligence-Services-2024.svg", alt: "Business Intelligence Services 2024" },
+  { src: "/badges_fix/12_Machine-Learning-Development-2024.svg", alt: "Machine Learning Development 2024" },
+  { src: "/badges_fix/12_Responsive-Design-Development-2025.svg", alt: "Responsive Design Development 2025" },
+  { src: "/badges_fix/12_Branding-Services-2025.svg", alt: "Branding Services 2025" },
+  { src: "/badges_fix/01_top_clutch.co_software_developers_startup_massachusetts.svg", alt: "Clutch — Top startup software developers Massachusetts" },
+  { src: "/badges_fix/01_top_clutch.co_user_experience_company_information_technology_boston.svg", alt: "Clutch — Top UX company IT Boston" },
 ];
 
 // ─── Awesome stories (blog, clone content) ────────────────────────────────────
 const EDT_BLOG_FEATURED: AdlcFeaturedPost = {
-  href: "/blog/iot-solutions-for-education",
-  title: "IoT in Education: Use Cases, Benefits, and Best Practices",
+  href: "/blog/ai-solutions-for-education",
+  title: "AI in Education: Use Cases, Benefits, and Best Practices",
   image: "/edtech-development/11_20944385-1024x683.jpg",
   imageAlt: "Interactive learning tools",
   readTime: "11 mins",
@@ -377,12 +342,6 @@ export default function EdtechPage() {
                 </div>
               ))}
             </div>
-            <div className={styles.edtBadges}>
-              {COMPLIANCE_BADGES.map((b) => (
-                // eslint-disable-next-line @next/next/no-img-element
-                <img key={b.alt} src={b.src} alt={b.alt} className={styles.edtBadge} loading="lazy" />
-              ))}
-            </div>
           </div>
         </section>
 
@@ -390,13 +349,12 @@ export default function EdtechPage() {
         <div id="edt-cases">
           <CaseCards
             heading={<>Recent software we <span>developed</span></>}
-            cards={EDT_CASES}
             windowed
           />
         </div>
 
         {/* ── Reviews ────────────────────────────────────────────────────── */}
-        <ServicesReviewSlider />
+        <ServicesReviewSlider primary="software" count={6} secondaryCount={1} />
 
         {/* ── Business benefits in numbers ───────────────────────────────── */}
         <section id="edt-benefits" className={`${styles.blockWhite} ${styles.benefitsOpen}`}>

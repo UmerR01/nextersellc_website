@@ -121,7 +121,7 @@ const LEVELS = [
   },
 ];
 
-const MATURITY_IMG = "/ai-consulting/imgs/03_AI-maturity-funnel-1024x973.png";
+const MATURITY_IMG = "/ai-consulting/imgs/03_AI-maturity-funnel-1024x973-clean.png";
 
 export default function AIMaturity() {
   const [active, setActive] = useState(0);

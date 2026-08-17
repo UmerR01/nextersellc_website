@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import Header from "@/components/Header";
 import ARHero from "@/components/ai-readiness/ARHero";
 import ARFoundation from "@/components/ai-readiness/ARFoundation";
-import ARQuiz from "@/components/ai-readiness/ARQuiz";
 import ARStakeholders from "@/components/ai-readiness/ARStakeholders";
 import ARWhatsInit from "@/components/ai-readiness/ARWhatsInit";
 import ARChecklist from "@/components/ai-readiness/ARChecklist";
@@ -40,7 +39,6 @@ export default function AIReadinessPage() {
           <div className={styles.mainContent}>
             <AipocLogos />
             <div id="foundation"><ARFoundation /></div>
-            <ARQuiz />
             <div id="audit-scope"><ARWhatsInit /></div>
             <ARStakeholders />
             <ARChecklist />

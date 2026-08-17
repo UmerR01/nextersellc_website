@@ -1,6 +1,6 @@
 ﻿.section {
   background: var(--color-bg);
-  padding: 96px 0 144px;
+  padding: 96px 0;
   position: relative;
   z-index: 4;
 }
@@ -13,7 +13,7 @@
   margin-bottom: 4rem;
 }
 
-/* â”€â”€ Card list â”€â”€ */
+/*Card list*/
 .cards {
   display: flex;
   flex-direction: column;

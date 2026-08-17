@@ -1,4 +1,4 @@
-﻿import styles from "./AIHero.module.css";
+import styles from "./AIHero.module.css";
 
 const POINTS = [
   "A clear roadmap from AI strategy to production",
@@ -83,7 +83,7 @@ export default function AIHero() {
               <path stroke="rgba(255,255,255,0.5)" strokeLinecap="square" d="m6 4 4 4-4 4" />
             </svg>
           </span>
-          <a href="/#applied-ai">Services</a>
+          <a href="/services">Services</a>
           <span className={styles.breadcrumbSep}>
             <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden>
               <path stroke="rgba(255,255,255,0.5)" strokeLinecap="square" d="m6 4 4 4-4 4" />
@@ -111,6 +111,13 @@ export default function AIHero() {
 
         <div className={styles.buttons}>
           <a href="#get-modal-popup" className={`btn btn-accent ${styles.btnPrimary}`}>Book AI Discovery Workshop</a>
+          <div className={styles.serviceRating} aria-label="Clients rate our services 5.0 out of 5">
+            <p className={styles.ratingLabel}>Clients rate our services</p>
+            <div className={styles.ratingScore}>
+              <span className={styles.ratingStars} aria-hidden>&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+              <strong>5,0</strong>
+            </div>
+          </div>
         </div>
       </div>
     </section>

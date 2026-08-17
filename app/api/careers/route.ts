@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
+import { fileToAttachment, sendFormEmails } from "@/lib/mailer";
 
 export async function POST(req: NextRequest) {
   try {
@@ -14,7 +15,7 @@ export async function POST(req: NextRequest) {
     const portfolioUrl = formData.get("portfolioUrl")?.toString().trim() ?? "";
     const resume = formData.get("resume");
 
-    if (!name || !email || !position || !message) {
+    if (!name || !email || !message) {
       return NextResponse.json({ error: "Missing required fields" }, { status: 400 });
     }
 
@@ -23,17 +24,24 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: "Invalid email" }, { status: 400 });
     }
 
-    // TODO: Send to HR email via nodemailer/Resend/SendGrid
-    console.log("[Careers Application]", {
-      name,
-      email,
-      phone,
-      linkedinUrl,
-      githubUrl,
-      portfolioUrl,
-      position,
-      message,
-      resume: resume instanceof File ? { name: resume.name, size: resume.size, type: resume.type } : null,
+    const resumeAttachment = await fileToAttachment(resume);
+
+    await sendFormEmails({
+      formName: "Careers application",
+      submitterName: name,
+      submitterEmail: email,
+      fields: [
+        { label: "Name", value: name },
+        { label: "Email", value: email },
+        { label: "Phone", value: phone || "-" },
+        ...(position ? [{ label: "Position", value: position }] : []),
+        { label: "LinkedIn", value: linkedinUrl || "-" },
+        { label: "GitHub", value: githubUrl || "-" },
+        { label: "Portfolio", value: portfolioUrl || "-" },
+        { label: "Message", value: message },
+      ],
+      attachments: resumeAttachment ? [resumeAttachment] : undefined,
+      sourceUrl: req.headers.get("referer") ?? undefined,
     });
 
     return NextResponse.json({ success: true });

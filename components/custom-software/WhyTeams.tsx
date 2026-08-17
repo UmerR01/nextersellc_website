@@ -18,8 +18,8 @@ const REASONS = [
     desc: "We run both a traditional lifecycle and a proprietary agentic one. Standard builds get SDLC; AI-led builds get ADLC, with gates like hallucination control and red-teaming.",
   },
   {
-    heading: "AI and IoT depth",
-    desc: "We have shipped IoT platforms with hundreds of devices and AI features running in production.",
+    heading: "AI and applied-data depth",
+    desc: "We have shipped AI-powered platforms processing data from hundreds of operational sources, with AI features running in production.",
   },
 ];
 

@@ -2,14 +2,14 @@
 
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
-import CaseCards, { type CaseCard } from "@/components/home/CaseCards";
+import CaseCards from "@/components/home/CaseCards";
 import ServicesReviewSlider from "@/components/services/ServicesReviewSlider";
 import ServicesAchievements, { type Badge } from "@/components/services/ServicesAchievements";
 import ServicesFaqBlock, { type FaqItem } from "@/components/services/ServicesFaqBlock";
 import LetsStart from "@/components/home/LetsStart";
 import AdlcBlog from "@/components/adlc/AdlcBlog";
 import OpenaiHero from "./OpenaiHero";
-import OpenaiLogos from "./OpenaiLogos";
+import AipocLogos from "@/components/aipoc/AipocLogos";
 import OpenaiCrosslinks from "./OpenaiCrosslinks";
 import OpenaiArticleLayout from "./OpenaiArticleLayout";
 import styles from "./OpenaiPage.module.css";
@@ -147,47 +147,22 @@ const INDUSTRIES: { icon: string; title: string; desc: string[]; linkText?: stri
 
 // ─── Awards & recognitions (11 badges) ────────────────────────────────────────
 const OPENAI_BADGES: Badge[] = [
-  { src: "/openai-development/05_top_clutch.co_generative_ai_company_boston_2026-2.svg", alt: "Clutch 2026 — Top Generative AI Company in Boston" },
-  { src: "/openai-development/06_techreviewer_badge_2026-15.svg", alt: "techreviewer.co 2026 — Top GenAI Development Companies" },
-  { src: "/openai-development/05_top_clutch.co_artificial_intelligence_company_boston_2026-2.svg", alt: "Clutch 2026 — Top Artificial Intelligence Company in Boston" },
-  { src: "/openai-development/06_techreviewer_badge_2026-01.svg", alt: "techreviewer.co 2026 — Top AI Consulting Companies" },
-  { src: "/openai-development/06_techreviewer_badge_2026-02.svg", alt: "techreviewer.co 2026 — Top AI Readiness Assessment Companies" },
-  { src: "/openai-development/06_top-ai-development-companies.svg", alt: "GoodFirms — Top AI Development Company" },
-  { src: "/openai-development/06_techreviewer_badge_2026-04.svg", alt: "techreviewer.co 2026 — Top AI Software Development Companies" },
-  { src: "/openai-development/06_techreviewer_badge_2026-16.svg", alt: "techreviewer.co 2026 — Top AI Integration Companies" },
-  { src: "/openai-development/06_techreviewer_badge_2026-03.svg", alt: "techreviewer.co 2026 — Top AI PoC Development Companies" },
-  { src: "/openai-development/06_techreviewer_badge_2026-05.svg", alt: "techreviewer.co 2026 — Top AI Agents Development Companies" },
-  { src: "/openai-development/06_techreviewer_badge_2026-06.svg", alt: "techreviewer.co 2026 — Top RAG Development Companies" },
-  { src: "/openai-development/06_techreviewer_badge_2026-07.svg", alt: "techreviewer.co 2026 — Top LLM Development Companies" },
+  { src: "/badges_fix/05_top_clutch.co_generative_ai_company_boston_2026-2.svg", alt: "Clutch 2026 — Top Generative AI Company in Boston" },
+  { src: "/badges_fix/06_techreviewer_badge_2026-15.svg", alt: "techreviewer.co 2026 — Top GenAI Development Companies" },
+  { src: "/badges_fix/05_top_clutch.co_artificial_intelligence_company_boston_2026-2.svg", alt: "Clutch 2026 — Top Artificial Intelligence Company in Boston" },
+  { src: "/badges_fix/06_techreviewer_badge_2026-01.svg", alt: "techreviewer.co 2026 — Top AI Consulting Companies" },
+  { src: "/badges_fix/06_techreviewer_badge_2026-02.svg", alt: "techreviewer.co 2026 — Top AI Readiness Assessment Companies" },
+  { src: "/badges_fix/06_top-ai-development-companies.svg", alt: "GoodFirms — Top AI Development Company" },
+  { src: "/badges_fix/06_techreviewer_badge_2026-04.svg", alt: "techreviewer.co 2026 — Top AI Software Development Companies" },
+  { src: "/badges_fix/06_techreviewer_badge_2026-16.svg", alt: "techreviewer.co 2026 — Top AI Integration Companies" },
+  { src: "/badges_fix/06_techreviewer_badge_2026-03.svg", alt: "techreviewer.co 2026 — Top AI PoC Development Companies" },
+  { src: "/badges_fix/06_techreviewer_badge_2026-05.svg", alt: "techreviewer.co 2026 — Top AI Agents Development Companies" },
+  { src: "/badges_fix/06_techreviewer_badge_2026-06.svg", alt: "techreviewer.co 2026 — Top RAG Development Companies" },
+  { src: "/badges_fix/06_techreviewer_badge_2026-07.svg", alt: "techreviewer.co 2026 — Top LLM Development Companies" },
 ];
 
 // ─── Recent software we made → Case studies (3) ───────────────────────────────
-const OPENAI_CASES: CaseCard[] = [
-  {
-    banner: "/openai-development/04_Cover-right-1-1.png",
-    name: "AI · Insurance",
-    title: "AI readiness assessment for an insurance company",
-    text: "An AI readiness assessment for a European insurance group that identified up to 35% projected cost reduction in claims processing, with two use cases launched in a pilot across three business units.",
-    href: "/portfolio/ai-readiness-assessment-for-insurance-company",
-    tags: ["AI inside", "Enterprise"],
-  },
-  {
-    banner: "/openai-development/05_Cover-right-1.png",
-    name: "AI · Retail",
-    title: "AI-driven legacy online retail platform modernization",
-    text: "Nexterse LLC modernized a UK omnichannel retailer's legacy eCommerce platform to headless commerce – without disrupting checkout or payment flows – enabling AI-driven personalization that improved product conversion rates by 25%.",
-    href: "/portfolio/ai-driven-legacy-online-retail-platform-modernization",
-    tags: ["AI inside", "Enterprise"],
-  },
-  {
-    banner: "/openai-development/10_Cover-2-1.png",
-    name: "AI · Healthcare",
-    title: "AI patient-flow platform for dental imaging",
-    text: "A HIPAA-aligned AI platform for a dental imaging provider that reduced wait times by 37%, increased daily throughput by 22%, and lowered no-shows by 29%.",
-    href: "/portfolio/hipaa-compliant-ai-powered-patient-management-platform-for-a-dental-imaging-provider",
-    tags: ["AI inside", "Enterprise"],
-  },
-];
+
 
 // ─── ADLC process for ChatGPT and LLM applications (7 phases) ────────────────
 const PROCESS = [
@@ -294,7 +269,7 @@ export default function OpenaiPage() {
       <OpenaiHero />
 
       <OpenaiArticleLayout>
-        <OpenaiLogos />
+        <AipocLogos />
         {/* ── ChatGPT-based software development services (6 cards) ────────── */}
         <section id="oai-services" className={`${styles.blockWhite} ${styles.openaiServicesBlock}`}>
           <div className="container">
@@ -425,11 +400,10 @@ export default function OpenaiPage() {
         <div id="oai-cases">
           <CaseCards
             heading={<>Recent <span>software</span> we made</>}
-            cards={OPENAI_CASES}
             windowed
           />
         </div>
-        <ServicesReviewSlider />
+        <ServicesReviewSlider primary="ai" count={7} secondaryCount={2} />
 
         {/* ── CTA: From virtual assistants to AI-driven analytics ───────────── */}
         <div className={styles.inlineCta}>

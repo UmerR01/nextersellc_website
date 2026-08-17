@@ -1,5 +1,5 @@
-﻿.section {
-  padding: 96px 0;
+.section {
+  padding: 128px 0 96px;
   background: var(--color-bg);
   overflow: visible;
 }
@@ -93,28 +93,30 @@
   display: block;
   height: 2px;
   position: absolute;
-  top: 11px;
+  top: 50%;
+  transform: translateY(-50%);
+  border-radius: 999px;
   transition: width 0.3s ease-in-out;
-  width: 38px;
+  width: 37px;
 }
 
 .arrowBox::after {
-  border-bottom: 2px solid var(--color-accent);
   border-right: 2px solid var(--color-accent);
+  border-top: 2px solid var(--color-accent);
   box-sizing: border-box;
   content: "";
   display: block;
   height: 10px;
   position: absolute;
-  top: 7px;
+  top: 50%;
   transition: 0.3s ease-in-out;
   width: 10px;
 }
 
 .btnNext .arrowBox::before { left: 1px; }
-.btnNext .arrowBox::after { right: 3px; transform: rotate(-45deg); }
+.btnNext .arrowBox::after { right: 3px; transform: translateY(-50%) rotate(45deg); }
 .btnPrev .arrowBox::before { right: 1px; }
-.btnPrev .arrowBox::after { left: 3px; transform: rotate(135deg); }
+.btnPrev .arrowBox::after { left: 3px; transform: translateY(-50%) rotate(-135deg); }
 
 .btnNext:not(:disabled):hover .arrowBox::before,
 .btnPrev:not(:disabled):hover .arrowBox::before { width: 42px; }
@@ -122,15 +124,15 @@
 .btnPrev:not(:disabled):hover .arrowBox::after { left: -3px; }
 
 /* Disabled */
-.disabled { cursor: default; pointer-events: none; color: #b8c7d8; }
-.disabled .arrowBox::before { background: #b8c7d8; }
-.disabled .arrowBox::after { border-color: #b8c7d8; }
+.disabled { cursor: default; pointer-events: none; color: #899fb6; }
+.disabled .arrowBox::before { background: #899fb6; }
+.disabled .arrowBox::after { border-color: #899fb6; }
 
 /* Mobile nav */
 .nav { display: none; }
 
 @media (max-width: 768px) {
-  .section { padding: 64px 0; }
+  .section { padding: 88px 0 64px; }
 
   .achievements {
     max-width: none;
