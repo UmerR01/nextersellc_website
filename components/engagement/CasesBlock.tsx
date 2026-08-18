@@ -11,7 +11,7 @@ const CASES = [
     tech: "Traditional tech stack",
     title: "Dexai Robotics: graphical user interface for robot operation",
     desc: "A GUI that freed Dexai Robotics' restaurant staff from engineer dependency – cutting robot setup time per shift by ~65% and reducing interaction errors by ~50% through real-time visual state monitoring and offline operation.",
-    tags: ["IoT", "Startups"],
+    tags: ["Startups"],
     imgRight: "/engagement/02_Frame-1787-1.png",
     imgRightAlt: "Screenshot Dexai",
     imgLeft: "/engagement/02_Graphical-user-interface-for-robot-operation-2.png",

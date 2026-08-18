@@ -2,7 +2,7 @@ import styles from "./ProptechTechStack.module.css";
 
 const ROWS: { title: string; tools: string[] }[] = [
   { title: "Backend & platform services", tools: ["tool_1.svg", "tool_2.svg", "tool_3.svg"] },
-  { title: "IoT & real-time ingestion", tools: ["tool_4.svg", "tool_5.svg"] },
+  { title: "Sensor data & real-time ingestion", tools: ["tool_4.svg", "tool_5.svg"] },
   { title: "Geospatial & mapping", tools: ["tool_6.svg", "tool_7.svg"] },
   { title: "Analytics & data warehouse", tools: ["tool_8.svg", "tool_9.svg", "tool_10.svg"] },
   { title: "AI & valuation models", tools: ["tool_11.svg", "tool_12.svg", "tool_13.svg"] },

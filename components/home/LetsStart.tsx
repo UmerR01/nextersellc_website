@@ -18,6 +18,26 @@ function ClipIcon() {
   );
 }
 
+function SuccessIcon() {
+  return (
+    <svg width="86" height="86" viewBox="0 0 86 86" fill="none" aria-hidden>
+      <path
+        d="M73 38.2v3.1a30.1 30.1 0 1 1-17.8-27.5"
+        stroke="currentColor"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M74.5 15.2 39.8 50 29.4 39.6"
+        stroke="currentColor"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
+}
 function CalendarIcon() {
   return (
     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden>
@@ -53,6 +73,7 @@ interface LetsStartProps {
 export default function LetsStart({ variant }: LetsStartProps = {}) {
   const [sent, setSent] = useState(false);
   const [fileName, setFileName] = useState("");
+  const [status, setStatus] = useState<"idle" | "loading" | "error">("idle");
 
   return (
     <section
@@ -126,45 +147,77 @@ export default function LetsStart({ variant }: LetsStartProps = {}) {
 
           {/* Right: form */}
           <div className={`lets-start-right ${styles.right}`}>
+            {sent ? (
+              <div className={styles.success} role="status" aria-live="polite">
+                <div className={styles.successIcon}>
+                  <SuccessIcon />
+                </div>
+                <h3 className={styles.successTitle}>Thank you!</h3>
+                <p className={styles.successText}>Your form was successfully submitted!</p>
+              </div>
+            ) : (
             <form
               className={`lets-start-form ${styles.form}`}
-              onSubmit={(e) => {
+              onSubmit={async (e) => {
                 e.preventDefault();
-                setSent(true);
+                setStatus("loading");
+                try {
+                  const res = await fetch("/api/lets-start", {
+                    method: "POST",
+                    body: new FormData(e.currentTarget),
+                  });
+                  if (!res.ok) throw new Error("Request failed");
+                  setSent(true);
+                  setStatus("idle");
+                } catch {
+                  setStatus("error");
+                }
               }}
             >
               <label className={`lets-start-field ${styles.field}`}>
                 <span className={`lets-start-label ${styles.label}`}>My Name*</span>
-                <input type="text" name="name" placeholder="John Smith" required />
+                <input type="text" name="name" placeholder="John Smith" required disabled={status === "loading"} />
               </label>
               <label className={`lets-start-field ${styles.field}`}>
                 <span className={`lets-start-label ${styles.label}`}>Email Address*</span>
-                <input type="email" name="email" placeholder="name@company.com" required />
+                <input type="email" name="email" placeholder="name@company.com" required disabled={status === "loading"} />
               </label>
               <label className={`lets-start-field ${styles.field}`}>
                 <span className={`lets-start-label ${styles.label}`}>Message*</span>
-                <textarea name="message" rows={2} placeholder="Describe your idea" required />
+                <textarea name="message" rows={2} placeholder="Describe your idea" required disabled={status === "loading"} />
               </label>
 
               <p className={`lets-start-privacy ${styles.privacy}`}>
                 When you click Send, Nexterse LLC will process your personal data in accordance
-                with our <a href="#">Privacy notice</a> to respond to your enquiry.
+                with our <a href="/privacy-policy">Privacy & Policy</a> to respond to your enquiry.
               </p>
 
               <div className={`lets-start-bottom ${styles.bottom}`}>
-                <label className={`lets-start-attach ${styles.attach}`}>
+                <label className={`lets-start-attach ${styles.attach} ${status === "loading" ? styles.attachDisabled : ""}`}>
                   <ClipIcon />
                   {fileName || "Attach file"}
                   <input
                     type="file"
+                    name="file"
                     hidden
+                    disabled={status === "loading"}
                     onChange={(e) => setFileName(e.target.files?.[0]?.name ?? "")}
                   />
                 </label>
-                <button type="submit" className={`lets-start-send ${styles.send}`}>
-                  {sent ? "Thank you!" : "Send"}
+                <button
+                  type="submit"
+                  className={`lets-start-send ${styles.send} ${status === "loading" ? styles.sendLoading : ""}`}
+                  disabled={status === "loading"}
+                  aria-busy={status === "loading"}
+                >
+                  {status === "loading" ? <span className={styles.spinner} aria-hidden="true" /> : "Send"}
                 </button>
               </div>
+              {status === "error" && (
+                <p className={styles.errorText}>
+                  Something went wrong. Please try again.
+                </p>
+              )}
 
               <div className={`lets-start-manager ${styles.manager}`}>
                 <div className={`lets-start-manager-info ${styles.managerInfo}`}>
@@ -185,6 +238,7 @@ export default function LetsStart({ variant }: LetsStartProps = {}) {
                 </a>
               </div>
             </form>
+            )}
           </div>
         </div>
       </div>

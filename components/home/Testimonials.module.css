@@ -46,6 +46,40 @@
   /* border-color: var(--color-accent); */
   color: var(--color-accent);
 }
+.arrowIcon {
+  display: block;
+  position: relative;
+  width: 18px;
+  height: 14px;
+  flex: 0 0 18px;
+}
+
+.arrowIcon::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  width: 15px;
+  height: 2px;
+  background: currentColor;
+  border-radius: 999px;
+  transform: translateY(-50%);
+}
+
+.arrowIcon::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  width: 8px;
+  height: 8px;
+  box-sizing: border-box;
+  border-top: 2px solid currentColor;
+  border-right: 2px solid currentColor;
+}
+
+.arrowNext::before { left: 1px; }
+.arrowNext::after { right: 1px; transform: translateY(-50%) rotate(45deg); }
+.arrowPrev::before { right: 1px; }
+.arrowPrev::after { left: 1px; transform: translateY(-50%) rotate(-135deg); }
 /* Carousel — clips the sliding track */
 .viewport {
   overflow: hidden;

@@ -4,7 +4,7 @@ import AipocLogos from "@/components/aipoc/AipocLogos";
 import StatsBlock from "@/components/home/StatsBlock";
 import Testimonials from "@/components/home/Testimonials";
 import Services from "@/components/home/Services";
-import Quotes from "@/components/home/Quotes";
+// import Quotes from "@/components/home/Quotes"; // "Meet Our Team" section disabled per request
 import CaseCards from "@/components/home/CaseCards";
 import Workflow from "@/components/home/Workflow";
 import Certificates from "@/components/home/Certificates";
@@ -26,7 +26,7 @@ export default function Home() {
         <StatsBlock />
         <Testimonials />
         <Services />
-        <Quotes />
+        {/* <Quotes /> "Meet Our Team" section disabled per request */}
         <CaseCards />
         <Workflow />
         <Certificates />

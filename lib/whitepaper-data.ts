@@ -229,26 +229,27 @@ export const whitepapers: WhitepaperData[] = [
     },
   },
 
-  /* ── 2. IoT 7 Components: Structure Overview ── */
+  /* ── 2. AI Agent Architecture: 7 Components Structure Overview ── */
   {
-    slug: "iot-7-components-structure-overview",
+    slug: "ai-agent-architecture-7-components-structure-overview",
     meta: {
-      title: "IoT 7 Components: Structure Overview | Nexterse LLC",
+      title: "AI Agent Architecture: 7 Components Structure Overview | Nexterse LLC",
       description:
-        "Explore the 7 key components of an IoT ecosystem — from IoT devices and security to network, gateway, cloud, application, and users.",
+        "Explore the 7 key components of AI agent architecture — from the reasoning core and tool calling to memory, orchestration, guardrails, retrieval, and monitoring.",
     },
-    breadcrumb: "IoT components",
+    breadcrumb: "AI agent components",
     hero: {
       title: [
-        { text: "IoT 7 " },
+        { text: "AI Agent Architecture: 7 " },
         { text: "Components", accent: true },
-        { text: ": Structure Overview" },
+        { text: " Structure Overview" },
       ],
       description: [
-        "The Internet of Things concept became quite a discussible topic in recent years.",
-        "People all over the world continue to connect to the internet of things either for professional use (manufacturers) or personal (smartwatches/bands). This, in turn, implies that more people become potentional enthusiasts about the IoT technology. For those people we prepared this guide. Newcomers will find the material simple to understand, while advanced enthusiast can benefit from the detailed information in the second part of the whitepaper.",
+        "AI agents have become one of the most widely discussed technologies in software development today.",
+        "Businesses across industries are adopting AI agents to automate workflows, augment decision-making, and deliver more responsive digital products. This, in turn, means more teams need a clear understanding of what actually makes an AI agent work under the hood. For those people we prepared this guide. Newcomers will find the material simple to understand, while advanced practitioners can benefit from the detailed breakdown of each architectural layer in the second part of the whitepaper.",
       ],
-      pdfUrl: "/whitepaper/IoT-7-Components-Structure-Overview-Nexterse.pdf",
+      pdfUrl:
+        "/whitepaper/AI-Agent-Architecture-7-Components-Structure-Overview-Nexterse.pdf",
     },
     overview: {
       title: [
@@ -256,15 +257,15 @@ export const whitepapers: WhitepaperData[] = [
         { text: "What's inside." },
       ],
       items: [
-        "How Ecosystems Look and What Lies Behind the Term IoT Ecosystem 2",
-        "7 components of IoT ecosystem",
-        "#1 Component: IoT Devices",
-        "#2 Component: Security",
-        "#3 Component: Network",
-        "#4 Component: Gateway",
-        "#5 Component: Cloud",
-        "#6 Component: Application",
-        "#7 Component: Users",
+        "How AI Agent Systems Look and What Lies Behind the Term Agent Architecture",
+        "7 components of an AI agent architecture",
+        "#1 Component: LLM / Reasoning Core",
+        "#2 Component: Tool & Function Calling",
+        "#3 Component: Memory & Context Management",
+        "#4 Component: Orchestration Layer",
+        "#5 Component: Guardrails & Safety",
+        "#6 Component: Data & Retrieval Layer",
+        "#7 Component: Monitoring & Observability",
       ],
     },
     // No FAQ for this whitepaper

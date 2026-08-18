@@ -2,13 +2,13 @@
 
 import { useState } from "react";
 import Image from "next/image";
-import CaseCards, { type CaseCard } from "@/components/home/CaseCards";
+import CaseCards from "@/components/home/CaseCards";
 import ServicesReviewSlider from "@/components/services/ServicesReviewSlider";
 import ServicesAchievements, { type Badge } from "@/components/services/ServicesAchievements";
 import ServicesFaqBlock, { type FaqItem } from "@/components/services/ServicesFaqBlock";
 import LetsStart from "@/components/home/LetsStart";
 import AiIntegrationHero from "./AiIntegrationHero";
-import AiIntegrationLogos from "./AiIntegrationLogos";
+import AipocLogos from "@/components/aipoc/AipocLogos";
 import AiIntegrationTechStack from "./AiIntegrationTechStack";
 import AiIntegrationArticleLayout from "./AiIntegrationArticleLayout";
 import styles from "./AiIntegrationPage.module.css";
@@ -18,7 +18,7 @@ const SERVICES = [
   { icon: "/ai-integration/03_Legacy-system-augmentation-01-1.svg", title: "Legacy system augmentation", desc: "We integrate copilots and task-specific AI features into ERP, CRM, HRIS, and other internal systems. That can include assisted data entry, report drafting, record lookup, workflow guidance, and natural-language access to legacy databases through a controlled application layer." },
   { icon: "/ai-integration/03_Intelligent-customer-portals-01-1.svg", title: "Intelligent customer portals", desc: "We integrate AI-powered search, guided self-service, dynamic content adaptation, and autonomous level-one support flows with web and mobile apps to improve user operations inside your products." },
   { icon: "/ai-integration/03_Predictive-analytics-and-forecasting-enablement-01-1.svg", title: "Predictive analytics and forecasting enablement", desc: "We integrate forecasting models into the business systems teams use for planning, inventory control, maintenance scheduling, risk monitoring, and demand analysis. Forecasts appear in the tools that teams already use, rather than in a separate data science environment." },
-  { icon: "/ai-integration/03_AI-for-IoT-automation-02-1.svg", title: "AI for IoT automation", desc: "We support anomaly detection, maintenance alerts, process optimization, and automated responses inside industrial or asset-heavy environments by connecting AI models to IoT platforms." },
+  { icon: "/ai-integration/03_AI-for-IoT-automation-02-1.svg", title: "AI for operational automation", desc: "We support anomaly detection, exception alerts, process optimization, and automated responses across day-to-day operations by connecting AI models to the business systems and data pipelines you already run, from ERP and CRM to analytics platforms." },
   { icon: "/ai-integration/03_Computer-vision-and-image-recognition-integration-1.svg", title: "Computer vision and image recognition integration", desc: "We embed vision models into platforms and systems that rely on image classification, object detection, document capture, or visual verification." },
   { icon: "/ai-integration/03_Natural-language-processing-and-speech-recognition-01-1.svg", title: "Natural language processing and speech recognition", desc: "We integrate NLP and speech components into customer service flows, internal knowledge systems, voice interfaces, and document-heavy operations that depend on transcription, intent detection, entity extraction, or text classification." },
 ];
@@ -75,54 +75,21 @@ const BENEFITS = [
 
 // ─── Awards (11 clone badges) ──────────────────────────────────────────────────
 const AII_BADGES: Badge[] = [
-  { src: "/ai-integration/06_techreviewer_badge_2026-16.svg", alt: "techreviewer.co 2026 — Top AI Integration Companies" },
-  { src: "/ai-integration/05_top_clutch.co_artificial_intelligence_company_boston_2026-2.svg", alt: "Clutch 2026 — Top Artificial Intelligence Company in Boston" },
-  { src: "/ai-integration/06_top-ai-development-companies.svg", alt: "GoodFirms — Top AI Development Company" },
-  { src: "/ai-integration/06_techreviewer_badge_2026-04.svg", alt: "techreviewer.co 2026 — Top AI Software Development Companies" },
-  { src: "/ai-integration/06_techreviewer_badge_2026-01.svg", alt: "techreviewer.co 2026 — Top AI Consulting Companies" },
-  { src: "/ai-integration/06_techreviewer_badge_2026-02.svg", alt: "techreviewer.co 2026 — Top AI Readiness Assessment Companies" },
-  { src: "/ai-integration/05_top_clutch.co_generative_ai_company_boston_2026-2.svg", alt: "Clutch 2026 — Top Generative AI Company in Boston" },
-  { src: "/ai-integration/06_techreviewer_badge_2026-03.svg", alt: "techreviewer.co 2026 — Top AI PoC Development Companies" },
-  { src: "/ai-integration/06_techreviewer_badge_2026-05.svg", alt: "techreviewer.co 2026 — Top AI Agents Development Companies" },
-  { src: "/ai-integration/06_techreviewer_badge_2026-06.svg", alt: "techreviewer.co 2026 — Top RAG Development Companies" },
-  { src: "/ai-integration/06_techreviewer_badge_2026-07.svg", alt: "techreviewer.co 2026 — Top LLM Development Companies" },
+  { src: "/badges_fix/06_techreviewer_badge_2026-16.svg", alt: "techreviewer.co 2026 — Top AI Integration Companies" },
+  { src: "/badges_fix/05_top_clutch.co_artificial_intelligence_company_boston_2026-2.svg", alt: "Clutch 2026 — Top Artificial Intelligence Company in Boston" },
+  { src: "/badges_fix/06_top-ai-development-companies.svg", alt: "GoodFirms — Top AI Development Company" },
+  { src: "/badges_fix/06_techreviewer_badge_2026-04.svg", alt: "techreviewer.co 2026 — Top AI Software Development Companies" },
+  { src: "/badges_fix/06_techreviewer_badge_2026-01.svg", alt: "techreviewer.co 2026 — Top AI Consulting Companies" },
+  { src: "/badges_fix/06_techreviewer_badge_2026-02.svg", alt: "techreviewer.co 2026 — Top AI Readiness Assessment Companies" },
+  { src: "/badges_fix/05_top_clutch.co_generative_ai_company_boston_2026-2.svg", alt: "Clutch 2026 — Top Generative AI Company in Boston" },
+  { src: "/badges_fix/06_techreviewer_badge_2026-03.svg", alt: "techreviewer.co 2026 — Top AI PoC Development Companies" },
+  { src: "/badges_fix/06_techreviewer_badge_2026-05.svg", alt: "techreviewer.co 2026 — Top AI Agents Development Companies" },
+  { src: "/badges_fix/06_techreviewer_badge_2026-06.svg", alt: "techreviewer.co 2026 — Top RAG Development Companies" },
+  { src: "/badges_fix/06_techreviewer_badge_2026-07.svg", alt: "techreviewer.co 2026 — Top LLM Development Companies" },
 ];
 
 // ─── Our recent AI cases (4) ───────────────────────────────────────────────────
-const AII_CASES: CaseCard[] = [
-  {
-    banner: "/ai-integration/05_tablet-cover-right.png",
-    name: "AI · Fintech",
-    title: "AI integration of anti-fraud and underwriting for a fintech firm",
-    text: "A fintech company needed to integrate AI scoring into its application and transaction workflow. Nexterse LLC linked risk sources, a feature store, and a decision engine to speed up decisions and improve the quality of anti-fraud controls.",
-    href: "/portfolio/ai-integration-fintech",
-    tags: ["AI inside", "Enterprise"],
-  },
-  {
-    banner: "/ai-integration/07_Cover-right-2.png",
-    name: "AI · Nonprofit",
-    title: "AI-powered knowledge base for a global rights nonprofit",
-    text: "A Middle Eastern nonprofit working in cultural preservation needed a single searchable repository for fragmented research on ethnic minorities. Nexterse LLC built a multilingual AI platform that now indexes 12,000+ artifacts across 18 countries.",
-    href: "/portfolio/ai-knowledge-base-development",
-    tags: ["AI inside", "Enterprise"],
-  },
-  {
-    banner: "/ai-integration/10_Cover-1-1.png",
-    name: "AI · Logistics",
-    title: "AI/ML route optimization for a freight delivery service",
-    text: "Lifted on-time delivery to 98% – without expanding the fleet. An AI/ML platform that plans and reoptimizes B2B/B2C routes in real time with traffic, weather, and capacity constraints, cutting last-mile costs by 22%.",
-    href: "/portfolio/ai-ml-route-optimization-for-a-freight-delivery-service",
-    tags: ["AI inside", "Enterprise"],
-  },
-  {
-    banner: "/ai-integration/10_Cover-2-1.png",
-    name: "AI · Healthcare",
-    title: "AI patient-flow platform for dental imaging",
-    text: "A HIPAA-aligned AI platform for a dental imaging provider that reduced wait times by 37%, increased daily throughput by 22%, and lowered no-shows by 29%.",
-    href: "/portfolio/hipaa-compliant-ai-powered-patient-management-platform-for-a-dental-imaging-provider",
-    tags: ["AI inside", "Enterprise"],
-  },
-];
+
 
 // ─── Start with a scoped AI pilot (4 bullet blocks) ───────────────────────────
 const PILOT_POINTS = [
@@ -158,7 +125,7 @@ export default function AiIntegrationPage() {
       <AiIntegrationHero />
 
       <AiIntegrationArticleLayout>
-        <AiIntegrationLogos />
+        <AipocLogos />
         {/* ── Our AI integration services (6 cards) ─────────────────────── */}
         <section id="aii-services" className={`${styles.blockWhite} ${styles.aiIntegrationServicesBlock}`}>
           <div className="container">
@@ -183,7 +150,7 @@ export default function AiIntegrationPage() {
           <div className="container">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
-              src="/ai-integration/03_How-AI-integration-fits-into-existing-software.png"
+              src="/ai-integration/03_How-AI-integration-fits-into-existing-software-clean.png"
               alt="How AI integration fits into existing software"
               className={styles.architectureImg}
               loading="lazy"
@@ -312,11 +279,10 @@ export default function AiIntegrationPage() {
         <div id="aii-cases">
           <CaseCards
             heading={<>Our recent AI <span>cases</span></>}
-            cards={AII_CASES}
             windowed
           />
         </div>
-        <ServicesReviewSlider />
+        <ServicesReviewSlider primary="ai" count={7} secondaryCount={2} />
 
         {/* ── Tech stack ────────────────────────────────────────────────────── */}
         <AiIntegrationTechStack />

@@ -1,7 +1,7 @@
 import styles from "./CrosslinksBlock.module.css";
 
 const LINKS = [
-  { prefix: "About ", last: "Nexterse LLC", href: "/team" },
+  { prefix: "About ", last: "Nexterse LLC", href: "/about-us" },
   { prefix: "Company ", last: "FAQ", href: "/faq" },
   { prefix: "Our engineering ", last: "blog", href: "/blog" },
   { prefix: "Projects you could be working ", last: "on", href: "/case-studies" },

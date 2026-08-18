@@ -6,7 +6,7 @@
 .container {
   max-width: 1200px;
   margin: 0 auto;
-  padding-inline: 0;
+  padding: 0 24px;
 }
 
 .title {
@@ -16,7 +16,7 @@
   line-height: 1.15;
   color: #02102C;
   margin: 0 0 clamp(2rem, 3vw, 3rem);
-  letter-spacing: -0.01em;
+  letter-spacing: 0;
   text-align: center;
 }
 
@@ -25,61 +25,85 @@
   padding-right: 0.5rem;
 }
 
-.swiperWrap {
-  display: flex;
-  align-items: center;
-  gap: 32px;
+.sliderArea {
+  margin: 0 auto;
+  max-width: calc(100% - 160px);
+  position: relative;
 }
 
-.swiper {
-  flex: 1;
-  min-width: 0;
+.sliderAreaFull {
+  max-width: none;
+}
+
+.slider {
   overflow: hidden;
 }
 
+.track {
+  display: flex;
+  gap: 40px;
+  transition: transform 0.4s ease;
+  width: 100%;
+}
+
+.trackCentered {
+  justify-content: center;
+}
+
 .slide {
+  flex: 0 0 calc((100% - (var(--visible, 6) - 1) * 40px) / var(--visible, 6));
+  min-width: calc((100% - (var(--visible, 6) - 1) * 40px) / var(--visible, 6));
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
 .awardWrap {
+  width: 100%;
+  height: 160px;
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 160px;
 }
 
 .awardImg {
-  max-height: 140px;
-  max-width: 100%;
-  width: auto;
+  max-width: 150px;
+  max-height: 142px;
+  width: 100%;
+  height: auto;
   object-fit: contain;
-  filter: grayscale(0.3);
-  transition: filter 0.2s;
+  filter: grayscale(0.15);
+  transition: filter 0.2s, transform 0.2s;
 }
 
 .awardImg:hover {
   filter: grayscale(0);
+  transform: translateY(-2px);
 }
 
 .navBtn {
-  flex-shrink: 0;
-  width: 40px;
+  appearance: none;
+  width: 48px;
   height: 24px;
   border: none;
   background: none;
   cursor: pointer;
   padding: 0;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
   display: flex;
   align-items: center;
+  justify-content: center;
 }
 
-@media (max-width: 640px) {
-  .navBtn {
-    display: none;
-  }
+.navBtn:disabled {
+  cursor: default;
+  pointer-events: none;
 }
+
+.navPrev { right: calc(100% + 24px); }
+.navNext { left: calc(100% + 24px); }
 
 .arrowBox {
   position: relative;
@@ -95,29 +119,69 @@
   display: block;
   height: 2px;
   position: absolute;
-  top: 11px;
+  top: 50%;
+  transform: translateY(-50%);
+  border-radius: 999px;
   transition: width 0.3s ease-in-out;
-  width: 38px;
+  width: 37px;
 }
 
 .arrowBox::after {
   box-sizing: border-box;
-  border-bottom: 2px solid var(--color-accent);
   border-right: 2px solid var(--color-accent);
+  border-top: 2px solid var(--color-accent);
   content: "";
   display: block;
   height: 10px;
   position: absolute;
-  top: 7px;
+  top: 50%;
   transition: 0.3s ease-in-out;
   width: 10px;
 }
 
 .navNext .arrowBox::before { left: 1px; }
-.navNext .arrowBox::after  { right: 3px; transform: rotate(-45deg); }
+.navNext .arrowBox::after { right: 3px; transform: translateY(-50%) rotate(45deg); }
 .navPrev .arrowBox::before { right: 1px; }
-.navPrev .arrowBox::after  { left: 3px; transform: rotate(135deg); }
+.navPrev .arrowBox::after { left: 3px; transform: translateY(-50%) rotate(-135deg); }
 
-.navBtn:hover .arrowBox::before { width: 42px; }
-.navNext:hover .arrowBox::after { right: -3px; }
-.navPrev:hover .arrowBox::after { left: -3px; }
+.navBtn:not(:disabled):hover .arrowBox::before { width: 42px; }
+.navNext:not(:disabled):hover .arrowBox::after { right: -3px; }
+.navPrev:not(:disabled):hover .arrowBox::after { left: -3px; }
+
+.navBtn:disabled .arrowBox::before { background: #899fb6; }
+.navBtn:disabled .arrowBox::after { border-color: #899fb6; }
+
+.arrowBoxSmall {
+  transform: scale(0.75);
+}
+
+.mobileNav {
+  display: none;
+}
+
+@media (max-width: 1024px) {
+  .sliderArea { max-width: none; }
+
+  .sliderArea > .navBtn { display: none; }
+
+  .mobileNav {
+    display: flex;
+    gap: 12px;
+    margin-top: 24px;
+  }
+
+  .mobileNav .navBtn {
+    position: relative;
+    inset: auto;
+    transform: none;
+    width: 36px;
+    height: 18px;
+  }
+}
+
+@media (max-width: 640px) {
+  .section { padding: 4rem 0; }
+  .title { text-align: left; }
+  .awardWrap { height: 110px; }
+  .awardImg { max-width: 100px; max-height: 100px; }
+}

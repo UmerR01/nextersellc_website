@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Image from "next/image";
-import CaseCards, { type CaseCard } from "@/components/home/CaseCards";
+import CaseCards from "@/components/home/CaseCards";
 import ServicesReviewSlider from "@/components/services/ServicesReviewSlider";
 import ServicesAchievements, { type Badge } from "@/components/services/ServicesAchievements";
 import ServicesFaqBlock, { type FaqItem } from "@/components/services/ServicesFaqBlock";
@@ -55,48 +55,7 @@ const BIDDING = [
 ];
 
 // ─── Cases (5) ────────────────────────────────────────────────────────────────
-const ADT_CASES: CaseCard[] = [
-  {
-    banner: "/adtech-development/01_Cover.png",
-    name: "Media buying",
-    title: "A media buying system for a leading US-based advertising agency",
-    text: "50x faster ad operations and data processing cut from hours to under a minute – we replaced a 20-year-old FileMaker system with a custom platform covering 100+ operational workflows.",
-    href: "/portfolio/media-buying-software-development",
-    tags: ["Enterprise"],
-  },
-  {
-    banner: "/adtech-development/02_Image-Mediatron.png",
-    name: "Mediatron",
-    title: "Mediatron: online advertising management platform",
-    text: "A PPC campaign management platform for a leading digital marketing agency that reduced ad spend by 25-40% through automated bidding – consolidating campaigns from Google Ads, Yandex Direct, and Google Analytics into one automated dashboard.",
-    href: "/portfolio/mediatron-online-advertising-management-platform",
-    tags: ["Enterprise"],
-  },
-  {
-    banner: "/adtech-development/02_RivalFox-Main-image.png",
-    name: "RivalFox",
-    title: "RivalFox marketing tracking tool",
-    text: "Server consolidation and performance overhaul cut infrastructure costs by ~35% and improved application response time by ~40% for a competitive intelligence SaaS serving digital marketers. DSL-based analytics engine added from scratch for competitor campaign tracking.",
-    href: "/portfolio/rivalfox-digital-marketing-tracking-tool",
-    tags: ["Startups"],
-  },
-  {
-    banner: "/adtech-development/01_fuelz-main-screen-image-persp.png",
-    name: "Fuelz",
-    title: "Fuelz aggregator web platform",
-    text: "A heating oil price aggregator that cut buyers’ delivery costs by up to 20% through real-time price comparison across 20+ UK suppliers, with built-in order management and operator analytics.",
-    href: "/portfolio/aggregator-web-platform",
-    tags: ["Enterprise"],
-  },
-  {
-    banner: "/adtech-development/01_Cover-1-1-3.png",
-    name: "Content ads",
-    title: "Content ads management platform",
-    text: "A content ad platform that improved campaign CTR by ~35%, delivered in 6 months for a Singapore ad-tech startup connecting with DoubleClick, Sizmek, and AppNexus.",
-    href: "/portfolio/advertising-platform-development",
-    tags: ["Startups"],
-  },
-];
+
 
 // ─── FAQ (clone content) ──────────────────────────────────────────────────────
 const ADT_FAQ: FaqItem[] = [
@@ -205,20 +164,19 @@ const COOPERATION = [
 
 // ─── Awards (clone badges) ────────────────────────────────────────────────────
 const ADT_BADGES: Badge[] = [
-  { src: "/adtech-development/06_techreviewer_badge_2026-12.svg", alt: "techreviewer.co 2026 — Top Software Development Companies" },
-  { src: "/adtech-development/06_techreviewer_badge_2026-04.svg", alt: "techreviewer.co 2026 — Top AI Software Development Companies" },
-  { src: "/adtech-development/06_techreviewer_badge_2026-11.svg", alt: "techreviewer.co 2026 — Top Machine Learning Development Companies" },
-  { src: "/adtech-development/03_Badge-1-1.svg", alt: "Top software development company in Massachusetts" },
-  { src: "/adtech-development/12_5ca49c9f6cb37e33319e1162_Goodfirms.svg", alt: "GoodFirms badge" },
-  { src: "/adtech-development/12_5ca49c9f8ff5ad26d13b6845_TDA.svg", alt: "TDA badge" },
-  { src: "/adtech-development/12_5ca49c9f6cb37e49a79e1163_changed.svg", alt: "AWS partner badge" },
-  { src: "/adtech-development/03_Badge-3.svg", alt: "Top developers reward" },
-  { src: "/adtech-development/12_Mobile-Software-Development-2025.svg", alt: "Mobile Software Development 2025" },
-  { src: "/adtech-development/12_Machine-Learning-Development-2024.svg", alt: "Machine Learning Development 2024" },
-  { src: "/adtech-development/12_Custom-Web-Design-Development-2025.svg", alt: "Custom Web Design Development 2025" },
-  { src: "/adtech-development/12_iOS-Development-2024.svg", alt: "iOS Development 2024" },
-  { src: "/adtech-development/12_Responsive-Design-Development-2025.svg", alt: "Responsive Design Development 2025" },
-  { src: "/adtech-development/12_Data-analysis-development-2024.svg", alt: "Data analysis development 2024" },
+  { src: "/badges_fix/06_techreviewer_badge_2026-12.svg", alt: "techreviewer.co 2026 — Top Software Development Companies" },
+  { src: "/badges_fix/06_techreviewer_badge_2026-04.svg", alt: "techreviewer.co 2026 — Top AI Software Development Companies" },
+  { src: "/badges_fix/06_techreviewer_badge_2026-11.svg", alt: "techreviewer.co 2026 — Top Machine Learning Development Companies" },
+  { src: "/badges_fix/12_5ca49c9f6cb37e33319e1162_Goodfirms.svg", alt: "GoodFirms badge" },
+  { src: "/badges_fix/12_5ca49c9f8ff5ad26d13b6845_TDA.svg", alt: "TDA badge" },
+  { src: "/badges_fix/12_5ca49c9f6cb37e49a79e1163_changed.svg", alt: "AWS partner badge" },
+  { src: "/badges_fix/03_Badge-3.svg", alt: "Top developers reward" },
+  { src: "/badges_fix/12_Mobile-Software-Development-2025.svg", alt: "Mobile Software Development 2025" },
+  { src: "/badges_fix/12_Machine-Learning-Development-2024.svg", alt: "Machine Learning Development 2024" },
+  { src: "/badges_fix/12_Custom-Web-Design-Development-2025.svg", alt: "Custom Web Design Development 2025" },
+  { src: "/badges_fix/12_iOS-Development-2024.svg", alt: "iOS Development 2024" },
+  { src: "/badges_fix/12_Responsive-Design-Development-2025.svg", alt: "Responsive Design Development 2025" },
+  { src: "/badges_fix/12_Data-analysis-development-2024.svg", alt: "Data analysis development 2024" },
 ];
 
 // ─── Awesome stories (blog, clone content) ────────────────────────────────────
@@ -257,7 +215,7 @@ const CROSSLINKS = [
   {
     heading: "About Nexterse LLC",
     links: [
-      { text: "About ", last: "us", href: "/team" },
+      { text: "About ", last: "us", href: "/about-us" },
       { text: "Contact ", last: "us", href: "/contact-us" },
       { text: "", last: "Careers", href: "/careers" },
     ],
@@ -370,13 +328,12 @@ export default function AdtechPage() {
         <div id="adt-cases">
           <CaseCards
             heading={<>Adtech software we <span>made</span></>}
-            cards={ADT_CASES}
             windowed
           />
         </div>
 
         {/* ── Reviews ────────────────────────────────────────────────────── */}
-        <ServicesReviewSlider />
+        <ServicesReviewSlider primary="software" count={6} secondaryCount={1} />
 
         {/* ── CTA: Build competitive edge ────────────────────────────────── */}
         <div className={`${styles.inlineCta} ${styles.adtechGradientCta}`}>

@@ -10,7 +10,6 @@ const CONTENTS = [
   { href: "#cloud-solutions", label: "Solutions" },
   { href: "#cloud-process", label: "Process" },
   { href: "#cloud-cases", label: "Case studies" },
-  { href: "#cloud-guide", label: "Free guide [pdf]" },
   { href: "#cloud-tech-stack", label: "Tech stack" },
   { href: "#cloud-industries", label: "Industries" },
   { href: "#cloud-approach", label: "Approach" },

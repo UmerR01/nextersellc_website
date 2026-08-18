@@ -126,22 +126,22 @@
   align-items: center;
   justify-content: center;
   background: var(--color-accent);
-  border: 0;
+  border: 2px solid var(--color-accent);
   color: #fff;
   border-radius: var(--radius-button);
   font-family: var(--font-inter-tight);
-  font-size: 0.9375rem;
+  font-size: 1rem;
   font-weight: 600;
-  min-height: 42px;
-  padding: 0.75rem 1.65rem;
+  line-height: 1;
+  padding: 0.4rem 1.25rem;
   text-decoration: none;
-  transition: transform 0.2s ease, background-color 0.2s ease, box-shadow 0.2s ease;
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+  white-space: nowrap;
 }
 
 .contentBtn:hover {
-  background: #35b8d8;
-  box-shadow: 0 10px 24px rgba(60, 196, 229, 0.24);
-  transform: translateY(-1px);
+  background: transparent;
+  color: var(--color-accent);
 }
 
 /* Mobile: stack vertically, show as accordion-style */

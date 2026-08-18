@@ -3,8 +3,9 @@
 import { useState } from "react";
 import styles from "./CrmPage.module.css";
 import CrmArticleLayout from "./CrmArticleLayout";
-import CaseCards, { type CaseCard } from "@/components/home/CaseCards";
-import ServicesReviewSlider, { type Review as SliderReview } from "@/components/services/ServicesReviewSlider";
+import AipocLogos from "@/components/aipoc/AipocLogos";
+import CaseCards from "@/components/home/CaseCards";
+import ServicesReviewSlider from "@/components/services/ServicesReviewSlider";
 import ServicesAchievements, { type Badge } from "@/components/services/ServicesAchievements";
 import ServicesFaqBlock, { type FaqItem } from "@/components/services/ServicesFaqBlock";
 import ServicesBlogSection, { type FeaturedPost, type BlogPost } from "@/components/services/ServicesBlogSection";
@@ -51,123 +52,23 @@ const VT_TABS = [
   },
 ];
 
-const LEGACY_CASES: CaseCard[] = [
-  {
-    banner: "/crm-development/11_Cover-1-1.png",
-    name: "Custom CRM",
-    title: "Custom sales CRM for a B2B distributor",
-    text: "A unified pipeline and quoting CRM that replaced scattered spreadsheets for a wholesale distributor — lifting sales-rep CRM adoption to 94% and cutting quote turnaround time by 40% across 20 branches.",
-    tags: ["CRM", "Sales", "Enterprise"],
-    href: "#",
-  },
-  {
-    banner: "/crm-development/07_Cover-right-2.png",
-    name: "AI inside",
-    title: "AI lead-scoring CRM for a SaaS company",
-    text: "A custom CRM with AI lead scoring and conversation summaries that helped a B2B SaaS team focus on high-intent accounts — increasing qualified-to-won conversion by 28% and reducing manual data entry by 60%.",
-    tags: ["CRM", "AI inside", "SaaS"],
-    href: "#",
-  },
-  {
-    banner: "/crm-development/10_Cover-1-1.png",
-    name: "CRM migration",
-    title: "Salesforce-to-custom CRM migration for a fintech",
-    text: "Migrated 1.2M customer records and 5 years of activity history off a costly per-seat CRM into a tailored platform — cutting licensing spend by 55% while preserving pipeline continuity and audit trails.",
-    tags: ["CRM", "Migration", "Enterprise"],
-    href: "#",
-  },
-];
+
 
 // ─── Shared-component data ────────────────────────────────────────────────────
 
-const LEGACY_REVIEWS: SliderReview[] = [
-  {
-    quote: "The system has produced a significant competitive advantage in the industry thanks to Nexterse LLC's well-thought opinions. They shouldered the burden of constantly updating a project management tool with a high level of detail and were committed to producing the best possible solution.",
-    photo: "/crm-development/01_photo.png",
-    photoAlt: "Alexander McCaig",
-    name: "Alexander McCaig",
-    role: "Co-Founder & CEO, Tartle",
-  },
-  {
-    quote: "I was impressed by Nexterse LLC's prices, especially for the project I wanted to do and in comparison to the quotes I received from a lot of other companies. Also, their communication skills were great; it never felt like a long-distance project. It felt like Nexterse LLC was working next door because their project manager was always keeping me updated.",
-    photo: "/crm-development/12_5cc8378b669af259c74ec736_b_dorsinvil-2-1-1.jpg",
-    photoAlt: "Benjamin Dorsinvil",
-    name: "Benjamin Dorsinvil",
-    role: "Founder, SellBig",
-  },
-  {
-    quote: "We tried another company that one of our partners had used but they didn't work out. I feel that Nexterse LLC does a better investigation of what we're asking for. They tell us how they plan to do a task and ask if that works for us. We chose them because their method worked with us.",
-    photo: "/crm-development/01_photo6.png",
-    photoAlt: "Damian Gevertz",
-    name: "Damian Gevertz",
-    role: "Founder & CEO, Widgety",
-  },
-  {
-    quote: "Nexterse LLC is the firm to work with if you want to keep up to high standards. The professional workflows they stick to result in exceptional quality. Important, they help you think with the business logic of your application and they don't blindly follow what you are saying. Which is super important. Overall, great skills, good communication, and happy with the results so far.",
-    photo: "/crm-development/01_photo2.png",
-    photoAlt: "Domien Van Eynde",
-    name: "Domien Van Eynde",
-    role: "Team Lead, Daiokan.com",
-  },
-  {
-    quote: "They are very sharp and have a high-quality team. I expect quality from people, and they have the kind of team I can work with. They were upfront about everything that needed to be done. I appreciated that the cost of the project turned out to be smaller than what we expected because they made some very good suggestions. They are very pleasant to work with.",
-    photo: "/crm-development/01_photo11.png",
-    photoAlt: "Michael Karbushev",
-    name: "Michael Karbushev",
-    role: "Senior Director of Engineering, Evolv",
-  },
-  {
-    quote: "Rivalfox had the pleasure to work with Nexterse LLC in building out core portions of our product, and the results really couldn't have been better. Nexterse LLC provided us with engineering expertise, enthusiasm and great people that were focused on creating quality features quickly.",
-    photo: "/crm-development/01_photo5.png",
-    photoAlt: "Paul S. Chun",
-    name: "Paul S. Chun",
-    role: "CTO, Rivalfox GmbH",
-  },
-  {
-    quote: "Nexterse LLC succeeded in building a more manageable solution that is much easier to maintain.",
-    photo: "/crm-development/01_photo3.png",
-    photoAlt: "Yevgeniy Rozenblat",
-    name: "Yevgeniy Rozenblat",
-    role: "Program Manager, TL Nika",
-  },
-  {
-    quote: "When looking for a strategic IT-partner for the development of a corporate ERP solution, we chose Nexterse LLC. The company proved itself a reliable provider of IT services.",
-    photo: "/crm-development/01_photo9.png",
-    photoAlt: "Yuriy Semenchuk",
-    name: "Yuriy Semenchuk",
-    role: "General Director, Business Car",
-  },
-  {
-    quote: "Thanks to Nexterse LLC's can-do attitude, amazing work ethic, and willingness to tackle clients' problems as their own, they've become an integral part of our team. We've been truly impressed with their professionalism and performance and continue to work with the team on developing new applications. We are completely satisfied with the results of our cooperation and will be happy to recommend Nexterse LLC as a reliable and competent partner for development of web-based solutions.",
-    logo: "/crm-development/01_logo.svg",
-    logoAlt: "BoxForward",
-    name: "Yury Haverman",
-    role: "Founder, BoxForward",
-  },
-  {
-    quote: "Together with the team, we have turned the MVP version of the service into a modern full-featured platform for online marketers. We are very satisfied with the work the Nexterse LLC team has performed, and we would like to highlight the high level of technical expertise, coherence and efficiency of communication and flexibility in work. We can confidently say that Nexterse LLC has put all our ideas into practice.",
-    photo: "/crm-development/01_photo7.png",
-    photoAlt: "Katerina Bromberg",
-    name: "Katerina Bromberg",
-    role: "Co-Founder, MyMediAds.com",
-  },
-];
-
 const LEGACY_BADGES: Badge[] = [
-  { src: "/crm-development/06_techreviewer_badge_2026-10.svg", alt: "techreviewer.co 2026 — Top CRM Development Companies" },
-  { src: "/crm-development/03_Badge-1-1.svg", alt: "Top software development company in Massachusetts" },
-  { src: "/crm-development/12_5ca49c9f6cb37e33319e1162_Goodfirms.svg", alt: "GoodFirms badge" },
-  { src: "/crm-development/12_5ca49c9f8ff5ad26d13b6845_TDA.svg", alt: "TDA badge" },
-  { src: "/crm-development/12_5ca49c9f6cb37e49a79e1163_changed.svg", alt: "AWS partner badge" },
-  { src: "/crm-development/03_Badge-2-2.svg", alt: "Best software development company in Quincy 2023" },
-  { src: "/crm-development/01_top_clutch.co_software_developers_startup_massachusetts.svg", alt: "Clutch — Top startup software developers Massachusetts" },
-  { src: "/crm-development/01_top_clutch.co_software_developers_hospitality__leisure_massachusetts.svg", alt: "Clutch — Top hospitality software developers Massachusetts" },
-  { src: "/crm-development/01_top_clutch.co_python__django_developers_boston_2024.svg", alt: "Clutch — Top Python Django developers Boston 2024" },
-  { src: "/crm-development/01_top_clutch.co_nodejs_developers_boston_2024.svg", alt: "Clutch — Top Node.js developers Boston 2024" },
-  { src: "/crm-development/01_techreviewer_badge_2025-2.svg", alt: "TR top software developers 2025" },
-  { src: "/crm-development/01_techreviewer_badge_2025-1.svg", alt: "TR top web developers 2025" },
-  { src: "/crm-development/01_techreviewer_badge_2024-2.svg", alt: "TR top software developers 2024" },
-  { src: "/crm-development/01_techreviewer_badge_2024-1.svg", alt: "TR top web developers 2024" },
+  { src: "/badges_fix/06_techreviewer_badge_2026-10.svg", alt: "techreviewer.co 2026 — Top CRM Development Companies" },
+  { src: "/badges_fix/12_5ca49c9f6cb37e33319e1162_Goodfirms.svg", alt: "GoodFirms badge" },
+  { src: "/badges_fix/12_5ca49c9f8ff5ad26d13b6845_TDA.svg", alt: "TDA badge" },
+  { src: "/badges_fix/12_5ca49c9f6cb37e49a79e1163_changed.svg", alt: "AWS partner badge" },
+  { src: "/badges_fix/01_top_clutch.co_software_developers_startup_massachusetts.svg", alt: "Clutch — Top startup software developers Massachusetts" },
+  { src: "/badges_fix/01_top_clutch.co_software_developers_hospitality__leisure_massachusetts.svg", alt: "Clutch — Top hospitality software developers Massachusetts" },
+  { src: "/badges_fix/01_top_clutch.co_python__django_developers_boston_2024.svg", alt: "Clutch — Top Python Django developers Boston 2024" },
+  { src: "/badges_fix/01_top_clutch.co_nodejs_developers_boston_2024.svg", alt: "Clutch — Top Node.js developers Boston 2024" },
+  { src: "/badges_fix/01_techreviewer_badge_2025-2.svg", alt: "TR top software developers 2025" },
+  { src: "/badges_fix/01_techreviewer_badge_2025-1.svg", alt: "TR top web developers 2025" },
+  { src: "/badges_fix/01_techreviewer_badge_2024-2.svg", alt: "TR top software developers 2024" },
+  { src: "/badges_fix/01_techreviewer_badge_2024-1.svg", alt: "TR top web developers 2024" },
 ];
 
 const LEGACY_FAQ: FaqItem[] = [
@@ -371,25 +272,7 @@ export default function CrmPage() {
 
       <CrmArticleLayout>
 
-      {/* ── 2. CLIENT LOGOS ─────────────────────────────────────────────── */}
-      <section className={styles.logosSection}>
-        <div className="container">
-          <div className={styles.logosWrapper}>
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="/crm-development/12_5c98e3297e3bc92bd580af14_toyota_l-1.svg" alt="Toyota logo" className={styles.logoImg} />
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="/crm-development/12_5ecba50d2b50b63a7a1871ad_beiersdorf-logo-1.svg" alt="Beiersdorf logo" className={styles.logoImg} />
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="/crm-development/01_ClimeCo.svg" alt="ClimeCo" className={styles.logoImg} />
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="/crm-development/12_5ecce35506c123c4936b0303_dexai-logo-1.svg" alt="Dexai logo" className={styles.logoImg} />
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="/crm-development/10_SMI_Logo-1-2-2.svg" alt="SMI logo" className={styles.logoImg} />
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="/crm-development/01_Tartle.svg" alt="Tartle" className={styles.logoImg} />
-          </div>
-        </div>
-      </section>
+      <AipocLogos />
 
       {/* ── 3. SERVICES CARDS ────────────────────────────────────────────── */}
       <section className={`${styles.industrySection} ${styles.servicesSection}`} id="services">
@@ -438,25 +321,6 @@ export default function CrmPage() {
                   </p>
                 </div>
               </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ── 4. COMPLIANCE LOGOS ──────────────────────────────────────────── */}
-      <section className={styles.complianceSection}>
-        <div className="container">
-          <div className={styles.complianceWrapper}>
-            {[
-              { src: "/crm-development/05_pci.svg", alt: "PCI compliance" },
-              { src: "/crm-development/05_owasp.svg", alt: "OWASP" },
-              { src: "/crm-development/05_iso.svg", alt: "ISO compliance" },
-              { src: "/crm-development/05_hipaa.svg", alt: "HIPAA compliance" },
-              { src: "/crm-development/05_gdpr.svg", alt: "GDPR compliance" },
-              { src: "/crm-development/05_fisma.svg", alt: "FISMA compliance" },
-            ].map((b) => (
-              // eslint-disable-next-line @next/next/no-img-element
-              <img key={b.src} src={b.src} alt={b.alt} className={styles.complianceImg} />
             ))}
           </div>
         </div>
@@ -635,13 +499,12 @@ export default function CrmPage() {
 
       {/* ── 10. CASES BLOCK ──────────────────────────────────────────────── */}
       <CaseCards
-        cards={LEGACY_CASES}
         heading={<>Custom CRM software <span>we developed</span></>}
         windowed
       />
 
       {/* ── 11. REVIEW SLIDER ────────────────────────────────────────────── */}
-      <ServicesReviewSlider reviews={LEGACY_REVIEWS} />
+      <ServicesReviewSlider primary="software" count={6} secondaryCount={1} />
 
       {/* ── 12. SERVICES BLOCK — LANGUAGES (dark) ────────────────────────── */}
       <section className={`${styles.sbSection} ${styles.sbDark} ${styles.languagesSection}`}>
@@ -752,32 +615,6 @@ export default function CrmPage() {
                 </div>
               </div>
             ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ── 15. CITATION ─────────────────────────────────────────────────── */}
-      <section className={styles.citeSection}>
-        <div className="container">
-          <div className={styles.citeSlide}>
-            <div className={styles.citeAuthor}>
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                src="/crm-development/12_Yury-Shamrey-300x300.png"
-                alt="Yury Shamrei CEO at Nexterse LLC"
-                className={styles.citePhoto}
-              />
-              <div>
-                <p className={styles.citeName}>Yury Shamrei</p>
-                <p className={styles.citePos}>CEO &amp; Founder</p>
-              </div>
-            </div>
-            <div className={styles.citeQuoteWrap}>
-              <span className={styles.citeQuoteMark}>&ldquo;&ldquo;</span>
-              <blockquote className={styles.citeText}>
-                Replacing the CRM your revenue team lives in is like changing the engine of a moving car — there is no room to stop. We approach CRM development with a strategy that prioritizes adoption and business continuity, ensuring that you upgrade how you sell without pausing your pipeline.
-              </blockquote>
-            </div>
           </div>
         </div>
       </section>

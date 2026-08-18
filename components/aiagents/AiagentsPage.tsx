@@ -1,16 +1,15 @@
 "use client";
 
 import Image from "next/image";
-import CaseCards, { type CaseCard } from "@/components/home/CaseCards";
+import CaseCards from "@/components/home/CaseCards";
 import ServicesReviewSlider from "@/components/services/ServicesReviewSlider";
 import ServicesAchievements, { type Badge } from "@/components/services/ServicesAchievements";
 import ServicesFaqBlock, { type FaqItem } from "@/components/services/ServicesFaqBlock";
 import LetsStart from "@/components/home/LetsStart";
 import AdlcBlog, { type AdlcFeaturedPost, type AdlcBlogPost } from "@/components/adlc/AdlcBlog";
 import AiagentsHero from "./AiagentsHero";
-import AiagentsLogos from "./AiagentsLogos";
+import AipocLogos from "@/components/aipoc/AipocLogos";
 import AiagentsTechStack from "./AiagentsTechStack";
-import AiagentsCitation from "./AiagentsCitation";
 import AiagentsCrosslinks from "./AiagentsCrosslinks";
 import AiagentsArticleLayout from "./AiagentsArticleLayout";
 import styles from "./AiagentsPage.module.css";
@@ -53,37 +52,12 @@ const PROCESS = [
   { title: "Data preparation and analysis", bullets: ["Collect, clean, and preprocess data to ensure it meets the highest quality standards.", "Establish data governance policies for secure and efficient data management."] },
   { title: "Prototyping and PoC development", bullets: ["Develop proof-of-concept (PoC) or minimum viable product (MVP) to validate ideas quickly.", "Test prototypes in real-world scenarios to gather insights for refinement."] },
   { title: "AI Model design and training", bullets: ["Select appropriate machine learning frameworks such as TensorFlow or PyTorch.", "RAG development for grounded agents.", "LLM fine-tuning for agents.", "Train models iteratively while evaluating their performance against key metrics like accuracy and speed."] },
-  { title: "System integration and testing", bullets: ["Integrate AI agents into your existing systems using APIs or custom-built interfaces.", "AI integration with ERP/CRM/IoT.", "Conduct rigorous testing (e.g., usability, performance, security) to ensure flawless functionality."] },
+  { title: "System integration and testing", bullets: ["Integrate AI agents into your existing systems using APIs or custom-built interfaces.", "AI integration with ERP/CRM.", "Conduct rigorous testing (e.g., usability, performance, security) to ensure flawless functionality."] },
   { title: "Deployment and continuous improvement", bullets: ["Deploy the solution in live environments with full monitoring capabilities.", "Offer ongoing support to adapt the AI system as your business evolves."] },
 ];
 
 // ─── Cases (3, clone content) ─────────────────────────────────────────────────
-const AIA_CASES: CaseCard[] = [
-  {
-    banner: "/ai-agents-development/06_Cover-right-1.png",
-    name: "Legal",
-    title: "Contract review multi-agent platform for a law firm",
-    text: "A multi-agent platform that extracts, scores, and redlines contract clauses against the firm’s own precedent, with attorney review at every step.",
-    href: "/portfolio/contract-review-multi-agent-platform",
-    tags: ["AI inside", "Enterprise"],
-  },
-  {
-    banner: "/ai-agents-development/07_Cover-right-2.png",
-    name: "Nonprofit",
-    title: "AI-powered knowledge base for a global rights nonprofit",
-    text: "A Middle Eastern nonprofit working in cultural preservation needed a single searchable repository for fragmented research on ethnic minorities. Nexterse LLC built a multilingual AI platform that now indexes 12,000+ artifacts across 18 countries.",
-    href: "/portfolio/ai-knowledge-base-development",
-    tags: ["AI inside", "Enterprise"],
-  },
-  {
-    banner: "/ai-agents-development/10_Cover-2-1.png",
-    name: "Dental imaging",
-    title: "AI patient-flow platform for dental imaging",
-    text: "A HIPAA-aligned AI platform for a dental imaging provider that reduced wait times by 37%, increased daily throughput by 22%, and lowered no-shows by 29%.",
-    href: "/portfolio/hipaa-compliant-ai-powered-patient-management-platform-for-a-dental-imaging-provider",
-    tags: ["AI inside", "Enterprise"],
-  },
-];
+
 
 // ─── Benefits (6 icon cards) ──────────────────────────────────────────────────
 const BENEFITS = [
@@ -107,18 +81,18 @@ const WHY_CARDS = [
 
 // ─── Awards (clone badges, 12) ────────────────────────────────────────────────
 const AIA_BADGES: Badge[] = [
-  { src: "/ai-agents-development/06_techreviewer_badge_2026-05.svg", alt: "techreviewer.co 2026 — Top AI Agents Development Companies" },
-  { src: "/ai-agents-development/05_top_clutch.co_artificial_intelligence_company_boston_2026-2.svg", alt: "Clutch 2026 — Top Artificial Intelligence Company in Boston" },
-  { src: "/ai-agents-development/06_techreviewer_badge_2026-01.svg", alt: "techreviewer.co 2026 — Top AI Consulting Companies" },
-  { src: "/ai-agents-development/06_techreviewer_badge_2026-02.svg", alt: "techreviewer.co 2026 — Top AI Readiness Assessment Companies" },
-  { src: "/ai-agents-development/05_top_clutch.co_generative_ai_company_boston_2026-2.svg", alt: "Clutch 2026 — Top Generative AI Company in Boston" },
-  { src: "/ai-agents-development/06_top-ai-development-companies.svg", alt: "GoodFirms — Top AI Development Company" },
-  { src: "/ai-agents-development/06_techreviewer_badge_2026-04.svg", alt: "techreviewer.co 2026 — Top AI Software Development Companies" },
-  { src: "/ai-agents-development/06_techreviewer_badge_2026-16.svg", alt: "techreviewer.co 2026 — Top AI Integration Companies" },
-  { src: "/ai-agents-development/06_techreviewer_badge_2026-03.svg", alt: "techreviewer.co 2026 — Top AI PoC Development Companies" },
-  { src: "/ai-agents-development/06_techreviewer_badge_2026-06.svg", alt: "techreviewer.co 2026 — Top RAG Development Companies" },
-  { src: "/ai-agents-development/06_techreviewer_badge_2026-07.svg", alt: "techreviewer.co 2026 — Top LLM Development Companies" },
-  { src: "/ai-agents-development/06_techreviewer_badge_2026-15.svg", alt: "techreviewer.co 2026 — Top GenAI Development Companies" },
+  { src: "/badges_fix/06_techreviewer_badge_2026-05.svg", alt: "techreviewer.co 2026 — Top AI Agents Development Companies" },
+  { src: "/badges_fix/05_top_clutch.co_artificial_intelligence_company_boston_2026-2.svg", alt: "Clutch 2026 — Top Artificial Intelligence Company in Boston" },
+  { src: "/badges_fix/06_techreviewer_badge_2026-01.svg", alt: "techreviewer.co 2026 — Top AI Consulting Companies" },
+  { src: "/badges_fix/06_techreviewer_badge_2026-02.svg", alt: "techreviewer.co 2026 — Top AI Readiness Assessment Companies" },
+  { src: "/badges_fix/05_top_clutch.co_generative_ai_company_boston_2026-2.svg", alt: "Clutch 2026 — Top Generative AI Company in Boston" },
+  { src: "/badges_fix/06_top-ai-development-companies.svg", alt: "GoodFirms — Top AI Development Company" },
+  { src: "/badges_fix/06_techreviewer_badge_2026-04.svg", alt: "techreviewer.co 2026 — Top AI Software Development Companies" },
+  { src: "/badges_fix/06_techreviewer_badge_2026-16.svg", alt: "techreviewer.co 2026 — Top AI Integration Companies" },
+  { src: "/badges_fix/06_techreviewer_badge_2026-03.svg", alt: "techreviewer.co 2026 — Top AI PoC Development Companies" },
+  { src: "/badges_fix/06_techreviewer_badge_2026-06.svg", alt: "techreviewer.co 2026 — Top RAG Development Companies" },
+  { src: "/badges_fix/06_techreviewer_badge_2026-07.svg", alt: "techreviewer.co 2026 — Top LLM Development Companies" },
+  { src: "/badges_fix/06_techreviewer_badge_2026-15.svg", alt: "techreviewer.co 2026 — Top GenAI Development Companies" },
 ];
 
 // ─── FAQ (clone content, 8) ───────────────────────────────────────────────────
@@ -156,7 +130,7 @@ export default function AiagentsPage() {
       <AiagentsHero />
 
       <AiagentsArticleLayout>
-        <AiagentsLogos />
+        <AipocLogos />
         {/* ── Services ───────────────────────────────────────────────────── */}
         <section id="ai-services" className={`${styles.blockWhite} ${styles.agentsServicesBlock}`}>
           <div className="container">
@@ -213,20 +187,16 @@ export default function AiagentsPage() {
           </div>
         </section>
 
-        {/* ── CEO citation ───────────────────────────────────────────────── */}
-        <AiagentsCitation />
-
         {/* ── Case studies ───────────────────────────────────────────────── */}
         <div id="ai-cases">
           <CaseCards
             heading={<>Our recent AI <span>software</span></>}
-            cards={AIA_CASES}
             windowed
           />
         </div>
 
         {/* ── Reviews ────────────────────────────────────────────────────── */}
-        <ServicesReviewSlider />
+        <ServicesReviewSlider primary="ai" count={7} secondaryCount={2} />
 
         {/* ── Tech stack ─────────────────────────────────────────────────── */}
         <AiagentsTechStack />

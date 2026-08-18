@@ -163,3 +163,55 @@
     line-height: 26px;
   }
 }
+/* AI Consulting / AI PoC style hero alignment */
+.heroWrapper {
+  padding: 0 0 8.5rem;
+}
+
+.content {
+  text-align: left;
+}
+
+.breadcrumbs {
+  margin-bottom: 4.5rem;
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 0.875rem;
+  line-height: 1.4;
+}
+
+.title {
+  max-width: 85rem;
+  margin: 0 0 1.75rem;
+  font-size: clamp(3rem, 5vw, 4rem);
+  line-height: 1.18;
+  text-align: left;
+}
+
+.description {
+  max-width: 58rem;
+  margin: 0 0 2.25rem;
+  text-align: left;
+}
+
+.description p {
+  font-size: clamp(1.15rem, 1.8vw, 1.5rem);
+  line-height: 1.5;
+}
+
+@media (max-width: 768px) {
+  .hero {
+    padding-top: calc(var(--header-height) + 48px);
+  }
+
+  .heroWrapper {
+    padding: 0 0 4.5rem;
+  }
+
+  .breadcrumbs {
+    margin-bottom: 2rem;
+  }
+
+  .title {
+    font-size: clamp(2.25rem, 9vw, 3rem);
+  }
+}

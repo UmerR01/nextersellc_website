@@ -17,15 +17,14 @@ const BADGES = [
   { src: "/badges/goodfirms-ai.svg",   alt: "GoodFirms Top AI Development" },
   { src: "/badges/techreviewer-ai.svg",alt: "Techreviewer Top AI Readiness" },
   { src: "/badges/rightfirms.svg",     alt: "RightFirms 5-star rated" },
-  { src: "/badges/goodfirms-ma.svg",   alt: "GoodFirms Top Software Dev MA" },
+  { src: "/badges/goodfirms-ma.svg",   alt: "GoodFirms Top Software Dev Florida" },
   { src: "/badges/custom-web.svg",     alt: "Custom Web Design Development 2025" },
-  { src: "/badges/iot-services.svg",   alt: "IoT Services 2025" },
+  { src: "/badges/iot-services.svg",   alt: "AI Services 2025" },
   { src: "/badges/tr-2025-soft.svg",   alt: "Techreviewer Top Software 2025" },
-  { src: "/badges/tr-2025-iot.svg",    alt: "Techreviewer Top IoT 2025" },
+  { src: "/badges/tr-2025-iot.svg",    alt: "Techreviewer Top AI 2025" },
   { src: "/badges/techreviewer-soft.svg", alt: "Techreviewer Top AI Software Dev" },
   { src: "/badges/techreviewer-top.svg",  alt: "Techreviewer Top Software Dev" },
   { src: "/badges/goodfirms-soft.svg", alt: "GoodFirms Top Software Dev" },
-  { src: "/badges/clutch-iot.svg",     alt: "Clutch Top IoT Company" },
 ];
 
 const DESKTOP_VISIBLE = 6;

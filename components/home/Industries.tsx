@@ -58,8 +58,8 @@ export default function Industries() {
             We apply deep engineering expertise across industries to solve
             complex, domain-specific challenges.
           </p>
-          <a href="/services" className={styles.exploreLink}>
-            Explore All Industries <span aria-hidden>→</span>
+          <a href="/services#svc-industries" className={styles.exploreLink}>
+            Explore All Industries <span className={styles.inlineArrow} aria-hidden="true" />
           </a>
         </div>
       </div>
@@ -77,7 +77,7 @@ export default function Industries() {
                 <h3 className={styles.cardTitle}>{ind.name}</h3>
                 <p className={styles.cardDesc}>{ind.text}</p>
               </div>
-              <span className={styles.cardArrow} aria-hidden>→</span>
+              <span className={styles.cardArrow} aria-hidden="true" />
             </a>
           ))}
         </div>
@@ -91,7 +91,7 @@ export default function Industries() {
           disabled={atStart}
           aria-label="Scroll left"
         >
-          ←
+          <span className={`${styles.navArrow} ${styles.navArrowPrev}`} aria-hidden="true" />
         </button>
         <button
           className={styles.navBtn}
@@ -99,7 +99,7 @@ export default function Industries() {
           disabled={atEnd}
           aria-label="Scroll right"
         >
-          →
+          <span className={`${styles.navArrow} ${styles.navArrowNext}`} aria-hidden="true" />
         </button>
       </div>
     </section>

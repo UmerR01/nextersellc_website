@@ -116,7 +116,11 @@ export default function ServicesHero() {
           <div className={styles.content}>
             <nav className={styles.breadcrumbs} aria-label="Breadcrumb">
               <Link href="/">Home</Link>
-              <span className={styles.breadcrumbSep} aria-hidden="true">&gt;</span>
+              <span className={styles.breadcrumbSep}>
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden>
+                  <path stroke="rgba(255,255,255,0.5)" strokeLinecap="square" d="m6 4 4 4-4 4" />
+                </svg>
+              </span>
               <span>Services</span>
             </nav>
 
@@ -147,7 +151,7 @@ export default function ServicesHero() {
             </div>
 
             <div className={styles.description}>
-              <p>We design, build, and modernize custom software that gives growing companies better control over operations, products, and data. We offer AI agents, RAG systems, IoT platforms, and enterprise applications for companies that need custom software development services aligned with real business operations.</p>
+              <p>We design, build, and modernize custom software that gives growing companies better control over operations, products, and data. We offer AI agents, RAG systems, applied AI platforms, and enterprise applications for companies that need custom software development services aligned with real business operations.</p>
             </div>
 
             <div className={styles.buttons}>

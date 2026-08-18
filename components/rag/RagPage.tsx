@@ -2,14 +2,14 @@
 
 import { useState } from "react";
 import Image from "next/image";
-import CaseCards, { type CaseCard } from "@/components/home/CaseCards";
+import CaseCards from "@/components/home/CaseCards";
 import ServicesReviewSlider from "@/components/services/ServicesReviewSlider";
 import ServicesAchievements, { type Badge } from "@/components/services/ServicesAchievements";
 import ServicesFaqBlock, { type FaqItem } from "@/components/services/ServicesFaqBlock";
 import LetsStart from "@/components/home/LetsStart";
 import AdlcBlog, { type AdlcFeaturedPost, type AdlcBlogPost } from "@/components/adlc/AdlcBlog";
 import RagHero from "./RagHero";
-import RagLogos from "./RagLogos";
+import AipocLogos from "@/components/aipoc/AipocLogos";
 import RagTechStack from "./RagTechStack";
 import RagArticleLayout from "./RagArticleLayout";
 import styles from "./RagPage.module.css";
@@ -223,48 +223,7 @@ const PILOT: { title: string; paragraphs: string[]; bullets?: string[]; outro?: 
 ];
 
 // ─── Cases (5) ────────────────────────────────────────────────────────────────
-const RAG_CASES: CaseCard[] = [
-  {
-    banner: "/rag-development/04_Cover-1.png",
-    name: "AI-powered stack",
-    title: "RAG-based knowledge platform for a commercial real estate operator",
-    text: "An internal RAG platform that cut operational retrieval time by 45% across 18 commercial properties. It unifies lease, vendor, maintenance, and compliance documentation into one retrieval layer with citation-based answers and role-based access.",
-    href: "/portfolio/case-study-rag-based-knowledge-platform-for-a-commercial-real-estate-operator",
-    tags: ["AI inside", "Enterprise"],
-  },
-  {
-    banner: "/rag-development/10_Cover-1-1.png",
-    name: "AI-powered stack",
-    title: "AI/ML route optimization for a freight delivery service",
-    text: "Lifted on-time delivery to 98% – without expanding the fleet. An AI/ML platform that plans and reoptimizes B2B/B2C routes in real time with traffic, weather, and capacity constraints, cutting last-mile costs by 22%.",
-    href: "/portfolio/ai-ml-route-optimization-for-a-freight-delivery-service",
-    tags: ["AI inside", "Enterprise"],
-  },
-  {
-    banner: "/rag-development/10_Cover-2-1.png",
-    name: "AI-powered stack",
-    title: "AI patient-flow platform for dental imaging",
-    text: "A HIPAA-aligned AI platform for a dental imaging provider that reduced wait times by 37%, increased daily throughput by 22%, and lowered no-shows by 29%.",
-    href: "/portfolio/hipaa-compliant-ai-powered-patient-management-platform-for-a-dental-imaging-provider",
-    tags: ["AI inside", "Enterprise"],
-  },
-  {
-    banner: "/rag-development/07_Cover-right-2.png",
-    name: "AI-powered stack",
-    title: "AI-powered knowledge base for a global rights nonprofit",
-    text: "A Middle Eastern nonprofit working in cultural preservation needed a single searchable repository for fragmented research on ethnic minorities. Nexterse LLC built a multilingual AI platform that now indexes 12,000+ artifacts across 18 countries.",
-    href: "/portfolio/ai-knowledge-base-development",
-    tags: ["AI inside", "Enterprise"],
-  },
-  {
-    banner: "/rag-development/12_Cover-2-1.png",
-    name: "AI-powered stack",
-    title: "IoT and ML predictive maintenance for a 28-turbine wind farm",
-    text: "A German operator runs 28 onshore turbines. Nexterse LLC built a predictive maintenance layer on top of the existing SCADA. Within 12 months, unplanned downtime fell by 38%, and availability rose to 97.7%.",
-    href: "/portfolio/ml-based-predictive-maintenance-for-wind-farm",
-    tags: ["IoT", "AI inside", "Enterprise"],
-  },
-];
+
 
 // ─── FAQ (6) ──────────────────────────────────────────────────────────────────
 const RAG_FAQ: FaqItem[] = [
@@ -278,18 +237,18 @@ const RAG_FAQ: FaqItem[] = [
 
 // ─── Awards (clone badges, 13) ────────────────────────────────────────────────
 const RAG_BADGES: Badge[] = [
-  { src: "/rag-development/06_techreviewer_badge_2026-06.svg", alt: "techreviewer.co 2026 — Top RAG Development Companies" },
-  { src: "/rag-development/06_techreviewer_badge_2026-07.svg", alt: "techreviewer.co 2026 — Top LLM Development Companies" },
-  { src: "/rag-development/06_techreviewer_badge_2026-04.svg", alt: "techreviewer.co 2026 — Top AI Software Development Companies" },
-  { src: "/rag-development/05_top_clutch.co_artificial_intelligence_company_boston_2026-2.svg", alt: "Clutch 2026 — Top Artificial Intelligence Company in Boston" },
-  { src: "/rag-development/06_techreviewer_badge_2026-01.svg", alt: "techreviewer.co 2026 — Top AI Consulting Companies" },
-  { src: "/rag-development/06_techreviewer_badge_2026-02.svg", alt: "techreviewer.co 2026 — Top AI Readiness Assessment Companies" },
-  { src: "/rag-development/05_top_clutch.co_generative_ai_company_boston_2026-2.svg", alt: "Clutch 2026 — Top Generative AI Company in Boston" },
-  { src: "/rag-development/06_top-ai-development-companies.svg", alt: "GoodFirms — Top AI Development Company" },
-  { src: "/rag-development/06_techreviewer_badge_2026-16.svg", alt: "techreviewer.co 2026 — Top AI Integration Companies" },
-  { src: "/rag-development/06_techreviewer_badge_2026-03.svg", alt: "techreviewer.co 2026 — Top AI PoC Development Companies" },
-  { src: "/rag-development/06_techreviewer_badge_2026-05.svg", alt: "techreviewer.co 2026 — Top AI Agents Development Companies" },
-  { src: "/rag-development/06_techreviewer_badge_2026-15.svg", alt: "techreviewer.co 2026 — Top GenAI Development Companies" },
+  { src: "/badges_fix/06_techreviewer_badge_2026-06.svg", alt: "techreviewer.co 2026 — Top RAG Development Companies" },
+  { src: "/badges_fix/06_techreviewer_badge_2026-07.svg", alt: "techreviewer.co 2026 — Top LLM Development Companies" },
+  { src: "/badges_fix/06_techreviewer_badge_2026-04.svg", alt: "techreviewer.co 2026 — Top AI Software Development Companies" },
+  { src: "/badges_fix/05_top_clutch.co_artificial_intelligence_company_boston_2026-2.svg", alt: "Clutch 2026 — Top Artificial Intelligence Company in Boston" },
+  { src: "/badges_fix/06_techreviewer_badge_2026-01.svg", alt: "techreviewer.co 2026 — Top AI Consulting Companies" },
+  { src: "/badges_fix/06_techreviewer_badge_2026-02.svg", alt: "techreviewer.co 2026 — Top AI Readiness Assessment Companies" },
+  { src: "/badges_fix/05_top_clutch.co_generative_ai_company_boston_2026-2.svg", alt: "Clutch 2026 — Top Generative AI Company in Boston" },
+  { src: "/badges_fix/06_top-ai-development-companies.svg", alt: "GoodFirms — Top AI Development Company" },
+  { src: "/badges_fix/06_techreviewer_badge_2026-16.svg", alt: "techreviewer.co 2026 — Top AI Integration Companies" },
+  { src: "/badges_fix/06_techreviewer_badge_2026-03.svg", alt: "techreviewer.co 2026 — Top AI PoC Development Companies" },
+  { src: "/badges_fix/06_techreviewer_badge_2026-05.svg", alt: "techreviewer.co 2026 — Top AI Agents Development Companies" },
+  { src: "/badges_fix/06_techreviewer_badge_2026-15.svg", alt: "techreviewer.co 2026 — Top GenAI Development Companies" },
 ];
 
 // ─── Awesome stories (blog) ───────────────────────────────────────────────────
@@ -317,7 +276,7 @@ export default function RagPage() {
       <RagHero />
 
       <RagArticleLayout>
-        <RagLogos />
+        <AipocLogos />
         {/* ── Intro: RAG transforms your data ─────────────────────────────── */}
         <section className={`${styles.blockLight} ${styles.ragIntroBlock}`}>
           <div className="container">
@@ -469,7 +428,7 @@ export default function RagPage() {
             </p>
             <div className={styles.ragMatrixWrap}>
               <Image
-                src="/rag-development/03_RAG-vs.-Fine-tuning-strategic-decision-matrix-table.png"
+                src="/rag-development/03_RAG-vs.-Fine-tuning-strategic-decision-matrix-table-clean-v2.png"
                 alt="RAG vs. Fine-tuning — strategic decision matrix"
                 width={1560}
                 height={1523}
@@ -510,11 +469,10 @@ export default function RagPage() {
         <div id="rag-cases">
           <CaseCards
             heading={<>Our recent AI <span>works</span></>}
-            cards={RAG_CASES}
             windowed
           />
         </div>
-        <ServicesReviewSlider />
+        <ServicesReviewSlider primary="ai" count={7} secondaryCount={2} />
 
         {/* ── 4-week pilot (dark process) ─────────────────────────────────── */}
         <section id="rag-pilot" className={`${styles.blockDark} ${styles.ragPilotBlock}`}>

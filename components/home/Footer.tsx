@@ -74,18 +74,19 @@ export default function Footer() {
                 <h3>Useful Links</h3>
                 <ul>
                   <li><Link href="/">Home</Link></li>
-                  <li><Link href="/team">About Us</Link></li>
                   <li><Link href="/engagement-models-process">Engagement Models</Link></li>
                   <li><Link href="/services">Services</Link></li>
                   <li><Link href="/adlc">ADLC</Link></li>
+                  <li><a href="https://portal.nexterse.com/login/" target="_blank" rel="noreferrer noopener">Portal</a></li>
                 </ul>
               </div>
               <div className={styles.colPolicy}>
                 <h3>About Us</h3>
                 <ul>
-                  <li><Link href="/team">Team</Link></li>
+                  <li><Link href="/about-us">Team</Link></li>
                   <li><Link href="/contact-us">Contact Us</Link></li>
                   <li><Link href="/blog">Insights</Link></li>
+                  <li><Link href="/privacy-policy">Privacy &amp; Policy</Link></li>
                 </ul>
               </div>
             </div>
@@ -273,18 +274,19 @@ export default function Footer() {
                 <h3>Useful Links</h3>
                 <ul>
                   <li><Link href="/">Home</Link></li>
-                  <li><Link href="/team">About Us</Link></li>
                   <li><Link href="/engagement-models-process">Engagement Models</Link></li>
                   <li><Link href="/services">Services</Link></li>
                   <li><Link href="/adlc">ADLC</Link></li>
+                  <li><a href="https://portal.nexterse.com/login/" target="_blank" rel="noreferrer noopener">Portal</a></li>
                 </ul>
               </div>
               <div className={styles.colPolicy}>
                 <h3>About Us</h3>
                 <ul>
-                  <li><Link href="/team">Team</Link></li>
+                  <li><Link href="/about-us">Team</Link></li>
                   <li><Link href="/contact-us">Contact Us</Link></li>
                   <li><Link href="/blog">Insights</Link></li>
+                  <li><Link href="/privacy-policy">Privacy &amp; Policy</Link></li>
                 </ul>
               </div>
             </div>

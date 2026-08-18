@@ -11,7 +11,6 @@ import CaseCards from "@/components/home/CaseCards";
 import TeamReviewSlider from "@/components/team/TeamReviewSlider";
 import ESDIndustries from "@/components/esd/ESDIndustries";
 import ESDStandards from "@/components/esd/ESDStandards";
-import ESDDownloadCTA2 from "@/components/esd/ESDDownloadCTA2";
 import ESDApproach from "@/components/esd/ESDApproach";
 import ESDQualityPractices from "@/components/esd/ESDQualityPractices";
 import ESDTechStack from "@/components/esd/ESDTechStack";
@@ -47,10 +46,9 @@ export default function EnterpriseSDPage() {
           <div id="recent-works">
             <CaseCards />
           </div>
-          <TeamReviewSlider />
+          <TeamReviewSlider primary="software" count={7} secondaryCount={2} />
           <ESDIndustries />
           <ESDStandards />
-          <ESDDownloadCTA2 />
           <ESDApproach />
           <ESDQualityPractices />
           <ESDTechStack />

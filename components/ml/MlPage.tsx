@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Image from "next/image";
-import CaseCards, { type CaseCard } from "@/components/home/CaseCards";
+import CaseCards from "@/components/home/CaseCards";
 import LetsStart from "@/components/home/LetsStart";
 import AdlcBlog, { type AdlcFeaturedPost, type AdlcBlogPost } from "@/components/adlc/AdlcBlog";
 import MlHero from "./MlHero";
@@ -81,34 +81,6 @@ const TECH_TABLE: { service: string; tools: string }[] = [
   { service: "Visualization & dashboarding", tools: "Power BI, Tableau, Looker, Grafana, Streamlit, Dash by Plotly, Superset." },
 ];
 
-// ─── Cases (3, clone content) ───────────────────────────────────────────────────
-const ML_CASES: CaseCard[] = [
-  {
-    banner: "/ml/11_Cover-1-1.png",
-    name: "AI-powered stack",
-    title: "AI-powered predictive maintenance for a large industrial manufacturer",
-    text: "An AIoT upgrade that cut unplanned downtime by 50% within 8 months, adding explainable ML and context analysis to the existing IoT platform.",
-    href: "/portfolio/ai-powered-predictive-maintenance-for-a-large-industrial-manufacturer",
-    tags: ["IoT", "AI inside", "Enterprise"],
-  },
-  {
-    banner: "/ml/10_Cover-1-1.png",
-    name: "AI-powered stack",
-    title: "AI/ML route optimization for a freight delivery service",
-    text: "Lifted on-time delivery to 98% – without expanding the fleet. An AI/ML platform that plans and reoptimizes B2B/B2C routes in real time with traffic, weather, and capacity constraints, cutting last-mile costs by 22%.",
-    href: "/portfolio/ai-ml-route-optimization-for-a-freight-delivery-service",
-    tags: ["AI inside", "Enterprise"],
-  },
-  {
-    banner: "/ml/12_Cover-2-1.png",
-    name: "AI-powered stack",
-    title: "IoT and ML predictive maintenance for a 28-turbine wind farm",
-    text: "A German operator runs 28 onshore turbines. Nexterse LLC built a predictive maintenance layer on top of the existing SCADA. Within 12 months, unplanned downtime fell by 38%, and availability rose to 97.7%.",
-    href: "/portfolio/ml-based-predictive-maintenance-for-wind-farm",
-    tags: ["IoT", "AI inside", "Enterprise"],
-  },
-];
-
 // ─── Why choose Nexterse LLC for ML development (4 cards) ──────────────────────
 const WHY = [
   { icon: "/ml/04_Jupyter-Notebook-to-Production-04.svg", title: "From notebook to production.", desc: "Data scientists build models. Software engineers build applications. We do both. Most failed pilots break at the seam between them, when Python scripts never get connected to the legacy SQL databases or live API limits they have to work with. Our team builds that connection and the CI/CD pipelines that put the model into real use." },
@@ -128,8 +100,8 @@ const ML_BLOG_FEATURED: AdlcFeaturedPost = {
 };
 const ML_BLOG_SIDE: AdlcBlogPost[] = [
   { href: "/blog/ai-development-costs", title: "What Affects AI Development Cost in 2026", readTime: "40 mins", date: "March 11, 2026" },
-  { href: "/blog/ai-powered-iot-overview", title: "What's AIoT: The Next Wave of Innovation", readTime: "27 mins", date: "February 27, 2026" },
-  { href: "/blog/aiot-in-manufacturing", title: "AIoT in Manufacturing: Real Cases, ROI, and a Pilot Playbook", readTime: "27 mins", date: "March 2, 2026" },
+  { href: "/blog/applied-ai-overview", title: "What's Applied AI: The Next Wave of Predictive Maintenance", readTime: "27 mins", date: "February 27, 2026" },
+  { href: "/blog/ai-in-manufacturing", title: "AI in Manufacturing: Real Cases, ROI, and a Pilot Playbook", readTime: "27 mins", date: "March 2, 2026" },
 ];
 
 export default function MlPage() {
@@ -261,7 +233,7 @@ export default function MlPage() {
               <div className={styles.impactText}>
                 <p>Machine learning earns its place when it runs inside your operations. Here&rsquo;s what Nexterse LLC&rsquo;s systems have delivered:</p>
                 <ul className={styles.impactList}>
-                  <li><strong>50% less unplanned downtime in 8 months</strong> from explainable predictive maintenance added to a manufacturer&rsquo;s existing IoT platform.</li>
+                  <li><strong>50% less unplanned downtime in 8 months</strong> from explainable predictive maintenance added to a manufacturer&rsquo;s existing monitoring platform.</li>
                   <li><strong>98% on-time delivery and 22% lower last-mile cost</strong> from real-time route optimization for a freight service, with no extra trucks added.</li>
                   <li><strong>38% less unplanned downtime and 97.7% availability in 12 months</strong> from a predictive-maintenance layer on a German operator&rsquo;s 28-turbine wind farm.</li>
                 </ul>
@@ -316,7 +288,7 @@ export default function MlPage() {
 
         {/* ── What ML projects has Nexterse LLC delivered? ── */}
         <div id="ml-cases">
-          <CaseCards heading={<>What ML <span>projects</span> has Nexterse LLC delivered?</>} cards={ML_CASES} windowed />
+          <CaseCards heading={<>What ML <span>projects</span> has Nexterse LLC delivered?</>} windowed />
         </div>
 
         {/* ── Reviews ── */}

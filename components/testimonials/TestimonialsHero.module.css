@@ -166,3 +166,53 @@
 .titleBlue {
   color: var(--color-accent);
 }
+/* AI Consulting / AI PoC style hero alignment */
+.inner {
+  padding: 0 0 8.5rem;
+  text-align: left;
+}
+
+.breadcrumbs {
+  gap: 4px;
+  margin-bottom: 4.5rem;
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 0.875rem;
+  line-height: 1.4;
+}
+
+.breadcrumbs a,
+.breadcrumbs span {
+  display: inline-flex;
+  align-items: center;
+}
+
+.title {
+  max-width: 85rem;
+  margin: 0 0 1.75rem;
+  font-size: clamp(3rem, 5vw, 4rem);
+  line-height: 1.18;
+  letter-spacing: 0;
+  text-align: left;
+}
+
+.titleBlue {
+  color: var(--color-accent);
+}
+
+@media (max-width: 768px) {
+  .hero {
+    padding-top: calc(var(--header-height) + 48px);
+  }
+
+  .inner {
+    padding: 0 0 4.5rem;
+  }
+
+  .breadcrumbs {
+    margin-bottom: 2rem;
+  }
+
+  .title {
+    font-size: clamp(2.25rem, 9vw, 3rem);
+  }
+}

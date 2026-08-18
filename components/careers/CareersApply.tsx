@@ -1,51 +1,19 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useRef, useState } from "react";
 import styles from "./CareersApply.module.css";
-
-const POSITIONS = [
-  "Full Stack Developer",
-  "Frontend Developer",
-  "Backend Developer",
-  "AI/ML Engineer",
-  "DevOps Engineer",
-  "Product Manager",
-  "UI/UX Designer",
-  "QA Engineer",
-  "Project Manager",
-  "Business Analyst",
-];
 
 type Status = "idle" | "loading" | "success" | "error";
 
 export default function CareersApply() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
-  const [position, setPosition] = useState("");
   const [message, setMessage] = useState("");
   const [file, setFile] = useState<File | null>(null);
   const [status, setStatus] = useState<Status>("idle");
-  const [dropOpen, setDropOpen] = useState(false);
   const [errors, setErrors] = useState<Record<string, boolean>>({});
 
-  const dropRef = useRef<HTMLDivElement>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
-
-  useEffect(() => {
-    const handleOutside = (e: MouseEvent) => {
-      if (dropRef.current && !dropRef.current.contains(e.target as Node)) {
-        setDropOpen(false);
-      }
-    };
-    document.addEventListener("mousedown", handleOutside);
-    return () => document.removeEventListener("mousedown", handleOutside);
-  }, []);
-
-  const selectPosition = (pos: string) => {
-    setPosition(pos);
-    setDropOpen(false);
-    setErrors((p) => ({ ...p, position: false }));
-  };
 
   const handleFile = (e: React.ChangeEvent<HTMLInputElement>) => {
     const f = e.target.files?.[0];
@@ -56,7 +24,6 @@ export default function CareersApply() {
     const errs: Record<string, boolean> = {};
     if (!name.trim()) errs.name = true;
     if (!email.trim()) errs.email = true;
-    if (!position) errs.position = true;
     if (!message.trim()) errs.message = true;
     setErrors(errs);
     return Object.keys(errs).length === 0;
@@ -70,7 +37,6 @@ export default function CareersApply() {
       const formData = new FormData();
       formData.append("name", name);
       formData.append("email", email);
-      formData.append("position", position);
       formData.append("message", message);
       if (file) formData.append("resume", file);
       const res = await fetch("/api/careers", { method: "POST", body: formData });
@@ -152,43 +118,6 @@ export default function CareersApply() {
                 </span>
               </label>
 
-              {/* Position */}
-              <div className={`${styles.selectWrapper} ${errors.position ? styles.fieldError : ""}`}>
-                <p>
-                  <span className={styles.labelText}>Position*</span>
-                </p>
-                <div className={styles.selectWrap} ref={dropRef}>
-                  <div
-                    className={`${styles.selected} ${dropOpen ? styles.selectedOpen : ""}`}
-                    onClick={() => setDropOpen((v) => !v)}
-                    role="button"
-                    aria-haspopup="listbox"
-                    aria-expanded={dropOpen}
-                  >
-                    <p>
-                      <span className={position ? styles.selectedValue : styles.selectedPlaceholder}>
-                        {position || "Designer"}
-                      </span>
-                    </p>
-                  </div>
-                  {dropOpen && (
-                    <ul className={styles.optionList} role="listbox">
-                      {POSITIONS.map((pos) => (
-                        <li
-                          key={pos}
-                          role="option"
-                          aria-selected={position === pos}
-                          className={`${styles.optionItem} ${position === pos ? styles.optionActive : ""}`}
-                          onClick={() => selectPosition(pos)}
-                        >
-                          {pos}
-                        </li>
-                      ))}
-                    </ul>
-                  )}
-                </div>
-              </div>
-
               {/* Message */}
               <label className={`${styles.formLabel} ${styles.textareaLabel} ${errors.message ? styles.fieldError : ""}`}>
                 <span className={styles.labelText}>Message*</span>
@@ -207,7 +136,7 @@ export default function CareersApply() {
               <div className={styles.privacyMessage}>
                 <p className={styles.privacyText}>
                   Please be informed that when you click the Send button Nexterse LLC will process your personal data in accordance with our{" "}
-                  <a href="/privacy-policy" rel="dofollow" className={styles.privacyLink}>Privacy notice</a>{" "}
+                  <a href="/privacy-policy" rel="dofollow" className={styles.privacyLink}>Privacy & Policy</a>{" "}
                   for the purpose of providing you with appropriate information.
                 </p>
                 <div className={styles.bottomSection}>

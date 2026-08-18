@@ -2589,27 +2589,6 @@
 }
 
 /* Section */
-.badgeStrip {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: center;
-  gap: 44px;
-  padding: 48px 0 8px;
-}
-
-.badgeStripImg {
-  height: 60px;
-  width: auto;
-  object-fit: contain;
-  opacity: 0.85;
-  filter: brightness(0) saturate(0) invert(35%) sepia(16%) saturate(10) hue-rotate(175deg) brightness(75%) contrast(100%);
-  transition: opacity 0.2s ease, filter 0.2s ease;
-}
-
-.badgeStripImg:hover { opacity: 1; filter: brightness(0) saturate(0) invert(26%) sepia(18%) saturate(12) hue-rotate(175deg) brightness(63%) contrast(105%); }
-
-/* Section */
 .whyIconCard {
   background: #fff;
   border: 1px solid #e6eff7;
@@ -3114,7 +3093,7 @@
 /* AI PoC Why ADLC reference override */
 .whyAdlcBlock {
   background: #fff;
-  padding: clamp(5rem, 7vw, 6.25rem) 0 0;
+  padding: clamp(5rem, 7vw, 6.25rem) 0 clamp(3.25rem, 5vw, 4rem);
 }
 
 .whyAdlcBlock .sectionTitle {
@@ -3183,26 +3162,9 @@
   letter-spacing: 0;
 }
 
-.whyAdlcBlock .badgeStrip {
-  gap: clamp(2.2rem, 4vw, 4rem);
-  padding: clamp(6rem, 8vw, 7.75rem) 0 1rem;
-}
-
-.whyAdlcBlock .badgeStripImg {
-  max-height: 3.75rem;
-  height: auto;
-  opacity: 0.9;
-  filter: brightness(0) saturate(0) invert(35%) sepia(16%) saturate(10) hue-rotate(175deg) brightness(75%) contrast(100%);
-}
-
-.whyAdlcBlock .badgeStripImg:hover {
-  opacity: 1;
-  filter: brightness(0) saturate(0) invert(26%) sepia(18%) saturate(12) hue-rotate(175deg) brightness(63%) contrast(105%);
-}
-
 @media (max-width: 900px) {
   .whyAdlcBlock {
-    padding-top: 4.5rem;
+    padding: 4.5rem 0 3rem;
   }
 
   .whyAdlcBlock .sectionTitle,
@@ -3218,11 +3180,6 @@
   .whyAdlcBlock .whyIconCard {
     align-items: flex-start;
     text-align: left;
-  }
-
-  .whyAdlcBlock .badgeStrip {
-    justify-content: flex-start;
-    padding-top: 4rem;
   }
 }
 /* AI PoC tech stack reference override */

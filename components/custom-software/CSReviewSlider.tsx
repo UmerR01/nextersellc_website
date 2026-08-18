@@ -6,47 +6,17 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper/modules";
 import type { SwiperRef } from "swiper/react";
 import "swiper/css";
+import { resolveReviews, toPlainText, type ReviewSelectionProps } from "@/components/testimonials/reviewsData";
 import styles from "./CSReviewSlider.module.css";
 
-const REVIEWS = [
-  {
-    text: "The system has produced a significant competitive advantage in the industry thanks to Nexterse LLC's well-thought opinions. They shouldered the burden of constantly updating a project management tool with a high level of detail and were committed to producing the best possible solution.",
-    photo: "/custom-software/01_photo.png",
-    logo: null,
-    name: "Alexander McCaig",
-    position: "Co-Founder & CEO, Tartle",
-  },
-  {
-    text: "We tried another company that one of our partners had used but they didn't work out. I feel that Nexterse LLC does a better investigation of what we're asking for. They tell us how they plan to do a task and ask if that works for us. We chose them because their method worked with us.",
-    photo: "/custom-software/01_photo6.png",
-    logo: null,
-    name: "Damian Gevertz",
-    position: "Founder & CEO, Widgety",
-  },
-  {
-    text: "Nexterse LLC is the firm to work with if you want to keep up to high standards. The professional workflows they stick to result in exceptional quality. Important, they help you think with the business logic of your application and they don't blindly follow what you are saying. Which is super important. Overall, great skills, good communication, and happy with the results so far.",
-    photo: "/custom-software/01_photo2.png",
-    logo: null,
-    name: "Domien Van Eynde",
-    position: "Team Lead, Daiokan.com",
-  },
-  {
-    text: "Rivalfox had the pleasure to work with Nexterse LLC in building out core portions of our product, and the results really couldn't have been better. Nexterse LLC provided us with engineering expertise, enthusiasm and great people that were focused on creating quality features quickly.",
-    photo: "/custom-software/01_photo5.png",
-    logo: null,
-    name: "Paul S. Chun",
-    position: "CTO, Rivalfox GmbH",
-  },
-  {
-    text: "Nexterse LLC succeeded in building a more manageable solution that is much easier to maintain.",
-    photo: "/custom-software/01_photo3.png",
-    logo: null,
-    name: "Yevgeniy Rozenblat",
-    position: "Program Manager, TL Nika",
-  },
-];
-
-export default function CSReviewSlider() {
+export default function CSReviewSlider(selection: ReviewSelectionProps = {}) {
+  const REVIEWS = resolveReviews(selection).map((r) => ({
+    text: toPlainText(r.text),
+    photo: r.photo ?? null,
+    logo: r.logo ?? null,
+    name: r.name,
+    position: r.position,
+  }));
   const swiperRef = useRef<SwiperRef>(null);
   const [atStart, setAtStart] = useState(true);
   const [atEnd, setAtEnd] = useState(false);

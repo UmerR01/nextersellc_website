@@ -4,7 +4,7 @@ import styles from "./CrosslinksBlock.module.css";
 const LINKS = [
   { label: "AI software development services", href: "/services/ai-software-development" },
   { label: "Custom Software Services", href: "/services/custom-software-development" },
-  { label: "More about Nexterse LLC", href: "/team" },
+  { label: "More about Nexterse LLC", href: "/about-us" },
 ];
 
 export default function CrosslinksBlock() {

@@ -135,7 +135,7 @@ export default function ProptechHero() {
           <span className={s.accent}>PropTech</span> product development company
         </h1>
         <p className={s.heroDescription}>
-          Move real estate off spreadsheets and disconnected point tools. Nexterse LLC is a PropTech product development company that engineers property management platforms, automated valuation models, IoT-connected smart building systems, and digital twins that unify portfolio data and turn buildings into measurable, optimizable assets.
+          Move real estate off spreadsheets and disconnected point tools. Nexterse LLC is a PropTech product development company that engineers property management platforms, automated valuation models, AI-powered smart building systems, and digital twins that unify portfolio data and turn buildings into measurable, optimizable assets.
         </p>
         <div className={s.heroButtons}>
           <a href="#get-modal-popup" className={`btn btn-accent ${s.btnPrimary}`}>Free quote</a>

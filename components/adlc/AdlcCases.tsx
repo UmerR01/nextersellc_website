@@ -8,8 +8,8 @@ const cases = [
     tech: "AI-powered stack",
     title: "AI-powered predictive maintenance for a large industrial manufacturer",
     description:
-      "An AIoT upgrade that cut unplanned downtime by 50% within 8 months, adding explainable ML and context analysis to the existing IoT platform.",
-    tags: ["IoT", "AI inside", "Enterprise"],
+      "An AI upgrade that cut unplanned downtime by 50% within 8 months, adding explainable ML and context analysis to the existing monitoring platform.",
+    tags: ["AI inside", "Enterprise"],
     imageRight: { src: "/adlc/11_Cover-1-1.png", alt: "Predictive maintenance case", width: 696, height: 490 },
     imageLeft: { src: "/adlc/11_Cover-1-2.png", alt: "Predictive maintenance case", width: 696, height: 490 },
   },

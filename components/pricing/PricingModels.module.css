@@ -46,7 +46,8 @@
   width: 56px;
   height: 56px;
   object-fit: contain;
-  opacity: 0.54;
+  opacity: 1;
+  filter: brightness(0) saturate(100%) invert(66.2%) sepia(46.2%) saturate(189.2%) hue-rotate(173.9deg) brightness(82.4%) contrast(87.8%);
   transition: opacity 0.2s;
 }
 

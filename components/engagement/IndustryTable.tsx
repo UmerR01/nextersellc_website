@@ -16,7 +16,7 @@ const ROWS = [
     when: "Specific compliance modules",
   },
   {
-    industry: "Logistics and IoT",
+    industry: "Logistics and AI",
     commonModel: "Dedicated Team",
     why: "Multi-year platforms",
     alternative: "Time and Materials",

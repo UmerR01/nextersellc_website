@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
-import CaseCards, { type CaseCard } from "@/components/home/CaseCards";
+import CaseCards from "@/components/home/CaseCards";
 import ServicesReviewSlider from "@/components/services/ServicesReviewSlider";
 import ServicesAchievements, { type Badge } from "@/components/services/ServicesAchievements";
 import ServicesFaqBlock, { type FaqItem } from "@/components/services/ServicesFaqBlock";
@@ -168,32 +168,7 @@ const INTEGRATIONS = [
 ];
 
 // ─── Cases (3, clone content) ─────────────────────────────────────────────────
-const FIN_CASES: CaseCard[] = [
-  {
-    banner: "/financial-development/02_tartle-dashboard-screenshot-1.png",
-    name: "Tartle",
-    title: "Tartle – big data trading platform that cut transaction costs by 35%",
-    text: "Blockchain marketplace enabling anonymous peer-to-peer big data trading – 40% faster deal closure and direct buyer-seller connections without intermediaries, for a US-based big data startup.",
-    href: "/portfolio/tartle-big-data-trading-platform",
-    tags: ["Startups"],
-  },
-  {
-    banner: "/financial-development/09_inbound_transportation_kanban_board011@2x.png",
-    name: "Toyota ERP/CRM",
-    title: "Toyota custom ERP/CRM system",
-    text: "A custom ERP/CRM for Business Car Group – Russia’s largest Toyota and Lexus dealer network – that replaced decade-old disjointed tools with a unified platform, cutting sales cycles by 30% across 20 dealer centers.",
-    href: "/portfolio/scalex-custom-erp-system-for-automotive-industry",
-    tags: ["Enterprise"],
-  },
-  {
-    banner: "/financial-development/10_Cover-1.png",
-    name: "Structural analysis",
-    title: "Advanced structural analysis web app for a leading steel distributor",
-    text: "Engineers complete structural analyses ~45% faster with a web platform that integrates the Client’s Excel-based calculation logic, delivers real-time Shear, Deflection, and Moment visualization, and centralizes project records for geotechnical teams.",
-    href: "/portfolio/advanced-structural-analysis-web-application",
-    tags: ["Enterprise"],
-  },
-];
+
 
 // ─── Why Clients trust (4 cards with bullet lists) ────────────────────────────
 const WHY_CARDS = [
@@ -343,23 +318,19 @@ const FIN_FAQ: FaqItem[] = [
 
 // ─── Awards (clone badges) ────────────────────────────────────────────────────
 const FIN_BADGES: Badge[] = [
-  { src: "/financial-development/06_techreviewer_badge_2026-09.svg", alt: "techreviewer.co 2026 — Top Enterprise Software Development Companies" },
-  { src: "/financial-development/06_techreviewer_badge_2026-12.svg", alt: "techreviewer.co 2026 — Top Software Development Companies" },
-  { src: "/financial-development/06_techreviewer_badge_2026-04.svg", alt: "techreviewer.co 2026 — Top AI Software Development Companies" },
-  { src: "/financial-development/03_Badge-1-1.svg", alt: "Top software development company in Massachusetts" },
-  { src: "/financial-development/12_5ca49c9f6cb37e33319e1162_Goodfirms.svg", alt: "GoodFirms badge" },
-  { src: "/financial-development/12_5ca49c9f8ff5ad26d13b6845_TDA.svg", alt: "TDA badge" },
-  { src: "/financial-development/12_5ca49c9f6cb37e49a79e1163_changed.svg", alt: "AWS partner badge" },
-  { src: "/financial-development/12_IoT-Services-2025.svg", alt: "IoT Services 2025" },
-  { src: "/financial-development/12_Custom-Web-Design-Development-2025.svg", alt: "Custom Web Design Development 2025" },
-  { src: "/financial-development/12_Mobile-Software-Development-2025.svg", alt: "Mobile Software Development 2025" },
-  { src: "/financial-development/12_Responsive-Design-Development-2025.svg", alt: "Responsive Design Development 2025" },
-  { src: "/financial-development/12_Business-Intelligence-Services-2024.svg", alt: "Business Intelligence Services 2024" },
-  { src: "/financial-development/01_top_clutch.co_user_experience_company_manufacturing_boston.svg", alt: "Clutch — Top UX company manufacturing Boston" },
-  { src: "/financial-development/01_top_clutch.co_software_developers_supply_chain_logistics_and_transport_providence.svg", alt: "Clutch — Top supply chain, logistics & transport software developers Providence" },
-  { src: "/financial-development/01_top_clutch.co_app_development_company_manufacturing_providence.svg", alt: "Clutch — Top app development company manufacturing Providence" },
-  { src: "/financial-development/01_top_clutch.co_user_experience_company_information_technology_boston.svg", alt: "Clutch — Top UX company IT Boston" },
-  { src: "/financial-development/01_top_clutch.co_software_developers_supply_chain_logistics_and_transport_boston.svg", alt: "Clutch — Top supply chain, logistics & transport software developers Boston" },
+  { src: "/badges_fix/06_techreviewer_badge_2026-09.svg", alt: "techreviewer.co 2026 — Top Enterprise Software Development Companies" },
+  { src: "/badges_fix/06_techreviewer_badge_2026-12.svg", alt: "techreviewer.co 2026 — Top Software Development Companies" },
+  { src: "/badges_fix/06_techreviewer_badge_2026-04.svg", alt: "techreviewer.co 2026 — Top AI Software Development Companies" },
+  { src: "/badges_fix/12_5ca49c9f6cb37e33319e1162_Goodfirms.svg", alt: "GoodFirms badge" },
+  { src: "/badges_fix/12_5ca49c9f8ff5ad26d13b6845_TDA.svg", alt: "TDA badge" },
+  { src: "/badges_fix/12_5ca49c9f6cb37e49a79e1163_changed.svg", alt: "AWS partner badge" },
+  { src: "/badges_fix/12_Custom-Web-Design-Development-2025.svg", alt: "Custom Web Design Development 2025" },
+  { src: "/badges_fix/12_Mobile-Software-Development-2025.svg", alt: "Mobile Software Development 2025" },
+  { src: "/badges_fix/12_Responsive-Design-Development-2025.svg", alt: "Responsive Design Development 2025" },
+  { src: "/badges_fix/12_Business-Intelligence-Services-2024.svg", alt: "Business Intelligence Services 2024" },
+  { src: "/badges_fix/01_top_clutch.co_user_experience_company_manufacturing_boston.svg", alt: "Clutch — Top UX company manufacturing Boston" },
+  { src: "/badges_fix/01_top_clutch.co_user_experience_company_information_technology_boston.svg", alt: "Clutch — Top UX company IT Boston" },
+  { src: "/badges_fix/01_top_clutch.co_software_developers_supply_chain_logistics_and_transport_boston.svg", alt: "Clutch — Top supply chain, logistics & transport software developers Boston" },
 ];
 
 // ─── Awesome stories (blog, clone content) ────────────────────────────────────
@@ -398,7 +369,7 @@ const CROSSLINKS = [
   {
     heading: "About Nexterse LLC",
     links: [
-      { text: "About ", last: "us", href: "/team" },
+      { text: "About ", last: "us", href: "/about-us" },
       { text: "Contact ", last: "us", href: "/contact-us" },
       { text: "", last: "Careers", href: "/careers" },
     ],
@@ -674,13 +645,12 @@ export default function FintechPage() {
         <div id="fin-cases">
           <CaseCards
             heading={<>Success stories of our <span>Clients</span></>}
-            cards={FIN_CASES}
             windowed
           />
         </div>
 
         {/* ── Reviews ────────────────────────────────────────────────────── */}
-        <ServicesReviewSlider />
+        <ServicesReviewSlider primary="software" count={6} secondaryCount={1} lead={["Sharon Nouh"]} />
 
         {/* ── Awards & Recognitions ──────────────────────────────────────── */}
         <ServicesAchievements badges={FIN_BADGES} />

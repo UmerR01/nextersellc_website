@@ -3,19 +3,16 @@ import { useEffect, useState } from "react";
 import styles from "./EngAwardsBlock.module.css";
 
 const AWARDS = [
-  { src: "/engagement/05_top_clutch.co_artificial_intelligence_company_boston_2026-2.svg", alt: "Top Clutch AI Company Boston 2026" },
-  { src: "/engagement/06_RightFirms-1.svg", alt: "RightFirms badge" },
-  { src: "/engagement/06_techreviewer_badge_2026-12.svg", alt: "TechReviewer badge 2026" },
-  { src: "/engagement/05_top_clutch.co_iot_company_providence_2026-2.svg", alt: "Top Clutch IoT Company Providence 2026" },
-  { src: "/engagement/12_5ca49c9f6cb37e33319e1162_Goodfirms.svg", alt: "Goodfirms badge" },
-  { src: "/engagement/12_5ca49c9f8ff5ad26d13b6845_TDA.svg", alt: "TDA badge" },
-  { src: "/engagement/12_5ca49c9f6cb37e49a79e1163_changed.svg", alt: "AWS partner badge" },
-  { src: "/engagement/12_Machine-Learning-Development-2024.svg", alt: "Machine Learning Development 2024" },
-  { src: "/engagement/12_IoT-Services-2025.svg", alt: "IoT Services 2025" },
-  { src: "/engagement/12_Custom-Web-Design-Development-2025.svg", alt: "Custom Web Design Development 2025" },
-  { src: "/engagement/01_techreviewer_badge_2025-3.svg", alt: "TR top IoT developers 2025" },
-  { src: "/engagement/01_techreviewer_badge_2025-2.svg", alt: "TR top software developers 2025" },
-  { src: "/engagement/01_techreviewer_badge_2025-1.svg", alt: "TR top web developers 2025" },
+  { src: "/badges_fix/engagement__05_top_clutch.co_artificial_intelligence_company_boston_2026-2.svg", alt: "Top Clutch AI Company Boston 2026" },
+  { src: "/badges_fix/06_RightFirms-1.svg", alt: "RightFirms badge" },
+  { src: "/badges_fix/custom-software__06_techreviewer_badge_2026-12.svg", alt: "TechReviewer badge 2026" },
+  { src: "/badges_fix/12_5ca49c9f6cb37e33319e1162_Goodfirms.svg", alt: "Goodfirms badge" },
+  { src: "/badges_fix/12_5ca49c9f8ff5ad26d13b6845_TDA.svg", alt: "TDA badge" },
+  { src: "/badges_fix/12_5ca49c9f6cb37e49a79e1163_changed.svg", alt: "AWS partner badge" },
+  { src: "/badges_fix/12_Machine-Learning-Development-2024.svg", alt: "Machine Learning Development 2024" },
+  { src: "/badges_fix/12_Custom-Web-Design-Development-2025.svg", alt: "Custom Web Design Development 2025" },
+  { src: "/badges_fix/01_techreviewer_badge_2025-2.svg", alt: "TR top software developers 2025" },
+  { src: "/badges_fix/01_techreviewer_badge_2025-1.svg", alt: "TR top web developers 2025" },
 ];
 
 export default function EngAwardsBlock() {

@@ -546,7 +546,7 @@
 }
 
 .tabBtn:hover .tabIcon {
-  filter: grayscale(1) opacity(0.8);
+  filter: brightness(0) saturate(100%) invert(69%) sepia(61%) saturate(643%) hue-rotate(148deg) brightness(91%) contrast(91%);
 }
 
 .tabBtnActive .tabIcon {
@@ -583,7 +583,7 @@
   position: absolute;
   inset: 0;
   pointer-events: none;
-  background: linear-gradient(118deg, rgba(255, 64, 105, 0.36) 0%, rgba(255, 64, 105, 0.12) 35%, rgba(60, 196, 229, 0.12) 100%);
+  background: linear-gradient(118deg, rgba(60, 196, 229, 0.36) 0%, rgba(60, 196, 229, 0.12) 35%, rgba(60, 196, 229, 0.12) 100%);
 }
 
 .tabPanelImg {
@@ -2164,7 +2164,7 @@
   width: 100%;
   max-width: 515px;
   pointer-events: none;
-  background: linear-gradient(118deg, rgba(255, 64, 105, 0.38) 0%, rgba(255, 64, 105, 0.18) 36%, rgba(60, 196, 229, 0.14) 100%);
+  background: linear-gradient(118deg, rgba(60, 196, 229, 0.38) 0%, rgba(60, 196, 229, 0.18) 36%, rgba(60, 196, 229, 0.14) 100%);
 }
 
 .resultsImg {

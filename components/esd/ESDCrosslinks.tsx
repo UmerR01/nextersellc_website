@@ -4,9 +4,9 @@ const COLS = [
   {
     title: "Related services",
     links: [
-      { text: "AI development", href: "#" },
-      { text: "Internet of Things development", href: "#" },
-      { text: "Enterprise IoT development", href: "#" },
+      { text: "AI development", href: "/services/ai-software-development" },
+      { text: "AI integration development", href: "/services/ai-integration" },
+      { text: "Enterprise AI development", href: "/services/ai-software-development" },
       { text: "Backend development", href: "#" },
       { text: "QA and testing services", href: "#" },
       { text: "Business analysis services", href: "#" },
@@ -16,7 +16,7 @@ const COLS = [
     title: "Related Case Studies",
     links: [
       { text: "Toyota ERP development", href: "#" },
-      { text: "IoT- and ML-based predictive wind farm maintenance", href: "#" },
+      { text: "AI- and ML-based predictive wind farm maintenance", href: "#" },
       { text: "AI-powered predictive maintenance for a large industrial manufacturer", href: "#" },
       { text: "Predictive maintenance platform for HVAC systems", href: "#" },
     ],
@@ -24,11 +24,11 @@ const COLS = [
   {
     title: "Guides",
     links: [
-      { text: "Integrating IoT into business", href: "#" },
+      { text: "Integrating AI into business", href: "#" },
       { text: "Integrating AI into Business: A Complete Guide For 2026", href: "#" },
       { text: "Custom CRM Development: How We Build Enterprise CRMs", href: "#" },
-      { text: "Guide to Enterprise IoT Security: Mitigating Risks in a Connected Ecosystem", href: "#" },
-      { text: "Impact of Internet of Things on Business and the Economy in 2026", href: "#" },
+      { text: "Guide to Enterprise AI Security: Mitigating Risks in a Connected Ecosystem", href: "#" },
+      { text: "Impact of AI on Business and the Economy in 2026", href: "#" },
     ],
   },
 ];

@@ -128,7 +128,7 @@ export default function CSHero() {
             <h1 className={styles.title}>Software product development company</h1>
 
             <p className={styles.description}>
-              Nexterse LLC delivers custom software product development for web, mobile, IoT,
+              Nexterse LLC delivers custom software product development for web, mobile,
               enterprise, and AI builds. Two lifecycles sit behind our work: a traditional SDLC for
               standard projects, and a proprietary ADLC for AI-led ones.
             </p>

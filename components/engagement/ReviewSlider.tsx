@@ -7,68 +7,17 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper/modules";
 import type { SwiperRef } from "swiper/react";
 import "swiper/css";
+import { resolveReviews, toPlainText, type ReviewSelectionProps } from "@/components/testimonials/reviewsData";
 import styles from "./ReviewSlider.module.css";
 
-const REVIEWS = [
-  {
-    text: "The system has produced a significant competitive advantage in the industry thanks to Nexterse LLC's well-thought opinions. They shouldered the burden of constantly updating a project management tool with a high level of detail and were committed to producing the best possible solution.",
-    photo: "/engagement/01_photo.png",
-    logo: null,
-    name: "Alexander McCaig",
-    position: "Co-Founder & CEO, Tartle",
-  },
-  {
-    text: "We tried another company that one of our partners had used but they didn't work out. I feel that Nexterse LLC does a better investigation of what we're asking for. They tell us how they plan to do a task and ask if that works for us. We chose them because their method worked with us.",
-    photo: "/engagement/01_photo6.png",
-    logo: null,
-    name: "Damian Gevertz",
-    position: "Founder & CEO, Widgety",
-  },
-  {
-    text: "Nexterse LLC is the firm to work with if you want to keep up to high standards. The professional workflows they stick to result in exceptional quality. Important, they help you think with the business logic of your application and they don't blindly follow what you are saying.",
-    photo: "/engagement/01_photo2.png",
-    logo: null,
-    name: "Domien Van Eynde",
-    position: "Team Lead, Daiokan.com",
-  },
-  {
-    text: "From the early stages of the project, Nexterse LLC demonstrated a proactive attitude, actively seeking opportunities to enhance the solution and anticipate our needs. This proactiveness greatly contributed to the project's success and exceeded our expectations.",
-    photo: null,
-    logo: "/engagement/08_protech_solutions_inc_logo.jpg",
-    name: "Dave Alce",
-    position: "COO",
-  },
-  {
-    text: "Nexterse LLC succeeded in building a more manageable solution that is much easier to maintain.",
-    photo: "/engagement/01_photo3.png",
-    logo: null,
-    name: "Yevgeniy Rozenblat",
-    position: "Program Manager, TL Nika",
-  },
-  {
-    text: "Rivalfox had the pleasure to work with Nexterse LLC in building out core portions of our product, and the results really couldn't have been better. Nexterse LLC provided us with engineering expertise, enthusiasm and great people that were focused on creating quality features quickly.",
-    photo: "/engagement/01_photo5.png",
-    logo: null,
-    name: "Paul S. Chun",
-    position: "CTO, Rivalfox GmbH",
-  },
-  {
-    text: "We brought in Nexterse LLC to help us reduce unexpected turbine failures, and the result met our expectations.",
-    photo: "/engagement/01_Markus-Keller-300x300.png",
-    logo: null,
-    name: "Markus Keller",
-    position: "Head of Operations",
-  },
-  {
-    text: "Together with the team, we have turned the MVP version of the service into a modern full-featured platform for online marketers. We are very satisfied with the work the Nexterse LLC team has performed.",
-    photo: "/engagement/01_photo7.png",
-    logo: null,
-    name: "Katerina Bromberg",
-    position: "Co-Founder, MyMediAds.com",
-  },
-];
-
-export default function ReviewSlider() {
+export default function ReviewSlider(selection: ReviewSelectionProps = {}) {
+  const REVIEWS = resolveReviews(selection).map((r) => ({
+    text: toPlainText(r.text),
+    photo: r.photo ?? null,
+    logo: r.logo ?? null,
+    name: r.name,
+    position: r.position,
+  }));
   const swiperRef = useRef<SwiperRef>(null);
   const [atStart, setAtStart] = useState(true);
   const [atEnd, setAtEnd] = useState(false);

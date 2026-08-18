@@ -3,18 +3,16 @@ import { useEffect, useState } from "react";
 import styles from "./PricingAwards.module.css";
 
 const AWARDS = [
-  { src: "/pricing/06_techreviewer_badge_2026-12.svg", alt: "techreviewer.co 2026 — Nexterse LLC listed among Top Software Development Companies" },
-  { src: "/pricing/06_top-software-development-companies.svg", alt: "GoodFirms badge — Nexterse LLC listed as a Top Software Development Company" },
-  { src: "/pricing/03_Badge-1-1.svg", alt: "Top software development company in Massachusetts badge from goodfirms.co" },
-  { src: "/pricing/12_5ca49c9f6cb37e33319e1162_Goodfirms.svg", alt: "Goodfirms badge icon" },
-  { src: "/pricing/12_5ca49c9f8ff5ad26d13b6845_TDA.svg", alt: "TDA badge icon" },
-  { src: "/pricing/12_5ca49c9f6cb37e49a79e1163_changed.svg", alt: "AWS partner badge icon" },
-  { src: "/pricing/12_Custom-Web-Design-Development-2025.svg", alt: "Custom Web Design Development 2025" },
-  { src: "/pricing/12_Mobile-Software-Development-2025.svg", alt: "Mobile Software Development 2025" },
-  { src: "/pricing/12_IoT-Services-2025.svg", alt: "IoT Services 2025" },
-  { src: "/pricing/12_Responsive-Design-Development-2025.svg", alt: "Responsive Design Development 2025" },
-  { src: "/pricing/12_Machine-Learning-Development-2024.svg", alt: "Machine Learning Development 2024" },
-  { src: "/pricing/12_Business-Intelligence-Services-2024.svg", alt: "Business Intelligence Services 2024" },
+  { src: "/badges_fix/06_techreviewer_badge_2026-12.svg", alt: "techreviewer.co 2026 — Nexterse LLC listed among Top Software Development Companies" },
+  { src: "/badges_fix/edtech-development__06_top-software-development-companies.svg", alt: "GoodFirms badge — Nexterse LLC listed as a Top Software Development Company" },
+  { src: "/badges_fix/12_5ca49c9f6cb37e33319e1162_Goodfirms.svg", alt: "Goodfirms badge icon" },
+  { src: "/badges_fix/12_5ca49c9f8ff5ad26d13b6845_TDA.svg", alt: "TDA badge icon" },
+  { src: "/badges_fix/12_5ca49c9f6cb37e49a79e1163_changed.svg", alt: "AWS partner badge icon" },
+  { src: "/badges_fix/12_Custom-Web-Design-Development-2025.svg", alt: "Custom Web Design Development 2025" },
+  { src: "/badges_fix/12_Mobile-Software-Development-2025.svg", alt: "Mobile Software Development 2025" },
+  { src: "/badges_fix/12_Responsive-Design-Development-2025.svg", alt: "Responsive Design Development 2025" },
+  { src: "/badges_fix/12_Machine-Learning-Development-2024.svg", alt: "Machine Learning Development 2024" },
+  { src: "/badges_fix/12_Business-Intelligence-Services-2024.svg", alt: "Business Intelligence Services 2024" },
 ];
 
 export default function PricingAwards() {

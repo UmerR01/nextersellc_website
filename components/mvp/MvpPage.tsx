@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Image from "next/image";
 import s from "./MvpPage.module.css";
-import CaseCards, { type CaseCard } from "@/components/home/CaseCards";
+import CaseCards from "@/components/home/CaseCards";
 import MvpReviewSlider from "./MvpReviewSlider";
 import MvpAchievements from "./MvpAchievements";
 import MvpFaqBlock from "./MvpFaqBlock";
@@ -59,75 +59,6 @@ const devAboutTabs = [
     ],
   },
 ];
-
-const cases: CaseCard[] = [
-  {
-    href: "/portfolio/dexai",
-    banner: "/services-page/02_Frame-1787-1.png",
-    name: "IoT · Startups",
-    title: "Dexai Robotics: graphical user interface for robot operation",
-    text: "A GUI that freed Dexai Robotics' restaurant staff from engineer dependency — cutting robot setup time per shift by ~65% and reducing interaction errors by ~50% through real-time visual state monitoring and offline operation.",
-    tags: ["IoT", "Startups", "Traditional tech stack"],
-  },
-  {
-    href: "/portfolio/ml-based-predictive-maintenance-for-wind-farm",
-    banner: "/services-page/12_Cover-2-1.png",
-    name: "IoT · AI · Enterprise",
-    title: "IoT and ML predictive maintenance for a 28-turbine wind farm",
-    text: "A German operator runs 28 onshore turbines. Nexterse LLC built a predictive maintenance layer on top of the existing SCADA. Within 12 months, unplanned downtime fell by 38%, and availability rose to 97.7%.",
-    tags: ["IoT", "AI inside", "Enterprise", "AI-powered stack"],
-  },
-  {
-    href: "/portfolio/scalex-custom-erp-system-for-automotive-industry",
-    banner: "/services-page/09_inbound_transportation_kanban_board011@2x.png",
-    name: "Enterprise",
-    title: "Toyota custom ERP/CRM system",
-    text: "A custom ERP/CRM for Business Car Group — Russia's largest Toyota and Lexus dealer network — that replaced decade-old disjointed tools with a unified platform, cutting sales cycles by 30% across 20 dealer centers.",
-    tags: ["Enterprise", "Traditional tech stack"],
-  },
-  {
-    href: "/portfolio/advanced-structural-analysis-web-application",
-    banner: "/services-page/10_Cover-1.png",
-    name: "Enterprise",
-    title: "Advanced structural analysis web app for a leading steel distributor",
-    text: "Engineers complete structural analyses ~45% faster with a web platform that integrates the Client's Excel-based calculation logic, delivers real-time Shear, Deflection, and Moment visualization, and centralizes project records.",
-    tags: ["Enterprise", "Traditional tech stack"],
-  },
-  {
-    href: "/portfolio/ai-knowledge-base-development",
-    banner: "/services-page/07_Cover-right-2.png",
-    name: "AI · Enterprise",
-    title: "AI-powered knowledge base for a global rights nonprofit",
-    text: "A Middle Eastern nonprofit working in cultural preservation needed a single searchable repository for fragmented research on ethnic minorities. Nexterse LLC built a multilingual AI platform that now indexes 12,000+ artifacts across 18 countries.",
-    tags: ["AI inside", "Enterprise", "AI-powered stack"],
-  },
-  {
-    href: "/portfolio/media-buying-software-development",
-    banner: "/services-page/01_Cover.png",
-    name: "Enterprise",
-    title: "A media buying system for a leading US-based advertising agency",
-    text: "50x faster ad operations and data processing cut from hours to under a minute — we replaced a 20-year-old FileMaker system with a custom platform covering 100+ operational workflows.",
-    tags: ["Enterprise", "Traditional tech stack"],
-  },
-  {
-    href: "/portfolio/event-platform-development",
-    banner: "/services-page/06_Cover-1.png",
-    name: "Startups",
-    title: "Event platform for indie organizers across Europe",
-    text: "A platform for indie event organizers that drove 8,000+ ticket sales in four months, with 54% of attendees completing post-event feedback — replacing a 4–5 tool workflow with a single dashboard.",
-    tags: ["Startups", "Traditional tech stack"],
-  },
-  {
-    href: "/portfolio/ai-powered-predictive-maintenance-for-a-large-industrial-manufacturer",
-    banner: "/services-page/11_Cover-1-1.png",
-    name: "IoT · AI · Enterprise",
-    title: "AI-powered predictive maintenance for a large industrial manufacturer",
-    text: "An AIoT upgrade that cut unplanned downtime by 50% within 8 months, adding explainable ML and context analysis to the existing IoT platform.",
-    tags: ["IoT", "AI inside", "Enterprise", "AI-powered stack"],
-  },
-];
-
-
 const techStackRows = [
   {
     label: "AI foundational models",
@@ -207,7 +138,7 @@ const crosslinks = [
   {
     heading: "About Nexterse LLC",
     links: [
-      { text: "About ", last: "us", href: "/team" },
+      { text: "About ", last: "us", href: "/about-us" },
       { text: "Contact ", last: "us", href: "/contact-us" },
       { text: "Get a free project ", last: "estimate", href: "/pricing" },
     ],
@@ -499,14 +430,13 @@ export default function MvpPage() {
       {/* ── 11. CASES BLOCK ─────────────────────────────────────────────── */}
       <div id="mvp-cases">
         <CaseCards
-          cards={cases}
           heading={<><span className={s.accent}>Case</span> studies</>}
           windowed
         />
       </div>
 
       {/* ── 12. REVIEW SLIDER ───────────────────────────────────────────── */}
-      <MvpReviewSlider />
+      <MvpReviewSlider primary="software" count={7} secondaryCount={2} />
 
       {/* ── 13. TECH STACK BLOCK ────────────────────────────────────────── */}
       <section id="mvp-tech-stack" className={`${s.techStack} ${s.ptMedium} ${s.pbMedium}`}>

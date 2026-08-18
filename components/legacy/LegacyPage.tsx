@@ -67,8 +67,8 @@ const CASES = [
     bg: "linear-gradient(280.31deg, #780013 -2.24%, #B31E35 76.47%)",
     tech: "AI-powered stack",
     title: "AI-powered predictive maintenance for a large industrial manufacturer",
-    desc: "An AIoT upgrade that cut unplanned downtime by 50% within 8 months, adding explainable ML and context analysis to the existing IoT platform.",
-    tags: ["IoT", "AI inside", "Enterprise"],
+    desc: "An AI upgrade that cut unplanned downtime by 50% within 8 months, adding explainable ML and context analysis to the existing monitoring platform.",
+    tags: ["AI inside", "Enterprise"],
     imgRight: "/legacy-modernization/11_Cover-1-1.png",
     imgLeft: "/legacy-modernization/11_Cover-1-2.png",
   },
@@ -168,20 +168,18 @@ const REVIEWS = [
 ];
 
 const ACHIEVEMENTS = [
-  { src: "/legacy-modernization/06_techreviewer_badge_2026-10.svg", alt: "techreviewer.co 2026 – Nexterse LLC listed among Top Legacy Software Modernization Companies" },
-  { src: "/legacy-modernization/03_Badge-1-1.svg", alt: "Top software development company in Massachusetts badge from goodfirms.co" },
-  { src: "/legacy-modernization/12_5ca49c9f6cb37e33319e1162_Goodfirms.svg", alt: "Goodfirms badge icon" },
-  { src: "/legacy-modernization/12_5ca49c9f8ff5ad26d13b6845_TDA.svg", alt: "TDA badge icon" },
-  { src: "/legacy-modernization/12_5ca49c9f6cb37e49a79e1163_changed.svg", alt: "AWS partner badge icon" },
-  { src: "/legacy-modernization/03_Badge-2-2.svg", alt: "Best software development company in Quincy 2023 badge by expertise.com" },
-  { src: "/legacy-modernization/01_top_clutch.co_software_developers_startup_massachusetts.svg", alt: "top_clutch.co top startup software developers Massachusetts" },
-  { src: "/legacy-modernization/01_top_clutch.co_software_developers_hospitality__leisure_massachusetts.svg", alt: "top_clutch.co top hospitality software developers Massachusetts" },
-  { src: "/legacy-modernization/01_top_clutch.co_python__django_developers_boston_2024.svg", alt: "top_clutch.co top Python Django developers Boston 2024" },
-  { src: "/legacy-modernization/01_top_clutch.co_nodejs_developers_boston_2024.svg", alt: "top_clutch.co top Node.js developers Boston 2024" },
-  { src: "/legacy-modernization/01_techreviewer_badge_2025-2.svg", alt: "TR top software developers 2025" },
-  { src: "/legacy-modernization/01_techreviewer_badge_2025-1.svg", alt: "TR top web developers 2025" },
-  { src: "/legacy-modernization/01_techreviewer_badge_2024-2.svg", alt: "TR top software developers 2024" },
-  { src: "/legacy-modernization/01_techreviewer_badge_2024-1.svg", alt: "TR top web developers 2024" },
+  { src: "/badges_fix/legacy-modernization__06_techreviewer_badge_2026-10.svg", alt: "techreviewer.co 2026 – Nexterse LLC listed among Top Legacy Software Modernization Companies" },
+  { src: "/badges_fix/badge-goodfirms.svg", alt: "Goodfirms badge icon" },
+  { src: "/badges_fix/badge-tda.svg", alt: "TDA badge icon" },
+  { src: "/badges_fix/badge-aws.svg", alt: "AWS partner badge icon" },
+  { src: "/badges_fix/legacy-modernization__01_top_clutch.co_software_developers_startup_massachusetts.svg", alt: "top_clutch.co top startup software developers Massachusetts" },
+  { src: "/badges_fix/legacy-modernization__01_top_clutch.co_software_developers_hospitality__leisure_massachusetts.svg", alt: "top_clutch.co top hospitality software developers Massachusetts" },
+  { src: "/badges_fix/legacy-modernization__01_top_clutch.co_python__django_developers_boston_2024.svg", alt: "top_clutch.co top Python Django developers Boston 2024" },
+  { src: "/badges_fix/legacy-modernization__01_top_clutch.co_nodejs_developers_boston_2024.svg", alt: "top_clutch.co top Node.js developers Boston 2024" },
+  { src: "/badges_fix/legacy-modernization__01_techreviewer_badge_2025-2.svg", alt: "TR top software developers 2025" },
+  { src: "/badges_fix/legacy-modernization__01_techreviewer_badge_2025-1.svg", alt: "TR top web developers 2025" },
+  { src: "/badges_fix/legacy-modernization__01_techreviewer_badge_2024-2.svg", alt: "TR top software developers 2024" },
+  { src: "/badges_fix/legacy-modernization__01_techreviewer_badge_2024-1.svg", alt: "TR top web developers 2024" },
 ];
 
 const FAQ_ITEMS = [
@@ -795,29 +793,6 @@ export default function LegacyPage() {
         </div>
       </section>
 
-      {/* ── 15. CITATION ─────────────────────────────────────────────────── */}
-      <section className={styles.citeSection}>
-        <div className="container">
-          <div className={styles.citeSlide}>
-            <p className={styles.citeText}>
-              Modernizing a live enterprise system is like performing surgery on a beating heart — there is no room for error. We approach legacy transformation with a strategy that prioritizes business continuity, ensuring that you evolve your technology without pausing your growth.
-            </p>
-            <div className={styles.citeAuthor}>
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                src="/legacy-modernization/12_Yury-Shamrey-300x300.png"
-                alt="Yury Shamrei CEO at Nexterse LLC"
-                className={styles.citePhoto}
-              />
-              <div>
-                <p className={styles.citeName}>Yury Shamrei</p>
-                <p className={styles.citePos}>CEO &amp; Founder</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
       {/* ── 16. COST OF LEGACY ───────────────────────────────────────────── */}
       <section className={styles.csSection} id="cost-of-legacy">
         <div className="container">
@@ -1065,10 +1040,10 @@ export default function LegacyPage() {
               <div className={styles.clList}>
                 {[
                   { label: "Software product development", href: "/services/software-product-development" },
-                  { label: "IoT development", href: "/services/iot-development" },
+                  { label: "Predictive maintenance development", href: "/services/predictive-maintenance" },
                   { label: "AI development", href: "/services/ai-software-development" },
                   { label: "Enterprise software development", href: "/services/enterprise-software-development" },
-                  { label: "IoT integration into legacy software", href: "/services/iot-development" },
+                  { label: "AI integration into legacy software", href: "/services/ai-integration" },
                 ].map((l) => (
                   <a key={l.label} href={l.href} className={styles.clLink}>{l.label}</a>
                 ))}

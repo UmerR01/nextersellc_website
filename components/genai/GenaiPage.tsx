@@ -2,13 +2,13 @@
 
 import { useState } from "react";
 import Image from "next/image";
-import CaseCards, { type CaseCard } from "@/components/home/CaseCards";
+import CaseCards from "@/components/home/CaseCards";
 import ServicesReviewSlider from "@/components/services/ServicesReviewSlider";
 import ServicesAchievements, { type Badge } from "@/components/services/ServicesAchievements";
 import ServicesFaqBlock, { type FaqItem } from "@/components/services/ServicesFaqBlock";
 import LetsStart from "@/components/home/LetsStart";
 import GenaiHero from "./GenaiHero";
-import GenaiLogos from "./GenaiLogos";
+import AipocLogos from "@/components/aipoc/AipocLogos";
 import GenaiTechStack from "./GenaiTechStack";
 import GenaiCrosslinks from "./GenaiCrosslinks";
 import GenaiArticleLayout from "./GenaiArticleLayout";
@@ -135,48 +135,7 @@ const LEAKAGE = [
 ];
 
 // ─── Cases (5) ────────────────────────────────────────────────────────────────
-const GENAI_CASES: CaseCard[] = [
-  {
-    banner: "/genai-development/07_Cover-right-1-1.png",
-    name: "SMBs · AI inside",
-    title: "GenAI product-description engine for an online retailer",
-    text: "A governed GenAI engine that generates SEO-ready product descriptions grounded in catalog attributes, with brand-tone guardrails, automated claim checks, and human approval before publishing.",
-    href: "/portfolio/genai-product-description-engine-for-a-multi-category-online-retailer",
-    tags: ["SMBs", "AI inside"],
-  },
-  {
-    banner: "/genai-development/05_tablet-cover-right.png",
-    name: "AI · Fintech",
-    title: "AI integration of anti-fraud and underwriting for a fintech firm",
-    text: "A fintech company needed to integrate AI scoring into its application and transaction workflow. Nexterse LLC linked risk sources, a feature store, and a decision engine to speed up decisions and improve the quality of anti-fraud controls.",
-    href: "/portfolio/ai-integration-fintech",
-    tags: ["AI inside", "Enterprise"],
-  },
-  {
-    banner: "/genai-development/04_Cover-1.png",
-    name: "AI · Real estate",
-    title: "RAG-based knowledge platform for a commercial real estate operator",
-    text: "An internal RAG platform that cut operational retrieval time by 45% across 18 commercial properties. It unifies lease, vendor, maintenance, and compliance documentation into one retrieval layer with citation-based answers and role-based access.",
-    href: "/portfolio/case-study-rag-based-knowledge-platform-for-a-commercial-real-estate-operator",
-    tags: ["AI inside", "Enterprise"],
-  },
-  {
-    banner: "/genai-development/04_Cover-right-1-1.png",
-    name: "AI · Insurance",
-    title: "AI readiness assessment for an insurance company",
-    text: "An AI readiness assessment for a European insurance group that identified up to 35% projected cost reduction in claims processing, with two use cases launched in a pilot across three business units.",
-    href: "/portfolio/ai-readiness-assessment-for-insurance-company",
-    tags: ["AI inside", "Enterprise"],
-  },
-  {
-    banner: "/genai-development/10_Cover-1-1.png",
-    name: "AI · Logistics",
-    title: "AI/ML route optimization for a freight delivery service",
-    text: "Lifted on-time delivery to 98% – without expanding the fleet. An AI/ML platform that plans and reoptimizes B2B/B2C routes in real time with traffic, weather, and capacity constraints, cutting last-mile costs by 22%.",
-    href: "/portfolio/ai-ml-route-optimization-for-a-freight-delivery-service",
-    tags: ["AI inside", "Enterprise"],
-  },
-];
+
 
 // ─── Industries (7 vertical tabs) ──────────────────────────────────────────────
 const INDUSTRIES: { icon: string; label: string; intro: string; bullets: string[]; impact: string[] }[] = [
@@ -186,14 +145,14 @@ const INDUSTRIES: { icon: string; label: string; intro: string; bullets: string[
   label: "Healthcare", intro: "Healthcare teams manage extensive documentation. Clinicians and administrators handle discharge notes, compliance forms, and internal protocols while patient care requires speed and precision. AI systems in this environment must improve efficiency while maintaining strict privacy protection at all times. We engineer:", bullets: ["HIPAA-compliant, VPC-isolated LLM deployments.", "On-premise models that summarize discharge notes without exposing PII.", "Clinical knowledge assistants grounded in internal medical protocols."], impact: ["Reduced administrative workload.", "Faster documentation turnaround.", "Zero public cloud exposure."] },
   { icon: "/custom-software/05_Logistics-and-supply-chain-02.svg",
   label: "Logistics and supply chain", intro: "When shipments stall, revenue slows. Supply chain leaders work in environments where delays cascade, data exists in silos, and decisions must be made within minutes rather than waiting for periodic reports. We build:", bullets: ["AI assistants that analyze shipment delays in real time.", "Multi-agent systems that reconcile ERP and warehouse data.", "Predictive document processing for invoices and customs paperwork."], impact: ["Shorter response times.", "Improved operational visibility.", "Reduced manual reconciliation effort."] },
-  { icon: "/predictive-maintenance/04_Edge-first-architecture-for-industrial-operations-01.svg",
+  { icon: "/predictive-maintenance/04_Edge-first-architecture-for-industrial-operations-02.svg",
   label: "Energy and utilities", intro: "In energy and utilities, downtime represents operational risk. Engineers rely on decades of maintenance logs, compliance documentation, and technical manuals to diagnose incidents quickly and prevent escalation. We implement:", bullets: ["Secure RAG systems querying maintenance manuals and compliance reports.", "Incident analysis copilots trained on historical outage logs.", "AI-driven reporting tools for regulatory submissions."], impact: ["Faster root-cause analysis.", "Reduced downtime investigation effort.", "Improved compliance reporting speed."] },
   { icon: "/custom-software/05_Healthcare-and-medical-devices-03.svg",
   label: "Life sciences", intro: "Research advances rapidly. Documentation progresses at a different pace. Life sciences teams navigate complex trial data, regulatory frameworks, and dense scientific literature where timely insight influences product timelines. We develop:", bullets: ["Scientific literature intelligence systems grounded in internal research data.", "AI summarization tools for clinical trial documentation.", "Secure GenAI assistants supporting regulatory submission preparation."], impact: ["Accelerated research workflows.", "Reduced document synthesis time.", "Improved regulatory readiness."] },
   { icon: "/adtech-development/06_Omnichannel-retail-media-network-platforms-03.svg",
   label: "AdTech and media", intro: "Marketing teams generate vast amounts of campaign metrics, audience data, and performance dashboards. Insights must be extracted in time to guide the next strategic move. We design:", bullets: ["Campaign performance copilots grounded in proprietary analytics.", "Automated reporting systems integrated with ad platforms.", "AI assistants for content adaptation across channels."], impact: ["Faster campaign iteration cycles.", "Reduced manual reporting overhead.", "Increased data-driven decision velocity."] },
   { icon: "/services-page/04_IoT-Integration-02.svg",
-  label: "IoT and industrial systems", intro: "Factories and industrial sites produce continuous streams of telemetry. Machine logs, sensor data, and maintenance records accumulate faster than teams can review them. Operational decisions depend on accurate and timely interpretation of that data. We build:", bullets: ["AI copilots that interpret machine logs and telemetry streams.", "Incident summarization systems grounded in historical maintenance data.", "Secure GenAI interfaces for industrial dashboards."], impact: ["Reduced troubleshooting time.", "Improved operational transparency.", "Faster maintenance decision cycles."] },
+  label: "Industrial and manufacturing systems", intro: "Factories and industrial sites produce continuous streams of telemetry. Machine logs, sensor data, and maintenance records accumulate faster than teams can review them. Operational decisions depend on accurate and timely interpretation of that data. We build:", bullets: ["AI copilots that interpret machine logs and telemetry streams.", "Incident summarization systems grounded in historical maintenance data.", "Secure GenAI interfaces for industrial dashboards."], impact: ["Reduced troubleshooting time.", "Improved operational transparency.", "Faster maintenance decision cycles."] },
 ];
 
 // ─── ADLC process (7 phases) ──────────────────────────────────────────────────
@@ -259,18 +218,18 @@ const GENAI_FAQ: FaqItem[] = [
 
 // ─── Awards (12 clone badges) ──────────────────────────────────────────────────
 const GENAI_BADGES: Badge[] = [
-  { src: "/genai-development/06_techreviewer_badge_2026-15.svg", alt: "techreviewer.co 2026 — Top GenAI Development Companies" },
-  { src: "/genai-development/05_top_clutch.co_generative_ai_company_boston_2026-2.svg", alt: "Clutch 2026 — Top Generative AI Company in Boston" },
-  { src: "/genai-development/05_top_clutch.co_artificial_intelligence_company_boston_2026-2.svg", alt: "Clutch 2026 — Top Artificial Intelligence Company in Boston" },
-  { src: "/genai-development/06_techreviewer_badge_2026-01.svg", alt: "techreviewer.co 2026 — Top AI Consulting Companies" },
-  { src: "/genai-development/06_techreviewer_badge_2026-02.svg", alt: "techreviewer.co 2026 — Top AI Readiness Assessment Companies" },
-  { src: "/genai-development/06_top-ai-development-companies.svg", alt: "GoodFirms — Top AI Development Company" },
-  { src: "/genai-development/06_techreviewer_badge_2026-04.svg", alt: "techreviewer.co 2026 — Top AI Software Development Companies" },
-  { src: "/genai-development/06_techreviewer_badge_2026-16.svg", alt: "techreviewer.co 2026 — Top AI Integration Companies" },
-  { src: "/genai-development/06_techreviewer_badge_2026-03.svg", alt: "techreviewer.co 2026 — Top AI PoC Development Companies" },
-  { src: "/genai-development/06_techreviewer_badge_2026-05.svg", alt: "techreviewer.co 2026 — Top AI Agents Development Companies" },
-  { src: "/genai-development/06_techreviewer_badge_2026-06.svg", alt: "techreviewer.co 2026 — Top RAG Development Companies" },
-  { src: "/genai-development/06_techreviewer_badge_2026-07.svg", alt: "techreviewer.co 2026 — Top LLM Development Companies" },
+  { src: "/badges_fix/06_techreviewer_badge_2026-15.svg", alt: "techreviewer.co 2026 — Top GenAI Development Companies" },
+  { src: "/badges_fix/05_top_clutch.co_generative_ai_company_boston_2026-2.svg", alt: "Clutch 2026 — Top Generative AI Company in Boston" },
+  { src: "/badges_fix/05_top_clutch.co_artificial_intelligence_company_boston_2026-2.svg", alt: "Clutch 2026 — Top Artificial Intelligence Company in Boston" },
+  { src: "/badges_fix/06_techreviewer_badge_2026-01.svg", alt: "techreviewer.co 2026 — Top AI Consulting Companies" },
+  { src: "/badges_fix/06_techreviewer_badge_2026-02.svg", alt: "techreviewer.co 2026 — Top AI Readiness Assessment Companies" },
+  { src: "/badges_fix/06_top-ai-development-companies.svg", alt: "GoodFirms — Top AI Development Company" },
+  { src: "/badges_fix/06_techreviewer_badge_2026-04.svg", alt: "techreviewer.co 2026 — Top AI Software Development Companies" },
+  { src: "/badges_fix/06_techreviewer_badge_2026-16.svg", alt: "techreviewer.co 2026 — Top AI Integration Companies" },
+  { src: "/badges_fix/06_techreviewer_badge_2026-03.svg", alt: "techreviewer.co 2026 — Top AI PoC Development Companies" },
+  { src: "/badges_fix/06_techreviewer_badge_2026-05.svg", alt: "techreviewer.co 2026 — Top AI Agents Development Companies" },
+  { src: "/badges_fix/06_techreviewer_badge_2026-06.svg", alt: "techreviewer.co 2026 — Top RAG Development Companies" },
+  { src: "/badges_fix/06_techreviewer_badge_2026-07.svg", alt: "techreviewer.co 2026 — Top LLM Development Companies" },
 ];
 
 // ─── Component ────────────────────────────────────────────────────────────────
@@ -285,7 +244,7 @@ export default function GenaiPage() {
       <GenaiHero />
 
       <GenaiArticleLayout>
-        <GenaiLogos />
+        <AipocLogos />
         {/* ── Why 80% of prototypes fail (4 cards) ────────────────────────── */}
         <section id="genai-challenges" className={`${styles.blockWhite} ${styles.genaiChallengesBlock}`}>
           <div className="container">
@@ -448,11 +407,10 @@ export default function GenaiPage() {
         <div id="genai-cases">
           <CaseCards
             heading={<>What generative AI has <span>Nexterse LLC</span> built?</>}
-            cards={GENAI_CASES}
             windowed
           />
         </div>
-        <ServicesReviewSlider />
+        <ServicesReviewSlider primary="ai" count={7} secondaryCount={2} />
 
         {/* ── Industries (vertical tabs) ───────────────────────────────────── */}
         <section id="genai-industries" className={`${styles.blockLight} ${styles.genaiIndustriesBlock}`}>

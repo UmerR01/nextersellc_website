@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Image from "next/image";
-import CaseCards, { type CaseCard } from "@/components/home/CaseCards";
+import CaseCards from "@/components/home/CaseCards";
 import ServicesReviewSlider from "@/components/services/ServicesReviewSlider";
 import ServicesAchievements from "@/components/services/ServicesAchievements";
 import ServicesFaqBlock, { type FaqItem } from "@/components/services/ServicesFaqBlock";
@@ -164,50 +164,6 @@ const SOLUTIONS = [
       "We consider which triggers and events are essential to track for marketing and product analytics.",
       "We immediately establish a unified user profile between the website and the app.",
     ],
-  },
-];
-
-// ─── Cases ────────────────────────────────────────────────────────────────────
-const ECOM_CASES: CaseCard[] = [
-  {
-    banner: "/ecommerce-development/01_fuelz-main-screen-image-persp.png",
-    name: "Fuelz",
-    title: "Fuelz aggregator web platform",
-    text: "A heating oil price aggregator that cut buyers' delivery costs by up to 20% through real-time price comparison across 20+ UK suppliers, with built-in order management and operator analytics.",
-    href: "/portfolio/aggregator-web-platform",
-    tags: ["Enterprise"],
-  },
-  {
-    banner: "/ecommerce-development/01_Sous-Kitchen.png",
-    name: "Sous Kitchen",
-    title: "Sous Kitchen – eCommerce platform for food delivery service",
-    text: "An eCommerce platform that grew repeat purchases by ~30% through integrated loyalty and gift card features, replacing a manual ordering system for a US food delivery service covering five states.",
-    href: "/portfolio/souskitchen-ecommerce-application-development",
-    tags: ["Startups"],
-  },
-  {
-    banner: "/ecommerce-development/02_Image_selling.png",
-    name: "Sellbig",
-    title: "Sellbig eCommerce marketplace for small businesses",
-    text: "A transaction-fee marketplace for US small businesses, built from scratch in 4 months, giving sellers full store management: listings, orders, refunds, and analytics in one platform.",
-    href: "/portfolio/sellbig-ecommerce-platform-development",
-    tags: ["Startups"],
-  },
-  {
-    banner: "/ecommerce-development/02_Hauz-web-portal-screen-1.png",
-    name: "Hauz",
-    title: "Hauz web portal & eCommerce platform",
-    text: "Interior design marketplace rescued from a stalled build and launched on schedule – ~40% faster to market than a full rebuild, enabling the Client to begin validating the business idea with furniture dealers and design specialists.",
-    href: "/portfolio/hauz-web-portal-development",
-    tags: ["Startups"],
-  },
-  {
-    banner: "/ecommerce-development/02_ushopper_solution.png",
-    name: "UShopper",
-    title: "UShopper – iOS eCommerce platform with Apple Pay",
-    text: "~30% lower checkout drop-off with Apple Pay integration; full iOS storefront from kickoff to launch in 1 month.",
-    href: "/portfolio/ushopper-mobile-ecommerce-app-development",
-    tags: ["Startups"],
   },
 ];
 
@@ -609,13 +565,12 @@ export default function EcommercePage() {
         <div id="ecom-cases">
           <CaseCards
             heading={<>Recent <span>software</span> we made</>}
-            cards={ECOM_CASES}
             windowed
           />
         </div>
 
         {/* ── Reviews ────────────────────────────────────────────────────── */}
-        <ServicesReviewSlider />
+        <ServicesReviewSlider primary="software" count={6} secondaryCount={1} lead={["Andrew Laffoon"]} />
 
         {/* ── Process ────────────────────────────────────────────────────── */}
         <section id="ecom-process" className={styles.processBlock}>

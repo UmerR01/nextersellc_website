@@ -161,16 +161,54 @@
 /* Nav arrows */
 .nav { display: flex; gap: 0.6rem; flex: 0 0 auto; }
 .nav button {
+  position: relative;
   width: 2.6rem; height: 2.6rem;
   border-radius: 50%;
   border: 1px solid var(--color-accent);
   background: transparent;
   color: #fff;
-  font-size: 1.1rem;
+  padding: 0;
   cursor: pointer;
   transition: background-color 0.2s ease, color 0.2s ease;
 }
 .nav button:hover { background: var(--color-accent); color: var(--color-text); }
+
+/* Arrow icon — same tail + chevron construction as the awards slider arrows.
+   Anchored to the button's own center via translate(-50%, -50%) so it stays
+   dead-centered regardless of button padding or flex quirks. */
+.navArrow {
+  display: block;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 18px;
+  height: 14px;
+  transform: translate(-50%, -50%);
+}
+.navArrow::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  width: 15px;
+  height: 2px;
+  background: currentColor;
+  border-radius: 999px;
+  transform: translateY(-50%);
+}
+.navArrow::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  width: 8px;
+  height: 8px;
+  box-sizing: border-box;
+  border-top: 2px solid currentColor;
+  border-right: 2px solid currentColor;
+}
+.navNext .navArrow::before { left: 1px; }
+.navNext .navArrow::after { right: 1px; transform: translateY(-50%) rotate(45deg); }
+.navPrev .navArrow::before { right: 1px; }
+.navPrev .navArrow::after { left: 1px; transform: translateY(-50%) rotate(-135deg); }
 
 /* All projects link */
 .allRow {

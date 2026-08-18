@@ -3,19 +3,17 @@ import { useEffect, useState } from "react";
 import styles from "./CSAwardsBlock.module.css";
 
 const AWARDS = [
-  { src: "/custom-software/05_top_clutch.co_python__django_developers_boston_2026-2.svg", alt: "Clutch 2026 Top Python Django Developers Boston" },
-  { src: "/custom-software/06_top-software-development-companies.svg", alt: "GoodFirms Top Software Development Company" },
-  { src: "/custom-software/06_techreviewer_badge_2026-12.svg", alt: "TechReviewer 2026 Top Software Development" },
-  { src: "/custom-software/06_techreviewer_badge_2026-13.svg", alt: "TechReviewer 2026 Top MVP Development" },
-  { src: "/custom-software/12_5ca49c9f6cb37e33319e1162_Goodfirms.svg", alt: "Goodfirms badge" },
-  { src: "/custom-software/12_5ca49c9f8ff5ad26d13b6845_TDA.svg", alt: "TDA badge" },
-  { src: "/custom-software/12_5ca49c9f6cb37e49a79e1163_changed.svg", alt: "AWS partner badge" },
-  { src: "/custom-software/09_Badge-1-3.svg", alt: "Top Software Development Company badge" },
-  { src: "/custom-software/12_Custom-Web-Design-Development-2025.svg", alt: "Custom Web Design Development 2025" },
-  { src: "/custom-software/12_Responsive-Design-Development-2025.svg", alt: "Responsive Design Development 2025" },
-  { src: "/custom-software/12_Data-analysis-development-2024.svg", alt: "Data Analysis Development 2024" },
-  { src: "/custom-software/12_IoT-Services-2025.svg", alt: "IoT Services 2025" },
-  { src: "/custom-software/12_Data-Migration-Services-2025.svg", alt: "Data Migration Services 2025" },
+  { src: "/badges_fix/05_top_clutch.co_python__django_developers_boston_2026-2.svg", alt: "Clutch 2026 Top Python Django Developers Boston" },
+  { src: "/badges_fix/06_top-software-development-companies.svg", alt: "GoodFirms Top Software Development Company" },
+  { src: "/badges_fix/custom-software__06_techreviewer_badge_2026-12.svg", alt: "TechReviewer 2026 Top Software Development" },
+  { src: "/badges_fix/06_techreviewer_badge_2026-13.svg", alt: "TechReviewer 2026 Top MVP Development" },
+  { src: "/badges_fix/badge-goodfirms.svg", alt: "Goodfirms badge" },
+  { src: "/badges_fix/badge-tda.svg", alt: "TDA badge" },
+  { src: "/badges_fix/badge-aws.svg", alt: "AWS partner badge" },
+  { src: "/badges_fix/badge-custom-web.svg", alt: "Custom Web Design Development 2025" },
+  { src: "/badges_fix/badge-responsive-design.svg", alt: "Responsive Design Development 2025" },
+  { src: "/badges_fix/custom-software__12_Data-analysis-development-2024.svg", alt: "Data Analysis Development 2024" },
+  { src: "/badges_fix/badge-data-migration.svg", alt: "Data Migration Services 2025" },
 ];
 
 export default function CSAwardsBlock() {

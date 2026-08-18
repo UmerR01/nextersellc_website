@@ -193,6 +193,21 @@ export default function WhitepaperExtPage({ data }: { data: WhitepaperData }) {
       a.href = data.hero.pdfUrl;
       a.target = "_blank";
       a.click();
+
+      // Best-effort notification — the PDF download above never waits on this.
+      fetch("/api/whitepaper-download", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: heroForm.name,
+          email: heroForm.email,
+          intention: heroForm.intention,
+          discuss: heroForm.discuss,
+          company: heroForm.company,
+          companyType: heroForm.companyType,
+          whitepaper: data.breadcrumb,
+        }),
+      }).catch(() => {});
     }
   };
 

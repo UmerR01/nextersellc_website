@@ -20,30 +20,30 @@ type Slide = {
 const SLIDES: Slide[] = [
   {
     image: "/cases/cordoba.jpg",
-    video: "https://satvasoftech.com/wp-content/uploads/2025/07/Cordoba-Rewards-Sample.mp4",
-    title: "Cordoba Rewards",
-    subtitle: "A comprehensive rewards and loyalty platform",
+    video: "/cases/metanoiapilates.mp4",
+    title: "Metanoia Pilates",
+    subtitle: "A modern booking and ecommerce platform",
     cards: [
-      { type: "image", image: "/cases/woman.jpg", text: "Built scalable loyalty management system" },
+      { type: "image", image: "/cases/Maryia D..png", text: "Maryia D." },
       {
         type: "icons",
-        icons: ["/cases/apple.png", "/cases/android.png"],
-        text: "Developed mobile apps for iOS and Android",
+        icons: ["/ecommerce-development/02_Shopify.svg"],
+        text: "Built on Shopify, PHP, and Stripe",
       },
-      { type: "counter", value: 35, suffix: "%", text: "Increased customer retention by 35%" },
-      { type: "image", image: "/cases/pos.jpg", text: "Integrated with multiple POS systems" },
+      { type: "counter", value: 83, suffix: "%", text: "Increased customer bookings by 83%" },
+      { type: "image", image: "/cases/pos.jpg", text: "Used daily by multiple Pilates instructors" },
     ],
   },
   {
     image: "/cases/transferconnex.webp",
-    video: "https://satvasoftech.com/wp-content/uploads/2025/07/Essential-Fire-Services-Sample.mp4",
-    title: "Essential Fire Services",
-    subtitle: "Digital transformation for emergency services",
+    video: "/cases/The Quay.mp4",
+    title: "The Quay",
+    subtitle: "Digital transformation for restaurant bookings",
     cards: [
-      { type: "image", image: "/cases/team.jpg", text: "Automated emergency dispatch system" },
-      { type: "icons", icons: ["/cases/mobile-dev.webp"], text: "Mobile-first approach for field teams" },
-      { type: "counter", value: 40, suffix: "%", text: "Reduced response time by 40%" },
-      { type: "image", image: "/cases/woman.jpg", text: "Real-time incident tracking and management" },
+      { type: "image", image: "/cases/Graham Ackling.png", text: "Graham Ackling" },
+      { type: "icons", icons: [], text: "Built on React and Django" },
+      { type: "counter", value: 60, suffix: "%", text: "Increased brand visibility by more than 60%" },
+      { type: "image", image: "/cases/team.jpg", text: "Automated restaurant booking management" },
     ],
   },
 ];
@@ -80,10 +80,10 @@ export default function Testimonials() {
           <h2 className={styles.eyebrow}>Featured Testimonials</h2>
           <div className={styles.arrows}>
             <button className={styles.arrow} aria-label="Previous" onClick={() => go(-1)}>
-              ←
+              <span className={`${styles.arrowIcon} ${styles.arrowPrev}`} aria-hidden="true" />
             </button>
             <button className={styles.arrow} aria-label="Next" onClick={() => go(1)}>
-              →
+              <span className={`${styles.arrowIcon} ${styles.arrowNext}`} aria-hidden="true" />
             </button>
           </div>
         </div>

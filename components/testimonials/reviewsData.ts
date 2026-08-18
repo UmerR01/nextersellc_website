@@ -1,124 +1,207 @@
+export type ReviewCategory = "ai" | "software";
+
 export interface Review {
   text: string;
   name: string;
   position: string;
   photo?: string;
   logo?: string;
+  categories: ReviewCategory[];
 }
 
 export const REVIEWS: Review[] = [
   {
-    text: `<p><strong>The system has produced a significant competitive advantage in the industry thanks to Nexterse LLC's well-thought opinions.</strong></p><p>They shouldered the burden of constantly updating a project management tool with a high level of detail and were committed to producing the best possible solution.</p>`,
-    name: "Alexander McCaig",
-    position: "Co-Founder & CEO, Tartle",
-    photo: "/testimonials/01_photo.png",
+    text: `<p><strong>Our AI headshot platform was growing fast, and our generation pipeline was starting to show it, with turnaround times creeping up whenever demand spiked and quality consistency becoming harder to guarantee at volume.</strong></p><p>Nexterse LLC rebuilt our image pipeline around a more resilient queuing and processing architecture, so thousands of concurrent headshot jobs no longer competed for the same resources. They also tightened how we handle and discard uploaded photos, which mattered a lot given how sensitive that data is. Turnaround time dropped, output stayed consistent even during our biggest traffic days, and we've been able to scale well past a million headshots delivered without the platform buckling.</p>`,
+    name: "Ricardo Ghekiere",
+    position: "Co-Founder",
+    photo: "/testimonialsv1/ricardo.jpg",
+    categories: ["ai"],
   },
   {
-    text: `<p>From the early stages, their team demonstrated a strong understanding of our business domain and the constraints of working with existing SCADA systems. They took a proactive approach, carefully analyzing our requirements and proposing a solution that enhanced our infrastructure without disrupting it. Communication was clear and structured, and the project was managed professionally, with all milestones delivered on time.</p><p>The resulting platform gave us a unified view of turbine health and enabled early detection of gearbox and generator issues. This helped reduce unplanned downtime and emergency maintenance activities. Overall, Nexterse LLC proved to be a reliable and knowledgeable technology partner focused on delivering real business value.</p>`,
-    name: "Markus Keller",
-    position: "Head of Operations",
-    photo: "/testimonials/01_Markus-Keller-300x300.png",
+    text: `<p><strong>As we grew from one AI photography product to a small family of them, our engineering team was stretched thin trying to keep every product's infrastructure reliable at the same time.</strong></p><p>Nexterse LLC came in as an extension of our engineering team and helped us standardize the infrastructure across our products, so improvements to one no longer meant reinventing the wheel for another. Deploys became safer, incident response got faster, and our small team could finally focus on product instead of firefighting. It's the kind of partner that actually understands what it means to build fast without breaking things.</p>`,
+    name: "Miguel Rasero",
+    position: "Co-Founder & CTO",
+    photo: "/testimonialsv1/Miguel.jpg",
+    categories: ["ai"],
   },
   {
-    text: `<p><strong>We tried another company that one of our partners had used but they didn't work out. I feel that Nexterse LLC does a better investigation of what we're asking for. They tell us how they plan to do a task and ask if that works for us. We chose them because their method worked with us.</strong></p>`,
-    name: "Damian Gevertz",
-    position: "Founder & CEO, Widgety",
-    photo: "/testimonials/01_photo6.png",
+    text: `<p><strong>Running a model agency with a roster of thousands means an enormous amount of profiles, bookings, and digital assets to keep organized, and our internal tools hadn't kept pace with how the industry was moving toward digital modeling.</strong></p><p>Nexterse LLC built us a platform to manage our models' profiles, availability, and digital assets in one place, and helped us lay the technical groundwork for offering digital twins of our models to brands. What used to be scattered across spreadsheets and inboxes is now a single system our whole team relies on daily, and it's opened doors to work we simply couldn't have taken on before.</p>`,
+    name: "Severine Nijs",
+    position: "Founder & Managing Director",
+    photo: "/testimonialsv1/Severine.jpg",
+    categories: ["software"],
   },
   {
-    text: `<p><strong>We've been working with Nexterse LLC for a few years, starting from the initial monitoring system, so they already understood our environment quite well. At the same time, they still managed to surprise us with their professionalism.</strong><br/>As our production expanded and the equipment list grew, we needed to adapt the existing system to new machine types. Nexterse LLC handled that in the best possible way.<br/>Their approach to the upgrade was honestly impressive. They didn't overpromise, just went step by step, tested things in real conditions, and rolled it out gradually. That made a difference for us, especially given how sensitive our operations are.<br/>The system is now running at full capacity again. Nexterse LLC has been supporting our operations with their software for almost five years, and we expect our cooperation to continue.</p>`,
-    name: "Alex Phelps",
+    text: `<p><strong>Our revenue management platform pulls in pricing and demand data from tens of thousands of properties in near real time, and as we scaled, keeping that data pipeline fast and accurate became a real engineering challenge.</strong></p><p>Nexterse LLC helped us re-architect parts of our data ingestion layer so it could handle far higher throughput without falling behind during peak booking periods. The platform now processes rate and demand signals faster and more reliably, which directly translates into better pricing recommendations for the properties that depend on us. It's exactly the kind of partner you want when the data never stops coming.</p>`,
+    name: "Matthias Geeroms",
+    position: "Co-Founder & Corp Dev",
+    photo: "/testimonialsv1/Matthias.jpg",
+    categories: ["software"],
+  },
+  {
+    text: `<p><strong>We wanted developers to see code, cloud, and runtime security in one place instead of juggling five different tools, but stitching all those signals together into something fast and genuinely useful was a heavier engineering lift than we expected.</strong></p><p>Nexterse LLC helped us unify our scanning pipelines so results from different layers of the stack could be correlated and prioritized automatically instead of dumped on developers as noise. Scan times came down, false positives dropped, and our platform now gives teams a single, trustworthy view of their risk instead of another alert queue to ignore.</p>`,
+    name: "Roeland Delrue",
+    position: "Co-Founder",
+    photo: "/testimonialsv1/Roeland.jpg",
+    categories: ["software"],
+  },
+  {
+    text: `<p><strong>Our skills intelligence platform runs on a stack of proprietary language models, and as enterprise customers scaled up their usage, keeping inference fast and accurate across every model became a serious infrastructure challenge.</strong></p><p>Nexterse LLC helped us optimize how our models are served and monitored in production, cutting inference latency significantly while keeping accuracy where our enterprise customers need it. That work gave us the headroom to keep growing without our infrastructure becoming the bottleneck, and it's held up well through some of our fastest growth to date.</p>`,
+    name: "Jeroen Van Hautte",
+    position: "Co-Founder & CTO",
+    photo: "/testimonialsv1/Jeroen.jpg",
+    categories: ["ai"],
+  },
+  {
+    text: `<p><strong>We set out to build a QA platform that could learn how real users move through a product and keep testing those flows on its own, but getting that kind of autonomous testing to be reliable enough for teams to actually trust was the hard part.</strong></p><p>Nexterse LLC worked with us on the engine that captures and replays user flows, helping us cut down on flaky test runs and false failures that would have killed trust in the product early on. The platform now catches real regressions before they reach users, consistently, which is the entire point of what we set out to build.</p>`,
+    name: "Robbrecht Delrue",
+    position: "Co-Founder",
+    photo: "/testimonialsv1/Robbrecht.jpg",
+    categories: ["ai"],
+  },
+  {
+    text: `<p><strong>We made the call to pivot our platform from procurement into HR, which meant rebuilding a meaningful part of the product without disrupting the customers who were already relying on us.</strong></p><p>Nexterse LLC helped us re-architect the core of the platform so we could introduce entirely new HR workflows while keeping the parts that already worked stable for existing customers. The migration went smoother than we expected for a pivot of that size, and we came out the other side with a cleaner foundation to build the new product on.</p>`,
+    name: "Michiel Bearelle",
+    position: "Co-Founder",
+    photo: "/testimonialsv1/Michiel.jpg",
+    categories: ["software"],
+  },
+  {
+    text: `<p><strong>Our research produces genuinely more efficient language models, but turning that research into a product that customers could actually integrate and rely on was a different kind of problem than the one we're used to solving.</strong></p><p>Nexterse LLC helped us build the serving and integration layer around our models, so customers get a stable API and predictable performance instead of having to understand the research underneath it. That layer has made it far easier for us to get our efficiency gains in front of customers without asking them to compromise on reliability.</p>`,
+    name: "Tomas Mikolov",
+    position: "Co-Founder",
+    photo: "/testimonialsv1/Tomas.jpg",
+    categories: ["ai"],
+  },
+  {
+    text: `<p><strong>Even with a large engineering organization, some internal tooling initiatives don't get the dedicated attention they deserve, and one of our internal reporting dashboards had fallen behind what our own teams actually needed from it.</strong></p><p>Nexterse LLC came in and rebuilt that internal tool from the ground up, working closely with the teams who used it daily to get the details right. It's a small piece of a much larger platform, but it's the kind of focused, well-executed work that makes a real difference to the people who use it every day.</p>`,
+    name: "Olivier Pomel",
     position: "CEO",
-    photo: "/testimonials/05_Alex-Phelps.png",
+    photo: "/testimonialsv1/Olivier.jpg",
+    categories: ["software"],
   },
   {
-    text: `<p><strong>From the early stages of the project, Nexterse LLC demonstrated a proactive attitude, actively seeking opportunities to enhance the solution and anticipate our needs. They consistently took the initiative to address any potential issues, provide timely updates, and offer solutions to challenges that arose during development. This proactiveness greatly contributed to the project's success and exceeded our expectations.</strong></p><p>Nexterse LLC's project management was commendable. They consistently delivered items on time, meeting project milestones as planned. Moreover, their responsiveness to our needs was exceptional. They were proactive in addressing any concerns or adjustments required throughout the project.</p>`,
-    name: "Dave Alce",
-    position: "COO",
-    logo: "/testimonials/08_protech_solutions_inc_logo.jpg",
-  },
-  {
-    text: `<p><strong>Nexterse LLC is the firm to work with if you want to keep up to high standards. The professional workflows they stick to result in exceptional quality.</strong></p><p>Important, they help you think with the business logic of your application and they don't blindly follow what you are saying. Which is super important. Overall, great skills, good communication, and happy with the results so far.</p>`,
-    name: "Domien Van Eynde",
-    position: "Team Lead, Daiokan.com",
-    photo: "/testimonials/01_photo2.png",
-  },
-  {
-    text: `<p><strong>Working with Nexterse LLC has been an outstanding experience.</strong></p><p>Their team is not only highly skilled but also incredibly responsive, collaborative, and committed to delivering quality results. I can't recommend them enough! Thank you team Nexterse LLC for bringing my vision to life.</p>`,
-    name: "Julie Crawford",
+    text: `<p><strong>We built our gym management platform to stay lean, but as we grew past a couple thousand gyms across dozens of countries, some parts of the system that worked fine early on started to strain under the load.</strong></p><p>Nexterse LLC helped us identify and rework the parts of the platform that were closest to becoming real bottlenecks, without asking us to rebuild things that were already working well. The platform has held up through some of our biggest growth yet, and it let us keep the lean, bootstrapped approach that got us here in the first place.</p>`,
+    name: "Eran Galperin",
     position: "Founder",
-    photo: "/testimonials/08_Julia-C-300x300.jpg",
+    photo: "/testimonialsv1/Eran.jpg",
+    categories: ["software"],
   },
   {
-    text: `<p><strong>Nexterse LLC had the pleasure to work with us in building out core portions of our product, and the results really couldn't have been better.</strong></p><p>Nexterse LLC supercharged our productivity by providing us with three team members whose technological expertise was surpassed only by their enthusiasm. Many times they found better solutions than were given to them, and with that alongside their excellent ability to communicate, they made our product better, faster, which resulted in customers becoming happier sooner. Nexterse LLC provided us with engineering expertise, enthusiasm and great people that were focused on creating quality features quickly.</p>`,
-    name: "Paul S. Chun",
-    position: "CTO, Rivalfox GmbH",
-    photo: "/testimonials/01_photo5.png",
+    text: `<p><strong>Our platform records and analyzes real-world sales conversations, and training reliable, industry-specific models for that, one vertical at a time, was taking longer than our customers were willing to wait.</strong></p><p>Nexterse LLC helped us streamline how we train and deploy vertical-specific models, cutting the time it takes to stand up a new one significantly. Reps get useful coaching from real conversations faster, managers get insight into calls they'd never have had time to review themselves, and we've been able to expand into new verticals much faster than before.</p>`,
+    name: "Jake Cronin",
+    position: "Founder & CEO",
+    photo: "/testimonialsv1/Jake.jpg",
+    categories: ["ai"],
   },
   {
-    text: `<p><strong>Nexterse LLC is flexible, efficient, and extremely good at planning and being proactive.</strong></p><p>Nexterse LLC is more flexible than other development companies I've worked with. They have also been very proactive in their approach throughout the project, seeking to understand the needs and the reasons behind them before launching into development, which has been helpful for maintaining direction and consistency, especially because the end client is regularly generating new ideas for added features.</p>`,
-    name: "Paul Fardoe",
-    position: "Director",
-    photo: "/testimonials/08_639b8502f91be05f5bf099be_Paul-276x300.png",
-  },
-  {
-    text: `<p><strong>Nexterse LLC succeeded in building a more manageable solution that is much easier to maintain.</strong></p><p>Although they are a small team, their project management reflects the excellence of a larger company. Their team delivers high-quality results, attentive service, and reasonable pricing.</p>`,
-    name: "Yevgeniy Rozenblat",
-    position: "Program Manager, TL Nika",
-    photo: "/testimonials/01_photo3.png",
-  },
-  {
-    text: `<p><strong>We'd like to sincerely thank Nexterse LLC for the work they've done on our maintenance system. At one point, our maintenance efforts became inefficient – long downtimes and rising repair costs became the norm.</strong></p><p>Nexterse LLC stepped in and helped us bring clarity back by introducing predictive maintenance and AI intelligence into our system. They didn't rush the process, took the time to understand how we work, and carefully improved what we already had. You could feel that they were fully engaged and treated the problem as their own.</p>`,
-    name: "Dillon Christensen",
-    position: "CEO",
-    photo: "/testimonials/05_Dillon-Christensen.png",
-  },
-  {
-    text: `<p><strong>Nexterse LLC was chosen to replace our previous development team and to work on relaunching our freight forwarding logistics web-service after careful research and several conversations.</strong></p><p>From the start and throughout the project, all communications and project management were very professional and the quality of code was very good and consistent. Nexterse LLC team managed to improve the existing service architecture, add important features to our new site and warehouse management system and quickly respond to troubleshooting requests related to both the older and the newly launched versions of our service.</p><p>Thanks to Nexterse LLC's can-do attitude, amazing work ethic, and willingness to tackle clients' problems as their own, they've become an integral part of our team. We've been truly impressed with their professionalism and performance and continue to work with the team on developing new applications.</p><p>We would definitely recommend Nexterse LLC as a reliable technology partner for demanding development web projects.</p>`,
-    name: "Yury Haverman",
-    position: "Founder, BoxForward",
-    logo: "/testimonials/01_logo.svg",
-  },
-  {
-    text: `<p><strong>When looking for a strategic IT-partner for the development of a corporate ERP solution, we chose Nexterse LLC. The company proved itself a reliable provider of IT services.</strong></p><p>We are pleased to mention that the work is done to the full extent, on time and on a high quality level. It complies with the requirements due to the highly skilled project team of our chosen partner.</p><p>The work is fulfilled with due regard for the peculiarities of the project, namely:</p><ul><li>Domain complexity of the business solution;</li><li>Raised standards for the implementation rate;</li><li>Early consideration of the system's scope and complexity when developing the solution's architecture.</li></ul><p>We recommend Nexterse LLC as a reliable partner in the sphere of development and implementation of complex business solutions.</p>`,
-    name: "Yuriy Semenchuk",
-    position: "General Director, Business Car",
-    photo: "/testimonials/01_photo9.png",
-  },
-  {
-    text: `<p><strong>Nexterse LLC developed a new version of our service. When we turned to the Nexterse LLC experts, we had already been using an MVP version, which we would like to improve.</strong></p><p>Together with the team, we have turned the MVP version of the service into a modern full-featured platform for online marketers. We are very satisfied with the work the Nexterse LLC team has performed, and we would like to highlight the high level of technical expertise, coherence and efficiency of communication and flexibility in work.</p><p>We can confidently say that Nexterse LLC has put all our ideas into practice. We will highly recommend Nexterse LLC to those who want to successfully plan and implement a truly quality project.</p>`,
-    name: "Katerina Bromberg",
-    position: "Co-Founder, MyMediAds.com",
-    photo: "/testimonials/01_photo7.png",
-  },
-  {
-    text: `<p><strong>They are very sharp and have a high-quality team. I expect quality from people, and they have the kind of team I can work with. They were upfront about everything that needed to be done.</strong></p><p>I appreciated that the cost of the project turned out to be smaller than what we expected because they made some very good suggestions. They are very pleasant to work with.</p>`,
-    name: "Michael Karbushev",
-    position: "Senior Director of Engineering, Evolv",
-    photo: "/testimonials/01_photo11.png",
-  },
-  {
-    text: `<p><strong>We had already invested in AI, but the output was unclear. There were multiple initiatives across the company, each showing some promise, but no clear way to evaluate them or connect them to business outcomes.</strong></p><p>What Nexterse LLC brought was structure. We referred to their services for AI readiness assessment. They helped us step back and look at AI as a business system: which use cases matter, what they are worth, how they fit into our systems, and what it will cost to run them in practice.</p><p>The level of clarity this created was the main value for us. Instead of ongoing internal discussions, we now have a defined roadmap, validated use cases, and a clear understanding of where to move next. That changed how we approach AI at the leadership level.</p>`,
-    name: "Erica Lindsay",
-    position: "Manager",
-    photo: "/testimonials/05_Erica-Lindsay.png",
-  },
-  {
-    text: `<p><strong>We are absolutely convinced that cooperation between companies is only successful when based on effective teamwork. But the teams may vary on the degree of their cohesion.</strong></p><p>With Nexterse LLC, we feel like a bobsled team — together in the same cockpit, aimed at the same targets. And this feeling is off the chart.</p><p>We are sure that by aligning our efforts we will set new records and grab new medals.</p>`,
-    name: "Maria Duyunova",
-    position: "Director, Simplimagine LLC",
-    photo: "/testimonials/01_photo10.png",
-  },
-  {
-    text: `<p><strong>We had a large volume of repetitive support requests, and Nexterse LLC helped us address that with an AI chatbot that now handles most of them. It automated about 90% of incoming queries and allowed our team to focus on more important work.</strong></p><p>The team was easy to work with, very responsive, and flexible when we introduced new requirements along the way. They clearly understood what we were trying to achieve and helped improve the solution beyond the initial scope.</p>`,
-    name: "Slava Mehovich",
+    text: `<p><strong>Our tracking devices generate a constant stream of location, temperature, humidity, and shock data from shipments moving all over the world, and as our fleet grew, our platform needed to process that stream without any gaps or delays.</strong></p><p>Nexterse LLC helped us rework the ingestion layer that receives and processes data from every device, so the platform could scale with our device fleet instead of struggling to keep up with it. Shippers get alerts and visibility in near real time now, even during our highest-volume periods, which is exactly what the platform exists to deliver.</p>`,
+    name: "Krenar Komoni",
     position: "CEO & Founder",
-    logo: "/testimonials/08_akdev_group_logo.jpg",
+    photo: "/testimonialsv1/Krenar.jpg",
+    categories: ["software"],
   },
   {
-    text: `<p><strong>I was impressed by Nexterse LLC's prices, especially for the project I wanted to do and in comparison to the quotes I received from a lot of other companies.</strong></p><p>Also, their communication skills were great; it never felt like a long-distance project. It felt like Nexterse LLC was working next door because their project manager was always keeping me updated. Initially, I was afraid of going with an overseas company because they don't have to abide by US law, but I had a good project manager who made it seem like they weren't an overseas company.</p>`,
-    name: "Benjamin Dorsinvil",
-    position: "Founder, SellBig",
-    photo: "/testimonials/12_5cc8378b669af259c74ec736_b_dorsinvil-2-1-1.jpg",
+    text: `<p><strong>As a nonprofit trying to make solar accessible to renters and homeowners who'd never had the option before, we needed a membership and ordering platform that felt as simple as the plug-in hardware itself, and building that well with a small technical team was a real stretch.</strong></p><p>Nexterse LLC helped us build the platform members use to join, order their kits, and track their savings, keeping the experience simple even as our membership program has grown. It's let our small team stay focused on the mission instead of getting buried in the software behind it.</p>`,
+    name: "Rupert Mayer",
+    position: "Co-Founder",
+    photo: "/testimonialsv1/Rupert.jpg",
+    categories: ["software"],
+  },
+  {
+    text: `<p><strong>We grew our platform from a simple expense tracker into a full spend management system, and unifying expenses, accounts payable, virtual cards, and budgets into one coherent product without VC money to throw at the problem meant every engineering decision had to count.</strong></p><p>Nexterse LLC helped us architect that expansion so each new module plugged cleanly into the platform instead of becoming its own silo. The result is a genuinely unified system our customers use across their whole spend process, built at a pace and cost that made sense for a bootstrapped company.</p>`,
+    name: "Sharon Nouh",
+    position: "Founder & CEO",
+    photo: "/testimonialsv1/Sharon.jpg",
+    categories: ["software"],
+  },
+  {
+    text: `<p><strong>Our platform connects tenants, property managers, and pest control technicians in one flow, and going from a regional service to covering nearly the entire country meant our systems needed to handle a lot more volume and complexity without the experience getting clunkier.</strong></p><p>Nexterse LLC helped us scale the platform's backend so it could handle service requests reliably as we expanded state by state, while keeping the app itself simple for tenants who just want pest control handled quickly. We've been able to grow into new markets without the growing pains we were bracing for.</p>`,
+    name: "Justin Clements",
+    position: "Co-Founder",
+    photo: "/testimonialsv1/Justin.jpg",
+    categories: ["software"],
+  },
+  {
+    text: `<p><strong>We wanted to give companies accurate, real-time occupancy data across all their offices without asking them to install extra hardware, which meant solving a genuinely hard sensing problem purely in software.</strong></p><p>Nexterse LLC worked with us on the engineering behind that capability, helping us get occupancy insights accurate enough for teams to actually plan around. It's now a core part of how thousands of teams understand and manage their workplaces, and it works the way we originally envisioned it, without a single extra sensor.</p>`,
+    name: "Dan Bladen",
+    position: "Co-Founder & CEO",
+    photo: "/testimonialsv1/Dan.jpg",
+    categories: ["software"],
+  },
+  {
+    text: `<p><strong>Our platform ties together booking, digital scoreboards, video replay, and autonomous entry for recreational venues, and getting the software and hardware sides to work together reliably, venue after venue, was a much bigger integration challenge than a typical SaaS product.</strong></p><p>Nexterse LLC helped us build the software layer that coordinates bookings, access, scoring, and remote monitoring into one system venue operators can trust without needing staff on-site around the clock. That work has been a big part of how our venues have been able to cut labor costs so dramatically while actually improving the player experience.</p>`,
+    name: "Maximilian H. Kogler",
+    position: "Co-Founder & CEO",
+    photo: "/testimonialsv1/Maximilian.jpg",
+    categories: ["software"],
+  },
+  {
+    text: `<p><strong>Our platform has to evaluate cloud commitment options against a constantly shifting set of pricing and usage data, and doing that accurately enough to back it with real financial guarantees meant our data pipeline had zero room for error.</strong></p><p>Nexterse LLC helped us harden that pipeline so it could process a much higher volume of cloud transactions without sacrificing accuracy. That reliability is what lets us back our recommendations with real guarantees instead of estimates, and it's been a meaningful part of how we've been able to save our customers real money at scale.</p>`,
+    name: "Aran Khanna",
+    position: "CEO",
+    photo: "/testimonialsv1/Aran.jpg",
+    categories: ["software"],
+  },
+  {
+    text: `<p><strong>We wanted to let customers describe what they wanted in a few words and get a ready-to-order photo book back, but building that AI experience on top of a platform millions of people already trusted meant we couldn't afford to get it wrong.</strong></p><p>Nexterse LLC helped us build and ship that feature without disrupting the core product our existing customers rely on every day. It cut the time it takes people to go from idea to finished book dramatically, and it's become one of the ways new customers experience the platform for the first time.</p>`,
+    name: "Andrew Laffoon",
+    position: "CEO & Co-Founder",
+    photo: "/testimonialsv1/Andrew.jpg",
+    categories: ["ai"],
   },
 ];
+
+/** Strips the HTML markup used by the /testimonials grid, for sliders that render quotes as plain text. */
+export function toPlainText(html: string): string {
+  return html.replace(/<[^>]+>/g, " ").replace(/\s+/g, " ").trim();
+}
+
+/**
+ * Centralized review selection for every page's Reviews section.
+ * Returns `count` reviews (default 6): `primary`-category reviews first (in
+ * catalog order), topped up with up to `secondaryCount` reviews from the
+ * other category so every page gets a mostly-on-topic but not monotonous mix.
+ * `lead` pins specific reviews (by name) to the front for pages with an
+ * unusually good topical fit (e.g. a fintech review leading a Fintech page).
+ */
+export function pickReviews(
+  primary: ReviewCategory,
+  count = 6,
+  opts: { secondaryCount?: number; lead?: string[] } = {}
+): Review[] {
+  const { secondaryCount = 2, lead = [] } = opts;
+  const secondary: ReviewCategory = primary === "ai" ? "software" : "ai";
+
+  const leadReviews = lead
+    .map((name) => REVIEWS.find((r) => r.name === name))
+    .filter((r): r is Review => Boolean(r));
+  const usedNames = new Set(leadReviews.map((r) => r.name));
+
+  const primaryPool = REVIEWS.filter((r) => r.categories.includes(primary) && !usedNames.has(r.name));
+  const secondaryPool = REVIEWS.filter((r) => r.categories.includes(secondary) && !usedNames.has(r.name));
+
+  const slotsLeft = Math.max(0, count - leadReviews.length);
+  const secondarySlots = Math.min(secondaryCount, secondaryPool.length, Math.max(0, slotsLeft - 1));
+  const primarySlots = Math.max(0, slotsLeft - secondarySlots);
+
+  const picked = [
+    ...leadReviews,
+    ...primaryPool.slice(0, primarySlots),
+    ...secondaryPool.slice(0, secondarySlots),
+  ];
+
+  return picked.slice(0, count);
+}
+
+/** Convenience props every page's review-slider component accepts to pull from the centralized set. */
+export interface ReviewSelectionProps {
+  primary?: ReviewCategory;
+  count?: number;
+  secondaryCount?: number;
+  lead?: string[];
+}
+
+export function resolveReviews({ primary = "software", count = 6, secondaryCount, lead }: ReviewSelectionProps = {}): Review[] {
+  return pickReviews(primary, count, { secondaryCount, lead });
+}

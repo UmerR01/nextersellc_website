@@ -196,30 +196,6 @@
 }
 
 /* ── Logos ─────────────────────────────────────────────────────────────────── */
-.logosSection {
-  background: #fff;
-  padding: 32px 0;
-}
-
-.logosWrapper {
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  flex-wrap: wrap;
-  gap: 24px 40px;
-}
-
-.logoImg {
-  max-height: 38px;
-  width: auto;
-  height: auto;
-  opacity: 0.75;
-  filter: grayscale(1);
-  transition: opacity 0.3s, filter 0.3s;
-}
-
-.logoImg:hover { opacity: 1; filter: grayscale(0); }
-
 /* ── Section header shared ─────────────────────────────────────────────────── */
 .sectionTitle {
   font-family: var(--font-inter-tight), sans-serif;
@@ -1229,7 +1205,8 @@
 
 .securityBlock {
   background: #f7f9fe;
-  padding: 62px 0 96px;
+  margin-top: clamp(4rem, 7vw, 6rem);
+  padding: 92px 0 96px;
 }
 
 .securityBlock :global(.container) {
@@ -2117,33 +2094,4 @@
   49% { opacity: 1; transform: translateX(0) translateY(-50%); }
   99% { opacity: 0; transform: translateX(7px) translateY(-50%); }
   100% { opacity: 0; transform: translateX(-7px) translateY(-50%); }
-}
-/* Requested logo module color/alignment normalization */
-.logosSection :global(.container) {
-  max-width: min(100%, 1420px);
-  margin: 0 auto;
-  padding-inline: clamp(1.25rem, 3vw, 2.5rem);
-}
-
-.logosWrapper {
-  justify-content: center;
-  align-items: center;
-  margin: 0 auto;
-  gap: 24px clamp(28px, 3.2vw, 56px);
-}
-
-.logoImg {
-  display: block;
-  max-height: 38px;
-  width: auto;
-  height: auto;
-  opacity: 1;
-  object-fit: contain;
-  filter: brightness(0) saturate(0) invert(35%) sepia(16%) saturate(10) hue-rotate(175deg) brightness(75%) contrast(100%);
-  transition: filter 0.25s ease;
-}
-
-.logoImg:hover {
-  opacity: 1;
-  filter: none;
 }

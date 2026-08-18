@@ -2485,7 +2485,7 @@
 }
 
 .legacyTabBtn:hover .legacyTabIcon {
-  filter: grayscale(1) opacity(0.8);
+  filter: brightness(0) saturate(100%) invert(69%) sepia(61%) saturate(643%) hue-rotate(148deg) brightness(91%) contrast(91%);
 }
 
 .legacyTabBtnActive .legacyTabIcon {
@@ -2830,12 +2830,6 @@
   max-width: 560px;
 }
 
-.securityOpen .edtBadges {
-  justify-content: center;
-  margin-top: 58px;
-  padding: 0;
-}
-
 .benefitsOpen {
   background: #fff;
   padding: 92px 0 88px;
@@ -2979,10 +2973,6 @@
   .securityOpen .hcAudienceGrid {
     gap: 44px;
     margin-top: 52px;
-  }
-
-  .securityOpen .edtBadges {
-    justify-content: center;
   }
 
   .benefitsOpen {
@@ -3142,30 +3132,6 @@
   line-height: 1.4;
   color: #5e6d8e;
   margin-top: 10px;
-}
-
-/* ── Edtech: compliance badge strip ────────────────────────────────────────── */
-.edtBadges {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: center;
-  gap: 40px;
-  padding: 40px 0 8px;
-}
-
-.edtBadge {
-  height: 64px;
-  width: auto;
-  object-fit: contain;
-  opacity: 0.85;
-  filter: grayscale(1);
-  transition: opacity 0.2s ease, filter 0.2s ease;
-}
-
-.edtBadge:hover {
-  opacity: 1;
-  filter: none;
 }
 
 /* ── Edtech: quick-facts icon cards row ────────────────────────────────────── */

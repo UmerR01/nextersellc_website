@@ -76,16 +76,50 @@
   transition: color 0.2s ease, border-color 0.2s ease;
 }
 
-.exploreLink span {
+.inlineArrow {
+  display: inline-block;
+  position: relative;
+  width: 18px;
+  height: 14px;
+  flex: 0 0 18px;
   transition: transform 0.2s ease;
 }
+
+.inlineArrow::before,
+.cardArrow::before,
+.navArrow::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  width: 15px;
+  height: 2px;
+  background: currentColor;
+  border-radius: 999px;
+  transform: translateY(-50%);
+}
+
+.inlineArrow::after,
+.cardArrow::after,
+.navArrow::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  width: 8px;
+  height: 8px;
+  box-sizing: border-box;
+  border-top: 2px solid currentColor;
+  border-right: 2px solid currentColor;
+}
+
+.inlineArrow::before { left: 1px; }
+.inlineArrow::after { right: 1px; transform: translateY(-50%) rotate(45deg); }
 
 .exploreLink:hover {
   color: var(--color-accent);
   border-color: var(--color-accent);
 }
 
-.exploreLink:hover span {
+.exploreLink:hover .inlineArrow {
   transform: translateX(4px);
 }
 
@@ -152,12 +186,16 @@
 }
 
 .cardArrow {
-  display: inline-flex;
-  align-items: center;
-  font-size: 1.2rem;
+  display: block;
+  position: relative;
+  width: 18px;
+  height: 14px;
   color: var(--color-text-muted);
   margin-top: 1.5rem;
 }
+.cardArrow::before { left: 1px; }
+.cardArrow::after { right: 1px; transform: translateY(-50%) rotate(45deg); }
+.card:hover .cardArrow { color: var(--color-accent); }
 
 /* ── Navigation arrows — centered horizontally ── */
 .navRow {
@@ -193,6 +231,18 @@
   opacity: 0.25;
   cursor: default;
 }
+.navArrow {
+  display: block;
+  position: relative;
+  width: 18px;
+  height: 14px;
+  flex: 0 0 18px;
+}
+
+.navArrowNext::before { left: 1px; }
+.navArrowNext::after { right: 1px; transform: translateY(-50%) rotate(45deg); }
+.navArrowPrev::before { right: 1px; }
+.navArrowPrev::after { left: 1px; transform: translateY(-50%) rotate(-135deg); }
 
 /* ── Responsive ── */
 @media (max-width: 900px) {

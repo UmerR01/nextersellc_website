@@ -8,6 +8,7 @@ import { Navigation } from "swiper/modules";
 import type { SwiperRef } from "swiper/react";
 import "swiper/css";
 import "swiper/css/navigation";
+import { resolveReviews, toPlainText, type ReviewSelectionProps } from "@/components/testimonials/reviewsData";
 import styles from "./TeamReviewSlider.module.css";
 
 export interface TeamReview {
@@ -18,96 +19,25 @@ export interface TeamReview {
   position: string;
 }
 
-const REVIEWS: TeamReview[] = [
-  {
-    text: "From the early stages of the project, Nexterse LLC demonstrated a proactive attitude, quickly grasping the complexities of our requirements and delivering innovative solutions that exceeded our expectations.",
-    logo: "/team/08_protech_solutions_inc_logo.jpg",
-    name: "Dave Alce",
-    position: "COO",
-  },
-  {
-    text: "Nexterse LLC team is a fast-moving and result-oriented. I am very grateful to them for the ability to adapt to the changing requirements of the project. They were always thinking about how to make the product better for the end user.",
-    photo: "/team/01_Markus-Keller-300x300.png",
-    name: "Markus Keller",
-    position: "Head of Operations",
-  },
-  {
-    text: "The system has produced a significant competitive advantage in the industry thanks to Nexterse LLC's well-thought opinions. They shouldered the burden of constantly updating a project management tool with a high level of detail and were committed to producing the best possible solution.",
-    photo: "/team/01_photo.png",
-    name: "Alexander McCaig",
-    position: "Co-Founder & CEO, Tartle",
-  },
-  {
-    text: "We tried another company that one of our partners had used but they didn't work out. I feel that Nexterse LLC does a better investigation of what we're asking for. They tell us how they plan to do a task and ask if that works for us.",
-    photo: "/team/01_photo6.png",
-    name: "Damian Gevertz",
-    position: "Founder & CEO, Widgety",
-  },
-  {
-    text: "Nexterse LLC is the firm to work with if you want to keep up to high standards. The professional workflows they stick to result in exceptional quality. Important, they help you think with the business logic of your application.",
-    photo: "/team/01_photo2.png",
-    name: "Domien Van Eynde",
-    position: "Team Lead, Daiokan.com",
-  },
-  {
-    text: "Rivalfox had the pleasure to work with Nexterse LLC in building out core portions of our product, and the results really couldn't have been better. Nexterse LLC provided us with engineering expertise, enthusiasm and great people.",
-    photo: "/team/01_photo5.png",
-    name: "Paul S. Chun",
-    position: "CTO, Rivalfox GmbH",
-  },
-  {
-    text: "I was impressed by Nexterse LLC's prices, especially for the project I wanted to do and in comparison to the quotes I received from a lot of other companies. Also, their communication skills were great; it never felt like a long-distance project.",
-    photo: "/team/12_5cc8378b669af259c74ec736_b_dorsinvil-2-1-1.jpg",
-    name: "Benjamin Dorsinvil",
-    position: "Founder, SellBig",
-  },
-  {
-    text: "Nexterse LLC succeeded in building a more manageable solution that is much easier to maintain.",
-    photo: "/team/08_639b8502f91be05f5bf099be_Paul-276x300.png",
-    name: "Paul Fardoe",
-    position: "Director",
-  },
-  {
-    text: "Working with Nexterse LLC has been an exceptional experience. Their technical expertise and commitment to quality have consistently delivered results that aligned with our vision.",
-    photo: "/team/05_Alex-Phelps.png",
-    name: "Alex Phelps",
-    position: "CEO",
-  },
-  {
-    text: "Nexterse LLC brought both technical depth and creative problem-solving to our project. The team was responsive, collaborative, and delivered on time.",
-    photo: "/team/05_Dillon-Christensen.png",
-    name: "Dillon Christensen",
-    position: "CEO",
-  },
-  {
-    text: "The Nexterse LLC team was professional and knowledgeable throughout our engagement. They provided clear communication and produced exactly what we needed.",
-    photo: "/team/05_Erica-Lindsay.png",
-    name: "Erica Lindsay",
-    position: "Manager",
-  },
-  {
-    text: "Nexterse LLC delivered a comprehensive solution with excellent attention to detail. Their team's expertise was evident from day one, and they guided us through every stage of development.",
-    photo: "/team/08_Julia-C-300x300.jpg",
-    name: "Julie Crawford",
-    position: "Founder",
-  },
-  {
-    text: "Nexterse LLC succeeded in building a more manageable solution that is much easier to maintain.",
-    photo: "/team/01_photo3.png",
-    name: "Yevgeniy Rozenblat",
-    position: "Program Manager, TL Nika",
-  },
-];
-
 export default function TeamReviewSlider({
-  reviews = REVIEWS,
+  reviews,
   linkLabel = "Read Clients' testimonials",
   linkHref = "/testimonials",
+  ...selection
 }: {
   reviews?: TeamReview[];
   linkLabel?: string;
   linkHref?: string;
-}) {
+} & ReviewSelectionProps = {}) {
+  const REVIEWS: TeamReview[] =
+    reviews ??
+    resolveReviews(selection).map((r) => ({
+      text: toPlainText(r.text),
+      photo: r.photo,
+      logo: r.logo,
+      name: r.name,
+      position: r.position,
+    }));
   const swiperRef = useRef<SwiperRef>(null);
   const [atStart, setAtStart] = useState(true);
   const [atEnd, setAtEnd] = useState(false);
@@ -129,7 +59,7 @@ export default function TeamReviewSlider({
           onSlideChange={syncNavigation}
           className={styles.swiper}
         >
-          {reviews.map((review, idx) => (
+          {REVIEWS.map((review, idx) => (
             <SwiperSlide key={idx}>
               <div className={styles.slide}>
                 {/* Right column: author */}

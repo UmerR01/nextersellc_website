@@ -131,8 +131,12 @@ export default function CSCasesBlock() {
                   ))}
                 </ul>
                 <div className={styles.nav}>
-                  <button aria-label="Previous case" onClick={(e) => { e.stopPropagation(); go(-1); }}>←</button>
-                  <button aria-label="Next case" onClick={(e) => { e.stopPropagation(); go(1); }}>→</button>
+                  <button className={styles.navPrev} aria-label="Previous case" onClick={(e) => { e.stopPropagation(); go(-1); }}>
+                    <span className={styles.navArrow} aria-hidden="true" />
+                  </button>
+                  <button className={styles.navNext} aria-label="Next case" onClick={(e) => { e.stopPropagation(); go(1); }}>
+                    <span className={styles.navArrow} aria-hidden="true" />
+                  </button>
                 </div>
               </div>
 

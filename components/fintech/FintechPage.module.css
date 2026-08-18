@@ -360,7 +360,7 @@
 }
 
 .dualEngineTab:hover .dualEngineIcon {
-  filter: grayscale(1) opacity(0.8);
+  filter: brightness(0) saturate(100%) invert(69%) sepia(61%) saturate(643%) hue-rotate(148deg) brightness(91%) contrast(91%);
 }
 
 .dualEngineTabActive .dualEngineIcon {

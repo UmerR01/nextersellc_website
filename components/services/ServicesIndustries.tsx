@@ -3,7 +3,7 @@ import styles from "./ServicesIndustries.module.css";
 const INDUSTRIES = [
   {
     title: "Healthcare",
-    description: "We develop healthcare software designed to operate within HIPAA-regulated environments, support clinical and administrative workflows, and connect patient data across secure systems. Our experience includes patient management platforms, telemedicine solutions, healthcare analytics, AI-assisted diagnostics, and IoT-powered medical applications.",
+    description: "We develop healthcare software designed to operate within HIPAA-regulated environments, support clinical and administrative workflows, and connect patient data across secure systems. Our experience includes patient management platforms, telemedicine solutions, healthcare analytics, AI-assisted diagnostics, and AI-powered clinical decision support.",
     linkLabel: "Healthcare software development",
     href: "/services/healthcare-development",
   },
@@ -36,6 +36,18 @@ const INDUSTRIES = [
     description: "Our AdTech software development services cover media buying platforms, campaign management systems, analytics dashboards, reporting tools, and automation software for advertising teams. These solutions help companies manage data-heavy workflows, improve campaign visibility, and coordinate advertising operations from one environment.",
     linkLabel: "AdTech software development",
     href: "/services/adtech-development",
+  },
+  {
+    title: "InsurTech",
+    description: "We build insurance software for policy administration, claims processing, underwriting automation, and risk scoring. Our InsurTech solutions help carriers and brokers streamline operations, improve customer self service, and stay aligned with evolving regulatory requirements.",
+    linkLabel: "InsurTech software development",
+    href: "/services/insurtech-development",
+  },
+  {
+    title: "PropTech",
+    description: "We develop real estate software for property management, listings, tenant portals, and workflow automation. Our PropTech solutions give owners, agents, and operators better visibility into occupancy, maintenance, and portfolio performance across every property.",
+    linkLabel: "PropTech software development",
+    href: "/services/proptech-development",
   },
 ];
 

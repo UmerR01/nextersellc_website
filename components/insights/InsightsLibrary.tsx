@@ -16,26 +16,23 @@ const PdfIcon = () => (
 
 const categories = [
   {
-    id: "iot-development",
-    label: "IoT development",
+    id: "applied-ai",
+    label: "Applied AI",
     items: [
       {
         variant: "dark" as const,
-        title: "Quick playbook: selecting an IoT development partner [pdf]",
-        desc: "Get a free playbook that will help you find the right IoT development partner. No email required.",
-        href: "https://sumatosoft.com/wp-content/uploads/2025/09/6-Page-Quick-Playbook_-Selecting-an-IoT-Partner.pdf",
+        title: "Quick playbook: launching an applied AI pilot [pdf]",
+        desc: "Get a free playbook that will help you plan and launch your first applied AI pilot. No email required.",
       },
       {
         variant: "light" as const,
-        title: "AIoT pilot planning template [pdf]",
-        desc: "Get a free template that will help you plan your next AIoT solution.",
-        href: "https://sumatosoft.com/wp-content/uploads/2025/09/SumatoSoft-AIoT-Pilot-Planning-Template.pdf",
+        title: "Applied AI pilot planning template [pdf]",
+        desc: "Get a free template that will help you plan your next applied AI solution.",
       },
       {
         variant: "dark" as const,
-        title: "AIoT suitability self-assessment checklist [pdf]",
-        desc: "Get a free checklist that will help you understand AIoT suitability.",
-        href: "https://sumatosoft.com/wp-content/uploads/2025/09/SumatoSoft-AIoT-Suitability-Self-Assessment-Checklist-.pdf",
+        title: "Applied AI suitability self-assessment checklist [pdf]",
+        desc: "Get a free checklist that will help you understand applied AI suitability.",
       },
     ],
   },
@@ -47,7 +44,6 @@ const categories = [
         variant: "dark" as const,
         title: "Quick playbook: selecting an AI development partner [pdf]",
         desc: "Get a free playbook that will help you find the right AI development partner. No email required.",
-        href: "https://sumatosoft.com/wp-content/uploads/2025/09/7-Page-Quick-Playbook_-Selecting-an-AI-Partner.pdf",
       },
     ],
   },
@@ -59,7 +55,6 @@ const categories = [
         variant: "dark" as const,
         title: "Healthcare software vendor evaluation checklist",
         desc: "Get a free checklist for healthcare software vendor evaluation. No email required.",
-        href: "https://sumatosoft.com/wp-content/uploads/2025/09/SumatoSoft-Healthcare-Software-Vendor-Evaluation-Checklist.pdf",
       },
     ],
   },

@@ -50,7 +50,7 @@ export default function AIConsultingPage() {
             <div id="recent-cases"><AIRecentWorks /></div>
             <AIReviews />
             <div id="maturity"><AIMaturity /></div>
-            <div id="faq"><AIFaq /></div>
+            <AIFaq />
             <AIAwards />
             <LetsStart />
           </div>

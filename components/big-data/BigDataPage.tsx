@@ -1,5 +1,5 @@
 import Image from "next/image";
-import CaseCards, { type CaseCard } from "@/components/home/CaseCards";
+import CaseCards from "@/components/home/CaseCards";
 import LetsStart from "@/components/home/LetsStart";
 import AdlcBlog, { type AdlcFeaturedPost, type AdlcBlogPost } from "@/components/adlc/AdlcBlog";
 import BigDataHero from "./BigDataHero";
@@ -15,7 +15,7 @@ import styles from "./BigDataPage.module.css";
 
 // ─── Big Data services built for operational scale (6 cards) ─────────────────
 const SERVICES = [
-  { icon: "/big-data/05_AI-data-supply-chain-01.svg", title: "AI data supply chain & ETL", desc: "We build automated pipelines that collect, clean, validate, and unify data from all sources, including CRMs, ERPs, IoT devices, and raw files. Data is continuously processed through controlled pipelines with built-in validation, deduplication, and transformation logic. This ensures that every dataset used for reporting, analytics, or AI is accurate and reliable." },
+  { icon: "/big-data/05_AI-data-supply-chain-01.svg", title: "AI data supply chain & ETL", desc: "We build automated pipelines that collect, clean, validate, and unify data from all sources, including CRMs, ERPs, operational systems, and raw files. Data is continuously processed through controlled pipelines with built-in validation, deduplication, and transformation logic. This ensures that every dataset used for reporting, analytics, or AI is accurate and reliable." },
   { icon: "/big-data/05_Real-time-data-platforms-02.svg", title: "Real-time data platforms", desc: "Turn raw data into actionable insights. We develop advanced analytics solutions and interactive business intelligence dashboards, so you can discover trends, track KPIs, and make data-driven decisions confidently. We work with leading BI tools like Power BI, Tableau, and Looker that provide user-friendly data exploration." },
   { icon: "/big-data/05_Data-lakehouse-architecture.svg", title: "Data lakehouse architecture", desc: "As a part of our big data development services, we design and implement lakehouse architectures that combine scalable storage with efficient querying and processing. This creates a unified data layer where structured and unstructured data can be stored, accessed, and analyzed without fragmentation." },
   { icon: "/big-data/05_Agentic-decision-intelligence-02.svg", title: "Agentic decision intelligence", desc: "Static dashboards show what happened. Operational systems act on what is happening. We build data systems that monitor streams, detect patterns, and trigger actions automatically." },
@@ -36,52 +36,8 @@ const STATS = [
 const WHY = [
   { icon: "/big-data/05_Vector-database-orchestration-03.svg", title: "Vector database orchestration", desc: "You cannot run AI on raw tables and expect accurate answers. Without a vector layer, your system cannot retrieve context properly. It guesses. That is where bad outputs come from. We convert your data into high-dimensional embeddings and engineer vector database architectures using Pinecone, Milvus, Weaviate, and pgvector. Your system retrieves meaning, not rows, and responds with actual context." },
   { icon: "/big-data/05_Data-governance-for-GenAI-01.svg", title: "Data governance for GenAI", desc: "If you cannot trace an output, you cannot trust it. Most systems push data into AI models without control. Sensitive information leaks. Outputs cannot be verified. Compliance becomes a risk. We enforce automated PII redaction and full data lineage across the pipeline. Every output is linked to a specific source inside your data platform. When a result appears, you know exactly where it came from." },
-  { icon: "/big-data/05_Data-gravity-and-edge-processing-infrastructure-01.svg", title: "Data gravity and edge processing infrastructure", desc: "Moving petabytes of raw telemetry to the cloud for AI inference will bankrupt your IT budget. We move decisions to the data. Data is processed at the source – IoT gateways, edge nodes, on-prem systems. High-volume streams are filtered, aggregated, and structured before anything reaches the cloud. Only high-value data moves upstream. Costs stay predictable. Systems stay fast." },
+  { icon: "/big-data/05_Data-gravity-and-edge-processing-infrastructure-01.svg", title: "Data gravity and edge processing infrastructure", desc: "Moving petabytes of raw telemetry to the cloud for AI inference will bankrupt your IT budget. We move decisions to the data. Data is processed at the source – edge gateways, edge nodes, on-prem systems. High-volume streams are filtered, aggregated, and structured before anything reaches the cloud. Only high-value data moves upstream. Costs stay predictable. Systems stay fast." },
   { icon: "/big-data/05_Synthetic-data-generation-capability-01.svg", title: "Synthetic data generation capability", desc: "If your data is incomplete or restricted, your models will never reach production quality. Waiting for perfect datasets slows everything down. Using real data creates compliance risk. We build generative pipelines that produce synthetic datasets with the same statistical behavior as real data. You train, test, and validate systems without exposing sensitive information. Development moves forward without waiting on data access." },
-];
-
-// ─── Cases (our recent works, clone content) ──────────────────────────────────
-const BD_CASES: CaseCard[] = [
-  {
-    banner: "/big-data/01_Cover.png",
-    name: "Traditional tech stack",
-    title: "A media buying system for a leading US-based advertising agency",
-    text: "50x faster ad operations and data processing cut from hours to under a minute – we replaced a 20-year-old FileMaker system with a custom platform covering 100+ operational workflows.",
-    href: "/portfolio/media-buying-software-development",
-    tags: ["Enterprise"],
-  },
-  {
-    banner: "/big-data/01_cover-2-1.png",
-    name: "AI-powered stack",
-    title: "Platform for vital farm animals signs monitoring",
-    text: "An IoT platform connecting a matchbox-sized farm animal wearable to a real-time visualization and diagnostics dashboard – reducing monitoring setup time by ~55% and eliminating invasive multi-device procedures for veterinary clinics and farms.",
-    href: "/portfolio/platform-for-vital-farm-animals-signs-monitoring",
-    tags: ["IoT", "Startups"],
-  },
-  {
-    banner: "/big-data/10_Cover-1-1.png",
-    name: "AI-powered stack",
-    title: "AI/ML route optimization for a freight delivery service",
-    text: "Lifted on-time delivery to 98% – without expanding the fleet. An AI/ML platform that plans and reoptimizes B2B/B2C routes in real time with traffic, weather, and capacity constraints, cutting last-mile costs by 22%.",
-    href: "/portfolio/ai-ml-route-optimization-for-a-freight-delivery-service",
-    tags: ["AI inside", "Enterprise"],
-  },
-  {
-    banner: "/big-data/05_Cover-right-1.png",
-    name: "AI-powered stack",
-    title: "AI-driven legacy online retail platform modernization",
-    text: "Nexterse LLC modernized a UK omnichannel retailer's legacy eCommerce platform to headless commerce – without disrupting checkout or payment flows – enabling AI-driven personalization that improved product conversion rates by 25%.",
-    href: "/portfolio/ai-driven-legacy-online-retail-platform-modernization",
-    tags: ["AI inside", "Enterprise"],
-  },
-  {
-    banner: "/big-data/07_Cover-right-2.png",
-    name: "AI-powered stack",
-    title: "AI-powered knowledge base for a global rights nonprofit",
-    text: "A Middle Eastern nonprofit working in cultural preservation needed a single searchable repository for fragmented research on ethnic minorities. Nexterse LLC built a multilingual AI platform that now indexes 12,000+ artifacts across 18 countries.",
-    href: "/portfolio/ai-knowledge-base-development",
-    tags: ["AI inside", "Enterprise"],
-  },
 ];
 
 // ─── What your business gets from Big Data (6 cards) ──────────────────────────
@@ -114,9 +70,9 @@ const BD_BLOG_FEATURED: AdlcFeaturedPost = {
   date: "July 15, 2026",
 };
 const BD_BLOG_SIDE: AdlcBlogPost[] = [
-  { href: "/blog/internet-of-things-and-big-data-synergy", title: "IoT and Big Data: How They Work Together", readTime: "15 mins", date: "January 28, 2026" },
+  { href: "/blog/ai-and-big-data-synergy", title: "AI and Big Data: How They Work Together", readTime: "15 mins", date: "January 28, 2026" },
   { href: "/blog/best-10-companies-providing-data-visualization-services", title: "Best 10 Companies Providing Data Visualization Services", readTime: "29 mins", date: "December 30, 2025" },
-  { href: "/blog/whats-iot-data-visualization-best-practices-examples", title: "IoT Data Visualization – Best Practices & Examples", readTime: "28 mins", date: "December 26, 2025" },
+  { href: "/blog/ai-ready-data-visualization-best-practices-examples", title: "AI-Ready Data Visualization – Best Practices & Examples", readTime: "28 mins", date: "December 26, 2025" },
 ];
 
 export default function BigDataPage() {
@@ -209,7 +165,7 @@ export default function BigDataPage() {
 
         {/* ── Our recent works ── */}
         <div id="bd-cases">
-          <CaseCards heading={<>Our recent <span>works</span></>} cards={BD_CASES} windowed />
+          <CaseCards heading={<>Our recent <span>works</span></>} windowed />
         </div>
 
         {/* ── Reviews ── */}
@@ -226,7 +182,7 @@ export default function BigDataPage() {
             </h2>
             <div className={styles.imageShowcase}>
               <Image
-                src="/big-data/05_What-it-takes-to-build-a-Data-powered-app.png"
+                src="/big-data/05_What-it-takes-to-build-a-Data-powered-app-clean.png"
                 alt="What it takes to build a Data-powered app"
                 width={3120}
                 height={1428}

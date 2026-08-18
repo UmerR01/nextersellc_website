@@ -5,20 +5,18 @@ import Image from "next/image";
 import styles from "./AIAwards.module.css";
 
 const BADGES = [
-  { src: "/ai-consulting/imgs/06_techreviewer_badge_2026-01.svg",                              alt: "Techreviewer 2026 â€” Top AI Consulting Company" },
-  { src: "/ai-consulting/imgs/05_top_clutch.co_artificial_intelligence_company_boston_2026-2.svg", alt: "Clutch 2026 â€” Top AI Company Boston" },
-  { src: "/ai-consulting/imgs/06_top-ai-development-companies.svg",                            alt: "GoodFirms â€” Top AI Development Company" },
-  { src: "/ai-consulting/imgs/06_techreviewer_badge_2026-02.svg",                              alt: "Techreviewer 2026 â€” Top AI Readiness Assessment" },
-  { src: "/ai-consulting/imgs/03_Badge-1-1.svg",                                               alt: "Top Software Development Company Massachusetts" },
-  { src: "/ai-consulting/imgs/12_5ca49c9f6cb37e33319e1162_Goodfirms.svg",                     alt: "GoodFirms badge" },
-  { src: "/ai-consulting/imgs/12_5ca49c9f8ff5ad26d13b6845_TDA.svg",                           alt: "TDA badge" },
-  { src: "/ai-consulting/imgs/12_5ca49c9f6cb37e49a79e1163_changed.svg",                       alt: "AWS Standard Consulting Partner" },
-  { src: "/ai-consulting/imgs/12_Machine-Learning-Development-2024.svg",                       alt: "Machine Learning Development 2024" },
-  { src: "/ai-consulting/imgs/12_IoT-Services-2025.svg",                                       alt: "IoT Services 2025" },
-  { src: "/ai-consulting/imgs/12_Data-Mining-Development-2024.svg",                            alt: "Data Mining Development 2024" },
-  { src: "/ai-consulting/imgs/12_Responsive-Design-Development-2025.svg",                      alt: "Responsive Design Development 2025" },
-  { src: "/ai-consulting/imgs/12_Custom-Web-Design-Development-2025.svg",                      alt: "Custom Web Design Development 2025" },
-  { src: "/ai-consulting/imgs/12_Business-Intelligence-Services-2024.svg",                     alt: "Business Intelligence Services 2024" },
+  { src: "/badges_fix/06_techreviewer_badge_2026-01.svg",                              alt: "Techreviewer 2026 â€” Top AI Consulting Company" },
+  { src: "/badges_fix/05_top_clutch.co_artificial_intelligence_company_boston_2026-2.svg", alt: "Clutch 2026 â€” Top AI Company Boston" },
+  { src: "/badges_fix/06_top-ai-development-companies.svg",                            alt: "GoodFirms â€” Top AI Development Company" },
+  { src: "/badges_fix/06_techreviewer_badge_2026-02.svg",                              alt: "Techreviewer 2026 â€” Top AI Readiness Assessment" },
+  { src: "/badges_fix/12_5ca49c9f6cb37e33319e1162_Goodfirms.svg",                     alt: "GoodFirms badge" },
+  { src: "/badges_fix/12_5ca49c9f8ff5ad26d13b6845_TDA.svg",                           alt: "TDA badge" },
+  { src: "/badges_fix/12_5ca49c9f6cb37e49a79e1163_changed.svg",                       alt: "AWS Standard Consulting Partner" },
+  { src: "/badges_fix/12_Machine-Learning-Development-2024.svg",                       alt: "Machine Learning Development 2024" },
+  { src: "/badges_fix/12_Data-Mining-Development-2024.svg",                            alt: "Data Mining Development 2024" },
+  { src: "/badges_fix/12_Responsive-Design-Development-2025.svg",                      alt: "Responsive Design Development 2025" },
+  { src: "/badges_fix/12_Custom-Web-Design-Development-2025.svg",                      alt: "Custom Web Design Development 2025" },
+  { src: "/badges_fix/12_Business-Intelligence-Services-2024.svg",                     alt: "Business Intelligence Services 2024" },
 ];
 
 const VISIBLE = 6;

@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" fill="none">
+  <rect width="1600" height="900" fill="#EAF6FB"/>
+  <rect width="1600" height="900" fill="url(#cover-bg)"/>
+  <path d="M986 172C1112 145 1253 190 1329 297C1406 405 1406 573 1328 677C1250 782 1094 822 960 785C826 748 714 634 694 506C673 378 860 199 986 172Z" fill="#3CC4E5" fill-opacity=".2"/>
+  <path d="M146 702C278 610 411 562 543 558C675 554 808 594 940 678" stroke="#7DD6EE" stroke-width="3" stroke-dasharray="13 18"/>
+  <rect x="126" y="110" width="478" height="680" rx="16" fill="#fff" stroke="#D4E5F0" stroke-width="2"/>
+  <rect x="174" y="168" width="382" height="46" rx="8" fill="#F3F8FC"/>
+  <rect x="174" y="246" width="276" height="24" rx="5" fill="#DDEAF4"/>
+  <rect x="174" y="294" width="330" height="24" rx="5" fill="#DDEAF4"/>
+  <rect x="174" y="342" width="228" height="24" rx="5" fill="#DDEAF4"/>
+  <rect x="174" y="430" width="382" height="234" rx="14" fill="#F3F8FC" stroke="#C7DFEF"/>
+  <path d="M238 597L296 527L356 568L414 493L500 601" stroke="#1B4C84" stroke-width="16" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="296" cy="527" r="18" fill="#3CC4E5"/>
+  <circle cx="414" cy="493" r="18" fill="#3CC4E5"/>
+  <rect x="690" y="266" width="300" height="368" rx="26" fill="#fff" stroke="#D4E5F0" stroke-width="2"/>
+  <rect x="740" y="332" width="200" height="40" rx="8" fill="#EAF6FB"/>
+  <rect x="740" y="412" width="200" height="40" rx="8" fill="#EAF6FB"/>
+  <rect x="740" y="492" width="200" height="40" rx="8" fill="#EAF6FB"/>
+  <path d="M604 450H690" stroke="#1B4C84" stroke-width="8" stroke-linecap="round"/>
+  <path d="M990 450H1110" stroke="#1B4C84" stroke-width="8" stroke-linecap="round"/>
+  <path d="M1094 450L1062 423M1094 450L1062 477" stroke="#1B4C84" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="1264" cy="450" r="142" fill="#1B4C84"/>
+  <path d="M1212 505C1180 478 1165 433 1178 392C1192 348 1233 318 1279 320C1325 322 1362 357 1371 402C1380 447 1359 491 1321 514" stroke="#fff" stroke-width="16" stroke-linecap="round"/>
+  <path d="M1264 363V438L1314 470" stroke="#3CC4E5" stroke-width="16" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="1264" cy="450" r="30" fill="#3CC4E5"/>
+  <text x="126" y="84" fill="#1B4C84" font-family="Montserrat, Arial, sans-serif" font-size="18" font-weight="700" letter-spacing="3">NEXTERSE GUIDE</text>
+  <text x="690" y="164" fill="#041430" font-family="Montserrat, Arial, sans-serif" font-size="60" font-weight="700">Legacy modernization</text>
+  <text x="690" y="232" fill="#3CC4E5" font-family="Montserrat, Arial, sans-serif" font-size="60" font-weight="700">with custom AI</text>
+  <text x="690" y="704" fill="#041430" font-family="Inter, Arial, sans-serif" font-size="28" font-weight="600">Embed intelligence into existing systems without a risky rewrite.</text>
+  <defs>
+    <linearGradient id="cover-bg" x1="0" y1="0" x2="1600" y2="900" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#fff"/>
+      <stop offset=".55" stop-color="#EAF6FB"/>
+      <stop offset="1" stop-color="#F7FBFD"/>
+    </linearGradient>
+  </defs>
+</svg>

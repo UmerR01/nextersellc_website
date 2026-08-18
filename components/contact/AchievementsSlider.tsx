@@ -5,18 +5,17 @@ import Image from "next/image";
 import styles from "./AchievementsSlider.module.css";
 
 const BADGES = [
-  { src: "/contact/badge-goodfirms.svg", alt: "GoodFirms Top Software Development Company" },
-  { src: "/contact/badge-tda.svg", alt: "TDA badge" },
-  { src: "/contact/badge-aws.svg", alt: "AWS Standard Consulting Partner" },
-  { src: "/contact/badge-responsive-design.svg", alt: "Aciety Responsive Design Development Top 10% 2025" },
-  { src: "/contact/badge-iot-services.svg", alt: "Aciety IoT Services Top 10% 2025" },
-  { src: "/contact/badge-ml-dev.svg", alt: "Aciety Machine Learning Development Top 10% 2024" },
-  { src: "/contact/badge-bi-services.svg", alt: "Aciety Business Intelligence Services 2024" },
-  { src: "/contact/badge-custom-web.svg", alt: "Aciety Custom Web Design Development 2025" },
-  { src: "/contact/badge-data-migration.svg", alt: "Aciety Data Migration Services 2025" },
-  { src: "/contact/badge-data-mining.svg", alt: "Aciety Data Mining Development 2024" },
-  { src: "/contact/badge-mobile-soft.svg", alt: "Aciety Mobile Software Development 2025" },
-  { src: "/contact/badge-google-analytics.svg", alt: "Aciety Google Analytics Development 2025" },
+  { src: "/badges_fix/badge-goodfirms.svg", alt: "GoodFirms Top Software Development Company" },
+  { src: "/badges_fix/badge-tda.svg", alt: "TDA badge" },
+  { src: "/badges_fix/badge-aws.svg", alt: "AWS Standard Consulting Partner" },
+  { src: "/badges_fix/badge-responsive-design.svg", alt: "Aciety Responsive Design Development Top 10% 2025" },
+  { src: "/badges_fix/badge-ml-dev.svg", alt: "Aciety Machine Learning Development Top 10% 2024" },
+  { src: "/badges_fix/badge-bi-services.svg", alt: "Aciety Business Intelligence Services 2024" },
+  { src: "/badges_fix/badge-custom-web.svg", alt: "Aciety Custom Web Design Development 2025" },
+  { src: "/badges_fix/badge-data-migration.svg", alt: "Aciety Data Migration Services 2025" },
+  { src: "/badges_fix/badge-data-mining.svg", alt: "Aciety Data Mining Development 2024" },
+  { src: "/badges_fix/badge-mobile-soft.svg", alt: "Aciety Mobile Software Development 2025" },
+  { src: "/badges_fix/badge-google-analytics.svg", alt: "Aciety Google Analytics Development 2025" },
 ];
 
 export default function AchievementsSlider() {

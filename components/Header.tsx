@@ -14,16 +14,15 @@ const Chevron = ({ className }: { className?: string }) => (
 );
 
 const PANEL_LINKS = [
-  { label: "About", href: "/team" },
+  { label: "About", href: "/about-us" },
   { label: "Services", href: "/services" },
   { label: "Process", href: "/process" },
-  { label: "Work", href: "#work" },
+  { label: "Industries", href: "/services#svc-industries" },
   { label: "Applied AI", href: "/adlc" },
   { label: "Insights", href: "/library" },
-  { label: "Products", href: "#products" },
-  { label: "Contact", href: "#contact" },
+  { label: "Pricing", href: "/pricing" },
+  { label: "Contact", href: "/contact-us" },
 ];
-
 const CONTACTS = [
   { label: "USA: +1 (321) 491-2236", href: "tel:+13214912236" },
   { label: "UAE: +971 58 512 2084", href: "tel:+971585122084" },
@@ -31,13 +30,141 @@ const CONTACTS = [
 ];
 
 const SOCIAL = [
-  { label: "X", href: "https://x.com", icon: "𝕏" },
-  { label: "f", href: "https://facebook.com", icon: "f" },
-  { label: "in", href: "https://linkedin.com", icon: "in" },
+  { label: "Instagram", href: "https://www.instagram.com/nextersepakistan/", src: "/side/instagram-svgrepo-com.svg", size: 18 },
+  { label: "Facebook", href: "https://www.facebook.com/nexterse/", src: "/side/facebook-svgrepo-com.svg", size: 17.5 },
+  { label: "LinkedIn", href: "https://www.linkedin.com/company/nexterse/", src: "/side/linkedin-svgrepo-com.svg", size: 13.5 },
+  { label: "X", href: "https://x.com/nexterseinfo", src: "/side/icons8-x.svg", size: 15.5 },
+];
+
+type MobileNavColumn = {
+  title?: string;
+  links: { label: string; href: string }[];
+};
+
+type MobileNavItem = {
+  label: string;
+  href?: string;
+  columns?: MobileNavColumn[];
+  allLink?: { label: string; href: string };
+};
+
+const MOBILE_NAV_ITEMS: MobileNavItem[] = [
+  {
+    label: "Applied AI",
+    columns: [
+      {
+        title: "Strategy",
+        links: [
+          { label: "AI Consulting", href: "/ai-consulting" },
+          { label: "AI Readiness Assessment", href: "/ai-readiness-assessment" },
+          { label: "AI PoC Development", href: "/services/ai-poc-development" },
+        ],
+      },
+      {
+        title: "Development",
+        links: [
+          { label: "AI Software Development", href: "/services/ai-software-development" },
+          { label: "AI Agents Development", href: "/services/ai-agents-development" },
+          { label: "RAG Development", href: "/services/rag-development" },
+          { label: "LLM Development", href: "/services/llm-development" },
+          { label: "GenAI Development", href: "/services/genai-development" },
+          { label: "OpenAI Development", href: "/services/openai-development" },
+        ],
+      },
+      {
+        title: "Operations",
+        links: [
+          { label: "AI Integration", href: "/services/ai-integration" },
+          { label: "GenAI Integration", href: "/services/genai-integration" },
+          { label: "Big Data Development", href: "/services/big-data-development" },
+          { label: "ML Development", href: "/services/ml-development" },
+        ],
+      },
+    ],
+    allLink: { label: "Applied AI overview", href: "/adlc" },
+  },
+  {
+    label: "Services",
+    columns: [
+      {
+        title: "Key Services",
+        links: [
+          { label: "Custom Software Development", href: "/services/custom-software-development" },
+          { label: "Enterprise Software Development", href: "/services/enterprise-software-development" },
+          { label: "Cloud Development", href: "/services/cloud-development" },
+          { label: "Predictive Maintenance", href: "/services/predictive-maintenance" },
+          { label: "Mobile App Development", href: "/services/mobile-app-development" },
+          { label: "Web App Development", href: "/services/web-app-development" },
+          { label: "CRM Development", href: "/services/crm-development" },
+          { label: "MVP Development", href: "/process/mvp" },
+        ],
+      },
+      {
+        title: "Industry Solutions",
+        links: [
+          { label: "Healthcare", href: "/services/healthcare-development" },
+          { label: "Logistics", href: "/services/logistics-development" },
+          { label: "Retail & E-Commerce", href: "/services/retail-ecommerce-development" },
+          { label: "EdTech", href: "/services/edtech-development" },
+          { label: "InsurTech", href: "/services/insurtech-development" },
+          { label: "AdTech", href: "/services/adtech-development" },
+          { label: "FinTech", href: "/services/financial-development" },
+          { label: "PropTech", href: "/services/proptech-development" },
+        ],
+      },
+    ],
+    allLink: { label: "All Services", href: "/services" },
+  },
+  {
+    label: "Process",
+    columns: [
+      {
+        links: [
+          { label: "Project Onboarding & Delivery", href: "/process/onboard" },
+          { label: "Expert Vetting Process", href: "/process/vetting" },
+          { label: "Our Development Process", href: "/process/development" },
+        ],
+      },
+    ],
+    allLink: { label: "Our Process", href: "/process" },
+  },
+  { label: "Pricing", href: "/pricing" },
+  {
+    label: "About us",
+    columns: [
+      {
+        links: [
+          // { label: "Team", href: "/team#management-team" }, // "Team" dropdown link disabled per request
+          { label: "FAQ", href: "/faq" },
+          { label: "Testimonials", href: "/testimonials" },
+          { label: "Engagement Models", href: "/engagement-models-process" },
+          { label: "ADLC", href: "/adlc" },
+          { label: "SDLC", href: "/sdlc" },
+          { label: "Careers", href: "/careers" },
+          { label: "Contact Us", href: "/contact-us" },
+        ],
+      },
+    ],
+    allLink: { label: "About us", href: "/about-us" },
+  },
+  {
+    label: "Insights",
+    columns: [
+      {
+        links: [
+          { label: "Library", href: "/library" },
+          { label: "Whitepapers", href: "/whitepapers" },
+          { label: "Blog", href: "/blog" },
+        ],
+      },
+    ],
+    allLink: { label: "All Articles", href: "/library" },
+  },
 ];
 
 export default function Header({ forceSolid = false, startTransparent = false }: { forceSolid?: boolean; startTransparent?: boolean }) {
   const [open, setOpen] = useState(false);
+  const [mobileNavOpen, setMobileNavOpen] = useState<string | null>(null);
   const [solid, setSolid] = useState(forceSolid && !startTransparent);
   const [modalOpen, setModalOpen] = useState(false);
   const headerRef = useRef<HTMLElement>(null);
@@ -133,6 +260,7 @@ export default function Header({ forceSolid = false, startTransparent = false }:
 
   useEffect(() => {
     document.body.style.overflow = open ? "hidden" : "";
+    if (!open) setMobileNavOpen(null);
     return () => { document.body.style.overflow = ""; };
   }, [open]);
 
@@ -339,7 +467,7 @@ export default function Header({ forceSolid = false, startTransparent = false }:
 
               {/* ── About us ── */}
               <li className={dd.item}>
-                <a href="/team" className={dd.link}>
+                <a href="/about-us" className={dd.link}>
                   About us <Chevron className={dd.chevron} />
                 </a>
                 <div className={`${dd.panel} ${dd.panelAbout}`}>
@@ -347,7 +475,7 @@ export default function Header({ forceSolid = false, startTransparent = false }:
                     <p className={dd.colTitle}>About Us</p>
                     <div className={dd.colLinks}>
                       {[
-                        { label: "Team", href: "/team#management-team" },
+                        // { label: "Team", href: "/team#management-team" }, // "Team" dropdown link disabled per request
                         { label: "FAQ", href: "/faq" },
                         { label: "Testimonials", href: "/testimonials" },
                         { label: "Engagement Models", href: "/engagement-models-process" },
@@ -359,7 +487,7 @@ export default function Header({ forceSolid = false, startTransparent = false }:
                         <a key={l.label} href={l.href} className={dd.colLink}>{l.label}</a>
                       ))}
                     </div>
-                    <a href="/team" className={dd.allLink}>About us</a>
+                    <a href="/about-us" className={dd.allLink}>About us</a>
                   </div>
                   <div className={dd.aboutNumbers}>
                     <p className={dd.colTitle}>Nexterse LLC in numbers</p>
@@ -459,20 +587,31 @@ export default function Header({ forceSolid = false, startTransparent = false }:
         aria-label="Menu"
         aria-hidden={!open}
       >
+        <div className={styles.panelTop}>
+          <div className={styles.panelContact}>
+            <span className={styles.panelHeading}>Get in touch</span>
+            <ul className={styles.contactList}>
+              {CONTACTS.map((c) => (
+                <li key={c.label}>
+                  <a href={c.href}>{c.label}</a>
+                </li>
+              ))}
+            </ul>
+          </div>
 
-
-        <div className={styles.panelContact}>
-          <span className={styles.panelHeading}>Get in touch</span>
-          <ul className={styles.contactList}>
-            {CONTACTS.map((c) => (
-              <li key={c.label}>
-                <a href={c.href}>{c.label}</a>
-              </li>
-            ))}
-          </ul>
+          <a
+            href="https://portal.nexterse.com/login/"
+            target="_blank"
+            rel="noreferrer noopener"
+            className={styles.portalLink}
+            aria-label="Open Nexterse portal"
+          >
+            <span className={styles.portalLogo} aria-hidden="true" />
+          </a>
         </div>
 
-        <nav className={styles.panelNav}>
+
+        <nav className={styles.panelNav} aria-label="Menu links">
           {PANEL_LINKS.map((l) => (
             <a
               key={l.label}
@@ -483,6 +622,73 @@ export default function Header({ forceSolid = false, startTransparent = false }:
               {l.label}
             </a>
           ))}
+        </nav>
+
+        <nav className={styles.mobileNav} aria-label="Mobile navigation">
+          {MOBILE_NAV_ITEMS.map((item) => {
+            const hasDropdown = Boolean(item.columns?.length);
+            const isItemOpen = mobileNavOpen === item.label;
+            const itemId = `mobile-nav-${item.label.toLowerCase().replace(/[^a-z0-9]+/g, "-")}`;
+
+            if (!hasDropdown && item.href) {
+              return (
+                <a
+                  key={item.label}
+                  href={item.href}
+                  className={`${styles.mobileNavRow} ${styles.mobileNavLink}`}
+                  onClick={() => setOpen(false)}
+                >
+                  {item.label}
+                </a>
+              );
+            }
+
+            return (
+              <div
+                key={item.label}
+                className={`${styles.mobileNavItem} ${isItemOpen ? styles.mobileNavItemOpen : ""}`}
+              >
+                <button
+                  type="button"
+                  className={styles.mobileNavTrigger}
+                  aria-expanded={isItemOpen}
+                  aria-controls={itemId}
+                  onClick={() => setMobileNavOpen(isItemOpen ? null : item.label)}
+                >
+                  <span>{item.label}</span>
+                  <Chevron className={styles.mobileNavChevron} />
+                </button>
+                {isItemOpen && (
+                  <div id={itemId} className={styles.mobileSubnav}>
+                    {item.columns?.map((col, index) => (
+                      <div key={`${item.label}-${col.title ?? index}`} className={styles.mobileSubCol}>
+                        {col.title && <p className={styles.mobileSubTitle}>{col.title}</p>}
+                        {col.links.map((link) => (
+                          <a
+                            key={link.label}
+                            href={link.href}
+                            className={styles.mobileSubLink}
+                            onClick={() => setOpen(false)}
+                          >
+                            {link.label}
+                          </a>
+                        ))}
+                      </div>
+                    ))}
+                    {item.allLink && (
+                      <a
+                        href={item.allLink.href}
+                        className={styles.mobileAllLink}
+                        onClick={() => setOpen(false)}
+                      >
+                        {item.allLink.label}
+                      </a>
+                    )}
+                  </div>
+                )}
+              </div>
+            );
+          })}
         </nav>
 
         <div className={styles.panelSection}>
@@ -497,7 +703,7 @@ export default function Header({ forceSolid = false, startTransparent = false }:
                 aria-label={s.label}
                 className={styles.socialLink}
               >
-                {s.icon}
+                <span className={styles.socialIcon} style={{ "--icon-url": `url(${s.src})`, "--icon-size": `${s.size}px` } as React.CSSProperties} aria-hidden="true" />
               </a>
             ))}
           </div>

@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Image from "next/image";
-import CaseCards, { type CaseCard } from "@/components/home/CaseCards";
+import CaseCards from "@/components/home/CaseCards";
 import ServicesReviewSlider from "@/components/services/ServicesReviewSlider";
 import ServicesAchievements, { type Badge } from "@/components/services/ServicesAchievements";
 import ServicesFaqBlock, { type FaqItem } from "@/components/services/ServicesFaqBlock";
@@ -61,7 +61,7 @@ const SOLUTIONS = [
     blocks: [
       { head: "Predictive warehouse operations", text: "Machine learning models anticipate congestion points, optimize labor allocation, improve dock scheduling, and support faster inventory movement." },
       { head: "Automated yard management system (YMS)", text: "Computer Vision-powered YMS uses OCR on gate cameras and yard devices to identify trailers, verify seal integrity, monitor movement, and prioritize yard operations." },
-      { head: "Cold chain and predictive spoilage prevention", text: "IoT monitoring and predictive models analyze refrigeration performance, voltage, and vibration telemetry to detect reefer failures before they occur." },
+      { head: "Cold chain and predictive spoilage prevention", text: "Sensor monitoring and predictive models analyze refrigeration performance, voltage, and vibration telemetry to detect reefer failures before they occur." },
       { head: "Product integrity and damage control", text: "Monitoring systems track handling conditions across storage and transportation, identifying risks before product quality is compromised." },
     ],
   },
@@ -79,9 +79,9 @@ const SOLUTIONS = [
 const IMPROVES = [
   {
     icon: "/logistics-development/06_Internet-of-Things-and-telematics-systems-02.svg",
-    title: "Internet of Things and telematics systems",
+    title: "Telematics and predictive monitoring systems",
     desc: "Your fleet continuously generates the data that defines delivery speed, maintenance planning, and asset performance. Our telematics solutions create a single operational environment across transportation and warehouse operations, giving dispatchers, operators, and leadership full visibility into how assets move and perform.",
-    linkLabel: "IoT development services",
+    linkLabel: "Predictive maintenance development",
     href: "/services/predictive-maintenance",
   },
   {
@@ -101,48 +101,7 @@ const IMPROVES = [
 ];
 
 // ─── Cases (5) ────────────────────────────────────────────────────────────────
-const LOG_CASES: CaseCard[] = [
-  {
-    banner: "/logistics-development/02_TLNIKA5-1.png",
-    name: "TL Nika",
-    title: "Transportation management system",
-    text: "A comprehensive solution for companies operating in the logistics industry, covering all the major aspects of transport and cargo management.",
-    href: "/portfolio/tl-nika",
-    tags: ["Enterprise"],
-  },
-  {
-    banner: "/logistics-development/09_inbound_transportation_kanban_board011@2x.png",
-    name: "Toyota ERP/CRM",
-    title: "Toyota custom ERP/CRM system",
-    text: "A custom ERP/CRM for Business Car Group – Russia's largest Toyota and Lexus dealer network – that replaced decade-old disjointed tools with a unified platform, cutting sales cycles by 30% across 20 dealer centers.",
-    href: "/portfolio/toyota-custom-erp-crm-system",
-    tags: ["Enterprise"],
-  },
-  {
-    banner: "/logistics-development/01_Boxfwd-Pers.png",
-    name: "Boxforward",
-    title: "Boxforward freight forwarding logistics web service",
-    text: "~40% improvement in service reliability under peak load – rebuilt a glitch-prone freight logistics platform to a secure architecture with payment processing rated A+ by ssllabs.",
-    href: "/portfolio/boxforward",
-    tags: ["Startups"],
-  },
-  {
-    banner: "/logistics-development/06_Cover-dashboard-1.png",
-    name: "BitterBier POS",
-    title: "Counter-service POS for an 8-location Dutch beer & snack chain",
-    text: "BitterBier runs 8 Dutch beer-and-snack bars and was held back by an outdated POS system that lost orders at the counter. We built a touchscreen POS that cuts entry to ~32 seconds, doubles peak throughput, and recovers ~€120,000 a year in walkaways.",
-    href: "/portfolio/bitterbier-pos",
-    tags: ["IoT", "Enterprise"],
-  },
-  {
-    banner: "/logistics-development/01_fuelz-main-screen-image-persp.png",
-    name: "Fuelz",
-    title: "Fuelz aggregator web platform",
-    text: "A heating oil price aggregator that cut buyers' delivery costs by up to 20% through real-time price comparison across 20+ UK suppliers, with built-in order management and operator analytics.",
-    href: "/portfolio/fuelz-aggregator-web-platform",
-    tags: ["Enterprise"],
-  },
-];
+
 
 // ─── Roadmap (3 phases) ───────────────────────────────────────────────────────
 const ROADMAP = [
@@ -229,7 +188,7 @@ const LOG_FAQ: FaqItem[] = [
   },
   {
     question: "Can we deploy predictive maintenance AI to our fleet if our trucks frequently drive through “dead zones” with zero cellular connectivity?",
-    answer: "Yes. We engineer Offline-First Edge AI Telematics. The predictive machine learning models are compressed (TinyML) and installed directly on the truck's onboard IoT gateway. The AI continuously monitors engine CAN bus data (like oil pressure and vibration) locally. If an anomaly is detected, it triggers an instant dashboard warning for the driver and syncs the telemetry to the cloud later when the truck enters a Wi-Fi or 5G zone.",
+    answer: "Yes. We engineer Offline-First Edge AI Telematics. The predictive machine learning models are compressed (TinyML) and installed directly on the truck's onboard edge gateway. The AI continuously monitors engine CAN bus data (like oil pressure and vibration) locally. If an anomaly is detected, it triggers an instant dashboard warning for the driver and syncs the telemetry to the cloud later when the truck enters a Wi-Fi or 5G zone.",
   },
   {
     question: "How do we safely integrate Agentic AI workflows with our legacy on-premises ERP (e.g., SAP or Oracle)?",
@@ -241,29 +200,24 @@ const LOG_FAQ: FaqItem[] = [
   },
   {
     question: "How do you handle the massive latency of processing telematics from 10,000 trucks simultaneously?",
-    answer: "Sending millions of IoT pings to a central cloud database every second will crash standard applications and inflate AWS costs. We use Distributed Stream Processing Architectures (such as Apache Flink). This allows our systems to process, filter, and analyze the high-velocity fleet data in-stream (in memory) before it even hits the database, ensuring your AI Control Tower updates in sub-second real-time.",
+    answer: "Sending millions of telemetry pings to a central cloud database every second will crash standard applications and inflate AWS costs. We use Distributed Stream Processing Architectures (such as Apache Flink). This allows our systems to process, filter, and analyze the high-velocity fleet data in-stream (in memory) before it even hits the database, ensuring your AI Control Tower updates in sub-second real-time.",
   },
 ];
 
 // ─── Awards (clone badges) ────────────────────────────────────────────────────
 const LOG_BADGES: Badge[] = [
-  { src: "/logistics-development/06_techreviewer_badge_2026-12.svg", alt: "techreviewer.co 2026 — Top Software Development Companies" },
-  { src: "/logistics-development/06_techreviewer_badge_2026-14.svg", alt: "techreviewer.co 2026 — Top IoT Development Companies" },
-  { src: "/logistics-development/06_techreviewer_badge_2026-09.svg", alt: "techreviewer.co 2026 — Top Enterprise Software Development Companies" },
-  { src: "/logistics-development/03_Badge-1-1.svg", alt: "Top software development company in Massachusetts" },
-  { src: "/logistics-development/12_5ca49c9f6cb37e33319e1162_Goodfirms.svg", alt: "GoodFirms badge" },
-  { src: "/logistics-development/12_5ca49c9f8ff5ad26d13b6845_TDA.svg", alt: "TDA badge" },
-  { src: "/logistics-development/12_5ca49c9f6cb37e49a79e1163_changed.svg", alt: "AWS partner badge" },
-  { src: "/logistics-development/12_IoT-Services-2025.svg", alt: "IoT Services 2025" },
-  { src: "/logistics-development/12_Custom-Web-Design-Development-2025.svg", alt: "Custom Web Design Development 2025" },
-  { src: "/logistics-development/12_Mobile-Software-Development-2025.svg", alt: "Mobile Software Development 2025" },
-  { src: "/logistics-development/12_Responsive-Design-Development-2025.svg", alt: "Responsive Design Development 2025" },
-  { src: "/logistics-development/12_Business-Intelligence-Services-2024.svg", alt: "Business Intelligence Services 2024" },
-  { src: "/logistics-development/01_top_clutch.co_user_experience_company_manufacturing_boston.svg", alt: "Clutch — Top UX company manufacturing Boston" },
-  { src: "/logistics-development/01_top_clutch.co_software_developers_supply_chain_logistics_and_transport_providence.svg", alt: "Clutch — Top supply chain, logistics & transport software developers Providence" },
-  { src: "/logistics-development/01_top_clutch.co_app_development_company_manufacturing_providence.svg", alt: "Clutch — Top app development company manufacturing Providence" },
-  { src: "/logistics-development/01_top_clutch.co_user_experience_company_information_technology_boston.svg", alt: "Clutch — Top UX company IT Boston" },
-  { src: "/logistics-development/01_top_clutch.co_software_developers_supply_chain_logistics_and_transport_boston.svg", alt: "Clutch — Top supply chain, logistics & transport software developers Boston" },
+  { src: "/badges_fix/06_techreviewer_badge_2026-12.svg", alt: "techreviewer.co 2026 — Top Software Development Companies" },
+  { src: "/badges_fix/06_techreviewer_badge_2026-09.svg", alt: "techreviewer.co 2026 — Top Enterprise Software Development Companies" },
+  { src: "/badges_fix/12_5ca49c9f6cb37e33319e1162_Goodfirms.svg", alt: "GoodFirms badge" },
+  { src: "/badges_fix/12_5ca49c9f8ff5ad26d13b6845_TDA.svg", alt: "TDA badge" },
+  { src: "/badges_fix/12_5ca49c9f6cb37e49a79e1163_changed.svg", alt: "AWS partner badge" },
+  { src: "/badges_fix/12_Custom-Web-Design-Development-2025.svg", alt: "Custom Web Design Development 2025" },
+  { src: "/badges_fix/12_Mobile-Software-Development-2025.svg", alt: "Mobile Software Development 2025" },
+  { src: "/badges_fix/12_Responsive-Design-Development-2025.svg", alt: "Responsive Design Development 2025" },
+  { src: "/badges_fix/12_Business-Intelligence-Services-2024.svg", alt: "Business Intelligence Services 2024" },
+  { src: "/badges_fix/01_top_clutch.co_user_experience_company_manufacturing_boston.svg", alt: "Clutch — Top UX company manufacturing Boston" },
+  { src: "/badges_fix/01_top_clutch.co_user_experience_company_information_technology_boston.svg", alt: "Clutch — Top UX company IT Boston" },
+  { src: "/badges_fix/01_top_clutch.co_software_developers_supply_chain_logistics_and_transport_boston.svg", alt: "Clutch — Top supply chain, logistics & transport software developers Boston" },
 ];
 
 // ─── Awesome guides (blog, clone content) ─────────────────────────────────────
@@ -277,7 +231,7 @@ const LOG_BLOG_FEATURED: AdlcFeaturedPost = {
 };
 const LOG_BLOG_SIDE: AdlcBlogPost[] = [
   { href: "/blog/software-outsourcing-rates-overview", title: "Software Outsourcing Costs [2026 Updated] – Overview", readTime: "22 mins", date: "December 23, 2024" },
-  { href: "/blog/internet-of-things-in-logistics", title: "Exploring: 11 Positive Effects of Internet of Things in Logistics", readTime: "23 mins", date: "March 15, 2025" },
+  { href: "/blog/ai-in-logistics-fleet-management", title: "Exploring: 11 Ways AI Is Transforming Logistics", readTime: "23 mins", date: "March 15, 2025" },
 ];
 
 // ─── Component ────────────────────────────────────────────────────────────────
@@ -347,31 +301,6 @@ export default function LogisticsPage() {
           </div>
         </div>
 
-        {/* ── Citation ───────────────────────────────────────────────────── */}
-        <section className={styles.processTestimonialSection}>
-          <div className="container">
-            <div className={styles.processTestimonial}>
-              <div className={styles.ptRight}>
-                <span className={styles.ptQuoteMark}>&ldquo;&ldquo;</span>
-                <blockquote className={styles.ptQuote}>
-                  In the dynamic world of logistics, relying on off-the-shelf solutions is like trying to navigate a complex river with a map for a different one. The true path to efficiency, resilience, and growth is forged with custom software, tailored to the unique currents of your operations. It&apos;s not just a tool; it&apos;s the compass that guides your business to the future.
-                </blockquote>
-              </div>
-              <div className={styles.ptLeft}>
-                <Image
-                  src="/logistics-development/12_Yury-Shamrey-300x300.png"
-                  alt="Yury Shamrei"
-                  width={72}
-                  height={72}
-                  className={styles.ptPhoto}
-                />
-                <span className={styles.ptName}>Yury Shamrei</span>
-                <span className={styles.ptPosition}>CEO</span>
-              </div>
-            </div>
-          </div>
-        </section>
-
         {/* ── Improves itself (3 cards) ──────────────────────────────────── */}
         <section className={`${styles.blockLight} ${styles.logisticsImprovesBlock}`}>
           <div className="container">
@@ -379,7 +308,7 @@ export default function LogisticsPage() {
               We build a logistics system that <span className={styles.accent}>improves</span> itself
             </h2>
             <p className={styles.sectionDesc}>
-              Logistics performance depends on how quickly operations turn data into action. Fleet movement, warehouse execution, delivery planning, and supplier coordination require systems that function as a single structure. We build logistics environments where telematics, ERP, TMS, WMS, and operational workflows work as one decision layer — IoT, AI, and machine learning support live execution and help the system grow with your business.
+              Logistics performance depends on how quickly operations turn data into action. Fleet movement, warehouse execution, delivery planning, and supplier coordination require systems that function as a single structure. We build logistics environments where telematics, ERP, TMS, WMS, and operational workflows work as one decision layer — AI and machine learning support live execution and help the system grow with your business.
             </p>
             <div className={styles.logisticsImprovesGrid}>
               {IMPROVES.map((c) => (
@@ -401,13 +330,12 @@ export default function LogisticsPage() {
         <div id="log-cases">
           <CaseCards
             heading={<>Logistics software we <span>developed</span></>}
-            cards={LOG_CASES}
             windowed
           />
         </div>
 
         {/* ── Reviews ────────────────────────────────────────────────────── */}
-        <ServicesReviewSlider />
+        <ServicesReviewSlider primary="software" count={6} secondaryCount={1} lead={["Krenar Komoni"]} />
 
         {/* ── CTA: Start Your Transformation ─────────────────────────────── */}
         <div className={`${styles.inlineCta} ${styles.logisticsGradientCta}`}>

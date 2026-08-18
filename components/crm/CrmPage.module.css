@@ -136,58 +136,6 @@
 }
 
 /* ─── Logos ──────────────────────────────────────────────────────────────── */
-.logosSection {
-  background: #fff;
-  padding: 32px 0;
-}
-
-.logosWrapper {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 24px 40px;
-}
-
-.logoImg {
-  max-height: 38px;
-  width: auto;
-  opacity: 0.75;
-  filter: grayscale(1);
-  transition: opacity 0.3s, filter 0.3s;
-}
-
-.logoImg:hover {
-  opacity: 1;
-  filter: grayscale(0);
-}
-
-/* Compliance badges row */
-.complianceSection {
-  background: #fff;
-  padding: 40px 0 64px;
-}
-
-.complianceWrapper {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 24px 48px;
-}
-
-.complianceImg {
-  max-height: 64px;
-  width: auto;
-  opacity: 0.75;
-  filter: grayscale(0.2);
-  transition: opacity 0.3s;
-}
-
-.complianceImg:hover {
-  opacity: 1;
-}
-
 /* ─── Industry Focused (Services Cards) ─────────────────────────────────── */
 .industrySection {
   background: #fff;
@@ -196,6 +144,7 @@
 
 .servicesSection {
   padding-top: clamp(4.5rem, 6vw, 6rem);
+  padding-bottom: 64px;
 }
 
 .sectionHeader {
@@ -1599,84 +1548,9 @@
 
 .achNavBtn:hover { border-color: #3cc4e5; }
 
-/* ─── Citation ───────────────────────────────────────────────────────────── */
-.citeSection {
-  width: min(calc(100% - clamp(2.5rem, 6vw, 6rem)), 73.75rem);
-  margin: clamp(4.5rem, 6vw, 6.25rem) auto clamp(4.5rem, 6vw, 6rem);
-  padding: clamp(3rem, 4.5vw, 4rem) clamp(2rem, 5vw, 4.5rem);
-  background: linear-gradient(to right, rgba(60, 196, 229, 0.10) 0%, rgba(60, 196, 229, 0.03) 100%);
-}
-
-.citeSlide {
-  display: flex;
-  gap: clamp(4rem, 8vw, 8rem);
-  align-items: center;
-}
-
-@media (max-width: 768px) {
-  .citeSection { width: calc(100% - 2.5rem); margin-block: 4rem; padding: 48px 24px; }
-  .citeSlide { flex-direction: column; align-items: flex-start; gap: 2rem; }
-}
-
-.citeText {
-  font-family: var(--font-inter-tight), "Inter Tight", sans-serif;
-  font-size: clamp(1.125rem, 1.55vw, 1.375rem);
-  line-height: 1.65;
-  color: #112244;
-  font-style: italic;
-  margin: 0;
-}
-
-.citeAuthor {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  flex-shrink: 0;
-}
-
-.citePhoto {
-  width: 72px;
-  height: 72px;
-  border-radius: 4px;
-  object-fit: cover;
-  margin-bottom: 1.75rem;
-}
-
-.citeName {
-  font-family: var(--font-inter-tight), "Inter Tight", sans-serif;
-  font-size: clamp(1.125rem, 1.5vw, 1.375rem);
-  font-weight: 400;
-  color: #112244;
-  margin: 0;
-}
-
-.citePos {
-  font-family: var(--font-inter-tight), "Inter Tight", sans-serif;
-  font-size: 0.875rem;
-  color: #5e6d8e;
-  margin: 4px 0 0;
-}
-
-.citeQuoteWrap {
-  flex: 1;
-  display: flex;
-  align-items: flex-start;
-  gap: clamp(1rem, 2vw, 1.5rem);
-}
-
-.citeQuoteMark {
-  color: #112244;
-  display: block;
-  font-family: Georgia, serif;
-  font-size: 3.5rem;
-  letter-spacing: -0.05em;
-  line-height: 1;
-  margin-top: -0.2em;
-}
-
 /* ─── Case Solutions (Cost of legacy) ──────────────────────────────────── */
 .csSection {
-  padding: clamp(1rem, 2vw, 2rem) 0 clamp(4.5rem, 7vw, 7rem);
+  padding: 64px 0;
   background: #fff;
 }
 
@@ -2041,31 +1915,3 @@
   .clLinkLabel { white-space: normal; }
 }
 /* Requested logo module color/alignment normalization */
-.logosSection :global(.container) {
-  max-width: min(100%, 1420px);
-  margin: 0 auto;
-  padding-inline: clamp(1.25rem, 3vw, 2.5rem);
-}
-
-.logosWrapper {
-  justify-content: center;
-  align-items: center;
-  margin: 0 auto;
-  gap: 24px clamp(28px, 3.2vw, 56px);
-}
-
-.logoImg {
-  display: block;
-  max-height: 38px;
-  width: auto;
-  height: auto;
-  opacity: 1;
-  object-fit: contain;
-  filter: brightness(0) saturate(0) invert(35%) sepia(16%) saturate(10) hue-rotate(175deg) brightness(75%) contrast(100%);
-  transition: filter 0.25s ease;
-}
-
-.logoImg:hover {
-  opacity: 1;
-  filter: none;
-}

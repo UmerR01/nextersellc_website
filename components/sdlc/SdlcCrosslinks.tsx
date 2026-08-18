@@ -5,7 +5,7 @@ import styles from "@/components/engagement/EngCrosslinksBlock.module.css";
 const links = [
   { text: "Our software development ", last: "services", href: "/services/custom-software-development" },
   { text: "ADLC for AI-powered ", last: "systems", href: "/adlc" },
-  { text: "More about ", last: "Nexterse LLC", href: "/team#management-team" },
+  { text: "More about ", last: "Nexterse LLC", href: "/about-us" },
 ];
 
 export default function SdlcCrosslinks() {

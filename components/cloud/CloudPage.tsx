@@ -2,66 +2,15 @@
 
 import { useState } from "react";
 import Image from "next/image";
-import CaseCards, { type CaseCard } from "@/components/home/CaseCards";
+import CaseCards from "@/components/home/CaseCards";
 import ServicesReviewSlider from "@/components/services/ServicesReviewSlider";
 import ServicesAchievements from "@/components/services/ServicesAchievements";
 import ServicesFaqBlock, { type FaqItem } from "@/components/services/ServicesFaqBlock";
 import ServicesBlogSection, { type FeaturedPost, type BlogPost } from "@/components/services/ServicesBlogSection";
 import LetsStart from "@/components/home/LetsStart";
+import AipocLogos from "@/components/aipoc/AipocLogos";
 import CloudArticleLayout from "./CloudArticleLayout";
 import styles from "./CloudPage.module.css";
-
-// ─── Cases ────────────────────────────────────────────────────────────────────
-const CLOUD_CASES: CaseCard[] = [
-  {
-    banner: "/web-app-development/02_Frame-1787-1.png",
-    name: "Dexai Robotics",
-    title: "Cloud control interface for robot operation",
-    text: "A cloud-connected control platform that freed Dexai Robotics' restaurant staff from engineer dependency – cutting robot setup time per shift by ~65% and reducing interaction errors by ~50% through real-time state monitoring and offline-capable edge sync.",
-    href: "/portfolio/dexai-robotics-graphical-user-interface",
-    tags: ["IoT", "Startups"],
-  },
-  {
-    banner: "/web-app-development/09_inbound_transportation_kanban_board011@2x.png",
-    name: "Toyota ERP/CRM",
-    title: "Cloud ERP/CRM platform for Toyota dealers",
-    text: "A cloud-hosted ERP/CRM for Business Car Group – Russia's largest Toyota and Lexus dealer network – that replaced decade-old disjointed tools with a unified, scalable platform, cutting sales cycles by 30% across 20 dealer centers.",
-    href: "/portfolio/toyota-custom-erp-crm-system",
-    tags: ["Enterprise"],
-  },
-  {
-    banner: "/web-app-development/07_Cover-right-2.png",
-    name: "AI Knowledge Base",
-    title: "Cloud-native AI knowledge base for a global nonprofit",
-    text: "A Middle Eastern nonprofit working in cultural preservation needed a single searchable repository for fragmented research. We built a multilingual, cloud-native AI platform that now indexes 12,000+ artifacts across 18 countries with elastic scaling.",
-    href: "/portfolio/ai-powered-knowledge-base",
-    tags: ["AI inside", "Enterprise"],
-  },
-  {
-    banner: "/web-app-development/10_Cover-1-1.png",
-    name: "AI Route Optimization",
-    title: "Cloud AI/ML route optimization for a freight service",
-    text: "Lifted on-time delivery to 98% – without expanding the fleet. A cloud-based AI/ML platform that plans and reoptimizes B2B/B2C routes in real time with traffic, weather, and capacity constraints, cutting last-mile costs by 22%.",
-    href: "/portfolio/ai-route-optimization",
-    tags: ["AI inside", "Enterprise"],
-  },
-  {
-    banner: "/web-app-development/10_Cover-2-1.png",
-    name: "Dental AI Platform",
-    title: "HIPAA-aligned cloud AI platform for dental imaging",
-    text: "A HIPAA-aligned, cloud-hosted AI platform for a dental imaging provider that reduced wait times by 37%, increased daily throughput by 22%, and lowered no-shows by 29%.",
-    href: "/portfolio/ai-patient-flow-dental",
-    tags: ["AI inside", "Enterprise"],
-  },
-  {
-    banner: "/web-app-development/12_cover-2.png",
-    name: "Real Estate Platform",
-    title: "Cloud migration and enhancement of a property platform",
-    text: "A 5-year enhancement and cloud migration of a franchise property platform that brought ~30% more property enquiries through a redesign and CoreLogic data integration – without rebuilding the platform from the ground up.",
-    href: "/portfolio/real-estate-platform",
-    tags: ["Enterprise"],
-  },
-];
 
 // ─── Services tabs ────────────────────────────────────────────────────────────
 const SERVICE_TABS = [
@@ -141,36 +90,26 @@ const SOLUTIONS = [
     label: "Cloud migration & modernization",
     title: "Cloud migration & modernization",
     desc: "We migrate on-premise and legacy applications to AWS, Azure, or Google Cloud with a workload-by-workload strategy. We rehost, replatform, or refactor based on business value and risk, modernize data stores, and re-architect toward managed services. The result is lower infrastructure cost, better scalability, and a foundation ready for automation and AI.",
-    ctaLabel: "Cloud migration services",
-    ctaHref: "/services/cloud-development",
   },
   {
     label: "Cloud-native app development",
     title: "Cloud-native application development",
     desc: "We build new applications designed for the cloud from the start — containerized, elastic, and observable. Using microservices, serverless functions, and managed data services, we deliver systems that scale with demand and stay resilient. AI capabilities such as retrieval, classification, and assistants are integrated through managed cloud AI platforms.",
-    ctaLabel: "Cloud-native development",
-    ctaHref: "/services/cloud-development",
   },
   {
     label: "SaaS on the cloud",
     title: "SaaS product development on the cloud",
     desc: "We design and develop multi-tenant SaaS products with tenant-aware architecture, elastic scaling, usage metering, and secure isolation. We build the release foundations, admin controls, and integration layers SaaS teams need. AI can be added for support automation, account insights, and embedded assistants that respect each tenant's data boundaries.",
-    ctaLabel: "SaaS development services",
-    ctaHref: "/services/saas-development",
   },
   {
     label: "Serverless & microservices",
     title: "Serverless & microservices",
     desc: "We build event-driven, serverless, and microservice architectures that scale automatically and reduce operational overhead. Using functions, managed queues, API gateways, and container orchestration, we deliver systems that are cost-efficient at low load and elastic at peak, with clear service boundaries and independent deployability.",
-    ctaLabel: "Cloud architecture services",
-    ctaHref: "/services/cloud-development",
   },
   {
     label: "Cloud data platforms & AI",
     title: "Cloud data platforms & AI",
     desc: "We build cloud data platforms — data lakes, warehouses, and streaming pipelines — that turn raw data into a governed, usable asset. On top of that foundation we add analytics and AI: retrieval, forecasting, and model endpoints running on managed cloud services with access control and cost visibility built in.",
-    ctaLabel: "Data & AI development",
-    ctaHref: "/services/ai-software-development",
   },
 ];
 
@@ -663,23 +602,7 @@ export default function CloudPage() {
       
 
       <CloudArticleLayout>
-        {/* ── Logos ────────────────────────────────────────────────────────── */}
-      <section className={styles.logosSection}>
-        <div className="container">
-          <div className={styles.logosWrapper}>
-            {[
-              { src: "/web-app-development/12_5c98e3297e3bc92bd580af14_toyota_l-1.svg", alt: "Toyota" },
-              { src: "/web-app-development/12_5ecce35506c123c4936b0303_dexai-logo-1.svg", alt: "Dexai" },
-              { src: "/web-app-development/12_5ecba50d2b50b63a7a1871ad_beiersdorf-logo-1.svg", alt: "Beiersdorf" },
-              { src: "/web-app-development/01_ClimeCo.svg", alt: "ClimeCo" },
-              { src: "/web-app-development/01_TL-Nika.svg", alt: "TL Nika" },
-              { src: "/web-app-development/10_SMI_Logo-1-2-2.svg", alt: "SMI" },
-            ].map((logo) => (
-              <Image key={logo.alt} src={logo.src} alt={logo.alt} width={120} height={38} className={styles.logoImg} />
-            ))}
-          </div>
-        </div>
-      </section>
+        <AipocLogos />
 
         {/* ── Benefits ─────────────────────────────────────────────────── */}
         <section id="cloud-benefits" className={styles.benefitSection}>
@@ -805,9 +728,6 @@ export default function CloudPage() {
               <div className={styles.vertTabContent}>
                 <h3 className={styles.vertTabTitle}>{SOLUTIONS[activeSolutionTab].title}</h3>
                 <p className={styles.vertTabDesc}>{SOLUTIONS[activeSolutionTab].desc}</p>
-                <a href={SOLUTIONS[activeSolutionTab].ctaHref} className={`btn btn-outline ${styles.vertTabCta}`}>
-                  {SOLUTIONS[activeSolutionTab].ctaLabel}
-                </a>
               </div>
             </div>
           </div>
@@ -895,62 +815,16 @@ export default function CloudPage() {
           </div>
         </section>
 
-        {/* ── Process testimonial (own white section) ───────────────────── */}
-        <section className={styles.processTestimonialSection}>
-          <div className="container">
-            <div className={styles.processTestimonial}>
-              <div className={styles.ptRight}>
-                <span className={styles.ptQuoteMark}>&ldquo;&ldquo;</span>
-                <blockquote className={styles.ptQuote}>
-                  A well-structured development process is the foundation of successful software projects. By combining clear planning, an agile approach, and continuous early feedback from the Client, we ensure that every product we build perfectly aligns with business goals. Our approach minimizes risks, optimizes resources, and delivers high-quality applications on time and within budget.
-                </blockquote>
-              </div>
-              <div className={styles.ptLeft}>
-                <Image
-                  src="/web-app-development/01_Frame-101745.png"
-                  alt="Irina Baryshnaya"
-                  width={72}
-                  height={72}
-                  className={styles.ptPhoto}
-                />
-                <span className={styles.ptName}>Irina Baryshnaya</span>
-                <span className={styles.ptPosition}>Unit Coordinator / Head of PM</span>
-              </div>
-            </div>
-          </div>
-        </section>
-
         {/* ── Case Studies ──────────────────────────────────────────────── */}
         <div id="cloud-cases">
           <CaseCards
             heading={<>Our recent <span>works</span></>}
-            cards={CLOUD_CASES}
             windowed
           />
         </div>
 
         {/* ── Review Slider ─────────────────────────────────────────────── */}
-        <ServicesReviewSlider />
-
-        {/* ── PDF Guide CTA ─────────────────────────────────────────────── */}
-        <div id="cloud-guide" className={styles.pdfCta}>
-          <div className="container">
-            <div className={styles.pdfCtaInner}>
-              <div className={styles.pdfCtaBody}>
-                <h2 className={styles.pdfCtaTitle}>
-                  Quick playbook: selecting a cloud development partner [pdf]
-                </h2>
-                <p className={styles.pdfCtaDesc}>
-                  Get a free playbook that will help you find the right cloud development partner. No email required.
-                </p>
-              </div>
-              <a href="#" className={`btn btn-accent ${styles.pdfCtaBtn}`}>
-                <span className={styles.pdfIcon}>PDF</span>
-                Get in Touch
-              </a>
-            </div>
-          </div>
-        </div>
+        <ServicesReviewSlider primary="software" count={7} secondaryCount={2} />
 
         {/* ── Security ──────────────────────────────────────────────────── */}
         <section className={`${styles.blockLight} ${styles.securityBlock}`}>
@@ -1022,7 +896,7 @@ export default function CloudPage() {
                     {m.label}
                   </button>
                 ))}
-                <a href="#cloud-engagement-models" className={styles.engModelLink}>
+                <a href="/engagement-models-process" className={styles.engModelLink}>
                   Engagement models
                   <span className={styles.engModelArrow} />
                 </a>

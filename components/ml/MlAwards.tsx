@@ -3,13 +3,13 @@ import { useEffect, useState } from "react";
 import styles from "@/components/custom-software/CSAwardsBlock.module.css";
 
 const AWARDS = [
-  { src: "/ml/05_top_clutch.co_machine_learning_company_boston_2026-2.svg", alt: "Clutch 2026 award — Top Machine Learning Company in Boston, awarded to Nexterse LLC" },
-  { src: "/ml/06_techreviewer_badge_2026-11.svg", alt: "techreviewer.co 2026 — Nexterse LLC listed among Top Machine Learning Development Companies" },
-  { src: "/ml/06_top-ai-development-companies.svg", alt: "GoodFirms badge — Nexterse LLC listed as a Top AI Development Company" },
-  { src: "/ml/06_techreviewer_badge_2026-04.svg", alt: "techreviewer.co 2026 — Nexterse LLC listed among Top AI Software Development Companies" },
-  { src: "/ml/12_5ca49c9f6cb37e33319e1162_Goodfirms.svg", alt: "Goodfirms badge icon" },
-  { src: "/ml/12_5ca49c9f8ff5ad26d13b6845_TDA.svg", alt: "TDA badge icon" },
-  { src: "/ml/12_5ca49c9f6cb37e49a79e1163_changed.svg", alt: "AWS partner badge icon" },
+  { src: "/badges_fix/05_top_clutch.co_machine_learning_company_boston_2026-2.svg", alt: "Clutch 2026 award — Top Machine Learning Company in Boston, awarded to Nexterse LLC" },
+  { src: "/badges_fix/06_techreviewer_badge_2026-11.svg", alt: "techreviewer.co 2026 — Nexterse LLC listed among Top Machine Learning Development Companies" },
+  { src: "/badges_fix/06_top-ai-development-companies.svg", alt: "GoodFirms badge — Nexterse LLC listed as a Top AI Development Company" },
+  { src: "/badges_fix/06_techreviewer_badge_2026-04.svg", alt: "techreviewer.co 2026 — Nexterse LLC listed among Top AI Software Development Companies" },
+  { src: "/badges_fix/12_5ca49c9f6cb37e33319e1162_Goodfirms.svg", alt: "Goodfirms badge icon" },
+  { src: "/badges_fix/12_5ca49c9f8ff5ad26d13b6845_TDA.svg", alt: "TDA badge icon" },
+  { src: "/badges_fix/12_5ca49c9f6cb37e49a79e1163_changed.svg", alt: "AWS partner badge icon" },
 ];
 
 export default function MlAwards() {
