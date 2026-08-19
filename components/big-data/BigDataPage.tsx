@@ -1,7 +1,7 @@
 import Image from "next/image";
 import CaseCards from "@/components/home/CaseCards";
 import LetsStart from "@/components/home/LetsStart";
-import AdlcBlog, { type AdlcFeaturedPost, type AdlcBlogPost } from "@/components/adlc/AdlcBlog";
+import AwesomeStories from "@/components/blog/AwesomeStories";
 import BigDataHero from "./BigDataHero";
 import AipocLogos from "@/components/aipoc/AipocLogos";
 import BigDataReviews from "./BigDataReviews";
@@ -10,7 +10,7 @@ import BigDataFaq from "./BigDataFaq";
 import BigDataCrosslinks from "./BigDataCrosslinks";
 import BigDataIndustries from "./BigDataIndustries";
 import BigDataTechStack from "./BigDataTechStack";
-import BigDataArticleLayout from "./BigDataArticleLayout";
+import ArticleLayout from "@/components/shared/ArticleLayout";
 import styles from "./BigDataPage.module.css";
 
 // ─── Big Data services built for operational scale (6 cards) ─────────────────
@@ -61,7 +61,7 @@ const PROCESS: { title: string; text: string; bullets?: string[] }[] = [
 ];
 
 // ─── Awesome stories (blog) ────────────────────────────────────────────────────
-const BD_BLOG_FEATURED: AdlcFeaturedPost = {
+const BD_BLOG_FEATURED = {
   href: "/blog/enterprise-ai-adoption-risks",
   title: "Top 7 Enterprise AI Adoption Risks in 2026 — and How to De-Risk Them",
   image: "/big-data/07_figure-1-og-1200x630-1-300x175.png",
@@ -69,10 +69,21 @@ const BD_BLOG_FEATURED: AdlcFeaturedPost = {
   readTime: "29 mins",
   date: "July 15, 2026",
 };
-const BD_BLOG_SIDE: AdlcBlogPost[] = [
+const BD_BLOG_SIDE = [
   { href: "/blog/ai-and-big-data-synergy", title: "AI and Big Data: How They Work Together", readTime: "15 mins", date: "January 28, 2026" },
   { href: "/blog/best-10-companies-providing-data-visualization-services", title: "Best 10 Companies Providing Data Visualization Services", readTime: "29 mins", date: "December 30, 2025" },
   { href: "/blog/ai-ready-data-visualization-best-practices-examples", title: "AI-Ready Data Visualization – Best Practices & Examples", readTime: "28 mins", date: "December 26, 2025" },
+];
+
+const CONTENTS = [
+  { href: "#bd-services", label: "Services" },
+  { href: "#bd-why", label: "Why Nexterse LLC" },
+  { href: "#bd-cases", label: "Case studies" },
+  { href: "#bd-techstack", label: "Tech stack" },
+  { href: "#bd-industries", label: "Industries" },
+  { href: "#bd-benefits", label: "Benefits" },
+  { href: "#bd-faq", label: "FAQ" },
+  { href: "#bd-process", label: "Process" },
 ];
 
 export default function BigDataPage() {
@@ -80,7 +91,7 @@ export default function BigDataPage() {
     <>
       <BigDataHero />
 
-      <BigDataArticleLayout>
+      <ArticleLayout contents={CONTENTS} ariaLabel="Big Data development page contents">
         <AipocLogos />
 
         {/* ── Big Data services built for operational scale ── */}
@@ -276,11 +287,11 @@ export default function BigDataPage() {
         <LetsStart />
 
         {/* ── Awesome stories (blog) ── */}
-        <AdlcBlog featured={BD_BLOG_FEATURED} sidePosts={BD_BLOG_SIDE} />
+        <AwesomeStories category="ai" />
 
         {/* ── More about Nexterse LLC (crosslinks) ── */}
         <BigDataCrosslinks />
-      </BigDataArticleLayout>
+      </ArticleLayout>
     </>
   );
 }

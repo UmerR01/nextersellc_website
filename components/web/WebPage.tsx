@@ -6,10 +6,10 @@ import CaseCards from "@/components/home/CaseCards";
 import ServicesReviewSlider from "@/components/services/ServicesReviewSlider";
 import ServicesAchievements from "@/components/services/ServicesAchievements";
 import ServicesFaqBlock, { type FaqItem } from "@/components/services/ServicesFaqBlock";
-import ServicesBlogSection, { type FeaturedPost, type BlogPost } from "@/components/services/ServicesBlogSection";
+import AwesomeStories from "@/components/blog/AwesomeStories";
 import LetsStart from "@/components/home/LetsStart";
 import AipocLogos from "@/components/aipoc/AipocLogos";
-import WebArticleLayout from "./WebArticleLayout";
+import ArticleLayout from "@/components/shared/ArticleLayout";
 import styles from "./WebPage.module.css";
 
 // ─── Hero background (career-style SVG) ───────────────────────────────────────
@@ -398,7 +398,7 @@ const WEB_FAQ: FaqItem[] = [
 ];
 
 // ─── Web-specific blog posts ──────────────────────────────────────────────────
-const WEB_BLOG_FEATURED: FeaturedPost = {
+const WEB_BLOG_FEATURED = {
   href: "/blog/agentic-rag-enterprise-guide",
   title: "Agentic RAG: The Complete Enterprise Implementation Guide for 2026",
   image: "/web-app-development/07_Score-answers-not-impressions-1024x576.jpg",
@@ -407,7 +407,7 @@ const WEB_BLOG_FEATURED: FeaturedPost = {
   date: "July 3, 2026",
 };
 
-const WEB_BLOG_SIDE: BlogPost[] = [
+const WEB_BLOG_SIDE = [
   {
     href: "/blog/10-questions-ai-development-company",
     title: "10 Questions to Ask an AI Development Company before Signing",
@@ -552,6 +552,18 @@ const APPROACH_ITEMS = [
   },
 ];
 
+const CONTENTS = [
+  { href: "#web-benefits", label: "Benefits" },
+  { href: "#web-services", label: "Services" },
+  { href: "#web-solutions", label: "Solutions" },
+  { href: "#web-process", label: "Process" },
+  { href: "#web-cases", label: "Case studies" },
+  { href: "#web-tech-stack", label: "Tech stack" },
+  { href: "#web-industries", label: "Industries" },
+  { href: "#web-approach", label: "Approach" },
+  { href: "#web-faq", label: "FAQ" },
+];
+
 export default function WebPage() {
   const [activeServiceTab, setActiveServiceTab] = useState(0);
   const [activeSolutionTab, setActiveSolutionTab] = useState(0);
@@ -609,7 +621,7 @@ export default function WebPage() {
 
       
 
-      <WebArticleLayout>
+      <ArticleLayout contents={CONTENTS} ariaLabel="Web page contents">
         <AipocLogos />
 
         {/* ── Benefits ─────────────────────────────────────────────────── */}
@@ -1043,8 +1055,8 @@ export default function WebPage() {
         <LetsStart />
 
         {/* ── Blog ──────────────────────────────────────────────────────── */}
-        <ServicesBlogSection featured={WEB_BLOG_FEATURED} sidePosts={WEB_BLOG_SIDE} />
-      </WebArticleLayout>
+        <AwesomeStories category="development" />
+      </ArticleLayout>
     </>
   );
 }

@@ -7,11 +7,11 @@ import ServicesReviewSlider from "@/components/services/ServicesReviewSlider";
 import ServicesAchievements, { type Badge } from "@/components/services/ServicesAchievements";
 import ServicesFaqBlock, { type FaqItem } from "@/components/services/ServicesFaqBlock";
 import LetsStart from "@/components/home/LetsStart";
-import AdlcBlog, { type AdlcFeaturedPost, type AdlcBlogPost } from "@/components/adlc/AdlcBlog";
+import AwesomeStories from "@/components/blog/AwesomeStories";
 import RagHero from "./RagHero";
 import AipocLogos from "@/components/aipoc/AipocLogos";
 import RagTechStack from "./RagTechStack";
-import RagArticleLayout from "./RagArticleLayout";
+import ArticleLayout from "@/components/shared/ArticleLayout";
 import styles from "./RagPage.module.css";
 
 // ─── Intro leverage bullets ───────────────────────────────────────────────────
@@ -252,7 +252,7 @@ const RAG_BADGES: Badge[] = [
 ];
 
 // ─── Awesome stories (blog) ───────────────────────────────────────────────────
-const RAG_BLOG_FEATURED: AdlcFeaturedPost = {
+const RAG_BLOG_FEATURED = {
   href: "/blog/ai-legacy-modernization-companies",
   title: "Top AI Legacy Modernization Companies (2026): Who Actually Embeds AI into Old Systems",
   image: "/rag-development/07_Figure-1-Enablement-vs-migration.png",
@@ -260,13 +260,25 @@ const RAG_BLOG_FEATURED: AdlcFeaturedPost = {
   readTime: "20 mins",
   date: "July 13, 2026",
 };
-const RAG_BLOG_SIDE: AdlcBlogPost[] = [
+const RAG_BLOG_SIDE = [
   { href: "/blog/eu-ai-act-custom-ai-development", title: "The EU AI Act: How It Changes AI development and What It Means for Custom AI", readTime: "25 mins", date: "July 9, 2026" },
   { href: "/blog/questions-to-ask-ai-development-company", title: "10 questions to Ask an AI Development Company before Signing", readTime: "18 mins", date: "July 7, 2026" },
   { href: "/blog/agentic-rag-enterprise-implementation-guide", title: "Agentic RAG: The Complete Enterprise Implementation Guide for 2026", readTime: "35 mins", date: "July 3, 2026" },
 ];
 
 // ─── Component ────────────────────────────────────────────────────────────────
+const CONTENTS = [
+  { href: "#rag-services", label: "Services" },
+  { href: "#rag-accuracy", label: "Accuracy control" },
+  { href: "#rag-secure", label: "Secure RAG architecture" },
+  { href: "#rag-roi", label: "AI ROI" },
+  { href: "#rag-vsft", label: "RAG vs Fine-tuning" },
+  { href: "#rag-faq", label: "FAQ" },
+  { href: "#rag-tech", label: "Tech stack" },
+  { href: "#rag-cases", label: "Our recent AI cases" },
+  { href: "#rag-pilot", label: "4-weeks pilot" },
+];
+
 export default function RagPage() {
   const [activeChallenge, setActiveChallenge] = useState(0);
   const challenge = CHALLENGES[activeChallenge];
@@ -275,7 +287,7 @@ export default function RagPage() {
     <>
       <RagHero />
 
-      <RagArticleLayout>
+      <ArticleLayout contents={CONTENTS} ariaLabel="RAG development page contents">
         <AipocLogos />
         {/* ── Intro: RAG transforms your data ─────────────────────────────── */}
         <section className={`${styles.blockLight} ${styles.ragIntroBlock}`}>
@@ -501,8 +513,8 @@ export default function RagPage() {
         <LetsStart />
 
         {/* ── Awesome stories (blog) ──────────────────────────────────────── */}
-        <AdlcBlog featured={RAG_BLOG_FEATURED} sidePosts={RAG_BLOG_SIDE} />
-      </RagArticleLayout>
+        <AwesomeStories category="ai" />
+      </ArticleLayout>
     </>
   );
 }

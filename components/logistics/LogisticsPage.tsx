@@ -7,10 +7,10 @@ import ServicesReviewSlider from "@/components/services/ServicesReviewSlider";
 import ServicesAchievements, { type Badge } from "@/components/services/ServicesAchievements";
 import ServicesFaqBlock, { type FaqItem } from "@/components/services/ServicesFaqBlock";
 import LetsStart from "@/components/home/LetsStart";
-import AdlcBlog, { type AdlcFeaturedPost, type AdlcBlogPost } from "@/components/adlc/AdlcBlog";
+import AwesomeStories from "@/components/blog/AwesomeStories";
 import LogisticsHero from "./LogisticsHero";
 import AipocLogos from "@/components/aipoc/AipocLogos";
-import LogisticsArticleLayout from "./LogisticsArticleLayout";
+import ArticleLayout from "@/components/shared/ArticleLayout";
 import styles from "./LogisticsPage.module.css";
 
 // ─── Challenges (4 cards) ─────────────────────────────────────────────────────
@@ -221,7 +221,7 @@ const LOG_BADGES: Badge[] = [
 ];
 
 // ─── Awesome guides (blog, clone content) ─────────────────────────────────────
-const LOG_BLOG_FEATURED: AdlcFeaturedPost = {
+const LOG_BLOG_FEATURED = {
   href: "/blog/top-offshore-software-development-companies",
   title: "15+ Top Offshore Software Development Companies in 2026",
   image: "/logistics-development/06_Top-Offshore-Software-Development-Companies-1024x578.png",
@@ -229,12 +229,22 @@ const LOG_BLOG_FEATURED: AdlcFeaturedPost = {
   readTime: "37 mins",
   date: "March 3, 2026",
 };
-const LOG_BLOG_SIDE: AdlcBlogPost[] = [
+const LOG_BLOG_SIDE = [
   { href: "/blog/software-outsourcing-rates-overview", title: "Software Outsourcing Costs [2026 Updated] – Overview", readTime: "22 mins", date: "December 23, 2024" },
   { href: "/blog/ai-in-logistics-fleet-management", title: "Exploring: 11 Ways AI Is Transforming Logistics", readTime: "23 mins", date: "March 15, 2025" },
 ];
 
 // ─── Component ────────────────────────────────────────────────────────────────
+const CONTENTS = [
+  { href: "#log-challenges", label: "Challenges" },
+  { href: "#log-solutions", label: "Solutions" },
+  { href: "#log-cases", label: "Case studies" },
+  { href: "#log-roadmap", label: "Roadmap" },
+  { href: "#log-faq", label: "FAQ" },
+  { href: "#log-cost", label: "Cost factors" },
+  { href: "#log-why", label: "Why Nexterse LLC" },
+];
+
 export default function LogisticsPage() {
   const [activeCost, setActiveCost] = useState(COST_TABS.length - 1);
 
@@ -242,7 +252,7 @@ export default function LogisticsPage() {
     <>
       <LogisticsHero />
 
-      <LogisticsArticleLayout>
+      <ArticleLayout contents={CONTENTS} ariaLabel="Logistics page contents">
         <AipocLogos />
 
         {/* ── Challenges ─────────────────────────────────────────────────── */}
@@ -440,7 +450,7 @@ export default function LogisticsPage() {
         <ServicesAchievements badges={LOG_BADGES} />
 
         {/* ── Awesome guides (blog) ──────────────────────────────────────── */}
-        <AdlcBlog featured={LOG_BLOG_FEATURED} sidePosts={LOG_BLOG_SIDE} />
+        <AwesomeStories category="enterprise" />
 
         {/* ── Let's Start ────────────────────────────────────────────────── */}
         <LetsStart />
@@ -474,7 +484,7 @@ export default function LogisticsPage() {
             </div>
           </div>
         </section>
-      </LogisticsArticleLayout>
+      </ArticleLayout>
     </>
   );
 }

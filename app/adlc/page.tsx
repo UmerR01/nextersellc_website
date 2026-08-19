@@ -13,8 +13,8 @@ import AdlcTechPartners from "@/components/adlc/AdlcTechPartners";
 import AdlcReviews from "@/components/adlc/AdlcReviews";
 import TeamAwards from "@/components/team/TeamAwards";
 import LetsStart from "@/components/home/LetsStart";
-import AdlcBlog from "@/components/adlc/AdlcBlog";
-import AdlcArticleLayout from "@/components/adlc/AdlcArticleLayout";
+import AwesomeStories from "@/components/blog/AwesomeStories";
+import ArticleLayout from "@/components/shared/ArticleLayout";
 import CaseCards from "@/components/home/CaseCards";
 
 export const metadata: Metadata = {
@@ -23,13 +23,22 @@ export const metadata: Metadata = {
     "Nexterse engineers secure, predictable AI systems using the Agentic Development Lifecycle (ADLC) — a structured 7-phase framework that controls risk, manages costs, and delivers measurable ROI.",
 };
 
+const CONTENTS = [
+  { href: "#adlc-phases", label: "ADLC phases" },
+  { href: "#adlc-value", label: "Value" },
+  { href: "#adlc-ai-ecosystem", label: "AI ecosystem" },
+  { href: "#adlc-new-standards", label: "New standards" },
+  { href: "#adlc-principles", label: "ADLC principles" },
+  { href: "#adlc-cases", label: "Our recent AI cases" },
+];
+
 export default function AdlcPage() {
   return (
     <>
       <Header />
       <main>
         <AdlcHero />
-        <AdlcArticleLayout>
+        <ArticleLayout contents={CONTENTS} ariaLabel="ADLC page contents">
           <AipocLogos />
           <AdlcVerticalTabs />
           <AdlcDiagram />
@@ -45,8 +54,8 @@ export default function AdlcPage() {
           <AdlcReviews />
           <TeamAwards />
           <LetsStart />
-          <AdlcBlog />
-        </AdlcArticleLayout>
+          <AwesomeStories category="ai" />
+        </ArticleLayout>
       </main>
     </>
   );

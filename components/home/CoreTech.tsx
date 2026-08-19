@@ -18,6 +18,15 @@ const ROWS: { title: string; logos: string[] }[] = [
     title: "Mobile development",
     logos: ["r4-1.svg", "r4-2.svg", "r4-3.svg"],
   },
+  {
+    title: "CRM & ERP",
+    logos: [
+      "/home-core/highlevel.png",
+      "/home-core/odoo.png",
+      "/home-core/salesforce.png",
+      "/home-core/msdynamics.png",
+    ],
+  },
 ];
 
 export default function CoreTech() {
@@ -37,7 +46,7 @@ export default function CoreTech() {
                   <div key={file} className={styles.logo}>
                     {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img
-                      src={`/tech/${file}`}
+                      src={file.startsWith("/") ? file : `/tech/${file}`}
                       alt=""
                       className={styles.logoImg}
                     />

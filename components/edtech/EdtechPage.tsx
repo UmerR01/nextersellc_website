@@ -7,10 +7,10 @@ import ServicesReviewSlider from "@/components/services/ServicesReviewSlider";
 import ServicesAchievements, { type Badge } from "@/components/services/ServicesAchievements";
 import ServicesFaqBlock, { type FaqItem } from "@/components/services/ServicesFaqBlock";
 import LetsStart from "@/components/home/LetsStart";
-import AdlcBlog, { type AdlcFeaturedPost, type AdlcBlogPost } from "@/components/adlc/AdlcBlog";
+import AwesomeStories from "@/components/blog/AwesomeStories";
 import EdtechHero from "./EdtechHero";
 import AipocLogos from "@/components/aipoc/AipocLogos";
-import EdtechArticleLayout from "./EdtechArticleLayout";
+import ArticleLayout from "@/components/shared/ArticleLayout";
 import styles from "./EdtechPage.module.css";
 
 // ─── Dual-engine (2 rich cards with bullets) ──────────────────────────────────
@@ -154,7 +154,7 @@ const EDT_BADGES: Badge[] = [
 ];
 
 // ─── Awesome stories (blog, clone content) ────────────────────────────────────
-const EDT_BLOG_FEATURED: AdlcFeaturedPost = {
+const EDT_BLOG_FEATURED = {
   href: "/blog/ai-solutions-for-education",
   title: "AI in Education: Use Cases, Benefits, and Best Practices",
   image: "/edtech-development/11_20944385-1024x683.jpg",
@@ -162,13 +162,24 @@ const EDT_BLOG_FEATURED: AdlcFeaturedPost = {
   readTime: "11 mins",
   date: "February 18, 2026",
 };
-const EDT_BLOG_SIDE: AdlcBlogPost[] = [
+const EDT_BLOG_SIDE = [
   { href: "/blog/15-best-offshore-software-development-companies", title: "15+ Top Offshore Software Development Companies in 2026", readTime: "37 mins", date: "March 3, 2026" },
   { href: "/blog/software-outsourcing-rates-overview", title: "Software Outsourcing Costs [2026 Updated] – Overview", readTime: "22 mins", date: "December 23, 2024" },
   { href: "/blog/it-outsourcing-overview-trends", title: "Overview & Trends: IT Outsourcing in 2026", readTime: "28 mins", date: "December 7, 2025" },
 ];
 
 // ─── Component ────────────────────────────────────────────────────────────────
+const CONTENTS = [
+  { href: "#edt-ecosystems", label: "Autonomous learning ecosystems" },
+  { href: "#edt-pilot", label: "Pilot" },
+  { href: "#edt-legacy", label: "Legacy modernization" },
+  { href: "#edt-security", label: "Security, compliance, and governance" },
+  { href: "#edt-cases", label: "Case studies" },
+  { href: "#edt-benefits", label: "Benefits" },
+  { href: "#edt-process", label: "Process" },
+  { href: "#edt-faq", label: "FAQ" },
+];
+
 export default function EdtechPage() {
   const [activeLegacy, setActiveLegacy] = useState(0);
   const legacyTab = LEGACY[activeLegacy];
@@ -177,7 +188,7 @@ export default function EdtechPage() {
     <>
       <EdtechHero />
 
-      <EdtechArticleLayout>
+      <ArticleLayout contents={CONTENTS} ariaLabel="Edtech page contents">
         <AipocLogos />
 
         {/* ── Dual-engine education software ─────────────────────────────── */}
@@ -421,8 +432,8 @@ export default function EdtechPage() {
         <LetsStart />
 
         {/* ── Awesome stories (blog) ─────────────────────────────────────── */}
-        <AdlcBlog featured={EDT_BLOG_FEATURED} sidePosts={EDT_BLOG_SIDE} />
-      </EdtechArticleLayout>
+        <AwesomeStories category="enterprise" />
+      </ArticleLayout>
     </>
   );
 }

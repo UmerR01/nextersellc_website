@@ -6,10 +6,10 @@ import CaseCards from "@/components/home/CaseCards";
 import ServicesReviewSlider from "@/components/services/ServicesReviewSlider";
 import ServicesAchievements from "@/components/services/ServicesAchievements";
 import ServicesFaqBlock, { type FaqItem } from "@/components/services/ServicesFaqBlock";
-import ServicesBlogSection, { type FeaturedPost, type BlogPost } from "@/components/services/ServicesBlogSection";
+import AwesomeStories from "@/components/blog/AwesomeStories";
 import LetsStart from "@/components/home/LetsStart";
 import AipocLogos from "@/components/aipoc/AipocLogos";
-import CloudArticleLayout from "./CloudArticleLayout";
+import ArticleLayout from "@/components/shared/ArticleLayout";
 import styles from "./CloudPage.module.css";
 
 // ─── Services tabs ────────────────────────────────────────────────────────────
@@ -298,7 +298,7 @@ const CLOUD_FAQ: FaqItem[] = [
 ];
 
 // ─── Cloud-specific blog posts ────────────────────────────────────────────────
-const CLOUD_BLOG_FEATURED: FeaturedPost = {
+const CLOUD_BLOG_FEATURED = {
   href: "/blog/cloud-migration-strategy-guide",
   title: "Cloud Migration Strategy: The Complete Enterprise Playbook for 2026",
   image: "/web-app-development/07_Score-answers-not-impressions-1024x576.jpg",
@@ -307,7 +307,7 @@ const CLOUD_BLOG_FEATURED: FeaturedPost = {
   date: "July 3, 2026",
 };
 
-const CLOUD_BLOG_SIDE: BlogPost[] = [
+const CLOUD_BLOG_SIDE = [
   {
     href: "/blog/10-questions-cloud-development-company",
     title: "10 Questions to Ask a Cloud Development Company before Signing",
@@ -450,6 +450,18 @@ const APPROACH_ITEMS = [
     desc: "Cloud and AI features can distort a product's cost profile if resources are over-provisioned or each request triggers heavy calls. We design for control and FinOps from the start.",
     bullets: [],
   },
+];
+
+const CONTENTS = [
+  { href: "#cloud-benefits", label: "Benefits" },
+  { href: "#cloud-services", label: "Services" },
+  { href: "#cloud-solutions", label: "Solutions" },
+  { href: "#cloud-process", label: "Process" },
+  { href: "#cloud-cases", label: "Case studies" },
+  { href: "#cloud-tech-stack", label: "Tech stack" },
+  { href: "#cloud-industries", label: "Industries" },
+  { href: "#cloud-approach", label: "Approach" },
+  { href: "#cloud-faq", label: "FAQ" },
 ];
 
 export default function CloudPage() {
@@ -601,7 +613,7 @@ export default function CloudPage() {
 
       
 
-      <CloudArticleLayout>
+      <ArticleLayout contents={CONTENTS} ariaLabel="Cloud page contents">
         <AipocLogos />
 
         {/* ── Benefits ─────────────────────────────────────────────────── */}
@@ -1032,8 +1044,8 @@ export default function CloudPage() {
         <LetsStart />
 
         {/* ── Blog ──────────────────────────────────────────────────────── */}
-        <ServicesBlogSection featured={CLOUD_BLOG_FEATURED} sidePosts={CLOUD_BLOG_SIDE} />
-      </CloudArticleLayout>
+        <AwesomeStories category="development" />
+      </ArticleLayout>
     </>
   );
 }

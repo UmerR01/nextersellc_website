@@ -4,10 +4,10 @@ import CaseCards from "@/components/home/CaseCards";
 import ServicesReviewSlider from "@/components/services/ServicesReviewSlider";
 import ServicesAchievements from "@/components/services/ServicesAchievements";
 import ServicesFaqBlock, { type FaqItem } from "@/components/services/ServicesFaqBlock";
-import ServicesBlogSection, { type FeaturedPost, type BlogPost } from "@/components/services/ServicesBlogSection";
+import AwesomeStories from "@/components/blog/AwesomeStories";
 import LetsStart from "@/components/home/LetsStart";
 import AipocLogos from "@/components/aipoc/AipocLogos";
-import MobileArticleLayout from "./MobileArticleLayout";
+import ArticleLayout from "@/components/shared/ArticleLayout";
 import MobileCrosslinks from "./MobileCrosslinks";
 import clStyles from "@/components/esd/ESDCrosslinks.module.css";
 import styles from "./MobilePage.module.css";
@@ -385,7 +385,7 @@ const MOBILE_FAQ: FaqItem[] = [
   },
 ];
 
-const MOBILE_BLOG_FEATURED: FeaturedPost = {
+const MOBILE_BLOG_FEATURED = {
   href: "/blog/top-10-mobile-app-development-firms",
   title: "Top Mobile App Development Firms in 2026 [Updated]",
   image: "/mobile-app-development/03_Top-Mobile-App-Development-Companies-1024x578.png",
@@ -394,7 +394,7 @@ const MOBILE_BLOG_FEATURED: FeaturedPost = {
   date: "March 1, 2026",
 };
 
-const MOBILE_BLOG_SIDE: BlogPost[] = [
+const MOBILE_BLOG_SIDE = [
   {
     href: "/blog/ux-design-consulting",
     title: "11 Design Tips That Boost User Experience From an Experienced UX Design Consulting Company",
@@ -416,6 +416,19 @@ const MOBILE_BLOG_SIDE: BlogPost[] = [
 ];
 
 // ─── Component ────────────────────────────────────────────────────────────────
+const CONTENTS = [
+  { href: "#mobile-services", label: "Services" },
+  { href: "#mobile-ai", label: "AI mobile development" },
+  { href: "#mobile-principles", label: "Principles and best practices" },
+  { href: "#mobile-features", label: "Features" },
+  { href: "#mobile-industries", label: "Industries" },
+  { href: "#mobile-tech-stack", label: "Tech stack" },
+  { href: "#mobile-cases", label: "Case studies" },
+  { href: "#mobile-advanced-tech", label: "Advanced tech" },
+  { href: "#mobile-why", label: "Why Nexterse" },
+  { href: "#mobile-faq", label: "FAQ" },
+];
+
 export default function MobilePage() {
   return (
     <>
@@ -561,7 +574,7 @@ export default function MobilePage() {
         </div>
       </section>
 
-      <MobileArticleLayout>
+      <ArticleLayout contents={CONTENTS} ariaLabel="Mobile page contents">
 
         {/* ── 2. LOGOS ─────────────────────────────────────────────────── */}
         <AipocLogos />
@@ -959,12 +972,12 @@ export default function MobilePage() {
         <LetsStart />
 
         {/* ── 24. BLOG ─────────────────────────────────────────────────── */}
-        <ServicesBlogSection featured={MOBILE_BLOG_FEATURED} sidePosts={MOBILE_BLOG_SIDE} />
+        <AwesomeStories category="development" />
 
         {/* ── 25. CROSSLINKS ───────────────────────────────────────────── */}
         <MobileCrosslinks />
 
-      </MobileArticleLayout>
+      </ArticleLayout>
     </>
   );
 }

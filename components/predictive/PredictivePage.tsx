@@ -7,10 +7,10 @@ import ServicesReviewSlider from "@/components/services/ServicesReviewSlider";
 import ServicesAchievements from "@/components/services/ServicesAchievements";
 import ServicesFaqBlock, { type FaqItem } from "@/components/services/ServicesFaqBlock";
 import LetsStart from "@/components/home/LetsStart";
-import AdlcBlog, { type AdlcFeaturedPost, type AdlcBlogPost } from "@/components/adlc/AdlcBlog";
+import AwesomeStories from "@/components/blog/AwesomeStories";
 import PredictiveHero from "./PredictiveHero";
 import AipocLogos from "@/components/aipoc/AipocLogos";
-import PredictiveArticleLayout from "./PredictiveArticleLayout";
+import ArticleLayout from "@/components/shared/ArticleLayout";
 import styles from "./PredictivePage.module.css";
 
 // ─── Solutions we develop (8 cards) ───────────────────────────────────────────
@@ -360,7 +360,7 @@ const WHY_CARDS = [
 ];
 
 // ─── Awesome stories (blog, clone content) ────────────────────────────────────
-const PDM_BLOG_FEATURED: AdlcFeaturedPost = {
+const PDM_BLOG_FEATURED = {
   href: "/blog/trends-in-ai-predictive-maintenance",
   title: "9 Trends in AI-Powered Predictive Maintenance for 2026 [Updated]",
   image: "/predictive-maintenance/12_IoT-Trends-1024x578.png",
@@ -368,13 +368,24 @@ const PDM_BLOG_FEATURED: AdlcFeaturedPost = {
   readTime: "30 mins",
   date: "December 18, 2025",
 };
-const PDM_BLOG_SIDE: AdlcBlogPost[] = [
+const PDM_BLOG_SIDE = [
   { href: "/blog/applied-ai-predictive-maintenance-overview", title: "What's Applied AI: The Next Wave of Predictive Maintenance", readTime: "27 mins", date: "February 27, 2026" },
   { href: "/blog/ai-in-manufacturing", title: "AI in Manufacturing: Real Cases, ROI, and a Pilot Playbook", readTime: "27 mins", date: "March 2, 2026" },
   { href: "/blog/top-ai-predictive-maintenance-companies", title: "Top AI Predictive Maintenance Companies in 2026", readTime: "21 mins", date: "December 30, 2025" },
 ];
 
 // ─── Component ────────────────────────────────────────────────────────────────
+const CONTENTS = [
+  { href: "#pdm-challenges", label: "Challenges" },
+  { href: "#pdm-cases", label: "Case studies" },
+  { href: "#pdm-faq", label: "FAQ" },
+  { href: "#pdm-digital-twins", label: "Digital twins" },
+  { href: "#pdm-tech-stack", label: "Tech stack" },
+  { href: "#pdm-process", label: "Process" },
+  { href: "#pdm-security", label: "Security and data control" },
+  { href: "#pdm-why", label: "Why Nexterse LLC" },
+];
+
 export default function PredictivePage() {
   const [activeTech, setActiveTech] = useState(0);
   const [activeInfraTech, setActiveInfraTech] = useState(4);
@@ -385,7 +396,7 @@ export default function PredictivePage() {
     <>
       <PredictiveHero />
 
-      <PredictiveArticleLayout>
+      <ArticleLayout contents={CONTENTS} ariaLabel="Predictive maintenance page contents">
         <AipocLogos />
 
         {/* ── Solutions we develop ───────────────────────────────────────── */}
@@ -631,8 +642,8 @@ export default function PredictivePage() {
         <LetsStart />
 
         {/* ── Awesome stories ────────────────────────────────────────────── */}
-        <AdlcBlog featured={PDM_BLOG_FEATURED} sidePosts={PDM_BLOG_SIDE} />
-      </PredictiveArticleLayout>
+        <AwesomeStories category="ai" />
+      </ArticleLayout>
     </>
   );
 }

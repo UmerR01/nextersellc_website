@@ -6,12 +6,12 @@ import ServicesReviewSlider from "@/components/services/ServicesReviewSlider";
 import ServicesAchievements, { type Badge } from "@/components/services/ServicesAchievements";
 import ServicesFaqBlock, { type FaqItem } from "@/components/services/ServicesFaqBlock";
 import LetsStart from "@/components/home/LetsStart";
-import AdlcBlog, { type AdlcFeaturedPost, type AdlcBlogPost } from "@/components/adlc/AdlcBlog";
+import AwesomeStories from "@/components/blog/AwesomeStories";
 import AiagentsHero from "./AiagentsHero";
 import AipocLogos from "@/components/aipoc/AipocLogos";
 import AiagentsTechStack from "./AiagentsTechStack";
 import AiagentsCrosslinks from "./AiagentsCrosslinks";
-import AiagentsArticleLayout from "./AiagentsArticleLayout";
+import ArticleLayout from "@/components/shared/ArticleLayout";
 import styles from "./AiagentsPage.module.css";
 
 // ─── Services (3 link cards) ──────────────────────────────────────────────────
@@ -109,7 +109,7 @@ const AIA_FAQ: FaqItem[] = [
 ];
 
 // ─── Awesome stories (blog) ───────────────────────────────────────────────────
-const AIA_BLOG_FEATURED: AdlcFeaturedPost = {
+const AIA_BLOG_FEATURED = {
   href: "/blog/ai-development-costs",
   title: "What Affects AI Development Cost in 2026",
   image: "/ai-agents-development/05_AI-development-costs-1024x578.jpg",
@@ -117,19 +117,30 @@ const AIA_BLOG_FEATURED: AdlcFeaturedPost = {
   readTime: "40 mins",
   date: "March 11, 2026",
 };
-const AIA_BLOG_SIDE: AdlcBlogPost[] = [
+const AIA_BLOG_SIDE = [
   { href: "/blog/software-development-process", title: "Complete Guide: Software Development Process in 14 Steps", readTime: "53 mins", date: "November 19, 2025" },
   { href: "/blog/integrating-ai-into-business", title: "Integrating AI into Business: A Complete Guide For 2026", readTime: "36 mins", date: "March 9, 2025" },
   { href: "/blog/outsource-web-development-decision-making-framework", title: "Outsource Web Development: Decision-Making Framework 2026", readTime: "45 mins", date: "December 5, 2025" },
 ];
 
 // ─── Component ────────────────────────────────────────────────────────────────
+const CONTENTS = [
+  { href: "#ai-services", label: "Services" },
+  { href: "#ai-features", label: "Features" },
+  { href: "#ai-process", label: "Process" },
+  { href: "#ai-cases", label: "Case studies & reviews" },
+  { href: "#ai-tech", label: "Tech stack" },
+  { href: "#ai-benefits", label: "Benefits" },
+  { href: "#ai-why", label: "Why Nexterse" },
+  { href: "#ai-faq", label: "FAQ" },
+];
+
 export default function AiagentsPage() {
   return (
     <>
       <AiagentsHero />
 
-      <AiagentsArticleLayout>
+      <ArticleLayout contents={CONTENTS} ariaLabel="AI agents development page contents">
         <AipocLogos />
         {/* ── Services ───────────────────────────────────────────────────── */}
         <section id="ai-services" className={`${styles.blockWhite} ${styles.agentsServicesBlock}`}>
@@ -247,8 +258,8 @@ export default function AiagentsPage() {
         <AiagentsCrosslinks />
 
         {/* ── Awesome stories (blog) ─────────────────────────────────────── */}
-        <AdlcBlog featured={AIA_BLOG_FEATURED} sidePosts={AIA_BLOG_SIDE} />
-      </AiagentsArticleLayout>
+        <AwesomeStories category="ai" />
+      </ArticleLayout>
     </>
   );
 }

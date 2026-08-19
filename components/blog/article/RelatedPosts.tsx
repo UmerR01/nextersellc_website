@@ -9,8 +9,31 @@ const ClockIcon = () => (
   </svg>
 );
 
+/**
+ * Picks the 3 most relevant other posts by shared category count (most
+ * shared categories first), falling back to array order — the rest of the
+ * list, not a random slice — to fill any remaining slots. Ties keep the
+ * original BLOG_POSTS order, which is already newest-first.
+ */
+function pickRelated(currentId: string): typeof BLOG_POSTS {
+  const current = BLOG_POSTS.find((p) => p.id === currentId);
+  const others = BLOG_POSTS.filter((p) => p.id !== currentId);
+  if (!current) return others.slice(0, 3);
+
+  const currentSlugs = new Set(current.categories.map((c) => c.slug));
+  const scored = others
+    .map((post, index) => ({
+      post,
+      index,
+      shared: post.categories.filter((c) => currentSlugs.has(c.slug)).length,
+    }))
+    .sort((a, b) => b.shared - a.shared || a.index - b.index);
+
+  return scored.slice(0, 3).map((s) => s.post);
+}
+
 export default function RelatedPosts({ currentId }: { currentId: string }) {
-  const posts = BLOG_POSTS.filter((p) => p.id !== currentId).slice(0, 3);
+  const posts = pickRelated(currentId);
 
   return (
     <section className={styles.related}>
@@ -42,15 +65,11 @@ export default function RelatedPosts({ currentId }: { currentId: string }) {
                 </div>
                 <h3 className={styles.cardTitle}>{post.title}</h3>
                 <div className={styles.meta}>
-                  <Image src={post.author.photo} alt={post.author.name} width={40} height={40} className={styles.authorPhoto} />
-                  <div className={styles.metaText}>
-                    <span>{post.author.name}</span>
-                    <span className={styles.metaLine}>
-                      <ClockIcon />
-                      {post.readTime}
-                      <span>| {post.date}</span>
-                    </span>
-                  </div>
+                  <span className={styles.metaLine}>
+                    <ClockIcon />
+                    {post.readTime}
+                    <span>| {post.date}</span>
+                  </span>
                 </div>
               </div>
               <a href={post.href} className={styles.absoluteLink} aria-label={post.title} />

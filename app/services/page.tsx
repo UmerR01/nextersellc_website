@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Header from "@/components/Header";
 import ServicesHero from "@/components/services/ServicesHero";
-import ServicesArticleLayout from "@/components/services/ServicesArticleLayout";
+import ArticleLayout from "@/components/shared/ArticleLayout";
 import AipocLogos from "@/components/aipoc/AipocLogos";
 import ChallengesBlock from "@/components/services/ChallengesBlock";
 import OurServicesCards from "@/components/services/OurServicesCards";
@@ -18,7 +18,7 @@ import ServicesReviewSlider from "@/components/services/ServicesReviewSlider";
 import ServicesAchievements from "@/components/services/ServicesAchievements";
 import DevelopmentCostBlock from "@/components/services/DevelopmentCostBlock";
 import WhyChooseUs from "@/components/services/WhyChooseUs";
-import ServicesBlogSection from "@/components/services/ServicesBlogSection";
+import AwesomeStories from "@/components/blog/AwesomeStories";
 import ServicesFaqBlock from "@/components/services/ServicesFaqBlock";
 import ServicesCrosslinks from "@/components/services/ServicesCrosslinks";
 import LetsStart from "@/components/home/LetsStart";
@@ -31,13 +31,28 @@ export const metadata: Metadata = {
 
 
 
+const CONTENTS = [
+  { href: "#svc-challenges", label: "Challenges" },
+  { href: "#svc-services", label: "Services" },
+  { href: "#svc-ai", label: "AI development" },
+  { href: "#svc-applied-ai", label: "Applied AI services" },
+  { href: "#svc-industries", label: "Industries" },
+  { href: "#svc-process", label: "Process" },
+  { href: "#svc-techstack", label: "Core tech stack" },
+  { href: "#svc-quality", label: "Quality control" },
+  { href: "#svc-cases", label: "Case studies" },
+  { href: "#svc-awards", label: "Awards & recognitions" },
+  { href: "#svc-cost", label: "What affects cost" },
+  { href: "#svc-faq", label: "FAQ" },
+];
+
 export default function ServicesPage() {
   return (
     <>
       <Header />
       <main>
         <ServicesHero />
-        <ServicesArticleLayout>
+        <ArticleLayout contents={CONTENTS} ariaLabel="Services page contents">
           <AipocLogos />
           <ChallengesBlock />
           <OurServicesCards />
@@ -67,10 +82,10 @@ export default function ServicesPage() {
           <DevelopmentCostBlock />
           <WhyChooseUs />
           <LetsStart />
-          <ServicesBlogSection />
+          <AwesomeStories />
           <ServicesFaqBlock />
           <ServicesCrosslinks />
-        </ServicesArticleLayout>
+        </ArticleLayout>
       </main>
     </>
   );

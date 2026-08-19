@@ -4,13 +4,13 @@ import { useState } from "react";
 import Image from "next/image";
 import CaseCards from "@/components/home/CaseCards";
 import LetsStart from "@/components/home/LetsStart";
-import AdlcBlog, { type AdlcFeaturedPost, type AdlcBlogPost } from "@/components/adlc/AdlcBlog";
+import AwesomeStories from "@/components/blog/AwesomeStories";
 import MlHero from "./MlHero";
 import MlReviews from "./MlReviews";
 import MlAwards from "./MlAwards";
 import MlFaq from "./MlFaq";
 import MlIndustries from "./MlIndustries";
-import MlArticleLayout from "./MlArticleLayout";
+import ArticleLayout from "@/components/shared/ArticleLayout";
 import styles from "./MlPage.module.css";
 
 // ─── What ML capabilities does Nexterse LLC cover? (4 cards) ──────────────────
@@ -90,7 +90,7 @@ const WHY = [
 ];
 
 // ─── Awesome stories (blog) ──────────────────────────────────────────────────────
-const ML_BLOG_FEATURED: AdlcFeaturedPost = {
+const ML_BLOG_FEATURED = {
   href: "/blog/it-outsourcing-overview-trends",
   title: "Overview & Trends: IT Outsourcing in 2026",
   image: "/ml/03_5da6e29c58568a3c60f7b538_IT-Outsourcing-2019-Overview-_-Trends.jpg",
@@ -98,10 +98,23 @@ const ML_BLOG_FEATURED: AdlcFeaturedPost = {
   readTime: "28 mins",
   date: "December 7, 2025",
 };
-const ML_BLOG_SIDE: AdlcBlogPost[] = [
+const ML_BLOG_SIDE = [
   { href: "/blog/ai-development-costs", title: "What Affects AI Development Cost in 2026", readTime: "40 mins", date: "March 11, 2026" },
   { href: "/blog/applied-ai-overview", title: "What's Applied AI: The Next Wave of Predictive Maintenance", readTime: "27 mins", date: "February 27, 2026" },
   { href: "/blog/ai-in-manufacturing", title: "AI in Manufacturing: Real Cases, ROI, and a Pilot Playbook", readTime: "27 mins", date: "March 2, 2026" },
+];
+
+const CONTENTS = [
+  { href: "#ml-services", label: "Services" },
+  { href: "#ml-industries", label: "Industries" },
+  { href: "#ml-engagement", label: "Engagement options" },
+  { href: "#ml-adlc", label: "ADLC" },
+  { href: "#ml-maturity", label: "ML maturity model" },
+  { href: "#ml-impact", label: "Business impact" },
+  { href: "#ml-techstack", label: "Tech expertise" },
+  { href: "#ml-cases", label: "Case studies" },
+  { href: "#ml-why", label: "Why Nexterse LLC" },
+  { href: "#ml-faq", label: "FAQ" },
 ];
 
 export default function MlPage() {
@@ -111,7 +124,7 @@ export default function MlPage() {
     <>
       <MlHero />
 
-      <MlArticleLayout>
+      <ArticleLayout contents={CONTENTS} ariaLabel="ML development page contents">
         {/* ── What ML capabilities does Nexterse LLC cover? ── */}
         <section id="ml-services" className={styles.blockWhite}>
           <div className="container">
@@ -322,8 +335,8 @@ export default function MlPage() {
         <LetsStart />
 
         {/* ── Awesome stories (blog) ── */}
-        <AdlcBlog featured={ML_BLOG_FEATURED} sidePosts={ML_BLOG_SIDE} />
-      </MlArticleLayout>
+        <AwesomeStories category="ai" />
+      </ArticleLayout>
     </>
   );
 }

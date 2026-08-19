@@ -10,7 +10,7 @@ import LetsStart from "@/components/home/LetsStart";
 import LlmHero from "./LlmHero";
 import AipocLogos from "@/components/aipoc/AipocLogos";
 import LlmTechStack from "./LlmTechStack";
-import LlmArticleLayout from "./LlmArticleLayout";
+import ArticleLayout from "@/components/shared/ArticleLayout";
 import styles from "./LlmPage.module.css";
 
 // ─── LLM engineering services (4 cards) ───────────────────────────────────────
@@ -186,6 +186,19 @@ const LLM_BADGES: Badge[] = [
 ];
 
 // ─── Component ────────────────────────────────────────────────────────────────
+const CONTENTS = [
+  { href: "#llm-services", label: "Services" },
+  { href: "#llm-tiers", label: "Build vs. Buy vs. Adapt" },
+  { href: "#llm-cases", label: "Case studies" },
+  { href: "#llm-tco", label: "TCO" },
+  { href: "#llm-why", label: "Why Nexterse" },
+  { href: "#llm-dualengine", label: "Dual-engine integration" },
+  { href: "#llm-deployment", label: "Flexible deployment" },
+  { href: "#llm-tech", label: "Tech stack" },
+  { href: "#llm-adlc", label: "Agentic development process" },
+  { href: "#llm-faq", label: "FAQ" },
+];
+
 export default function LlmPage() {
   const [activeTier, setActiveTier] = useState(0);
   const [activeDeploy, setActiveDeploy] = useState(0);
@@ -197,7 +210,7 @@ export default function LlmPage() {
     <>
       <LlmHero />
 
-      <LlmArticleLayout>
+      <ArticleLayout contents={CONTENTS} ariaLabel="LLM development page contents">
         <AipocLogos />
         {/* ── LLM engineering services (4 cards) ──────────────────────────── */}
         <section id="llm-services" className={`${styles.blockWhite} ${styles.llmServicesBlock}`}>
@@ -452,7 +465,7 @@ export default function LlmPage() {
 
         {/* ── Let's Start ─────────────────────────────────────────────────── */}
         <LetsStart />
-      </LlmArticleLayout>
+      </ArticleLayout>
     </>
   );
 }

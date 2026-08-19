@@ -7,7 +7,7 @@ import CaseCards from "@/components/home/CaseCards";
 import MvpReviewSlider from "./MvpReviewSlider";
 import MvpAchievements from "./MvpAchievements";
 import MvpFaqBlock from "./MvpFaqBlock";
-import MvpBlogSection from "./MvpBlogSection";
+import AwesomeStories from "@/components/blog/AwesomeStories";
 
 /* ── Tab data ─────────────────────────────────────────────────────────────── */
 const ourServicesTabs = [
@@ -581,7 +581,7 @@ export default function MvpPage() {
       </section>
 
       {/* ── 20. BLOG SECTION ────────────────────────────────────────────── */}
-      <MvpBlogSection />
+      <AwesomeStories category="guides" />
 
     </div>
   );

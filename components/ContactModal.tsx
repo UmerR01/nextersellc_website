@@ -3,13 +3,13 @@
 import { useState, useEffect } from "react";
 import Image from "next/image";
 import styles from "./ContactModal.module.css";
+import { isValidName, isValidEmail, VALIDATION_MESSAGES } from "@/lib/formValidation";
 
 const CLIENT_LOGOS = [
-  { src: "/logos/toyota.svg",     alt: "Toyota",         w: 110 },
-  { src: "/logos/beiersdorf.svg", alt: "Beiersdorf",     w: 130 },
-  { src: "/logos/dexai.svg",      alt: "DEXAI Robotics", w: 75  },
-  { src: "/logos/climeco.svg",    alt: "ClimeCo",        w: 130 },
-  { src: "/logos/smi.svg",        alt: "SMI",            w: 90  },
+  { src: "/get-partner/insure-modal.png", alt: "Insure", w: 240, h: 44 },
+  { src: "/get-partner/tech-modal.png", alt: "Tech Trio", w: 104, h: 92 },
+  { src: "/get-partner/orion-modal-transparent.png", alt: "Orion", w: 100, h: 100 },
+  { src: "/get-partner/soft-modal.png", alt: "Soft", w: 220, h: 72 },
 ];
 
 const BADGES = [
@@ -57,9 +57,21 @@ export default function ContactModal({ open, onClose }: Props) {
   const [sent, setSent] = useState(false);
   const [fileName, setFileName] = useState("");
   const [status, setStatus] = useState<"idle" | "loading" | "error">("idle");
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [message, setMessage] = useState("");
+  const [errors, setErrors] = useState<{ name?: string; email?: string; message?: string }>({});
 
   useEffect(() => {
-    if (open) { setSent(false); setFileName(""); setStatus("idle"); }
+    if (open) {
+      setSent(false);
+      setFileName("");
+      setStatus("idle");
+      setName("");
+      setEmail("");
+      setMessage("");
+      setErrors({});
+    }
   }, [open]);
 
   useEffect(() => {
@@ -151,8 +163,18 @@ export default function ContactModal({ open, onClose }: Props) {
             ) : (
               <form
                 className={styles.form}
+                noValidate
                 onSubmit={async (e) => {
                   e.preventDefault();
+                  const nextErrors: typeof errors = {};
+                  if (!name.trim()) nextErrors.name = VALIDATION_MESSAGES.required;
+                  else if (!isValidName(name)) nextErrors.name = VALIDATION_MESSAGES.name;
+                  if (!email.trim()) nextErrors.email = VALIDATION_MESSAGES.required;
+                  else if (!isValidEmail(email)) nextErrors.email = VALIDATION_MESSAGES.email;
+                  if (!message.trim()) nextErrors.message = VALIDATION_MESSAGES.required;
+                  setErrors(nextErrors);
+                  if (Object.keys(nextErrors).length > 0) return;
+
                   setStatus("loading");
                   try {
                     const res = await fetch("/api/get-in-touch", {
@@ -169,15 +191,39 @@ export default function ContactModal({ open, onClose }: Props) {
               >
                 <label className={styles.field}>
                   <span className={styles.fieldLabel}>My Name*</span>
-                  <input type="text" name="name" placeholder="John Smith" required disabled={status === "loading"} />
+                  <input
+                    type="text"
+                    name="name"
+                    placeholder="John Smith"
+                    value={name}
+                    onChange={(e) => { setName(e.target.value); setErrors((p) => ({ ...p, name: undefined })); }}
+                    disabled={status === "loading"}
+                  />
+                  {errors.name && <span className={styles.fieldErrorText}>{errors.name}</span>}
                 </label>
                 <label className={styles.field}>
                   <span className={styles.fieldLabel}>Email Address*</span>
-                  <input type="email" name="email" placeholder="name@company.com" required disabled={status === "loading"} />
+                  <input
+                    type="email"
+                    name="email"
+                    placeholder="name@company.com"
+                    value={email}
+                    onChange={(e) => { setEmail(e.target.value); setErrors((p) => ({ ...p, email: undefined })); }}
+                    disabled={status === "loading"}
+                  />
+                  {errors.email && <span className={styles.fieldErrorText}>{errors.email}</span>}
                 </label>
                 <label className={`${styles.field} ${styles.fieldTextarea}`}>
                   <span className={styles.fieldLabel}>Message*</span>
-                  <textarea name="message" rows={3} placeholder="Describe your idea" required disabled={status === "loading"} />
+                  <textarea
+                    name="message"
+                    rows={3}
+                    placeholder="Describe your idea"
+                    value={message}
+                    onChange={(e) => { setMessage(e.target.value); setErrors((p) => ({ ...p, message: undefined })); }}
+                    disabled={status === "loading"}
+                  />
+                  {errors.message && <span className={styles.fieldErrorText}>{errors.message}</span>}
                 </label>
 
                 <p className={styles.privacy}>
@@ -215,19 +261,6 @@ export default function ContactModal({ open, onClose }: Props) {
                 )}
 
                 <div className={styles.manager}>
-                  <div className={styles.managerInfo}>
-                    <Image
-                      src="/cases/woman.jpg"
-                      alt="Account manager"
-                      width={56}
-                      height={56}
-                      className={styles.avatar}
-                    />
-                    <div>
-                      <div className={styles.managerName}>Alex Morgan</div>
-                      <div className={styles.managerRole}>Account Manager</div>
-                    </div>
-                  </div>
                   <a href="https://calendly.com" target="_blank" rel="noreferrer" className={styles.bookBtn}>
                     <CalendarIcon /> Book a consultation
                   </a>
@@ -238,7 +271,7 @@ export default function ContactModal({ open, onClose }: Props) {
 
           {/* ── Right panel ── */}
           <div className={styles.right}>
-            <p className={styles.rightHeading}>Clients who trust us</p>
+            <p className={styles.rightHeading}>Our Partners</p>
 
             <div className={styles.clientLogos}>
               {CLIENT_LOGOS.map((logo) => (
@@ -247,8 +280,9 @@ export default function ContactModal({ open, onClose }: Props) {
                     src={logo.src}
                     alt={logo.alt}
                     width={logo.w}
-                    height={38}
+                    height={logo.h}
                     className={styles.clientLogo}
+                    style={{ width: logo.w, height: logo.h }}
                   />
                 </div>
               ))}

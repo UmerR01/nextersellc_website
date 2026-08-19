@@ -1,10 +1,14 @@
+/* Body h2 = the section titles the Contents sidebar links jump to (e.g.
+   "How to vet a modernization partner yourself"). Sized to match h3's
+   text metrics (see "Group 2 — Global system integrators" for reference)
+   — same font-size/weight/line-height, own margin. */
 .body :global(h2) {
   color: #050505;
-  font-weight: 300;
+  font-weight: 500;
   font-size: 36px;
   line-height: 1.12;
   letter-spacing: 0;
-  margin: 60px 0 24px;
+  margin: 42px 0 16px;
 }
 
 .body :global(h2:first-child) {
@@ -13,11 +17,11 @@
 
 .body :global(h3) {
   color: #050505;
-  font-weight: 500;
-  font-size: 28px;
-  line-height: 1.28;
+  font-weight: 300;
+  font-size: 36px;
+  line-height: 1.12;
   letter-spacing: 0;
-  margin: 42px 0 16px;
+  margin: 60px 0 24px;
 }
 
 .body :global(h3:first-child) {
@@ -171,16 +175,31 @@
   width: auto;
 }
 
+/* Highlighted span — colored emphasis inside a paragraph/list item.
+   Never a link: no href, no pointer cursor, no underline-on-hover. */
+.highlight {
+  color: var(--color-accent);
+  font-weight: 500;
+}
+
+/* "Detail" block: a bold lead term/phrase followed by the rest of the
+   sentence in normal paragraph styling. No underlines anywhere in the
+   template — bold is the only lead-term treatment. */
+.detailLead {
+  font-weight: 600;
+  color: #162540;
+}
+
 @media (max-width: 768px) {
   .body :global(h2) {
     font-size: 28px;
     line-height: 1.16;
-    margin-top: 44px;
   }
 
   .body :global(h3) {
-    font-size: 22px;
-    line-height: 30px;
+    font-size: 28px;
+    line-height: 1.16;
+    margin-top: 44px;
   }
 
   .body :global(p),

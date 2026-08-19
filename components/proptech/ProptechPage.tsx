@@ -7,11 +7,11 @@ import ServicesReviewSlider from "@/components/services/ServicesReviewSlider";
 import ServicesAchievements, { type Badge } from "@/components/services/ServicesAchievements";
 import ServicesFaqBlock, { type FaqItem } from "@/components/services/ServicesFaqBlock";
 import LetsStart from "@/components/home/LetsStart";
-import AdlcBlog, { type AdlcFeaturedPost, type AdlcBlogPost } from "@/components/adlc/AdlcBlog";
+import AwesomeStories from "@/components/blog/AwesomeStories";
 import ProptechHero from "./ProptechHero";
 import AipocLogos from "@/components/aipoc/AipocLogos";
 import ProptechTechStack from "./ProptechTechStack";
-import ProptechArticleLayout from "./ProptechArticleLayout";
+import ArticleLayout from "@/components/shared/ArticleLayout";
 import styles from "./ProptechPage.module.css";
 
 // ─── Solutions (6 icon cards) ─────────────────────────────────────────────────
@@ -180,7 +180,7 @@ const PT_BADGES: Badge[] = [
 ];
 
 // ─── Awesome stories (blog) ───────────────────────────────────────────────────
-const PT_BLOG_FEATURED: AdlcFeaturedPost = {
+const PT_BLOG_FEATURED = {
   href: "/blog/eu-ai-act-custom-ai-development",
   title: "The EU AI Act: How It Changes AI development and What It Means for Custom AI",
   image: "/proptech-development/07_Figure-6-in-force-vs-coming.svg",
@@ -188,7 +188,7 @@ const PT_BLOG_FEATURED: AdlcFeaturedPost = {
   readTime: "25 mins",
   date: "July 9, 2026",
 };
-const PT_BLOG_SIDE: AdlcBlogPost[] = [
+const PT_BLOG_SIDE = [
   { href: "/blog/questions-to-ask-ai-development-company", title: "10 questions to Ask an AI Development Company before Signing", readTime: "18 mins", date: "July 7, 2026" },
   { href: "/blog/blog-agentic-rag-enterprise-implementation-guide", title: "Agentic RAG: The Complete Enterprise Implementation Guide for 2026", readTime: "35 mins", date: "July 3, 2026" },
   { href: "/blog/ai-cost-reduction-playbook", title: "The AI Cost Reduction Playbook – 9 Mechanisms, 7 Hidden Drivers, and Real-World Case Studies (2026 Edition)", readTime: "32 mins", date: "July 1, 2026" },
@@ -223,6 +223,17 @@ const CROSSLINKS = [
 ];
 
 // ─── Component ────────────────────────────────────────────────────────────────
+const CONTENTS = [
+  { href: "#pt-solutions", label: "Solutions" },
+  { href: "#pt-results", label: "Results" },
+  { href: "#pt-scale", label: "Portfolio scale" },
+  { href: "#pt-cases", label: "Case studies" },
+  { href: "#pt-faq", label: "FAQ" },
+  { href: "#pt-tech", label: "Tech stack" },
+  { href: "#pt-data", label: "Unified data" },
+  { href: "#pt-why", label: "Why Nexterse LLC" },
+];
+
 export default function ProptechPage() {
   const [activeCooperation, setActiveCooperation] = useState(0);
   const cooperation = COOPERATION[activeCooperation];
@@ -231,7 +242,7 @@ export default function ProptechPage() {
     <>
       <ProptechHero />
 
-      <ProptechArticleLayout>
+      <ArticleLayout contents={CONTENTS} ariaLabel="PropTech page contents">
         <AipocLogos />
 
         {/* ── Solutions ──────────────────────────────────────────────────── */}
@@ -509,7 +520,7 @@ export default function ProptechPage() {
         </section>
 
         {/* ── Awesome stories (blog) ─────────────────────────────────────── */}
-        <AdlcBlog featured={PT_BLOG_FEATURED} sidePosts={PT_BLOG_SIDE} />
+        <AwesomeStories category="enterprise" />
 
         {/* ── Let's Start ────────────────────────────────────────────────── */}
         <LetsStart />
@@ -541,7 +552,7 @@ export default function ProptechPage() {
             </div>
           </div>
         </section>
-      </ProptechArticleLayout>
+      </ArticleLayout>
     </>
   );
 }

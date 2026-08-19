@@ -2,13 +2,13 @@
 
 import { useState } from "react";
 import styles from "./CrmPage.module.css";
-import CrmArticleLayout from "./CrmArticleLayout";
+import ArticleLayout from "@/components/shared/ArticleLayout";
 import AipocLogos from "@/components/aipoc/AipocLogos";
 import CaseCards from "@/components/home/CaseCards";
 import ServicesReviewSlider from "@/components/services/ServicesReviewSlider";
 import ServicesAchievements, { type Badge } from "@/components/services/ServicesAchievements";
 import ServicesFaqBlock, { type FaqItem } from "@/components/services/ServicesFaqBlock";
-import ServicesBlogSection, { type FeaturedPost, type BlogPost } from "@/components/services/ServicesBlogSection";
+import AwesomeStories from "@/components/blog/AwesomeStories";
 import LetsStart from "@/components/home/LetsStart";
 
 // ─── Data ─────────────────────────────────────────────────────────────────────
@@ -110,7 +110,7 @@ const LEGACY_FAQ: FaqItem[] = [
   },
 ];
 
-const LEGACY_BLOG_FEATURED: FeaturedPost = {
+const LEGACY_BLOG_FEATURED = {
   href: "/blog/custom-crm-vs-off-the-shelf",
   title: "Custom CRM vs. Off-the-Shelf: A 2026 Decision Framework for Cost, Adoption, and AI-Readiness",
   image: "/crm-development/06_The-AI-Cost-Spiral-7-Hidden-Drivers-1024x578.jpg",
@@ -119,7 +119,7 @@ const LEGACY_BLOG_FEATURED: FeaturedPost = {
   date: "July 1, 2026",
 };
 
-const LEGACY_BLOG_SIDE: BlogPost[] = [
+const LEGACY_BLOG_SIDE = [
   {
     href: "/blog/crm-data-migration-checklist",
     title: "The CRM Data Migration Checklist: Move Off Your Old CRM Without Losing History",
@@ -135,6 +135,19 @@ const LEGACY_BLOG_SIDE: BlogPost[] = [
 ];
 
 // ─── Main Component ──────────────────────────────────────────────────────────
+const CONTENTS = [
+  { href: "#services", label: "Services" },
+  { href: "#outcomes", label: "Business outcomes" },
+  { href: "#challenges", label: "Challenges" },
+  { href: "#software-we-modernize", label: "CRM we build" },
+  { href: "#case-studies", label: "Case studies" },
+  { href: "#risk-management", label: "Risk management" },
+  { href: "#cost-of-legacy", label: "Cost of the wrong CRM" },
+  { href: "#approach", label: "Approach" },
+  { href: "#process", label: "Process" },
+  { href: "#faq", label: "FAQ" },
+];
+
 export default function CrmPage() {
   const [activeTab, setActiveTab] = useState(0);
 
@@ -270,7 +283,7 @@ export default function CrmPage() {
         </div>
       </section>
 
-      <CrmArticleLayout>
+      <ArticleLayout contents={CONTENTS} ariaLabel="CRM page contents">
 
       <AipocLogos />
 
@@ -754,7 +767,7 @@ export default function CrmPage() {
       <ServicesFaqBlock items={LEGACY_FAQ} />
 
       {/* ── 21. BLOG SECTION ─────────────────────────────────────────────── */}
-      <ServicesBlogSection featured={LEGACY_BLOG_FEATURED} sidePosts={LEGACY_BLOG_SIDE} />
+      <AwesomeStories category="enterprise" />
 
       {/* ── 21b. LET'S START ─────────────────────────────────────────────── */}
       <LetsStart />
@@ -800,7 +813,7 @@ export default function CrmPage() {
         </div>
       </section>
 
-      </CrmArticleLayout>
+      </ArticleLayout>
     </>
   );
 }

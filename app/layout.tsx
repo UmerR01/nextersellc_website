@@ -11,6 +11,7 @@ const interTight = Inter_Tight({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://nexterse.com"),
   title: "Nexterse LLC — Custom Software & AI Development",
   description:
     "Nexterse LLC builds custom software and AI-driven solutions that ship on time, scale with your business, and outlast their launch.",

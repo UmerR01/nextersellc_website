@@ -1,0 +1,43 @@
+.section {
+  margin-top: 60px;
+}
+
+/* Tags heading — h2 tag. Top spacing comes from .section, not here. */
+.title {
+  color: #050505;
+  font-weight: 500;
+  font-size: 36px;
+  line-height: 1.12;
+  letter-spacing: 0;
+  margin: 0 0 16px;
+}
+
+.list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+/* Plain, inert label — deliberately not a link, button, or list marker
+   (rendered as <div>/<span>, never <ul>/<li>, so the body's tick-mark
+   list icon can't bleed into it). */
+.tag {
+  display: inline-block;
+  background: var(--color-bg-elevated);
+  color: var(--color-text);
+  font-size: 14px;
+  font-weight: 500;
+  padding: 5px 16px 3px;
+  cursor: default;
+}
+
+@media (max-width: 768px) {
+  .section {
+    margin-top: 44px;
+  }
+
+  .title {
+    font-size: 28px;
+    line-height: 1.16;
+  }
+}

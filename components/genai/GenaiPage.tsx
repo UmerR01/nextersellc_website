@@ -11,7 +11,7 @@ import GenaiHero from "./GenaiHero";
 import AipocLogos from "@/components/aipoc/AipocLogos";
 import GenaiTechStack from "./GenaiTechStack";
 import GenaiCrosslinks from "./GenaiCrosslinks";
-import GenaiArticleLayout from "./GenaiArticleLayout";
+import ArticleLayout from "@/components/shared/ArticleLayout";
 import styles from "./GenaiPage.module.css";
 
 // ─── Why 80% of prototypes fail (4 cards) ─────────────────────────────────────
@@ -233,6 +233,20 @@ const GENAI_BADGES: Badge[] = [
 ];
 
 // ─── Component ────────────────────────────────────────────────────────────────
+const CONTENTS = [
+  { href: "#genai-challenges", label: "Challenges" },
+  { href: "#genai-ecosystem", label: "GenAI ecosystem" },
+  { href: "#genai-roi", label: "ROI & TCO modeling" },
+  { href: "#genai-pilot", label: "Pilot PoC program" },
+  { href: "#genai-leakage", label: "Zero data leakage" },
+  { href: "#genai-cases", label: "Case studies" },
+  { href: "#genai-industries", label: "Industries" },
+  { href: "#genai-tech", label: "Tech stack" },
+  { href: "#genai-adlc", label: "Agentic lifecycle" },
+  { href: "#genai-hallucination", label: "Zero-hallucination systems" },
+  { href: "#genai-faq", label: "FAQ" },
+];
+
 export default function GenaiPage() {
   const [activeEco, setActiveEco] = useState(0);
   const [activeRoi, setActiveRoi] = useState(0);
@@ -243,7 +257,7 @@ export default function GenaiPage() {
     <>
       <GenaiHero />
 
-      <GenaiArticleLayout>
+      <ArticleLayout contents={CONTENTS} ariaLabel="GenAI development page contents">
         <AipocLogos />
         {/* ── Why 80% of prototypes fail (4 cards) ────────────────────────── */}
         <section id="genai-challenges" className={`${styles.blockWhite} ${styles.genaiChallengesBlock}`}>
@@ -508,7 +522,7 @@ export default function GenaiPage() {
 
         {/* ── More about (crosslinks) ─────────────────────────────────────── */}
         <GenaiCrosslinks />
-      </GenaiArticleLayout>
+      </ArticleLayout>
     </>
   );
 }

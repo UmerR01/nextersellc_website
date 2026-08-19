@@ -344,6 +344,13 @@
   font-size: 0.82rem;
 }
 
+.fieldErrorText {
+  display: block;
+  margin-top: 0.35rem;
+  color: #c8223d;
+  font-size: 0.78rem;
+}
+
 .singleAction {
   display: flex;
   justify-content: flex-end;

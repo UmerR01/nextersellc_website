@@ -27,6 +27,7 @@ const CONTACTS = [
   { label: "USA: +1 (321) 491-2236", href: "tel:+13214912236" },
   { label: "UAE: +971 58 512 2084", href: "tel:+971585122084" },
   { label: "info@nexterse.com", href: "mailto:info@nexterse.com" },
+  { label: "support@nexterse.com", href: "mailto:support@nexterse.com" },
 ];
 
 const SOCIAL = [
@@ -534,7 +535,7 @@ export default function Header({ forceSolid = false, startTransparent = false }:
                       From Pilot to Production: Why Enterprise AI Stalls — and the Framework to Scale It (2026)
                     </p>
                     <div className={dd.articleMeta}>
-                      <span>31 mins</span>
+                      <span>11 mins</span>
                       <span>·</span>
                       <span>June 16</span>
                     </div>

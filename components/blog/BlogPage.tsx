@@ -49,31 +49,13 @@ function PostCard({ post }: { post: BlogPost }) {
           <h2 className={styles.postTitle}>{post.title}</h2>
         </div>
         <div className={styles.postMeta}>
-          <div className={styles.postMetaInner}>
-            <div className={styles.authorPhoto}>
-              <a href={post.author.href}>
-                <Image
-                  src={post.author.photo}
-                  alt={post.author.name}
-                  width={48}
-                  height={48}
-                  className={styles.authorAvatar}
-                />
-              </a>
-            </div>
-            <div className={styles.authorInfo}>
-              <span>
-                <a href={post.author.href}>{post.author.name}</a>
-              </span>
-              <span className={styles.postDateWrapper}>
-                <span className={styles.postReadtime}>
-                  <ClockIcon />
-                  {post.readTime}
-                </span>
-                <span>| {post.date}</span>
-              </span>
-            </div>
-          </div>
+          <span className={styles.postDateWrapper}>
+            <span className={styles.postReadtime}>
+              <ClockIcon />
+              {post.readTime}
+            </span>
+            <span>| {post.date}</span>
+          </span>
         </div>
         <a href={post.href} className={styles.postAbsoluteLink} aria-label={post.title} />
       </div>

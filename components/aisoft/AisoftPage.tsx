@@ -7,12 +7,12 @@ import ServicesReviewSlider from "@/components/services/ServicesReviewSlider";
 import ServicesAchievements, { type Badge } from "@/components/services/ServicesAchievements";
 import ServicesFaqBlock, { type FaqItem } from "@/components/services/ServicesFaqBlock";
 import LetsStart from "@/components/home/LetsStart";
-import AdlcBlog, { type AdlcFeaturedPost, type AdlcBlogPost } from "@/components/adlc/AdlcBlog";
+import AwesomeStories from "@/components/blog/AwesomeStories";
 import AisoftHero from "./AisoftHero";
 import AipocLogos from "@/components/aipoc/AipocLogos";
 import AisoftTechStack from "./AisoftTechStack";
 import AisoftCrosslinks from "./AisoftCrosslinks";
-import AisoftArticleLayout from "./AisoftArticleLayout";
+import ArticleLayout from "@/components/shared/ArticleLayout";
 import styles from "./AisoftPage.module.css";
 
 // ─── ROI tiers (horizontal tabs with image) ──────────────────────────────────
@@ -304,7 +304,7 @@ const AIS_FAQ: FaqItem[] = [
 ];
 
 // ─── Awesome stories (blog) ───────────────────────────────────────────────────
-const AIS_BLOG_FEATURED: AdlcFeaturedPost = {
+const AIS_BLOG_FEATURED = {
   href: "/blog/eu-ai-act-custom-ai-development",
   title: "The EU AI Act: How It Changes AI development and What It Means for Custom AI",
   image: "/aisoft-development/07_Figure-6-in-force-vs-coming.svg",
@@ -312,13 +312,28 @@ const AIS_BLOG_FEATURED: AdlcFeaturedPost = {
   readTime: "25 mins",
   date: "July 9, 2026",
 };
-const AIS_BLOG_SIDE: AdlcBlogPost[] = [
+const AIS_BLOG_SIDE = [
   { href: "/blog/questions-to-ask-ai-development-company", title: "10 questions to Ask an AI Development Company before Signing", readTime: "18 mins", date: "July 7, 2026" },
   { href: "/blog/agentic-rag-enterprise-implementation-guide", title: "Agentic RAG: The Complete Enterprise Implementation Guide for 2026", readTime: "35 mins", date: "July 3, 2026" },
   { href: "/blog/ai-cost-reduction-playbook", title: "The AI Cost Reduction Playbook – 9 Mechanisms, 7 Hidden Drivers, and Real-World Case Studies (2026 Edition)", readTime: "32 mins", date: "July 1, 2026" },
 ];
 
 // ─── Component ────────────────────────────────────────────────────────────────
+const CONTENTS = [
+  { href: "#ai-tiers", label: "ROI tiers" },
+  { href: "#ai-pilot", label: "Pilot program" },
+  { href: "#ai-cases", label: "Case studies & reviews" },
+  { href: "#ai-guarantees", label: "Our guarantees" },
+  { href: "#ai-sdlc", label: "SDLC vs ADLC" },
+  { href: "#ai-adlc", label: "Agentic lifecycle" },
+  { href: "#ai-security", label: "Security and compliance" },
+  { href: "#ai-industries", label: "Industries" },
+  { href: "#ai-awards", label: "Awards & recognitions" },
+  { href: "#ai-tech", label: "Tech stack" },
+  { href: "#ai-privacy", label: "Data privacy" },
+  { href: "#ai-faq", label: "FAQ" },
+];
+
 export default function AisoftPage() {
   const [activeTier, setActiveTier] = useState(0);
   const [activeSec, setActiveSec] = useState(0);
@@ -328,7 +343,7 @@ export default function AisoftPage() {
     <>
       <AisoftHero />
 
-      <AisoftArticleLayout>
+      <ArticleLayout contents={CONTENTS} ariaLabel="AI software development page contents">
         <AipocLogos />
         {/* ── ROI tiers (horizontal tabs) ────────────────────────────────── */}
         <section id="ai-tiers" className={styles.serviceBlock}>
@@ -585,8 +600,8 @@ export default function AisoftPage() {
         <LetsStart />
 
         {/* ── Awesome stories (blog) ──────────────────────────────────────── */}
-        <AdlcBlog featured={AIS_BLOG_FEATURED} sidePosts={AIS_BLOG_SIDE} />
-      </AisoftArticleLayout>
+        <AwesomeStories category="ai" />
+      </ArticleLayout>
     </>
   );
 }

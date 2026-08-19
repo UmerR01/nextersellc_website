@@ -7,11 +7,11 @@ import ServicesReviewSlider from "@/components/services/ServicesReviewSlider";
 import ServicesAchievements, { type Badge } from "@/components/services/ServicesAchievements";
 import ServicesFaqBlock, { type FaqItem } from "@/components/services/ServicesFaqBlock";
 import LetsStart from "@/components/home/LetsStart";
-import AdlcBlog, { type AdlcFeaturedPost, type AdlcBlogPost } from "@/components/adlc/AdlcBlog";
+import AwesomeStories from "@/components/blog/AwesomeStories";
 import AdtechHero from "./AdtechHero";
 import AipocLogos from "@/components/aipoc/AipocLogos";
 import AdtechTechStack from "./AdtechTechStack";
-import AdtechArticleLayout from "./AdtechArticleLayout";
+import ArticleLayout from "@/components/shared/ArticleLayout";
 import styles from "./AdtechPage.module.css";
 
 // ─── Solutions (6 icon cards) ─────────────────────────────────────────────────
@@ -180,7 +180,7 @@ const ADT_BADGES: Badge[] = [
 ];
 
 // ─── Awesome stories (blog, clone content) ────────────────────────────────────
-const ADT_BLOG_FEATURED: AdlcFeaturedPost = {
+const ADT_BLOG_FEATURED = {
   href: "/blog/eu-ai-act-custom-ai-development",
   title: "The EU AI Act: How It Changes AI development and What It Means for Custom AI",
   image: "/adtech-development/07_Figure-6-in-force-vs-coming.svg",
@@ -188,7 +188,7 @@ const ADT_BLOG_FEATURED: AdlcFeaturedPost = {
   readTime: "25 mins",
   date: "July 9, 2026",
 };
-const ADT_BLOG_SIDE: AdlcBlogPost[] = [
+const ADT_BLOG_SIDE = [
   { href: "/blog/questions-to-ask-ai-development-company", title: "10 questions to Ask an AI Development Company before Signing", readTime: "18 mins", date: "July 7, 2026" },
   { href: "/blog/blog-agentic-rag-enterprise-implementation-guide", title: "Agentic RAG: The Complete Enterprise Implementation Guide for 2026", readTime: "35 mins", date: "July 3, 2026" },
   { href: "/blog/ai-cost-reduction-playbook", title: "The AI Cost Reduction Playbook – 9 Mechanisms, 7 Hidden Drivers, and Real-World Case Studies (2026 Edition)", readTime: "32 mins", date: "July 1, 2026" },
@@ -223,6 +223,17 @@ const CROSSLINKS = [
 ];
 
 // ─── Component ────────────────────────────────────────────────────────────────
+const CONTENTS = [
+  { href: "#adt-solutions", label: "Solutions" },
+  { href: "#adt-results", label: "Results" },
+  { href: "#adt-bidding", label: "Bidding load" },
+  { href: "#adt-cases", label: "Case studies" },
+  { href: "#adt-faq", label: "FAQ" },
+  { href: "#adt-tech", label: "Tech stack" },
+  { href: "#adt-identity", label: "Identity resolution" },
+  { href: "#adt-why", label: "Why Nexterse LLC" },
+];
+
 export default function AdtechPage() {
   const [activeCooperation, setActiveCooperation] = useState(0);
   const cooperation = COOPERATION[activeCooperation];
@@ -231,7 +242,7 @@ export default function AdtechPage() {
     <>
       <AdtechHero />
 
-      <AdtechArticleLayout>
+      <ArticleLayout contents={CONTENTS} ariaLabel="Adtech page contents">
         <AipocLogos />
 
         {/* ── Solutions ──────────────────────────────────────────────────── */}
@@ -509,7 +520,7 @@ export default function AdtechPage() {
         </section>
 
         {/* ── Awesome stories (blog) ─────────────────────────────────────── */}
-        <AdlcBlog featured={ADT_BLOG_FEATURED} sidePosts={ADT_BLOG_SIDE} />
+        <AwesomeStories category="enterprise" />
 
         {/* ── Let's Start ────────────────────────────────────────────────── */}
         <LetsStart />
@@ -541,7 +552,7 @@ export default function AdtechPage() {
             </div>
           </div>
         </section>
-      </AdtechArticleLayout>
+      </ArticleLayout>
     </>
   );
 }

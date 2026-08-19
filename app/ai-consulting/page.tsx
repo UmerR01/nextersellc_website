@@ -15,17 +15,29 @@ import AIReviews from "@/components/ai-consulting/AIReviews";
 import AIMaturity from "@/components/ai-consulting/AIMaturity";
 import AIFaq from "@/components/ai-consulting/AIFaq";
 import AIAwards from "@/components/ai-consulting/AIAwards";
-import AITableOfContents from "@/components/ai-consulting/AITableOfContents";
+import ArticleLayout from "@/components/shared/ArticleLayout";
 import AipocLogos from "@/components/aipoc/AipocLogos";
 import LetsStart from "@/components/home/LetsStart";
-import Stories from "@/components/home/Stories";
-import styles from "./page.module.css";
+import AwesomeStories from "@/components/blog/AwesomeStories";
 
 export const metadata: Metadata = {
   title: "AI Consulting Services — Nexterse LLC",
   description:
     "Stop guessing how AI fits into your business. Nexterse LLC AI consulting helps organizations identify the highest-ROI opportunities and design secure, production-ready AI solutions.",
 };
+
+const CONTENTS = [
+  { href: "#services", label: "Services" },
+  { href: "#framework", label: "Framework" },
+  { href: "#engagements", label: "Engagement options" },
+  { href: "#tech-stack", label: "Tech stack" },
+  { href: "#sdlc", label: "SDLC vs ADLC" },
+  { href: "#deliverables", label: "Deliverables" },
+  { href: "#recent-cases", label: "Our recent AI cases" },
+  { href: "#maturity", label: "Check AI maturity" },
+  { href: "#faq", label: "FAQ" },
+  { href: "#awards", label: "Awards" },
+];
 
 export default function AIConsultingPage() {
   return (
@@ -34,34 +46,26 @@ export default function AIConsultingPage() {
       <main>
         <AIHero />
 
-        <div className={styles.layout}>
-          {/* ── Left: all page sections ── */}
-          <div className={styles.mainContent}>
-            <AipocLogos />
-            <AIDualRisks />
-            <AIWhyFails />
-            <div id="services"><AIConsultingServices /></div>
-            <AITalkExperts />
-            <div id="framework"><AIFramework /></div>
-            <div id="engagements"><AIEngagements /></div>
-            <div id="tech-stack"><AITechStack /></div>
-            <div id="sdlc"><AIWontForce /></div>
-            <div id="deliverables"><AIBlueprint /></div>
-            <div id="recent-cases"><AIRecentWorks /></div>
-            <AIReviews />
-            <div id="maturity"><AIMaturity /></div>
-            <AIFaq />
-            <AIAwards />
-            <LetsStart />
-          </div>
+        <ArticleLayout contents={CONTENTS} ariaLabel="AI Consulting page contents">
+          <AipocLogos />
+          <AIDualRisks />
+          <AIWhyFails />
+          <div id="services"><AIConsultingServices /></div>
+          <AITalkExperts />
+          <div id="framework"><AIFramework /></div>
+          <div id="engagements"><AIEngagements /></div>
+          <div id="tech-stack"><AITechStack /></div>
+          <div id="sdlc"><AIWontForce /></div>
+          <div id="deliverables"><AIBlueprint /></div>
+          <div id="recent-cases"><AIRecentWorks /></div>
+          <AIReviews />
+          <div id="maturity"><AIMaturity /></div>
+          <AIFaq />
+          <AIAwards />
+          <LetsStart />
+        </ArticleLayout>
 
-          {/* ── Right: sticky contents sidebar ── */}
-          <aside className={styles.tocColumn}>
-            <AITableOfContents />
-          </aside>
-        </div>
-
-        <Stories />
+        <AwesomeStories category="ai" />
       </main>
     </>
   );

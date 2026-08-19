@@ -20,9 +20,9 @@ import ESDReliablePartner from "@/components/esd/ESDReliablePartner";
 import ESDAwardsBlock from "@/components/esd/ESDAwardsBlock";
 import LetsStart from "@/components/home/LetsStart";
 import ESDFaqBlock from "@/components/esd/ESDFaqBlock";
-import ESDBlogSection from "@/components/esd/ESDBlogSection";
+import AwesomeStories from "@/components/blog/AwesomeStories";
 import ESDCrosslinks from "@/components/esd/ESDCrosslinks";
-import ESDArticleLayout from "@/components/esd/ESDArticleLayout";
+import ArticleLayout from "@/components/shared/ArticleLayout";
 
 export const metadata: Metadata = {
   title: "Enterprise Software Development Services | Nexterse LLC",
@@ -30,13 +30,26 @@ export const metadata: Metadata = {
     "Nexterse LLC builds and updates enterprise systems for companies that need stable operation, deep integration, and room to grow. We work with your core platforms, existing solutions, and internal tools.",
 };
 
+const CONTENTS = [
+  { href: "#comprehensive-enterprise-software-services", label: "Services" },
+  { href: "#ai-starts-with-data-readiness", label: "AI readiness audit" },
+  { href: "#recent-works", label: "Case studies" },
+  { href: "#enterprise-solution-built-for-your-industry", label: "Industries" },
+  { href: "#enterprise-software-development-approach", label: "Approach" },
+  { href: "#our-expertise-in-tools-and-technologies", label: "Key tech stack" },
+  { href: "#ai-first-security-posture", label: "AI-first security posture" },
+  { href: "#benefits-custom-enterprise-software", label: "Benefits" },
+  { href: "#awards-recognitions", label: "Rewards" },
+  { href: "#frequently-asked-questions", label: "FAQ" },
+];
+
 export default function EnterpriseSDPage() {
   return (
     <>
       <Header />
       <main>
         <ESDHero />
-        <ESDArticleLayout>
+        <ArticleLayout contents={CONTENTS} ariaLabel="Enterprise software development page contents">
           <AipocLogos />
           <ESDServicesBlock />
           <ESDDataReadiness />
@@ -58,9 +71,9 @@ export default function EnterpriseSDPage() {
           <ESDAwardsBlock />
           <LetsStart />
           <ESDFaqBlock />
-          <ESDBlogSection />
+          <AwesomeStories category="enterprise" />
           <ESDCrosslinks />
-        </ESDArticleLayout>
+        </ArticleLayout>
       </main>
     </>
   );
