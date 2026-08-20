@@ -18,8 +18,8 @@ export const article: BlogArticleData = {
   dateDisplay: "April 29, 2026",
   dateISO: "2026-04-29",
   heroImage: {
-    src: "/blog/04_Research-on-AI-Readiness-How-Companies-Move-from-Pilots-to-Production.png",
-    alt: "Research on AI Readiness How Companies Move from Pilots to Production",
+    src: "/blog/ai-readiness-pilots-to-production-research.jpg",
+    alt: "AI Readiness: How Companies Move from Pilots to Production",
     width: 1600,
     height: 900,
   },

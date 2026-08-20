@@ -42,7 +42,7 @@ export default function Workflow() {
           </p>
           <div className={`${styles.media} ${styles.desktopMedia}`}>
             <Image
-              src="/cases/woman.jpg"
+              src="/cases/we_work.jpg"
               alt="Working session"
               fill
               sizes="(max-width: 860px) 100vw, 440px"

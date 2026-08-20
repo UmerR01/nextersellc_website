@@ -510,7 +510,7 @@ export default function MvpPage() {
               <span className={s.accent}>Why</span> entrust MVP development to us
             </h2>
             <p className={s.srDesc} style={{ margin: "0 auto" }}>
-              Since 2012, we know software development for startups inside out. So, we adjust our MVP software development services to provide everything needed to develop your MVP application, from building a Lean Canvas to the release of a fully functioning MVP.
+              Since 2020, we know software development for startups inside out. So, we adjust our MVP software development services to provide everything needed to develop your MVP application, from building a Lean Canvas to the release of a fully functioning MVP.
             </p>
           </div>
           <div className={s.srRow}>

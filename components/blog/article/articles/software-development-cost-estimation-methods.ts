@@ -20,8 +20,8 @@ export const article: BlogArticleData = {
   dateDisplay: "March 28, 2026",
   dateISO: "2026-03-28",
   heroImage: {
-    src: "/blog/03_24-hour-estimation.jpg",
-    alt: "24-hour estimation",
+    src: "/blog/software-development-cost-estimation-methods.jpg",
+    alt: "Software Development Cost Estimation",
     width: 1600,
     height: 900,
   },

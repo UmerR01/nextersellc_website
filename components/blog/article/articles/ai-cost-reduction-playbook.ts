@@ -19,8 +19,8 @@ export const article: BlogArticleData = {
   dateDisplay: "July 1, 2026",
   dateISO: "2026-07-01",
   heroImage: {
-    src: "/blog/06_The-AI-Cost-Spiral-7-Hidden-Drivers.jpg",
-    alt: "The AI Cost Spiral - 7 Hidden Drivers",
+    src: "/blog/ai-cost-reduction-playbook.jpg",
+    alt: "The AI Cost Reduction Playbook",
     width: 1600,
     height: 900,
   },

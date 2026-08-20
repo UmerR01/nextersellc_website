@@ -438,17 +438,17 @@ export default function Header({ forceSolid = false, startTransparent = false }:
                       {
                         label: "Project Onboarding & Delivery",
                         href: "/process/onboard",
-                        src: "/cases/team.jpg",
+                        src: "/cases/onboarding.jpg",
                       },
                       {
                         label: "Expert Vetting Process",
                         href: "/process/vetting",
-                        src: "/cases/woman.jpg",
+                        src: "/cases/vetting.jpg",
                       },
                       {
                         label: "Our Development Process",
                         href: "/process/development",
-                        src: "/cases/mobile-dev.webp",
+                        src: "/cases/development.jpg",
                       },
                     ].map((card) => (
                       /* eslint-disable-next-line @next/next/no-img-element */
@@ -498,7 +498,7 @@ export default function Header({ forceSolid = false, startTransparent = false }:
                         { v: "98%",  l: "Satisfaction rate" },
                         { v: "3+",   l: "Years' Client engagement" },
                         { v: "25+",  l: "Countries, including the USA" },
-                        { v: "14+",  l: "Years on the market" },
+                        { v: "6+",  l: "Years on the market" },
                         { v: "70%",  l: "Senior engineers" },
                       ].map((n) => (
                         <div key={n.v} className={dd.numberItem}>
@@ -530,7 +530,16 @@ export default function Header({ forceSolid = false, startTransparent = false }:
                     </div>
                     <a href="/library" className={dd.allLink}>All Articles</a>
                   </div>
-                  <div className={dd.articleCard}>
+                  <Link href="/blog/from-pilot-to-production-why-enterprise-ai-stalls" className={dd.articleCard}>
+                    <div className={dd.articleImgWrap}>
+                      <Image
+                        src="/blog/from-pilot-to-production-why-enterprise-ai-stalls.jpg"
+                        alt="From Pilot to Production: Why Enterprise AI Stalls"
+                        fill
+                        sizes="440px"
+                        className={dd.articleImg}
+                      />
+                    </div>
                     <p className={dd.articleTitle}>
                       From Pilot to Production: Why Enterprise AI Stalls — and the Framework to Scale It (2026)
                     </p>
@@ -539,7 +548,7 @@ export default function Header({ forceSolid = false, startTransparent = false }:
                       <span>·</span>
                       <span>June 16</span>
                     </div>
-                  </div>
+                  </Link>
                 </div>
               </li>
 

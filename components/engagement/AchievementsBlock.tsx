@@ -3,7 +3,7 @@ import styles from "./AchievementsBlock.module.css";
 const ACHIEVEMENTS = [
   { number: "350+", label: "Custom products delivered across 12+ industries" },
   { number: "27+", label: "Clients served across the USA, EU, and beyond" },
-  { number: "14+", label: "years of custom software development" },
+  { number: "6+", label: "years of custom software development" },
   { number: "70%", label: "Senior engineers" },
   { number: "70%", label: "Clients return" },
 ];
@@ -15,7 +15,7 @@ export default function AchievementsBlock() {
         <div className={styles.row}>
           <div className={styles.left}>
             <h2 className={styles.heading}>
-              Since 2012, we&apos;ve delivered custom software from Boston and Warsaw.
+              Since 2020, we&apos;ve delivered custom software from Boston and Warsaw.
             </h2>
           </div>
           <div className={styles.right}>

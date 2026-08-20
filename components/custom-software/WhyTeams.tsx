@@ -45,8 +45,8 @@ export default function WhyTeams() {
             <div className={styles.imageWrapper}>
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
-                src="/custom-software/01_Business-analysis-services-results-1024x846.jpg"
-                alt="Nexterse LLC team working on software development"
+                src="/services-page/why-client.jpg"
+                alt="Why teams choose Nexterse LLC"
                 className={styles.image}
                 loading="lazy"
               />

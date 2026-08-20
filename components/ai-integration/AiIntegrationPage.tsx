@@ -318,7 +318,7 @@ export default function AiIntegrationPage() {
               </div>
               <div className={styles.pilotImageWrap}>
                 <Image
-                  src="/ai-consulting/imgs/03_pexels-fauxels-3184653-683x1024.jpg"
+                  src="/ai-integration/ai-int-scoped.jpg"
                   alt="Development team discussing a scoped AI pilot"
                   width={683}
                   height={1024}

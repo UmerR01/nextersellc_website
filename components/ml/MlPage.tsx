@@ -253,7 +253,7 @@ export default function MlPage() {
                 <p>The pattern holds across projects: models embedded in live operations, producing gains you can measure on the bottom line.</p>
               </div>
               <div className={styles.impactImage}>
-                <Image src="/ml/03_pexels-fauxels-3184653-683x1024.jpg" alt="Development team discussing the project" width={683} height={1024} />
+                <Image src="/ai-integration/ai-int-scoped.jpg" alt="Machine learning delivering measurable business impact" width={683} height={1024} />
               </div>
             </div>
           </div>

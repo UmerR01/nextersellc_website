@@ -25,7 +25,7 @@ const SERVICES = [
 
 // ─── Stats (Engineering you can audit) ────────────────────────────────────────
 const STATS = [
-  { value: "14+", label: "years in software engineering" },
+  { value: "6+", label: "years in software engineering" },
   { value: "350+", label: "systems delivered" },
   { value: "98%", label: "Client satisfaction" },
   { value: "25+", label: "countries worked with" },

@@ -14,8 +14,8 @@ export const BLOG_POSTS: BlogPost[] = [
   {
     id: "253023",
     href: "/blog/ai-cost-reduction-playbook",
-    image: "/blog/06_The-AI-Cost-Spiral-7-Hidden-Drivers.jpg",
-    imageAlt: "The AI Cost Spiral - 7 Hidden Drivers",
+    image: "/blog/ai-cost-reduction-playbook.jpg",
+    imageAlt: "The AI Cost Reduction Playbook",
     categories: [
       { label: "AI", slug: "ai" },
       { label: "Enterprise", slug: "enterprise" },
@@ -29,8 +29,8 @@ export const BLOG_POSTS: BlogPost[] = [
   {
     id: "252495",
     href: "/blog/how-to-modernize-legacy-systems-with-custom-ai",
-    image: "/blog/06_Modernization-Stat-Band.svg",
-    imageAlt: "Cost + AI-blocker stat band",
+    image: "/blog/how-to-modernize-legacy-systems-with-custom-ai.jpg",
+    imageAlt: "How to modernize legacy systems with custom AI",
     categories: [
       { label: "AI", slug: "ai" },
       { label: "Enterprise", slug: "enterprise" },
@@ -43,8 +43,8 @@ export const BLOG_POSTS: BlogPost[] = [
   {
     id: "3547",
     href: "/blog/deliver-software-on-time-agile-release-planning-ai-era",
-    image: "/blog/04_Release-Readiness-Framework.svg",
-    imageAlt: "Release Readiness Framework",
+    image: "/blog/deliver-software-on-time-agile-release-planning-ai-era.jpg",
+    imageAlt: "How to Deliver Software on Time with Agile and Release Planning in the AI Era",
     categories: [
       { label: "AI", slug: "ai" },
       { label: "Guides", slug: "guides" },
@@ -58,8 +58,8 @@ export const BLOG_POSTS: BlogPost[] = [
   {
     id: "251926",
     href: "/blog/from-pilot-to-production-why-enterprise-ai-stalls",
-    image: "/blog/06_Pilot-to-Production-Ladder.svg",
-    imageAlt: "Pilot-to-Production Ladder",
+    image: "/blog/from-pilot-to-production-why-enterprise-ai-stalls.jpg",
+    imageAlt: "From Pilot to Production: Why Enterprise AI Stalls",
     categories: [
       { label: "AI", slug: "ai" },
       { label: "Enterprise", slug: "enterprise" },
@@ -73,8 +73,8 @@ export const BLOG_POSTS: BlogPost[] = [
   {
     id: "250436",
     href: "/blog/ai-token-cost-calculation-framework",
-    image: "/blog/06_Forecast-LLM-spend-before-you-build-v2.jpg",
-    imageAlt: "Forecast LLM spend before you build",
+    image: "/blog/ai-token-cost-calculation-framework.jpg",
+    imageAlt: "AI Token Cost Calculation Framework",
     categories: [
       { label: "AI", slug: "ai" },
       { label: "Guides", slug: "guides" },
@@ -87,8 +87,8 @@ export const BLOG_POSTS: BlogPost[] = [
   {
     id: "251002",
     href: "/blog/ai-adoption-enterprises-success-cases-kpis",
-    image: "/blog/06_Research-AI-adoption-success-cases-in-enterprises.jpg",
-    imageAlt: "Research AI adoption success cases in enterprises",
+    image: "/blog/ai-adoption-enterprises-success-cases-kpis.jpg",
+    imageAlt: "AI Adoption in Enterprises: Success Cases and KPIs",
     categories: [
       { label: "AI", slug: "ai" },
       { label: "Research", slug: "research" },
@@ -102,8 +102,8 @@ export const BLOG_POSTS: BlogPost[] = [
   {
     id: "245049",
     href: "/blog/what-is-adlc-agentic-development-lifecycle",
-    image: "/blog/05_What-Is-ADLC-Agentic-Development-Lifecycle_.png",
-    imageAlt: "What Is ADLC (Agentic Development Lifecycle)",
+    image: "/blog/what-is-adlc-agentic-development-lifecycle.jpg",
+    imageAlt: "What Is ADLC? Agentic Development Lifecycle",
     categories: [
       { label: "AI", slug: "ai" },
       { label: "Guides", slug: "guides" },
@@ -116,8 +116,8 @@ export const BLOG_POSTS: BlogPost[] = [
   {
     id: "244119",
     href: "/blog/ai-readiness-pilots-to-production-research",
-    image: "/blog/04_Research-on-AI-Readiness-How-Companies-Move-from-Pilots-to-Production.png",
-    imageAlt: "Research on AI Readiness How Companies Move from Pilots to Production",
+    image: "/blog/ai-readiness-pilots-to-production-research.jpg",
+    imageAlt: "AI Readiness: How Companies Move from Pilots to Production",
     categories: [
       { label: "AI", slug: "ai" },
       { label: "Research", slug: "research" },
@@ -130,8 +130,8 @@ export const BLOG_POSTS: BlogPost[] = [
   {
     id: "68545",
     href: "/blog/software-development-cost-estimation-methods",
-    image: "/blog/03_24-hour-estimation.jpg",
-    imageAlt: "24-hour estimation",
+    image: "/blog/software-development-cost-estimation-methods.jpg",
+    imageAlt: "Software Development Cost Estimation",
     categories: [
       { label: "Enterprise", slug: "enterprise" },
       { label: "Startups", slug: "startups" },
@@ -146,8 +146,8 @@ export const BLOG_POSTS: BlogPost[] = [
   {
     id: "236859",
     href: "/blog/ai-roi-2026-payback-benchmarks",
-    image: "/blog/11_A-Practical-Framework-for-Quantifying-IoT-Return-on-Investment-ROI.png",
-    imageAlt: "A Practical Framework for Quantifying AI Return on Investment (ROI)",
+    image: "/blog/ai-roi-2026-payback-benchmarks.jpg",
+    imageAlt: "AI ROI in 2026: Payback Benchmarks",
     categories: [
       { label: "Research", slug: "research" },
       { label: "AI", slug: "ai" },
@@ -172,8 +172,8 @@ export const BLOG_POSTS: BlogPost[] = [
   {
     id: "59414",
     href: "/blog/advantages-of-applied-ai-business-benefits",
-    image: "/blog/03_620a29a10fa8775fa6a7293d_thumbnails-website-15-min-1.png",
-    imageAlt: 'The neon light "everything is connected"',
+    image: "/blog/advantages-of-applied-ai-business-benefits.jpg",
+    imageAlt: "The Advantages of Applied AI: Business Benefits",
     categories: [
       { label: "AI", slug: "ai" },
       { label: "Enterprise", slug: "enterprise" },

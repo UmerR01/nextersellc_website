@@ -19,8 +19,8 @@ export const article: BlogArticleData = {
   dateDisplay: "March 17, 2026",
   dateISO: "2026-03-17",
   heroImage: {
-    src: "/blog/11_A-Practical-Framework-for-Quantifying-IoT-Return-on-Investment-ROI.png",
-    alt: "A Practical Framework for Quantifying AI Return on Investment (ROI)",
+    src: "/blog/ai-roi-2026-payback-benchmarks.jpg",
+    alt: "AI ROI in 2026: Payback Benchmarks",
     width: 1600,
     height: 900,
   },

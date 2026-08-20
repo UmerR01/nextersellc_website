@@ -30,8 +30,8 @@ export default function ESDStandards() {
             <div className={styles.imgWrap}>
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
-                src="/esd/03_Development-team-2-683x1024.jpg"
-                alt="Development team"
+                src="/esd/esd-standard.jpg"
+                alt="Enterprise software built on standards"
                 className={styles.img}
                 loading="lazy"
               />

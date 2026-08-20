@@ -91,7 +91,7 @@ export default function AisoftHero() {
           Artificial Intelligence (AI) Software Development Services
         </h1>
         <p className={s.heroDescription}>
-          Custom AI built on solid software, by a team that has shipped both for 14+ years.
+          Custom AI built on solid software, by a team that has shipped both for 6+ years.
         </p>
         <ul className={s.heroPoints}>
           {HERO_POINTS.map((point) => (

@@ -18,8 +18,8 @@ export const article: BlogArticleData = {
   dateDisplay: "June 10, 2026",
   dateISO: "2026-06-10",
   heroImage: {
-    src: "/blog/06_Forecast-LLM-spend-before-you-build-v2.jpg",
-    alt: "Forecast LLM spend before you build",
+    src: "/blog/ai-token-cost-calculation-framework.jpg",
+    alt: "AI Token Cost Calculation Framework",
     width: 1600,
     height: 900,
   },

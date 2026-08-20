@@ -27,7 +27,7 @@ const FAQ_ITEMS: FaqItem[] = [
   {
     question: "How does Nexterse LLC secure a software product?",
     answer:
-      "Security depends on what the system actually handles. A logistics dashboard and a payments platform do not need identical protections, so we scope the work to the project. The toolbox includes threat modeling, least-privilege access, OWASP and SANS coding standards, static and dynamic code analysis, penetration testing, encryption at rest and in transit, and multi-factor authentication. We have been building this practice since 2012.",
+      "Security depends on what the system actually handles. A logistics dashboard and a payments platform do not need identical protections, so we scope the work to the project. The toolbox includes threat modeling, least-privilege access, OWASP and SANS coding standards, static and dynamic code analysis, penetration testing, encryption at rest and in transit, and multi-factor authentication. We have been building this practice since 2020.",
   },
   {
     question: "How does Nexterse LLC handle post-launch support and maintenance?",

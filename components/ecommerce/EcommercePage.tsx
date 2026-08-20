@@ -14,7 +14,7 @@ import styles from "./EcommercePage.module.css";
 // ─── Why choose (results) ─────────────────────────────────────────────────────
 const WHY_POINTS = [
   "We offer strong eCommerce expertise backed by successful projects.",
-  "Since 2012, we've implemented over 250 solutions for Clients in 25+ countries.",
+  "Since 2020, we've implemented over 250 solutions for Clients in 25+ countries.",
   "Nexterse LLC is recognized as one of the top eCommerce developers in the US.",
   "70% of our employees are senior-grade engineers.",
   "Techreviewer ratings note our experience in Shopify development and migrations.",

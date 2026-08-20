@@ -54,8 +54,8 @@ export default function ARDeliverables() {
           </div>
           <div className={styles.right}>
             <Image
-              src="/ai-readiness/imgs/03_Development-team-3-683x1024.jpg"
-              alt="Development team"
+              src="/ai-readiness/imgs/readiness-14.jpg"
+              alt="AI readiness assessment deliverables"
               width={428}
               height={640}
               className={styles.img}

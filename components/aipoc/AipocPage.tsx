@@ -237,8 +237,8 @@ export default function AipocPage() {
                 <p>Together these strengthen the traditional software lifecycle (SDLC) by improving throughput, visibility, and control.</p>
               </div>
               <Image
-                src="/aipoc-development/03_pexels-fauxels-3184653-683x1024.jpg"
-                alt="Development team discussing the project"
+                src="/aipoc-development/aipoc.jpg"
+                alt="AI proof of concept development"
                 width={683}
                 height={1024}
                 className={styles.finSplitImg}

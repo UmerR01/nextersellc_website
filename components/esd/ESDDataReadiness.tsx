@@ -31,8 +31,8 @@ export default function ESDDataReadiness() {
             <div className={styles.imgWrap}>
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
-                src="/esd/03_Development-team-e1774868240359-963x1024.jpg"
-                alt="Development team"
+                src="/esd/data-readiness.jpg"
+                alt="AI starts with data readiness"
                 className={styles.img}
                 loading="lazy"
               />

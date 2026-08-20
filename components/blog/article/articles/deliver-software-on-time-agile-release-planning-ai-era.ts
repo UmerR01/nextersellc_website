@@ -19,8 +19,8 @@ export const article: BlogArticleData = {
   dateDisplay: "June 22, 2026",
   dateISO: "2026-06-22",
   heroImage: {
-    src: "/blog/04_Release-Readiness-Framework.svg",
-    alt: "Release Readiness Framework",
+    src: "/blog/deliver-software-on-time-agile-release-planning-ai-era.jpg",
+    alt: "How to Deliver Software on Time with Agile and Release Planning in the AI Era",
     width: 1600,
     height: 900,
   },

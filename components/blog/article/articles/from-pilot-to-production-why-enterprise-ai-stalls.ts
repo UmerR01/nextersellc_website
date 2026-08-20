@@ -19,8 +19,8 @@ export const article: BlogArticleData = {
   dateDisplay: "June 16, 2026",
   dateISO: "2026-06-16",
   heroImage: {
-    src: "/blog/06_Pilot-to-Production-Ladder.svg",
-    alt: "Pilot-to-Production Ladder",
+    src: "/blog/from-pilot-to-production-why-enterprise-ai-stalls.jpg",
+    alt: "From Pilot to Production: Why Enterprise AI Stalls",
     width: 1600,
     height: 900,
   },

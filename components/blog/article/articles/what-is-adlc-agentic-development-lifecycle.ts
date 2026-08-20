@@ -18,8 +18,8 @@ export const article: BlogArticleData = {
   dateDisplay: "May 12, 2026",
   dateISO: "2026-05-12",
   heroImage: {
-    src: "/blog/05_What-Is-ADLC-Agentic-Development-Lifecycle_.png",
-    alt: "What Is ADLC (Agentic Development Lifecycle)",
+    src: "/blog/what-is-adlc-agentic-development-lifecycle.jpg",
+    alt: "What Is ADLC? Agentic Development Lifecycle",
     width: 1600,
     height: 900,
   },

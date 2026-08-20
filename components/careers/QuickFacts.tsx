@@ -5,7 +5,7 @@ import { useEffect, useRef } from "react";
 import styles from "./QuickFacts.module.css";
 
 const NUMBER_CARDS = [
-  { number: 5, symbol: "+", title: "Years on market" },
+  { number: 6, symbol: "+", title: "Years on market" },
   { number: 3, symbol: "+", title: "Years Client engagement" },
   { number: 100, symbol: "+", title: "Happy Clients" },
 ];

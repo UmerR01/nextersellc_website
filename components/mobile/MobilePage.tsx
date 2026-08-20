@@ -316,7 +316,7 @@ const WHY_CARDS = [
   },
   {
     title: "Strong delivery base",
-    desc: "Since 2012, we bring years of delivery experience across startups and enterprise projects. Teams are staffed with senior engineers who can work through complex product requirements, legacy constraints, and platform-specific issues without slowing the roadmap.",
+    desc: "Since 2020, we bring years of delivery experience across startups and enterprise projects. Teams are staffed with senior engineers who can work through complex product requirements, legacy constraints, and platform-specific issues without slowing the roadmap.",
   },
   {
     title: "AI-assisted development with engineering control",

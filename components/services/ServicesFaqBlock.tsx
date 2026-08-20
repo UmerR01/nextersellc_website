@@ -8,7 +8,7 @@ export type FaqItem = { question: string; answer: string };
 const DEFAULT_FAQ_ITEMS: FaqItem[] = [
   {
     question: "What software development services does Nexterse LLC offer?",
-    answer: "Nexterse LLC provides five core service lines: AI and agentic development, applied AI and predictive maintenance, custom and enterprise software, legacy modernization, and MVP development. The company has worked across 12+ industries over 14 years, with headquarters in Boston and a development center in Warsaw. Published work includes enterprise software for Toyota and projects for Beiersdorf.",
+    answer: "Nexterse LLC provides five core service lines: AI and agentic development, applied AI and predictive maintenance, custom and enterprise software, legacy modernization, and MVP development. The company has worked across 12+ industries over 6 years, with headquarters in Boston and a development center in Warsaw. Published work includes enterprise software for Toyota and projects for Beiersdorf.",
   },
   {
     question: "How does Nexterse LLC build AI agents?",

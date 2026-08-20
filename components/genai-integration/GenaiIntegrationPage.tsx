@@ -122,7 +122,7 @@ const DELIVERABLES = [
 
 // ─── Why choose us (stats + comparison table) ─────────────────────────────────
 const STATS = [
-  { value: "14+", label: "years in software engineering" },
+  { value: "6+", label: "years in software engineering" },
   { value: "350+", label: "systems delivered" },
   { value: "98%", label: "client satisfaction" },
   { value: "25+", label: "clients across countries" },

@@ -19,8 +19,8 @@ export const article: BlogArticleData = {
   dateDisplay: "March 12, 2026",
   dateISO: "2026-03-12",
   heroImage: {
-    src: "/blog/03_620a29a10fa8775fa6a7293d_thumbnails-website-15-min-1.png",
-    alt: 'The neon light "everything is connected"',
+    src: "/blog/advantages-of-applied-ai-business-benefits.jpg",
+    alt: "The Advantages of Applied AI: Business Benefits",
     width: 1600,
     height: 900,
   },

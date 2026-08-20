@@ -26,7 +26,7 @@ import LetsStart from "@/components/home/LetsStart";
 export const metadata: Metadata = {
   title: "Software Development Services | Nexterse LLC",
   description:
-    "Nexterse LLC delivers AI, custom software, enterprise platform, and MVP development services. 14+ years, 350+ projects, ISO 27001 certified. Get in touch.",
+    "Nexterse LLC delivers AI, custom software, enterprise platform, and MVP development services. 6+ years, 350+ projects, ISO 27001 certified. Get in touch.",
 };
 
 

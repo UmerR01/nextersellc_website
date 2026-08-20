@@ -174,7 +174,7 @@ const INTEGRATIONS = [
 const WHY_CARDS = [
   {
     title: "Proven delivery",
-    bullets: ["350+ custom software systems delivered", "14+ years in software engineering", "98% Client satisfaction", "Clients across 25+ countries"],
+    bullets: ["350+ custom software systems delivered", "6+ years in software engineering", "98% Client satisfaction", "Clients across 25+ countries"],
   },
   {
     title: "System-level execution",
@@ -243,7 +243,7 @@ const QUICK_FACTS = [
   { num: "25+", label: "Countries" },
   { num: "70%", label: "Senior engineers" },
   { num: "3+", label: "Years of Clients’ engagement" },
-  { num: "14+", label: "Years on the market" },
+  { num: "6+", label: "Years on the market" },
 ];
 
 function AnimatedStatNumber({ value, suffix, active }: { value: number; suffix: string; active: boolean }) {

@@ -19,8 +19,8 @@ export const article: BlogArticleData = {
   dateDisplay: "June 8, 2026",
   dateISO: "2026-06-08",
   heroImage: {
-    src: "/blog/06_Research-AI-adoption-success-cases-in-enterprises.jpg",
-    alt: "Research AI adoption success cases in enterprises",
+    src: "/blog/ai-adoption-enterprises-success-cases-kpis.jpg",
+    alt: "AI Adoption in Enterprises: Success Cases and KPIs",
     width: 1600,
     height: 900,
   },

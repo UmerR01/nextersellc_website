@@ -42,7 +42,7 @@ const TIERS: Tier[] = [
     ],
     linkText: "AI Readiness Assessment",
     linkHref: "/ai-readiness-assessment",
-    image: "/aisoft-development/07_software-development-team-in-the-office-1024x683.jpg",
+    image: "/aisoft-development/aisoft-cosn.jpg",
   },
   {
     icon: "/aisoft-development/03_RAG-as-a-Service-01.svg",
@@ -53,7 +53,7 @@ const TIERS: Tier[] = [
     ],
     linkText: "RAG as a Service",
     linkHref: "/services/rag-development",
-    image: "/aisoft-development/11_aws-features-1024x684.jpg",
+    image: "/aisoft-development/aisoft-rag.jpg",
   },
   {
     icon: "/aisoft-development/03_Workflow-fit-02.svg",
@@ -64,7 +64,7 @@ const TIERS: Tier[] = [
     ],
     linkText: "AI Agents Development",
     linkHref: "/services/ai-agents-development",
-    image: "/aisoft-development/11_gains-of-the-cloud-1024x684.jpg",
+    image: "/aisoft-development/aisoft-agentic.jpg",
   },
   {
     icon: "/aisoft-development/03_Custom-AI-App-Development-2.svg",
@@ -75,7 +75,7 @@ const TIERS: Tier[] = [
     ],
     linkText: "Custom LLM development",
     linkHref: "/services/llm-development",
-    image: "/aisoft-development/07_software-development-team-1024x683.jpg",
+    image: "/aisoft-development/aisoft-custom.jpg",
   },
 ];
 
@@ -130,7 +130,7 @@ const GUARANTEES = [
 const SDLC = [
   {
     title: "Traditional Agile SDLC",
-    desc: "For over a decade we’ve built enterprise software across industries, wiring complex systems together, modernizing legacy platforms, and shipping solutions that hold up under real operational load. We know how production systems behave, how business logic shifts over time, and how to engineer software that stays maintainable years later. That experience is the foundation under everything we build.",
+    desc: "For over 6 years we’ve built enterprise software across industries, wiring complex systems together, modernizing legacy platforms, and shipping solutions that hold up under real operational load. We know how production systems behave, how business logic shifts over time, and how to engineer software that stays maintainable years later. That experience is the foundation under everything we build.",
     linkText: "SDLC",
     href: "/adlc",
   },
@@ -296,7 +296,7 @@ const AIS_FAQ: FaqItem[] = [
   { question: "How much does enterprise AI development cost?", answer: "Cost depends on scope, data readiness, and how many systems the AI connects to. As a general guide, a proof-of-concept or pilot runs in the low-to-mid five figures. A full production build usually falls between roughly $100,000 and $400,000+, set by model complexity, integrations, and compliance scope. Ongoing monitoring and retraining add about 15–20% of the build cost per year. Our 4–6 week pilot puts a firm cost boundary around the work before you commit to production, including projected cloud and token spend." },
   { question: "How long does it take to move from idea to production?", answer: "A pilot can be delivered in four to six weeks. A production build follows once the pilot validates feasibility. It usually takes three to nine months, set by how many systems it connects to and how ready your data is. Data readiness is the biggest variable, and we surface it during the pilot rather than mid-build." },
   { question: "Will our proprietary data be used to train public AI models?", answer: "No. Enterprise deployments run inside private infrastructure. Your data stays isolated and never trains external foundation models." },
-  { question: "Can AI integrate with our legacy systems?", answer: "Yes, and it’s most of what we do. We connect models to your existing systems through secure middleware and APIs. The AI reads and writes through a controlled layer instead of touching your database directly. We’ve modernized and integrated legacy platforms for 14+ years, which is what makes the AI layer safe to add." },
+  { question: "Can AI integrate with our legacy systems?", answer: "Yes, and it’s most of what we do. We connect models to your existing systems through secure middleware and APIs. The AI reads and writes through a controlled layer instead of touching your database directly. We’ve modernized and integrated legacy platforms for 6+ years, which is what makes the AI layer safe to add." },
   { question: "How do you ensure model quality and reliability?", answer: "We evaluate every AI system against defined performance metrics before release, then keep quality steady over time through continuous monitoring, structured testing, and controlled iteration." },
   { question: "What is the difference between standard software development and AI development?", answer: "Traditional software follows deterministic logic. AI systems work probabilistically, so they need structured evaluation, guardrails, and monitoring to stay reliable. Building production-grade AI takes both disciplines together." },
   { question: "Do we have to use AI if we only need a standard application?", answer: "No. Your business objectives drive the architecture. If a conventional build gives you better efficiency and predictability, that’s what we recommend." },
@@ -465,7 +465,7 @@ export default function AisoftPage() {
           <div className="container">
             <h2 className={styles.sectionTitle}>Can you add AI to our legacy systems?</h2>
             <p className={styles.sectionDesc}>
-              AI works best on top of solid software, not in place of it. We take the systems you’ve built up over the years and add an intelligent layer on top, without tearing out what already works. We can do this because we’ve shipped traditional software for over 14 years. That makes us a dual-engine firm, with classic engineering and modern AI under one roof.
+              AI works best on top of solid software, not in place of it. We take the systems you’ve built up over the years and add an intelligent layer on top, without tearing out what already works. We can do this because we’ve shipped traditional software for over 6 years. That makes us a dual-engine firm, with classic engineering and modern AI under one roof.
             </p>
             <div className={styles.twoColCards}>
               {SDLC.map((c) => (

@@ -7,7 +7,7 @@ const STATS = [
   { number: "3+", title: "Years’ client engagement" },
   { number: "70%", title: "Senior engineers" },
   { number: "98%", title: "Satisfaction rate" },
-  { number: "14+", title: "Years on the market" },
+  { number: "6+", title: "Years on the market" },
 ];
 
 export default function StatsBlock() {
