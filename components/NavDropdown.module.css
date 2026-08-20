@@ -270,10 +270,28 @@
   padding-right: 60px;
 }
 .articleCard {
+  display: block;
   min-width: 360px;
   max-width: 500px;
   padding-left: 60px;
   border-left: 1px solid var(--color-border);
+  text-decoration: none;
+  color: inherit;
+}
+.articleImgWrap {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border-radius: 8px;
+  overflow: hidden;
+  margin-bottom: 14px;
+}
+.articleImg {
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+.articleCard:hover .articleImg {
+  transform: scale(1.05);
 }
 .articleTitle {
   font-size: 1rem;

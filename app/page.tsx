@@ -13,7 +13,7 @@ import CoreTech from "@/components/home/CoreTech";
 import WhyWork from "@/components/home/WhyWork";
 import LetsStart from "@/components/home/LetsStart";
 import Faq from "@/components/home/Faq";
-import Stories from "@/components/home/Stories";
+import AwesomeStories from "@/components/blog/AwesomeStories";
 import HomeCTA from "@/components/home/HomeCTA";
 
 export default function Home() {
@@ -35,7 +35,7 @@ export default function Home() {
         <WhyWork />
         <LetsStart />
         <Faq />
-        <Stories />
+        <AwesomeStories />
         <HomeCTA />
       </main>
     </>

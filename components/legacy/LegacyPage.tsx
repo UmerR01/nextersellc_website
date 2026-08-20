@@ -6,6 +6,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper/modules";
 import type { Swiper as SwiperType } from "swiper";
 import "swiper/css";
+import AwesomeStories from "@/components/blog/AwesomeStories";
 import styles from "./LegacyPage.module.css";
 
 // ─── Data ─────────────────────────────────────────────────────────────────────
@@ -979,54 +980,7 @@ export default function LegacyPage() {
       </section>
 
       {/* ── 21. BLOG SECTION ─────────────────────────────────────────────── */}
-      <section className={styles.blogSection}>
-        <div className="container">
-          <h2 className={styles.blogTitle}>
-            We have awesome <span className={styles.accent}>stories</span> to tell you
-          </h2>
-          <div className={styles.blogRow}>
-            {/* Featured post */}
-            <div className={styles.blogFeaturedCol}>
-              <a href="/blog/ai-cost-reduction-playbook" className={styles.blogPostLink}>
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
-                  src="/legacy-modernization/06_The-AI-Cost-Spiral-7-Hidden-Drivers-1024x578.jpg"
-                  alt="The AI Cost Spiral - 7 Hidden Drivers"
-                  className={styles.blogFeaturedImg}
-                />
-                <p className={styles.blogPostTitle}>
-                  The AI Cost Reduction Playbook — 9 Mechanisms, 7 Hidden Drivers, and Real-World Case Studies (2026 Edition)
-                </p>
-                <div className={styles.blogPostMeta}>
-                  <ClockSVG />
-                  <span>32 mins</span>
-                  <span>|</span>
-                  <span>July 1, 2026</span>
-                </div>
-              </a>
-            </div>
-            {/* Stack of posts */}
-            <div className={styles.blogStackCol}>
-              {[
-                { href: "/blog/modernize-legacy-systems-with-custom-ai", title: "How to modernize legacy systems with custom AI", time: "26 mins", date: "June 24, 2026" },
-                { href: "/blog/software-delivery-agile-ai-era", title: "How to Deliver Software on Time with Agile and Release Planning in the AI Era", time: "18 mins", date: "June 22, 2026" },
-                { href: "/blog/from-pilot-to-production", title: "From Pilot to Production: Why Enterprise AI Stalls. The Framework to Scale It (2026)", time: "31 mins", date: "June 16, 2026" },
-              ].map((p) => (
-                <a key={p.href} href={p.href} className={`${styles.blogPostLink} ${styles.blogStackPost}`}>
-                  <p className={styles.blogPostTitle}>{p.title}</p>
-                  <div className={styles.blogPostMeta}>
-                    <ClockSVG />
-                    <span>{p.time}</span>
-                    <span>|</span>
-                    <span>{p.date}</span>
-                  </div>
-                </a>
-              ))}
-              <a href="/blog" className={styles.blogAllLink}>All articles</a>
-            </div>
-          </div>
-        </div>
-      </section>
+      <AwesomeStories category="ai" />
 
       {/* ── 22. CROSSLINKS ───────────────────────────────────────────────── */}
       <section className={styles.clSection}>

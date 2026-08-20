@@ -13,13 +13,13 @@ import ARUseCases from "@/components/ai-readiness/ARUseCases";
 import ARPath from "@/components/ai-readiness/ARPath";
 import ARMoreAbout from "@/components/ai-readiness/ARMoreAbout";
 import ARFAQ from "@/components/ai-readiness/ARFAQ";
-import ARTableOfContents from "@/components/ai-readiness/ARTableOfContents";
+import ArticleLayout from "@/components/shared/ArticleLayout";
 import AIAwards from "@/components/ai-consulting/AIAwards";
 import AIRecentWorks from "@/components/ai-consulting/AIRecentWorks";
 import AIReviews from "@/components/ai-consulting/AIReviews";
 import AipocLogos from "@/components/aipoc/AipocLogos";
 import LetsStart from "@/components/home/LetsStart";
-import Stories from "@/components/home/Stories";
+import AwesomeStories from "@/components/blog/AwesomeStories";
 import styles from "./page.module.css";
 
 export const metadata: Metadata = {
@@ -28,6 +28,19 @@ export const metadata: Metadata = {
     "Nexterse LLC fixed-scope AI readiness assessment reviews your data architecture, infrastructure, security, and ROI assumptions before you invest in AI development.",
 };
 
+const CONTENTS = [
+  { href: "#foundation", label: "Things to check" },
+  { href: "#audit-scope", label: "Audit scope" },
+  { href: "#architecture", label: "AI-ready architecture" },
+  { href: "#timeline", label: "Timeline" },
+  { href: "#deliverables", label: "Deliverables" },
+  { href: "#awards", label: "Awards" },
+  { href: "#recent-cases", label: "Recent AI cases" },
+  { href: "#faq", label: "FAQ" },
+  { href: "#use-cases", label: "Use cases" },
+  { href: "#path", label: "From assessment" },
+];
+
 export default function AIReadinessPage() {
   return (
     <>
@@ -35,8 +48,8 @@ export default function AIReadinessPage() {
       <main>
         <ARHero />
 
-        <div className={styles.layout}>
-          <div className={styles.mainContent}>
+        <ArticleLayout contents={CONTENTS} ariaLabel="AI Readiness page contents">
+          <div className={styles.sectionsSpacing}>
             <AipocLogos />
             <div id="foundation"><ARFoundation /></div>
             <div id="audit-scope"><ARWhatsInit /></div>
@@ -55,13 +68,9 @@ export default function AIReadinessPage() {
             <LetsStart />
             <ARMoreAbout />
           </div>
+        </ArticleLayout>
 
-          <aside className={styles.tocColumn}>
-            <ARTableOfContents />
-          </aside>
-        </div>
-
-        <Stories />
+        <AwesomeStories category="ai" />
       </main>
     </>
   );

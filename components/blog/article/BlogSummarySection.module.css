@@ -1,0 +1,37 @@
+.section {
+  margin-top: 60px;
+}
+
+/* Summary heading — h2 tag. Top spacing comes from .section, not here. */
+.title {
+  color: #050505;
+  font-weight: 500;
+  font-size: 36px;
+  line-height: 1.12;
+  letter-spacing: 0;
+  margin: 0 0 16px;
+}
+
+.text {
+  font-size: 18px;
+  line-height: 28px;
+  font-weight: 400;
+  color: #1b2b4a;
+  margin: 0 0 24px;
+}
+
+@media (max-width: 768px) {
+  .section {
+    margin-top: 44px;
+  }
+
+  .title {
+    font-size: 28px;
+    line-height: 1.16;
+  }
+
+  .text {
+    font-size: 16px;
+    line-height: 26px;
+  }
+}

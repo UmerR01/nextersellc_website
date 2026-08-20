@@ -5,32 +5,23 @@ import { useEffect, useRef, useState } from "react";
 import BlogSocialShare from "./BlogSocialShare";
 import styles from "./BlogArticleLayout.module.css";
 
-export const CONTENTS = [
-  { href: "#h-tl-dr", label: "TL;DR" },
-  { href: "#h-why-this-is-worth-getting-right", label: "Why this is worth getting right" },
-  {
-    href: "#h-the-distinction-most-lists-blur-enablement-vs-migration",
-    label: "The distinction most lists blur: enablement vs migration",
-  },
-  { href: "#h-how-we-evaluated-these-companies", label: "How we evaluated these companies" },
-  { href: "#h-the-companies-grouped-by-fit", label: "The companies, grouped by fit" },
-  { href: "#h-how-to-vet-a-modernization-partner-yourself", label: "How to vet a modernization partner yourself" },
-  {
-    href: "#h-when-not-to-modernize-and-when-to-pick-a-big-si-instead",
-    label: "When not to modernize — and when to pick a big SI instead",
-  },
-  { href: "#h-how-we-approach-it-at-sumatosoft", label: "How we approach it at SumatoSoft" },
-  { href: "#h-frequently-asked-questions", label: "Frequently asked questions" },
-  { href: "#h-summary", label: "Summary" },
-];
+export interface TocItem {
+  href: string;
+  label: string;
+}
 
-export default function BlogArticleLayout({ children }: { children: ReactNode }) {
-  const [activeId, setActiveId] = useState(CONTENTS[0].href.slice(1));
+interface Props {
+  contents: TocItem[];
+  children: ReactNode;
+}
+
+export default function BlogArticleLayout({ contents, children }: Props) {
+  const [activeId, setActiveId] = useState(contents[0]?.href.slice(1) ?? "");
   const [collapsed, setCollapsed] = useState(false);
   const isMobileRef = useRef<boolean | null>(null);
 
   useEffect(() => {
-    const headings = CONTENTS.map((item) => document.querySelector<HTMLElement>(item.href)).filter(
+    const headings = contents.map((item) => document.querySelector<HTMLElement>(item.href)).filter(
       (el): el is HTMLElement => Boolean(el)
     );
 
@@ -68,7 +59,7 @@ export default function BlogArticleLayout({ children }: { children: ReactNode })
       window.removeEventListener("resize", updateActive);
       window.removeEventListener("resize", evaluateBreakpoint);
     };
-  }, []);
+  }, [contents]);
 
   const navigateTo = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     e.preventDefault();
@@ -103,7 +94,7 @@ export default function BlogArticleLayout({ children }: { children: ReactNode })
                 </button>
               </div>
               <ul className={`${styles.tocList} ${collapsed ? styles.closed : ""}`}>
-                {CONTENTS.map((item) => (
+                {contents.map((item) => (
                   <li key={item.href}>
                     <a
                       href={item.href}

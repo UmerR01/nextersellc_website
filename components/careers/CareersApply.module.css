@@ -154,9 +154,19 @@
 .formLabel {
   align-items: baseline;
   display: flex;
+  flex-wrap: wrap;
   justify-content: flex-end;
   margin: 0 0 32px;
   width: 100%;
+}
+
+.fieldErrorText {
+  color: #ff415c;
+  font-size: 13px;
+  line-height: 1.4;
+  margin-top: 4px;
+  flex-basis: 100%;
+  text-align: right;
 }
 
 @media (max-width: 1199px) {

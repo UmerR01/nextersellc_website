@@ -10,7 +10,7 @@ import LetsStart from "@/components/home/LetsStart";
 import LlmHero from "./LlmHero";
 import AipocLogos from "@/components/aipoc/AipocLogos";
 import LlmTechStack from "./LlmTechStack";
-import LlmArticleLayout from "./LlmArticleLayout";
+import ArticleLayout from "@/components/shared/ArticleLayout";
 import styles from "./LlmPage.module.css";
 
 // ─── LLM engineering services (4 cards) ───────────────────────────────────────
@@ -79,10 +79,10 @@ const TIERS = [
 
 // ─── Why Nexterse (4 cards with photos) ───────────────────────────────────────
 const WHY = [
-  { img: "/llm-development/04_img-12-300x300.jpg", title: "Deep engineering coverage", desc: "We build the system end-to-end. That includes the data and model layers, the serving setup, and the surrounding software." },
-  { img: "/llm-development/04_img-03-300x300.jpg", title: "Architecture matched to the use case", desc: "We start with the business problem, then choose the lightest architecture that can do the job well. Sometimes that means RAG. Sometimes it means targeted model adaptation. We move to a heavier build only when the case supports it." },
-  { img: "/llm-development/04_img-01-300x300.jpg", title: "Integration built into delivery", desc: "We treat integration as core engineering work. Our team designs LLM systems to work with older enterprise systems and newer business applications." },
-  { img: "/llm-development/04_img-02-300x300.jpg", title: "Deployment shaped around constraints", desc: "We deploy in private cloud, on internal infrastructure, or in local environments when the use case calls for it. The choice depends on data-handling rules, response targets, hardware limitations, and long-term costs." },
+  { img: "/aisoft-development/aisoft-custom.jpg", title: "Deep engineering coverage", desc: "We build the system end-to-end. That includes the data and model layers, the serving setup, and the surrounding software." },
+  { img: "/aisoft-development/aisoft-rag.jpg", title: "Architecture matched to the use case", desc: "We start with the business problem, then choose the lightest architecture that can do the job well. Sometimes that means RAG. Sometimes it means targeted model adaptation. We move to a heavier build only when the case supports it." },
+  { img: "/aisoft-development/aisoft-agentic.jpg", title: "Integration built into delivery", desc: "We treat integration as core engineering work. Our team designs LLM systems to work with older enterprise systems and newer business applications." },
+  { img: "/aisoft-development/aisoft-cosn.jpg", title: "Deployment shaped around constraints", desc: "We deploy in private cloud, on internal infrastructure, or in local environments when the use case calls for it. The choice depends on data-handling rules, response targets, hardware limitations, and long-term costs." },
 ];
 
 // ─── Dual-engine integration (4 vertical tabs) ────────────────────────────────
@@ -186,6 +186,19 @@ const LLM_BADGES: Badge[] = [
 ];
 
 // ─── Component ────────────────────────────────────────────────────────────────
+const CONTENTS = [
+  { href: "#llm-services", label: "Services" },
+  { href: "#llm-tiers", label: "Build vs. Buy vs. Adapt" },
+  { href: "#llm-cases", label: "Case studies" },
+  { href: "#llm-tco", label: "TCO" },
+  { href: "#llm-why", label: "Why Nexterse" },
+  { href: "#llm-dualengine", label: "Dual-engine integration" },
+  { href: "#llm-deployment", label: "Flexible deployment" },
+  { href: "#llm-tech", label: "Tech stack" },
+  { href: "#llm-adlc", label: "Agentic development process" },
+  { href: "#llm-faq", label: "FAQ" },
+];
+
 export default function LlmPage() {
   const [activeTier, setActiveTier] = useState(0);
   const [activeDeploy, setActiveDeploy] = useState(0);
@@ -197,7 +210,7 @@ export default function LlmPage() {
     <>
       <LlmHero />
 
-      <LlmArticleLayout>
+      <ArticleLayout contents={CONTENTS} ariaLabel="LLM development page contents">
         <AipocLogos />
         {/* ── LLM engineering services (4 cards) ──────────────────────────── */}
         <section id="llm-services" className={`${styles.blockWhite} ${styles.llmServicesBlock}`}>
@@ -452,7 +465,7 @@ export default function LlmPage() {
 
         {/* ── Let's Start ─────────────────────────────────────────────────── */}
         <LetsStart />
-      </LlmArticleLayout>
+      </ArticleLayout>
     </>
   );
 }

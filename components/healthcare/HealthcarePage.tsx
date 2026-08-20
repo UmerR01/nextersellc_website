@@ -6,9 +6,9 @@ import ServicesReviewSlider from "@/components/services/ServicesReviewSlider";
 import ServicesAchievements from "@/components/services/ServicesAchievements";
 import ServicesFaqBlock, { type FaqItem } from "@/components/services/ServicesFaqBlock";
 import LetsStart from "@/components/home/LetsStart";
-import AdlcBlog, { type AdlcFeaturedPost, type AdlcBlogPost } from "@/components/adlc/AdlcBlog";
+import AwesomeStories from "@/components/blog/AwesomeStories";
 import AipocLogos from "@/components/aipoc/AipocLogos";
-import HealthcareArticleLayout from "./HealthcareArticleLayout";
+import ArticleLayout from "@/components/shared/ArticleLayout";
 import styles from "./HealthcarePage.module.css";
 
 // ─── Processes we automate (4 audience cards) ─────────────────────────────────
@@ -155,7 +155,7 @@ const HC_FAQ: FaqItem[] = [
 ];
 
 // ─── Awesome stories (blog, clone content) ────────────────────────────────────
-const HC_BLOG_FEATURED: AdlcFeaturedPost = {
+const HC_BLOG_FEATURED = {
   href: "/blog/top-healthcare-software-development-companies",
   title: "Top Healthcare Software Development Companies for HIPAA & FHIR Projects",
   image: "/healthcare-development/08_Top-Healthcare-Providers-1024x578.png",
@@ -164,7 +164,7 @@ const HC_BLOG_FEATURED: AdlcFeaturedPost = {
   date: "November 25, 2025",
 };
 
-const HC_BLOG_SIDE: AdlcBlogPost[] = [
+const HC_BLOG_SIDE = [
   {
     href: "/blog/top-ai-tools-transforming-the-healthcare-landscape",
     title: "Top AI Tools Transforming Healthcare Landscape in 2026",
@@ -208,6 +208,15 @@ const HC_WHY = [
 ];
 
 // ─── Component ────────────────────────────────────────────────────────────────
+const CONTENTS = [
+  { href: "#hc-processes", label: "Processes we automate" },
+  { href: "#hc-services", label: "Services" },
+  { href: "#hc-cases", label: "Case studies & reviews" },
+  { href: "#hc-process", label: "Process" },
+  { href: "#hc-faq-video", label: "FAQ Video" },
+  { href: "#hc-faq", label: "FAQ" },
+];
+
 export default function HealthcarePage() {
   return (
     <>
@@ -351,7 +360,7 @@ export default function HealthcarePage() {
         </div>
       </section>
 
-      <HealthcareArticleLayout>
+      <ArticleLayout contents={CONTENTS} ariaLabel="Healthcare page contents">
         <AipocLogos />
 
         {/* ── Processes we automate ──────────────────────────────────────── */}
@@ -536,8 +545,8 @@ export default function HealthcarePage() {
         </div>
 
         {/* ── Awesome stories ────────────────────────────────────────────── */}
-        <AdlcBlog featured={HC_BLOG_FEATURED} sidePosts={HC_BLOG_SIDE} />
-      </HealthcareArticleLayout>
+        <AwesomeStories category="enterprise" />
+      </ArticleLayout>
     </>
   );
 }

@@ -13,7 +13,7 @@ const STATS = [
   { value: 350, symbol: "+", label: "projects delivered" },
   { value: 25, symbol: "+", label: "countries served" },
   { value: 3, symbol: "+", label: "years' client engagement" },
-  { value: 14, symbol: "+", label: "years on the market" },
+  { value: 6, symbol: "+", label: "years on the market" },
 ];
 
 function CountUp({ target }: { target: number }) {

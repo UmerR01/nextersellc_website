@@ -7,10 +7,10 @@ import ServicesReviewSlider from "@/components/services/ServicesReviewSlider";
 import ServicesAchievements, { type Badge } from "@/components/services/ServicesAchievements";
 import ServicesFaqBlock, { type FaqItem } from "@/components/services/ServicesFaqBlock";
 import LetsStart from "@/components/home/LetsStart";
-import AdlcBlog, { type AdlcFeaturedPost, type AdlcBlogPost } from "@/components/adlc/AdlcBlog";
+import AwesomeStories from "@/components/blog/AwesomeStories";
 import FintechHero from "./FintechHero";
 import AipocLogos from "@/components/aipoc/AipocLogos";
-import FintechArticleLayout from "./FintechArticleLayout";
+import ArticleLayout from "@/components/shared/ArticleLayout";
 import styles from "./FintechPage.module.css";
 
 // ─── Core fintech solutions (5 vertical tabs) ─────────────────────────────────
@@ -174,7 +174,7 @@ const INTEGRATIONS = [
 const WHY_CARDS = [
   {
     title: "Proven delivery",
-    bullets: ["350+ custom software systems delivered", "14+ years in software engineering", "98% Client satisfaction", "Clients across 25+ countries"],
+    bullets: ["350+ custom software systems delivered", "6+ years in software engineering", "98% Client satisfaction", "Clients across 25+ countries"],
   },
   {
     title: "System-level execution",
@@ -243,7 +243,7 @@ const QUICK_FACTS = [
   { num: "25+", label: "Countries" },
   { num: "70%", label: "Senior engineers" },
   { num: "3+", label: "Years of Clients’ engagement" },
-  { num: "14+", label: "Years on the market" },
+  { num: "6+", label: "Years on the market" },
 ];
 
 function AnimatedStatNumber({ value, suffix, active }: { value: number; suffix: string; active: boolean }) {
@@ -334,7 +334,7 @@ const FIN_BADGES: Badge[] = [
 ];
 
 // ─── Awesome stories (blog, clone content) ────────────────────────────────────
-const FIN_BLOG_FEATURED: AdlcFeaturedPost = {
+const FIN_BLOG_FEATURED = {
   href: "/blog/eu-ai-act-custom-ai-development",
   title: "The EU AI Act: How It Changes AI development and What It Means for Custom AI",
   image: "/financial-development/07_Figure-6-in-force-vs-coming.svg",
@@ -342,7 +342,7 @@ const FIN_BLOG_FEATURED: AdlcFeaturedPost = {
   readTime: "25 mins",
   date: "July 9, 2026",
 };
-const FIN_BLOG_SIDE: AdlcBlogPost[] = [
+const FIN_BLOG_SIDE = [
   { href: "/blog/questions-to-ask-ai-development-company", title: "10 questions to Ask an AI Development Company before Signing", readTime: "18 mins", date: "July 7, 2026" },
   { href: "/blog/blog-agentic-rag-enterprise-implementation-guide", title: "Agentic RAG: The Complete Enterprise Implementation Guide for 2026", readTime: "35 mins", date: "July 3, 2026" },
   { href: "/blog/ai-cost-reduction-playbook", title: "The AI Cost Reduction Playbook – 9 Mechanisms, 7 Hidden Drivers, and Real-World Case Studies (2026 Edition)", readTime: "32 mins", date: "July 1, 2026" },
@@ -377,6 +377,17 @@ const CROSSLINKS = [
 ];
 
 // ─── Component ────────────────────────────────────────────────────────────────
+const CONTENTS = [
+  { href: "#fin-solutions", label: "Solutions" },
+  { href: "#fin-benefits", label: "Benefits" },
+  { href: "#fin-advanced", label: "Advanced tech" },
+  { href: "#fin-industry", label: "Industry solutions" },
+  { href: "#fin-security", label: "Security & compliance" },
+  { href: "#fin-cases", label: "Case studies" },
+  { href: "#fin-faq", label: "FAQ" },
+  { href: "#fin-why", label: "Why Nexterse LLC" },
+];
+
 export default function FintechPage() {
   const [activeSolution, setActiveSolution] = useState(0);
   const [activeDualEngine, setActiveDualEngine] = useState(0);
@@ -406,7 +417,7 @@ export default function FintechPage() {
     <>
       <FintechHero />
 
-      <FintechArticleLayout>
+      <ArticleLayout contents={CONTENTS} ariaLabel="Fintech page contents">
         <AipocLogos />
 
         {/* ── Core fintech solutions (vertical tabs) ─────────────────────── */}
@@ -739,7 +750,7 @@ export default function FintechPage() {
         </section>
 
         {/* ── Awesome stories (blog) ─────────────────────────────────────── */}
-        <AdlcBlog featured={FIN_BLOG_FEATURED} sidePosts={FIN_BLOG_SIDE} />
+        <AwesomeStories category="enterprise" />
 
         {/* ── Let's Start ────────────────────────────────────────────────── */}
         <LetsStart />
@@ -771,7 +782,7 @@ export default function FintechPage() {
             </div>
           </div>
         </section>
-      </FintechArticleLayout>
+      </ArticleLayout>
     </>
   );
 }

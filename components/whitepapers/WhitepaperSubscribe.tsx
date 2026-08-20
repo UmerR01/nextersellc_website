@@ -2,15 +2,25 @@
 
 import { useState } from "react";
 import styles from "./WhitepaperSubscribe.module.css";
+import { isValidName, isValidEmail, VALIDATION_MESSAGES } from "@/lib/formValidation";
 
 export default function WhitepaperSubscribe() {
   const [submitted, setSubmitted] = useState(false);
   const [form, setForm] = useState({ name: "", email: "", agree: false });
   const [status, setStatus] = useState<"idle" | "loading" | "error">("idle");
+  const [errors, setErrors] = useState<{ name?: string; email?: string; agree?: string }>({});
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!form.name || !form.email || !form.agree) return;
+    const nextErrors: typeof errors = {};
+    if (!form.name.trim()) nextErrors.name = VALIDATION_MESSAGES.required;
+    else if (!isValidName(form.name)) nextErrors.name = VALIDATION_MESSAGES.name;
+    if (!form.email.trim()) nextErrors.email = VALIDATION_MESSAGES.required;
+    else if (!isValidEmail(form.email)) nextErrors.email = VALIDATION_MESSAGES.email;
+    if (!form.agree) nextErrors.agree = VALIDATION_MESSAGES.checkbox;
+    setErrors(nextErrors);
+    if (Object.keys(nextErrors).length > 0) return;
+
     setStatus("loading");
     try {
       const res = await fetch("/api/whitepaper-subscribe", {
@@ -48,9 +58,9 @@ export default function WhitepaperSubscribe() {
                     type="text"
                     placeholder="John Smith"
                     value={form.name}
-                    onChange={(e) => setForm((f) => ({ ...f, name: e.target.value }))}
-                    required
+                    onChange={(e) => { setForm((f) => ({ ...f, name: e.target.value })); setErrors((p) => ({ ...p, name: undefined })); }}
                   />
+                  {errors.name && <span className={styles.fieldErrorText}>{errors.name}</span>}
                 </label>
 
                 <label className={styles.field}>
@@ -59,9 +69,9 @@ export default function WhitepaperSubscribe() {
                     type="email"
                     placeholder="name@company.com"
                     value={form.email}
-                    onChange={(e) => setForm((f) => ({ ...f, email: e.target.value }))}
-                    required
+                    onChange={(e) => { setForm((f) => ({ ...f, email: e.target.value })); setErrors((p) => ({ ...p, email: undefined })); }}
                   />
+                  {errors.email && <span className={styles.fieldErrorText}>{errors.email}</span>}
                 </label>
 
                 <div className={styles.bottomRow}>
@@ -69,7 +79,7 @@ export default function WhitepaperSubscribe() {
                     <input
                       type="checkbox"
                       checked={form.agree}
-                      onChange={(e) => setForm((f) => ({ ...f, agree: e.target.checked }))}
+                      onChange={(e) => { setForm((f) => ({ ...f, agree: e.target.checked })); setErrors((p) => ({ ...p, agree: undefined })); }}
                     />
                     <span>
                       Agree with <a href="/privacy-policy">Privacy Policy</a>
@@ -79,6 +89,7 @@ export default function WhitepaperSubscribe() {
                     {status === "loading" ? "Subscribing…" : "Subscribe"}
                   </button>
                 </div>
+                {errors.agree && <p className={styles.fieldErrorText}>{errors.agree}</p>}
                 {status === "error" && (
                   <p style={{ color: "#ff415c", fontSize: 14, marginTop: 8 }}>
                     Something went wrong. Please try again.

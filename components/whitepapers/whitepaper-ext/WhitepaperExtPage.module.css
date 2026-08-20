@@ -249,7 +249,7 @@
 .heroForm input[type="text"]::placeholder,
 .heroForm input[type="email"]::placeholder { color: #394663; }
 
-.inputInvalid { border-bottom-color: #3CC4E5 !important; }
+.inputInvalid { border-bottom-color: #ff415c !important; }
 
 /* Custom Select */
 .selectIntentionWrapper,
@@ -330,7 +330,7 @@
 .radioItem label { display: flex; align-items: center; gap: 8px; cursor: pointer; }
 .radioItem input[type="radio"] { accent-color: #3CC4E5; width: 16px; height: 16px; cursor: pointer; flex-shrink: 0; }
 .radioLabel { color: #112244; font-size: 16px; line-height: 22px; }
-.fieldError { color: #3CC4E5; font-size: 12px; margin-top: 4px; display: block; }
+.fieldError { color: #ff415c; font-size: 12px; margin-top: 4px; display: block; }
 
 /* Agreement */
 .agreementWrapper > p { display: flex; max-height: 24px; align-items: center; gap: 4px; }

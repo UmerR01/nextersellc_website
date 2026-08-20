@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Header from "@/components/Header";
 import CSHero from "@/components/custom-software/CSHero";
-import CSArticleLayout from "@/components/custom-software/CSArticleLayout";
+import ArticleLayout from "@/components/shared/ArticleLayout";
 import AipocLogos from "@/components/aipoc/AipocLogos";
 import CSServicesBlock from "@/components/custom-software/CSServicesBlock";
 import DeliveryModels from "@/components/custom-software/DeliveryModels";
@@ -19,7 +19,7 @@ import WhyTeams from "@/components/custom-software/WhyTeams";
 import CSAwardsBlock from "@/components/custom-software/CSAwardsBlock";
 import CSFaqBlock from "@/components/custom-software/CSFaqBlock";
 import LetsStart from "@/components/home/LetsStart";
-import CSBlogSection from "@/components/custom-software/CSBlogSection";
+import AwesomeStories from "@/components/blog/AwesomeStories";
 
 export const metadata: Metadata = {
   title: "Software Product Development Company | Nexterse LLC",
@@ -27,13 +27,26 @@ export const metadata: Metadata = {
     "Nexterse LLC delivers custom software product development for web, mobile, enterprise, and AI builds. ISO 27001 certified, HIPAA-enabling, PCI-aligned. Get in touch.",
 };
 
+const CONTENTS = [
+  { href: "#cs-services", label: "Services" },
+  { href: "#cs-delivery-models", label: "Delivery models" },
+  { href: "#cs-two-lifecycles", label: "Two lifecycles, one team" },
+  { href: "#cs-cases", label: "Case studies" },
+  { href: "#cs-process", label: "Process" },
+  { href: "#cs-advanced-tech", label: "Advanced tech" },
+  { href: "#cs-industries", label: "Industries" },
+  { href: "#cs-how-we-price", label: "How we price work" },
+  { href: "#cs-why-teams", label: "Why Nexterse LLC" },
+  { href: "#cs-faq", label: "FAQ" },
+];
+
 export default function CustomSoftwareDevelopmentPage() {
   return (
     <>
       <Header />
       <main>
         <CSHero />
-        <CSArticleLayout>
+        <ArticleLayout contents={CONTENTS} ariaLabel="Custom software page contents">
           <AipocLogos />
           <CSServicesBlock />
           <DeliveryModels />
@@ -53,8 +66,8 @@ export default function CustomSoftwareDevelopmentPage() {
           <CSAwardsBlock />
           <CSFaqBlock />
           <LetsStart />
-          <CSBlogSection />
-        </CSArticleLayout>
+          <AwesomeStories category="development" />
+        </ArticleLayout>
       </main>
     </>
   );

@@ -14,7 +14,7 @@ import SdlcFaq from "@/components/sdlc/SdlcFaq";
 import TeamAwards from "@/components/team/TeamAwards";
 import LetsStart from "@/components/home/LetsStart";
 import SdlcCrosslinks from "@/components/sdlc/SdlcCrosslinks";
-import SdlcBlog from "@/components/sdlc/SdlcBlog";
+import AwesomeStories from "@/components/blog/AwesomeStories";
 
 export const metadata: Metadata = {
   title: "Software Development Lifecycle (SDLC) | Nexterse LLC",
@@ -41,7 +41,7 @@ export default function SdlcPage() {
         <TeamAwards />
         <LetsStart />
         <SdlcCrosslinks />
-        <SdlcBlog />
+        <AwesomeStories category="development" />
       </main>
     </>
   );

@@ -4,14 +4,14 @@ import { useState } from "react";
 import Image from "next/image";
 import CaseCards from "@/components/home/CaseCards";
 import LetsStart from "@/components/home/LetsStart";
-import AdlcBlog, { type AdlcFeaturedPost, type AdlcBlogPost } from "@/components/adlc/AdlcBlog";
+import AwesomeStories from "@/components/blog/AwesomeStories";
 import GenaiIntegrationHero from "./GenaiIntegrationHero";
 import AipocLogos from "@/components/aipoc/AipocLogos";
 import GenaiIntegrationReviews from "./GenaiIntegrationReviews";
 import GenaiIntegrationAwards from "./GenaiIntegrationAwards";
 import GenaiIntegrationFaq from "./GenaiIntegrationFaq";
 import GenaiIntegrationCrosslinks from "./GenaiIntegrationCrosslinks";
-import GenaiIntegrationArticleLayout from "./GenaiIntegrationArticleLayout";
+import ArticleLayout from "@/components/shared/ArticleLayout";
 import styles from "./GenaiIntegrationPage.module.css";
 
 // --- Why most enterprise AI initiatives fail (6 open items) ----------------
@@ -122,7 +122,7 @@ const DELIVERABLES = [
 
 // ─── Why choose us (stats + comparison table) ─────────────────────────────────
 const STATS = [
-  { value: "14+", label: "years in software engineering" },
+  { value: "6+", label: "years in software engineering" },
   { value: "350+", label: "systems delivered" },
   { value: "98%", label: "client satisfaction" },
   { value: "25+", label: "clients across countries" },
@@ -145,7 +145,7 @@ const COMPARE_ROWS = [
 // ─── FAQ items now live in GenaiIntegrationFaq (clone content, custom-software UI) ─
 
 // ─── Awesome stories (blog) ───────────────────────────────────────────────────
-const GAII_BLOG_FEATURED: AdlcFeaturedPost = {
+const GAII_BLOG_FEATURED = {
   href: "/blog/enterprise-ai-adoption-risks",
   title: "Top 7 Enterprise AI Adoption Risks in 2026 — and How to De-Risk Them",
   image: "/genai-integration/07_figure-1-og-1200x630-1.png",
@@ -153,13 +153,25 @@ const GAII_BLOG_FEATURED: AdlcFeaturedPost = {
   readTime: "29 mins",
   date: "July 15, 2026",
 };
-const GAII_BLOG_SIDE: AdlcBlogPost[] = [
+const GAII_BLOG_SIDE = [
   { href: "/blog/ai-legacy-modernization-companies", title: "Top AI Legacy Modernization Companies (2026): Who Actually Embeds AI into Old Systems", readTime: "20 mins", date: "July 13, 2026" },
   { href: "/blog/eu-ai-act-custom-ai-development", title: "The EU AI Act: How It Changes AI Development and What It Means for Custom AI", readTime: "25 mins", date: "July 9, 2026" },
   { href: "/blog/questions-to-ask-ai-development-company", title: "10 questions to Ask an AI Development Company before Signing", readTime: "18 mins", date: "July 7, 2026" },
 ];
 
 // ─── Component ────────────────────────────────────────────────────────────────
+const CONTENTS = [
+  { href: "#gaii-fail", label: "Why initiatives fail" },
+  { href: "#gaii-integrate", label: "What and where we integrate" },
+  { href: "#gaii-security", label: "Security" },
+  { href: "#gaii-dual-engine", label: "Dual-engine AI architecture" },
+  { href: "#gaii-process", label: "Concept to production" },
+  { href: "#gaii-cases", label: "Case studies" },
+  { href: "#gaii-deliverables", label: "Deliverables" },
+  { href: "#gaii-why", label: "Why choose us" },
+  { href: "#gaii-faq", label: "FAQ" },
+];
+
 export default function GenaiIntegrationPage() {
   const [activeSec, setActiveSec] = useState(0);
 
@@ -167,7 +179,7 @@ export default function GenaiIntegrationPage() {
     <>
       <GenaiIntegrationHero />
 
-      <GenaiIntegrationArticleLayout>
+      <ArticleLayout contents={CONTENTS} ariaLabel="GenAI integration page contents">
         <AipocLogos />
 
         {/* ── Big Data services built for operational scale ── */}
@@ -299,7 +311,8 @@ export default function GenaiIntegrationPage() {
         {/* ── Our recent AI cases ───────────────────────────────────────────── */}
         <div id="gaii-cases">
           <CaseCards
-            heading={<>Our recent AI <span>cases</span></>}
+            heading={<>Our recent AI <span>cases</span></>}
+
             windowed
           />
         </div>
@@ -366,11 +379,11 @@ export default function GenaiIntegrationPage() {
         <LetsStart />
 
         {/* ── Awesome stories (blog) ────────────────────────────────────────── */}
-        <AdlcBlog featured={GAII_BLOG_FEATURED} sidePosts={GAII_BLOG_SIDE} />
+        <AwesomeStories category="ai" />
 
         {/* ── More about Nexterse LLC (crosslinks) ─────────────────────────── */}
         <GenaiIntegrationCrosslinks />
-      </GenaiIntegrationArticleLayout>
+      </ArticleLayout>
     </>
   );
 }

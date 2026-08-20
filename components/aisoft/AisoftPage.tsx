@@ -7,12 +7,12 @@ import ServicesReviewSlider from "@/components/services/ServicesReviewSlider";
 import ServicesAchievements, { type Badge } from "@/components/services/ServicesAchievements";
 import ServicesFaqBlock, { type FaqItem } from "@/components/services/ServicesFaqBlock";
 import LetsStart from "@/components/home/LetsStart";
-import AdlcBlog, { type AdlcFeaturedPost, type AdlcBlogPost } from "@/components/adlc/AdlcBlog";
+import AwesomeStories from "@/components/blog/AwesomeStories";
 import AisoftHero from "./AisoftHero";
 import AipocLogos from "@/components/aipoc/AipocLogos";
 import AisoftTechStack from "./AisoftTechStack";
 import AisoftCrosslinks from "./AisoftCrosslinks";
-import AisoftArticleLayout from "./AisoftArticleLayout";
+import ArticleLayout from "@/components/shared/ArticleLayout";
 import styles from "./AisoftPage.module.css";
 
 // ─── ROI tiers (horizontal tabs with image) ──────────────────────────────────
@@ -42,7 +42,7 @@ const TIERS: Tier[] = [
     ],
     linkText: "AI Readiness Assessment",
     linkHref: "/ai-readiness-assessment",
-    image: "/aisoft-development/07_software-development-team-in-the-office-1024x683.jpg",
+    image: "/aisoft-development/aisoft-cosn.jpg",
   },
   {
     icon: "/aisoft-development/03_RAG-as-a-Service-01.svg",
@@ -53,7 +53,7 @@ const TIERS: Tier[] = [
     ],
     linkText: "RAG as a Service",
     linkHref: "/services/rag-development",
-    image: "/aisoft-development/11_aws-features-1024x684.jpg",
+    image: "/aisoft-development/aisoft-rag.jpg",
   },
   {
     icon: "/aisoft-development/03_Workflow-fit-02.svg",
@@ -64,7 +64,7 @@ const TIERS: Tier[] = [
     ],
     linkText: "AI Agents Development",
     linkHref: "/services/ai-agents-development",
-    image: "/aisoft-development/11_gains-of-the-cloud-1024x684.jpg",
+    image: "/aisoft-development/aisoft-agentic.jpg",
   },
   {
     icon: "/aisoft-development/03_Custom-AI-App-Development-2.svg",
@@ -75,7 +75,7 @@ const TIERS: Tier[] = [
     ],
     linkText: "Custom LLM development",
     linkHref: "/services/llm-development",
-    image: "/aisoft-development/07_software-development-team-1024x683.jpg",
+    image: "/aisoft-development/aisoft-custom.jpg",
   },
 ];
 
@@ -130,7 +130,7 @@ const GUARANTEES = [
 const SDLC = [
   {
     title: "Traditional Agile SDLC",
-    desc: "For over a decade we’ve built enterprise software across industries, wiring complex systems together, modernizing legacy platforms, and shipping solutions that hold up under real operational load. We know how production systems behave, how business logic shifts over time, and how to engineer software that stays maintainable years later. That experience is the foundation under everything we build.",
+    desc: "For over 6 years we’ve built enterprise software across industries, wiring complex systems together, modernizing legacy platforms, and shipping solutions that hold up under real operational load. We know how production systems behave, how business logic shifts over time, and how to engineer software that stays maintainable years later. That experience is the foundation under everything we build.",
     linkText: "SDLC",
     href: "/adlc",
   },
@@ -296,7 +296,7 @@ const AIS_FAQ: FaqItem[] = [
   { question: "How much does enterprise AI development cost?", answer: "Cost depends on scope, data readiness, and how many systems the AI connects to. As a general guide, a proof-of-concept or pilot runs in the low-to-mid five figures. A full production build usually falls between roughly $100,000 and $400,000+, set by model complexity, integrations, and compliance scope. Ongoing monitoring and retraining add about 15–20% of the build cost per year. Our 4–6 week pilot puts a firm cost boundary around the work before you commit to production, including projected cloud and token spend." },
   { question: "How long does it take to move from idea to production?", answer: "A pilot can be delivered in four to six weeks. A production build follows once the pilot validates feasibility. It usually takes three to nine months, set by how many systems it connects to and how ready your data is. Data readiness is the biggest variable, and we surface it during the pilot rather than mid-build." },
   { question: "Will our proprietary data be used to train public AI models?", answer: "No. Enterprise deployments run inside private infrastructure. Your data stays isolated and never trains external foundation models." },
-  { question: "Can AI integrate with our legacy systems?", answer: "Yes, and it’s most of what we do. We connect models to your existing systems through secure middleware and APIs. The AI reads and writes through a controlled layer instead of touching your database directly. We’ve modernized and integrated legacy platforms for 14+ years, which is what makes the AI layer safe to add." },
+  { question: "Can AI integrate with our legacy systems?", answer: "Yes, and it’s most of what we do. We connect models to your existing systems through secure middleware and APIs. The AI reads and writes through a controlled layer instead of touching your database directly. We’ve modernized and integrated legacy platforms for 6+ years, which is what makes the AI layer safe to add." },
   { question: "How do you ensure model quality and reliability?", answer: "We evaluate every AI system against defined performance metrics before release, then keep quality steady over time through continuous monitoring, structured testing, and controlled iteration." },
   { question: "What is the difference between standard software development and AI development?", answer: "Traditional software follows deterministic logic. AI systems work probabilistically, so they need structured evaluation, guardrails, and monitoring to stay reliable. Building production-grade AI takes both disciplines together." },
   { question: "Do we have to use AI if we only need a standard application?", answer: "No. Your business objectives drive the architecture. If a conventional build gives you better efficiency and predictability, that’s what we recommend." },
@@ -304,7 +304,7 @@ const AIS_FAQ: FaqItem[] = [
 ];
 
 // ─── Awesome stories (blog) ───────────────────────────────────────────────────
-const AIS_BLOG_FEATURED: AdlcFeaturedPost = {
+const AIS_BLOG_FEATURED = {
   href: "/blog/eu-ai-act-custom-ai-development",
   title: "The EU AI Act: How It Changes AI development and What It Means for Custom AI",
   image: "/aisoft-development/07_Figure-6-in-force-vs-coming.svg",
@@ -312,13 +312,28 @@ const AIS_BLOG_FEATURED: AdlcFeaturedPost = {
   readTime: "25 mins",
   date: "July 9, 2026",
 };
-const AIS_BLOG_SIDE: AdlcBlogPost[] = [
+const AIS_BLOG_SIDE = [
   { href: "/blog/questions-to-ask-ai-development-company", title: "10 questions to Ask an AI Development Company before Signing", readTime: "18 mins", date: "July 7, 2026" },
   { href: "/blog/agentic-rag-enterprise-implementation-guide", title: "Agentic RAG: The Complete Enterprise Implementation Guide for 2026", readTime: "35 mins", date: "July 3, 2026" },
   { href: "/blog/ai-cost-reduction-playbook", title: "The AI Cost Reduction Playbook – 9 Mechanisms, 7 Hidden Drivers, and Real-World Case Studies (2026 Edition)", readTime: "32 mins", date: "July 1, 2026" },
 ];
 
 // ─── Component ────────────────────────────────────────────────────────────────
+const CONTENTS = [
+  { href: "#ai-tiers", label: "ROI tiers" },
+  { href: "#ai-pilot", label: "Pilot program" },
+  { href: "#ai-cases", label: "Case studies & reviews" },
+  { href: "#ai-guarantees", label: "Our guarantees" },
+  { href: "#ai-sdlc", label: "SDLC vs ADLC" },
+  { href: "#ai-adlc", label: "Agentic lifecycle" },
+  { href: "#ai-security", label: "Security and compliance" },
+  { href: "#ai-industries", label: "Industries" },
+  { href: "#ai-awards", label: "Awards & recognitions" },
+  { href: "#ai-tech", label: "Tech stack" },
+  { href: "#ai-privacy", label: "Data privacy" },
+  { href: "#ai-faq", label: "FAQ" },
+];
+
 export default function AisoftPage() {
   const [activeTier, setActiveTier] = useState(0);
   const [activeSec, setActiveSec] = useState(0);
@@ -328,7 +343,7 @@ export default function AisoftPage() {
     <>
       <AisoftHero />
 
-      <AisoftArticleLayout>
+      <ArticleLayout contents={CONTENTS} ariaLabel="AI software development page contents">
         <AipocLogos />
         {/* ── ROI tiers (horizontal tabs) ────────────────────────────────── */}
         <section id="ai-tiers" className={styles.serviceBlock}>
@@ -450,7 +465,7 @@ export default function AisoftPage() {
           <div className="container">
             <h2 className={styles.sectionTitle}>Can you add AI to our legacy systems?</h2>
             <p className={styles.sectionDesc}>
-              AI works best on top of solid software, not in place of it. We take the systems you’ve built up over the years and add an intelligent layer on top, without tearing out what already works. We can do this because we’ve shipped traditional software for over 14 years. That makes us a dual-engine firm, with classic engineering and modern AI under one roof.
+              AI works best on top of solid software, not in place of it. We take the systems you’ve built up over the years and add an intelligent layer on top, without tearing out what already works. We can do this because we’ve shipped traditional software for over 6 years. That makes us a dual-engine firm, with classic engineering and modern AI under one roof.
             </p>
             <div className={styles.twoColCards}>
               {SDLC.map((c) => (
@@ -585,8 +600,8 @@ export default function AisoftPage() {
         <LetsStart />
 
         {/* ── Awesome stories (blog) ──────────────────────────────────────── */}
-        <AdlcBlog featured={AIS_BLOG_FEATURED} sidePosts={AIS_BLOG_SIDE} />
-      </AisoftArticleLayout>
+        <AwesomeStories category="ai" />
+      </ArticleLayout>
     </>
   );
 }

@@ -3,6 +3,7 @@
 import { useState, useRef, useEffect } from "react";
 import Link from "next/link";
 import s from "./WhitepaperExtPage.module.css";
+import { isValidName, isValidEmail, VALIDATION_MESSAGES } from "@/lib/formValidation";
 import type {
   WhitepaperData,
   RichText,
@@ -170,7 +171,7 @@ export default function WhitepaperExtPage({ data }: { data: WhitepaperData }) {
     name: "", email: "", intention: "", discuss: "",
     company: "", companyType: "", agreement: false,
   });
-  const [heroErrors, setHeroErrors] = useState<Record<string, boolean>>({});
+  const [heroErrors, setHeroErrors] = useState<Record<string, string>>({});
   const [heroSubmitted, setHeroSubmitted] = useState(false);
 
   const [faqOpen, setFaqOpen] = useState<Set<number>>(
@@ -180,12 +181,14 @@ export default function WhitepaperExtPage({ data }: { data: WhitepaperData }) {
 
   const handleHeroSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    const errors: Record<string, boolean> = {};
-    if (!heroForm.name.trim())  errors.name      = true;
-    if (!heroForm.email.trim()) errors.email     = true;
-    if (!heroForm.intention)    errors.intention = true;
-    if (!heroForm.discuss)      errors.discuss   = true;
-    if (!heroForm.agreement)    errors.agreement = true;
+    const errors: Record<string, string> = {};
+    if (!heroForm.name.trim()) errors.name = VALIDATION_MESSAGES.required;
+    else if (!isValidName(heroForm.name)) errors.name = VALIDATION_MESSAGES.name;
+    if (!heroForm.email.trim()) errors.email = VALIDATION_MESSAGES.required;
+    else if (!isValidEmail(heroForm.email)) errors.email = VALIDATION_MESSAGES.email;
+    if (!heroForm.intention) errors.intention = VALIDATION_MESSAGES.required;
+    if (!heroForm.discuss) errors.discuss = VALIDATION_MESSAGES.required;
+    if (!heroForm.agreement) errors.agreement = VALIDATION_MESSAGES.checkbox;
     setHeroErrors(errors);
     if (Object.keys(errors).length === 0) {
       setHeroSubmitted(true);
@@ -373,22 +376,24 @@ export default function WhitepaperExtPage({ data }: { data: WhitepaperData }) {
                         <label>
                           <input type="text" placeholder="Full name*"
                             value={heroForm.name}
-                            onChange={(e) => setHeroForm((p) => ({ ...p, name: e.target.value }))}
+                            onChange={(e) => { setHeroForm((p) => ({ ...p, name: e.target.value })); setHeroErrors((p) => ({ ...p, name: "" })); }}
                             className={heroErrors.name ? s.inputInvalid : ""}
                             aria-required="true"
                           />
                         </label>
+                        {heroErrors.name && <span className={s.fieldError}>{heroErrors.name}</span>}
                       </div>
 
                       <div>
                         <label>
                           <input type="email" placeholder="Email*"
                             value={heroForm.email}
-                            onChange={(e) => setHeroForm((p) => ({ ...p, email: e.target.value }))}
+                            onChange={(e) => { setHeroForm((p) => ({ ...p, email: e.target.value })); setHeroErrors((p) => ({ ...p, email: "" })); }}
                             className={heroErrors.email ? s.inputInvalid : ""}
                             aria-required="true"
                           />
                         </label>
+                        {heroErrors.email && <span className={s.fieldError}>{heroErrors.email}</span>}
                       </div>
 
                       <div className={s.selectIntentionWrapper}>
@@ -396,9 +401,10 @@ export default function WhitepaperExtPage({ data }: { data: WhitepaperData }) {
                           placeholder="Select interest intention*"
                           options={INTENTION_OPTIONS}
                           value={heroForm.intention}
-                          onChange={(v) => setHeroForm((p) => ({ ...p, intention: v }))}
-                          hasError={heroErrors.intention}
+                          onChange={(v) => { setHeroForm((p) => ({ ...p, intention: v })); setHeroErrors((p) => ({ ...p, intention: "" })); }}
+                          hasError={Boolean(heroErrors.intention)}
                         />
+                        {heroErrors.intention && <span className={s.fieldError}>{heroErrors.intention}</span>}
                       </div>
 
                       <div className={s.discussWrapper}>
@@ -409,7 +415,7 @@ export default function WhitepaperExtPage({ data }: { data: WhitepaperData }) {
                               <label>
                                 <input type="radio" name="discuss" value="Yes"
                                   checked={heroForm.discuss === "Yes"}
-                                  onChange={() => setHeroForm((p) => ({ ...p, discuss: "Yes" }))}
+                                  onChange={() => { setHeroForm((p) => ({ ...p, discuss: "Yes" })); setHeroErrors((p) => ({ ...p, discuss: "" })); }}
                                 />
                                 <span className={s.radioLabel}>Yes</span>
                               </label>
@@ -418,7 +424,7 @@ export default function WhitepaperExtPage({ data }: { data: WhitepaperData }) {
                               <label>
                                 <input type="radio" name="discuss" value="No"
                                   checked={heroForm.discuss === "No"}
-                                  onChange={() => setHeroForm((p) => ({ ...p, discuss: "No" }))}
+                                  onChange={() => { setHeroForm((p) => ({ ...p, discuss: "No" })); setHeroErrors((p) => ({ ...p, discuss: "" })); }}
                                 />
                                 <span className={s.radioLabel}>No</span>
                               </label>
@@ -454,7 +460,7 @@ export default function WhitepaperExtPage({ data }: { data: WhitepaperData }) {
                             <label>
                               <input type="checkbox"
                                 checked={heroForm.agreement}
-                                onChange={(e) => setHeroForm((p) => ({ ...p, agreement: e.target.checked }))}
+                                onChange={(e) => { setHeroForm((p) => ({ ...p, agreement: e.target.checked })); setHeroErrors((p) => ({ ...p, agreement: "" })); }}
                               />
                               <span className={s.checkboxLabel}>Agree with</span>
                             </label>

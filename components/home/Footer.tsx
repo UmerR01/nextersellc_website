@@ -103,6 +103,12 @@ export default function Footer() {
                     </a>
                   </li>
                   <li>
+                    <a href="mailto:support@nexterse.com" target="_blank" rel="noreferrer noopener">
+                      <IconEmail />
+                      support@nexterse.com
+                    </a>
+                  </li>
+                  <li>
                     <a href="tel:+13214912236" target="_blank" rel="noreferrer noopener">
                       <IconPhone />
                       +1 (321) 491-2236
@@ -236,6 +242,11 @@ export default function Footer() {
                 <li>
                   <a href="mailto:info@nexterse.com" target="_blank" rel="noreferrer noopener">
                     <IconEmail /> info@nexterse.com
+                  </a>
+                </li>
+                <li>
+                  <a href="mailto:support@nexterse.com" target="_blank" rel="noreferrer noopener">
+                    <IconEmail /> support@nexterse.com
                   </a>
                 </li>
               </ul>

@@ -1,0 +1,207 @@
+/* Shared "We have awesome stories to tell you" section, used on every page
+   that features blog posts. Based on the original home-page implementation. */
+
+.section {
+  position: relative;
+  z-index: 4;
+  background: #ffffff;
+  padding: 96px 0 40px;
+}
+
+.title {
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 300;
+  color: var(--color-text);
+  margin-bottom: 64px;
+  letter-spacing: -0.02em;
+}
+
+.titleAccent {
+  color: var(--color-accent);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: start;
+}
+
+/* ── Left column: feature post ── */
+.feature {
+  display: block;
+  margin-bottom: 32px;
+  text-decoration: none;
+  color: inherit;
+}
+
+.featureImage {
+  position: relative;
+  margin-bottom: 24px;
+  overflow: hidden;
+}
+
+.featureImage::before {
+  content: "";
+  display: block;
+  padding-top: 56.21%;
+}
+
+.featureImageWrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: linear-gradient(135deg, #c5d4ec, #dde9f8);
+}
+
+.featureImageWrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.3s ease;
+}
+
+.feature:hover .featureImageWrapper img {
+  transform: scale(1.05);
+}
+
+.featureTitle {
+  color: #000000;
+  font-size: 28px;
+  line-height: 36px;
+  margin-bottom: 8px;
+  font-weight: 400;
+  transition: color 0.3s;
+}
+
+.feature:hover .featureTitle {
+  color: var(--color-accent);
+}
+
+/* ── Right column: sidebar (text-only posts) ── */
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  padding-left: 62px;
+}
+
+.sidePost {
+  display: block;
+  margin-bottom: 32px;
+  text-decoration: none;
+  color: inherit;
+}
+
+.sidePost:last-of-type {
+  margin-bottom: 0;
+}
+
+.sideTitle {
+  color: #000000;
+  font-size: 28px;
+  line-height: 36px;
+  margin-bottom: 8px;
+  font-weight: 400;
+  transition: color 0.3s;
+}
+
+.sidePost:hover .sideTitle {
+  color: var(--color-accent);
+}
+
+/* ── Post meta: clock icon + separator + date ── */
+.meta {
+  display: flex;
+  align-items: center;
+  color: #5e6d8e;
+  font-size: 16px;
+  line-height: 22px;
+}
+
+.readTime {
+  position: relative;
+  padding-left: 24px;
+  display: inline-flex;
+  align-items: center;
+}
+
+.readTime svg {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.metaSep {
+  padding: 0 6px;
+  opacity: 0.6;
+}
+
+/* ── "All articles ›" link ── */
+.allLinkWrap {
+  display: flex;
+  align-items: flex-end;
+  flex: 1;
+  margin-top: 8px;
+}
+
+.allLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--color-accent);
+  text-decoration: none;
+  transition: color 0.2s;
+  line-height: 1.2;
+}
+
+.allLinkArrow {
+  display: inline-block;
+  height: 10px;
+  position: relative;
+  width: 6px;
+  align-self: center;
+  flex: 0 0 6px;
+  transform: translateY(1px);
+}
+
+.allLinkArrow::before,
+.allLinkArrow::after {
+  background: url("data:image/svg+xml;charset=utf8,%3Csvg width='6' height='10' viewBox='0 0 6 10' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 8.59L3.59 5L0 1.41L1 .5L5.5 5L1 9.5L0 8.59Z' fill='%233CC4E5'/%3E%3C/svg%3E") center no-repeat;
+  content: "";
+  inset: 0;
+  position: absolute;
+}
+
+.allLinkArrow::after { opacity: 0; }
+.allLink:hover .allLinkArrow::before { animation: storiesArrowBefore 1s linear infinite; }
+.allLink:hover .allLinkArrow::after { animation: storiesArrowAfter 1s linear infinite; }
+
+@keyframes storiesArrowBefore {
+  0% { opacity: 1; transform: translateX(0); }
+  49% { opacity: 0; transform: translateX(7px); }
+  52% { opacity: 0; transform: translateX(-7px); }
+  100% { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes storiesArrowAfter {
+  0% { opacity: 0; transform: translateX(-7px); }
+  49% { opacity: 1; transform: translateX(0); }
+  99% { opacity: 0; transform: translateX(7px); }
+  100% { opacity: 0; transform: translateX(-7px); }
+}
+
+@media (max-width: 768px) {
+  .section { padding: 72px 0 34px; }
+  .title { margin-bottom: 40px; }
+  .grid { grid-template-columns: 1fr; }
+  .sidebar { padding-left: 10px; margin-top: 16px; }
+  .featureTitle, .sideTitle { font-size: 20px; line-height: 24px; }
+  .meta { font-size: 13px; line-height: 18px; }
+  .featureImage { margin-bottom: 16px; }
+}

@@ -7,10 +7,10 @@ import ServicesReviewSlider from "@/components/services/ServicesReviewSlider";
 import ServicesAchievements, { type Badge } from "@/components/services/ServicesAchievements";
 import ServicesFaqBlock, { type FaqItem } from "@/components/services/ServicesFaqBlock";
 import LetsStart from "@/components/home/LetsStart";
-import AdlcBlog, { type AdlcFeaturedPost, type AdlcBlogPost } from "@/components/adlc/AdlcBlog";
+import AwesomeStories from "@/components/blog/AwesomeStories";
 import InsurtechHero from "./InsurtechHero";
 import AipocLogos from "@/components/aipoc/AipocLogos";
-import InsurtechArticleLayout from "./InsurtechArticleLayout";
+import ArticleLayout from "@/components/shared/ArticleLayout";
 import styles from "./InsurtechPage.module.css";
 
 // ─── Challenges (4 cards) ─────────────────────────────────────────────────────
@@ -221,7 +221,7 @@ const INS_BADGES: Badge[] = [
 ];
 
 // ─── Awesome guides (blog) ────────────────────────────────────────────────────
-const INS_BLOG_FEATURED: AdlcFeaturedPost = {
+const INS_BLOG_FEATURED = {
   href: "/blog/top-offshore-software-development-companies",
   title: "15+ Top Offshore Software Development Companies in 2026",
   image: "/insurtech-development/06_Top-Offshore-Software-Development-Companies-1024x578.png",
@@ -229,12 +229,22 @@ const INS_BLOG_FEATURED: AdlcFeaturedPost = {
   readTime: "37 mins",
   date: "March 3, 2026",
 };
-const INS_BLOG_SIDE: AdlcBlogPost[] = [
+const INS_BLOG_SIDE = [
   { href: "/blog/software-outsourcing-rates-overview", title: "Software Outsourcing Costs [2026 Updated] – Overview", readTime: "22 mins", date: "December 23, 2024" },
   { href: "/blog/ai-in-insurance-underwriting-claims", title: "AI in Insurance: How It Is Reshaping Underwriting and Claims", readTime: "23 mins", date: "March 15, 2025" },
 ];
 
 // ─── Component ────────────────────────────────────────────────────────────────
+const CONTENTS = [
+  { href: "#ins-challenges", label: "Challenges" },
+  { href: "#ins-solutions", label: "Solutions" },
+  { href: "#ins-cases", label: "Case studies" },
+  { href: "#ins-roadmap", label: "Roadmap" },
+  { href: "#ins-faq", label: "FAQ" },
+  { href: "#ins-cost", label: "Cost factors" },
+  { href: "#ins-why", label: "Why Nexterse LLC" },
+];
+
 export default function InsurtechPage() {
   const [activeCost, setActiveCost] = useState(COST_TABS.length - 1);
 
@@ -242,7 +252,7 @@ export default function InsurtechPage() {
     <>
       <InsurtechHero />
 
-      <InsurtechArticleLayout>
+      <ArticleLayout contents={CONTENTS} ariaLabel="InsurTech page contents">
         <AipocLogos />
 
         {/* ── Challenges ─────────────────────────────────────────────────── */}
@@ -440,7 +450,7 @@ export default function InsurtechPage() {
         <ServicesAchievements badges={INS_BADGES} />
 
         {/* ── Awesome guides (blog) ──────────────────────────────────────── */}
-        <AdlcBlog featured={INS_BLOG_FEATURED} sidePosts={INS_BLOG_SIDE} />
+        <AwesomeStories category="enterprise" />
 
         {/* ── Let's Start ────────────────────────────────────────────────── */}
         <LetsStart />
@@ -474,7 +484,7 @@ export default function InsurtechPage() {
             </div>
           </div>
         </section>
-      </InsurtechArticleLayout>
+      </ArticleLayout>
     </>
   );
 }

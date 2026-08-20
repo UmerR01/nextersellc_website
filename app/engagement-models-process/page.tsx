@@ -21,7 +21,7 @@ import EngAwardsBlock from "@/components/engagement/EngAwardsBlock";
 import EngFaqBlock from "@/components/engagement/EngFaqBlock";
 import LetsStart from "@/components/home/LetsStart";
 import EngCrosslinksBlock from "@/components/engagement/EngCrosslinksBlock";
-import BlogSection from "@/components/engagement/BlogSection";
+import AwesomeStories from "@/components/blog/AwesomeStories";
 
 export const metadata: Metadata = {
   title: "Engagement Models & Process | Nexterse LLC",
@@ -54,7 +54,7 @@ export default function EngagementModelsPage() {
       <EngFaqBlock />
       <LetsStart />
       <EngCrosslinksBlock />
-      <BlogSection />
+      <AwesomeStories category="enterprise" />
     </>
   );
 }

@@ -26,8 +26,8 @@ const SLIDES: Slide[] = [
     cards: [
       { type: "image", image: "/cases/Maryia D..png", text: "Maryia D." },
       {
-        type: "icons",
-        icons: ["/ecommerce-development/02_Shopify.svg"],
+        type: "image",
+        image: "/cases/powered_php.jpg",
         text: "Built on Shopify, PHP, and Stripe",
       },
       { type: "counter", value: 83, suffix: "%", text: "Increased customer bookings by 83%" },
@@ -41,7 +41,7 @@ const SLIDES: Slide[] = [
     subtitle: "Digital transformation for restaurant bookings",
     cards: [
       { type: "image", image: "/cases/Graham Ackling.png", text: "Graham Ackling" },
-      { type: "icons", icons: [], text: "Built on React and Django" },
+      { type: "image", image: "/cases/built_dj_react.jpg", text: "Built on React and Django" },
       { type: "counter", value: 60, suffix: "%", text: "Increased brand visibility by more than 60%" },
       { type: "image", image: "/cases/team.jpg", text: "Automated restaurant booking management" },
     ],

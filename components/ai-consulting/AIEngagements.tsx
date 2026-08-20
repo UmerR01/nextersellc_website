@@ -37,8 +37,8 @@ const ENGAGEMENTS = [
         </p>
       </>
     ),
-    img: "/ai-consulting/imgs/03_Development-team-2-683x1024.jpg",
-    imgAlt: "Development team",
+    img: "/ai-consulting/imgs/ai-cons-audit-5717507.jpg",
+    imgAlt: "AI viability audit",
   },
   {
     icon: "/ai-consulting/imgs/03_Use-case-discovery-03.svg",
@@ -73,8 +73,8 @@ const ENGAGEMENTS = [
         </p>
       </>
     ),
-    img: "/ai-consulting/imgs/03_Development-team-3-683x1024.jpg",
-    imgAlt: "Development team",
+    img: "/ai-consulting/imgs/ai-consulting-roi.jpg",
+    imgAlt: "Use-case and ROI discovery",
   },
   {
     icon: "/ai-consulting/imgs/03_Fractional-chief-AI-officer-03.svg",
@@ -107,8 +107,8 @@ const ENGAGEMENTS = [
         </p>
       </>
     ),
-    img: "/ai-consulting/imgs/03_Development-team-e1774868240359-963x1024.jpg",
-    imgAlt: "Development team",
+    img: "/ai-consulting/imgs/ai-cons-caio.jpg",
+    imgAlt: "Fractional Chief AI Officer",
   },
 ];
 

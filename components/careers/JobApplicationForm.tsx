@@ -2,16 +2,29 @@
 
 import { useRef, useState } from "react";
 import styles from "./JobDetailPage.module.css";
+import {
+  isValidName,
+  isValidEmail,
+  isValidPhone,
+  isValidUrl,
+  isValidGithubUrl,
+  isValidLinkedinUrl,
+  VALIDATION_MESSAGES,
+} from "@/lib/formValidation";
 
 type Status = "idle" | "loading" | "success" | "error";
+type Errors = Record<string, string>;
 
 export default function JobApplicationForm({ jobTitle }: { jobTitle: string }) {
   const [step, setStep] = useState<1 | 2>(1);
   const [file, setFile] = useState<File | null>(null);
   const [status, setStatus] = useState<Status>("idle");
   const [error, setError] = useState("");
+  const [errors, setErrors] = useState<Errors>({});
   const inputRef = useRef<HTMLInputElement>(null);
   const formRef = useRef<HTMLFormElement>(null);
+
+  const clearError = (field: string) => setErrors((current) => ({ ...current, [field]: "" }));
 
   const selectFile = (nextFile?: File) => {
     if (!nextFile) return;
@@ -25,10 +38,31 @@ export default function JobApplicationForm({ jobTitle }: { jobTitle: string }) {
   };
 
   const goToSecondStep = () => {
-    const fields = formRef.current?.querySelectorAll<HTMLInputElement>("[data-step-one] input[required]");
-    const invalid = Array.from(fields ?? []).find((field) => !field.checkValidity());
-    if (invalid) {
-      invalid.reportValidity();
+    const form = formRef.current;
+    if (!form) return;
+    const data = new FormData(form);
+    const firstName = String(data.get("firstName") ?? "").trim();
+    const lastName = String(data.get("lastName") ?? "").trim();
+    const email = String(data.get("email") ?? "").trim();
+    const phone = String(data.get("phone") ?? "").trim();
+
+    const nextErrors: Errors = {};
+    if (!firstName) nextErrors.firstName = VALIDATION_MESSAGES.required;
+    else if (!isValidName(firstName)) nextErrors.firstName = VALIDATION_MESSAGES.name;
+
+    if (!lastName) nextErrors.lastName = VALIDATION_MESSAGES.required;
+    else if (!isValidName(lastName)) nextErrors.lastName = VALIDATION_MESSAGES.name;
+
+    if (!email) nextErrors.email = VALIDATION_MESSAGES.required;
+    else if (!isValidEmail(email)) nextErrors.email = VALIDATION_MESSAGES.email;
+
+    if (!phone) nextErrors.phone = VALIDATION_MESSAGES.required;
+    else if (!isValidPhone(phone)) nextErrors.phone = VALIDATION_MESSAGES.phone;
+
+    setErrors(nextErrors);
+
+    if (Object.keys(nextErrors).length > 0) {
+      setError("");
       return;
     }
     if (!file) {
@@ -43,6 +77,34 @@ export default function JobApplicationForm({ jobTitle }: { jobTitle: string }) {
     event.preventDefault();
     const form = event.currentTarget;
     const formData = new FormData(form);
+
+    const linkedinUrl = String(formData.get("linkedinUrl") ?? "").trim();
+    const githubUrl = String(formData.get("githubUrl") ?? "").trim();
+    const portfolioUrl = String(formData.get("portfolioUrl") ?? "").trim();
+    const projectAnswer = String(formData.get("projectAnswer") ?? "").trim();
+    const technicalAnswer = String(formData.get("technicalAnswer") ?? "").trim();
+    const motivationAnswer = String(formData.get("motivationAnswer") ?? "").trim();
+    const privacyAccepted = formData.get("privacyAccepted") === "on";
+
+    const nextErrors: Errors = {};
+    if (!linkedinUrl) nextErrors.linkedinUrl = VALIDATION_MESSAGES.required;
+    else if (!isValidLinkedinUrl(linkedinUrl)) nextErrors.linkedinUrl = VALIDATION_MESSAGES.linkedin;
+
+    if (!githubUrl) nextErrors.githubUrl = VALIDATION_MESSAGES.required;
+    else if (!isValidGithubUrl(githubUrl)) nextErrors.githubUrl = VALIDATION_MESSAGES.github;
+
+    if (portfolioUrl && !isValidUrl(portfolioUrl)) nextErrors.portfolioUrl = VALIDATION_MESSAGES.url;
+
+    if (!projectAnswer) nextErrors.projectAnswer = VALIDATION_MESSAGES.required;
+    if (!technicalAnswer) nextErrors.technicalAnswer = VALIDATION_MESSAGES.required;
+    if (!motivationAnswer) nextErrors.motivationAnswer = VALIDATION_MESSAGES.required;
+    if (!privacyAccepted) nextErrors.privacyAccepted = VALIDATION_MESSAGES.checkbox;
+
+    setErrors(nextErrors);
+    if (Object.keys(nextErrors).length > 0) {
+      setError("");
+      return;
+    }
 
     formData.set("name", `${formData.get("firstName") ?? ""} ${formData.get("lastName") ?? ""}`.trim());
     formData.set("position", jobTitle);
@@ -94,25 +156,29 @@ export default function JobApplicationForm({ jobTitle }: { jobTitle: string }) {
         </div>
       </div>
 
-      <form ref={formRef} onSubmit={submit} className={styles.form}>
+      <form ref={formRef} onSubmit={submit} className={styles.form} noValidate>
         <div className={styles.formPage} data-step-one hidden={step !== 1}>
           <div className={styles.twoColumns}>
             <label>
               <span>First name <b>*</b></span>
-              <input name="firstName" placeholder="First name" autoComplete="given-name" required />
+              <input name="firstName" placeholder="First name" autoComplete="given-name" onChange={() => clearError("firstName")} />
+              {errors.firstName && <span className={styles.fieldErrorText}>{errors.firstName}</span>}
             </label>
             <label>
               <span>Last name <b>*</b></span>
-              <input name="lastName" placeholder="Last name" autoComplete="family-name" required />
+              <input name="lastName" placeholder="Last name" autoComplete="family-name" onChange={() => clearError("lastName")} />
+              {errors.lastName && <span className={styles.fieldErrorText}>{errors.lastName}</span>}
             </label>
           </div>
           <label>
             <span>Email address <b>*</b></span>
-            <input name="email" type="email" placeholder="Email" autoComplete="email" required />
+            <input name="email" type="email" placeholder="Email" autoComplete="email" onChange={() => clearError("email")} />
+            {errors.email && <span className={styles.fieldErrorText}>{errors.email}</span>}
           </label>
           <label>
             <span>Phone number <b>*</b></span>
-            <input name="phone" type="tel" placeholder="+1 555 000 0000" autoComplete="tel" required />
+            <input name="phone" type="tel" placeholder="+1 555 000 0000" autoComplete="tel" onChange={() => clearError("phone")} />
+            {errors.phone && <span className={styles.fieldErrorText}>{errors.phone}</span>}
           </label>
           <div>
             <span className={styles.fieldLabel}>Resume or CV <b>*</b></span>
@@ -141,32 +207,39 @@ export default function JobApplicationForm({ jobTitle }: { jobTitle: string }) {
         <div className={styles.formPage} hidden={step !== 2}>
           <label>
             <span>LinkedIn profile URL <b>*</b></span>
-            <input name="linkedinUrl" type="url" placeholder="https://linkedin.com/in/your-profile" required />
+            <input name="linkedinUrl" type="url" placeholder="https://linkedin.com/in/your-profile" onChange={() => clearError("linkedinUrl")} />
+            {errors.linkedinUrl && <span className={styles.fieldErrorText}>{errors.linkedinUrl}</span>}
           </label>
           <label>
             <span>GitHub URL <b>*</b></span>
-            <input name="githubUrl" type="url" placeholder="https://github.com/your-profile" required />
+            <input name="githubUrl" type="url" placeholder="https://github.com/your-profile" onChange={() => clearError("githubUrl")} />
+            {errors.githubUrl && <span className={styles.fieldErrorText}>{errors.githubUrl}</span>}
           </label>
           <label>
             <span>Portfolio URL</span>
-            <input name="portfolioUrl" type="url" placeholder="https://yourportfolio.com" />
+            <input name="portfolioUrl" type="url" placeholder="https://yourportfolio.com" onChange={() => clearError("portfolioUrl")} />
+            {errors.portfolioUrl && <span className={styles.fieldErrorText}>{errors.portfolioUrl}</span>}
           </label>
           <label>
             <span>Tell us about a relevant project you’re proud of <b>*</b></span>
-            <textarea name="projectAnswer" placeholder="Describe the project, your role, and its impact" rows={3} required />
+            <textarea name="projectAnswer" placeholder="Describe the project, your role, and its impact" rows={3} onChange={() => clearError("projectAnswer")} />
+            {errors.projectAnswer && <span className={styles.fieldErrorText}>{errors.projectAnswer}</span>}
           </label>
           <label>
             <span>Describe a difficult technical decision you made <b>*</b></span>
-            <textarea name="technicalAnswer" placeholder="What trade-offs did you consider?" rows={3} required />
+            <textarea name="technicalAnswer" placeholder="What trade-offs did you consider?" rows={3} onChange={() => clearError("technicalAnswer")} />
+            {errors.technicalAnswer && <span className={styles.fieldErrorText}>{errors.technicalAnswer}</span>}
           </label>
           <label>
             <span>Why would you like to join Nexterse? <b>*</b></span>
-            <textarea name="motivationAnswer" placeholder="Tell us what interests you about this role" rows={3} required />
+            <textarea name="motivationAnswer" placeholder="Tell us what interests you about this role" rows={3} onChange={() => clearError("motivationAnswer")} />
+            {errors.motivationAnswer && <span className={styles.fieldErrorText}>{errors.motivationAnswer}</span>}
           </label>
           <label className={styles.consent}>
-            <input name="privacyAccepted" type="checkbox" required />
+            <input name="privacyAccepted" type="checkbox" onChange={() => clearError("privacyAccepted")} />
             <span>I accept the Nexterse <a href="/privacy-policy">privacy policy</a> and terms.</span>
           </label>
+          {errors.privacyAccepted && <span className={styles.fieldErrorText}>{errors.privacyAccepted}</span>}
           <div className={styles.formFooter}>
             <button className={styles.backButton} type="button" onClick={() => setStep(1)}>Back</button>
             <button className={styles.submitButton} type="submit" disabled={status === "loading"}>

@@ -7,12 +7,12 @@ import ServicesReviewSlider from "@/components/services/ServicesReviewSlider";
 import ServicesAchievements, { type Badge } from "@/components/services/ServicesAchievements";
 import ServicesFaqBlock, { type FaqItem } from "@/components/services/ServicesFaqBlock";
 import LetsStart from "@/components/home/LetsStart";
-import AdlcBlog, { type AdlcFeaturedPost, type AdlcBlogPost } from "@/components/adlc/AdlcBlog";
+import AwesomeStories from "@/components/blog/AwesomeStories";
 import AipocHero from "./AipocHero";
 import AipocLogos from "./AipocLogos";
 import AipocTechLogos from "./AipocTechLogos";
 import AipocCrosslinks from "./AipocCrosslinks";
-import AipocArticleLayout from "./AipocArticleLayout";
+import ArticleLayout from "@/components/shared/ArticleLayout";
 import styles from "./AipocPage.module.css";
 
 // ─── ADLC six ideas (services-results) ────────────────────────────────────────
@@ -180,7 +180,7 @@ const AIP_BADGES: Badge[] = [
 ];
 
 // ─── Awesome stories (blog) ───────────────────────────────────────────────────
-const AIP_BLOG_FEATURED: AdlcFeaturedPost = {
+const AIP_BLOG_FEATURED = {
   href: "/blog/eu-ai-act-custom-ai-development",
   title: "The EU AI Act: How It Changes AI development and What It Means for Custom AI",
   image: "/aipoc-development/07_Figure-6-in-force-vs-coming.svg",
@@ -188,13 +188,25 @@ const AIP_BLOG_FEATURED: AdlcFeaturedPost = {
   readTime: "25 mins",
   date: "July 9, 2026",
 };
-const AIP_BLOG_SIDE: AdlcBlogPost[] = [
+const AIP_BLOG_SIDE = [
   { href: "/blog/questions-to-ask-ai-development-company", title: "10 questions to Ask an AI Development Company before Signing", readTime: "18 mins", date: "July 7, 2026" },
   { href: "/blog/agentic-rag-enterprise-implementation-guide", title: "Agentic RAG: The Complete Enterprise Implementation Guide for 2026", readTime: "35 mins", date: "July 3, 2026" },
   { href: "/blog/ai-cost-reduction-playbook", title: "The AI Cost Reduction Playbook – 9 Mechanisms, 7 Hidden Drivers, and Real-World Case Studies (2026 Edition)", readTime: "32 mins", date: "July 1, 2026" },
 ];
 
 // ─── Component ────────────────────────────────────────────────────────────────
+const CONTENTS = [
+  { href: "#ai-hype", label: "ADLC PoC" },
+  { href: "#ai-process", label: "Process" },
+  { href: "#ai-buildvsbuy", label: "Build vs. Buy vs. Nexterse" },
+  { href: "#ai-cases", label: "Case studies & reviews" },
+  { href: "#ai-deliverables", label: "Deliverables" },
+  { href: "#ai-ip", label: "IP protection" },
+  { href: "#ai-why", label: "Why Nexterse" },
+  { href: "#ai-tech", label: "Tech stack" },
+  { href: "#ai-faq", label: "FAQ" },
+];
+
 export default function AipocPage() {
   const [activeTab, setActiveTab] = useState(0);
 
@@ -202,7 +214,7 @@ export default function AipocPage() {
     <>
       <AipocHero />
 
-      <AipocArticleLayout>
+      <ArticleLayout contents={CONTENTS} ariaLabel="AI PoC development page contents">
         <AipocLogos />
         {/* ── AI hype / ADLC PoC ─────────────────────────────────────────── */}
         <section id="ai-hype" className={`${styles.blockLight} ${styles.hypeBlock}`}>
@@ -225,8 +237,8 @@ export default function AipocPage() {
                 <p>Together these strengthen the traditional software lifecycle (SDLC) by improving throughput, visibility, and control.</p>
               </div>
               <Image
-                src="/aipoc-development/03_pexels-fauxels-3184653-683x1024.jpg"
-                alt="Development team discussing the project"
+                src="/aipoc-development/aipoc.jpg"
+                alt="AI proof of concept development"
                 width={683}
                 height={1024}
                 className={styles.finSplitImg}
@@ -430,8 +442,8 @@ export default function AipocPage() {
         <LetsStart />
 
         {/* ── Awesome stories (blog) ─────────────────────────────────────── */}
-        <AdlcBlog featured={AIP_BLOG_FEATURED} sidePosts={AIP_BLOG_SIDE} />
-      </AipocArticleLayout>
+        <AwesomeStories category="ai" />
+      </ArticleLayout>
     </>
   );
 }

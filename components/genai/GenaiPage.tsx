@@ -11,7 +11,7 @@ import GenaiHero from "./GenaiHero";
 import AipocLogos from "@/components/aipoc/AipocLogos";
 import GenaiTechStack from "./GenaiTechStack";
 import GenaiCrosslinks from "./GenaiCrosslinks";
-import GenaiArticleLayout from "./GenaiArticleLayout";
+import ArticleLayout from "@/components/shared/ArticleLayout";
 import styles from "./GenaiPage.module.css";
 
 // ─── Why 80% of prototypes fail (4 cards) ─────────────────────────────────────
@@ -88,7 +88,7 @@ const ROI_TABS = [
     intro: "Before deployment and system expansion, we estimate:",
     bullets: ["Monthly token consumption based on expected user activity.", "Infrastructure required to support that load.", "Cost impact if usage grows.", "Total operating expense over 12–36 months."],
     outro: "You see the projected cost numbers before the first invoice arrives from the working system in production.",
-    image: "/genai-development/04_img-08.jpg",
+    image: "/genai-development/genai-cal.jpg",
   },
   {
     icon: "/genai-development/04_How-we-approach-ROI-03.svg",
@@ -96,7 +96,7 @@ const ROI_TABS = [
     intro: "We start with the business case:",
     bullets: ["Which workflow is being improved.", "How much time is saved.", "How often the task occurs.", "What that time costs your organization."],
     outro: "Then we compare the current operating cost and the projected AI operating cost. The objective is measurable economic improvement, so you know what to expect.",
-    image: "/genai-development/04_img-12.jpg",
+    image: "/genai-development/genai-roi.jpg",
   },
   {
     icon: "/genai-development/04_What-you-get-01.svg",
@@ -104,7 +104,7 @@ const ROI_TABS = [
     intro: "As a result, you will have the following deliverables at your table:",
     bullets: ["Estimated monthly AI operating cost.", "Scaling forecast under growth scenarios.", "Breakeven projection.", "Clear total cost of ownership outlook."],
     outro: "These artifacts serve one goal: to allow you to make an informed investment decision, plan budgets confidently, and scale generative AI without financial surprises.",
-    image: "/genai-development/04_img-01.jpg",
+    image: "/genai-development/genai-get.jpg",
   },
 ];
 
@@ -233,6 +233,20 @@ const GENAI_BADGES: Badge[] = [
 ];
 
 // ─── Component ────────────────────────────────────────────────────────────────
+const CONTENTS = [
+  { href: "#genai-challenges", label: "Challenges" },
+  { href: "#genai-ecosystem", label: "GenAI ecosystem" },
+  { href: "#genai-roi", label: "ROI & TCO modeling" },
+  { href: "#genai-pilot", label: "Pilot PoC program" },
+  { href: "#genai-leakage", label: "Zero data leakage" },
+  { href: "#genai-cases", label: "Case studies" },
+  { href: "#genai-industries", label: "Industries" },
+  { href: "#genai-tech", label: "Tech stack" },
+  { href: "#genai-adlc", label: "Agentic lifecycle" },
+  { href: "#genai-hallucination", label: "Zero-hallucination systems" },
+  { href: "#genai-faq", label: "FAQ" },
+];
+
 export default function GenaiPage() {
   const [activeEco, setActiveEco] = useState(0);
   const [activeRoi, setActiveRoi] = useState(0);
@@ -243,7 +257,7 @@ export default function GenaiPage() {
     <>
       <GenaiHero />
 
-      <GenaiArticleLayout>
+      <ArticleLayout contents={CONTENTS} ariaLabel="GenAI development page contents">
         <AipocLogos />
         {/* ── Why 80% of prototypes fail (4 cards) ────────────────────────── */}
         <section id="genai-challenges" className={`${styles.blockWhite} ${styles.genaiChallengesBlock}`}>
@@ -508,7 +522,7 @@ export default function GenaiPage() {
 
         {/* ── More about (crosslinks) ─────────────────────────────────────── */}
         <GenaiCrosslinks />
-      </GenaiArticleLayout>
+      </ArticleLayout>
     </>
   );
 }

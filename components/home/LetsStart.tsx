@@ -1,8 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import Image from "next/image";
 import styles from "./LetsStart.module.css";
+import { isValidName, isValidEmail, VALIDATION_MESSAGES } from "@/lib/formValidation";
 
 function ClipIcon() {
   return (
@@ -74,6 +74,10 @@ export default function LetsStart({ variant }: LetsStartProps = {}) {
   const [sent, setSent] = useState(false);
   const [fileName, setFileName] = useState("");
   const [status, setStatus] = useState<"idle" | "loading" | "error">("idle");
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [message, setMessage] = useState("");
+  const [errors, setErrors] = useState<{ name?: string; email?: string; message?: string }>({});
 
   return (
     <section
@@ -158,8 +162,18 @@ export default function LetsStart({ variant }: LetsStartProps = {}) {
             ) : (
             <form
               className={`lets-start-form ${styles.form}`}
+              noValidate
               onSubmit={async (e) => {
                 e.preventDefault();
+                const nextErrors: typeof errors = {};
+                if (!name.trim()) nextErrors.name = VALIDATION_MESSAGES.required;
+                else if (!isValidName(name)) nextErrors.name = VALIDATION_MESSAGES.name;
+                if (!email.trim()) nextErrors.email = VALIDATION_MESSAGES.required;
+                else if (!isValidEmail(email)) nextErrors.email = VALIDATION_MESSAGES.email;
+                if (!message.trim()) nextErrors.message = VALIDATION_MESSAGES.required;
+                setErrors(nextErrors);
+                if (Object.keys(nextErrors).length > 0) return;
+
                 setStatus("loading");
                 try {
                   const res = await fetch("/api/lets-start", {
@@ -176,15 +190,39 @@ export default function LetsStart({ variant }: LetsStartProps = {}) {
             >
               <label className={`lets-start-field ${styles.field}`}>
                 <span className={`lets-start-label ${styles.label}`}>My Name*</span>
-                <input type="text" name="name" placeholder="John Smith" required disabled={status === "loading"} />
+                <input
+                  type="text"
+                  name="name"
+                  placeholder="John Smith"
+                  value={name}
+                  onChange={(e) => { setName(e.target.value); setErrors((p) => ({ ...p, name: undefined })); }}
+                  disabled={status === "loading"}
+                />
+                {errors.name && <span className={styles.fieldErrorText}>{errors.name}</span>}
               </label>
               <label className={`lets-start-field ${styles.field}`}>
                 <span className={`lets-start-label ${styles.label}`}>Email Address*</span>
-                <input type="email" name="email" placeholder="name@company.com" required disabled={status === "loading"} />
+                <input
+                  type="email"
+                  name="email"
+                  placeholder="name@company.com"
+                  value={email}
+                  onChange={(e) => { setEmail(e.target.value); setErrors((p) => ({ ...p, email: undefined })); }}
+                  disabled={status === "loading"}
+                />
+                {errors.email && <span className={styles.fieldErrorText}>{errors.email}</span>}
               </label>
               <label className={`lets-start-field ${styles.field}`}>
                 <span className={`lets-start-label ${styles.label}`}>Message*</span>
-                <textarea name="message" rows={2} placeholder="Describe your idea" required disabled={status === "loading"} />
+                <textarea
+                  name="message"
+                  rows={2}
+                  placeholder="Describe your idea"
+                  value={message}
+                  onChange={(e) => { setMessage(e.target.value); setErrors((p) => ({ ...p, message: undefined })); }}
+                  disabled={status === "loading"}
+                />
+                {errors.message && <span className={styles.fieldErrorText}>{errors.message}</span>}
               </label>
 
               <p className={`lets-start-privacy ${styles.privacy}`}>
@@ -220,19 +258,6 @@ export default function LetsStart({ variant }: LetsStartProps = {}) {
               )}
 
               <div className={`lets-start-manager ${styles.manager}`}>
-                <div className={`lets-start-manager-info ${styles.managerInfo}`}>
-                  <Image
-                    src="/cases/woman.jpg"
-                    alt="Account manager"
-                    width={56}
-                    height={56}
-                    className={`lets-start-avatar ${styles.avatar}`}
-                  />
-                  <div>
-                    <div className={`lets-start-manager-name ${styles.managerName}`}>Alex Morgan</div>
-                    <div className={`lets-start-manager-role ${styles.managerRole}`}>Account Manager</div>
-                  </div>
-                </div>
                 <a href="https://calendly.com/nexterse-meeting-schedule22/30min" target="_blank" rel="noreferrer noopener" className={`lets-start-book ${styles.book}`}>
                   <CalendarIcon /> Book an intro call
                 </a>

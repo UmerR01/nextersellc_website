@@ -114,9 +114,19 @@
 .formLabel {
   align-items: baseline;
   display: flex;
+  flex-wrap: wrap;
   font-weight: 500;
   justify-content: flex-end;
   margin-bottom: 32px;
+}
+
+.fieldErrorText {
+  color: #ff415c;
+  font-size: 13px;
+  line-height: 1.4;
+  margin-top: 4px;
+  flex-basis: 100%;
+  text-align: right;
 }
 
 @media (max-width: 1200px) {
@@ -438,7 +448,7 @@
   display: flex;
   flex-wrap: wrap;
   gap: 24px;
-  justify-content: space-between;
+  justify-content: flex-end;
   margin: 48px 0 0 auto;
   max-width: 548px;
   position: relative;
@@ -673,6 +683,11 @@
   color: #fff;
   text-decoration: none;
   transition: color 0.2s;
+  display: block;
+}
+
+.addressEmail a + a {
+  margin-top: 4px;
 }
 
 .addressEmail a:hover {

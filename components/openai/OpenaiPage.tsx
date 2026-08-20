@@ -7,11 +7,11 @@ import ServicesReviewSlider from "@/components/services/ServicesReviewSlider";
 import ServicesAchievements, { type Badge } from "@/components/services/ServicesAchievements";
 import ServicesFaqBlock, { type FaqItem } from "@/components/services/ServicesFaqBlock";
 import LetsStart from "@/components/home/LetsStart";
-import AdlcBlog from "@/components/adlc/AdlcBlog";
+import AwesomeStories from "@/components/blog/AwesomeStories";
 import OpenaiHero from "./OpenaiHero";
 import AipocLogos from "@/components/aipoc/AipocLogos";
 import OpenaiCrosslinks from "./OpenaiCrosslinks";
-import OpenaiArticleLayout from "./OpenaiArticleLayout";
+import ArticleLayout from "@/components/shared/ArticleLayout";
 import styles from "./OpenaiPage.module.css";
 
 // ─── ChatGPT-based software development services (6 cards) ───────────────────
@@ -263,12 +263,23 @@ function CountUpNumber({ value, duration = 1200 }: CountUpNumberProps) {
   return <span ref={ref}>{display}</span>;
 }
 
+const CONTENTS = [
+  { href: "#oai-services", label: "Services" },
+  { href: "#oai-techstack", label: "Tech stack" },
+  { href: "#oai-benefits", label: "Business benefits" },
+  { href: "#oai-industries", label: "Industries" },
+  { href: "#oai-cases", label: "Case studies" },
+  { href: "#oai-process", label: "Process" },
+  { href: "#oai-faq", label: "FAQ" },
+  { href: "#oai-why", label: "Why Nexterse LLC" },
+];
+
 export default function OpenaiPage() {
   return (
     <>
       <OpenaiHero />
 
-      <OpenaiArticleLayout>
+      <ArticleLayout contents={CONTENTS} ariaLabel="OpenAI development page contents">
         <AipocLogos />
         {/* ── ChatGPT-based software development services (6 cards) ────────── */}
         <section id="oai-services" className={`${styles.blockWhite} ${styles.openaiServicesBlock}`}>
@@ -479,37 +490,8 @@ export default function OpenaiPage() {
         <OpenaiCrosslinks />
 
         {/* ── We have awesome stories to tell you ───────────────────────────── */}
-        <AdlcBlog
-          featured={{
-            href: "https://sumatosoft.com/blog/top-chatgpt-alternatives-for-business-use",
-            title: "Top 10 ChatGPT Alternatives for Business Use in 2026",
-            image: "/openai-development/04_AI-alternatives-1024x578.jpg",
-            imageAlt: "AI alternatives",
-            readTime: "37 mins",
-            date: "December 24, 2025",
-          }}
-          sidePosts={[
-            {
-              href: "https://sumatosoft.com/blog/top-ai-development-companies",
-              title: "Top Choice: 20 AI Development Companies in 2026",
-              readTime: "38 mins",
-              date: "January 8, 2026",
-            },
-            {
-              href: "https://sumatosoft.com/blog/ai-development-costs",
-              title: "What Affects AI Development Cost in 2026",
-              readTime: "40 mins",
-              date: "March 11, 2026",
-            },
-            {
-              href: "https://sumatosoft.com/blog/integrating-ai-into-business",
-              title: "Integrating AI into Business: A Complete Guide For 2026",
-              readTime: "36 mins",
-              date: "March 9, 2025",
-            },
-          ]}
-        />
-      </OpenaiArticleLayout>
+        <AwesomeStories category="ai" />
+      </ArticleLayout>
     </>
   );
 }

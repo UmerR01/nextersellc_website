@@ -17,7 +17,7 @@ import OfficePhotos from "@/components/team/OfficePhotos";
 import TeamFaq from "@/components/team/TeamFaq";
 // import TeamVideo from "@/components/team/TeamVideo"; // disabled until real Nexterse LLC YouTube video is linked
 import LetsStart from "@/components/home/LetsStart";
-import TeamBlog from "@/components/team/TeamBlog";
+import AwesomeStories from "@/components/blog/AwesomeStories";
 
 export const metadata: Metadata = {
   title: "About Nexterse LLC | AI-Powered Software Development Company",
@@ -47,7 +47,7 @@ export default function AboutUsPage() {
         <TeamFaq />
         {/* <TeamVideo /> disabled until real Nexterse LLC YouTube video is linked */}
         <LetsStart />
-        <TeamBlog />
+        <AwesomeStories />
       </main>
     </>
   );

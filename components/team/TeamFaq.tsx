@@ -6,7 +6,7 @@ import styles from "./TeamFaq.module.css";
 const FAQS = [
   {
     q: "When was Nexterse LLC founded?",
-    a: "Nexterse LLC was founded in 2012.",
+    a: "Nexterse LLC was founded in 2020.",
   },
   {
     q: "How big is Nexterse LLC?",

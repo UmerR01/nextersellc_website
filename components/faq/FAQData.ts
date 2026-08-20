@@ -9,7 +9,7 @@ export const FAQ_PANELS: FAQPanel[] = [
     questions: [
       {
         q: "How would you briefly describe Nexterse LLC?",
-        a: `<p>Nexterse LLC is an AI-powered custom software development company. We operate as a dual-engine engineering firm: we build stable, scalable custom software under a structured SDLC, and we engineer governed AI systems under our Agentic Development Lifecycle (ADLC). Our focus is on engineering you can audit – predictable timelines, clean architectures, and AI that operates inside enterprise guardrails. We have delivered 350+ custom software products across 20+ industries over 14+ years on the market.</p>
+        a: `<p>Nexterse LLC is an AI-powered custom software development company. We operate as a dual-engine engineering firm: we build stable, scalable custom software under a structured SDLC, and we engineer governed AI systems under our Agentic Development Lifecycle (ADLC). Our focus is on engineering you can audit – predictable timelines, clean architectures, and AI that operates inside enterprise guardrails. We have delivered 350+ custom software products across 20+ industries over 6+ years on the market.</p>
 <p>View our case studies</p>
 <p>Read Clients' testimonials</p>`,
       },
@@ -23,11 +23,11 @@ export const FAQ_PANELS: FAQPanel[] = [
       },
       {
         q: "What is your track record – projects, industries, satisfaction, geography?",
-        a: `<p>We have been on the market for 14+ years and have delivered 350+ custom software products across 20+ industries, with a 98% Client satisfaction rate and Clients in 26 countries. Our deepest experience is in healthcare, education, retail and ecommerce, manufacturing and energy, logistics and transportation, professional services, and marketing. You can browse case studies and Client testimonials for examples in your sector.</p>`,
+        a: `<p>We have been on the market for 6+ years and have delivered 350+ custom software products across 20+ industries, with a 98% Client satisfaction rate and Clients in 26 countries. Our deepest experience is in healthcare, education, retail and ecommerce, manufacturing and energy, logistics and transportation, professional services, and marketing. You can browse case studies and Client testimonials for examples in your sector.</p>`,
       },
       {
         q: "Where is your team located and how do time zones work?",
-        a: `<p>Our headquarters is in the USA, MA, Boston. Most of the production team is located in Poland. Other team members are located in different locations, including Georgia, Austria and other countries. We have been working with US-based Clients for over 14 years and structure each engagement with overlapping working hours for daily or weekly stand-ups, plus asynchronous collaboration via Slack, Jira, and email, so progress continues across time zones.</p>`,
+        a: `<p>Our headquarters is in the USA, MA, Boston. Most of the production team is located in Poland. Other team members are located in different locations, including Georgia, Austria and other countries. We have been working with US-based Clients for over 6 years and structure each engagement with overlapping working hours for daily or weekly stand-ups, plus asynchronous collaboration via Slack, Jira, and email, so progress continues across time zones.</p>`,
       },
       {
         q: "How many employees does Nexterse LLC have, and how is the team structured?",
@@ -315,7 +315,7 @@ export const FAQ_PANELS: FAQPanel[] = [
       },
       {
         q: "Do you have real AI/ML delivery experience, or is this just marketing?",
-        a: `<p>Real experience. We have been delivering custom software for 14+ years and have moved beyond AI as a buzzword into governed AI engineering – RAG copilots, agentic workflows, fine-tuned SLMs, and custom ML for predictive analytics across healthcare, fintech, manufacturing, retail, and logistics. We can share specific case studies during discovery that match your industry and tier.</p>`,
+        a: `<p>Real experience. We have been delivering custom software for 6+ years and have moved beyond AI as a buzzword into governed AI engineering – RAG copilots, agentic workflows, fine-tuned SLMs, and custom ML for predictive analytics across healthcare, fintech, manufacturing, retail, and logistics. We can share specific case studies during discovery that match your industry and tier.</p>`,
       },
       {
         q: "How do you integrate AI with our legacy systems without replacing them?",

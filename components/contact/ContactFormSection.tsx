@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { useState } from "react";
 import styles from "./ContactFormSection.module.css";
+import { isValidName, isValidEmail, VALIDATION_MESSAGES } from "@/lib/formValidation";
 
 const CalendarSVG = () => (
   <svg width="15" height="15" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -23,10 +24,20 @@ export default function ContactFormSection() {
   const [message, setMessage] = useState("");
   const [agreed, setAgreed] = useState(false);
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
+  const [errors, setErrors] = useState<{ name?: string; email?: string; message?: string; agreed?: string }>({});
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!name || !email || !message || !agreed) return;
+    const nextErrors: typeof errors = {};
+    if (!name.trim()) nextErrors.name = VALIDATION_MESSAGES.required;
+    else if (!isValidName(name)) nextErrors.name = VALIDATION_MESSAGES.name;
+    if (!email.trim()) nextErrors.email = VALIDATION_MESSAGES.required;
+    else if (!isValidEmail(email)) nextErrors.email = VALIDATION_MESSAGES.email;
+    if (!message.trim()) nextErrors.message = VALIDATION_MESSAGES.required;
+    if (!agreed) nextErrors.agreed = VALIDATION_MESSAGES.checkbox;
+    setErrors(nextErrors);
+    if (Object.keys(nextErrors).length > 0) return;
+
     setStatus("loading");
     try {
       const res = await fetch("/api/contact", {
@@ -83,10 +94,10 @@ export default function ContactFormSection() {
                         className={styles.formInput}
                         placeholder="John Smith"
                         value={name}
-                        onChange={e => setName(e.target.value)}
-                        required
+                        onChange={e => { setName(e.target.value); setErrors(p => ({ ...p, name: undefined })); }}
                       />
                     </span>
+                    {errors.name && <span className={styles.fieldErrorText}>{errors.name}</span>}
                   </label>
                   <label className={styles.formLabel}>
                     <span className={styles.formLabelText}>Email Address*</span>
@@ -96,10 +107,10 @@ export default function ContactFormSection() {
                         className={styles.formInput}
                         placeholder="name@company.com"
                         value={email}
-                        onChange={e => setEmail(e.target.value)}
-                        required
+                        onChange={e => { setEmail(e.target.value); setErrors(p => ({ ...p, email: undefined })); }}
                       />
                     </span>
+                    {errors.email && <span className={styles.fieldErrorText}>{errors.email}</span>}
                   </label>
                   <label className={`${styles.formLabel} ${styles.textareaLabel}`}>
                     <span className={styles.formLabelText}>Message*</span>
@@ -109,10 +120,10 @@ export default function ContactFormSection() {
                         rows={3}
                         placeholder="Tell us about your projects"
                         value={message}
-                        onChange={e => setMessage(e.target.value)}
-                        required
+                        onChange={e => { setMessage(e.target.value); setErrors(p => ({ ...p, message: undefined })); }}
                       />
                     </span>
+                    {errors.message && <span className={styles.fieldErrorText}>{errors.message}</span>}
                   </label>
 
                   <div className={styles.bottomSection}>
@@ -124,13 +135,14 @@ export default function ContactFormSection() {
                               type="checkbox"
                               className={styles.checkboxHidden}
                               checked={agreed}
-                              onChange={e => setAgreed(e.target.checked)}
+                              onChange={e => { setAgreed(e.target.checked); setErrors(p => ({ ...p, agreed: undefined })); }}
                             />
                             <span className={styles.checkboxCustom} />
                             <span className={styles.checkboxText}>Agree with</span>
                           </label>
                           <a href="/privacy-policy" className={styles.privacyLink}>Privacy policy</a>
                         </p>
+                        {errors.agreed && <span className={styles.fieldErrorText}>{errors.agreed}</span>}
                       </div>
                       <div className={styles.submitWrapper}>
                         <button
@@ -153,19 +165,6 @@ export default function ContactFormSection() {
                 </form>
 
                 <div className={styles.booking}>
-                  <div className={styles.bookingPerson}>
-                    <Image
-                      src="/contact/account-manager.jpg"
-                      alt="Account Manager"
-                      width={56}
-                      height={56}
-                      className={styles.personAvatar}
-                    />
-                    <div className={styles.personText}>
-                      <div className={styles.personName}>Alex Morgan</div>
-                      <div className={styles.personRole}>Account Manager</div>
-                    </div>
-                  </div>
                   <a
                     href="https://calendly.com/nexterse-meeting-schedule22/30min"
                     className={styles.bookBtn}
@@ -213,6 +212,7 @@ export default function ContactFormSection() {
               <div className={styles.addressContact}>
                 <div className={styles.addressEmail}>
                   <a href="mailto:info@nexterse.com">info@nexterse.com</a>
+                  <a href="mailto:support@nexterse.com">support@nexterse.com</a>
                 </div>
                 <div className={styles.addressSocials}>
                   <a href="https://www.facebook.com/nexterse/" className={styles.socialLink} rel="nofollow" target="_blank">

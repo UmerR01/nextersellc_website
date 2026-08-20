@@ -10,7 +10,7 @@ import LetsStart from "@/components/home/LetsStart";
 import AiIntegrationHero from "./AiIntegrationHero";
 import AipocLogos from "@/components/aipoc/AipocLogos";
 import AiIntegrationTechStack from "./AiIntegrationTechStack";
-import AiIntegrationArticleLayout from "./AiIntegrationArticleLayout";
+import ArticleLayout from "@/components/shared/ArticleLayout";
 import styles from "./AiIntegrationPage.module.css";
 
 // ─── Our AI integration services (6 cards) ────────────────────────────────────
@@ -117,6 +117,18 @@ const AII_FAQ: FaqItem[] = [
   { question: "Do I need technical knowledge to use your AI integration services?", answer: "No. Your team needs to understand the process you want to improve and the expected outcome. We handle the technical architecture and the integration itself. Your responsibility is to define the task, verify the results, and identify any manual control points." },
 ];
 
+const CONTENTS = [
+  { href: "#aii-services", label: "Services" },
+  { href: "#aii-who", label: "Who It's For" },
+  { href: "#aii-process", label: "Process" },
+  { href: "#aii-adlc", label: "ADLC Methodology" },
+  { href: "#aii-benefits", label: "Business benefits" },
+  { href: "#aii-cases", label: "Our recent AI cases" },
+  { href: "#aii-pilot", label: "AI Pilot First" },
+  { href: "#aii-why", label: "Why Nexterse LLC" },
+  { href: "#aii-faq", label: "FAQ" },
+];
+
 export default function AiIntegrationPage() {
   const [activeWho, setActiveWho] = useState(0);
 
@@ -124,7 +136,7 @@ export default function AiIntegrationPage() {
     <>
       <AiIntegrationHero />
 
-      <AiIntegrationArticleLayout>
+      <ArticleLayout contents={CONTENTS} ariaLabel="AI Integration page contents">
         <AipocLogos />
         {/* ── Our AI integration services (6 cards) ─────────────────────── */}
         <section id="aii-services" className={`${styles.blockWhite} ${styles.aiIntegrationServicesBlock}`}>
@@ -306,7 +318,7 @@ export default function AiIntegrationPage() {
               </div>
               <div className={styles.pilotImageWrap}>
                 <Image
-                  src="/ai-consulting/imgs/03_pexels-fauxels-3184653-683x1024.jpg"
+                  src="/ai-integration/ai-int-scoped.jpg"
                   alt="Development team discussing a scoped AI pilot"
                   width={683}
                   height={1024}
@@ -343,7 +355,7 @@ export default function AiIntegrationPage() {
 
         {/* ── Let's Start ─────────────────────────────────────────────────── */}
         <LetsStart />
-      </AiIntegrationArticleLayout>
+      </ArticleLayout>
     </>
   );
 }

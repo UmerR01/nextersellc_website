@@ -2,6 +2,7 @@
 
 import { useRef, useState } from "react";
 import styles from "./CareersApply.module.css";
+import { isValidName, isValidEmail, VALIDATION_MESSAGES } from "@/lib/formValidation";
 
 type Status = "idle" | "loading" | "success" | "error";
 
@@ -11,7 +12,7 @@ export default function CareersApply() {
   const [message, setMessage] = useState("");
   const [file, setFile] = useState<File | null>(null);
   const [status, setStatus] = useState<Status>("idle");
-  const [errors, setErrors] = useState<Record<string, boolean>>({});
+  const [errors, setErrors] = useState<Record<string, string>>({});
 
   const fileInputRef = useRef<HTMLInputElement>(null);
 
@@ -21,10 +22,12 @@ export default function CareersApply() {
   };
 
   const validate = () => {
-    const errs: Record<string, boolean> = {};
-    if (!name.trim()) errs.name = true;
-    if (!email.trim()) errs.email = true;
-    if (!message.trim()) errs.message = true;
+    const errs: Record<string, string> = {};
+    if (!name.trim()) errs.name = VALIDATION_MESSAGES.required;
+    else if (!isValidName(name)) errs.name = VALIDATION_MESSAGES.name;
+    if (!email.trim()) errs.email = VALIDATION_MESSAGES.required;
+    else if (!isValidEmail(email)) errs.email = VALIDATION_MESSAGES.email;
+    if (!message.trim()) errs.message = VALIDATION_MESSAGES.required;
     setErrors(errs);
     return Object.keys(errs).length === 0;
   };
@@ -97,10 +100,11 @@ export default function CareersApply() {
                     className={styles.formInput}
                     placeholder="John Smith"
                     value={name}
-                    onChange={(e) => { setName(e.target.value); setErrors((p) => ({ ...p, name: false })); }}
+                    onChange={(e) => { setName(e.target.value); setErrors((p) => ({ ...p, name: "" })); }}
                     autoComplete="name"
                   />
                 </span>
+                {errors.name && <span className={styles.fieldErrorText}>{errors.name}</span>}
               </label>
 
               {/* Email */}
@@ -112,10 +116,11 @@ export default function CareersApply() {
                     className={styles.formInput}
                     placeholder="resume@nexterse.com"
                     value={email}
-                    onChange={(e) => { setEmail(e.target.value); setErrors((p) => ({ ...p, email: false })); }}
+                    onChange={(e) => { setEmail(e.target.value); setErrors((p) => ({ ...p, email: "" })); }}
                     autoComplete="email"
                   />
                 </span>
+                {errors.email && <span className={styles.fieldErrorText}>{errors.email}</span>}
               </label>
 
               {/* Message */}
@@ -127,9 +132,10 @@ export default function CareersApply() {
                     placeholder="Describe your experience"
                     rows={3}
                     value={message}
-                    onChange={(e) => { setMessage(e.target.value); setErrors((p) => ({ ...p, message: false })); }}
+                    onChange={(e) => { setMessage(e.target.value); setErrors((p) => ({ ...p, message: "" })); }}
                   />
                 </span>
+                {errors.message && <span className={styles.fieldErrorText}>{errors.message}</span>}
               </label>
 
               {/* Privacy + file + submit */}

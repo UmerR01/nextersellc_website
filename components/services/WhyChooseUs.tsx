@@ -42,8 +42,8 @@ export default function WhyChooseUs() {
           <div className={styles.right}>
             <div className={styles.imageWrap}>
               <Image
-                src="/services-page/12_entrepreneurs-discussing-work-results-meeting-683x1024.jpg"
-                alt="Entrepreneurs discussing work results"
+                src="/services-page/why-client.jpg"
+                alt="Why clients choose Nexterse LLC"
                 fill
                 className={styles.image}
                 sizes="(max-width: 768px) 100vw, 50vw"

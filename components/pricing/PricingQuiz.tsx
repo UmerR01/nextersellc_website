@@ -2,6 +2,7 @@
 
 import { useState, type Dispatch, type SetStateAction } from "react";
 import styles from "./PricingQuiz.module.css";
+import { isValidName, isValidEmail, VALIDATION_MESSAGES } from "@/lib/formValidation";
 
 const OPTIONS = [
   { id: "ai-readiness", label: "Take AI readiness assessment" },
@@ -111,10 +112,6 @@ function extractScore(option: string) {
   return match ? Number(match[1]) : 0;
 }
 
-function isValidEmail(value: string) {
-  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
-}
-
 export default function PricingQuiz() {
   const [selected, setSelected] = useState<string | null>(null);
   const [flow, setFlow] = useState<Flow>("goal");
@@ -124,6 +121,7 @@ export default function PricingQuiz() {
   const [isLoading, setIsLoading] = useState(false);
   const [isComplete, setIsComplete] = useState(false);
   const [submitError, setSubmitError] = useState("");
+  const [fieldErrors, setFieldErrors] = useState<Record<string, string>>({});
 
   const isAi = flow === "ai";
   const totalSteps = isAi ? AI_STEPS.length : CUSTOM_STEPS.length;
@@ -229,6 +227,7 @@ export default function PricingQuiz() {
     setIsComplete(false);
     setIsLoading(false);
     setSubmitError("");
+    setFieldErrors({});
   };
 
   const goPrev = () => {
@@ -237,10 +236,24 @@ export default function PricingQuiz() {
       setIsComplete(false);
       setIsLoading(false);
       setSubmitError("");
+      setFieldErrors({});
       return;
     }
     setSubmitError("");
+    setFieldErrors({});
     setCurrentStep((value) => value - 1);
+  };
+
+  // Field-level validation for the two dedicated name/email steps (AI flow)
+  // and the combined name+email contact step (Custom flow) — shown as red
+  // text under each field instead of one generic message.
+  const validateNameEmailFields = (name: string, email: string) => {
+    const errs: Record<string, string> = {};
+    if (!name.trim()) errs.name = VALIDATION_MESSAGES.required;
+    else if (!isValidName(name)) errs.name = VALIDATION_MESSAGES.name;
+    if (!email.trim()) errs.email = VALIDATION_MESSAGES.required;
+    else if (!isValidEmail(email)) errs.email = VALIDATION_MESSAGES.email;
+    return errs;
   };
 
   const getCurrentStepError = () => {
@@ -248,11 +261,6 @@ export default function PricingQuiz() {
       const step = AI_STEPS[currentStep];
       if (step.type === "choice" && typeof answers[currentStep] !== "number") {
         return "Please select an option to continue.";
-      }
-      if (step.type === "input") {
-        const value = ((answers[currentStep] as string | undefined) ?? "").trim();
-        if (!value) return step.field === "email" ? "Please enter your email." : "Please enter your name.";
-        if (step.field === "email" && !isValidEmail(value)) return "Please enter a valid email.";
       }
       return "";
     }
@@ -282,23 +290,41 @@ export default function PricingQuiz() {
       if (!((customAnswers.budget as string | undefined) ?? "").trim()) return "Please enter your budget range.";
       if (!priorities.length && !priorityOther) return "Please select at least one priority.";
     }
-    if (step.kind === "contact") {
-      const name = ((customAnswers.contactName as string | undefined) ?? "").trim();
-      const email = ((customAnswers.contactEmail as string | undefined) ?? "").trim();
-      if (!name) return "Please enter your name.";
-      if (!email) return "Please enter your email.";
-      if (!isValidEmail(email)) return "Please enter a valid email.";
-    }
     return "";
   };
 
   const goNext = () => {
-    const stepError = getCurrentStepError();
-    if (stepError) {
-      setSubmitError(stepError);
-      return;
+    const aiStep = isAi ? AI_STEPS[currentStep] : null;
+    const customStep = !isAi ? CUSTOM_STEPS[currentStep] : null;
+
+    if (aiStep?.type === "input") {
+      const name = (answers[5] as string | undefined) ?? "";
+      const email = (answers[6] as string | undefined) ?? "";
+      const errs = validateNameEmailFields(
+        aiStep.field === "name" ? (answers[currentStep] as string | undefined) ?? "" : name,
+        aiStep.field === "email" ? (answers[currentStep] as string | undefined) ?? "" : email,
+      );
+      const fieldErr = errs[aiStep.field];
+      setFieldErrors(fieldErr ? { [aiStep.field]: fieldErr } : {});
+      if (fieldErr) return;
+      setSubmitError("");
+    } else if (customStep?.kind === "contact") {
+      const name = ((customAnswers.contactName as string | undefined) ?? "");
+      const email = ((customAnswers.contactEmail as string | undefined) ?? "");
+      const errs = validateNameEmailFields(name, email);
+      setFieldErrors(errs);
+      if (Object.keys(errs).length > 0) return;
+      setSubmitError("");
+    } else {
+      const stepError = getCurrentStepError();
+      if (stepError) {
+        setSubmitError(stepError);
+        return;
+      }
+      setSubmitError("");
+      setFieldErrors({});
     }
-    setSubmitError("");
+
     if (currentStep < totalSteps - 1) {
       setCurrentStep((value) => value + 1);
       return;
@@ -369,10 +395,15 @@ export default function PricingQuiz() {
                   <input
                     type={step.field === "email" ? "email" : "text"}
                     value={(answers[currentStep] as string | undefined) ?? ""}
-                    onChange={(event) => { setSubmitError(""); setAnswers((current) => ({ ...current, [currentStep]: event.target.value })); }}
+                    onChange={(event) => {
+                      setSubmitError("");
+                      setFieldErrors((current) => ({ ...current, [step.field]: "" }));
+                      setAnswers((current) => ({ ...current, [currentStep]: event.target.value }));
+                    }}
                     placeholder={step.placeholder}
                     aria-label={step.placeholder}
                   />
+                  {fieldErrors[step.field] && <p className={styles.submitError}>{fieldErrors[step.field]}</p>}
                 </div>
               )}
             </div>
@@ -454,7 +485,14 @@ export default function PricingQuiz() {
                 </div>
               ) : null}
               {step.kind === "organization" ? <OrganizationFields customAnswers={customAnswers} setCustomAnswers={setCustomAnswers} /> : null}
-              {step.kind === "contact" ? <ContactFields customAnswers={customAnswers} setCustomAnswers={setCustomAnswers} /> : null}
+              {step.kind === "contact" ? (
+                <ContactFields
+                  customAnswers={customAnswers}
+                  setCustomAnswers={setCustomAnswers}
+                  errors={fieldErrors}
+                  clearError={(field) => setFieldErrors((current) => ({ ...current, [field]: "" }))}
+                />
+              ) : null}
               <div className={styles.assessmentActions}>
                 <button type="button" className={`${styles.assessmentBtn} ${styles.prevBtn}`} onClick={goPrev}>Prev</button>
                 <button type="button" className={`${styles.assessmentBtn} ${styles.assessmentNext}`} onClick={goNext}>{currentStep === totalSteps - 1 ? "Finish" : "Next"}</button>
@@ -554,16 +592,37 @@ function OrganizationFields({ customAnswers, setCustomAnswers }: { customAnswers
   );
 }
 
-function ContactFields({ customAnswers, setCustomAnswers }: { customAnswers: Record<string, string | string[]>; setCustomAnswers: Dispatch<SetStateAction<Record<string, string | string[]>>> }) {
+function ContactFields({
+  customAnswers,
+  setCustomAnswers,
+  errors,
+  clearError,
+}: {
+  customAnswers: Record<string, string | string[]>;
+  setCustomAnswers: Dispatch<SetStateAction<Record<string, string | string[]>>>;
+  errors: Record<string, string>;
+  clearError: (field: string) => void;
+}) {
   return (
     <div className={styles.contactFields}>
       <label className={styles.selectField}>
         <span>Name</span>
-        <input value={(customAnswers.contactName as string | undefined) ?? ""} onChange={(event) => setCustomAnswers((current) => ({ ...current, contactName: event.target.value }))} placeholder="Your name" required />
+        <input
+          value={(customAnswers.contactName as string | undefined) ?? ""}
+          onChange={(event) => { clearError("name"); setCustomAnswers((current) => ({ ...current, contactName: event.target.value })); }}
+          placeholder="Your name"
+        />
+        {errors.name && <span className={styles.submitError}>{errors.name}</span>}
       </label>
       <label className={styles.selectField}>
         <span>Corporate email</span>
-        <input type="email" value={(customAnswers.contactEmail as string | undefined) ?? ""} onChange={(event) => setCustomAnswers((current) => ({ ...current, contactEmail: event.target.value }))} placeholder="Your email" required />
+        <input
+          type="email"
+          value={(customAnswers.contactEmail as string | undefined) ?? ""}
+          onChange={(event) => { clearError("email"); setCustomAnswers((current) => ({ ...current, contactEmail: event.target.value })); }}
+          placeholder="Your email"
+        />
+        {errors.email && <span className={styles.submitError}>{errors.email}</span>}
       </label>
     </div>
   );

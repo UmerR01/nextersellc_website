@@ -7,14 +7,14 @@ import ServicesReviewSlider from "@/components/services/ServicesReviewSlider";
 import ServicesAchievements from "@/components/services/ServicesAchievements";
 import ServicesFaqBlock, { type FaqItem } from "@/components/services/ServicesFaqBlock";
 import LetsStart from "@/components/home/LetsStart";
-import AdlcBlog from "@/components/adlc/AdlcBlog";
-import EcommerceArticleLayout from "./EcommerceArticleLayout";
+import AwesomeStories from "@/components/blog/AwesomeStories";
+import ArticleLayout from "@/components/shared/ArticleLayout";
 import styles from "./EcommercePage.module.css";
 
 // ─── Why choose (results) ─────────────────────────────────────────────────────
 const WHY_POINTS = [
   "We offer strong eCommerce expertise backed by successful projects.",
-  "Since 2012, we've implemented over 250 solutions for Clients in 25+ countries.",
+  "Since 2020, we've implemented over 250 solutions for Clients in 25+ countries.",
   "Nexterse LLC is recognized as one of the top eCommerce developers in the US.",
   "70% of our employees are senior-grade engineers.",
   "Techreviewer ratings note our experience in Shopify development and migrations.",
@@ -289,6 +289,17 @@ const ECOM_FAQ: FaqItem[] = [
 ];
 
 // ─── Component ────────────────────────────────────────────────────────────────
+const CONTENTS = [
+  { href: "#ecom-why", label: "Why choose us" },
+  { href: "#ecom-services", label: "Services" },
+  { href: "#ecom-platforms", label: "Platforms" },
+  { href: "#ecom-solutions", label: "Solutions" },
+  { href: "#ecom-cases", label: "Case studies" },
+  { href: "#ecom-process", label: "Process" },
+  { href: "#ecom-cost", label: "Cost factors" },
+  { href: "#ecom-faq", label: "FAQ" },
+];
+
 export default function EcommercePage() {
   const [activePlatformTab, setActivePlatformTab] = useState(0);
 
@@ -439,7 +450,7 @@ export default function EcommercePage() {
       </section>
 
       {/* ── Why choose (results) ─────────────────────────────────────────── */}
-      <EcommerceArticleLayout>
+      <ArticleLayout contents={CONTENTS} ariaLabel="eCommerce page contents">
       <section id="ecom-why" className={styles.ecomWhySection}>
         <div className="container">
           <h2 className={styles.sectionTitle}>
@@ -642,8 +653,8 @@ export default function EcommercePage() {
         <LetsStart />
 
         {/* ── Awesome stories (ADLC blog) ────────────────────────────────── */}
-        <AdlcBlog />
-      </EcommerceArticleLayout>
+        <AwesomeStories category="enterprise" />
+      </ArticleLayout>
     </>
   );
 }

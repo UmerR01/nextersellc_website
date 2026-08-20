@@ -15,7 +15,7 @@ export default function CSAchievementsBlock() {
         <div className={styles.row}>
           <div className={styles.left}>
             <h2 className={styles.heading}>
-              For <span className={styles.accent}>14+ years</span> now we have
+              For <span className={styles.accent}>6+ years</span> now we have
               been responsible for your projects and we are proud of it!
             </h2>
           </div>
