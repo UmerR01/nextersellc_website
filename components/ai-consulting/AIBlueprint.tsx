@@ -50,8 +50,8 @@ export default function AIBlueprint() {
 
           <div className={styles.imageWrap}>
             <Image
-              src="/ai-consulting/imgs/03_pexels-fauxels-3184653-683x1024.jpg"
-              alt="Development team discussing the AI blueprint"
+              src="/ai-consulting/imgs/engagement-models-ai-projects.jpg"
+              alt="What's in your executive AI blueprint?"
               width={683}
               height={1024}
               className={styles.image}

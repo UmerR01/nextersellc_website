@@ -213,7 +213,7 @@ export default function OnboardPage() {
             {/* Full-width image */}
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
-              src="/onboard/07_business-man-and-woman-shaking-hands-2024-11-03-03-55-40-utc-1.jpg"
+              src="/onboard/onboarding-page.jpg"
               alt="Training and support"
               className={styles.trainImage}
             />

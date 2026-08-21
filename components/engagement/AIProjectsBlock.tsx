@@ -54,8 +54,8 @@ export default function AIProjectsBlock() {
             <div className={styles.imageWrapper}>
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
-                src="/engagement/03_pexels-fauxels-3184653-683x1024-2.jpg"
-                alt="AI project engagement"
+                src="/engagement/engagement-models-ai-projects.jpg"
+                alt="Engagement models for AI projects"
                 className={styles.image}
                 loading="lazy"
               />

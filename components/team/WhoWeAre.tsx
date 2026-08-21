@@ -36,8 +36,8 @@ export default function WhoWeAre() {
           <div className={styles.right}>
             <div className={styles.imageWrap}>
               <Image
-                src="/team/12_Rectangle-1995-1-1.jpg"
-                alt="Nexterse LLC office"
+                src="/team/who-we-are.jpg"
+                alt="Who we are"
                 width={856}
                 height={1000}
                 className={styles.officeImage}

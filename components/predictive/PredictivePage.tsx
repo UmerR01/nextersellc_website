@@ -483,8 +483,8 @@ export default function PredictivePage() {
               </div>
               <div className={styles.resultsImgCol}>
                 <Image
-                  src="/predictive-maintenance/03_Development-team-3-683x1024.jpg"
-                  alt="Development team"
+                  src="/esd/data-readiness.jpg"
+                  alt="AI-powered digital twin solutions"
                   width={683}
                   height={1024}
                   className={styles.resultsImg}
