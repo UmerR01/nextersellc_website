@@ -447,8 +447,8 @@ export default function HealthcarePage() {
                 ))}
               </div>
               <Image
-                src="/healthcare-development/09_pexels-alena-darmel-7710078-683x1024.jpg"
-                alt="Healthcare software team collaborating on a project"
+                src="/esd/data-readiness.jpg"
+                alt="Why Nexterse LLC healthcare AI software development services"
                 width={683}
                 height={1024}
                 className={styles.hcSplitImg}

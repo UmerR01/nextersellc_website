@@ -137,6 +137,7 @@ const COOPERATION = [
     icon: "/adtech-development/12_Time-estimates.svg",
     title: "Timelines: fast and predictable",
     tab: "Timelines",
+    image: "/adtech-development/timeline.jpg",
     bullets: [
       "Discovery (1-4 weeks): We meet to understand your goals and plan the project, ensuring a strong start.",
       "MVP (3-6 months): We build a core version of your platform, like a basic DSP or CDP, for quick testing and early results.",
@@ -149,6 +150,7 @@ const COOPERATION = [
     icon: "/adtech-development/02_Quality-management-controls.svg",
     title: "Quality: built to last",
     tab: "Quality",
+    image: "/adtech-development/quality.jpg",
     bullets: [
       "Skilled team: Experienced developers, designers, and testers, trained in Adtech and Martech, work on your project.",
       "Thorough testing: We test every feature – automated, manual, performance, and security – to ensure reliability.",
@@ -508,8 +510,8 @@ export default function AdtechPage() {
               </div>
               <div className={styles.cooperationImageWrap}>
                 <Image
-                  src="/adtech-development/02_Time-series-analytics-solutions.jpg"
-                  alt="Adtech cooperation planning"
+                  src={cooperation.image}
+                  alt={cooperation.title}
                   width={520}
                   height={340}
                   className={styles.cooperationImage}

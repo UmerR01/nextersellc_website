@@ -122,7 +122,7 @@ const SERVICE_TABS = [
     icon: "/web-app-development/12_RD-Analysis.svg",
     label: "R&D & Analysis",
     title: "R&D & Analysis",
-    image: "/web-app-development/01_RD-Analysis.jpg",
+    image: "/aisoft-development/aisoft-custom.jpg",
     desc: "Our R&D and business analysis team evaluates your business and ideas before launching development. We define the product scope, reduce market and technical risk, and prepare the system for future growth. If AI is part of the plan, we use ADLC from the start. We define where AI fits in the product, what data it can use, how results will be checked, and what controls the system needs before release.",
     bullets: [
       "Validate the business case and product scope",
@@ -139,7 +139,7 @@ const SERVICE_TABS = [
     icon: "/web-app-development/12_App-Design.svg",
     label: "UX/UI design",
     title: "UX/UI design",
-    image: "/web-app-development/01_App-Design.jpg",
+    image: "/aisoft-development/aisoft-rag.jpg",
     desc: "We follow a thorough web design approach focused on how people interact with websites, ensuring interfaces are not only user-friendly but also designed for targeted action. For AI features, we account for response states, approval steps, citation patterns, and user control.",
     bullets: [
       "Research users, roles, workflows, and decision points",
@@ -156,7 +156,7 @@ const SERVICE_TABS = [
     icon: "/web-app-development/12_Frontend-Backend-Development.svg",
     label: "Frontend & Backend",
     title: "Frontend & Backend development",
-    image: "/web-app-development/01_Web-Development.jpg",
+    image: "/aisoft-development/aisoft-agentic.jpg",
     desc: "Our frontend and backend engineers build custom web applications for products ranging in complexity. We focus on stable architecture and maintainable code. When AI is required, we add model-facing services, retrieval flows, orchestration logic, and monitoring via an ADLC-based process.",
     bullets: [
       "Integrate with third-party systems and internal platforms",
@@ -173,7 +173,7 @@ const SERVICE_TABS = [
     icon: "/web-app-development/12_QA-Testing.svg",
     label: "QA & Testing",
     title: "QA & Testing",
-    image: "/web-app-development/01_QA-Testing.jpg",
+    image: "/aisoft-development/aisoft-cosn.jpg",
     desc: "Our QA team joins the project from day one. This lets us test the product as it is built and not after the main work is done. We cover functional quality, performance, security, and cross-device behavior. For AI-enabled features, we also test output quality, grounding, fallback behavior, and ADLC-defined monitoring rules.",
     bullets: [
       "Improve product quality throughout development",

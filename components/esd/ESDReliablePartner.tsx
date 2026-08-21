@@ -27,8 +27,8 @@ export default function ESDReliablePartner() {
             <div className={styles.imgWrap}>
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
-                src="/esd/12_Business-analysis-services-results-1024x846.jpg"
-                alt="Business analysis specialist working"
+                src="/esd/esd-reliable.jpg"
+                alt="What makes Nexterse LLC a reliable partner"
                 className={styles.img}
                 loading="lazy"
               />

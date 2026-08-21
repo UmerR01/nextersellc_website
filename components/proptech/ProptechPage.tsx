@@ -137,6 +137,7 @@ const COOPERATION = [
     icon: "/proptech-development/12_Time-estimates.svg",
     title: "Timelines: fast and predictable",
     tab: "Timelines",
+    image: "/proptech-development/timeline.jpg",
     bullets: [
       "Discovery (1-4 weeks): We meet to understand your goals and plan the project, ensuring a strong start.",
       "MVP (3-6 months): We build a core version of your platform, like a management portal or AVM, for quick testing and early results.",
@@ -149,6 +150,7 @@ const COOPERATION = [
     icon: "/proptech-development/02_Quality-management-controls.svg",
     title: "Quality: built to last",
     tab: "Quality",
+    image: "/proptech-development/quality.jpg",
     bullets: [
       "Skilled team: Experienced developers, designers, and testers, trained in PropTech and real estate, work on your project.",
       "Thorough testing: We test every feature – automated, manual, performance, and security – to ensure reliability.",
@@ -508,8 +510,8 @@ export default function ProptechPage() {
               </div>
               <div className={styles.cooperationImageWrap}>
                 <Image
-                  src="/proptech-development/02_Time-series-analytics-solutions.jpg"
-                  alt="PropTech cooperation planning"
+                  src={cooperation.image}
+                  alt={cooperation.title}
                   width={520}
                   height={340}
                   className={styles.cooperationImage}

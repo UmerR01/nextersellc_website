@@ -16,24 +16,24 @@ const ourServicesTabs = [
     label: "Technical risk",
     title: "Technical risk",
     body: "For AI products, the first question is whether the model can perform reliably in your actual environment. Before you invest in a larger build, an MVP shows whether the system can work with your data, your workflows, and your quality threshold.",
-    image: "/mvp/03_Energy-Efficiency-and-Cost-Reduction.jpg",
-    alt: "Energy Efficiency and Cost Reduction",
+    image: "/mvp/technical-risk.jpg",
+    alt: "Technical risk",
   },
   {
     icon: "/mvp/04_Model-development-aligned-with-business-metrics-02.svg",
     label: "Market risk",
     title: "Market risk",
     body: "An MVP puts the core use case in front of real users before the team spends time on secondary features. That early release helps validate demand, expose weak assumptions, and show what deserves further investment.",
-    image: "/mvp/03_5da7102758568a0c89f97f33_Top-4-Marketing-Automation-Software-for-SMBs_-Pros-and-Cons.jpg",
-    alt: "The dashboard of key metrics on the laptop",
+    image: "/mvp/market-risk.jpg",
+    alt: "Market risk",
   },
   {
     icon: "/mvp/04_Security-embedded-in-delivery-01.svg",
     label: "Security risk",
     title: "Security risk",
     body: "For enterprise MVPs, security cannot wait until a later phase. The first release should establish the access model, environment boundaries, and data-handling rules from the start. When AI is involved, that includes role-based access, controlled retrieval, and an isolated deployment path where needed.",
-    image: "/mvp/03_61eea108d5f74d7b034fb83d_thumbnails-website-9-min.png",
-    alt: "A rocket launching",
+    image: "/mvp/security-risk.jpg",
+    alt: "Security risk",
   },
 ];
 
@@ -179,8 +179,8 @@ export default function MvpPage() {
             </div>
             <div className={s.srImage}>
               <Image
-                src="/mvp/03_6065938ac5b1c3297aef5eaa_pexels-startup-stock-photos-7375-min-1024x731.jpg"
-                alt="Programmer sitting at a desk"
+                src="/ai-readiness/imgs/readiness-14.jpg"
+                alt="Our MVP development services scope"
                 width={1024} height={731}
                 style={{ width: "100%", height: "auto", display: "block" }}
               />
@@ -534,8 +534,8 @@ export default function MvpPage() {
             </div>
             <div className={s.srImage}>
               <Image
-                src="/mvp/01_image_starts.png"
-                alt="Nexterse LLC team member"
+                src="/esd/esd-reliable.jpg"
+                alt="Why entrust MVP development to us"
                 width={528} height={348}
                 style={{ width: "100%", height: "auto", display: "block" }}
               />

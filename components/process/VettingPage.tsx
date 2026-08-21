@@ -601,7 +601,7 @@ export default function VettingPage() {
             {/* Full-width image */}
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
-              src="/vetting/07_multiracial-colleagues-discussing-while-businesswo-2025-04-05-06-59-09-utc-Large.jpg"
+              src="/vetting/vetting.jpg"
               alt="Proven to perform"
               className={styles.provenImage}
             />

@@ -642,8 +642,8 @@ export default function FintechPage() {
                 </ul>
               </div>
               <Image
-                src="/financial-development/09_pexels-alena-darmel-7710078-683x1024.jpg"
-                alt="Team collaborating on a fintech project"
+                src="/esd/data-readiness.jpg"
+                alt="Integration with the financial ecosystem"
                 width={683}
                 height={1024}
                 className={styles.finSplitImg}

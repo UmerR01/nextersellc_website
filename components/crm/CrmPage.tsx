@@ -501,8 +501,8 @@ export default function CrmPage() {
             <div className={styles.srImgCol}>
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
-                src="/crm-development/03_pexels-fauxels-3184653-683x1024.jpg"
-                alt="Development team discussing the project"
+                src="/ai-integration/ai-int-scoped.jpg"
+                alt="CRM platforms we build"
                 className={styles.srImg}
               />
             </div>

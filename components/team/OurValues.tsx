@@ -59,8 +59,8 @@ export default function OurValues() {
           <div className={styles.imageCol}>
             <div className={styles.imageWrap}>
               <Image
-                src="/team/12_entrepreneurs-discussing-work-results-meeting-683x1024.jpg"
-                alt="Nexterse LLC team discussing project results"
+                src="/team/our-values.jpg"
+                alt="Our values"
                 width={683}
                 height={1024}
               />

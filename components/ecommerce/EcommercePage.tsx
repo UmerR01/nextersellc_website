@@ -92,21 +92,21 @@ const PLATFORM_TABS = [
     icon: "/ecommerce-development/08_customization-1.svg",
     label: "Custom eCommerce solutions",
     title: "Custom eCommerce solutions",
-    image: "/ecommerce-development/02_Enhanced-Customer-Engagement-1024x683.jpg",
+    image: "/ecommerce-development/ecommerce.jpg",
     desc: "We build custom eCommerce solutions using Ruby on Rails, Node.js, React, Vue, and other modern stacks, choosing the right one for each task. A custom approach is justified when non-standard logic, complex integrations, and high loads are required. We carefully consider the cost of ownership to ensure the architecture is not overly complex.",
   },
   {
     icon: "/ecommerce-development/02_Shopify.svg",
     label: "Shopify and Shopify Plus",
     title: "Shopify and Shopify Plus",
-    image: "/ecommerce-development/03_5dde7837c64386921d88acc1_choosing-ecommerce.jpg",
+    image: "/ecommerce-development/shopify.jpg",
     desc: "Nexterse LLC is one of the top Shopify developers in the US and other regions, according to Techreviewer. We create custom themes, apps, integrations, and migrations from other platforms. Mid-market companies employ us to migrate to Shopify Plus without losing data or SEO. We set up payments, taxes, logistics, and reporting, taking into account business and market requirements.",
   },
   {
     icon: "/ecommerce-development/02_eCommerce-cart.svg",
     label: "More platforms and ecosystems",
     title: "More platforms and ecosystems",
-    image: "/ecommerce-development/03_5da452d720ae1b27c53c93eb_ecommerce1.jpg",
+    image: "/ecommerce-development/platform-eco.jpg",
     desc: "We work with BigCommerce, WooCommerce, and a range of less common solutions. Our evaluations are always honest about when it makes sense to improve an existing platform and when it's cheaper to migrate. We integrate eCommerce with Salesforce and other enterprise systems, and we review the overall integration architecture.",
   },
 ];
@@ -462,8 +462,8 @@ export default function EcommercePage() {
             </ul>
             <div className={styles.resultsImgCol}>
               <Image
-                src="/ecommerce-development/02_image_eccomerce.png"
-                alt="Ecommerce store"
+                src="/esd/esd-standard.jpg"
+                alt="Why choose Nexterse LLC services"
                 width={528}
                 height={608}
                 className={styles.resultsImg}
