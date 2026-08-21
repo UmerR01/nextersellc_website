@@ -6,13 +6,15 @@ import "swiper/css";
 import styles from "./OfficePhotos.module.css";
 
 const PHOTOS = [
-  { src: "/team/01_careers-photo-6.jpg", alt: "Nexterse LLC office space" },
-  { src: "/team/01_careers-photo-3.jpg", alt: "Nexterse LLC team" },
-  { src: "/team/01_careers-photo-9.jpg", alt: "Nexterse LLC office" },
-  { src: "/team/01_careers-photo-1.jpg", alt: "Nexterse LLC team meeting" },
-  { src: "/team/01_careers-photo-8.jpg", alt: "Nexterse LLC workspace" },
-  { src: "/team/01_careers-photo-7.jpg", alt: "Nexterse LLC culture" },
-  { src: "/team/01_careers-photo-10.jpg", alt: "Nexterse LLC team" },
+  { src: "/team/about-team1.jpg", alt: "Nexterse LLC team" },
+  { src: "/team/about-office.jpg", alt: "Nexterse LLC office" },
+  { src: "/team/about-team2.jpg", alt: "Nexterse LLC team" },
+  { src: "/team/about-laptop.jpg", alt: "Nexterse LLC workspace" },
+  { src: "/team/about-team3.jpg", alt: "Nexterse LLC team" },
+  { src: "/team/about-office2.jpg", alt: "Nexterse LLC office space" },
+  { src: "/team/about-team4.jpg", alt: "Nexterse LLC team" },
+  { src: "/team/about-laptop2.jpg", alt: "Nexterse LLC workspace" },
+  { src: "/team/about-team5.jpg", alt: "Nexterse LLC team" },
 ];
 
 export default function OfficePhotos() {

@@ -203,6 +203,7 @@
 }
 .pointImg {
   object-fit: cover;
+  object-position: center top;
 }
 .pointOverlay {
   position: absolute;
@@ -221,6 +222,9 @@
   color: #fff;
   justify-content: space-between;
 }
+.pointAccentDark {
+  background: var(--color-accent-dark);
+}
 .pointTextLight {
   font-size: 1.15rem;
   font-weight: 600;
@@ -235,7 +239,8 @@
 .pointIcon {
   width: 48px;
   height: 48px;
-  object-fit: contain;
+  object-fit: cover;
+  border-radius: 10px;
 }
 .counter {
   font-size: 3.4rem;

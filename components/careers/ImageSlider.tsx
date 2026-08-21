@@ -6,16 +6,15 @@ import "swiper/css";
 import styles from "./ImageSlider.module.css";
 
 const PHOTOS = [
-  { src: "/careers/01_careers-photo-1.jpg", alt: "Nexterse LLC team photo 1" },
-  { src: "/careers/01_careers-photo-2.jpg", alt: "Nexterse LLC team photo 2" },
-  { src: "/careers/01_careers-photo-3.jpg", alt: "Nexterse LLC team photo 3" },
-  { src: "/careers/01_careers-photo-4.jpg", alt: "Nexterse LLC team photo 4" },
-  { src: "/careers/01_careers-photo-5.jpg", alt: "Nexterse LLC team photo 5" },
-  { src: "/careers/01_careers-photo-6.jpg", alt: "Nexterse LLC team photo 6" },
-  { src: "/careers/01_careers-photo-7.jpg", alt: "Nexterse LLC team photo 7" },
-  { src: "/careers/01_careers-photo-8.jpg", alt: "Nexterse LLC team photo 8" },
-  { src: "/careers/01_careers-photo-9.jpg", alt: "Nexterse LLC team photo 9" },
-  { src: "/careers/01_careers-photo-10.jpg", alt: "Nexterse LLC team photo 10" },
+  { src: "/careers/about-office.jpg", alt: "Nexterse LLC office" },
+  { src: "/careers/about-team1.jpg", alt: "Nexterse LLC team photo" },
+  { src: "/careers/about-laptop.jpg", alt: "Nexterse LLC workspace" },
+  { src: "/careers/about-team2.jpg", alt: "Nexterse LLC team photo" },
+  { src: "/careers/about-office2.jpg", alt: "Nexterse LLC office space" },
+  { src: "/careers/about-team3.jpg", alt: "Nexterse LLC team photo" },
+  { src: "/careers/about-laptop2.jpg", alt: "Nexterse LLC workspace" },
+  { src: "/careers/about-team4.jpg", alt: "Nexterse LLC team photo" },
+  { src: "/careers/about-team5.jpg", alt: "Nexterse LLC team photo" },
 ];
 
 export default function ImageSlider() {

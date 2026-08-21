@@ -26,8 +26,8 @@ const SLIDES: Slide[] = [
     cards: [
       { type: "image", image: "/cases/Maryia D..png", text: "Maryia D." },
       {
-        type: "image",
-        image: "/cases/powered_php.jpg",
+        type: "icons",
+        icons: ["/cases/shopify_logo.jpeg", "/cases/php_logo.jpeg", "/cases/stripe.jpeg"],
         text: "Built on Shopify, PHP, and Stripe",
       },
       { type: "counter", value: 83, suffix: "%", text: "Increased customer bookings by 83%" },
@@ -41,9 +41,13 @@ const SLIDES: Slide[] = [
     subtitle: "Digital transformation for restaurant bookings",
     cards: [
       { type: "image", image: "/cases/Graham Ackling.png", text: "Graham Ackling" },
-      { type: "image", image: "/cases/built_dj_react.jpg", text: "Built on React and Django" },
+      {
+        type: "icons",
+        icons: ["/cases/react_logo.png", "/cases/django_logo.jpeg"],
+        text: "Built on React and Django",
+      },
       { type: "counter", value: 60, suffix: "%", text: "Increased brand visibility by more than 60%" },
-      { type: "image", image: "/cases/team.jpg", text: "Automated restaurant booking management" },
+      { type: "image", image: "/cases/automate-booking.jpg", text: "Automated restaurant booking management" },
     ],
   },
 ];
@@ -129,11 +133,6 @@ export default function Testimonials() {
                     <div className={styles.featuredBody}>
                       <h3 className={styles.featuredTitle}>{slide.title}</h3>
                       <p className={styles.featuredSub}>{slide.subtitle}</p>
-                      <div className={styles.featuredActions}>
-                        <a href="#contact" className="btn btn-outline">
-                          View case study
-                        </a>
-                      </div>
                     </div>
                   </article>
 
@@ -164,7 +163,7 @@ function PointCard({ card }: { card: Card }) {
   }
   if (card.type === "icons") {
     return (
-      <article className={`${styles.point} ${styles.pointSolid}`}>
+      <article className={`${styles.point} ${styles.pointSolid} ${styles.pointAccentDark}`}>
         <div className={styles.pointIcons}>
           {card.icons.map((src) => (
             <Image key={src} src={src} alt="" width={48} height={48} className={styles.pointIcon} />
@@ -175,7 +174,7 @@ function PointCard({ card }: { card: Card }) {
     );
   }
   return (
-    <article className={`${styles.point} ${styles.pointSolid}`}>
+    <article className={`${styles.point} ${styles.pointSolid} ${styles.pointAccentDark}`}>
       <CountUp value={card.value} suffix={card.suffix} />
       <h4 className={styles.pointTextLight}>{card.text}</h4>
     </article>
