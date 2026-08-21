@@ -43,8 +43,8 @@
 .media {
   position: relative;
   width: 100%;
-  max-width: 400px;
-  aspect-ratio: 440 / 345;
+  max-width: 550px;
+  aspect-ratio: 500 / 350;
   border-radius: 20px;
   overflow: hidden;
   /* Blue decorative wash behind the photo (Zoolatech style) */

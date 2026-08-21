@@ -145,7 +145,7 @@ export default function ContactModal({ open, onClose }: Props) {
                   We&apos;ve received your message and will get back to you within 24 hours.
                   <br />
                   Do you want to book a call?{" "}
-                  <a href="https://calendly.com" target="_blank" rel="noreferrer" className={styles.successLink}>
+                  <a href="https://calendly.com/nexterse-meeting-schedule22/30min" target="_blank" rel="noreferrer" className={styles.successLink}>
                     Book now
                   </a>
                 </p>
@@ -261,7 +261,7 @@ export default function ContactModal({ open, onClose }: Props) {
                 )}
 
                 <div className={styles.manager}>
-                  <a href="https://calendly.com" target="_blank" rel="noreferrer" className={styles.bookBtn}>
+                  <a href="https://calendly.com/nexterse-meeting-schedule22/30min" target="_blank" rel="noreferrer" className={styles.bookBtn}>
                     <CalendarIcon /> Book a consultation
                   </a>
                 </div>
