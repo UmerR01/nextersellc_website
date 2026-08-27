@@ -161,8 +161,8 @@ export const BLOG_POSTS: BlogPost[] = [
   {
     id: "972",
     href: "/blog/types-of-software-developer-roles-explained",
-    image: "/blog/03_6061ffdfeab8019f2be1dea0_whitepapers-6000-×-4000px-Google-Chrome_210329192642.png",
-    imageAlt: "Programmer coding at desk with dual monitors",
+    image: "/blog/18-software-developer-roles.png",
+    imageAlt: "Explained by Experts: 18 Types of Software Developers Roles",
     categories: [{ label: "Development", slug: "development" }],
     title: "Explained by Experts: 18 Types of Software Developers Roles",
     author: { name: "Katerina Merzlova", photo: "/blog/06_Katerina-Merzlova-min-96x96.jpeg", href: "#" },

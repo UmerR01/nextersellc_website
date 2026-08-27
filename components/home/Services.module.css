@@ -243,11 +243,6 @@
     margin-bottom: 24px;
     text-align: left;
   }
-  .ctaBtn {
-    max-width: 100%;
-    flex-basis: 327px;
-    flex-grow: 1;
-  }
 }
 
 @media screen and (max-width: 420px) {
@@ -385,7 +380,7 @@
 }
 
 .mobileContent details .mobileItemContent li::before {
-  background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' fill='none'%3E%3Cpath stroke='%23127AFF' stroke-linecap='square' stroke-width='1.5' d='m20.25 6.75-10.5 10.5L4.5 12'/%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' fill='none'%3E%3Cpath stroke='%233CC4E5' stroke-linecap='square' stroke-width='1.5' d='m20.25 6.75-10.5 10.5L4.5 12'/%3E%3C/svg%3E");
   content: "";
   height: 24px;
   left: 0;
@@ -402,23 +397,21 @@
 
 .mobileContent details .mobileItemContent .ctaBtn {
   margin-top: 24px;
-  width: 100%;
-  max-width: 100%;
   display: inline-block;
   background: transparent;
-  border: 2px solid #ff415c;
-  color: #ff415c;
+  border: 2px solid var(--color-accent);
+  color: var(--color-accent);
   cursor: pointer;
   font-size: 16px;
   padding: 14px 24px;
   text-align: center;
   transition: background-color 0.2s, color 0.2s;
   text-decoration: none;
-  border-radius: 0;
+  border-radius: 30px;
 }
 
 .mobileContent details .mobileItemContent .ctaBtn:hover {
-  background-color: #ff415c;
+  background-color: var(--color-accent);
   color: #fff;
 }
 

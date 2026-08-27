@@ -127,9 +127,6 @@ export default function Testimonials() {
                       />
                     )}
                     <div className={styles.featuredOverlay} />
-                    <span className={styles.playBadge} aria-hidden>
-                      ▶
-                    </span>
                     <div className={styles.featuredBody}>
                       <h3 className={styles.featuredTitle}>{slide.title}</h3>
                       <p className={styles.featuredSub}>{slide.subtitle}</p>

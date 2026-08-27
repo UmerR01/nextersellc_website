@@ -18,7 +18,7 @@ export default function BlogArticleTemplate({ article }: { article: BlogArticleD
     <>
       <Header forceSolid />
       <main>
-        <BlogArticleLayout contents={article.contents}>
+        <BlogArticleLayout contents={article.contents} title={article.title}>
           <BlogArticleHero
             title={article.title}
             categories={article.categories}

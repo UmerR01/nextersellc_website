@@ -147,8 +147,7 @@
   .title {
     font-size: 22px;
   }
-  .right,
-  .btn {
+  .right {
     width: 100%;
   }
 }
