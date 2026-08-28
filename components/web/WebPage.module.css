@@ -104,7 +104,6 @@
 .heroBtn {
   font-family: var(--font-inter-tight), sans-serif;
   text-decoration: none;
-  min-height: 2.625rem;
   padding-inline: 1.5rem;
 }
 

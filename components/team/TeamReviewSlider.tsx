@@ -83,8 +83,10 @@ export default function TeamReviewSlider({
                       />
                     ) : null}
                   </div>
-                  <p className={styles.authorName}>{review.name}</p>
-                  <p className={styles.authorPosition}>{review.position}</p>
+                  <div className={styles.authorInfo}>
+                    <p className={styles.authorName}>{review.name}</p>
+                    <p className={styles.authorPosition}>{review.position}</p>
+                  </div>
                 </div>
 
                 {/* Left column: quote */}

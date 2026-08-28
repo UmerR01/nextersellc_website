@@ -14,9 +14,11 @@
   }
 }
 
-@media (max-width: 768px) {
+/* 900px (not 768px) to byte-match AIHero.module.css — see
+   track/hero-rule-sitewide-rollout.md. */
+@media (max-width: 900px) {
   .hero {
-    padding-top: 88px;
+    padding-top: calc(var(--header-height) + 48px);
   }
 }
 
@@ -85,6 +87,9 @@
   }
 }
 
+/* Header→breadcrumb→title spacing kept consistent with
+   AIHero.module.css / AdlcHero.module.css — see
+   track/hero-responsiveness-rule.md. */
 .inner {
   color: #fff;
   padding: 0 0 8.5rem;
@@ -94,18 +99,25 @@
 
 @media (max-width: 768px) {
   .inner {
-    padding: 40px 0 72px;
+    padding: 0 0 4.5rem;
   }
 }
 
 .breadcrumbs {
   display: flex;
   align-items: center;
-  gap: 0;
-  margin-bottom: 5rem;
-  font-size: 14px;
-  color: rgba(255, 255, 255, 0.7);
+  gap: 4px;
+  margin-bottom: 4.5rem;
+  font-size: 0.875rem;
+  line-height: 1.4;
+  color: rgba(255, 255, 255, 0.5);
   flex-wrap: wrap;
+}
+
+@media (max-width: 900px) {
+  .breadcrumbs {
+    margin-bottom: 2rem;
+  }
 }
 
 .breadcrumbs a {
@@ -125,20 +137,21 @@
   vertical-align: middle;
 }
 
+/* Fluid clamp instead of a fixed 64px + max-width:768px step-jump — see
+   track/hero-responsiveness-rule.md. */
 .title {
-  font-size: 64px;
+  font-size: clamp(3rem, 5vw, 4rem);
   font-weight: 400;
-  line-height: 77px;
+  line-height: 1.18;
   text-align: left;
-  max-width: 980px;
-  margin: 0;
+  max-width: 85rem;
+  margin: 0 0 1.75rem;
   color: #fff;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 900px) {
   .title {
-    font-size: clamp(2rem, 10vw, 2.5rem);
-    line-height: 1.2;
+    font-size: clamp(2.25rem, 9vw, 3rem);
   }
 }
 
@@ -148,10 +161,10 @@
 
 .description {
   color: #fff;
-  font-size: 22px;
-  line-height: 36px;
-  margin: 24px 0 0;
-  max-width: 880px;
+  font-size: clamp(1.15rem, 1.8vw, 1.5rem);
+  line-height: 1.5;
+  margin: 0;
+  max-width: 58rem;
   text-align: left;
 }
 
@@ -161,14 +174,6 @@
 
 .description p:last-child {
   margin-bottom: 0;
-}
-
-@media (max-width: 768px) {
-  .description {
-    font-size: 16px;
-    line-height: 26px;
-    margin-top: 16px;
-  }
 }
 
 .buttons {
@@ -206,4 +211,15 @@
 .btn:hover {
   background: transparent;
   color: var(--color-accent);
+}
+
+/* Short-viewport safety (width-agnostic) — placed last on purpose, see
+   track/hero-responsiveness-rule.md. */
+@media (max-height: 450px) {
+  .hero {
+    padding-top: calc(var(--header-height) + 12px);
+  }
+  .breadcrumbs {
+    margin-bottom: 1rem;
+  }
 }

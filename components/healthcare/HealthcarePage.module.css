@@ -112,7 +112,6 @@
 .heroBtn {
   font-family: var(--font-inter-tight), sans-serif;
   text-decoration: none;
-  min-height: 2.625rem;
   padding-inline: 1.5rem;
 }
 
@@ -127,7 +126,6 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-height: 60px;
   padding: 0 34px;
   border: 2px solid var(--color-accent);
   color: var(--color-accent);
@@ -844,7 +842,6 @@
 .inlineCtaBtn {
   font-family: var(--font-inter-tight), sans-serif;
   text-decoration: none;
-  min-height: 2.625rem;
   padding-inline: 1.5rem;
 }
 
@@ -1121,8 +1118,6 @@
   align-items: center;
   justify-content: center;
   gap: 10px;
-  min-width: 246px;
-  min-height: 49px;
   font-family: var(--font-inter-tight), sans-serif;
   font-size: 1rem;
   font-weight: 600;

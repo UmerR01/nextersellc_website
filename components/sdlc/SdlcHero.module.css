@@ -1,23 +1,27 @@
+/* width:100% (not 100vw) on purpose — .hero is a direct child of <main>
+   with no wrapping padding to escape, and 100vw counts the scrollbar,
+   which was overflowing the page horizontally by the scrollbar's width
+   whenever the page was tall enough to need one. See
+   track/hero-responsiveness-rule.md. */
 .hero {
   position: relative;
-  margin-left: calc(50% - 50vw);
   overflow: hidden;
   padding-top: calc(var(--header-height) + 26px);
-  width: 100vw;
+  width: 100%;
   font-family: var(--font-inter-tight), "Inter Tight", sans-serif;
 }
 
 @media screen and (min-width: 1024px) and (max-width: 1680px) {
   .hero {
-    margin-left: 0;
     padding-top: calc(var(--header-height) + 26px);
-    width: 100%;
   }
 }
 
-@media screen and (max-width: 768px) {
+/* 900px (not 768px) to byte-match AIHero.module.css — see
+   track/hero-rule-sitewide-rollout.md. */
+@media screen and (max-width: 900px) {
   .hero {
-    padding-top: 88px;
+    padding-top: calc(var(--header-height) + 48px);
   }
 }
 
@@ -70,18 +74,19 @@
   padding-inline: clamp(1.25rem, 3vw, 2.5rem);
 }
 
+/* Header→breadcrumb→title spacing kept consistent with
+   AIHero.module.css / AdlcHero.module.css — see
+   track/hero-responsiveness-rule.md. */
 .wrapper {
   color: #fff;
   padding: 0 0 8.5rem;
-  text-align: center;
+  text-align: left;
   position: relative;
 }
 
 @media screen and (max-width: 768px) {
   .wrapper {
-    padding-bottom: 72px;
-    padding-top: 40px;
-    text-align: left;
+    padding: 0 0 4.5rem;
   }
 }
 
@@ -90,11 +95,17 @@
   align-items: center;
   justify-content: flex-start;
   gap: 4px;
-  font-size: 14px;
-  color: rgba(255, 255, 255, 0.6);
-  margin-bottom: 5rem;
+  font-size: 0.875rem;
+  line-height: 1.4;
+  color: rgba(255, 255, 255, 0.5);
+  margin-bottom: 4.5rem;
 }
 
+@media (max-width: 900px) {
+  .breadcrumbs {
+    margin-bottom: 2rem;
+  }
+}
 
 .breadcrumbs a {
   color: rgba(255, 255, 255, 0.8);
@@ -111,20 +122,21 @@
   align-items: center;
 }
 
+/* Fluid clamp instead of a fixed 64px/40px + max-width:768px step-jump —
+   see track/hero-responsiveness-rule.md. */
 .title {
-  font-size: 64px;
+  font-size: clamp(3rem, 5vw, 4rem);
   font-weight: 400;
-  line-height: 77px;
+  line-height: 1.18;
   color: #fff;
-  margin: 0 0 24px;
-  text-align: center;
+  margin: 0 0 1.75rem;
+  max-width: 85rem;
+  text-align: left;
 }
 
-@media screen and (max-width: 768px) {
+@media (max-width: 900px) {
   .title {
-    font-size: 40px;
-    line-height: 48px;
-    text-align: left;
+    font-size: clamp(2.25rem, 9vw, 3rem);
   }
 }
 
@@ -134,67 +146,22 @@
 }
 
 .description {
-  font-size: 22px;
-  font-weight: 400;
-  line-height: 36px;
-  color: #fff;
-  max-width: 1180px;
-  margin: 0 auto;
-  text-align: center;
-}
-
-@media screen and (max-width: 768px) {
-  .description {
-    font-size: 16px;
-    line-height: 26px;
-    text-align: left;
-    margin: 0;
-  }
-}
-/* AI Consulting / AI PoC style hero alignment */
-.wrapper {
-  padding: 0 0 8.5rem;
-  text-align: left;
-}
-
-.breadcrumbs {
-  margin-bottom: 4.5rem;
-  color: rgba(255, 255, 255, 0.5);
-  font-size: 0.875rem;
-  line-height: 1.4;
-}
-
-.title {
-  max-width: 85rem;
-  margin: 0 0 1.75rem;
-  font-size: clamp(3rem, 5vw, 4rem);
-  line-height: 1.18;
-  letter-spacing: 0;
-  text-align: left;
-}
-
-.description {
-  max-width: 58rem;
-  margin: 0 0 2.25rem;
   font-size: clamp(1.15rem, 1.8vw, 1.5rem);
+  font-weight: 400;
   line-height: 1.5;
+  color: #fff;
+  max-width: 58rem;
+  margin: 0;
   text-align: left;
 }
 
-@media (max-width: 768px) {
+/* Short-viewport safety (width-agnostic) — placed last on purpose, see
+   track/hero-responsiveness-rule.md. */
+@media (max-height: 450px) {
   .hero {
-    padding-top: calc(var(--header-height) + 48px);
+    padding-top: calc(var(--header-height) + 12px);
   }
-
-  .wrapper {
-    padding: 0 0 4.5rem;
-  }
-
   .breadcrumbs {
-    margin-bottom: 2rem;
-  }
-
-  .title {
-    font-size: clamp(2.25rem, 9vw, 3rem);
+    margin-bottom: 1rem;
   }
 }

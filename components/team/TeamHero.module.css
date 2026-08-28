@@ -41,10 +41,13 @@
   padding-inline: clamp(1.25rem, 3vw, 2.5rem);
 }
 
-/* ── Inner ── */
+/* Header→breadcrumb→title spacing kept consistent with
+   AIHero.module.css / AdlcHero.module.css — see
+   track/hero-responsiveness-rule.md. */
 .inner {
   color: #fff;
   padding: 0 0 8.5rem;
+  text-align: left;
   position: relative;
 }
 
@@ -56,9 +59,9 @@
   overflow: hidden;
   white-space: nowrap;
   gap: 4px;
-  margin-bottom: 5rem;
-  font-size: 14px;
-  line-height: 20px;
+  margin-bottom: 4.5rem;
+  font-size: 0.875rem;
+  line-height: 1.4;
 }
 
 .breadcrumbLink {
@@ -84,15 +87,17 @@
   font-family: var(--font-inter-tight), sans-serif;
 }
 
-/* ── Title ── */
+/* ── Title ── Fluid clamp instead of a fixed 40px/64px + max-width:768px
+   step-jump — see track/hero-responsiveness-rule.md. */
 .title {
-  font-size: clamp(2.5rem, 5vw, 4rem);
-  line-height: 1.2;
+  max-width: 85rem;
+  margin: 0 0 1.75rem;
+  font-size: clamp(3rem, 5vw, 4rem);
+  line-height: 1.18;
   font-weight: 400;
   color: #fff;
-  text-align: center;
-  letter-spacing: -0.02em;
-  margin: 0 0 16px;
+  letter-spacing: 0;
+  text-align: left;
   font-family: var(--font-inter-tight), sans-serif;
 }
 
@@ -102,12 +107,13 @@
 
 /* ── Subtitle ── */
 .subtitle {
-  font-size: clamp(1rem, 1.8vw, 1.375rem);
-  line-height: 1.64;
+  max-width: 58rem;
+  margin: 0 0 2.25rem;
+  font-size: clamp(1.15rem, 1.8vw, 1.5rem);
+  line-height: 1.5;
   font-weight: 400;
   color: #fff;
-  text-align: center;
-  margin: 16px 0 40px;
+  text-align: left;
   font-family: var(--font-inter-tight), sans-serif;
 }
 
@@ -115,21 +121,21 @@
 .numbers {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
-  margin: 16px -24px 0;
+  justify-content: flex-start;
+  margin: 1.5rem -24px 0;
 }
 
 .numberItem {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
   margin: 0 24px;
 }
 
 .numberData {
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
 }
 
 .numberValue,
@@ -147,27 +153,23 @@
   font-weight: 600;
   line-height: 22px;
   margin-top: 4px;
-  text-align: center;
+  text-align: left;
   font-family: var(--font-inter-tight), sans-serif;
 }
 
-/* ── 1024–1680px ── */
+/* Breakpoint kept at 900px (not 768px) to byte-match AIHero.module.css —
+   see track/hero-responsiveness-rule.md. */
 @media (min-width: 1024px) and (max-width: 1680px) {
   .hero {
     margin-left: 0;
     padding-top: calc(var(--header-height) + 26px);
     width: 100%;
   }
-
-  .inner {
-    padding: 0 0 8.5rem;
-  }
 }
 
-/* ── ≤768px ── */
-@media (max-width: 768px) {
+@media (max-width: 900px) {
   .hero {
-    padding-top: 88px;
+    padding-top: calc(var(--header-height) + 48px);
   }
 
   .desktopBg {
@@ -179,24 +181,15 @@
   }
 
   .inner {
-    padding: 40px 0 72px;
-    text-align: left;
+    padding: 0 0 4.5rem;
   }
 
   .breadcrumbs {
-    margin-bottom: 16px;
+    margin-bottom: 2rem;
   }
 
   .title {
-    font-size: 40px;
-    line-height: 48px;
-    text-align: left;
-  }
-
-  .subtitle {
-    font-size: 16px;
-    margin-bottom: 32px;
-    text-align: left;
+    font-size: clamp(2.25rem, 9vw, 3rem);
   }
 
   .numbers {
@@ -214,78 +207,15 @@
   .numberData {
     justify-content: flex-start;
   }
-
-  .numberValue,
-  .numberSymbol {
-    font-size: 24px;
-    line-height: 29px;
-  }
-
-  .numberLabel {
-    font-size: 13px;
-    line-height: 18px;
-    text-align: left;
-  }
-}
-/* AI Consulting / AI PoC style hero alignment */
-.inner {
-  padding: 0 0 8.5rem;
-  text-align: left;
 }
 
-.breadcrumbs {
-  margin-bottom: 4.5rem;
-  color: rgba(255, 255, 255, 0.5);
-  font-size: 0.875rem;
-  line-height: 1.4;
-}
-
-.title {
-  max-width: 85rem;
-  margin: 0 0 1.75rem;
-  font-size: clamp(3rem, 5vw, 4rem);
-  line-height: 1.18;
-  letter-spacing: 0;
-  text-align: left;
-}
-
-.subtitle {
-  max-width: 58rem;
-  margin: 0 0 2.25rem;
-  font-size: clamp(1.15rem, 1.8vw, 1.5rem);
-  line-height: 1.5;
-  text-align: left;
-}
-
-.numbers {
-  justify-content: flex-start;
-  margin: 1.5rem -24px 0;
-}
-
-.numberItem,
-.numberData {
-  align-items: flex-start;
-  justify-content: flex-start;
-}
-
-.numberLabel {
-  text-align: left;
-}
-
-@media (max-width: 768px) {
+/* Short-viewport safety (width-agnostic) — placed last on purpose, see
+   track/hero-responsiveness-rule.md. */
+@media (max-height: 450px) {
   .hero {
-    padding-top: calc(var(--header-height) + 48px);
+    padding-top: calc(var(--header-height) + 12px);
   }
-
-  .inner {
-    padding: 0 0 4.5rem;
-  }
-
   .breadcrumbs {
-    margin-bottom: 2rem;
-  }
-
-  .title {
-    font-size: clamp(2.25rem, 9vw, 3rem);
+    margin-bottom: 1rem;
   }
 }

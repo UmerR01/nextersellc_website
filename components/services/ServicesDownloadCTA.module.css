@@ -52,8 +52,6 @@
   font-family: var(--font-inter-tight);
   font-size: 1rem;
   font-weight: 600;
-  min-width: 246px;
-  min-height: 49px;
   justify-content: center;
   padding: 14px 28px;
   text-decoration: none;

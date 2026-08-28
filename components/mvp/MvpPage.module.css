@@ -262,7 +262,6 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-height: 2.625rem;
   padding: 0.4rem 1.5rem;
   font-size: 1rem;
   font-weight: 600;
@@ -644,8 +643,7 @@
 
 .downloadCta .btnPrimary {
   border-radius: var(--radius-button);
-  min-height: 2.625rem;
-}
+  }
 
 @media (max-width: 768px) {
   .downloadCtaInner {

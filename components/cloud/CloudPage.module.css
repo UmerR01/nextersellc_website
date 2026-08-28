@@ -121,7 +121,6 @@
 .heroBtn {
   font-family: var(--font-inter-tight), sans-serif;
   text-decoration: none;
-  min-height: 2.625rem;
   padding-inline: 1.5rem;
 }
 
@@ -141,7 +140,6 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-height: 60px;
   padding: 0 34px;
   border: 2px solid var(--color-accent);
   color: var(--color-accent);
@@ -1166,7 +1164,6 @@
 .pdfCtaBtn {
   gap: 10px;
   font-family: var(--font-inter-tight), sans-serif;
-  min-height: 2.625rem;
   padding: 0.4rem 1.5rem;
   text-decoration: none;
   white-space: nowrap;

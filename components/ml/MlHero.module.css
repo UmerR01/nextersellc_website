@@ -103,15 +103,17 @@
 
 .btnPrimary {
   font-family: var(--ml-font);
-  min-height: 2.625rem;
   padding: 0.4rem 1.5rem;
   text-decoration: none;
 }
 
+/* padding-top uses the same calc(header-height + 48px) formula as
+   AIHero.module.css (was a flat 6rem here) — see
+   track/hero-title-clamp-and-breakpoint-fix.md. */
 @media (max-width: 900px) {
   .hero {
     min-height: auto;
-    padding-top: 6rem;
+    padding-top: calc(var(--header-height) + 48px);
     padding-bottom: 4.5rem;
   }
 
@@ -127,5 +129,16 @@
     align-items: flex-start;
     flex-direction: column;
     gap: 1.5rem;
+  }
+}
+
+/* Short-viewport safety (width-agnostic) — placed last on purpose, see
+   track/hero-responsiveness-rule.md. */
+@media (max-height: 450px) {
+  .hero {
+    padding-top: calc(var(--header-height) + 12px);
+  }
+  .heroBreadcrumbs {
+    margin-bottom: 1rem;
   }
 }

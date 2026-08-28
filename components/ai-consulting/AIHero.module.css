@@ -127,7 +127,6 @@
 }
 
 .btnPrimary {
-  min-height: 2.625rem;
   padding: 0.4rem 1.5rem;
   text-decoration: none;
   font-family: var(--font-inter-tight), sans-serif;
@@ -202,8 +201,24 @@
 }
 
 @media (max-width: 420px) {
-  .buttons,
-  .buttons :global(.btn) {
+  .buttons {
     width: 100%;
+  }
+}
+
+/* Short-viewport safety (width-agnostic) — see
+   track/hero-responsiveness-rule.md. Placed last on purpose: an
+   unconditional base rule declared later in the file beats an earlier
+   media-query rule at equal specificity, so this has to come after every
+   base rule it touches (.section, .breadcrumb) or it's silently dead the
+   moment a width condition and a height condition are both true at once,
+   which is what high browser zoom produces. Kept identical in
+   AdlcHero.module.css — do not let the two drift apart. */
+@media (max-height: 450px) {
+  .section {
+    padding-top: calc(var(--header-height) + 12px);
+  }
+  .breadcrumb {
+    margin-bottom: 1rem;
   }
 }

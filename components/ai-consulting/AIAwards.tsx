@@ -1,14 +1,11 @@
-﻿"use client";
-
-import { useState } from "react";
-import Image from "next/image";
 import styles from "./AIAwards.module.css";
+import AwardsCarousel from "@/components/shared/AwardsCarousel";
 
 const BADGES = [
-  { src: "/badges_fix/06_techreviewer_badge_2026-01.svg",                              alt: "Techreviewer 2026 â€” Top AI Consulting Company" },
-  { src: "/badges_fix/05_top_clutch.co_artificial_intelligence_company_boston_2026-2.svg", alt: "Clutch 2026 â€” Top AI Company Boston" },
-  { src: "/badges_fix/06_top-ai-development-companies.svg",                            alt: "GoodFirms â€” Top AI Development Company" },
-  { src: "/badges_fix/06_techreviewer_badge_2026-02.svg",                              alt: "Techreviewer 2026 â€” Top AI Readiness Assessment" },
+  { src: "/badges_fix/06_techreviewer_badge_2026-01.svg",                              alt: "Techreviewer 2026 — Top AI Consulting Company" },
+  { src: "/badges_fix/05_top_clutch.co_artificial_intelligence_company_boston_2026-2.svg", alt: "Clutch 2026 — Top AI Company Boston" },
+  { src: "/badges_fix/06_top-ai-development-companies.svg",                            alt: "GoodFirms — Top AI Development Company" },
+  { src: "/badges_fix/06_techreviewer_badge_2026-02.svg",                              alt: "Techreviewer 2026 — Top AI Readiness Assessment" },
   { src: "/badges_fix/12_5ca49c9f6cb37e33319e1162_Goodfirms.svg",                     alt: "GoodFirms badge" },
   { src: "/badges_fix/12_5ca49c9f8ff5ad26d13b6845_TDA.svg",                           alt: "TDA badge" },
   { src: "/badges_fix/12_5ca49c9f6cb37e49a79e1163_changed.svg",                       alt: "AWS Standard Consulting Partner" },
@@ -19,18 +16,7 @@ const BADGES = [
   { src: "/badges_fix/12_Business-Intelligence-Services-2024.svg",                     alt: "Business Intelligence Services 2024" },
 ];
 
-const VISIBLE = 6;
-
 export default function AIAwards() {
-  const [index, setIndex] = useState(0);
-  const maxIndex = Math.max(0, BADGES.length - VISIBLE);
-
-  const prev = () => setIndex((i) => Math.max(0, i - 1));
-  const next = () => setIndex((i) => Math.min(maxIndex, i + 1));
-
-  const isPrevDisabled = index === 0;
-  const isNextDisabled = index >= maxIndex;
-
   return (
     <section className={styles.section} id="awards">
       <div className="container">
@@ -43,67 +29,8 @@ export default function AIAwards() {
           best services in the field.
         </p>
 
-        {/* Slider â€” same structure as Certificates achievements-block */}
-        <div className={styles.achievements}>
-          <button
-            className={`${styles.btnPrev} ${isPrevDisabled ? styles.disabled : ""}`}
-            onClick={prev}
-            aria-label="Previous"
-            disabled={isPrevDisabled}
-          >
-            <span className={styles.arrowBox} aria-hidden="true" />
-          </button>
-
-          <div className={styles.sliderOuter}>
-            <div
-              className={styles.track}
-              style={{ transform: `translateX(calc(-${index} * (100% / ${VISIBLE})))` }}
-            >
-              {BADGES.map((badge, i) => (
-                <div key={`${badge.src}-${i}`} className={styles.slide}>
-                  <Image
-                    src={badge.src}
-                    alt={badge.alt}
-                    width={120}
-                    height={120}
-                    className={styles.badge}
-                  />
-                </div>
-              ))}
-            </div>
-          </div>
-
-          <button
-            className={`${styles.btnNext} ${isNextDisabled ? styles.disabled : ""}`}
-            onClick={next}
-            aria-label="Next"
-            disabled={isNextDisabled}
-          >
-            <span className={styles.arrowBox} aria-hidden="true" />
-          </button>
-        </div>
-
-        {/* Mobile nav row */}
-        <div className={styles.nav}>
-          <button
-            className={`${styles.btnPrev} ${isPrevDisabled ? styles.disabled : ""}`}
-            onClick={prev}
-            aria-label="Previous"
-            disabled={isPrevDisabled}
-          >
-            <span className={`${styles.arrowBox} ${styles.arrowBoxSmall}`} aria-hidden="true" />
-          </button>
-          <button
-            className={`${styles.btnNext} ${isNextDisabled ? styles.disabled : ""}`}
-            onClick={next}
-            aria-label="Next"
-            disabled={isNextDisabled}
-          >
-            <span className={`${styles.arrowBox} ${styles.arrowBoxSmall}`} aria-hidden="true" />
-          </button>
-        </div>
+        <AwardsCarousel badges={BADGES} />
       </div>
     </section>
   );
 }
-

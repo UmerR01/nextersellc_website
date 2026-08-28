@@ -6,15 +6,12 @@
   font-family: var(--font-inter-tight);
 }
 
-@media (min-width: 1024px) and (max-width: 1680px) {
+/* Header→breadcrumb→title spacing (padding-top here, margin-bottom on
+   .breadcrumb below) is kept byte-for-byte identical to AIHero.module.css
+   on purpose — see track/hero-responsiveness-rule.md. */
+@media (max-width: 900px) {
   .section {
-    padding-top: calc(var(--header-height) + 26px);
-  }
-}
-
-@media screen and (max-width: 768px) {
-  .section {
-    padding-top: 88px;
+    padding-top: calc(var(--header-height) + 48px);
   }
 }
 
@@ -78,7 +75,13 @@
 
 @media screen and (max-width: 768px) {
   .wrapper {
-    padding: 40px 0 72px;
+    /* No padding-top here on purpose — AIHero.module.css's equivalent
+       (.inner) has none at all, so .section's own padding-top is the only
+       thing controlling the header→breadcrumb gap. This wrapper used to add
+       an extra 40px on top of that, which is exactly why the two pages'
+       breadcrumbs still didn't line up after .section/.breadcrumb were
+       already made identical — the gap was somewhere else entirely. */
+    padding: 0 0 72px;
     text-align: left;
   }
 }
@@ -90,7 +93,13 @@
   font-size: 14px;
   line-height: 20px;
   color: rgba(255, 255, 255, 0.5);
-  margin-bottom: 5rem;
+  margin-bottom: 4.5rem;
+}
+
+@media (max-width: 900px) {
+  .breadcrumb {
+    margin-bottom: 2rem;
+  }
 }
 
 .breadcrumb a {
@@ -113,8 +122,18 @@
 }
 
 .title {
-  font-size: 40px;
-  line-height: 48px;
+  /* Fluid clamp instead of a fixed px value + a min-width:768px step-jump —
+     the old two-tier version was a fixed 64px at any width ≥768px, which
+     never shrunk for a short/zoomed viewport. clamp() responds to width
+     continuously instead. Kept byte-for-byte identical in structure to
+     AIHero.module.css's .title — see track/hero-responsiveness-rule.md.
+     Correction: the clamp floor was 2rem here (vs AIHero's 3rem) with no
+     900px mobile tier, so between ~600-900px wide the two pages' titles
+     rendered at visibly different sizes (e.g. 35px vs 48px at 700px wide)
+     despite everything else matching — see
+     track/hero-rule-sitewide-rollout.md. */
+  font-size: clamp(3rem, 5vw, 4rem);
+  line-height: 1.18;
   font-weight: 400;
   color: #fff;
   max-width: 980px;
@@ -122,10 +141,9 @@
   margin: 0 0 24px;
 }
 
-@media screen and (min-width: 768px) {
+@media (max-width: 900px) {
   .title {
-    font-size: 64px;
-    line-height: 77px;
+    font-size: clamp(2.25rem, 9vw, 3rem);
   }
 }
 
@@ -244,9 +262,21 @@
   color: var(--color-accent, #3CC4E5);
 }
 
-@media screen and (max-width: 768px) {
-  .btnPrimary {
-    width: 100%;
-    max-width: 100%;
+/* Short-viewport safety (width-agnostic) — see
+   track/hero-responsiveness-rule.md. Placed last on purpose: an
+   unconditional base rule declared later in the file beats an earlier
+   media-query rule at equal specificity, so this has to come after every
+   base rule it touches (.section, .breadcrumb) or it's silently dead the
+   moment a width condition and a height condition are both true at once,
+   which is what high browser zoom produces. Kept identical in
+   AIHero.module.css — do not let the two drift apart. */
+@media (max-height: 450px) {
+  .section {
+    padding-top: calc(var(--header-height) + 12px);
+  }
+  .breadcrumb {
+    margin-bottom: 1rem;
   }
 }
+
+

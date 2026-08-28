@@ -1,0 +1,187 @@
+/* Shared badge/award carousel styles — extracted verbatim from
+   home/Certificates.module.css (the confirmed-good reference). Consuming
+   components own their own section background/padding/title; this file
+   only styles the achievements/nav slider itself. */
+
+/* achievements-block__achievements:
+   position: relative; margin-top: 64px;
+   At 769-1440px: max-width: calc(100% - 160px); margin: 64px auto 0 */
+.achievements {
+  position: relative;
+  margin: 64px auto 0;
+  /* 160px total = 40px gap + 40px arrow on each side */
+  max-width: calc(100% - 160px);
+}
+
+.sliderOuter {
+  overflow: hidden;
+}
+
+.track {
+  display: flex;
+  transition: transform 0.4s ease;
+}
+
+.slide {
+  flex: 0 0 calc(100% / var(--visible, 6));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 16px;
+}
+
+.badge {
+  height: 110px;
+  width: auto;
+  max-width: 140px;
+  object-fit: contain;
+}
+
+/* ── swiper-button-prev/next — arrows are absolutely outside the track ── */
+.btnPrev,
+.btnNext {
+  cursor: pointer;
+  height: 24px;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 40px;
+
+  border: none;
+  background: none;
+  padding: 0;
+  appearance: none;
+}
+
+.btnPrev {
+  right: calc(100% + 40px);
+}
+
+.btnNext {
+  left: calc(100% + 40px);
+}
+
+/* ── ::before — horizontal tail line ── */
+.btnPrev::before,
+.btnNext::before {
+  background: var(--color-accent);
+  content: "";
+  display: block;
+  height: 2px;
+  position: absolute;
+  top: 50%;
+  border-radius: 999px;
+  transform: translateY(-50%);
+  transition: width 0.3s ease-in-out;
+  width: calc(100% - 8px);
+}
+
+/* ── ::after — arrowhead (rotated square corner) ──
+   box-sizing: border-box is required here — without it the 2px border-right
+   and border-bottom are added ON TOP of the 10x10 box (making it 12x12),
+   which shifts the rotated corner's tip out of line with the tail. */
+.btnPrev::after,
+.btnNext::after {
+  box-sizing: border-box;
+  border-right: 2px solid var(--color-accent);
+  border-top: 2px solid var(--color-accent);
+  content: "";
+  display: block;
+  height: 10px;
+  position: absolute;
+  top: 50%;
+  transition: 0.3s ease-in-out;
+  width: 10px;
+}
+
+/* Next arrow: tail left:1px, head right:3px rotate(-45deg) → pointing right
+   (right:3px, not 2px — the rotated corner's tip lands ~1px past the box edge,
+   so the head is nudged 1px further in to meet the tail's end exactly) */
+.btnNext::before { left: 1px; width: 37px; }
+.btnNext::after  { right: 3px; transform: translateY(-50%) rotate(45deg); }
+
+/* Prev arrow: tail right:1px, head left:3px rotate(135deg) → pointing left */
+.btnPrev::before { right: 1px; width: 37px; }
+.btnPrev::after  { left: 3px; transform: translateY(-50%) rotate(-135deg); }
+
+/* ── Hover: tail grows, head shifts (same 1px correction carried through) ── */
+.btnNext:not(.disabled):hover::before { width: 42px; }
+.btnNext:not(.disabled):hover::after  { right: -3px; }
+.btnPrev:not(.disabled):hover::before { width: 42px; }
+.btnPrev:not(.disabled):hover::after  { left: -3px; }
+
+/* ── Disabled state ── */
+.disabled {
+  cursor: default;
+  pointer-events: none;
+}
+.disabled::before { background: #899fb6; }
+.disabled::after  { border-color: #899fb6; }
+
+/* Mobile nav row — hidden on desktop, shown below track on mobile */
+.nav {
+  display: none;
+}
+
+@media (max-width: 1024px) {
+  /* achievements goes full width on mobile, arrows move to .nav below */
+  .achievements {
+    max-width: none;
+    margin-top: 40px;
+  }
+
+  /* hide the absolutely-positioned desktop arrows */
+  .achievements .btnPrev,
+  .achievements .btnNext {
+    display: none;
+  }
+
+  /* show the mobile nav row */
+  .nav {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 16px;
+    margin-top: 24px;
+  }
+
+  /* Each mobile button remains a positioning context for its absolute
+     arrow line/head, while the buttons themselves flow below the badges.
+     Same 40×24 size as desktop — never scaled down, which is exactly what
+     kept the tail/head proportional. */
+  .nav .btnPrev,
+  .nav .btnNext {
+    position: relative;
+    inset: auto;
+    top: auto;
+    right: auto;
+    bottom: auto;
+    left: auto;
+    transform: none;
+    flex: 0 0 40px;
+    width: 40px;
+    height: 24px;
+    outline: none;
+    box-shadow: none;
+    background-color: transparent;
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+    user-select: none;
+    margin: 0;
+  }
+
+  .nav .btnPrev:focus,
+  .nav .btnNext:focus,
+  .nav .btnPrev:active,
+  .nav .btnNext:active {
+    outline: none;
+    box-shadow: none;
+    background-color: transparent;
+  }
+
+  .slide {
+    padding: 6px 4px;
+  }
+  .badge { height: clamp(56px, 10vw, 80px); }
+}

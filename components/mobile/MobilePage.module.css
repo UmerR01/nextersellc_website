@@ -112,7 +112,6 @@
 .heroBtn {
   font-family: var(--font-inter-tight), sans-serif;
   text-decoration: none;
-  min-height: 2.625rem;
   padding-inline: 1.5rem;
 }
 
@@ -782,8 +781,7 @@
 
 .ctaHeaderBtn {
   border-radius: var(--radius-button);
-  min-height: 2.625rem;
-}
+  }
 
 .blueprintsSection .industryCard:hover {
   background: linear-gradient(135deg, rgba(60, 196, 229, 0.12), rgba(60, 196, 229, 0.025));

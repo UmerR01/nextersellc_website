@@ -55,8 +55,10 @@ export default function MvpReviewSlider(selection: ReviewSelectionProps = {}) {
                       />
                     ) : null}
                   </div>
-                  <p className={styles.authorName}>{review.name}</p>
-                  <p className={styles.authorPosition}>{review.role}</p>
+                  <div className={styles.authorInfo}>
+                    <p className={styles.authorName}>{review.name}</p>
+                    <p className={styles.authorPosition}>{review.role}</p>
+                  </div>
                 </div>
 
                 <div className={styles.leftContent}>
