@@ -522,26 +522,14 @@
   }
 
   .bottom {
-    align-items: stretch;
-    flex-direction: column;
     gap: 1rem;
   }
 
-  .send,
-  .book {
-    min-width: 0;
-    width: 100%;
-  }
-
-  
-
-.manager {
-    align-items: flex-start;
-    flex-direction: column;
+  .manager {
+    justify-content: flex-end;
   }
 
   .book {
-    text-align: center;
     white-space: normal;
   }
 }

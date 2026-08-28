@@ -174,7 +174,6 @@ export default function Header({ forceSolid = false, startTransparent = false }:
   useEffect(() => {
     if (forceSolid && !startTransparent) return;
     const aboutEl = document.getElementById("about");
-    const heroEl = document.getElementById("top");
     let frame = 0;
 
     const COLOR_TRANSITION = "background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease";
@@ -208,15 +207,11 @@ export default function Header({ forceSolid = false, startTransparent = false }:
         return;
       }
 
-      if (window.innerWidth <= 1024) {
-        const past = window.scrollY > 50;
-        applySolid(past);
-        if (headerRef.current) headerRef.current.style.transform = "";
-        return;
-      }
-
       // Derive visibility directly from layout on every update. This avoids a
       // stale transitionend callback hiding the header after rapid scrolling.
+      // Same logic at every width/zoom level — no separate "mobile" branch —
+      // so the header hides while scrolling through the hero and reappears
+      // once the next section (#about) arrives, everywhere.
       const headerHeight = headerRef.current?.offsetHeight ?? 0;
       const aboutReached = aboutEl.getBoundingClientRect().top <= headerHeight;
       if (aboutReached) {
@@ -226,9 +221,12 @@ export default function Header({ forceSolid = false, startTransparent = false }:
       }
 
       applySolid(false);
-      const doorDist = heroEl
-        ? heroEl.offsetHeight - window.innerHeight
-        : window.innerHeight * 0.6;
+      // aboutEl.offsetTop reflects the real total scroll distance to reach
+      // the next section, including any spacer GSAP's ScrollTrigger pin
+      // inserts after the hero — heroEl.offsetHeight does not, since a
+      // pinned element's own box stays one viewport tall regardless of how
+      // much extra scroll its pin reserves.
+      const doorDist = aboutEl.offsetTop - window.innerHeight;
       const HEADER_SPEED = 1.8;
       const headerDist = doorDist / HEADER_SPEED;
       const p = headerDist > 0 ? Math.min(1, Math.max(0, window.scrollY / headerDist)) : 0;
@@ -306,6 +304,11 @@ export default function Header({ forceSolid = false, startTransparent = false }:
       <header
         ref={headerRef}
         className={`${styles.header} ${solid ? styles.solid : ""}`}
+        // backdropFilter set inline, not in Header.module.css — Lightning
+        // CSS (Next.js 16 Turbopack) silently strips backdrop-filter
+        // declarations from CSS Modules; inline styles bypass that pipeline
+        // entirely. Same root cause and fix as HeroGlass.tsx.
+        style={solid ? undefined : { backdropFilter: "blur(12px)", WebkitBackdropFilter: "blur(12px)" }}
       >
         <div className={styles.inner}>
           <Link href="/" className={styles.logo} aria-label="Nexterse LLC home">

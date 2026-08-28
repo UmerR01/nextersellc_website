@@ -12,10 +12,11 @@ export interface TocItem {
 
 interface Props {
   contents: TocItem[];
+  title: string;
   children: ReactNode;
 }
 
-export default function BlogArticleLayout({ contents, children }: Props) {
+export default function BlogArticleLayout({ contents, title, children }: Props) {
   const [activeId, setActiveId] = useState(contents[0]?.href.slice(1) ?? "");
   const [collapsed, setCollapsed] = useState(false);
   const isMobileRef = useRef<boolean | null>(null);
@@ -108,7 +109,7 @@ export default function BlogArticleLayout({ contents, children }: Props) {
               </ul>
             </div>
           </div>
-          <BlogSocialShare />
+          <BlogSocialShare title={title} />
         </div>
       </aside>
     </div>

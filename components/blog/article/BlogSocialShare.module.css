@@ -7,17 +7,21 @@
   gap: 28px;
 }
 
-.social a {
+.shareBtn {
   display: inline-flex;
   width: 20px;
   height: 20px;
   align-items: center;
   justify-content: center;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
   filter: brightness(0) saturate(100%) invert(8%) sepia(29%) saturate(2294%) hue-rotate(196deg) brightness(88%) contrast(101%);
   transition: transform 0.2s ease;
 }
 
-.social a:hover {
+.shareBtn:hover {
   filter: none;
   transform: translateY(-1px);
 }

@@ -125,28 +125,6 @@
   inset: 0;
   background: linear-gradient(to top, rgba(5, 10, 24, 0.92) 0%, rgba(5, 10, 24, 0.2) 55%, transparent 100%);
 }
-.playBadge {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  z-index: 2;
-  display: grid;
-  place-items: center;
-  width: 5rem;
-  height: 5rem;
-  border-radius: 50%;
-  background: var(--color-accent);
-  color: #fff;
-  font-size: 1.4rem;
-  padding-left: 5px;
-  box-shadow: 0 14px 40px rgba(255, 65, 92, 0.5);
-  transition: transform 0.2s ease;
-}
-.featured:hover .playBadge {
-  transform: translate(-50%, -50%) scale(1.08);
-}
-
 .featuredBody {
   position: relative;
   padding: 2.5rem;

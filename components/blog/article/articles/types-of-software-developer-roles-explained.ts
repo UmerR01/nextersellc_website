@@ -15,8 +15,8 @@ export const article: BlogArticleData = {
   dateDisplay: "March 14, 2026",
   dateISO: "2026-03-14",
   heroImage: {
-    src: "/blog/03_6061ffdfeab8019f2be1dea0_whitepapers-6000-×-4000px-Google-Chrome_210329192642.png",
-    alt: "Programmer coding at desk with dual monitors",
+    src: "/blog/18-software-developer-roles.png",
+    alt: "Explained by Experts: 18 Types of Software Developers Roles",
     width: 1600,
     height: 900,
   },
