@@ -1,9 +1,9 @@
-﻿.section {
-  padding: 96px 0;
+.section {
+  padding: 6rem 0;
   background: var(--color-bg);
 }
 
-/* â”€â”€ Header â€” centred like clone â”€â”€ */
+/* ── Header — centred like clone ── */
 .header {
   text-align: center;
   margin-bottom: 0;
@@ -24,61 +24,64 @@
   font-weight: 400;
   line-height: 1.75;
   color: var(--color-text-muted);
-  max-width: 720px;
+  max-width: 45rem;
   margin: 0 auto;
 }
 
-/* â”€â”€ Steps container â€” narrow + centred â”€â”€ */
+/* ── Steps container — narrow + centred ── */
 .steps {
   display: flex;
   flex-direction: column;
-  max-width: 780px;
-  margin: 64px auto 0;
+  max-width: 48.75rem;
+  margin: 4rem auto 0;
 }
 
-/* â”€â”€ Individual step â”€â”€ */
+/* ── Individual step ── */
 .step {
   display: flex;
   align-items: flex-start;
   position: relative;
 }
-.step:not(:first-child) { margin-top: 56px; }
+.step:not(:first-child) { margin-top: 3.5rem; }
 
-/* Vertical connector line between steps */
+/* Vertical connector line between steps — left/top are tied to the circle's
+   own size+margin below (0.5rem margin + 6.5rem/2 = 3.75rem center;
+   0.5rem + 6.5rem + 0.5rem = 7.5rem full box height). Keep them in sync —
+   see track/step-circle-line-audit.md. */
 .step:not(:last-child)::after {
   content: "";
   position: absolute;
-  left: 60px;
-  top: 120px;
+  left: 3.75rem;
+  top: 7.5rem;
   width: 2px;
-  height: calc(100% + 56px - 120px);
+  height: calc(100% + 3.5rem - 7.5rem);
   background: #e3ecf5;
 }
 
-/* â”€â”€ Circle number badge â€” inner filled circle + white gap + outer ring â”€â”€ */
+/* ── Circle number badge — inner filled circle + white gap + outer ring ── */
 .stepNum {
   align-items: center;
   background: #f4f7fd;
   border: 2px solid #e3ecf5;
   border-radius: 50%;
-  box-shadow: 0 0 0 6px #fff, 0 0 0 8px #e3ecf5;
+  box-shadow: 0 0 0 0.375rem #fff, 0 0 0 0.5rem #e3ecf5;
   color: var(--color-accent, #3cc4e5);
   display: flex;
   flex-shrink: 0;
   font-size: 1.75rem;
   font-weight: 500;
-  height: 104px;
+  height: 6.5rem;
   justify-content: center;
   line-height: 1;
-  margin: 8px;
+  margin: 0.5rem;
   position: relative;
-  width: 104px;
+  width: 6.5rem;
   z-index: 1;
 }
 
-/* â”€â”€ Step content â€” top aligned with circle top â”€â”€ */
+/* ── Step content — top aligned with circle top ── */
 .stepContent {
-  margin-left: 32px;
+  margin-left: 2rem;
   flex: 1;
 }
 
@@ -97,16 +100,16 @@
   color: var(--color-text-muted);
   margin-bottom: 0;
 }
-.stepDesc p + p { padding-top: 8px; }
+.stepDesc p + p { padding-top: 0.5rem; }
 
-/* â”€â”€ Checklist for Step 5 â”€â”€ */
+/* ── Checklist for Step 5 ── */
 .stepList {
   list-style: none;
-  margin: 12px 0 8px;
+  margin: 0.75rem 0 0.5rem;
   padding: 0;
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  gap: 0.375rem;
 }
 
 .stepList li {
@@ -118,6 +121,8 @@
   position: relative;
 }
 
+/* Icon size/offset kept in px on purpose — tied 1:1 to the embedded SVG's
+   own 24x24 viewBox, not a layout dimension. */
 .stepList li::before {
   content: "";
   position: absolute;
@@ -130,29 +135,31 @@
   background-size: contain;
 }
 
-/* â”€â”€ Responsive â”€â”€ */
+/* ── Responsive ── */
 @media (max-width: 768px) {
-  .section { padding: 64px 0; }
+  .section { padding: 4rem 0; }
   .header { text-align: left; }
   .desc { text-align: left; margin: 0; }
-  .steps { margin-top: 40px; }
+  .steps { margin-top: 2.5rem; }
 
-  .step:not(:first-child) { margin-top: 40px; }
+  .step:not(:first-child) { margin-top: 2.5rem; }
+  /* Same rule as above, resized: 0.3125rem margin + 3rem/2 = 1.8125rem
+     center; 0.3125rem + 3rem + 0.3125rem = 3.3125rem full box height. */
   .step:not(:last-child)::after {
-    left: 29px;
-    top: 53px;
-    height: calc(100% + 40px - 53px);
+    left: 1.8125rem;
+    top: 3.3125rem;
+    height: calc(100% + 2.5rem - 3.3125rem);
   }
 
   .stepNum {
-    box-shadow: 0 0 0 3px #fff, 0 0 0 5px #e3ecf5;
+    box-shadow: 0 0 0 0.1875rem #fff, 0 0 0 0.3125rem #e3ecf5;
     font-size: 1rem;
-    height: 48px;
-    margin: 5px;
-    width: 48px;
+    height: 3rem;
+    margin: 0.3125rem;
+    width: 3rem;
   }
 
   .stepContent {
-    margin-left: 20px;
+    margin-left: 1.25rem;
   }
 }

@@ -1,7 +1,7 @@
 .section {
   position: relative;
   overflow: hidden;
-  padding-top: calc(var(--header-height) + 26px);
+  padding-top: calc(var(--header-height) + 1.625rem);
   width: 100%;
   font-family: var(--font-inter-tight);
 }
@@ -11,7 +11,7 @@
    on purpose — see track/hero-responsiveness-rule.md. */
 @media (max-width: 900px) {
   .section {
-    padding-top: calc(var(--header-height) + 48px);
+    padding-top: calc(var(--header-height) + 3rem);
   }
 }
 
@@ -29,7 +29,7 @@
   inset: 0;
   width: 100%;
   height: 100%;
-  min-height: 700px;
+  min-height: 43.75rem;
   z-index: -1;
 }
 
@@ -60,7 +60,7 @@
 }
 
 .section :global(.container) {
-  max-width: min(100%, 1540px);
+  max-width: min(100%, 96.25rem);
   margin: 0 auto;
   padding-inline: clamp(1.25rem, 3vw, 2.5rem);
 }
@@ -81,7 +81,7 @@
        an extra 40px on top of that, which is exactly why the two pages'
        breadcrumbs still didn't line up after .section/.breadcrumb were
        already made identical — the gap was somewhere else entirely. */
-    padding: 0 0 72px;
+    padding: 0 0 4.5rem;
     text-align: left;
   }
 }
@@ -90,8 +90,8 @@
   display: flex;
   align-items: center;
   gap: 4px;
-  font-size: 14px;
-  line-height: 20px;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
   color: rgba(255, 255, 255, 0.5);
   margin-bottom: 4.5rem;
 }
@@ -136,9 +136,9 @@
   line-height: 1.18;
   font-weight: 400;
   color: #fff;
-  max-width: 980px;
+  max-width: 61.25rem;
   text-align: left;
-  margin: 0 0 24px;
+  margin: 0 0 1.5rem;
 }
 
 @media (max-width: 900px) {
@@ -153,19 +153,19 @@
 
 .description {
   color: #fff;
-  font-size: 22px;
+  font-size: 1.375rem;
   font-weight: 400;
-  line-height: 36px;
-  margin: 24px 0 0;
-  max-width: 880px;
+  line-height: 2.25rem;
+  margin: 1.5rem 0 0;
+  max-width: 55rem;
   text-align: left;
 }
 
 @media screen and (max-width: 768px) {
   .description {
-    font-size: 16px;
-    line-height: 26px;
-    margin-top: 16px;
+    font-size: 1rem;
+    line-height: 1.625rem;
+    margin-top: 1rem;
   }
 }
 
@@ -175,15 +175,15 @@
 
 .points {
   display: flex;
-  gap: 20px;
-  margin: 40px 0 0;
+  gap: 1.25rem;
+  margin: 2.5rem 0 0;
 }
 
 @media screen and (max-width: 768px) {
   .points {
     flex-direction: column;
     gap: 0;
-    margin: 8px 0 0;
+    margin: 0.5rem 0 0;
   }
 }
 
@@ -194,20 +194,20 @@
 .point {
   display: flex;
   align-items: flex-start;
-  gap: 8px;
+  gap: 0.5rem;
   color: #fff;
-  font-size: 22px;
+  font-size: 1.375rem;
   font-weight: 400;
-  line-height: 36px;
-  margin-top: 8px;
+  line-height: 2.25rem;
+  margin-top: 0.5rem;
   text-align: left;
   width: 100%;
 }
 
 @media screen and (max-width: 768px) {
   .point {
-    font-size: 16px;
-    line-height: 26px;
+    font-size: 1rem;
+    line-height: 1.625rem;
   }
 }
 
@@ -227,16 +227,16 @@
 .buttons {
   display: flex;
   align-items: flex-start;
-  gap: 32px;
+  gap: 2rem;
   justify-content: flex-start;
-  margin-top: 56px;
+  margin-top: 3.5rem;
 }
 
 @media screen and (max-width: 768px) {
   .buttons {
     flex-wrap: wrap;
-    gap: 16px;
-    margin-top: 32px;
+    gap: 1rem;
+    margin-top: 2rem;
   }
 }
 
@@ -247,7 +247,7 @@
   background-color: var(--color-accent, #3CC4E5);
   color: #fff;
   border: 2px solid var(--color-accent, #3CC4E5);
-  border-radius: var(--radius-button, 30px);
+  border-radius: var(--radius-button, 1.875rem);
   font-size: 1rem;
   font-weight: 600;
   padding: 0.4rem 1.25rem;
@@ -272,7 +272,7 @@
    AIHero.module.css — do not let the two drift apart. */
 @media (max-height: 450px) {
   .section {
-    padding-top: calc(var(--header-height) + 12px);
+    padding-top: calc(var(--header-height) + 0.75rem);
   }
   .breadcrumb {
     margin-bottom: 1rem;

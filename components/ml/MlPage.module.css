@@ -338,25 +338,28 @@
 /* ── Inline CTA (Fintech reference pattern) ───────────────────────────────── */
 .inlineCta {
   background: #fff;
-  padding: 48px 0 74px;
+  padding: 3rem 0 4.625rem;
 }
 
 .inlineCtaInner {
   background: linear-gradient(115deg, var(--color-accent-dark) 0%, #17163f 100%);
-  min-height: 234px;
-  padding: 64px 134px;
+  min-height: 14.625rem;
+  padding: 1.875rem;
   display: grid;
   grid-template-columns: minmax(0, 1fr) auto;
   align-items: center;
   justify-content: space-between;
-  gap: 72px;
+  gap: 4.5rem;
   overflow: hidden;
 }
 
+/* gap: 1.75rem — the desktop 4.5rem gap is the horizontal space between
+   the text and button columns side by side; left unreduced, that same
+   value becomes an oversized vertical gap once stacked. */
 @media (max-width: 700px) {
   .inlineCtaInner {
     grid-template-columns: 1fr;
-    padding: 40px 28px;
+    gap: 1.75rem;
   }
 }
 
@@ -365,7 +368,7 @@
   font-size: clamp(2rem, 2.8vw, 2.375rem);
   font-weight: 400;
   color: #fff;
-  margin: 0 0 28px;
+  margin: 0 0 1.75rem;
 }
 
 .inlineCtaDesc {
@@ -375,12 +378,18 @@
   margin: 0;
 }
 
+/* justify-self: center — .inlineCtaInner is display:grid, and grid items
+   stretch to fill their column by default even with no explicit width on
+   the item itself. Once it collapses to a single column at ≤700px, that
+   default would stretch this button edge to edge — a btn_r violation.
+   See track/responsiveness-rules.md. */
 .inlineCtaBtn {
   font-family: var(--font-inter-tight), sans-serif;
   padding: 0.4rem 1.5rem;
   text-decoration: none;
   white-space: nowrap;
   flex-shrink: 0;
+  justify-self: center;
 }
 
 /* ── ML maturity model (3-level tabs) ──────────────────────────────────────── */

@@ -53,6 +53,14 @@
   line-height: 20px;
 }
 
+/* 900px, matched to AIHero.module.css's breadcrumb/title tier — see
+   track/hero-title-clamp-and-breakpoint-fix.md. */
+@media (max-width: 900px) {
+  .breadcrumbs {
+    margin-bottom: 2rem;
+  }
+}
+
 .breadcrumbs a,
 .breadcrumbs span {
   display: inline-flex;
@@ -83,13 +91,19 @@
 
 .heroTitle {
   font-family: var(--font-inter-tight), sans-serif;
-  font-size: clamp(2rem, 4.5vw, 4rem);
+  font-size: clamp(3rem, 5vw, 4rem);
   font-weight: 400;
   line-height: 1.1;
   color: #fff;
   margin: 0 0 28px;
   letter-spacing: -0.01em;
   max-width: 85rem;
+}
+
+@media (max-width: 900px) {
+  .heroTitle {
+    font-size: clamp(2.25rem, 9vw, 3rem);
+  }
 }
 
 .heroDesc {
@@ -157,12 +171,25 @@
 .ratingStars { letter-spacing: 2px; }
 
 @media (max-width: 768px) {
-  .hero { min-height: auto; padding-top: 108px; padding-bottom: 64px; }
+  .hero { min-height: auto; padding-bottom: 64px; }
   .desktopImage { display: none; }
   .mobileImage { display: block; }
-  .heroTitle { font-size: clamp(1.75rem, 7vw, 2.5rem); }
   .heroActions { align-items: flex-start; flex-direction: column; gap: 20px; }
   .ratings { margin-left: 0; }
+}
+
+/* padding-top uses the same calc(header-height + 48px) formula as
+   AIHero.module.css (was a flat 108px here) — see
+   track/hero-title-clamp-and-breakpoint-fix.md. */
+@media (max-width: 900px) {
+  .hero { padding-top: calc(var(--header-height) + 48px); }
+}
+
+/* Short-viewport safety (width-agnostic) — placed last on purpose, see
+   track/hero-responsiveness-rule.md. */
+@media (max-height: 450px) {
+  .hero { padding-top: calc(var(--header-height) + 12px); }
+  .breadcrumbs { margin-bottom: 1rem; }
 }
 
 /* ── Logos ─────────────────────────────────────────────────────────────────── */
@@ -816,7 +843,7 @@
 /* ── Inline CTA ────────────────────────────────────────────────────────────── */
 .inlineCta {
   background: #fff;
-  padding: 48px 0 74px;
+  padding: 3rem 0 4.625rem;
 }
 
 .inlineCtaInner {
@@ -824,12 +851,12 @@
     linear-gradient(116deg, transparent 0 43%, rgba(60, 196, 229, 0.06) 43% 55%, transparent 55%),
     linear-gradient(116deg, transparent 0 70%, rgba(255, 255, 255, 0.05) 70% 86%, transparent 86%),
     linear-gradient(115deg, #102f63 0%, #07162f 52%, #46203f 100%);
-  min-height: 234px;
-  padding: 64px 134px;
+  min-height: 14.625rem;
+  padding: 1.875rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 72px;
+  gap: 4.5rem;
   flex-wrap: wrap;
 }
 
@@ -844,8 +871,23 @@
   color: var(--color-accent);
 }
 
+/* flex-direction: column + .inlineCtaBtn's own align-self: center — this
+   banner is flex (not grid), so it doesn't hit the grid-stretch btn_r
+   pattern, but wrapping left it flush-left instead of centered once the
+   button dropped to its own line. Centered per the CTA rule update, see
+   track/responsiveness-rules.md. */
 @media (max-width: 700px) {
-  .inlineCtaInner { padding: 40px 28px; }
+  .inlineCtaInner {
+    flex-direction: column;
+    /* gap: the desktop 4.5rem gap is the horizontal space between the
+       text and button side by side; left unreduced, that same value
+       becomes an oversized vertical gap once stacked in a column. */
+    gap: 1.75rem;
+  }
+
+  .inlineCtaBtn {
+    align-self: center;
+  }
 }
 
 .inlineCtaTitle {
@@ -853,7 +895,7 @@
   font-size: clamp(2rem, 2.8vw, 2.375rem);
   font-weight: 400;
   color: #fff;
-  margin: 0 0 28px;
+  margin: 0 0 1.75rem;
 }
 
 .inlineCtaDesc {

@@ -164,11 +164,12 @@
   overflow-y: auto;
 }
 
+/* Portal-link icon is pinned top-right via position:absolute (not a grid
+   column) so it can never drop into a second row when .panelContact wraps
+   to more lines or the panel narrows/zooms — see
+   track/header-portal-icon-fix.md. */
 .panelTop {
-  align-items: flex-start;
-  display: grid;
-  gap: 1.25rem;
-  grid-template-columns: minmax(0, 1fr) auto;
+  position: relative;
 }
 
 
@@ -177,8 +178,10 @@
   color: var(--color-text);
   display: inline-grid;
   height: 2.3rem;
-  justify-self: end;
   place-items: center;
+  position: absolute;
+  right: 0;
+  top: 0;
   text-decoration: none;
   transition: color 0.2s ease, transform 0.2s ease;
   width: 2.3rem;
@@ -200,94 +203,12 @@
   transform: translateX(0);
 }
 
-
-
-
-.mobilePanelHeader {
-  align-items: center;
-  display: none;
-  gap: 1rem;
-  justify-content: space-between;
-  padding-bottom: 1rem;
-}
-
-.mobilePanelLogo {
-  align-items: center;
-  display: inline-flex;
-  min-width: 0;
-}
-
-.mobilePanelLogoImg {
-  height: 42px;
-  width: auto;
-}
-
-.mobilePanelActions {
-  align-items: center;
-  display: flex;
-  gap: 0.75rem;
-}
-
-.panelPortalButton,
-.panelCloseButton {
-  align-items: center;
-  background: transparent;
-  border: 0;
-  color: var(--color-text-muted);
-  cursor: pointer;
-  display: inline-flex;
-  height: 2.75rem;
-  justify-content: center;
-  padding: 0;
-  transition: color 0.2s ease, transform 0.2s ease;
-  width: 2.75rem;
-}
-
-.panelPortalButton {
-  text-decoration: none;
-}
-
-.panelPortalButton 
-.portalLink {
-  align-items: center;
-  color: var(--color-text);
-  display: inline-grid;
-  height: 2.3rem;
-  justify-self: end;
-  place-items: center;
-  text-decoration: none;
-  transition: color 0.2s ease, transform 0.2s ease;
-  width: 2.3rem;
-}
-
-.portalLink:hover {
-  color: var(--color-accent);
-  transform: translateY(-2px);
-}
-.portalLogo {
-  height: 1.7rem;
-  width: 1.7rem;
-}
-
-.panelCloseButton svg {
-  fill: none;
-  height: 1.7rem;
-  stroke: currentColor;
-  stroke-linecap: square;
-  stroke-width: 1.45;
-  width: 1.7rem;
-}
-
-.panelPortalButton:hover,
-.panelCloseButton:hover {
-  color: var(--color-accent);
-  transform: translateY(-2px);
-}
 /* "Get in touch" contact block */
 .panelContact {
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
+  padding-right: 3rem;
 }
 
 .mobilePanelContact {
@@ -527,32 +448,11 @@
 }
 
 @media (max-width: 520px) {
-  .panelTop {
-    grid-template-columns: 1fr;
+  .panelContact {
+    padding-right: 2.5rem;
   }
 
-  .portalLink {
-    justify-self: start;
-  }
-
-  
-.portalLink {
-  align-items: center;
-  color: var(--color-text);
-  display: inline-grid;
-  height: 2.3rem;
-  justify-self: end;
-  place-items: center;
-  text-decoration: none;
-  transition: color 0.2s ease, transform 0.2s ease;
-  width: 2.3rem;
-}
-
-.portalLink:hover {
-  color: var(--color-accent);
-  transform: translateY(-2px);
-}
-.portalLogo {
+  .portalLogo {
     height: 1.56rem;
     width: 1.56rem;
   }

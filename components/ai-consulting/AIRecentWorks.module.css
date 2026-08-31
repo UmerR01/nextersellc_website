@@ -1,5 +1,5 @@
 .section {
-  padding: 96px 0;
+  padding: 6rem 0;
   background: var(--color-bg);
 }
 
@@ -25,8 +25,8 @@
   flex-shrink: 0;
 }
 .navBtn {
-  width: 48px;
-  height: 48px;
+  width: 3rem;
+  height: 3rem;
   border-radius: 50%;
   border: 1.5px solid var(--color-border);
   background: transparent;
@@ -49,7 +49,7 @@
   display: flex;
   border-radius: 1rem;
   overflow: hidden;
-  min-height: 420px;
+  min-height: 26.25rem;
   transition: background 0.35s ease;
 }
 .cardContent {
@@ -63,7 +63,7 @@
 .tech {
   display: inline-block;
   border: 1px solid rgba(255,255,255,0.3);
-  border-radius: 4px;
+  border-radius: 0.25rem;
   padding: 0.2rem 0.75rem;
   font-size: 0.8125rem;
   font-weight: 500;
@@ -94,12 +94,12 @@
   font-weight: 500;
   color: rgba(255,255,255,0.75);
   border: 1px solid rgba(255,255,255,0.2);
-  border-radius: 4px;
+  border-radius: 0.25rem;
   padding: 0.2rem 0.65rem;
 }
 
 .cardImages {
-  width: 420px;
+  width: 26.25rem;
   flex-shrink: 0;
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -118,8 +118,8 @@
   margin-top: 1.5rem;
 }
 .dot {
-  width: 8px;
-  height: 8px;
+  width: 0.5rem;
+  height: 0.5rem;
   border-radius: 50%;
   background: var(--color-border);
   border: none;
@@ -143,9 +143,9 @@
 
 @media (max-width: 900px) {
   .card { flex-direction: column; }
-  .cardImages { width: 100%; height: 220px; }
+  .cardImages { width: 100%; height: 13.75rem; }
 }
 @media (max-width: 768px) {
-  .section { padding: 64px 0; }
+  .section { padding: 4rem 0; }
   .cardContent { padding: 2rem; }
 }

@@ -61,6 +61,14 @@
   line-height: 20px;
 }
 
+/* 900px, matched to AIHero.module.css's breadcrumb/title tier — see
+   track/hero-title-clamp-and-breakpoint-fix.md. */
+@media (max-width: 900px) {
+  .breadcrumbs {
+    margin-bottom: 2rem;
+  }
+}
+
 .breadcrumbs a,
 .breadcrumbs span {
   display: inline-flex;
@@ -91,13 +99,19 @@
 
 .heroTitle {
   font-family: var(--font-inter-tight), sans-serif;
-  font-size: clamp(2rem, 4.5vw, 4rem);
+  font-size: clamp(3rem, 5vw, 4rem);
   font-weight: 400;
   line-height: 1.1;
   color: #fff;
   margin: 0 0 28px;
   letter-spacing: -0.01em;
   max-width: 85rem;
+}
+
+@media (max-width: 900px) {
+  .heroTitle {
+    font-size: clamp(2.25rem, 9vw, 3rem);
+  }
 }
 
 .heroDesc {
@@ -157,9 +171,22 @@
 }
 
 @media (max-width: 768px) {
-  .hero { padding-top: 108px; padding-bottom: 48px; }
-  .heroTitle { font-size: clamp(1.75rem, 7vw, 2.5rem); }
+  .hero { padding-bottom: 48px; }
   .heroActions { flex-direction: column; align-items: flex-start; gap: 24px; }
+}
+
+/* padding-top uses the same calc(header-height + 48px) formula as
+   AIHero.module.css (was a flat 108px here) — see
+   track/hero-title-clamp-and-breakpoint-fix.md. */
+@media (max-width: 900px) {
+  .hero { padding-top: calc(var(--header-height) + 48px); }
+}
+
+/* Short-viewport safety (width-agnostic) — placed last on purpose, see
+   track/hero-responsiveness-rule.md. */
+@media (max-height: 450px) {
+  .hero { padding-top: calc(var(--header-height) + 12px); }
+  .breadcrumbs { margin-bottom: 1rem; }
 }
 
 /* ── Logos ─────────────────────────────────────────────────────────────────── */
@@ -766,7 +793,7 @@
 /* ── Download CTA ──────────────────────────────────────────────────────────── */
 .downloadCta {
   background: linear-gradient(115deg, var(--color-accent-dark) 0%, #17163f 100%);
-  padding: 76px 0;
+  padding: 4.75rem 0;
   position: relative;
   overflow: hidden;
 }
@@ -802,7 +829,7 @@
   font-weight: 400;
   line-height: 1.2;
   color: #fff;
-  margin: 0 0 12px;
+  margin: 0 0 0.75rem;
   letter-spacing: -0.01em;
 }
 
@@ -814,10 +841,16 @@
   margin: 0;
 }
 
+/* justify-self: center — .ctaRow is display:grid, and grid items stretch to
+   fill their column by default even with no explicit width on the item
+   itself. Once it collapses to a single column at ≤768px, that default
+   would stretch this button edge to edge — a btn_r violation. See
+   track/responsiveness-rules.md. */
 .ctaHeaderBtn {
   font-family: var(--font-inter-tight), sans-serif;
   padding: 0.4rem 1.5rem;
   white-space: nowrap;
+  justify-self: center;
 }
 
 .advancedTechSection {

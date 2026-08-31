@@ -1,13 +1,13 @@
 .section {
   background: #02102c;
-  padding: 64px 0;
+  padding: 4rem 0;
   overflow: hidden;
 }
 
 .swiperWrapper {
-  max-width: 1280px;
+  max-width: 80rem;
   margin: 0 auto;
-  padding: 0 40px;
+  padding: 0 2.5rem;
 }
 
 .swiper {
@@ -18,23 +18,23 @@
   display: flex !important;
   flex-direction: row;
   align-items: center;
-  gap: 64px;
-  padding: 0 0 40px;
+  gap: 4rem;
+  padding: 0 0 2.5rem;
 }
 
 .leftContent {
   flex: 1 1 60%;
   position: relative;
-  padding-left: 64px;
+  padding-left: 4rem;
 }
 
 .leftContent::before {
   content: "\201C";
   position: absolute;
   left: 0;
-  top: -24px;
+  top: -1.5rem;
   font-family: var(--font-inter-tight);
-  font-size: 120px;
+  font-size: 7.5rem;
   line-height: 1;
   color: #3cc4e5;
   opacity: 0.3;
@@ -61,28 +61,28 @@
 }
 
 .rightContent {
-  flex: 0 0 280px;
-  max-width: 280px;
+  flex: 0 0 17.5rem;
+  max-width: 17.5rem;
 }
 
 .authorData {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: 16px;
+  gap: 1rem;
 }
 
 .authorPhoto {
-  width: 72px;
-  height: 72px;
+  width: 4.5rem;
+  height: 4.5rem;
   border-radius: 50%;
   object-fit: cover;
   display: block;
 }
 
 .authorLogo {
-  max-height: 72px;
-  max-width: 172px;
+  max-height: 4.5rem;
+  max-width: 10.75rem;
   width: auto;
   height: auto;
   display: block;
@@ -91,7 +91,7 @@
 .authorText {
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: 0.25rem;
 }
 
 .authorName {
@@ -112,13 +112,13 @@
 .bottomContent {
   display: flex;
   align-items: center;
-  gap: 24px;
-  padding-top: 8px;
+  gap: 1.5rem;
+  padding-top: 0.5rem;
 }
 
 .navigation {
   display: flex;
-  gap: 8px;
+  gap: 0.5rem;
 }
 
 .navPrev,
@@ -126,8 +126,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 48px;
-  height: 48px;
+  width: 3rem;
+  height: 3rem;
   border-radius: 50%;
   border: 1px solid rgba(255, 255, 255, 0.24);
   background: transparent;
@@ -150,7 +150,7 @@
 .linkPrimary {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
+  gap: 0.5rem;
   font-family: var(--font-inter-tight);
   font-size: 1rem;
   font-weight: 500;
@@ -160,7 +160,7 @@
 }
 
 .linkPrimary:hover {
-  gap: 12px;
+  gap: 0.75rem;
 }
 
 .linkArrow {
@@ -171,13 +171,13 @@
 }
 
 .linkPrimary:hover .linkArrow {
-  transform: translateX(4px);
+  transform: translateX(0.25rem);
 }
 
 @media (max-width: 1150px) {
   .slide {
     flex-direction: column;
-    gap: 40px;
+    gap: 2.5rem;
   }
 
   .leftContent {
@@ -199,22 +199,22 @@
 
 @media (max-width: 768px) {
   .swiperWrapper {
-    padding: 0 20px;
+    padding: 0 1.25rem;
   }
 
   .leftContent {
-    padding-left: 40px;
+    padding-left: 2.5rem;
   }
 
   .leftContent::before {
-    font-size: 80px;
-    top: -12px;
+    font-size: 5rem;
+    top: -0.75rem;
   }
 
   .bottomContent {
     flex-direction: column;
     align-items: flex-start;
-    gap: 16px;
+    gap: 1rem;
   }
 
   .allReviewsLink {

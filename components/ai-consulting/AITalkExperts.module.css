@@ -1,17 +1,21 @@
 .section {
   background: #fff;
-  padding: 48px 0 74px;
+  padding: 3rem 0 4.625rem;
 }
 
+/* Flat 30px (1.875rem) on all sides, all widths — the CTA-banner padding
+   rule, see track/responsiveness-rules.md and
+   components/adlc/AdlcStartCTA.module.css (the reference: .row { padding:
+   1.875rem; }, no mobile override needed). */
 .inner {
   background: linear-gradient(115deg, var(--color-accent-dark) 0%, #17163f 100%);
-  min-height: 234px;
-  padding: 64px 134px;
+  min-height: 14.625rem;
+  padding: 1.875rem;
   display: grid;
   grid-template-columns: minmax(0, 1fr) auto;
   align-items: center;
   justify-content: space-between;
-  gap: 72px;
+  gap: 4.5rem;
   overflow: hidden;
 }
 
@@ -25,7 +29,7 @@
   font-weight: 400;
   line-height: 1.15;
   color: #fff;
-  margin: 0 0 28px;
+  margin: 0 0 1.75rem;
 }
 
 .desc {
@@ -36,21 +40,26 @@
   margin: 0;
 }
 
+/* justify-self: center — .inner is display:grid, and grid items stretch to
+   fill their column by default (justify-items: stretch) even with no
+   explicit width on the item itself. Once the layout collapses to a
+   single column at ≤700px, that default stretched this button edge to
+   edge — a btn_r violation that doesn't show up as a literal width/height
+   declaration, so it's easy to miss on a text-only grep. Centered (not
+   left-aligned) per the CTA rule update — see
+   track/responsiveness-rules.md. */
 .btn {
   font-family: var(--font-inter-tight), sans-serif;
   padding: 0.4rem 1.5rem;
   text-decoration: none;
   white-space: nowrap;
   flex-shrink: 0;
+  justify-self: center;
 }
 
 @media (max-width: 700px) {
   .inner {
     grid-template-columns: 1fr;
-    padding: 40px 28px;
-    gap: 28px;
+    gap: 1.75rem;
   }
-
-  .btn {
-    }
 }

@@ -795,32 +795,38 @@
 /* ── Inline CTA ────────────────────────────────────────────────────────────── */
 .inlineCta {
   background: #fff;
-  padding: 48px 0 74px;
+  padding: 3rem 0 4.625rem;
 }
 
+/* Exactly two states, one breakpoint — see track/rag-development-fixes.md.
+   Desktop (>1024px): plain left-text/right-button row, no flex-wrap safety
+   net (that's what let content wrap unpredictably between the two states
+   at odd widths, each time landing in an unstyled in-between look). No
+   min-height either — a banner this short with a fixed min-height left
+   visibly unused vertical space above/below the text once the fixed
+   height exceeded the actual content; padding alone sizes it correctly.
+   Tablet/mobile (≤1024px, one rule covering both — the .adtechGradientCta
+   grid variant this page's sibling pages use for a tablet-only tier is
+   dead code here, RagPage.tsx never applies it): text on top, button
+   below, centered. */
 .inlineCtaInner {
   background: linear-gradient(115deg, var(--color-accent-dark) 0%, #17163f 100%);
-  min-height: 234px;
-  padding: 64px 134px;
+  padding: 1.875rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 72px;
-  flex-wrap: wrap;
+  gap: 4.5rem;
 }
 
-.adtechGradientCta .inlineCtaInner {
-  background: linear-gradient(115deg, var(--color-accent-dark) 0%, #17163f 100%);
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) auto;
-  flex-wrap: nowrap;
-}
+@media (max-width: 1024px) {
+  .inlineCtaInner {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 1.75rem;
+  }
 
-@media (max-width: 700px) {
-  .inlineCtaInner { padding: 40px 28px; }
-
-  .adtechGradientCta .inlineCtaInner {
-    grid-template-columns: 1fr;
+  .inlineCtaBtn {
+    align-self: center;
   }
 }
 
@@ -829,7 +835,7 @@
   font-size: clamp(2rem, 2.8vw, 2.375rem);
   font-weight: 400;
   color: #fff;
-  margin: 0 0 28px;
+  margin: 0 0 1.75rem;
 }
 
 .inlineCtaDesc {
@@ -844,17 +850,6 @@
   text-decoration: none;
   white-space: nowrap;
   flex-shrink: 0;
-}
-
-.adtechGradientCta .inlineCtaBtn {
-  border-radius: var(--radius-button);
-  border: 2px solid var(--color-accent);
-  padding: 0.4rem 1.5rem;
-}
-
-.adtechGradientCta .inlineCtaBtn:hover {
-  background: transparent;
-  color: var(--color-accent);
 }
 
 /* ── Process steps (dark, connected circles) ───────────────────────────────── */
@@ -3760,6 +3755,13 @@
   filter: brightness(0) saturate(100%) invert(72%) sepia(83%) saturate(653%) hue-rotate(154deg) brightness(94%) contrast(91%);
 }
 
+/* "Development & integration" is the 3rd SERVICES card — same icon file
+   as the "Legacy systems" challenge tab, same orientation fix: rotated
+   90° counter-clockwise (left). */
+.ragServicesBlock .ecomServiceCard:nth-child(3) .ecomServiceIcon {
+  transform: rotate(-90deg);
+}
+
 .ragServicesBlock .ecomServiceTitle {
   margin: 0 0 1.45rem;
   color: #000;
@@ -3887,6 +3889,13 @@
   object-fit: contain;
   filter: brightness(0);
   transition: filter 0.2s ease;
+}
+
+/* "Legacy systems are hard to connect" is the 6th (last) CHALLENGES
+   entry — its icon renders with its top facing right; rotated 90°
+   counter-clockwise (left) to correct its orientation. */
+.ragChallengesBlock .vertTabList .vertTabBtn:nth-child(6) .vertTabIcon {
+  transform: rotate(-90deg);
 }
 
 .ragChallengesBlock .vertTabBtn:hover .vertTabIcon {
@@ -4329,12 +4338,37 @@
   margin: 0 auto 68px;
 }
 
+/* Connector line moved here as a single .processGrid::before spanning the
+   whole list (position: relative + top: 0; bottom: 0), instead of a
+   per-step ::after computed from that step's own height + the gap
+   constant. A per-step calculated segment depends on each .processStep's
+   auto-computed height resolving correctly before the absolutely
+   positioned line can be placed against it — in this environment that
+   didn't produce a connecting line even with top+bottom anchoring and a
+   generous overshoot (unable to verify why in a real browser — no
+   Playwright/browser tool available here). One continuous line behind
+   the entire list sidesteps per-step height math entirely: it can't
+   possibly fall short of the next circle, because it isn't computed
+   relative to any individual step at all. See
+   track/rag-development-fixes.md. */
 .ragPilotBlock .processGrid {
+  position: relative;
   max-width: 48rem;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
   gap: 58px;
+}
+
+.ragPilotBlock .processGrid::before {
+  content: "";
+  position: absolute;
+  z-index: 0;
+  left: 60px;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: #e3ecf5;
 }
 
 .ragPilotBlock .processStep {
@@ -4345,14 +4379,28 @@
   position: relative;
 }
 
-.ragPilotBlock .processStep:not(:last-child)::after {
+/* Masks the line's excess below the last step's own circle — the
+   continuous line above spans .processGrid's full height (so it never
+   falls short reaching any circle), but that means it also runs past the
+   last circle with nothing left to connect to. This covers exactly that
+   trailing segment: positioned only within the last .processStep (a
+   normal-flow sibling, so it paints over the line automatically without
+   needing z-index), starting at top: 120px — the same "just past the
+   circle" offset used everywhere else — down to that step's own bottom
+   edge (which, unlike .processGrid's, is well-defined without any
+   per-step height guesswork: it's just this element's own height).
+   Solid background matches .ragPilotBlock's own #fff, and is scoped to
+   the 120px circle column's width so it can never paint over the text
+   column next to it. */
+.ragPilotBlock .processStep:last-child::after {
   content: "";
   position: absolute;
-  left: 60px;
+  z-index: 0;
+  left: 0;
   top: 120px;
-  width: 2px;
-  height: calc(100% + 58px - 120px);
-  background: #e3ecf5;
+  bottom: 0;
+  width: 120px;
+  background: #fff;
 }
 
 .ragPilotBlock .processNum {
@@ -4448,9 +4496,12 @@
     font-size: 1rem;
   }
 
-  .ragPilotBlock .processStep:not(:last-child)::after {
+  .ragPilotBlock .processGrid::before {
     left: 29px;
+  }
+
+  .ragPilotBlock .processStep:last-child::after {
     top: 53px;
-    height: calc(100% + 42px - 53px);
+    width: 58px;
   }
 }

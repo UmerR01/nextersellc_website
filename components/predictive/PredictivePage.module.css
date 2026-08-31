@@ -910,7 +910,7 @@
 /* ── Inline CTA ────────────────────────────────────────────────────────────── */
 .inlineCta {
   background: #fff;
-  padding: 72px 0 112px;
+  padding: 4.5rem 0 7rem;
 }
 
 .inlineCtaInner {
@@ -918,23 +918,35 @@
     linear-gradient(116deg, transparent 0 43%, rgba(60, 196, 229, 0.06) 43% 55%, transparent 55%),
     linear-gradient(116deg, transparent 0 70%, rgba(255, 255, 255, 0.05) 70% 86%, transparent 86%),
     linear-gradient(115deg, #102f63 0%, #07162f 52%, #46203f 100%);
-  min-height: 204px;
-  padding: 52px 100px;
+  min-height: 12.75rem;
+  padding: 1.875rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 72px;
+  gap: 4.5rem;
 }
 
 .predictiveGradientCta .inlineCtaInner {
   background: linear-gradient(115deg, var(--color-accent-dark) 0%, #17163f 100%);
 }
 
+/* .inlineCtaBtn's own align-self: center — this banner is flex-column at
+   mobile with align-items: flex-start (keeps title/desc left-aligned), so
+   the button needs its own cross-axis override to center it instead of
+   inheriting the left alignment. Centered per the CTA rule update, see
+   track/responsiveness-rules.md. */
 @media (max-width: 700px) {
   .inlineCtaInner {
     align-items: flex-start;
     flex-direction: column;
-    padding: 40px 28px;
+    /* gap: the desktop 4.5rem gap is the horizontal space between the
+       text and button side by side; left unreduced, that same value
+       becomes an oversized vertical gap once stacked in a column. */
+    gap: 1.75rem;
+  }
+
+  .inlineCtaBtn {
+    align-self: center;
   }
 }
 
@@ -943,7 +955,7 @@
   font-size: clamp(1.75rem, 2.5vw, 2.375rem);
   font-weight: 400;
   color: #fff;
-  margin: 0 0 22px;
+  margin: 0 0 1.375rem;
 }
 
 .inlineCtaDesc {
@@ -953,7 +965,7 @@
   line-height: 1.55;
   color: rgba(255,255,255,0.88);
   margin: 0;
-  max-width: 690px;
+  max-width: 43.125rem;
 }
 
 .inlineCtaBtn {

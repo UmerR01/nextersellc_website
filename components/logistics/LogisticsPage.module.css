@@ -795,7 +795,7 @@
 /* ── Inline CTA ────────────────────────────────────────────────────────────── */
 .inlineCta {
   background: #fff;
-  padding: 50px 0 70px;
+  padding: 3.125rem 0 4.375rem;
 }
 
 .inlineCtaInner {
@@ -803,12 +803,12 @@
     linear-gradient(116deg, transparent 0 43%, rgba(60, 196, 229, 0.06) 43% 55%, transparent 55%),
     linear-gradient(116deg, transparent 0 70%, rgba(255, 255, 255, 0.05) 70% 86%, transparent 86%),
     linear-gradient(115deg, #102f63 0%, #07162f 52%, #46203f 100%);
-  min-height: 238px;
-  padding: 54px 134px;
+  min-height: 14.875rem;
+  padding: 1.875rem;
   display: grid;
   grid-template-columns: minmax(0, 1fr) auto;
   align-items: center;
-  gap: 88px;
+  gap: 5.5rem;
 }
 
 .logisticsGradientCta .inlineCtaInner {
@@ -818,8 +818,7 @@
 @media (max-width: 700px) {
   .inlineCtaInner {
     grid-template-columns: 1fr;
-    gap: 32px;
-    padding: 40px 28px;
+    gap: 2rem;
   }
 }
 
@@ -828,7 +827,7 @@
   font-size: clamp(2rem, 2.8vw, 2.375rem);
   font-weight: 400;
   color: #fff;
-  margin: 0 0 26px;
+  margin: 0 0 1.625rem;
 }
 
 .inlineCtaDesc {
@@ -837,13 +836,19 @@
   line-height: 1.48;
   color: rgba(255,255,255,0.88);
   margin: 0;
-  max-width: 760px;
+  max-width: 47.5rem;
 }
 
+/* justify-self: center — .inlineCtaInner is display:grid, and grid items
+   stretch to fill their column by default even with no explicit width on
+   the item itself. Once it collapses to a single column at ≤700px, that
+   default would stretch this button edge to edge — a btn_r violation.
+   See track/responsiveness-rules.md. */
 .inlineCtaBtn {
   font-family: var(--font-inter-tight), sans-serif;
   text-decoration: none;
   padding-inline: 1.5rem;
+  justify-self: center;
 }
 
 

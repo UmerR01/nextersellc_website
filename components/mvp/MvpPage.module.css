@@ -633,7 +633,7 @@
   align-items: center;
   gap: 4.5rem;
   min-height: 14.625rem;
-  padding: 4rem 8.375rem;
+  padding: 1.875rem;
 }
 
 .downloadCtaBtn,
@@ -645,10 +645,13 @@
   border-radius: var(--radius-button);
   }
 
+/* gap: 1.75rem — the desktop 4.5rem gap is the horizontal space between
+   the text and button columns side by side; left unreduced, that same
+   value becomes an oversized vertical gap once stacked. */
 @media (max-width: 768px) {
   .downloadCtaInner {
     grid-template-columns: 1fr;
-    padding: 3rem 1.75rem;
+    gap: 1.75rem;
   }
 }
 
@@ -670,8 +673,14 @@
   color: rgba(255, 255, 255, 0.8);
 }
 
+/* justify-self: center — .downloadCtaInner is display:grid, and grid items
+   stretch to fill their column by default even with no explicit width on
+   the item itself. Once it collapses to a single column at ≤768px, that
+   default would stretch this button edge to edge — a btn_r violation.
+   See track/responsiveness-rules.md. */
 .downloadCtaBtn {
   flex-shrink: 0;
+  justify-self: center;
 }
 
 /* ─────────────────────────────────────────────────────────────────────────────

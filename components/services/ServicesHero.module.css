@@ -82,12 +82,18 @@
 }
 .title {
   font-family: var(--font-inter-tight);
-  font-size: clamp(2.5rem, 4vw, 4rem);
+  font-size: clamp(3rem, 5vw, 4rem);
   font-weight: 400;
   line-height: 1.18;
   color: #fff;
   margin: 0 0 44px;
   max-width: 85rem;
+}
+
+@media (max-width: 900px) {
+  .title {
+    font-size: clamp(2.25rem, 9vw, 3rem);
+  }
 }
 
 .numbers {
@@ -170,11 +176,14 @@
   .hero {
     min-height: 700px;
   }
+  /* No padding-top here on purpose — .hero's own padding-top (see the
+     900px tier below) is the only thing controlling the header→breadcrumb
+     gap, matching AIHero.module.css. This used to be a flat 96px stray
+     top-padding stacked on top of .hero's own — the same bug class
+     originally found on ADLC's .wrapper — see
+     track/hero-title-clamp-and-breakpoint-fix.md. */
   .heroWrapper {
-    padding: 96px 0 64px;
-  }
-  .breadcrumbs {
-    margin-bottom: 36px;
+    padding: 0 0 64px;
   }
   .title {
     margin-bottom: 32px;
@@ -184,6 +193,28 @@
   }
   .description {
     margin-bottom: 36px;
+  }
+}
+
+/* 900px + calc(header-height+48px), matched to AIHero.module.css — see
+   track/hero-title-clamp-and-breakpoint-fix.md. */
+@media (max-width: 900px) {
+  .hero {
+    padding-top: calc(var(--header-height) + 48px);
+  }
+  .breadcrumbs {
+    margin-bottom: 2rem;
+  }
+}
+
+/* Short-viewport safety (width-agnostic) — placed last on purpose, see
+   track/hero-responsiveness-rule.md. */
+@media (max-height: 450px) {
+  .hero {
+    padding-top: calc(var(--header-height) + 12px);
+  }
+  .breadcrumbs {
+    margin-bottom: 1rem;
   }
 }
 
