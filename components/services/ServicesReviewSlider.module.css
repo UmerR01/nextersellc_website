@@ -30,7 +30,7 @@
 }
 
 .authorMedia {
-  margin-bottom: 16px;
+  margin-bottom: 1rem;
 }
 
 .authorPhoto {
@@ -42,8 +42,8 @@
 }
 
 .authorLogo {
-  max-height: 72px;
-  max-width: 172px;
+  max-height: 4.5rem;
+  max-width: 10.75rem;
   width: auto;
   height: auto;
   object-fit: contain;
@@ -53,17 +53,17 @@
 .authorName {
   font-size: clamp(1.125rem, 1.5vw, 1.375rem);
   font-weight: 400;
-  line-height: 36px;
+  line-height: 2.25rem;
   color: #112244;
   margin: 0;
   font-family: var(--font-inter-tight), sans-serif;
 }
 
 .authorPosition {
-  font-size: 14px;
+  font-size: 0.875rem;
   color: #5e6d8e;
-  line-height: 20px;
-  margin: 4px 0 0;
+  line-height: 1.25rem;
+  margin: 0.25rem 0 0;
   font-family: var(--font-inter-tight), sans-serif;
 }
 
@@ -76,7 +76,7 @@
 .quoteIcon {
   position: absolute;
   left: 0;
-  top: -4px;
+  top: -0.25rem;
   width: 52px;
   height: 52px;
   display: flex;
@@ -88,7 +88,7 @@
   font-size: clamp(1rem, 1.4vw, 1.375rem);
   font-style: italic;
   font-weight: 400;
-  line-height: 36px;
+  line-height: 2.25rem;
   color: #112244;
   margin: 0;
   font-family: var(--font-inter-tight), sans-serif;
@@ -101,18 +101,18 @@
   margin-top: clamp(2rem, 3vw, 2.5rem);
   padding: 0 clamp(1.5rem, 5vw, 4.5rem);
   flex-wrap: wrap;
-  gap: 16px;
+  gap: 1rem;
 }
 
 .navButtons {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 0.75rem;
 }
 
 .navBtn {
-  width: 48px;
-  height: 24px;
+  width: 3rem;
+  height: 1.5rem;
   border: 0;
   background: transparent;
   cursor: pointer;
@@ -128,8 +128,8 @@
 
 .arrowBox {
   position: relative;
-  width: 40px;
-  height: 24px;
+  width: 2.5rem;
+  height: 1.5rem;
   display: block;
   flex-shrink: 0;
 }
@@ -173,7 +173,7 @@
 .navBtn:disabled .arrowBox::after { border-color: #899fb6; }
 
 .testimonialsLink {
-  font-size: 15px;
+  font-size: 0.9375rem;
   font-weight: 600;
   color: var(--color-accent);
   text-decoration: none;
@@ -189,7 +189,7 @@
   position: relative;
   width: 6px;
   height: 10px;
-  margin-left: 8px;
+  margin-left: 0.5rem;
   align-self: center;
   flex: 0 0 6px;
   transform: translateY(1px);
@@ -229,20 +229,20 @@
 
 @media (max-width: 768px) {
   .section {
-    padding: 72px 0;
+    padding: 4.5rem 0;
   }
 
   .slide {
     flex-direction: column-reverse;
-    padding: 40px 24px;
-    gap: 24px;
+    padding: 2.5rem 1.5rem;
+    gap: 1.5rem;
     min-height: 0;
   }
 
   .rightContent {
     display: flex;
     align-items: center;
-    gap: 12px;
+    gap: 0.75rem;
     max-width: 100%;
   }
 
@@ -252,8 +252,8 @@
   }
 
   .authorPhoto {
-    width: 48px;
-    height: 48px;
+    width: 3rem;
+    height: 3rem;
   }
 
   .authorInfo {
@@ -272,12 +272,12 @@
   }
 
   .authorName {
-    font-size: 17px;
+    font-size: 1.0625rem;
     line-height: 1.3;
   }
 
   .authorPosition {
-    font-size: 13px;
+    font-size: 0.8125rem;
   }
 
   /* Icon sits above the quote instead of floating in a left gutter, so
@@ -288,16 +288,16 @@
 
   .quoteIcon {
     position: static;
-    margin-bottom: 12px;
+    margin-bottom: 0.75rem;
   }
 
   .quoteText {
-    font-size: 16px;
-    line-height: 26px;
+    font-size: 1rem;
+    line-height: 1.625rem;
   }
 
   .bottomNav {
-    padding: 0 24px;
+    padding: 0 1.5rem;
   }
 }
 

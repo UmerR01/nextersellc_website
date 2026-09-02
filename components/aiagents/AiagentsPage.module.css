@@ -9,7 +9,7 @@
     radial-gradient(circle at 88% 8%, rgba(60,196,229,0.24), transparent 28%),
     radial-gradient(circle at 5% 78%, rgba(60,196,229,0.18), transparent 30%),
     linear-gradient(121deg, #02102c 0%, #112244 62%, #02102c 100%);
-  padding-top: calc(var(--header-height) + 4.5rem);
+  padding-top: calc(var(--header-height) + 1.625rem);
   padding-bottom: 5.5rem;
   min-height: 52.6875rem;
 }
@@ -70,13 +70,21 @@
 
 .heroTitle {
   font-family: var(--font-inter-tight), sans-serif;
-  font-size: clamp(2rem, 4.5vw, 4rem);
+  font-size: clamp(3rem, 5vw, 4rem);
   font-weight: 400;
   line-height: 1.1;
   color: #fff;
   margin: 0 0 1.75rem;
   letter-spacing: -0.01em;
   max-width: 53.75rem;
+}
+
+/* 900px, matched to AIHero.module.css's breadcrumb/title tier — see
+   track/hero-title-clamp-and-breakpoint-fix.md. */
+@media (max-width: 900px) {
+  .heroTitle {
+    font-size: clamp(2.25rem, 9vw, 3rem);
+  }
 }
 
 .heroDesc {
@@ -157,10 +165,23 @@
 .ratingStars { letter-spacing: 2px; }
 
 @media (max-width: 768px) {
-  .hero { min-height: auto; padding-top: 6.75rem; padding-bottom: 4rem; }
-  .heroTitle { font-size: clamp(1.75rem, 7vw, 2.5rem); }
+  .hero { min-height: auto; padding-bottom: 4rem; }
   .heroActions { align-items: flex-start; flex-direction: column; gap: 1.25rem; }
   .ratings { margin-left: 0; }
+}
+
+/* padding-top uses the same calc(header-height + 3rem) formula as
+   AIHero.module.css (was a flat 6.75rem here, and the title clamp used a
+   different min/vw/max than the AIHero reference) — see
+   track/hero-title-clamp-and-breakpoint-fix.md. */
+@media (max-width: 900px) {
+  .hero { padding-top: calc(var(--header-height) + 3rem); }
+}
+
+/* Short-viewport safety (width-agnostic) — placed last on purpose, see
+   track/hero-responsiveness-rule.md. */
+@media (max-height: 450px) {
+  .hero { padding-top: calc(var(--header-height) + 0.75rem); }
 }
 
 /* ── Logos ─────────────────────────────────────────────────────────────────── */

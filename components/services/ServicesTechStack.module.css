@@ -4,13 +4,13 @@
 }
 
 .container {
-  max-width: 1236px;
+  max-width: 77.25rem;
   margin: 0 auto;
   padding: 0 clamp(1rem, 4vw, 3rem);
 }
 
 .wrapper {
-  padding: clamp(80px, 8vw, 120px) 0;
+  padding: clamp(5rem, 8vw, 7.5rem) 0;
 }
 
 .title {
@@ -19,7 +19,7 @@
   font-weight: 400;
   color: #000;
   line-height: 1.15;
-  margin: 0 0 88px;
+  margin: 0 0 5.5rem;
 }
 
 .accent {
@@ -34,11 +34,11 @@
 
 .row {
   display: grid;
-  grid-template-columns: minmax(180px, 240px) 1fr;
+  grid-template-columns: minmax(11.25rem, 15rem) 1fr;
   align-items: center;
-  column-gap: clamp(24px, 3vw, 40px);
-  min-height: 100px;
-  padding: 28px 0;
+  column-gap: clamp(1.5rem, 3vw, 2.5rem);
+  min-height: 6.25rem;
+  padding: 1.75rem 0;
   border-top: 1px solid #aeb9c8;
 }
 
@@ -56,14 +56,14 @@
 .logos {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
-  gap: clamp(16px, 2vw, 28px);
+  gap: clamp(1rem, 2vw, 1.75rem);
   align-items: center;
   justify-items: center;
 }
 
 .row:first-child .logoImg {
-  height: 42px;
-  max-width: 130px;
+  height: 2.625rem;
+  max-width: 8.125rem;
 }
 
 .logo {
@@ -73,8 +73,8 @@
 }
 
 .logoImg {
-  height: 58px;
-  max-width: 145px;
+  height: 3.625rem;
+  max-width: 9.0625rem;
   width: auto;
   object-fit: contain;
 }
@@ -91,15 +91,15 @@
 
 @media (max-width: 640px) {
   .wrapper {
-    padding: 64px 0;
+    padding: 4rem 0;
   }
 
   .title {
-    margin-bottom: 48px;
+    margin-bottom: 3rem;
   }
 
   .logoImg {
-    height: 42px;
-    max-width: 120px;
+    height: 2.625rem;
+    max-width: 7.5rem;
   }
 }

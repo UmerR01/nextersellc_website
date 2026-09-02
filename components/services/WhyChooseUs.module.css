@@ -1,6 +1,6 @@
 .section {
   position: relative;
-  padding: clamp(64px, 6vw, 92px) 0;
+  padding: clamp(4rem, 6vw, 5.75rem) 0;
   overflow: hidden;
 }
 
@@ -14,7 +14,7 @@
 .container {
   position: relative;
   z-index: 1;
-  max-width: 1150px;
+  max-width: 71.875rem;
   margin: 0 auto;
   padding: 0 clamp(1rem, 4vw, 3rem);
 }
@@ -25,7 +25,7 @@
   font-weight: 400;
   color: #000;
   line-height: 1.15;
-  margin: 0 0 64px;
+  margin: 0 0 4rem;
   text-align: center;
 }
 
@@ -43,11 +43,11 @@
 .list {
   display: flex;
   flex-direction: column;
-  gap: 22px;
+  gap: 1.375rem;
 }
 
 .listItem {
-  padding-left: 32px;
+  padding-left: 2rem;
   border-left: 0;
   position: relative;
 }
@@ -63,7 +63,7 @@
 }
 
 .aboutLabel {
-  margin: 0 0 24px;
+  margin: 0 0 1.5rem;
   color: var(--color-accent);
   font-family: var(--font-inter-tight);
   font-size: 1.25rem;
@@ -75,7 +75,7 @@
   font-size: 1.375rem;
   font-weight: 400;
   color: #112244;
-  margin: 0 0 20px;
+  margin: 0 0 1.25rem;
   line-height: 1.3;
 }
 
@@ -116,14 +116,24 @@
 @media (max-width: 767px) {
   .title {
     text-align: left;
-    margin-bottom: 44px;
+    margin-bottom: 2.75rem;
   }
 
   .row {
     grid-template-columns: 1fr;
+    /* 6.25rem is sized for horizontal space between the two desktop
+       columns — left unreduced, it reads as an oversized vertical gap
+       once the image stacks below the text. */
+    gap: 3rem;
   }
 
-  .right {
-    display: none;
+  /* Kept at the same 2/3 portrait ratio as desktop (matches the source
+     photo's own 4000x6000 aspect exactly, no cropping either way) —
+     the two people in the shot sit in its upper-middle, so forcing a
+     shorter landscape box here combined with the existing
+     object-position: center top would crop them out almost entirely. */
+  .imageWrap {
+    max-width: 26rem;
+    margin: 0 auto;
   }
 }

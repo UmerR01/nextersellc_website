@@ -4,7 +4,7 @@
 }
 
 .container {
-  max-width: min(100%, 1200px);
+  max-width: min(100%, 75rem);
   margin: 0 auto;
   padding-inline: clamp(1.25rem, 3vw, 2.5rem);
 }
@@ -49,7 +49,7 @@
   font-size: clamp(1.25rem, 2vw, 1.625rem);
   font-weight: 600;
   color: #112244;
-  margin: 0 0 16px;
+  margin: 0 0 1rem;
   line-height: 1.3;
 }
 

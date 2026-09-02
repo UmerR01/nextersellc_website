@@ -1,11 +1,11 @@
 .section {
-  padding: clamp(4.5rem, 6vw, 6.5rem) 24px;
+  padding: clamp(4.5rem, 6vw, 6.5rem) 1.5rem;
   background: #f4f7fb;
   font-family: var(--font-inter-tight), sans-serif;
 }
 
 .container {
-  max-width: 1420px;
+  max-width: 88.75rem;
   margin: 0 auto;
   padding-inline: clamp(1rem, 5vw, 5rem);
 }
@@ -27,7 +27,7 @@
 
 .cols {
   display: grid;
-  grid-template-columns: minmax(0, 1.05fr) minmax(420px, 0.95fr);
+  grid-template-columns: minmax(0, 1.05fr) minmax(26.25rem, 0.95fr);
   gap: clamp(3.5rem, 6vw, 6rem);
   align-items: start;
 }

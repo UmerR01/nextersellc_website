@@ -2,7 +2,7 @@
   position: relative;
   z-index: 4;
   background: var(--color-bg);
-  padding: 90px 0 60px;
+  padding: 5.625rem 0 3.75rem;
 }
 
 .heading {
@@ -19,14 +19,14 @@
 .cards {
   display: flex;
   gap: 1.25rem;
-  min-height: 560px;
+  min-height: 35rem;
 }
 
 .card {
   position: relative;
-  flex: 0 0 110px;
-  min-height: 560px;
-  border-radius: 20px;
+  flex: 0 0 6.875rem;
+  min-height: 35rem;
+  border-radius: 1.25rem;
   overflow: hidden;
   color: #fff;
   cursor: pointer;
@@ -56,8 +56,8 @@
 /* Collapsed: rotated label. Active: top-right horizontal */
 .name {
   position: absolute;
-  top: 30px;
-  right: 30px;
+  top: 1.875rem;
+  right: 1.875rem;
   z-index: 2;
   transform-origin: top right;
   font-size: 1.05rem;
@@ -103,10 +103,10 @@
   flex-direction: column;
   justify-content: center;
   height: 100%;
-  max-width: 620px;
+  max-width: 38.75rem;
   padding: 2.5rem 2.5rem 0;
   opacity: 0;
-  transform: translateX(40px);
+  transform: translateX(2.5rem);
   transition: opacity 0.35s ease 0.15s, transform 0.6s ease;
   pointer-events: none;
 }
@@ -122,7 +122,7 @@
   color: #dbe3f1;
   line-height: 1.55;
   margin-bottom: 1.75rem;
-  max-width: 460px;
+  max-width: 28.75rem;
 }
 /* Meta: tags + nav pinned to bottom */
 .meta {
@@ -135,7 +135,7 @@
   gap: 1.5rem;
   padding: 2rem 2.5rem;
   opacity: 0;
-  transform: translateX(40px);
+  transform: translateX(2.5rem);
   transition: opacity 0.35s ease 0.2s, transform 0.6s ease;
   pointer-events: none;
 }
@@ -146,7 +146,7 @@
   display: grid;
   grid-template-columns: repeat(3, minmax(0,1fr));
   gap: 1rem 0;
-  max-width: 640px;
+  max-width: 40rem;
   flex: 1;
 }
 .tags li {
@@ -228,10 +228,10 @@
 .allLink:hover { color: var(--color-accent-dark); }
 .allLinkArrow {
   display: inline-block;
-  padding-left: 6px;
-  padding-right: 17px;
+  padding-left: 0.375rem;
+  padding-right: 1.0625rem;
   position: relative;
-  width: 17px;
+  width: 1.0625rem;
 }
 .allLinkArrow::before,
 .allLinkArrow::after {
@@ -241,17 +241,17 @@
   background-size: cover;
   content: "";
   display: block;
-  height: 9px;
+  height: 0.5625rem;
   position: absolute;
-  right: 10px;
+  right: 0.625rem;
   top: 50%;
   transform: translateY(-50%);
   transition: 0.1s;
-  width: 6px;
+  width: 0.375rem;
 }
 .allLinkArrow::after { opacity: 0; }
-.allLink:hover .allLinkArrow::before { animation: bounceBefore 1s linear infinite; right: 6px; }
-.allLink:hover .allLinkArrow::after  { animation: bounceAfter  1s linear infinite; right: 6px; }
+.allLink:hover .allLinkArrow::before { animation: bounceBefore 1s linear infinite; right: 0.375rem; }
+.allLink:hover .allLinkArrow::after  { animation: bounceAfter  1s linear infinite; right: 0.375rem; }
 
 @keyframes bounceBefore {
   0%   { opacity:1; transform:translateX(0) translateY(-50%); }
@@ -268,23 +268,23 @@
 
 /* ── Responsive ── */
 @media (min-width:768px) and (max-width:1024px) {
-  .cards { min-height: 560px; overflow: hidden; touch-action: pan-y; }
+  .cards { min-height: 35rem; overflow: hidden; touch-action: pan-y; }
   .card { display: none; }
   .card.active, .card.tabletNext { display: block; }
   .card.active { flex: 1 1 auto; min-width: 0; }
   .card.active.slideNext { animation: caseSlideFromRight 0.38s cubic-bezier(0.22,1,0.36,1); }
   .card.active.slidePrev { animation: caseSlideFromLeft  0.38s cubic-bezier(0.22,1,0.36,1); }
-  .card.tabletNext { flex: 0 0 110px; }
+  .card.tabletNext { flex: 0 0 6.875rem; }
 }
 
 @media (max-width:767px) {
-  .section { padding: 72px 0 48px; }
+  .section { padding: 4.5rem 0 3rem; }
   .cards { display: block; min-height: 0; touch-action: pan-y; }
   .card { flex: none; width: 100%; }
   .card:not(.active) { display: none; }
   .active.slideNext { animation: caseSlideFromRight 0.38s cubic-bezier(0.22,1,0.36,1); }
   .active.slidePrev { animation: caseSlideFromLeft  0.38s cubic-bezier(0.22,1,0.36,1); }
-  .active { min-height: 540px; }
+  .active { min-height: 33.75rem; }
   .name { left: 1.5rem; right: auto; top: 1.5rem; transform: rotate(0deg); }
   .active .name { right: auto; left: 1.5rem; }
   .body { justify-content: center; padding: 4rem 1.5rem 5.5rem; }
@@ -294,7 +294,7 @@
 }
 
 @media (max-width:520px) {
-  .active { min-height: 540px; }
+  .active { min-height: 33.75rem; }
   .body { padding-inline: var(--page-gutter); }
   .meta { padding: var(--page-gutter); }
   .title { font-size: clamp(1.65rem, 8vw, 2.25rem); }

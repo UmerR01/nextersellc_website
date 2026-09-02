@@ -12,7 +12,7 @@
   --mvp-muted: #5e6d8e;
   --mvp-font: var(--font-inter-tight), "Inter Tight", sans-serif;
   --mvp-gutter: clamp(1rem, 3vw, 3rem);
-  --mvp-max: 1290px;
+  --mvp-max: 80.625rem;
 }
 
 /* ── Page wrapper ─────────────────────────────────────────────────────────── */
@@ -77,15 +77,24 @@
 .hero {
   position: relative;
   overflow: hidden;
-  padding-top: calc(var(--header-height) + 26px);
+  padding-top: calc(var(--header-height) + 1.625rem);
   padding-bottom: 8.5rem;
   color: var(--mvp-fg);
 }
 
-@media (max-width: 768px) {
+/* 900px tier (not 768px) + calc(header-height + …) instead of a flat value —
+   matches components/ai-consulting/AIHero.module.css. MVP was part of the
+   "Fintech MVP lineage" flagged as already covered by an earlier hero-rule
+   rollout, but it independently still carried the older 768px/flat-padding
+   pattern — see track/mvp-unit-conversion-and-audit.md. */
+@media (max-width: 900px) {
   .hero {
-    padding-top: 5.5rem;
+    padding-top: calc(var(--header-height) + 3rem);
     padding-bottom: 4.5rem;
+  }
+
+  .heroTitle {
+    font-size: clamp(2.25rem, 9vw, 3rem);
   }
 }
 
@@ -152,7 +161,7 @@
 .heroInner {
   position: relative;
   z-index: 1;
-  max-width: min(100%, 1540px);
+  max-width: min(100%, 96.25rem);
   padding-inline: clamp(1.25rem, 3vw, 2.5rem);
 }
 
@@ -160,11 +169,11 @@
   display: flex;
   align-items: center;
   flex-wrap: wrap;
-  gap: 4px;
+  gap: 0.25rem;
   margin: 0 0 5rem;
   color: rgba(255, 255, 255, 0.5);
-  font-size: 14px;
-  line-height: 20px;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
 }
 
 .heroBreadcrumbs a,
@@ -194,7 +203,7 @@
 }
 
 .heroTitle {
-  font-size: clamp(2.25rem, 5vw, 4rem);
+  font-size: clamp(3rem, 5vw, 4rem);
   font-weight: 400;
   line-height: 1.2;
   color: var(--mvp-fg);
@@ -336,6 +345,14 @@
 
 @media (max-width: 768px) {
   .srRow { grid-template-columns: 1fr; gap: 2rem; }
+
+  /* Cap, don't jump to 100% — the image column is minmax(0, 32.125rem) on
+     desktop; once .srRow collapses to a single column, capping .srImage at
+     that same width keeps a tablet-width viewport from stretching it edge
+     to edge. See track/responsiveness-rules.md's image-scaling rule. */
+  .srImage {
+    max-width: 32.125rem;
+  }
 }
 
 .srList {
@@ -449,6 +466,7 @@
 
   .entrustSection .srImage {
     height: auto;
+    max-width: 32.125rem;
     aspect-ratio: 528 / 348;
   }
 }
@@ -613,6 +631,7 @@
   .tabRight,
   .tabImage {
     width: 100%;
+    max-width: 25rem;
   }
 }
 
@@ -632,7 +651,6 @@
   grid-template-columns: minmax(0, 1fr) auto;
   align-items: center;
   gap: 4.5rem;
-  min-height: 14.625rem;
   padding: 1.875rem;
 }
 
@@ -647,8 +665,13 @@
 
 /* gap: 1.75rem — the desktop 4.5rem gap is the horizontal space between
    the text and button columns side by side; left unreduced, that same
-   value becomes an oversized vertical gap once stacked. */
-@media (max-width: 768px) {
+   value becomes an oversized vertical gap once stacked. Breakpoint widened
+   from 768px to 1024px per the cta_r rule (track/responsiveness-rules.md) —
+   768px left a squeezed two-column look across tablet widths. The old
+   min-height: 14.625rem above was the exact "card min-height" violation
+   flagged repeatedly sitewide (ML/Big Data/AI Integration) and is removed —
+   padding alone now sizes the banner. */
+@media (max-width: 1024px) {
   .downloadCtaInner {
     grid-template-columns: 1fr;
     gap: 1.75rem;
@@ -675,7 +698,7 @@
 
 /* justify-self: center — .downloadCtaInner is display:grid, and grid items
    stretch to fill their column by default even with no explicit width on
-   the item itself. Once it collapses to a single column at ≤768px, that
+   the item itself. Once it collapses to a single column at ≤1024px, that
    default would stretch this button edge to edge — a btn_r violation.
    See track/responsiveness-rules.md. */
 .downloadCtaBtn {
@@ -1520,7 +1543,7 @@
 }
 
 .tsLogoImg {
-  height: 36px;
+  height: 2.25rem;
   width: auto;
   object-fit: contain;
   opacity: 0.85;
@@ -1887,7 +1910,7 @@
   align-items: center;
   display: grid;
   gap: 2.5rem;
-  grid-template-columns: 240px minmax(0, 1fr);
+  grid-template-columns: 15rem minmax(0, 1fr);
   padding: 2.125rem 0;
   border-bottom-color: rgba(57, 70, 99, 0.25);
 }
@@ -1897,7 +1920,7 @@
   font-size: 1.125rem;
   font-weight: 400;
   line-height: 1.45;
-  max-width: 205px;
+  max-width: 12.8125rem;
   min-width: 0;
   opacity: 1;
 }
@@ -1946,7 +1969,7 @@
   gap: 0;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   margin: 0 auto;
-  max-width: 1080px;
+  max-width: 67.5rem;
 }
 
 .crosslinkItem {
@@ -2054,7 +2077,7 @@
 .crosslinks .container {
   background:
     linear-gradient(90deg, rgba(255, 241, 244, 0.95) 0%, rgba(255, 255, 255, 0.96) 48%, rgba(232, 243, 255, 0.95) 100%);
-  max-width: 1420px;
+  max-width: 88.75rem;
   padding: 0 8.375rem 2.25rem;
 }
 
@@ -2072,7 +2095,7 @@
   flex-direction: column;
   gap: 1.125rem;
   margin: 0;
-  max-width: 360px;
+  max-width: 22.5rem;
 }
 
 .crosslinkItem {
@@ -2192,7 +2215,7 @@
 .clSection .container {
   position: relative;
   z-index: 1;
-  max-width: 1150px;
+  max-width: 71.875rem;
 }
 
 .clTitle {
@@ -2201,7 +2224,7 @@
   font-weight: 400;
   color: #000;
   line-height: 1.15;
-  margin: 0 0 64px;
+  margin: 0 0 4rem;
 }
 
 .clGrid {
@@ -2215,7 +2238,7 @@
   font-size: 1.75rem;
   font-weight: 400;
   color: #000;
-  margin: 0 0 28px;
+  margin: 0 0 1.75rem;
 }
 
 .clList {
@@ -2228,7 +2251,7 @@
 
 .clItem {
   line-height: 1;
-  margin-bottom: 20px;
+  margin-bottom: 1.25rem;
 }
 
 .clItem:last-child {
@@ -2319,7 +2342,7 @@
 @media (max-width: 640px) {
   .clTitle {
     font-size: 2.25rem;
-    margin-bottom: 48px;
+    margin-bottom: 3rem;
   }
 
   .clGrid {
@@ -2331,5 +2354,17 @@
 @media (max-width: 420px) {
   .clLinkLast {
     white-space: normal;
+  }
+}
+
+/* Short-viewport safety tier for the hero — see track/responsiveness-rules.md
+   "hero spacing + title clamp" rule and components/ai-consulting/AIHero
+   .module.css. Placed last on purpose: a later unconditional/width-only
+   rule touching .hero's padding-top would otherwise win over an earlier
+   max-height block at equal specificity, which is exactly what happens at
+   high browser zoom. */
+@media (max-height: 450px) {
+  .hero {
+    padding-top: calc(var(--header-height) + 0.75rem);
   }
 }

@@ -96,7 +96,7 @@
   font-family: var(--font-inter-tight), sans-serif;
   font-size: clamp(0.875rem, 1.1vw, 1rem);
   color: #5e6d8e;
-  margin-top: 8px;
+  margin-top: 0.5rem;
   line-height: 1.4;
 }
 

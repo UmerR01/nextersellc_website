@@ -1,11 +1,11 @@
 .section {
-  padding: 64px 0;
+  padding: 4rem 0;
   background: #fff;
   font-family: var(--font-inter-tight), sans-serif;
 }
 
 .container {
-  max-width: min(100%, 1200px);
+  max-width: min(100%, 75rem);
   margin: 0 auto;
   padding-inline: clamp(1.25rem, 3vw, 2.5rem);
 }
@@ -21,11 +21,11 @@
 
 @media (max-width: 640px) {
   .row {
-    gap: 24px;
+    gap: 1.5rem;
   }
 
   .badgeWrap {
-    flex: 0 0 calc(33.333% - 16px);
+    flex: 0 0 calc(33.333% - 1rem);
     display: flex;
     align-items: center;
     justify-content: center;

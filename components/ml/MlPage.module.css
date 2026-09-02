@@ -8,9 +8,9 @@
   line-height: 1.1;
   color: #0b1734;
   text-align: center;
-  margin: 0 auto 24px;
+  margin: 0 auto 1.5rem;
   letter-spacing: -0.01em;
-  max-width: 1000px;
+  max-width: 62.5rem;
 }
 
 .sectionDesc {
@@ -19,29 +19,29 @@
   line-height: 1.65;
   color: #5e6d8e;
   text-align: center;
-  max-width: 880px;
+  max-width: 55rem;
   margin: 0 auto;
 }
 
 .blockLight {
   background: #f7f9fe;
-  padding: 96px 0;
+  padding: 6rem 0;
   position: relative;
 }
 
 .blockDark {
   background: linear-gradient(135deg, #02102c 0%, #112244 100%);
-  padding: 96px 0;
+  padding: 6rem 0;
   position: relative;
 }
 
 .blockWhite {
   background: #fff;
-  padding: 96px 0;
+  padding: 6rem 0;
 }
 
 @media (max-width: 768px) {
-  .blockLight, .blockDark, .blockWhite { padding: 64px 0; }
+  .blockLight, .blockDark, .blockWhite { padding: 4rem 0; }
   .sectionTitle { text-align: left; }
   .sectionDesc { text-align: left; margin: 0; }
 }
@@ -50,8 +50,8 @@
 .ecomServicesGrid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 32px;
-  margin-top: 64px;
+  gap: 2rem;
+  margin-top: 4rem;
 }
 
 @media (max-width: 980px) {
@@ -59,17 +59,17 @@
 }
 
 @media (max-width: 640px) {
-  .ecomServicesGrid { grid-template-columns: 1fr; margin-top: 40px; }
+  .ecomServicesGrid { grid-template-columns: 1fr; margin-top: 2.5rem; }
 }
 
 .ecomServiceCard {
   background: #fff;
   border: 1px solid #e6eff7;
   border-radius: 2px;
-  padding: 36px 32px;
+  padding: 2.25rem 2rem;
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 1rem;
   transition: box-shadow 0.3s, border-color 0.3s;
 }
 
@@ -111,17 +111,17 @@
 
 .adlcSection {
   background: #fff;
-  padding-top: 74px;
+  padding-top: 4.625rem;
 }
 
 .adlcTitle {
-  max-width: 960px;
+  max-width: 60rem;
   color: #000;
 }
 
 .adlcIntro {
-  max-width: 1160px;
-  margin: 24px auto 0;
+  max-width: 72.5rem;
+  margin: 1.5rem auto 0;
   font-family: var(--font-inter-tight), sans-serif;
   font-size: clamp(1.125rem, 1.45vw, 1.45rem);
   line-height: 1.55;
@@ -134,14 +134,14 @@
 }
 
 .adlcIntro p + p {
-  margin-top: 6px;
+  margin-top: 0.375rem;
 }
 
 .adlcGrid {
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 58px clamp(56px, 7vw, 92px);
-  max-width: 1176px;
-  margin: 76px auto 0;
+  gap: 3.625rem clamp(3.5rem, 7vw, 5.75rem);
+  max-width: 73.5rem;
+  margin: 4.75rem auto 0;
 }
 
 .adlcCard {
@@ -158,11 +158,11 @@
 }
 
 .adlcCard .ecomServiceIcon {
-  margin-bottom: 28px;
+  margin-bottom: 1.75rem;
 }
 
 .adlcCard .ecomServiceTitle {
-  margin-bottom: 20px;
+  margin-bottom: 1.25rem;
   font-size: 1.75rem;
   font-weight: 500;
   line-height: 1.25;
@@ -178,7 +178,7 @@
 @media (max-width: 980px) {
   .adlcGrid {
     grid-template-columns: 1fr 1fr;
-    gap: 48px;
+    gap: 3rem;
   }
 }
 
@@ -192,12 +192,12 @@
 @media (max-width: 700px) {
   .adlcGrid {
     grid-template-columns: 1fr;
-    gap: 40px;
-    margin-top: 44px;
+    gap: 2.5rem;
+    margin-top: 2.75rem;
   }
 
   .adlcCard .ecomServiceIcon {
-    margin-bottom: 22px;
+    margin-bottom: 1.375rem;
   }
 
   .adlcCard .ecomServiceTitle {
@@ -211,9 +211,9 @@
 
 .engagementGrid {
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: clamp(54px, 7vw, 96px);
-  max-width: 1128px;
-  margin: 74px auto 0;
+  gap: clamp(3.375rem, 7vw, 6rem);
+  max-width: 70.5rem;
+  margin: 4.625rem auto 0;
 }
 
 .engagementCard {
@@ -230,11 +230,11 @@
 }
 
 .engagementCard .ecomServiceIcon {
-  margin-bottom: 30px;
+  margin-bottom: 1.875rem;
 }
 
 .engagementCard .ecomServiceTitle {
-  margin-bottom: 20px;
+  margin-bottom: 1.25rem;
   font-size: 1.75rem;
   font-weight: 500;
   line-height: 1.22;
@@ -250,19 +250,19 @@
 @media (max-width: 980px) {
   .engagementGrid {
     grid-template-columns: 1fr 1fr;
-    gap: 48px;
+    gap: 3rem;
   }
 }
 
 @media (max-width: 700px) {
   .engagementGrid {
     grid-template-columns: 1fr;
-    gap: 40px;
-    margin-top: 44px;
+    gap: 2.5rem;
+    margin-top: 2.75rem;
   }
 
   .engagementCard .ecomServiceIcon {
-    margin-bottom: 22px;
+    margin-bottom: 1.375rem;
   }
 
   .engagementCard .ecomServiceTitle {
@@ -276,16 +276,16 @@
 
 .capabilitiesGrid {
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  column-gap: clamp(72px, 12vw, 148px);
-  row-gap: 58px;
-  max-width: 1120px;
-  margin: 72px auto 0;
+  column-gap: clamp(4.5rem, 12vw, 9.25rem);
+  row-gap: 3.625rem;
+  max-width: 70rem;
+  margin: 4.5rem auto 0;
 }
 
 .capabilityCard {
   border: 0;
   padding: 0;
-  gap: 20px;
+  gap: 1.25rem;
   background: transparent;
   box-shadow: none;
 }
@@ -296,7 +296,7 @@
 }
 
 .capabilityCard .ecomServiceIcon {
-  margin-bottom: 14px;
+  margin-bottom: 0.875rem;
 }
 
 .capabilityCard .ecomServiceTitle {
@@ -306,7 +306,7 @@
 }
 
 .capabilityCard .ecomServiceIntro {
-  max-width: 560px;
+  max-width: 35rem;
   font-size: 1.0625rem;
   line-height: 1.55;
   color: #24365b;
@@ -315,15 +315,15 @@
 @media (max-width: 980px) {
   .capabilitiesGrid {
     grid-template-columns: 1fr 1fr;
-    column-gap: 48px;
+    column-gap: 3rem;
   }
 }
 
 @media (max-width: 700px) {
   .capabilitiesGrid {
     grid-template-columns: 1fr;
-    row-gap: 40px;
-    margin-top: 44px;
+    row-gap: 2.5rem;
+    margin-top: 2.75rem;
   }
 
   .capabilityCard .ecomServiceTitle {
@@ -343,7 +343,6 @@
 
 .inlineCtaInner {
   background: linear-gradient(115deg, var(--color-accent-dark) 0%, #17163f 100%);
-  min-height: 14.625rem;
   padding: 1.875rem;
   display: grid;
   grid-template-columns: minmax(0, 1fr) auto;
@@ -394,33 +393,48 @@
 
 /* ── ML maturity model (3-level tabs) ──────────────────────────────────────── */
 .maturityTabs {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  display: flex;
+  justify-content: space-between;
   gap: 0;
-  max-width: 1150px;
-  margin: 70px auto 0;
+  max-width: 71.875rem;
+  margin: 4.375rem auto 0;
   border-bottom: 1px solid #d8e3ef;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scrollbar-width: thin;
+}
+
+.maturityTabs::-webkit-scrollbar {
+  display: block;
+  height: 6px;
+}
+
+.maturityTabs::-webkit-scrollbar-thumb {
+  background: #dce8f4;
+  border-radius: 3px;
 }
 
 .maturityTabBtn {
-  min-height: 124px;
+  flex: 1 0 0;
+  min-width: 15rem;
+  min-height: 7.75rem;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: flex-end;
-  gap: 18px;
+  gap: 1.125rem;
   background: transparent;
   border: 0;
   border-bottom: 2px solid #8498b2;
-  padding: 0 18px 20px;
+  padding: 0 1.125rem 1.25rem;
   cursor: pointer;
   text-align: center;
   transition: border-color 0.2s, color 0.2s;
 }
 
 .maturityTabBtn img {
-  width: 56px;
-  height: 56px;
+  width: 3.5rem;
+  height: 3.5rem;
   object-fit: contain;
   flex-shrink: 0;
   filter: grayscale(1) brightness(0.78) saturate(2) contrast(1.05);
@@ -455,8 +469,8 @@
 }
 
 .maturityPanel {
-  max-width: 1150px;
-  margin: 64px auto 0;
+  max-width: 71.875rem;
+  margin: 4rem auto 0;
   background: transparent;
   border: 0;
   border-radius: 0;
@@ -469,20 +483,20 @@
   font-weight: 400;
   line-height: 1.18;
   color: #000;
-  margin: 0 0 20px;
+  margin: 0 0 1.25rem;
 }
 
 .maturityPanelText {
-  max-width: 660px;
+  max-width: 41.25rem;
   font-family: var(--font-inter-tight), sans-serif;
   font-size: 1.0625rem;
   line-height: 1.55;
   color: #1d3156;
-  margin: 0 0 4px;
+  margin: 0 0 0.25rem;
 }
 
 .maturityPanelExample {
-  max-width: 660px;
+  max-width: 41.25rem;
   font-family: var(--font-inter-tight), sans-serif;
   font-size: 1.0625rem;
   font-style: italic;
@@ -493,43 +507,33 @@
 
 @media (max-width: 900px) {
   .maturityTabs {
-    grid-template-columns: 1fr;
-    margin-top: 44px;
-    border-bottom: 0;
+    justify-content: flex-start;
+    margin-top: 2.75rem;
   }
 
   .maturityTabBtn {
-    min-height: 0;
-    flex-direction: row;
-    justify-content: flex-start;
-    gap: 14px;
-    border-bottom: 1px solid #d8e3ef;
-    padding: 18px 0;
-    text-align: left;
-  }
-
-  .maturityTabBtn img {
-    width: 40px;
-    height: 40px;
+    flex: 0 0 auto;
+    min-width: 12rem;
+    padding-inline: 1rem;
   }
 
   .maturityPanel {
-    margin-top: 36px;
+    margin-top: 2.25rem;
   }
 }
 /* ── Business impact (list + image) ────────────────────────────────────────── */
 .impactWrap {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(420px, 514px);
-  gap: clamp(64px, 8vw, 92px);
+  grid-template-columns: minmax(0, 1fr) minmax(26.25rem, 32.125rem);
+  gap: clamp(4rem, 8vw, 5.75rem);
   align-items: start;
-  max-width: 1152px;
-  margin: 70px auto 0;
+  max-width: 72rem;
+  margin: 4.375rem auto 0;
 }
 
 .impactText {
-  max-width: 610px;
-  padding-top: 2px;
+  max-width: 38.125rem;
+  padding-top: 0.125rem;
   font-family: var(--font-inter-tight), sans-serif;
   font-size: clamp(1.25rem, 1.55vw, 1.45rem);
   line-height: 1.55;
@@ -537,20 +541,20 @@
 }
 
 .impactText p {
-  margin: 0 0 22px;
+  margin: 0 0 1.375rem;
 }
 
 .impactList {
   list-style: none;
   padding: 0;
-  margin: 0 0 24px;
+  margin: 0 0 1.5rem;
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 1.25rem;
 }
 
 .impactList li {
-  padding-left: 32px;
+  padding-left: 2rem;
   position: relative;
 }
 
@@ -576,20 +580,24 @@
 .impactImage img {
   display: block;
   width: 100%;
-  height: min(42vw, 616px);
-  min-height: 520px;
+  height: min(42vw, 38.5rem);
+  min-height: 32.5rem;
   object-fit: cover;
 }
 
 @media (max-width: 900px) {
   .impactWrap {
     grid-template-columns: 1fr;
-    gap: 40px;
-    margin-top: 44px;
+    gap: 2.5rem;
+    margin-top: 2.75rem;
   }
 
   .impactText {
     max-width: none;
+  }
+
+  .impactImage {
+    max-width: 32rem;
   }
 
   .impactImage img {
@@ -602,14 +610,14 @@
 
 .whySection {
   background: #fff;
-  padding-top: 74px;
+  padding-top: 4.625rem;
 }
 
 .whyGrid {
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 64px clamp(72px, 10vw, 116px);
-  max-width: 1080px;
-  margin: 72px auto 0;
+  gap: 4rem clamp(4.5rem, 10vw, 7.25rem);
+  max-width: 67.5rem;
+  margin: 4.5rem auto 0;
 }
 
 .whyCard {
@@ -626,11 +634,11 @@
 }
 
 .whyCard .ecomServiceIcon {
-  margin-bottom: 28px;
+  margin-bottom: 1.75rem;
 }
 
 .whyCard .ecomServiceTitle {
-  margin-bottom: 20px;
+  margin-bottom: 1.25rem;
   font-size: clamp(1.55rem, 2vw, 1.75rem);
   font-weight: 500;
   line-height: 1.25;
@@ -638,7 +646,7 @@
 }
 
 .whyCard .ecomServiceIntro {
-  max-width: 560px;
+  max-width: 35rem;
   font-size: 1.0625rem;
   line-height: 1.55;
   color: #24365b;
@@ -647,20 +655,20 @@
 @media (max-width: 900px) {
   .whyGrid {
     grid-template-columns: 1fr;
-    gap: 44px;
-    margin-top: 44px;
+    gap: 2.75rem;
+    margin-top: 2.75rem;
   }
 }
 
 .techCardsGrid {
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 22px 20px;
-  max-width: 1152px;
-  margin: 72px auto 0;
+  gap: 1.375rem 1.25rem;
+  max-width: 72rem;
+  margin: 4.5rem auto 0;
 }
 
 .techCard {
-  min-height: 256px;
+  min-height: 16rem;
   border: 0;
   border-radius: 0;
   padding: clamp(2rem, 3vw, 2.375rem) clamp(2rem, 3vw, 2.5rem);
@@ -675,7 +683,7 @@
 }
 
 .techCard .ecomServiceTitle {
-  margin-bottom: 20px;
+  margin-bottom: 1.25rem;
   font-size: clamp(1.5rem, 2vw, 1.75rem);
   font-weight: 500;
   line-height: 1.22;
@@ -683,7 +691,7 @@
 }
 
 .techCard .ecomServiceIntro {
-  max-width: 520px;
+  max-width: 32.5rem;
   font-size: 1.0625rem;
   line-height: 1.55;
   color: #061a3f;
@@ -692,7 +700,7 @@
 @media (max-width: 900px) {
   .techCardsGrid {
     grid-template-columns: 1fr;
-    margin-top: 44px;
+    margin-top: 2.75rem;
   }
 
   .techCard {
@@ -702,14 +710,14 @@
 }
 
 .techTableWrap {
-  max-width: 1152px;
-  margin: 40px auto 0;
+  max-width: 72rem;
+  margin: 2.5rem auto 0;
   overflow-x: auto;
 }
 
 .techTable {
   width: 100%;
-  min-width: 760px;
+  min-width: 47.5rem;
   border-collapse: collapse;
   border: 1px solid #b9c7d8;
   font-family: var(--font-inter-tight), sans-serif;
@@ -718,7 +726,7 @@
 
 .techTable th,
 .techTable td {
-  padding: 17px 16px;
+  padding: 1.0625rem 1rem;
   text-align: left;
   font-size: 1rem;
   line-height: 1.42;
@@ -736,8 +744,8 @@
 }
 
 .techTable thead th {
-  padding-top: 18px;
-  padding-bottom: 18px;
+  padding-top: 1.125rem;
+  padding-bottom: 1.125rem;
   color: #0b1734;
   font-weight: 500;
   background: #f4f7fb;
@@ -753,12 +761,12 @@
 
 @media (max-width: 700px) {
   .techTableWrap {
-    margin-top: 32px;
+    margin-top: 2rem;
   }
 
   .techTable th,
   .techTable td {
     font-size: 0.875rem;
-    padding: 13px 14px;
+    padding: 0.8125rem 0.875rem;
   }
 }
