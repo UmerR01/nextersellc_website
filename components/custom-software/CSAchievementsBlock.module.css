@@ -102,7 +102,10 @@
 
 @media (max-width: 768px) {
   .heading {
-    max-width: 20rem;
+    /* No max-width here — .left is 100% width once .row stacks (below),
+       so the heading should use that full available width instead of
+       staying capped at the narrower box sized for the desktop 50%
+       column, which just forced needless extra wrapping. */
     font-size: 2rem;
     line-height: 1.12;
   }

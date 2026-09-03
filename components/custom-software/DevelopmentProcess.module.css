@@ -127,9 +127,13 @@
   }
 
   .step:not(:last-child)::after {
+    /* top = margin (0.3125rem) + diameter (3rem) + margin (0.3125rem) =
+       3.625rem — the circle's outer margin-box bottom edge. Was 3.3125rem
+       (missing the second margin), so the line started 0.3125rem too high,
+       inside the circle instead of right below it. */
     left: 1.8125rem;
-    top: 3.3125rem;
-    height: calc(100% + 2.5rem - 3.3125rem);
+    top: 3.625rem;
+    height: calc(100% + 2.5rem - 3.625rem);
   }
 
   .stepNumber {

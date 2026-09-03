@@ -36,10 +36,40 @@
   color: #3CC4E5;
 }
 
+/* gap: 6rem replaces the old 1.5rem grid gap plus each card's own 2.25rem
+   left+right padding (1.5 + 2.25 + 2.25 = 6, same total visual spacing as
+   before). .card gets zero horizontal padding (see below) — the earlier
+   fix here only zeroed the outer edge per column position via :nth-child,
+   which correctly aligned the first/last column but left every middle
+   column's content inset from its own cell on both sides — an
+   inconsistent "left start" once compared card-to-card (reported on the
+   near-identical TwoLifecycles.module.css pattern; same fix applied here
+   for consistency). Every card's content now starts flush with its own
+   box on both sides at every column count, with gap doing the separating
+   instead — no per-breakpoint :nth-child bookkeeping needed any more. See
+   the "a card style's padding must not outlive its background/border"
+   rule in track/responsiveness-rules.md. */
 .grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 1.5rem;
+  /* row-gap 1.5rem (vertical spacing between rows, and between stacked
+     cards once the 640px tier drops to 1 column) / column-gap 6rem
+     (horizontal spacing between cards) — kept separate so the single-
+     column mobile tier doesn't inherit the wide horizontal value as
+     excessive vertical spacing. */
+  gap: 1.5rem 6rem;
+}
+
+.card {
+  background: transparent;
+  border: none;
+  border-radius: 0.5rem;
+  padding: 2.5rem 0;
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+  color: inherit;
+  transition: background 0.25s ease;
 }
 
 @media (max-width: 1024px) {
@@ -52,18 +82,6 @@
   .grid {
     grid-template-columns: 1fr;
   }
-}
-
-.card {
-  background: transparent;
-  border: none;
-  border-radius: 0.5rem;
-  padding: 2.5rem 2.25rem;
-  display: flex;
-  flex-direction: column;
-  text-decoration: none;
-  color: inherit;
-  transition: background 0.25s ease;
 }
 
 .card:hover {

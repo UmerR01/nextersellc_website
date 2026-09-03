@@ -168,7 +168,11 @@ export default function Header({ forceSolid = false, startTransparent = false }:
   const [mobileNavOpen, setMobileNavOpen] = useState<string | null>(null);
   const [solid, setSolid] = useState(forceSolid && !startTransparent);
   const [modalOpen, setModalOpen] = useState(false);
+  // Desktop nav dropdown, opened by tap on touch/no-hover devices — see the
+  // click handler below and the .itemOpen rules in NavDropdown.module.css.
+  const [openDesktop, setOpenDesktop] = useState<string | null>(null);
   const headerRef = useRef<HTMLElement>(null);
+  const navRef = useRef<HTMLElement>(null);
   const solidRef = useRef(forceSolid && !startTransparent);
 
   useEffect(() => {
@@ -264,10 +268,45 @@ export default function Header({ forceSolid = false, startTransparent = false }:
   }, [open]);
 
   useEffect(() => {
-    const onKey = (e: KeyboardEvent) => e.key === "Escape" && setOpen(false);
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key !== "Escape") return;
+      setOpen(false);
+      setOpenDesktop(null);
+    };
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
   }, []);
+
+  // Close the touch-opened desktop dropdown on an outside tap/click, so it
+  // doesn't stay stuck open once the visitor taps elsewhere on the page.
+  useEffect(() => {
+    if (!openDesktop) return;
+    const onDocClick = (e: MouseEvent) => {
+      if (navRef.current && !navRef.current.contains(e.target as Node)) {
+        setOpenDesktop(null);
+      }
+    };
+    document.addEventListener("click", onDocClick);
+    return () => document.removeEventListener("click", onDocClick);
+  }, [openDesktop]);
+
+  // A dropdown-owning top-level nav link (Applied AI, Services, Process,
+  // About us, Insights) is also a real <a href> that navigates. On a
+  // hover-capable device that's fine — hovering already reveals the panel
+  // before a click ever lands. On a touch device, :hover never fires, so
+  // the first tap would just navigate away with the dropdown never shown.
+  // Here, on a no-hover device, the first tap opens the panel instead of
+  // navigating; a second tap on the same link (now already open) navigates
+  // normally, same as clicking a link inside the panel always has.
+  const handleDesktopNavClick = (label: string) => (e: React.MouseEvent<HTMLAnchorElement>) => {
+    if (typeof window === "undefined" || !window.matchMedia("(hover: none)").matches) return;
+    if (openDesktop !== label) {
+      e.preventDefault();
+      setOpenDesktop(label);
+    } else {
+      setOpenDesktop(null);
+    }
+  };
 
   useEffect(() => {
     const openContactModal = () => {
@@ -322,12 +361,12 @@ export default function Header({ forceSolid = false, startTransparent = false }:
             />
           </Link>
 
-          <nav className={styles.nav}>
+          <nav className={styles.nav} ref={navRef}>
             <ul className={styles.navList}>
 
               {/* ── Applied AI (3 columns) ── */}
-              <li className={dd.item}>
-                <a href="/adlc" className={dd.link}>
+              <li className={`${dd.item} ${openDesktop === "Applied AI" ? dd.itemOpen : ""}`}>
+                <a href="/adlc" className={dd.link} onClick={handleDesktopNavClick("Applied AI")}>
                   Applied AI <Chevron className={dd.chevron} />
                 </a>
                 <div className={`${dd.panel} ${dd.panelAppliedAI} ${dd.cols3}`}>
@@ -366,14 +405,17 @@ export default function Header({ forceSolid = false, startTransparent = false }:
                           <a key={l.label} href={l.href} className={dd.colLink}>{l.label}</a>
                         ))}
                       </div>
+                      {col.title === "Strategy" && (
+                        <a href="/adlc" className={dd.allLink}>Applied AI</a>
+                      )}
                     </div>
                   ))}
                 </div>
               </li>
 
               {/* ── Services (3 columns) ── */}
-              <li className={dd.item}>
-                <a href="/services" className={dd.link}>
+              <li className={`${dd.item} ${openDesktop === "Services" ? dd.itemOpen : ""}`}>
+                <a href="/services" className={dd.link} onClick={handleDesktopNavClick("Services")}>
                   Services <Chevron className={dd.chevron} />
                 </a>
                 <div className={`${dd.panel} ${dd.panelServices} ${dd.cols3}`}>
@@ -421,8 +463,8 @@ export default function Header({ forceSolid = false, startTransparent = false }:
               </li>
 
               {/* ── Process — Satva-style mega panel ── */}
-              <li className={dd.item}>
-                <a href="/process" className={dd.link}>
+              <li className={`${dd.item} ${openDesktop === "Process" ? dd.itemOpen : ""}`}>
+                <a href="/process" className={dd.link} onClick={handleDesktopNavClick("Process")}>
                   Process <Chevron className={dd.chevron} />
                 </a>
                 <div className={`${dd.panel} ${dd.panelProcess}`}>
@@ -470,8 +512,8 @@ export default function Header({ forceSolid = false, startTransparent = false }:
               </li>
 
               {/* ── About us ── */}
-              <li className={dd.item}>
-                <a href="/about-us" className={dd.link}>
+              <li className={`${dd.item} ${openDesktop === "About us" ? dd.itemOpen : ""}`}>
+                <a href="/about-us" className={dd.link} onClick={handleDesktopNavClick("About us")}>
                   About us <Chevron className={dd.chevron} />
                 </a>
                 <div className={`${dd.panel} ${dd.panelAbout}`}>
@@ -515,8 +557,8 @@ export default function Header({ forceSolid = false, startTransparent = false }:
               </li>
 
               {/* ── Insights ── */}
-              <li className={dd.item}>
-                <a href="/library" className={dd.link}>
+              <li className={`${dd.item} ${openDesktop === "Insights" ? dd.itemOpen : ""}`}>
+                <a href="/library" className={dd.link} onClick={handleDesktopNavClick("Insights")}>
                   Insights <Chevron className={dd.chevron} />
                 </a>
                 <div className={`${dd.panel} ${dd.panelInsights}`}>

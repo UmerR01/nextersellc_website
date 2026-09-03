@@ -130,7 +130,7 @@
 }
 
 .heroH1 {
-  font-size: 3.75rem;
+  font-size: clamp(3rem, 5vw, 4rem);
   font-weight: 300;
   line-height: 1.2;
   color: var(--d-fg);
@@ -140,8 +140,13 @@
 
 @media (max-width: 991px) {
   .heroH1 {
-    font-size: 2.5rem;
     width: 100%;
+  }
+}
+
+@media (max-width: 900px) {
+  .heroH1 {
+    font-size: clamp(2.25rem, 9vw, 3rem);
   }
 }
 
@@ -169,7 +174,6 @@
 
 .ctaBtn {
   font-family: var(--d-font);
-  min-height: 2.625rem;
   padding: 0.4rem 1.5rem;
   white-space: nowrap;
 }
@@ -407,11 +411,27 @@
 
 /* Nexterse shared process-page structure */
 .hero {
-  padding: clamp(5rem, 8vw, 7.5rem) 1.25rem clamp(4rem, 6vw, 6rem);
+  padding-top: calc(var(--header-height) + 1.625rem);
+  padding-right: 1.25rem;
+  padding-bottom: clamp(4rem, 6vw, 6rem);
+  padding-left: 1.25rem;
   background: #fff !important;
   background-image: none !important;
 }
 .hero::before { display: none; }
+
+/* Hero rule — see track/responsiveness-rules.md. padding-top must stay
+   tied to the fixed header's own height (--header-height, 5.5rem desktop /
+   4.5rem below 560px) rather than an independent clamp — the old
+   clamp(5rem, 8vw, 7.5rem) floored to a flat 5rem below ~1000px viewport
+   width, which is *less* than the 5.5rem fixed header at every width down
+   to 560px, tucking the hero content under the header for the whole
+   560-1000px range. */
+@media (max-width: 900px) {
+  .hero {
+    padding-top: calc(var(--header-height) + 3rem);
+  }
+}
 .heroInner,
 .sectionInner {
   max-width: 71.875rem;
@@ -433,4 +453,16 @@
   box-shadow: none;
   backdrop-filter: none;
   -webkit-backdrop-filter: none;
+}
+
+/* Short-viewport safety (width-agnostic) — see
+   track/hero-responsiveness-rule.md / components/ai-consulting/AIHero.module.css.
+   Placed last on purpose: a max-height query must come after any
+   unconditional or min-width rule touching the same property, or it is
+   silently dead the instant a width condition and a height condition are
+   both true at once — exactly what high browser zoom produces. */
+@media (max-height: 450px) {
+  .hero {
+    padding-top: calc(var(--header-height) + 0.75rem);
+  }
 }

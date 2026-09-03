@@ -80,11 +80,14 @@
 /* Flat 30px on all sides, all widths — the CTA-banner padding rule, see
    track/responsiveness-rules.md and components/adlc/AdlcStartCTA.module.css
    (the reference: .row { padding: 30px; }, no mobile override needed). */
+/* No min-height — a banner this short with a fixed min-height left
+   visibly unused vertical space above/below the text; padding alone
+   should size it. Matches RagPage.module.css's .inlineCtaInner, the most
+   fully-corrected version of this CTA pattern on the site. */
 .ctaBanner {
   margin-top: 4rem;
   background: linear-gradient(115deg, var(--color-accent-dark) 0%, #17163f 100%);
   color: #fff;
-  min-height: 14.625rem;
   padding: 1.875rem;
   display: grid;
   grid-template-columns: minmax(0, 1fr) auto;

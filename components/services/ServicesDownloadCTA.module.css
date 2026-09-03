@@ -1,13 +1,15 @@
-/* Rebuilt to match components/adlc/AdlcStartCTA.module.css exactly — see
-   track/responsiveness-rules.md's cta_r rule. Previously the gradient lived
-   on .section itself, spanning the full viewport edge-to-edge with no page
-   gutter and a custom, much wider .container padding (clamp(2rem,8vw,7.5rem)
-   instead of the flat 1.875rem every other CTA banner uses) — this made the
-   banner look like a full-bleed slab instead of an inset card matching the
-   rest of the site. Now .section is a plain white section (like every other
-   page section) and .row is the actual inset gradient card, sized by the
-   sitewide global .container (var(--max-width)/var(--page-gutter)) the same
-   way AdlcStartCTA's card sits inside the page's normal gutter. */
+/* Rebuilt to match RagPage.module.css's .inlineCtaInner — the most fully-
+   corrected version of this CTA pattern on the site. Two earlier reference
+   choices turned out to be less-evolved versions of the same banner that
+   were each mistaken for "the" reference in turn: components/adlc/
+   AdlcStartCTA.module.css (a different page, /adlc, with its own quirk of
+   zeroing the container's side padding at mobile) and components/
+   ai-consulting/AIDualRisks.module.css / AITalkExperts.module.css (the
+   actual /ai-consulting page's CTA, but still carrying a stale
+   min-height: 14.625rem that RAG's version had already dropped — compare
+   the fix on those two files, corrected in the same pass as this one).
+   Matched to RAG here: sitewide .container gutter kept at every width
+   (never full-bleed), no min-height, 1024px breakpoint, flex-based. */
 .section {
   background: #fff;
   padding: 2.5rem 0 4rem;
@@ -25,14 +27,14 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 2.5rem;
+  gap: 4.5rem;
   overflow: hidden;
   padding: 1.875rem;
 }
 
 .left {
   flex: 1;
-  min-width: 16.25rem;
+  min-width: 0;
 }
 
 .title {
@@ -54,9 +56,6 @@
 
 .right {
   flex-shrink: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
 
 /* No padding override here — inherits the base .btn's 0.4rem 1.25rem from
@@ -91,37 +90,20 @@
   white-space: nowrap;
 }
 
-@media (max-width: 768px) {
-  .section {
-    padding: 2rem 0 3.5rem;
-  }
-
-  .container {
-    padding-inline: 0;
-  }
-
+/* Two-state cta_r rule (see track/responsiveness-rules.md): a plain row
+   above 700px, a centered stacked column at/below it. align-items:
+   stretch (not center) keeps the title/desc left-aligned; only the button
+   itself is centered, via its own align-self. Matches RagPage.module.css
+   exactly, including the breakpoint — see
+   track/header-nav-and-cta-reference-fix.md. */
+@media (max-width: 700px) {
   .row {
     flex-direction: column;
-    align-items: flex-start;
-    gap: 1rem;
+    align-items: stretch;
+    gap: 1.75rem;
   }
 
-  /* .right's own justify-content: center only takes effect once it's
-     given a width wider than its content, since a flex item with no
-     explicit size just shrink-to-fits at this align-items: flex-start
-     tier. See track/responsiveness-rules.md (CTA rule update). */
   .right {
-    width: 100%;
-  }
-
-  .title {
-    font-size: 1.5rem;
-    line-height: 1.2;
-    margin-bottom: 0.625rem;
-  }
-
-  .desc {
-    font-size: 1rem;
-    line-height: 1.65;
+    align-self: center;
   }
 }

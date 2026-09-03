@@ -4,19 +4,30 @@
 }
 
 /* Flat 30px (1.875rem) on all sides, all widths — the CTA-banner padding
-   rule, see track/responsiveness-rules.md and
-   components/adlc/AdlcStartCTA.module.css (the reference). The previous
-   fixed 4rem 8.375rem applied unchanged at any width above the 700px
-   breakpoint, so a tablet viewport (e.g. 768-1024px) got the full desktop
-   padding squeezed into a much narrower banner, reading as padding
-   appearing "out of nowhere". Flat padding needs no separate tier. */
+   rule, see track/responsiveness-rules.md and RagPage.module.css's
+   .inlineCtaInner (the confirmed sitewide reference — see
+   track/header-nav-and-cta-reference-fix.md). The previous fixed
+   4rem 8.375rem applied unchanged at any width above the 700px breakpoint,
+   so a tablet viewport (e.g. 768-1024px) got the full desktop padding
+   squeezed into a much narrower banner, reading as padding appearing "out
+   of nowhere". Flat padding needs no separate tier.
+
+   .inner used to double as both the sitewide .container (max-width/
+   margin/padding-inline) AND the gradient card in one element — the
+   .container class's own padding-inline and this rule's padding both
+   applied to the same box, so whichever won the cascade either doubled or
+   erased the card's inset from the page's real content edges. That's the
+   "external padding" bug. Fixed by giving the card its own element,
+   nested inside a plain .container div (see ARTalkExpert.tsx) — same
+   .section > .container > .inner shape as every other CTA banner on the
+   site. No min-height — a banner this short with a fixed min-height left
+   visibly unused vertical space above/below the text. */
 .inner {
   display: grid;
   grid-template-columns: minmax(0, 1fr) auto;
   align-items: center;
   justify-content: space-between;
   gap: 4.5rem;
-  min-height: 14.625rem;
   padding: 1.875rem;
   overflow: hidden;
   background: linear-gradient(115deg, var(--color-accent-dark) 0%, #17163f 100%);

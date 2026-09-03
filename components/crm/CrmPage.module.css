@@ -399,32 +399,37 @@
 }
 
 /* ─── Download CTA ────────────────────────────────────────────────────────── */
-/* Flat 30px (1.875rem) on all sides, all widths — the CTA-banner padding
-   rule, see track/responsiveness-rules.md and
-   components/adlc/AdlcStartCTA.module.css (the reference). */
+/* Outer wrapper is a plain white section — the gradient card lives on
+   .ctaRow below, inset inside the sitewide .container, not spanning the
+   full viewport width. Matches RagPage.module.css's .inlineCta /
+   .inlineCtaInner split exactly — see
+   track/header-nav-and-cta-reference-fix.md and
+   track/crm-unit-conversion-and-audit.md (CTA banner follow-up). */
 .ctaSection {
-  padding: 1.875rem;
-  background: linear-gradient(115deg, var(--color-accent-dark) 0%, #17163f 100%);
-  position: relative;
-  overflow: hidden;
+  background: #fff;
+  padding: 3rem 0 4.625rem;
 }
 
+/* The actual gradient card. Flat 1.875rem padding at every width, no
+   min-height — see track/responsiveness-rules.md (cta_r). */
 .ctaRow {
-  display: grid;
-  grid-template-columns: 1fr auto;
-  gap: 3rem;
+  background: linear-gradient(115deg, var(--color-accent-dark) 0%, #17163f 100%);
+  padding: 1.875rem;
+  display: flex;
   align-items: center;
+  justify-content: space-between;
+  gap: 4.5rem;
 }
 
-@media (max-width: 1024px) {
-  .ctaRow { grid-template-columns: 1fr; gap: 2rem; }
+@media (max-width: 700px) {
+  .ctaRow { flex-direction: column; align-items: stretch; gap: 1.75rem; }
 
-  /* .ctaHeaderBtn's own justify-self was a no-op: the anchor is wrapped in
-     an unstyled <div> in CrmPage.tsx (<div><a className={styles.ctaHeaderBtn}>
+  /* .ctaHeaderBtn's own align-self would be a no-op: the anchor is wrapped
+     in an unstyled <div> in CrmPage.tsx (<div><a className={styles.ctaHeaderBtn}>
      ...</a></div>), so that wrapper div — not the anchor — is the actual
-     grid item once .ctaRow collapses to one column. See the identical
+     flex item once .ctaRow stacks to a column. See the identical
      MobilePage.module.css bug in track/responsiveness-rules.md. */
-  .ctaRow > div:last-child { justify-self: center; }
+  .ctaRow > div:last-child { align-self: center; }
 }
 
 .ctaTitle {
@@ -445,9 +450,9 @@
   margin: 0;
 }
 
-/* Centering lives on .ctaRow > div:last-child (the real grid item) inside
+/* Centering lives on .ctaRow > div:last-child (the real flex item) inside
    the mobile media query above — .ctaHeaderBtn itself is nested one level
-   deeper inside an unstyled wrapper <div> in CrmPage.tsx, so a justify-self
+   deeper inside an unstyled wrapper <div> in CrmPage.tsx, so an align-self
    aimed at this class alone would be a silent no-op. See
    track/responsiveness-rules.md (cta_r correction #3). */
 .ctaHeaderBtn {

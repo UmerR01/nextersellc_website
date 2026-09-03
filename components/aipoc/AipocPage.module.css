@@ -3058,7 +3058,6 @@
 }
 
 .whyAdlcBlock .ecomServiceTitle {
-  max-width: 21rem;
   margin: 0;
   color: #000;
   font-size: clamp(1.55rem, 2vw, 1.85rem);

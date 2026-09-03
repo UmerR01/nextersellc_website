@@ -521,7 +521,6 @@
 }
 
 .failBlock .ecomServiceIntro {
-  max-width: 22rem;
   margin: 0;
   color: #172b4d;
   font-size: clamp(1rem, 1.2vw, 1.17rem);
@@ -637,7 +636,6 @@
 }
 
 .integrateBlock .ecomServiceIntro {
-  max-width: 32rem;
   margin: 0;
   color: #172b4d;
   font-size: clamp(1rem, 1.22vw, 1.17rem);
@@ -897,7 +895,6 @@
 }
 
 .dualEngineBlock .ecomServiceIntro {
-  max-width: 22rem;
   margin: 0;
   color: #172b4d;
   font-size: clamp(1rem, 1.22vw, 1.17rem);
@@ -1197,7 +1194,6 @@
 }
 
 .deliverablesBlock .ecomServiceIntro {
-  max-width: 22rem;
   margin: 0;
   color: #172b4d;
   font-size: clamp(1rem, 1.2vw, 1.17rem);
