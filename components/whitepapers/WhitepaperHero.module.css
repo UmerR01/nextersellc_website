@@ -13,9 +13,11 @@
   }
 }
 
-@media screen and (max-width: 768px) {
+/* 900px (not 768px) to byte-match AIHero.module.css — see
+   track/hero-rule-sitewide-rollout.md. */
+@media screen and (max-width: 900px) {
   .hero {
-    padding-top: 88px;
+    padding-top: calc(var(--header-height) + 48px);
   }
 }
 
@@ -33,6 +35,9 @@
   }
 }
 
+/* Header→breadcrumb→title spacing kept consistent with
+   AIHero.module.css / AdlcHero.module.css — see
+   track/hero-responsiveness-rule.md. */
 .wrapper {
   color: #112244;
   padding: 0 0 8.5rem;
@@ -41,19 +46,26 @@
 
 @media screen and (max-width: 768px) {
   .wrapper {
-    padding: 40px 0 72px;
+    padding: 0 0 4.5rem;
   }
 }
 
 .breadcrumbs {
   display: flex;
   align-items: center;
-  gap: 0;
-  font-size: 14px;
+  gap: 4px;
+  font-size: 0.875rem;
+  line-height: 1.4;
   font-weight: 400;
   color: #5e6d8e;
-  margin-bottom: 5rem;
+  margin-bottom: 4.5rem;
   flex-wrap: wrap;
+}
+
+@media screen and (max-width: 900px) {
+  .breadcrumbs {
+    margin-bottom: 2rem;
+  }
 }
 
 .breadcrumbs a {
@@ -79,21 +91,21 @@
   color: #5e6d8e;
 }
 
+/* Fluid clamp instead of a fixed 64px + max-width:768px step-jump — see
+   track/hero-responsiveness-rule.md. */
 .title {
-  font-size: 64px;
+  font-size: clamp(3rem, 5vw, 4rem);
   font-weight: 400;
-  line-height: 77px;
-  max-width: 980px;
+  line-height: 1.18;
+  max-width: 85rem;
   text-align: left;
   color: #112244;
-  margin: 0 0 24px;
+  margin: 0 0 1.75rem;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 900px) {
   .title {
-    font-size: clamp(2rem, 10vw, 2.5rem);
-    line-height: 1.2;
-    margin-bottom: 16px;
+    font-size: clamp(2.25rem, 9vw, 3rem);
   }
 }
 
@@ -102,22 +114,26 @@
 }
 
 .description {
-  font-size: 22px;
+  font-size: clamp(1.15rem, 1.8vw, 1.5rem);
   font-weight: 400;
-  line-height: 36px;
+  line-height: 1.5;
   color: #112244;
-  max-width: 880px;
+  max-width: 58rem;
   text-align: left;
+  margin: 0;
 }
 
 .description p {
   margin: 0;
 }
 
-@media screen and (max-width: 768px) {
-  .description {
-    font-size: 16px;
-    line-height: 26px;
-    margin-top: 16px;
+/* Short-viewport safety (width-agnostic) — placed last on purpose, see
+   track/hero-responsiveness-rule.md. */
+@media (max-height: 450px) {
+  .hero {
+    padding-top: calc(var(--header-height) + 12px);
+  }
+  .breadcrumbs {
+    margin-bottom: 1rem;
   }
 }

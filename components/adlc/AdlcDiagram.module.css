@@ -1,6 +1,6 @@
 .section {
   background: #fff;
-  padding: 0 0 96px;
+  padding: 0 0 6rem;
 }
 
 .wrapper {
@@ -21,6 +21,6 @@
 
 @media (max-width: 768px) {
   .section {
-    padding: 0 0 64px;
+    padding: 0 0 4rem;
   }
 }

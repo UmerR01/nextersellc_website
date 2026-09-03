@@ -6,7 +6,7 @@
   background: linear-gradient(115deg, var(--color-accent-dark) 0%, #17163f 100%);
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
   .section {
     padding: 0;
   }
@@ -24,11 +24,11 @@
   gap: clamp(2rem, 5vw, 5rem);
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
   .row {
     flex-direction: column;
     align-items: flex-start;
-    gap: 28px;
+    gap: 1.75rem;
   }
 }
 
@@ -37,7 +37,7 @@
   max-width: 66.666%;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
   .content {
     flex: none;
     max-width: 100%;
@@ -68,10 +68,14 @@
   justify-content: center;
 }
 
-@media (max-width: 768px) {
+/* justify-content: center, not flex-start — the button must be centered
+   once stacked, not merely un-stretched. See the btn_r rule's "Button
+   positioning — center, not start" correction in
+   track/responsiveness-rules.md. */
+@media (max-width: 1024px) {
   .action {
     width: 100%;
-    justify-content: flex-start;
+    justify-content: center;
   }
 }
 

@@ -91,7 +91,6 @@
 .heroBtn {
   font-family: var(--font-inter-tight), sans-serif;
   text-decoration: none;
-  min-height: 2.625rem;
   padding-inline: 1.5rem;
 }
 
@@ -111,7 +110,6 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-height: 60px;
   padding: 0 34px;
   border: 2px solid var(--color-accent);
   color: var(--color-accent);
@@ -797,7 +795,7 @@
 /* ── Inline CTA ────────────────────────────────────────────────────────────── */
 .inlineCta {
   background: #fff;
-  padding: 48px 0 74px;
+  padding: 3rem 0 4.625rem;
 }
 
 .inlineCtaInner {
@@ -805,12 +803,12 @@
     linear-gradient(116deg, transparent 0 43%, rgba(60, 196, 229, 0.06) 43% 55%, transparent 55%),
     linear-gradient(116deg, transparent 0 70%, rgba(255, 255, 255, 0.05) 70% 86%, transparent 86%),
     linear-gradient(115deg, #102f63 0%, #07162f 52%, #46203f 100%);
-  min-height: 234px;
-  padding: 64px 134px;
+  min-height: 14.625rem;
+  padding: 1.875rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 72px;
+  gap: 4.5rem;
   flex-wrap: wrap;
 }
 
@@ -821,8 +819,11 @@
   flex-wrap: nowrap;
 }
 
+/* gap: 1.75rem — the desktop 4.5rem gap is the horizontal space between
+   the text and button columns side by side; left unreduced, that same
+   value becomes an oversized vertical gap once stacked. */
 @media (max-width: 700px) {
-  .inlineCtaInner { padding: 40px 28px; }
+  .inlineCtaInner { gap: 1.75rem; }
 
   .edtechGradientCta .inlineCtaInner {
     grid-template-columns: 1fr;
@@ -834,7 +835,7 @@
   font-size: clamp(2rem, 2.8vw, 2.375rem);
   font-weight: 400;
   color: #fff;
-  margin: 0 0 28px;
+  margin: 0 0 1.75rem;
 }
 
 .inlineCtaDesc {
@@ -844,11 +845,16 @@
   margin: 0;
 }
 
+/* justify-self: center — .edtechGradientCta .inlineCtaInner is
+   display:grid, and grid items stretch to fill their column by default
+   even with no explicit width on the item itself. Once it collapses to a
+   single column at ≤700px, that default would stretch this button edge
+   to edge — a btn_r violation. See track/responsiveness-rules.md. */
 .inlineCtaBtn {
   font-family: var(--font-inter-tight), sans-serif;
   text-decoration: none;
-  min-height: 2.625rem;
   padding-inline: 1.5rem;
+  justify-self: center;
 }
 
 /* ── Process steps (dark, connected circles) ───────────────────────────────── */
@@ -1123,8 +1129,6 @@
   align-items: center;
   justify-content: center;
   gap: 10px;
-  min-width: 246px;
-  min-height: 49px;
   font-family: var(--font-inter-tight), sans-serif;
   font-size: 1rem;
   font-weight: 600;

@@ -2,19 +2,21 @@
   position: relative;
   overflow: hidden;
   width: 100%;
-  padding-top: calc(var(--header-height) + 26px);
+  padding-top: calc(var(--header-height) + 1.625rem);
   font-family: var(--font-inter-tight), sans-serif;
 }
 
-@media screen and (max-width: 768px) {
+/* 900px + calc(header-height+3rem) to byte-match AIHero.module.css (was a
+   flat 88px at 768px) — see track/hero-title-clamp-and-breakpoint-fix.md. */
+@media screen and (max-width: 900px) {
   .hero {
-    padding-top: 88px;
+    padding-top: calc(var(--header-height) + 3rem);
   }
 }
 
 @media screen and (min-width: 1024px) and (max-width: 1680px) {
   .hero {
-    padding-top: calc(var(--header-height) + 26px);
+    padding-top: calc(var(--header-height) + 1.625rem);
   }
 }
 
@@ -64,22 +66,25 @@
   padding: 0 0 8.5rem;
 }
 
+/* No padding-top here on purpose — AIHero.module.css's equivalent (.inner)
+   has none at all, so .hero's own padding-top is the only thing
+   controlling the header→breadcrumb gap. This wrapper used to add an
+   extra 40px on top of that — the exact same bug originally found on
+   ADLC's .wrapper — see track/hero-title-clamp-and-breakpoint-fix.md. */
 @media (max-width: 768px) {
   .heroWrapper {
-    padding-top: 40px;
-    padding-bottom: 72px;
+    padding-bottom: 4.5rem;
   }
 }
 
 @media (max-width: 420px) {
   .heroWrapper {
-    padding-top: 40px;
-    padding-bottom: 56px;
+    padding-bottom: 3.5rem;
   }
 }
 
 .container {
-  max-width: min(100%, 1540px);
+  max-width: min(100%, 96.25rem);
   margin: 0 auto;
   padding-inline: clamp(1.25rem, 3vw, 2.5rem);
 }
@@ -93,11 +98,11 @@
   display: flex;
   align-items: center;
   flex-wrap: wrap;
-  gap: 4px;
+  gap: 0.25rem;
   margin: 0 0 5rem;
   color: rgba(255, 255, 255, 0.5);
-  font-size: 14px;
-  line-height: 20px;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
 }
 
 .breadcrumbs a,
@@ -128,21 +133,26 @@
   align-items: center;
 }
 
-/* Title */
+/* Title — clamp floor/tier matched to AIHero.module.css's .title — see
+   track/hero-title-clamp-and-breakpoint-fix.md. */
 .title {
   color: #fff;
   font-family: var(--font-inter-tight), sans-serif;
-  font-size: clamp(2.5rem, 4.2vw, 4rem);
+  font-size: clamp(3rem, 5vw, 4rem);
   font-weight: 400;
-  line-height: 1.2;
+  line-height: 1.18;
   margin: 0 0 1.5rem;
   max-width: 85rem;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 900px) {
   .title {
-    font-size: clamp(2rem, 10vw, 2.5rem);
-    line-height: 1.2;
+    font-size: clamp(2.25rem, 9vw, 3rem);
+    line-height: 1.18;
+  }
+
+  .breadcrumbs {
+    margin-bottom: 2rem;
   }
 }
 
@@ -154,13 +164,13 @@
   font-weight: 400;
   line-height: 1.62;
   margin: 0 0 clamp(1.75rem, 3vw, 2.25rem);
-  max-width: 900px;
+  max-width: 56.25rem;
 }
 
 @media (max-width: 768px) {
   .description {
-    font-size: 16px;
-    line-height: 26px;
+    font-size: 1rem;
+    line-height: 1.625rem;
   }
 }
 
@@ -195,8 +205,8 @@
   position: absolute;
   left: 0;
   top: 0.2em;
-  width: 20px;
-  height: 20px;
+  width: 1.25rem;
+  height: 1.25rem;
   background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='none'%3E%3Cpath stroke='%233CC4E5' stroke-linecap='square' stroke-width='1.5' d='m13.5 4-7 7-3-3'/%3E%3C/svg%3E");
   background-repeat: no-repeat;
   background-size: contain;
@@ -205,12 +215,12 @@
 @media (max-width: 768px) {
   .points {
     grid-template-columns: 1fr;
-    gap: 24px;
+    gap: 1.5rem;
   }
 
   .pointsCol {
     border-bottom: 1px solid rgba(255, 255, 255, 0.15);
-    padding-bottom: 16px;
+    padding-bottom: 1rem;
   }
 
   .pointsCol:last-child {
@@ -255,7 +265,7 @@
 .ratings {
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: 0.25rem;
 }
 
 .ratingsLabel {
@@ -270,22 +280,33 @@
 .ratingsBadge {
   display: flex;
   align-items: center;
-  gap: 4px;
+  gap: 0.25rem;
 }
 
 .ratingsScore {
   color: #FFAB00;
   font-family: var(--font-inter-tight), sans-serif;
-  font-size: 16px;
+  font-size: 1rem;
   font-weight: 600;
   line-height: 1;
-  padding-left: 2px;
+  padding-left: 0.125rem;
 }
 
 @media (max-width: 768px) {
   .ctaRow {
     flex-direction: column;
     align-items: flex-start;
-    gap: 24px;
+    gap: 1.5rem;
+  }
+}
+
+/* Short-viewport safety (width-agnostic) — placed last on purpose, see
+   track/hero-responsiveness-rule.md. */
+@media (max-height: 450px) {
+  .hero {
+    padding-top: calc(var(--header-height) + 0.75rem);
+  }
+  .breadcrumbs {
+    margin-bottom: 1rem;
   }
 }

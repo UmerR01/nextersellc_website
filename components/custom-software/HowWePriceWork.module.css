@@ -2,7 +2,7 @@
 .section {
   background: #fff;
   font-family: var(--font-inter-tight), sans-serif;
-  padding: clamp(3.5rem, 5vw, 5rem) 24px;
+  padding: clamp(3.5rem, 5vw, 5rem) 1.5rem;
 }
 
 .container {
@@ -10,7 +10,7 @@
     linear-gradient(118deg, rgba(43, 42, 109, 0.18) 0%, transparent 42%),
     linear-gradient(115deg, var(--color-accent-dark) 0%, #17163f 100%);
   margin: 0 auto;
-  max-width: 1420px;
+  max-width: 88.75rem;
   overflow: hidden;
   padding: clamp(4.5rem, 6vw, 6.25rem) clamp(2rem, 7vw, 8.25rem);
   position: relative;
@@ -101,10 +101,10 @@
 
 .linkArrow {
   display: inline-block;
-  padding-left: 6px;
-  padding-right: 17px;
+  padding-left: 0.375rem;
+  padding-right: 1.0625rem;
   position: relative;
-  width: 17px;
+  width: 1.0625rem;
 }
 
 .linkArrow::before,
@@ -115,13 +115,13 @@
   background-size: cover;
   content: "";
   display: block;
-  height: 9px;
+  height: 0.5625rem;
   position: absolute;
-  right: 10px;
+  right: 0.625rem;
   top: 50%;
   transform: translateY(-50%);
   transition: 0.1s;
-  width: 6px;
+  width: 0.375rem;
 }
 
 .linkArrow::after {
@@ -131,13 +131,13 @@
 .card:hover .linkArrow::before,
 .card:focus-visible .linkArrow::before {
   animation: bounceBefore 1s linear infinite;
-  right: 6px;
+  right: 0.375rem;
 }
 
 .card:hover .linkArrow::after,
 .card:focus-visible .linkArrow::after {
   animation: bounceAfter 1s linear infinite;
-  right: 6px;
+  right: 0.375rem;
 }
 
 @keyframes bounceBefore {

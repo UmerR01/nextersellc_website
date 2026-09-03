@@ -22,9 +22,11 @@
   font-family: var(--fin-font);
 }
 
-@media (max-width: 768px) {
+/* 900px + calc(header-height+48px) to byte-match AIHero.module.css (was a
+   flat 5.5rem at 768px) — see track/hero-title-clamp-and-breakpoint-fix.md. */
+@media (max-width: 900px) {
   .hero {
-    padding-top: 5.5rem;
+    padding-top: calc(var(--header-height) + 48px);
     padding-bottom: 4.5rem;
   }
 }
@@ -137,12 +139,22 @@
 }
 
 .heroTitle {
-  font-size: clamp(2.25rem, 5vw, 4rem);
+  font-size: clamp(3rem, 5vw, 4rem);
   font-weight: 400;
   line-height: 1.2;
   color: var(--fin-fg);
   max-width: 85rem;
   margin: 0 0 1.5rem;
+}
+
+@media (max-width: 900px) {
+  .heroTitle {
+    font-size: clamp(2.25rem, 9vw, 3rem);
+  }
+
+  .heroBreadcrumbs {
+    margin-bottom: 2rem;
+  }
 }
 
 .heroDescription {
@@ -202,8 +214,18 @@
 }
 
 .btnPrimary {
-  min-height: 2.625rem;
   padding: 0.4rem 1.5rem;
   text-decoration: none;
   font-family: var(--fin-font);
+}
+
+/* Short-viewport safety (width-agnostic) — placed last on purpose, see
+   track/hero-responsiveness-rule.md. */
+@media (max-height: 450px) {
+  .hero {
+    padding-top: calc(var(--header-height) + 12px);
+  }
+  .heroBreadcrumbs {
+    margin-bottom: 1rem;
+  }
 }

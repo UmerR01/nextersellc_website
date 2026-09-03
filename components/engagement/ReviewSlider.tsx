@@ -51,8 +51,10 @@ export default function ReviewSlider(selection: ReviewSelectionProps = {}) {
                       <Image src={review.photo} alt={review.name} width={72} height={72} className={styles.authorPhoto} />
                     ) : null}
                   </div>
-                  <p className={styles.authorName}>{review.name}</p>
-                  <p className={styles.authorPosition}>{review.position}</p>
+                  <div className={styles.authorInfo}>
+                    <p className={styles.authorName}>{review.name}</p>
+                    <p className={styles.authorPosition}>{review.position}</p>
+                  </div>
                 </div>
 
                 {/* Left: quote */}

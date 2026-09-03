@@ -6,12 +6,12 @@
 
 @media (max-width: 768px) {
   .section {
-    padding: 56px 0;
+    padding: 3.5rem 0;
   }
 }
 
 .container {
-  max-width: min(100%, 1200px);
+  max-width: min(100%, 75rem);
   margin: 0 auto;
   padding-inline: clamp(1.25rem, 3vw, 2.5rem);
 }
@@ -36,13 +36,13 @@
   color: #5e6d8e;
   margin: 0 auto clamp(2.5rem, 4vw, 3.5rem);
   text-align: center;
-  max-width: 680px;
+  max-width: 42.5rem;
 }
 
 .grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 24px;
+  gap: 1.5rem;
 }
 
 @media (max-width: 1024px) {
@@ -54,29 +54,29 @@
 @media (max-width: 480px) {
   .grid {
     grid-template-columns: repeat(2, 1fr);
-    gap: 16px;
+    gap: 1rem;
   }
 }
 
 .card {
   background: transparent;
   border: none;
-  border-radius: 8px;
-  padding: 28px 24px;
+  border-radius: 0.5rem;
+  padding: 1.75rem 1.5rem;
   display: flex;
   flex-direction: column;
 }
 
 .iconWrap {
-  width: 72px;
-  height: 72px;
-  margin-bottom: 20px;
+  width: 4.5rem;
+  height: 4.5rem;
+  margin-bottom: 1.25rem;
   flex-shrink: 0;
 }
 
 .icon {
-  width: 72px;
-  height: 72px;
+  width: 4.5rem;
+  height: 4.5rem;
   object-fit: contain;
 }
 
@@ -86,7 +86,7 @@
   font-weight: 600;
   line-height: 1.3;
   color: #112244;
-  margin: 0 0 12px;
+  margin: 0 0 0.75rem;
 }
 
 .cardDesc {

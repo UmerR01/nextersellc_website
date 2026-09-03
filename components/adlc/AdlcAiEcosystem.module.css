@@ -1,6 +1,6 @@
 .section {
   background: #fff;
-  padding: 96px 0;
+  padding: 6rem 0;
 }
 
 .wrapper {
@@ -19,14 +19,14 @@
 }
 
 .description {
-  max-width: 860px;
+  max-width: 53.75rem;
   margin: 0 auto 3rem;
   text-align: center;
 }
 
 .description p {
   font-family: var(--font-inter-tight);
-  font-size: 22px;
+  font-size: 1.375rem;
   font-weight: 400;
   line-height: 1.64;
   color: var(--color-text-muted);
@@ -35,13 +35,13 @@
 .grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 16px;
+  gap: 1rem;
 }
 
 .card {
   background: #f7f9fe;
-  border-radius: 4px;
-  padding: 40px 36px;
+  border-radius: 0.25rem;
+  padding: 2.5rem 2.25rem;
   display: flex;
   flex-direction: column;
 }
@@ -52,12 +52,12 @@
   font-weight: 400;
   line-height: 1.3;
   color: var(--color-text);
-  margin-bottom: 20px;
+  margin-bottom: 1.25rem;
 }
 
 .cardBody p {
   font-family: var(--font-inter-tight);
-  font-size: 18px;
+  font-size: 1.125rem;
   line-height: 1.75;
   color: var(--color-text-muted);
   margin-bottom: 0.6rem;
@@ -80,7 +80,7 @@
 
 .cardBody li {
   font-family: var(--font-inter-tight);
-  font-size: 18px;
+  font-size: 1.125rem;
   line-height: 1.75;
   color: var(--color-text-muted);
   padding-left: 1.5rem;
@@ -88,6 +88,8 @@
   margin-bottom: 0.2rem;
 }
 
+/* Icon size/offset kept in px on purpose — tied 1:1 to the embedded SVG's
+   own 14x14 viewBox, not a layout dimension. */
 .cardBody li::before {
   content: "";
   position: absolute;
@@ -102,13 +104,13 @@
 
 @media (max-width: 768px) {
   .section {
-    padding: 72px 0;
+    padding: 4.5rem 0;
   }
   .grid {
     grid-template-columns: 1fr;
   }
   .card {
-    padding: 28px 20px;
+    padding: 1.75rem 1.25rem;
   }
   .title {
     font-size: 2rem;

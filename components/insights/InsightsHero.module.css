@@ -1,23 +1,27 @@
 /* .hero-about */
+/* width:100% (not 100vw) on purpose — .hero is a direct child of <main>
+   with no wrapping padding to escape, and 100vw counts the scrollbar,
+   which was overflowing the page horizontally by the scrollbar's width
+   whenever the page was tall enough to need one. See
+   track/hero-responsiveness-rule.md. */
 .hero {
-  margin-left: calc(50% - 50vw);
   overflow: hidden;
   padding-top: calc(var(--header-height) + 26px);
   position: relative;
-  width: 100vw;
+  width: 100%;
 }
 
 @media screen and (min-width: 1024px) and (max-width: 1680px) {
   .hero {
-    margin-left: 0;
     padding-top: calc(var(--header-height) + 26px);
-    width: 100%;
   }
 }
 
-@media screen and (max-width: 768px) {
+/* 900px (not 768px) to byte-match AIHero.module.css — see
+   track/hero-rule-sitewide-rollout.md. */
+@media screen and (max-width: 900px) {
   .hero {
-    padding-top: 88px;
+    padding-top: calc(var(--header-height) + 48px);
   }
 }
 
@@ -96,51 +100,52 @@
   padding-inline: clamp(1.25rem, 3vw, 2.5rem);
 }
 
-/* .hero-about__wrapper — position: relative so breadcrumbs can be absolute */
+/* Header→breadcrumb→title spacing kept consistent with
+   AIHero.module.css / AdlcHero.module.css — see
+   track/hero-responsiveness-rule.md. Breadcrumbs are normal in-flow now
+   (were position:absolute with a hand-tuned top offset before, which is
+   exactly the kind of extra wrapper-layer spacing that hid a bug on ADLC —
+   removed rather than carried forward). */
 .content {
   color: #fff;
-  padding: 88px 0 8.5rem;
+  padding: 0 0 8.5rem;
   position: relative;
+  text-align: left;
 }
 
 @media screen and (max-width: 768px) {
   .content {
-    padding-bottom: 72px;
-    padding-top: 40px;
-    text-align: left;
+    padding: 0 0 4.5rem;
   }
 }
 
-/* ── Breadcrumbs  ──────────────────────────────────
-   Original: position:absolute; top:8px; left:0;
-   white-space:nowrap; overflow:hidden
-   ────────────────────────────────────────────────── */
 .breadcrumbs {
   display: flex;
-  left: 0;
-  overflow: hidden;
-  position: absolute;
-  text-overflow: ellipsis;
-  top: 8px;
-  white-space: nowrap;
+  align-items: center;
+  gap: 4px;
+  margin-bottom: 4.5rem;
+  font-size: 0.875rem;
+  line-height: 1.4;
+  color: rgba(255, 255, 255, 0.5);
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 900px) {
   .breadcrumbs {
-    position: relative;
-    top: -40px;
+    margin-bottom: 2rem;
   }
 }
 
 .breadcrumbs a {
   color: #fff;
-  font-size: 14px;
-  font-weight: 400;
-  line-height: 20px;
-  margin-right: 8px;
-  padding-right: 24px;
-  position: relative;
   text-decoration: none;
+  position: relative;
+  padding-right: 24px;
+  margin-right: 8px;
+}
+
+.breadcrumbs a:hover {
+  color: var(--color-accent, #3cc4e5);
+  transition: all 0.3s ease;
 }
 
 /* Chevron arrow after each link */
@@ -156,60 +161,41 @@
   width: 16px;
 }
 
-.breadcrumbs a:hover {
-  color: var(--color-accent, #3cc4e5);
-  transition: all 0.3s ease;
-}
-
 /* Current page span */
 .breadcrumbs span {
   color: #899fb6;
-  font-size: 14px;
-  font-weight: 400;
-  line-height: 20px;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
 }
 
 /* ── Title (.hero-about__title)  ───────────────────── */
 .title {
-  font-size: 40px;
+  font-size: clamp(3rem, 5vw, 4rem);
   font-weight: 400;
-  line-height: 48px;
+  line-height: 1.18;
   color: #fff;
-  max-width: 980px;
+  max-width: 85rem;
+  margin: 0 0 1.75rem;
   text-align: left;
 }
 
-@media screen and (min-width: 768px) {
+@media screen and (max-width: 900px) {
   .title {
-    font-size: 64px;
-    line-height: 77px;
+    font-size: clamp(2.25rem, 9vw, 3rem);
   }
 }
 
 /* ── Description (.hero-about__description .wysiwyg_big) ─ */
 .description {
   color: #fff;
-  font-size: 22px;
+  font-size: clamp(1.15rem, 1.8vw, 1.5rem);
   font-weight: 400;
-  line-height: 36px;
-  margin: 24px 0 0;
-  max-width: 880px;
+  line-height: 1.5;
+  margin: 0;
+  max-width: 58rem;
   text-align: left;
 }
 
 .description p + p {
   margin-top: 0;
-}
-
-@media screen and (max-width: 768px) {
-  .description {
-    font-size: 16px;
-    line-height: 26px;
-    margin-top: 16px;
-  }
 }
 
 /* ── Buttons (.hero-about__buttons .left) ─────────── */
@@ -229,7 +215,8 @@
   }
 }
 
-/* .button.first: filled accent */
+/* .button.first: filled accent — no forced width/height at any size, see
+   track/hero-responsiveness-rule.md and track/cta-banner-btn-r-fixes.md. */
 .btnPrimary {
   align-items: center;
   background-color: var(--color-accent, #3cc4e5);
@@ -240,14 +227,9 @@
   display: inline-flex;
   font-size: 16px;
   justify-content: center;
-
-  overflow: hidden;
   padding: 0.4rem 1.25rem;
-  position: relative;
-  text-align: center;
   text-decoration: none;
   transition: all 0.5s ease;
-  z-index: 1;
 }
 
 .btnPrimary:hover {
@@ -255,18 +237,13 @@
   color: var(--color-accent, #3cc4e5);
 }
 
-@media screen and (max-width: 768px) {
-  .btnPrimary {
-    flex-basis: auto;
-    flex-grow: 0;
-    max-width: max-content;
-    width: auto;
+/* Short-viewport safety (width-agnostic) — placed last on purpose, see
+   track/hero-responsiveness-rule.md. */
+@media (max-height: 450px) {
+  .hero {
+    padding-top: calc(var(--header-height) + 12px);
   }
-}
-
-@media screen and (min-width: 769px) and (max-width: 1365px) {
-  .btnPrimary {
-    width: auto;
-    max-width: max-content;
+  .breadcrumbs {
+    margin-bottom: 1rem;
   }
 }

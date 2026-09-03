@@ -9,9 +9,9 @@
     radial-gradient(circle at 88% 8%, rgba(60,196,229,0.24), transparent 28%),
     radial-gradient(circle at 5% 78%, rgba(60,196,229,0.18), transparent 30%),
     linear-gradient(121deg, #02102c 0%, #112244 62%, #02102c 100%);
-  padding-top: calc(var(--header-height) + 72px);
-  padding-bottom: 88px;
-  min-height: 843px;
+  padding-top: calc(var(--header-height) + 1.625rem);
+  padding-bottom: 5.5rem;
+  min-height: 52.6875rem;
 }
 
 .hero::before {
@@ -41,14 +41,14 @@
   display: flex;
   align-items: center;
   flex-wrap: wrap;
-  gap: 4px;
-  margin-bottom: 24px;
+  gap: 0.25rem;
+  margin-bottom: 1.5rem;
 }
 
 .breadcrumbs a {
   color: rgba(255,255,255,0.6);
   font-family: var(--font-inter-tight), sans-serif;
-  font-size: 14px;
+  font-size: 0.875rem;
   font-weight: 400;
   text-decoration: none;
   transition: color 0.3s;
@@ -58,25 +58,33 @@
 
 .breadcrumbs a::after {
   content: "›";
-  margin-left: 6px;
+  margin-left: 0.375rem;
   color: rgba(255,255,255,0.4);
 }
 
 .breadcrumbs span {
   color: rgba(255,255,255,0.4);
   font-family: var(--font-inter-tight), sans-serif;
-  font-size: 14px;
+  font-size: 0.875rem;
 }
 
 .heroTitle {
   font-family: var(--font-inter-tight), sans-serif;
-  font-size: clamp(2rem, 4.5vw, 4rem);
+  font-size: clamp(3rem, 5vw, 4rem);
   font-weight: 400;
   line-height: 1.1;
   color: #fff;
-  margin: 0 0 28px;
+  margin: 0 0 1.75rem;
   letter-spacing: -0.01em;
-  max-width: 860px;
+  max-width: 53.75rem;
+}
+
+/* 900px, matched to AIHero.module.css's breadcrumb/title tier — see
+   track/hero-title-clamp-and-breakpoint-fix.md. */
+@media (max-width: 900px) {
+  .heroTitle {
+    font-size: clamp(2.25rem, 9vw, 3rem);
+  }
 }
 
 .heroDesc {
@@ -84,14 +92,13 @@
   font-size: clamp(1rem, 1.3vw, 1.25rem);
   line-height: 1.7;
   color: rgba(255,255,255,0.8);
-  max-width: 720px;
-  margin: 0 0 40px;
+  max-width: 45rem;
+  margin: 0 0 2.5rem;
 }
 
 .heroBtn {
   font-family: var(--font-inter-tight), sans-serif;
   text-decoration: none;
-  min-height: 2.625rem;
   padding-inline: 1.5rem;
 }
 
@@ -104,15 +111,14 @@
   display: flex;
   align-items: center;
   flex-wrap: wrap;
-  gap: 32px;
+  gap: 2rem;
 }
 
 .heroSecondaryBtn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-height: 60px;
-  padding: 0 34px;
+  padding: 0 2.125rem;
   border: 2px solid var(--color-accent);
   color: var(--color-accent);
   font-family: var(--font-inter-tight), sans-serif;
@@ -129,8 +135,8 @@
 .ratings {
   display: flex;
   flex-direction: column;
-  gap: 4px;
-  margin-left: 40px;
+  gap: 0.25rem;
+  margin-left: 2.5rem;
 }
 
 .ratingsLabel {
@@ -144,7 +150,7 @@
 .ratingsBadge {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 0.5rem;
 }
 
 .ratingStars,
@@ -159,16 +165,29 @@
 .ratingStars { letter-spacing: 2px; }
 
 @media (max-width: 768px) {
-  .hero { min-height: auto; padding-top: 108px; padding-bottom: 64px; }
-  .heroTitle { font-size: clamp(1.75rem, 7vw, 2.5rem); }
-  .heroActions { align-items: flex-start; flex-direction: column; gap: 20px; }
+  .hero { min-height: auto; padding-bottom: 4rem; }
+  .heroActions { align-items: flex-start; flex-direction: column; gap: 1.25rem; }
   .ratings { margin-left: 0; }
+}
+
+/* padding-top uses the same calc(header-height + 3rem) formula as
+   AIHero.module.css (was a flat 6.75rem here, and the title clamp used a
+   different min/vw/max than the AIHero reference) — see
+   track/hero-title-clamp-and-breakpoint-fix.md. */
+@media (max-width: 900px) {
+  .hero { padding-top: calc(var(--header-height) + 3rem); }
+}
+
+/* Short-viewport safety (width-agnostic) — placed last on purpose, see
+   track/hero-responsiveness-rule.md. */
+@media (max-height: 450px) {
+  .hero { padding-top: calc(var(--header-height) + 0.75rem); }
 }
 
 /* ── Logos ─────────────────────────────────────────────────────────────────── */
 .logosSection {
   background: #fff;
-  padding: 32px 0;
+  padding: 2rem 0;
 }
 
 .logosWrapper {
@@ -176,11 +195,11 @@
   align-items: center;
   justify-content: center;
   flex-wrap: wrap;
-  gap: 24px 40px;
+  gap: 1.5rem 2.5rem;
 }
 
 .logoImg {
-  max-height: 38px;
+  max-height: 2.375rem;
   width: auto;
   opacity: 0.75;
   filter: grayscale(1);
@@ -197,9 +216,9 @@
   line-height: 1.1;
   color: #0b1734;
   text-align: center;
-  margin: 0 auto 24px;
+  margin: 0 auto 1.5rem;
   letter-spacing: -0.01em;
-  max-width: 1000px;
+  max-width: 62.5rem;
 }
 
 .sectionDesc {
@@ -208,7 +227,7 @@
   line-height: 1.65;
   color: #5e6d8e;
   text-align: center;
-  max-width: 880px;
+  max-width: 55rem;
   margin: 0 auto;
 }
 
@@ -219,9 +238,9 @@
   line-height: 1.1;
   color: #fff;
   text-align: center;
-  margin: 0 auto 24px;
+  margin: 0 auto 1.5rem;
   letter-spacing: -0.01em;
-  max-width: 1000px;
+  max-width: 62.5rem;
 }
 
 .sectionDescWhite {
@@ -230,39 +249,39 @@
   line-height: 1.65;
   color: rgba(255,255,255,0.75);
   text-align: center;
-  max-width: 880px;
+  max-width: 55rem;
   margin: 0 auto;
 }
 
 /* ── Light block ───────────────────────────────────────────────────────────── */
 .blockLight {
   background: #f7f9fe;
-  padding: 96px 0;
+  padding: 6rem 0;
   position: relative;
 }
 
 /* ── Dark block ────────────────────────────────────────────────────────────── */
 .blockDark {
   background: linear-gradient(135deg, #02102c 0%, #112244 100%);
-  padding: 96px 0;
+  padding: 6rem 0;
   position: relative;
 }
 
 /* ── White block ───────────────────────────────────────────────────────────── */
 .blockWhite {
   background: #fff;
-  padding: 96px 0;
+  padding: 6rem 0;
 }
 
 /* ── 3-col card grid ───────────────────────────────────────────────────────── */
 .cardsGrid {
-  margin-top: 64px;
+  margin-top: 4rem;
 }
 
 .cardsRow3 {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 24px;
+  gap: 1.5rem;
 }
 
 @media (max-width: 900px) {
@@ -277,10 +296,10 @@
   background: #fff;
   border: 1px solid #e6eff7;
   border-radius: 2px;
-  padding: 36px 32px;
+  padding: 2.25rem 2rem;
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 1rem;
   position: relative;
   overflow: hidden;
   transition: box-shadow 0.3s, border-color 0.3s;
@@ -295,10 +314,10 @@
   background: rgba(255,255,255,0.05);
   border: 1px solid rgba(255,255,255,0.1);
   border-radius: 2px;
-  padding: 36px 32px;
+  padding: 2.25rem 2rem;
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 1rem;
   transition: border-color 0.3s, background 0.3s;
 }
 
@@ -308,8 +327,8 @@
 }
 
 .cardIcon {
-  width: 56px;
-  height: 56px;
+  width: 3.5rem;
+  height: 3.5rem;
   object-fit: contain;
   flex-shrink: 0;
 }
@@ -353,7 +372,7 @@
 .cardLink {
   display: inline-flex;
   align-items: center;
-  gap: 6px;
+  gap: 0.375rem;
   font-family: var(--font-inter-tight), sans-serif;
   font-size: 0.875rem;
   font-weight: 600;
@@ -362,12 +381,12 @@
   transition: gap 0.2s;
 }
 
-.cardLink:hover { gap: 10px; }
+.cardLink:hover { gap: 0.625rem; }
 
 /* ── Benefits (centered, reference layout) ─────────────────────────────────── */
 .benefitSection {
   background: #fff;
-  padding: 130px 0 70px;
+  padding: 8.125rem 0 4.375rem;
 }
 
 .benefitTitle {
@@ -377,9 +396,9 @@
   line-height: 1.12;
   color: #0b1734;
   text-align: center;
-  margin: 0 auto 40px;
+  margin: 0 auto 2.5rem;
   letter-spacing: -0.02em;
-  max-width: 860px;
+  max-width: 53.75rem;
 }
 
 .benefitDesc {
@@ -388,15 +407,15 @@
   line-height: 1.7;
   color: #5e6d8e;
   text-align: center;
-  max-width: 1100px;
-  margin: 0 auto 64px;
+  max-width: 68.75rem;
+  margin: 0 auto 4rem;
 }
 
 .benefitStats {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 56px 48px;
-  max-width: 1120px;
+  gap: 3.5rem 3rem;
+  max-width: 70rem;
   margin: 0 auto;
 }
 
@@ -405,12 +424,12 @@
   flex-direction: column;
   align-items: center;
   text-align: center;
-  gap: 28px;
+  gap: 1.75rem;
 }
 
 .benefitIcon {
-  width: 56px;
-  height: 56px;
+  width: 3.5rem;
+  height: 3.5rem;
   object-fit: contain;
   flex-shrink: 0;
 }
@@ -425,15 +444,15 @@
 }
 
 @media (max-width: 700px) {
-  .benefitSection { padding: 72px 0; }
-  .benefitStats { grid-template-columns: 1fr; gap: 48px; }
-  .benefitDesc { margin-bottom: 56px; }
+  .benefitSection { padding: 4.5rem 0; }
+  .benefitStats { grid-template-columns: 1fr; gap: 3rem; }
+  .benefitDesc { margin-bottom: 3.5rem; }
 }
 
 /* ── Horizontal tabs (Services, dark) ──────────────────────────────────────── */
 .serviceBlock {
-  margin: 0 26px;
-  padding: 96px 0 64px;
+  margin: 0 1.625rem;
+  padding: 6rem 0 4rem;
   overflow: hidden;
   background:
     linear-gradient(116deg, rgba(60, 196, 229, 0.08) 0 12%, transparent 12% 100%),
@@ -442,7 +461,7 @@
 }
 
 .serviceBlock :global(.container) {
-  max-width: 1126px;
+  max-width: 70.375rem;
 }
 
 .svcTitle {
@@ -454,7 +473,7 @@
   text-align: center;
   margin: 0 auto;
   letter-spacing: -0.01em;
-  max-width: 1000px;
+  max-width: 62.5rem;
 }
 
 .svcDesc {
@@ -463,12 +482,12 @@
   line-height: 1.65;
   color: rgba(255, 255, 255, 0.75);
   text-align: center;
-  max-width: 820px;
+  max-width: 51.25rem;
   margin: 0 auto;
 }
 
 .tabsWrap {
-  margin-top: 74px;
+  margin-top: 4.625rem;
 }
 
 .tabsNav {
@@ -486,8 +505,8 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 18px;
-  padding: 0 56px 20px;
+  gap: 1.125rem;
+  padding: 0 3.5rem 1.25rem;
   background: none;
   border: none;
   border-bottom: 2px solid transparent;
@@ -511,23 +530,23 @@
 }
 
 .tabIcon {
-  width: 56px;
-  height: 56px;
+  width: 3.5rem;
+  height: 3.5rem;
   object-fit: contain;
   flex-shrink: 0;
 }
 
 .tabPanel {
   display: none;
-  padding-top: 64px;
+  padding-top: 4rem;
 }
 
 .tabPanelActive {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) 432px;
-  gap: 80px;
+  grid-template-columns: minmax(0, 1fr) 27rem;
+  gap: 5rem;
   align-items: center;
-  padding-top: 64px;
+  padding-top: 4rem;
 }
 
 @media (max-width: 860px) {
@@ -539,11 +558,11 @@
   width: 100%;
   border-radius: 4px;
   object-fit: cover;
-  height: 346px;
-  max-height: 346px;
+  height: 21.625rem;
+  max-height: 21.625rem;
 }
 
-.tabPanelContent { display: flex; flex-direction: column; gap: 24px; }
+.tabPanelContent { display: flex; flex-direction: column; gap: 1.5rem; }
 
 .tabPanelTitle {
   font-family: var(--font-inter-tight), sans-serif;
@@ -567,7 +586,7 @@
   margin: 0;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 18px 48px;
+  gap: 1.125rem 3rem;
 }
 
 @media (max-width: 560px) {
@@ -579,7 +598,7 @@
   font-size: 1.0625rem;
   line-height: 1.5;
   color: rgba(255, 255, 255, 0.95);
-  padding-left: 32px;
+  padding-left: 2rem;
   position: relative;
 }
 
@@ -598,7 +617,7 @@
 .tabPanelLink {
   display: inline-flex;
   align-items: center;
-  gap: 6px;
+  gap: 0.375rem;
   font-family: var(--font-inter-tight), sans-serif;
   font-size: 1rem;
   font-weight: 600;
@@ -607,47 +626,47 @@
   transition: gap 0.2s;
 }
 
-.tabPanelLink:hover { gap: 10px; }
+.tabPanelLink:hover { gap: 0.625rem; }
 
 @media (max-width: 900px) {
   .serviceBlock {
-    margin-inline: 16px;
-    padding: 72px 0 56px;
+    margin-inline: 1rem;
+    padding: 4.5rem 0 3.5rem;
   }
 
   .tabsWrap {
-    margin-top: 52px;
+    margin-top: 3.25rem;
   }
 
   .tabBtn {
-    padding-inline: 28px;
+    padding-inline: 1.75rem;
     font-size: 1rem;
   }
 
   .tabIcon {
-    width: 44px;
-    height: 44px;
+    width: 2.75rem;
+    height: 2.75rem;
   }
 }
 
 /* ── Vertical tabs (Solutions) ─────────────────────────────────────────────── */
 .solutionsBlock {
   background: #fff;
-  padding: 122px 0 48px;
+  padding: 7.625rem 0 3rem;
 }
 
 .solutionsBlock :global(.container) {
-  max-width: 1120px;
+  max-width: 70rem;
 }
 
 .solutionsBlock .sectionTitle {
   font-size: clamp(2.5rem, 4vw, 3.5rem);
   color: #000;
-  margin-bottom: 24px;
+  margin-bottom: 1.5rem;
 }
 
 .solutionsBlock .sectionDesc {
-  max-width: 1060px;
+  max-width: 66.25rem;
   color: #111;
   line-height: 1.55;
   text-align: left;
@@ -656,23 +675,23 @@
 
 .vertTabsWrap {
   display: grid;
-  grid-template-columns: 380px minmax(0, 1fr);
-  gap: 64px;
-  margin-top: 68px;
+  grid-template-columns: 23.75rem minmax(0, 1fr);
+  gap: 4rem;
+  margin-top: 4.25rem;
   align-items: start;
 }
 
 .vertTabList {
   background: linear-gradient(180deg, #eaf2fd 0%, #dae7f7 100%);
   align-self: stretch;
-  min-height: 420px;
-  padding-top: 16px;
+  min-height: 26.25rem;
+  padding-top: 1rem;
 }
 
 .vertTabBtn {
   display: block;
   width: 100%;
-  padding: 24px 32px;
+  padding: 1.5rem 2rem;
   background: none;
   border: none;
   cursor: pointer;
@@ -695,10 +714,10 @@
 }
 
 .vertTabContent {
-  padding: 48px 0 0;
+  padding: 3rem 0 0;
   display: flex;
   flex-direction: column;
-  gap: 30px;
+  gap: 1.875rem;
 }
 
 .vertTabTitle {
@@ -715,7 +734,7 @@
   line-height: 1.55;
   color: #111;
   margin: 0;
-  max-width: 690px;
+  max-width: 43.125rem;
 }
 
 .vertTabBullets {
@@ -724,7 +743,7 @@
   margin: 0;
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 0.625rem;
 }
 
 .vertTabBullets li {
@@ -732,7 +751,7 @@
   font-size: 0.9375rem;
   line-height: 1.55;
   color: #0b1734;
-  padding-left: 20px;
+  padding-left: 1.25rem;
   position: relative;
 }
 
@@ -748,16 +767,16 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 8px;
+  gap: 0.5rem;
   font-family: var(--font-inter-tight), sans-serif;
   font-size: 0.9375rem;
   font-weight: 400;
   color: var(--color-accent);
   background: transparent;
   border: 1px solid var(--color-accent);
-  min-width: 300px;
-  min-height: 80px;
-  padding: 18px 40px;
+  min-width: 18.75rem;
+  min-height: 5rem;
+  padding: 1.125rem 2.5rem;
   cursor: pointer;
   text-align: center;
   text-decoration: none;
@@ -772,7 +791,7 @@
 
 @media (max-width: 768px) {
   .solutionsBlock {
-    padding: 72px 0 48px;
+    padding: 4.5rem 0 3rem;
   }
 
   .solutionsBlock .sectionDesc {
@@ -781,8 +800,8 @@
 
   .vertTabsWrap {
     grid-template-columns: 1fr;
-    gap: 32px;
-    margin-top: 44px;
+    gap: 2rem;
+    margin-top: 2.75rem;
   }
 
   .vertTabList {
@@ -797,18 +816,17 @@
 /* ── Inline CTA ────────────────────────────────────────────────────────────── */
 .inlineCta {
   background: #fff;
-  padding: 48px 0 74px;
+  padding: 3rem 0 4.625rem;
 }
 
 .inlineCtaInner {
   background: linear-gradient(115deg, var(--color-accent-dark) 0%, #17163f 100%);
-  min-height: 234px;
-  padding: 64px 134px;
+  padding: 1.875rem;
   display: grid;
   grid-template-columns: minmax(0, 1fr) auto;
   align-items: center;
   justify-content: space-between;
-  gap: 72px;
+  gap: 4.5rem;
   overflow: hidden;
 }
 
@@ -819,10 +837,13 @@
   flex-wrap: nowrap;
 }
 
+/* gap: 1.75rem — the desktop 4.5rem gap is the horizontal space between
+   the text and button columns side by side; left unreduced, that same
+   value becomes an oversized vertical gap once stacked. */
 @media (max-width: 700px) {
   .inlineCtaInner {
     grid-template-columns: 1fr;
-    padding: 40px 28px;
+    gap: 1.75rem;
   }
 
   .adtechGradientCta .inlineCtaInner {
@@ -835,7 +856,7 @@
   font-size: clamp(2rem, 2.8vw, 2.375rem);
   font-weight: 400;
   color: #fff;
-  margin: 0 0 28px;
+  margin: 0 0 1.75rem;
 }
 
 .inlineCtaDesc {
@@ -845,19 +866,23 @@
   margin: 0;
 }
 
+/* justify-self: center — .inlineCtaInner is display:grid, and grid items
+   stretch to fill their column by default even with no explicit width on
+   the item itself. Once it collapses to a single column at ≤43.75rem, that
+   default would stretch this button edge to edge — a btn_r violation.
+   See track/responsiveness-rules.md. */
 .inlineCtaBtn {
   font-family: var(--font-inter-tight), sans-serif;
-  min-height: 2.625rem;
   padding: 0.4rem 1.5rem;
   text-decoration: none;
   white-space: nowrap;
   flex-shrink: 0;
+  justify-self: center;
 }
 
 .adtechGradientCta .inlineCtaBtn {
   border-radius: var(--radius-button);
   border: 2px solid var(--color-accent);
-  min-height: 2.625rem;
   padding: 0.4rem 1.5rem;
 }
 
@@ -868,8 +893,8 @@
 
 /* ── Process steps (dark, connected circles) ───────────────────────────────── */
 .processBlock {
-  margin: 0 20px;
-  padding: 96px 0 70px;
+  margin: 0 1.25rem;
+  padding: 6rem 0 4.375rem;
   overflow: hidden;
   background:
     linear-gradient(108deg, transparent 0 88%, rgba(60, 196, 229, 0.05) 88% 100%),
@@ -878,16 +903,16 @@
 }
 
 .processBlock :global(.container) {
-  max-width: 1100px;
+  max-width: 68.75rem;
 }
 
 .processBlock .sectionTitleWhite {
   font-size: clamp(2.5rem, 4vw, 3.5rem);
-  margin-bottom: 26px;
+  margin-bottom: 1.625rem;
 }
 
 .processBlock .sectionDescWhite {
-  max-width: 1080px;
+  max-width: 67.5rem;
   font-size: clamp(1.125rem, 1.55vw, 1.5rem);
   line-height: 1.45;
   color: rgba(255, 255, 255, 0.95);
@@ -896,8 +921,8 @@
 .processGrid {
   display: flex;
   flex-direction: column;
-  max-width: 790px;
-  margin: 72px auto 0;
+  max-width: 49.375rem;
+  margin: 4.5rem auto 0;
 }
 
 .processStep {
@@ -906,22 +931,22 @@
   position: relative;
 }
 
-.processStep:not(:first-child) { margin-top: 48px; }
+.processStep:not(:first-child) { margin-top: 3rem; }
 
 /* Vertical connector line between circles */
 .processStep:not(:last-child)::after {
   content: "";
   position: absolute;
-  left: 47px;
-  top: 112px;
+  left: 2.9375rem;
+  top: 7rem;
   width: 2px;
-  height: calc(100% + 48px - 112px);
+  height: calc(100% + 3rem - 7rem);
   background: rgba(255, 255, 255, 0.18);
 }
 
 .processNum {
-  width: 96px;
-  height: 96px;
+  width: 6rem;
+  height: 6rem;
   flex-shrink: 0;
   border-radius: 50%;
   /* Filled inner circle → gap ring → outer ring (circle-within-a-circle) */
@@ -939,12 +964,12 @@
 }
 
 .processStepBody {
-  margin-left: 36px;
+  margin-left: 2.25rem;
   flex: 1;
   display: flex;
   flex-direction: column;
-  gap: 18px;
-  padding-top: 6px;
+  gap: 1.125rem;
+  padding-top: 0.375rem;
 }
 
 .processStepTitle {
@@ -961,7 +986,7 @@
   margin: 0;
   display: flex;
   flex-direction: column;
-  gap: 13px;
+  gap: 0.8125rem;
 }
 
 .processStepBullets li {
@@ -969,7 +994,7 @@
   font-size: 1.125rem;
   line-height: 1.5;
   color: rgba(255, 255, 255, 0.95);
-  padding-left: 32px;
+  padding-left: 2rem;
   position: relative;
 }
 
@@ -987,30 +1012,30 @@
 
 @media (max-width: 768px) {
   .processBlock {
-    margin-inline: 16px;
-    padding: 72px 0 56px;
+    margin-inline: 1rem;
+    padding: 4.5rem 0 3.5rem;
   }
 
-  .processGrid { margin-top: 40px; }
-  .processStep:not(:first-child) { margin-top: 40px; }
+  .processGrid { margin-top: 2.5rem; }
+  .processStep:not(:first-child) { margin-top: 2.5rem; }
   .processStep:not(:last-child)::after {
-    left: 27px;
-    top: 68px;
-    height: calc(100% + 40px - 68px);
+    left: 1.6875rem;
+    top: 4.25rem;
+    height: calc(100% + 2.5rem - 4.25rem);
   }
   .processNum {
-    width: 56px;
-    height: 56px;
+    width: 3.5rem;
+    height: 3.5rem;
     font-size: 1.125rem;
     box-shadow: 0 0 0 4px #081530, 0 0 0 6px rgba(255, 255, 255, 0.22);
   }
-  .processStepBody { margin-left: 28px; }
+  .processStepBody { margin-left: 1.75rem; }
 }
 
 /* ── Process testimonial (CSCitation quote style, own white section) ───────── */
 .processTestimonialSection {
   background: #fff;
-  padding: 96px 0;
+  padding: 6rem 0;
 }
 
 .processTestimonial {
@@ -1020,7 +1045,7 @@
   background: linear-gradient(to right, #fef4f1 0%, #f0f5fe 100%);
   padding: clamp(3rem, 4.5vw, 4rem) clamp(2rem, 5vw, 4.5rem);
   margin: 0 auto;
-  max-width: 1180px;
+  max-width: 73.75rem;
 }
 
 /* Person column (photo + name + position) — right side */
@@ -1032,8 +1057,8 @@
 }
 
 .ptPhoto {
-  width: 72px;
-  height: 72px;
+  width: 4.5rem;
+  height: 4.5rem;
   border-radius: 4px;
   object-fit: cover;
   display: block;
@@ -1053,7 +1078,7 @@
   font-size: 0.875rem;
   font-weight: 400;
   color: #5e6d8e;
-  margin-top: 4px;
+  margin-top: 0.25rem;
 }
 
 /* Quote column (mark + quote) — left side */
@@ -1089,7 +1114,7 @@
     flex-direction: column;
     align-items: flex-start;
     gap: 2rem;
-    padding: 40px 28px;
+    padding: 2.5rem 1.75rem;
   }
   .ptQuoteMark { font-size: 2.5rem; }
 }
@@ -1097,37 +1122,37 @@
 /* ── Architecture image (How AI integration fits into existing software) ───── */
 .architectureSection {
   background: #fff;
-  padding: 0 0 clamp(48px, 6vw, 72px);
+  padding: 0 0 clamp(3rem, 6vw, 4.5rem);
 }
 
 .architectureImg {
   display: block;
   width: 100%;
   height: auto;
-  border-radius: 8px;
+  border-radius: 0.5rem;
 }
 
 /* ── PDF CTA ───────────────────────────────────────────────────────────────── */
 .pdfCta {
   background: #fff;
-  padding: 0 0 44px;
+  padding: 0 0 2.75rem;
 }
 
 .pdfCtaInner {
-  min-height: 317px;
+  min-height: 19.8125rem;
   background:
     linear-gradient(116deg, transparent 0 49%, rgba(60, 196, 229, 0.07) 49% 61%, transparent 61%),
     linear-gradient(133deg, transparent 0 67%, rgba(255, 255, 255, 0.07) 67% 83%, transparent 83%),
     linear-gradient(115deg, #123468 0%, #06142e 58%, #562342 100%);
-  padding: 64px 122px;
+  padding: 4rem 7.625rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 72px;
+  gap: 4.5rem;
   flex-wrap: wrap;
 }
 
-.pdfCtaBody { display: flex; flex-direction: column; gap: 24px; max-width: 520px; }
+.pdfCtaBody { display: flex; flex-direction: column; gap: 1.5rem; max-width: 32.5rem; }
 
 .pdfCtaTitle {
   font-family: var(--font-inter-tight), sans-serif;
@@ -1150,15 +1175,13 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 10px;
-  min-width: 246px;
-  min-height: 49px;
+  gap: 0.625rem;
   font-family: var(--font-inter-tight), sans-serif;
   font-size: 1rem;
   font-weight: 600;
   color: #fff;
   background: var(--color-accent);
-  padding: 16px 32px;
+  padding: 1rem 2rem;
   text-decoration: none;
   white-space: nowrap;
   flex-shrink: 0;
@@ -1171,8 +1194,8 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 22px;
-  height: 18px;
+  width: 1.375rem;
+  height: 1.125rem;
   border: 1px solid currentColor;
   border-radius: 2px;
   font-size: 0.5rem;
@@ -1183,13 +1206,13 @@
 /* ── Security section ──────────────────────────────────────────────────────── */
 @media (max-width: 900px) {
   .pdfCta {
-    padding-bottom: 32px;
+    padding-bottom: 2rem;
   }
 
   .pdfCtaInner {
     min-height: auto;
-    padding: 48px 32px;
-    gap: 32px;
+    padding: 3rem 2rem;
+    gap: 2rem;
   }
 
   .pdfCtaBody {
@@ -1199,11 +1222,11 @@
 
 .securityBlock {
   background: #f7f9fe;
-  padding: 62px 0 96px;
+  padding: 3.875rem 0 6rem;
 }
 
 .securityBlock :global(.container) {
-  max-width: 1080px;
+  max-width: 67.5rem;
 }
 
 .securityBlock .sectionTitle {
@@ -1215,8 +1238,8 @@
 .securityGrid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 74px 76px;
-  margin-top: 74px;
+  gap: 4.625rem 4.75rem;
+  margin-top: 4.625rem;
 }
 
 @media (max-width: 900px) {
@@ -1230,12 +1253,12 @@
 .securityCard {
   display: flex;
   flex-direction: column;
-  gap: 22px;
+  gap: 1.375rem;
 }
 
 .securityIcon {
-  width: 52px;
-  height: 52px;
+  width: 3.25rem;
+  height: 3.25rem;
   object-fit: contain;
 }
 
@@ -1253,7 +1276,7 @@
   margin: 0;
   display: flex;
   flex-direction: column;
-  gap: 14px;
+  gap: 0.875rem;
   flex: 1;
 }
 
@@ -1262,7 +1285,7 @@
   font-size: 1.0625rem;
   line-height: 1.55;
   color: #1d2d50;
-  padding-left: 30px;
+  padding-left: 1.875rem;
   position: relative;
 }
 
@@ -1281,7 +1304,7 @@
 /* ── Tech stack ────────────────────────────────────────────────────────────── */
 .techStackSection {
   background: #fff;
-  padding: 96px 0;
+  padding: 6rem 0;
 }
 
 .techStackTitle {
@@ -1295,7 +1318,7 @@
 }
 
 .techRows {
-  margin-top: 56px;
+  margin-top: 3.5rem;
   display: flex;
   flex-direction: column;
 }
@@ -1303,10 +1326,10 @@
 /* 6-col rows: 1 label column + 5 logo columns */
 .techRow {
   display: grid;
-  grid-template-columns: minmax(160px, 1fr) 5fr;
-  gap: 40px;
+  grid-template-columns: minmax(10rem, 1fr) 5fr;
+  gap: 2.5rem;
   align-items: center;
-  padding: 40px 0;
+  padding: 2.5rem 0;
   border-top: 1px solid #e6eff7;
 }
 
@@ -1323,35 +1346,35 @@
 .techLogos {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
-  gap: 36px 24px;
+  gap: 2.25rem 1.5rem;
   align-items: center;
   justify-items: start;
 }
 
 .techLogoImg {
   width: auto;
-  height: 50px;
+  height: 3.125rem;
   max-width: 100%;
   object-fit: contain;
   display: block;
 }
 
 .techLogoImgSm {
-  height: 32px;
+  height: 2rem;
 }
 
 @media (max-width: 768px) {
   .techRow {
     grid-template-columns: 1fr;
-    gap: 20px;
+    gap: 1.25rem;
     align-items: start;
   }
   .techRowLabel { font-weight: 600; }
-  .techLogos { grid-template-columns: repeat(3, 1fr); gap: 28px 16px; }
+  .techLogos { grid-template-columns: repeat(3, 1fr); gap: 1.75rem 1rem; }
 }
 
 .archImgWrap {
-  margin-top: 64px;
+  margin-top: 4rem;
   text-align: center;
 }
 
@@ -1365,21 +1388,21 @@
 /* ── Engagement models (dark, vertical tabs) ───────────────────────────────── */
 .engagementWrap {
   background: #fff;
-  padding: 106px 0 144px;
+  padding: 6.625rem 0 9rem;
 }
 
 .engagementWrap :global(.container) {
-  max-width: 1160px;
+  max-width: 72.5rem;
 }
 
 .engagementWrap .sectionTitleWhite {
   color: #000;
   font-size: clamp(2.5rem, 4vw, 3.5rem);
-  margin-bottom: 28px;
+  margin-bottom: 1.75rem;
 }
 
 .engagementWrap .sectionDescWhite {
-  max-width: 1130px;
+  max-width: 70.625rem;
   color: #111;
   text-align: left;
   font-size: clamp(1.125rem, 1.55vw, 1.5rem);
@@ -1388,24 +1411,24 @@
 
 .engVertTabsWrap {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) 380px;
+  grid-template-columns: minmax(0, 1fr) 23.75rem;
   grid-template-areas: "content tabs";
-  gap: 80px;
-  margin-top: 68px;
+  gap: 5rem;
+  margin-top: 4.25rem;
   align-items: start;
 }
 
 .engVertTabList {
   grid-area: tabs;
-  min-height: 354px;
-  padding: 16px 0 32px;
+  min-height: 22.125rem;
+  padding: 1rem 0 2rem;
   background: linear-gradient(180deg, #eaf2fd 0%, #dae7f7 100%);
 }
 
 .engVertTabBtn {
   display: block;
   width: 100%;
-  padding: 24px 32px;
+  padding: 1.5rem 2rem;
   background: none;
   border: none;
   cursor: pointer;
@@ -1429,10 +1452,10 @@
 
 .engVertTabContent {
   grid-area: content;
-  padding: 48px 0 0 36px;
+  padding: 3rem 0 0 2.25rem;
   display: flex;
   flex-direction: column;
-  gap: 28px;
+  gap: 1.75rem;
 }
 
 .engVertTabTitle {
@@ -1448,13 +1471,13 @@
   font-size: 1.125rem;
   line-height: 1.55;
   color: #111;
-  max-width: 650px;
+  max-width: 40.625rem;
   margin: 0;
 }
 
 .engModelLink {
   display: inline-flex;
-  margin: 42px 0 0 24px;
+  margin: 2.625rem 0 0 1.5rem;
   font-family: var(--font-inter-tight), sans-serif;
   font-size: 1rem;
   font-weight: 600;
@@ -1464,7 +1487,7 @@
 
 @media (max-width: 768px) {
   .engagementWrap {
-    padding: 72px 0;
+    padding: 4.5rem 0;
   }
 
   .engagementWrap .sectionDescWhite {
@@ -1476,8 +1499,8 @@
     grid-template-areas:
       "tabs"
       "content";
-    gap: 32px;
-    margin-top: 44px;
+    gap: 2rem;
+    margin-top: 2.75rem;
   }
 
   .engVertTabList {
@@ -1492,21 +1515,21 @@
 /* ── Industry cards (3-col with icon) ─────────────────────────────────────── */
 .industriesBlock {
   background: #f7f9fe;
-  padding: 94px 0 112px;
+  padding: 5.875rem 0 7rem;
 }
 
 .industriesBlock :global(.container) {
-  max-width: 1160px;
+  max-width: 72.5rem;
 }
 
 .industriesBlock .sectionTitle {
   color: #000;
   font-size: clamp(2.5rem, 4.1vw, 3.5rem);
-  margin-bottom: 24px;
+  margin-bottom: 1.5rem;
 }
 
 .industriesBlock .sectionDesc {
-  max-width: 1040px;
+  max-width: 65rem;
   color: #1d2d50;
   font-size: clamp(1.125rem, 1.45vw, 1.375rem);
   line-height: 1.6;
@@ -1515,25 +1538,25 @@
 .industryGrid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 80px 72px;
-  margin-top: 78px;
+  gap: 5rem 4.5rem;
+  margin-top: 4.875rem;
 }
 
 @media (max-width: 900px) {
   .industryGrid {
     grid-template-columns: repeat(2, 1fr);
-    gap: 56px 40px;
+    gap: 3.5rem 2.5rem;
   }
 }
 
 @media (max-width: 540px) {
   .industriesBlock {
-    padding: 72px 0;
+    padding: 4.5rem 0;
   }
 
   .industryGrid {
     grid-template-columns: 1fr;
-    margin-top: 52px;
+    margin-top: 3.25rem;
   }
 }
 
@@ -1544,7 +1567,7 @@
   padding: 0;
   display: flex;
   flex-direction: column;
-  gap: 22px;
+  gap: 1.375rem;
   position: relative;
   isolation: isolate;
   text-decoration: none;
@@ -1568,10 +1591,10 @@
 }
 
 .industryCardIcon {
-  width: 56px;
-  height: 56px;
+  width: 3.5rem;
+  height: 3.5rem;
   object-fit: contain;
-  margin-bottom: 4px;
+  margin-bottom: 0.25rem;
 }
 
 .industryCardTitle {
@@ -1594,7 +1617,7 @@
 .industryCardLink {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
+  gap: 0.5rem;
   font-family: var(--font-inter-tight), sans-serif;
   font-size: 1.0625rem;
   font-weight: 400;
@@ -1645,21 +1668,21 @@
 /* ── Approach section (vertical tabs, numbered, light bg) ──────────────────── */
 .approachBlock {
   background: #fff;
-  padding: 92px 0 0;
+  padding: 5.75rem 0 0;
 }
 
 .approachBlock :global(.container) {
-  max-width: 1120px;
+  max-width: 70rem;
 }
 
 .approachBlock .sectionTitle {
   color: #000;
   font-size: clamp(2.5rem, 4.3vw, 3.75rem);
-  margin-bottom: 22px;
+  margin-bottom: 1.375rem;
 }
 
 .approachBlock .sectionDesc {
-  max-width: 1080px;
+  max-width: 67.5rem;
   color: #111;
   text-align: left;
   font-size: clamp(1.125rem, 1.55vw, 1.5rem);
@@ -1668,9 +1691,9 @@
 
 .approachVertTabsWrap {
   display: grid;
-  grid-template-columns: 380px minmax(0, 1fr);
-  gap: 64px;
-  margin-top: 68px;
+  grid-template-columns: 23.75rem minmax(0, 1fr);
+  gap: 4rem;
+  margin-top: 4.25rem;
   border: none;
   align-items: start;
 }
@@ -1678,14 +1701,14 @@
 .approachVertTabList {
   background: linear-gradient(180deg, #eaf2fd 0%, #dae7f7 100%);
   border-right: none;
-  min-height: 624px;
-  padding-top: 16px;
+  min-height: 39rem;
+  padding-top: 1rem;
 }
 
 .approachVertTabBtn {
   display: block;
   width: 100%;
-  padding: 24px 32px;
+  padding: 1.5rem 2rem;
   background: none;
   border: none;
   cursor: pointer;
@@ -1714,8 +1737,8 @@
   font-weight: 700;
   color: var(--color-accent);
   background: rgba(60,196,229,0.08);
-  width: 28px;
-  height: 28px;
+  width: 1.75rem;
+  height: 1.75rem;
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -1724,10 +1747,10 @@
 }
 
 .approachVertTabContent {
-  padding: 46px 0 0;
+  padding: 2.875rem 0 0;
   display: flex;
   flex-direction: column;
-  gap: 28px;
+  gap: 1.75rem;
 }
 
 .approachVertTabTitle {
@@ -1744,7 +1767,7 @@
   line-height: 1.55;
   color: #111;
   margin: 0;
-  max-width: 690px;
+  max-width: 43.125rem;
 }
 
 .approachVertTabBullets {
@@ -1753,7 +1776,7 @@
   margin: 0;
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 1rem;
 }
 
 .approachVertTabBullets li {
@@ -1761,7 +1784,7 @@
   font-size: 1.125rem;
   line-height: 1.55;
   color: #111;
-  padding-left: 32px;
+  padding-left: 2rem;
   position: relative;
 }
 
@@ -1779,7 +1802,7 @@
 
 @media (max-width: 768px) {
   .approachBlock {
-    padding: 72px 0 0;
+    padding: 4.5rem 0 0;
   }
 
   .approachBlock .sectionDesc {
@@ -1788,8 +1811,8 @@
 
   .approachVertTabsWrap {
     grid-template-columns: 1fr;
-    gap: 32px;
-    margin-top: 44px;
+    gap: 2rem;
+    margin-top: 2.75rem;
   }
 
   .approachVertTabList {
@@ -1805,22 +1828,22 @@
 /* ── AI-specific cards (3 dark cards in dark section) ──────────────────────── */
 .aiCardsSection {
   background: #fff;
-  padding: 86px 0 86px;
+  padding: 5.375rem 0 5.375rem;
 }
 
 .aiCardsSection :global(.container) {
-  max-width: 1200px;
+  max-width: 75rem;
 }
 
 .aiCardsGrid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 40px 84px;
+  gap: 2.5rem 5.25rem;
   padding: 0;
 }
 
 @media (max-width: 900px) {
-  .aiCardsGrid { grid-template-columns: 1fr; padding: 0 24px; }
+  .aiCardsGrid { grid-template-columns: 1fr; padding: 0 1.5rem; }
 }
 
 @media (min-width: 601px) and (max-width: 900px) {
@@ -1831,13 +1854,13 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: 22px;
+  gap: 1.375rem;
 }
 
 .aiCard .cardIcon {
-  width: 56px;
-  height: 56px;
-  margin-bottom: 6px;
+  width: 3.5rem;
+  height: 3.5rem;
+  margin-bottom: 0.375rem;
 }
 
 .aiCardTitle {
@@ -1858,7 +1881,7 @@
 }
 
 .aiCard .cardLink {
-  margin-top: 4px;
+  margin-top: 0.25rem;
   color: var(--color-accent);
   font-size: 1.0625rem;
   font-weight: 400;
@@ -1885,8 +1908,8 @@
   position: absolute;
   bottom: 0;
   left: 0;
-  width: 340px;
-  height: 340px;
+  width: 21.25rem;
+  height: 21.25rem;
   background: var(--color-accent);
   filter: blur(400px);
   opacity: 0.76;
@@ -1898,8 +1921,8 @@
   position: absolute;
   top: 0;
   right: 0;
-  width: 340px;
-  height: 340px;
+  width: 21.25rem;
+  height: 21.25rem;
   background: var(--color-accent);
   filter: blur(400px);
   opacity: 0.6;
@@ -1916,22 +1939,22 @@
   font-size: clamp(1.75rem, 3vw, 2.5rem);
   font-weight: 400;
   color: #0b1734;
-  margin: 0 0 48px;
+  margin: 0 0 3rem;
 }
 
 .clGrid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 64px;
-  max-width: 1100px;
+  gap: 4rem;
+  max-width: 68.75rem;
 }
 
 @media (max-width: 900px) {
-  .clGrid { grid-template-columns: 1fr 1fr; gap: 48px; }
+  .clGrid { grid-template-columns: 1fr 1fr; gap: 3rem; }
 }
 
 @media (max-width: 640px) {
-  .clGrid { grid-template-columns: 1fr; gap: 48px; }
+  .clGrid { grid-template-columns: 1fr; gap: 3rem; }
 }
 
 .clColTitle {
@@ -1939,7 +1962,7 @@
   font-size: 1.375rem;
   font-weight: 600;
   color: #0b1734;
-  margin: 0 0 24px;
+  margin: 0 0 1.5rem;
 }
 
 .clList {
@@ -1952,7 +1975,7 @@
 
 .clItem {
   line-height: 1;
-  margin-bottom: 16px;
+  margin-bottom: 1rem;
 }
 
 .clItem:last-child { margin-bottom: 0; }
@@ -1983,8 +2006,8 @@
 
 .clArrow {
   display: inline;
-  padding-left: 6px;
-  padding-right: 17px;
+  padding-left: 0.375rem;
+  padding-right: 1.0625rem;
   position: relative;
 }
 
@@ -1993,10 +2016,10 @@
   content: "";
   display: block;
   position: absolute;
-  right: 10px;
+  right: 0.625rem;
   top: 50%;
-  width: 6px;
-  height: 9px;
+  width: 0.375rem;
+  height: 0.5625rem;
   transform: translateY(-50%);
   transition: 0.1s;
   background-image: url("data:image/svg+xml;charset=utf8,%3Csvg width='6' height='10' viewBox='0 0 6 10' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M7.94319e-08 8.59L3.59 5L-3.53625e-07 1.41L1 0.5L5.5 5L1 9.5L7.94319e-08 8.59Z' fill='%233CC4E5'/%3E%3C/svg%3E");
@@ -2009,12 +2032,12 @@
 
 .clLink:hover .clArrow::before {
   animation: clBounceBefore 1s linear infinite;
-  right: 6px;
+  right: 0.375rem;
 }
 
 .clLink:hover .clArrow::after {
   animation: clBounceAfter 1s linear infinite;
-  right: 6px;
+  right: 0.375rem;
 }
 
 @keyframes clBounceBefore {
@@ -2037,11 +2060,11 @@
 .heroPoints {
   list-style: none;
   padding: 0;
-  margin: 0 0 40px;
+  margin: 0 0 2.5rem;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 24px;
-  max-width: 900px;
+  gap: 1.5rem;
+  max-width: 56.25rem;
 }
 
 .heroPoints li {
@@ -2049,25 +2072,25 @@
   font-size: 0.9375rem;
   line-height: 1.5;
   color: rgba(255, 255, 255, 0.85);
-  padding-top: 20px;
+  padding-top: 1.25rem;
   border-top: 2px solid var(--color-accent);
 }
 
 @media (max-width: 768px) {
-  .heroPoints { grid-template-columns: 1fr; gap: 16px; }
+  .heroPoints { grid-template-columns: 1fr; gap: 1rem; }
 }
 
 /* ── Why choose (results) ──────────────────────────────────────────────────── */
 .resultsRow {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 64px;
+  gap: 4rem;
   align-items: center;
-  margin-top: 56px;
+  margin-top: 3.5rem;
 }
 
 @media (max-width: 900px) {
-  .resultsRow { grid-template-columns: 1fr; gap: 40px; }
+  .resultsRow { grid-template-columns: 1fr; gap: 2.5rem; }
 }
 
 .resultsList {
@@ -2076,7 +2099,7 @@
   margin: 0;
   display: flex;
   flex-direction: column;
-  gap: 18px;
+  gap: 1.125rem;
 }
 
 .resultsList li {
@@ -2084,7 +2107,7 @@
   font-size: 1.125rem;
   line-height: 1.55;
   color: #1d2d50;
-  padding-left: 34px;
+  padding-left: 2.125rem;
   position: relative;
 }
 
@@ -2105,7 +2128,7 @@
 .resultsImg {
   width: 100%;
   height: auto;
-  max-width: 528px;
+  max-width: 33rem;
   border-radius: 4px;
   object-fit: cover;
 }
@@ -2114,8 +2137,8 @@
 .ecomServicesGrid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 32px;
-  margin-top: 64px;
+  gap: 2rem;
+  margin-top: 4rem;
 }
 
 @media (max-width: 980px) {
@@ -2130,10 +2153,10 @@
   background: #fff;
   border: 1px solid #e6eff7;
   border-radius: 2px;
-  padding: 36px 32px;
+  padding: 2.25rem 2rem;
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 1rem;
   transition: box-shadow 0.3s, border-color 0.3s;
 }
 
@@ -2172,7 +2195,7 @@
   margin: 0;
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 0.625rem;
 }
 
 .ecomBullets li {
@@ -2180,7 +2203,7 @@
   font-size: 0.9375rem;
   line-height: 1.5;
   color: #1d2d50;
-  padding-left: 28px;
+  padding-left: 1.75rem;
   position: relative;
 }
 
@@ -2188,9 +2211,9 @@
   content: "";
   position: absolute;
   left: 0;
-  top: 4px;
-  width: 17px;
-  height: 12px;
+  top: 0.25rem;
+  width: 1.0625rem;
+  height: 0.75rem;
   background-image: url("data:image/svg+xml;charset=utf8,%3Csvg width='19' height='14' viewBox='0 0 19 14' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M17.25 1.75037L6.75 12.2504L1.5 7.00037' stroke='%233CC4E5' stroke-width='1.5' stroke-linecap='square'/%3E%3C/svg%3E");
   background-repeat: no-repeat;
   background-size: contain;
@@ -2200,8 +2223,8 @@
 .solutionsGrid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 24px;
-  margin-top: 64px;
+  gap: 1.5rem;
+  margin-top: 4rem;
 }
 
 @media (max-width: 980px) {
@@ -2216,10 +2239,10 @@
   background: rgba(255, 255, 255, 0.05);
   border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 2px;
-  padding: 32px 28px;
+  padding: 2rem 1.75rem;
   display: flex;
   flex-direction: column;
-  gap: 14px;
+  gap: 0.875rem;
   transition: border-color 0.3s, background 0.3s;
 }
 
@@ -2251,7 +2274,7 @@
   margin: 0;
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 0.625rem;
 }
 
 .solutionBullets li {
@@ -2259,7 +2282,7 @@
   font-size: 0.9375rem;
   line-height: 1.5;
   color: rgba(255, 255, 255, 0.85);
-  padding-left: 28px;
+  padding-left: 1.75rem;
   position: relative;
 }
 
@@ -2267,9 +2290,9 @@
   content: "";
   position: absolute;
   left: 0;
-  top: 4px;
-  width: 17px;
-  height: 12px;
+  top: 0.25rem;
+  width: 1.0625rem;
+  height: 0.75rem;
   background-image: url("data:image/svg+xml;charset=utf8,%3Csvg width='19' height='14' viewBox='0 0 19 14' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M17.25 1.75037L6.75 12.2504L1.5 7.00037' stroke='%233CC4E5' stroke-width='1.5' stroke-linecap='square'/%3E%3C/svg%3E");
   background-repeat: no-repeat;
   background-size: contain;
@@ -2279,8 +2302,8 @@
 .costGrid {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
-  gap: 24px;
-  margin-top: 64px;
+  gap: 1.5rem;
+  margin-top: 4rem;
 }
 
 @media (max-width: 1100px) {
@@ -2294,8 +2317,8 @@
 .costCard {
   display: flex;
   flex-direction: column;
-  gap: 14px;
-  padding-top: 24px;
+  gap: 0.875rem;
+  padding-top: 1.5rem;
   border-top: 2px solid var(--color-accent);
 }
 
@@ -2322,8 +2345,8 @@
 .hcAudienceGrid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 32px;
-  margin-top: 64px;
+  gap: 2rem;
+  margin-top: 4rem;
 }
 
 @media (max-width: 768px) {
@@ -2335,16 +2358,16 @@
   background: #f7f9fe;
   border: 1px solid #e6eff7;
   border-radius: 2px;
-  padding: 36px 32px;
+  padding: 2.25rem 2rem;
   display: flex;
   flex-direction: column;
-  gap: 18px;
+  gap: 1.125rem;
 }
 
 .solBlock {
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  gap: 0.375rem;
 }
 
 .solSubhead {
@@ -2370,29 +2393,29 @@
   font-size: 1rem;
   line-height: 1.7;
   color: rgba(255, 255, 255, 0.8);
-  margin: 0 0 8px;
+  margin: 0 0 0.5rem;
 }
 
 /* ── Fintech: industry cards with image ────────────────────────────────────── */
 .finIndustryImg {
   width: 100%;
-  height: 180px;
+  height: 11.25rem;
   object-fit: cover;
   border-radius: 2px;
-  margin-bottom: 4px;
+  margin-bottom: 0.25rem;
 }
 
 /* ── Fintech: integration split (text + image) ─────────────────────────────── */
 .finSplit {
   display: grid;
   grid-template-columns: 1.15fr 0.85fr;
-  gap: 48px;
+  gap: 3rem;
   align-items: center;
-  margin-top: 48px;
+  margin-top: 3rem;
 }
 
 @media (max-width: 900px) {
-  .finSplit { grid-template-columns: 1fr; gap: 32px; }
+  .finSplit { grid-template-columns: 1fr; gap: 2rem; }
 }
 
 .finSplitText p {
@@ -2400,7 +2423,7 @@
   font-size: 1rem;
   line-height: 1.7;
   color: #5e6d8e;
-  margin: 0 0 16px;
+  margin: 0 0 1rem;
 }
 
 .finSplitImg {
@@ -2414,12 +2437,12 @@
 .finStats {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 32px;
-  margin-top: 24px;
+  gap: 2rem;
+  margin-top: 1.5rem;
 }
 
 @media (max-width: 900px) {
-  .finStats { grid-template-columns: repeat(3, 1fr); gap: 20px; }
+  .finStats { grid-template-columns: repeat(3, 1fr); gap: 1.25rem; }
 }
 
 @media (max-width: 560px) {
@@ -2428,7 +2451,7 @@
 
 .finStat {
   text-align: center;
-  padding: 20px 12px;
+  padding: 1.25rem 0.75rem;
 }
 
 .finStatNum {
@@ -2444,15 +2467,15 @@
   font-size: 0.9375rem;
   line-height: 1.4;
   color: #5e6d8e;
-  margin-top: 10px;
+  margin-top: 0.625rem;
 }
 
 /* ── Adtech: results-in-numbers multi-column bullet grid ───────────────────── */
 .adtResultsGrid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 16px 40px;
-  margin-top: 40px;
+  gap: 1rem 2.5rem;
+  margin-top: 2.5rem;
 }
 
 .adtResultsGrid li {
@@ -2470,7 +2493,7 @@
 
 /* ── AI PoC: Build vs Buy comparison table ─────────────────────────────────── */
 .compareWrap {
-  margin-top: 40px;
+  margin-top: 2.5rem;
   overflow-x: auto;
   border: 1px solid #e6eff7;
   border-radius: 4px;
@@ -2479,14 +2502,14 @@
 .compareTable {
   width: 100%;
   border-collapse: collapse;
-  min-width: 720px;
+  min-width: 45rem;
   font-family: var(--font-inter-tight), sans-serif;
 }
 
 .compareTable th,
 .compareTable td {
   text-align: left;
-  padding: 18px 20px;
+  padding: 1.125rem 1.25rem;
   vertical-align: top;
   font-size: 0.95rem;
   line-height: 1.55;
@@ -2531,12 +2554,12 @@
   flex-wrap: wrap;
   align-items: center;
   justify-content: center;
-  gap: 44px;
-  padding: 48px 0 8px;
+  gap: 2.75rem;
+  padding: 3rem 0 0.5rem;
 }
 
 .badgeStripImg {
-  height: 60px;
+  height: 3.75rem;
   width: auto;
   object-fit: contain;
   opacity: 0.85;
@@ -2551,10 +2574,10 @@
   background: #fff;
   border: 1px solid #e6eff7;
   border-radius: 2px;
-  padding: 32px 28px;
+  padding: 2rem 1.75rem;
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 1rem;
   align-items: flex-start;
   transition: box-shadow 0.3s, border-color 0.3s;
 }
@@ -2568,8 +2591,8 @@
 .twoColCards {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 24px;
-  margin-top: 56px;
+  gap: 1.5rem;
+  margin-top: 3.5rem;
 }
 
 @media (max-width: 820px) {
@@ -2583,7 +2606,7 @@
   margin: 0;
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 0.625rem;
   flex: 1;
 }
 
@@ -2592,7 +2615,7 @@
   font-size: 1.0625rem;
   line-height: 1.5;
   color: #1d2d50;
-  padding-left: 26px;
+  padding-left: 1.625rem;
   position: relative;
   text-transform: capitalize;
 }
@@ -2601,9 +2624,9 @@
   content: "";
   position: absolute;
   left: 0;
-  top: 4px;
-  width: 16px;
-  height: 12px;
+  top: 0.25rem;
+  width: 1rem;
+  height: 0.75rem;
   background-image: url("data:image/svg+xml;charset=utf8,%3Csvg width='19' height='14' viewBox='0 0 19 14' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M17.25 1.75037L6.75 12.2504L1.5 7.00037' stroke='%233CC4E5' stroke-width='1.5' stroke-linecap='square'/%3E%3C/svg%3E");
   background-repeat: no-repeat;
   background-size: contain;
@@ -3147,16 +3170,16 @@
 .processBlock .processStep:not(:last-child)::after {
   content: "";
   position: absolute;
-  left: 43px;
-  top: 96px;
+  left: 2.6875rem;
+  top: 6rem;
   width: 2px;
-  height: calc(100% + 4.15rem - 96px);
+  height: calc(100% + 4.15rem - 6rem);
   background: var(--color-border);
 }
 
 .processBlock .processNum {
-  width: 88px;
-  height: 88px;
+  width: 5.5rem;
+  height: 5.5rem;
   flex-shrink: 0;
   border-radius: 50%;
   background: var(--color-accent-dark);
@@ -3215,14 +3238,14 @@
   }
 
   .processBlock .processStep:not(:last-child)::after {
-    left: 23px;
-    top: 54px;
-    height: calc(100% + 2.75rem - 54px);
+    left: 1.4375rem;
+    top: 3.375rem;
+    height: calc(100% + 2.75rem - 3.375rem);
   }
 
   .processBlock .processNum {
-    width: 48px;
-    height: 48px;
+    width: 3rem;
+    height: 3rem;
     font-size: 1rem;
     box-shadow: 0 0 0 4px var(--color-bg), 0 0 0 6px var(--color-border);
   }
@@ -3435,8 +3458,8 @@
 
 .industriesBlock .industryBullets li::before {
   top: 0.35em;
-  width: 19px;
-  height: 14px;
+  width: 1.1875rem;
+  height: 0.875rem;
 }
 
 .industriesBlock .industryCardLink {
@@ -3560,7 +3583,7 @@
 
 .techListCard {
   background: #f7f9fe;
-  border-radius: 12px;
+  border-radius: 0.75rem;
   padding: 2rem 2.25rem;
 }
 
@@ -3592,8 +3615,8 @@
   position: absolute;
   left: 0;
   top: 0.55em;
-  width: 6px;
-  height: 6px;
+  width: 0.375rem;
+  height: 0.375rem;
   border-radius: 50%;
   background: var(--color-accent, #3cc4e5);
 }
@@ -3606,7 +3629,7 @@
 
 /* ── OpenAI: comparison table (wrapper vs dual-engine) ─────────────────────── */
 .compareWrap {
-  margin-top: 40px;
+  margin-top: 2.5rem;
   overflow-x: auto;
   border: 1px solid #e6eff7;
   border-radius: 4px;
@@ -3615,14 +3638,14 @@
 .compareTable {
   width: 100%;
   border-collapse: collapse;
-  min-width: 640px;
+  min-width: 40rem;
   font-family: var(--font-inter-tight), sans-serif;
 }
 
 .compareTable th,
 .compareTable td {
   text-align: left;
-  padding: 18px 20px;
+  padding: 1.125rem 1.25rem;
   vertical-align: top;
   font-size: 0.95rem;
   line-height: 1.55;
@@ -3911,7 +3934,7 @@
 
 .openaiServicesBlock .compareTable {
   width: 100%;
-  min-width: 720px;
+  min-width: 45rem;
   border-collapse: collapse;
   font-family: var(--font-inter-tight), sans-serif;
 }
@@ -4022,7 +4045,7 @@
 
 .openaiCompareSection .compareTable {
   width: 100%;
-  min-width: 720px;
+  min-width: 45rem;
   border-collapse: collapse;
   font-family: var(--font-inter-tight), sans-serif;
 }
@@ -4461,11 +4484,18 @@
   gap: 0;
   border-bottom: 1px solid #dce8f4;
   overflow-x: auto;
-  scrollbar-width: none;
+  overflow-y: hidden;
+  scrollbar-width: thin;
 }
 
 .aiIntegrationWhoBlock .tabsNav::-webkit-scrollbar {
-  display: none;
+  display: block;
+  height: 6px;
+}
+
+.aiIntegrationWhoBlock .tabsNav::-webkit-scrollbar-thumb {
+  background: #dce8f4;
+  border-radius: 3px;
 }
 
 .aiIntegrationWhoBlock .tabBtn {
@@ -4626,17 +4656,17 @@
 .aiIntegrationProcessBlock .processStep:not(:last-child)::after {
   content: "";
   position: absolute;
-  left: 50px;
-  top: 102px;
+  left: 3.125rem;
+  top: 6.375rem;
   width: 1px;
-  height: calc(100% + 4.4rem - 102px);
+  height: calc(100% + 4.4rem - 6.375rem);
   background: #e9f1fa;
 }
 
 .aiIntegrationProcessBlock .processNum {
-  width: 102px;
-  height: 102px;
-  flex: 0 0 102px;
+  width: 6.375rem;
+  height: 6.375rem;
+  flex: 0 0 6.375rem;
   border-radius: 50%;
   background: #f5f8fc;
   box-shadow: 0 0 0 3px #fff, 0 0 0 5px #e6eff7;
@@ -4697,15 +4727,15 @@
   }
 
   .aiIntegrationProcessBlock .processStep:not(:last-child)::after {
-    left: 24px;
-    top: 56px;
-    height: calc(100% + 3rem - 56px);
+    left: 1.5rem;
+    top: 3.5rem;
+    height: calc(100% + 3rem - 3.5rem);
   }
 
   .aiIntegrationProcessBlock .processNum {
-    width: 50px;
-    height: 50px;
-    flex-basis: 50px;
+    width: 3.125rem;
+    height: 3.125rem;
+    flex-basis: 3.125rem;
     font-size: 1rem;
     box-shadow: 0 0 0 3px #fff, 0 0 0 5px #e6eff7;
   }
@@ -5182,18 +5212,18 @@
 }
 
 .aiIntegrationProcessBlock .processStep:not(:last-child)::after {
-  left: 60px;
-  top: 120px;
+  left: 3.75rem;
+  top: 7.5rem;
   width: 2px;
-  height: calc(100% + 4.4rem - 120px);
+  height: calc(100% + 4.4rem - 7.5rem);
   background: #e3ecf5;
 }
 
 .aiIntegrationProcessBlock .processNum {
-  width: 104px;
-  height: 104px;
-  flex-basis: 104px;
-  margin: 8px;
+  width: 6.5rem;
+  height: 6.5rem;
+  flex-basis: 6.5rem;
+  margin: 0.5rem;
   border: 2px solid #e3ecf5;
   background: #f4f7fd;
   box-shadow: 0 0 0 6px #fff, 0 0 0 8px #e3ecf5;
@@ -5204,16 +5234,16 @@
 
 @media (max-width: 760px) {
   .aiIntegrationProcessBlock .processStep:not(:last-child)::after {
-    left: 29px;
-    top: 53px;
-    height: calc(100% + 3rem - 53px);
+    left: 1.8125rem;
+    top: 3.3125rem;
+    height: calc(100% + 3rem - 3.3125rem);
   }
 
   .aiIntegrationProcessBlock .processNum {
-    width: 48px;
-    height: 48px;
-    flex-basis: 48px;
-    margin: 5px;
+    width: 3rem;
+    height: 3rem;
+    flex-basis: 3rem;
+    margin: 0.3125rem;
     border: 2px solid #e3ecf5;
     box-shadow: 0 0 0 3px #fff, 0 0 0 5px #e3ecf5;
     font-size: 1rem;

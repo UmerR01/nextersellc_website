@@ -328,7 +328,6 @@
   text-decoration: none;
   white-space: nowrap;
   transition: background 0.2s, transform 0.15s;
-  min-width: 180px;
 }
 
 .ctaBtn:hover {

@@ -1,17 +1,17 @@
 .section {
   background: #fff;
   border-top: 0;
-  padding: clamp(64px, 6vw, 92px) 0;
+  padding: clamp(4rem, 6vw, 5.75rem) 0;
 }
 
 .container {
-  max-width: 1150px;
+  max-width: 71.875rem;
   margin: 0 auto;
   padding: 0 clamp(1rem, 4vw, 3rem);
 }
 
 .title {
-  margin: 0 0 24px;
+  margin: 0 0 1.5rem;
   color: #000;
   font-family: var(--font-inter-tight);
   font-size: clamp(2.25rem, 3.4vw, 3.5rem);
@@ -23,35 +23,55 @@
 .accent { color: var(--color-accent); }
 
 .description {
-  max-width: 1120px;
-  margin: 0 auto 64px;
+  max-width: 70rem;
+  margin: 0 auto 4rem;
   text-align: center;
 }
 
 .description p {
-  margin: 0 0 4px;
+  margin: 0 0 0.25rem;
   color: #112244;
   font-family: var(--font-inter-tight);
   font-size: clamp(1rem, 1.35vw, 1.375rem);
   line-height: 1.65;
 }
 
+/* Scrollbar shown, not hidden — .tab's flex: 1 0 0 + min-width means this
+   row overflows and needs to scroll at high desktop zoom or narrow
+   widths; a visible scrollbar is what tells a desktop user (relying on
+   mouse drag, not touch swipe) that scrolling is possible at all. See
+   track/responsiveness-rules.md's tabsnav_r rule. */
 .tabs {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  display: flex;
+  justify-content: space-between;
   gap: 0;
-  margin-bottom: 64px;
+  margin-bottom: 4rem;
   border-bottom: 2px solid #e6eff7;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scrollbar-width: thin;
+}
+
+.tabs::-webkit-scrollbar {
+  display: block;
+  height: 6px;
+}
+
+.tabs::-webkit-scrollbar-thumb {
+  background: #dce8f4;
+  border-radius: 3px;
 }
 
 .tab {
+  flex: 1 0 0;
+  min-width: 16rem;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: flex-end;
-  gap: 16px;
+  gap: 1rem;
   margin-bottom: -2px;
-  padding: 0 16px 18px;
+  padding: 0 1rem 1.125rem;
   border: 0;
   border-bottom: 2px solid transparent;
   background: transparent;
@@ -75,8 +95,8 @@
 }
 
 .tabIcon {
-  width: 56px;
-  height: 56px;
+  width: 3.5rem;
+  height: 3.5rem;
   object-fit: contain;
   filter: brightness(0) saturate(100%) invert(65%) sepia(15%) saturate(675%) hue-rotate(174deg) brightness(93%) contrast(87%);
   transition: filter 0.2s ease;
@@ -90,12 +110,12 @@
 .panel { display: block; }
 
 .panelLeft {
-  max-width: 650px;
+  max-width: 40.625rem;
   padding: 0;
 }
 
 .panelTitle {
-  margin: 0 0 18px;
+  margin: 0 0 1.125rem;
   color: #000;
   font-family: var(--font-inter-tight);
   font-size: clamp(1.5rem, 2.2vw, 2.25rem);
@@ -111,13 +131,13 @@
   line-height: 1.65;
 }
 
-.panelText { margin: 0 0 12px; }
-.bestFit { margin: 20px 0 10px; }
+.panelText { margin: 0 0 0.75rem; }
+.bestFit { margin: 1.25rem 0 0.625rem; }
 
 .points {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 0.5rem;
   margin: 0;
   padding: 0;
   list-style: none;
@@ -125,7 +145,7 @@
 
 .points li {
   position: relative;
-  padding-left: 32px;
+  padding-left: 2rem;
   color: #112244;
   font-family: var(--font-inter-tight);
   font-size: 1.0625rem;
@@ -149,25 +169,20 @@
   .title,
   .description { text-align: left; }
 
-  .description { margin-bottom: 44px; }
+  .description { margin-bottom: 2.75rem; }
 
+  /* Kept as a scrolling row, same theme as GenAI's/ML's tabs (see
+     track/responsiveness-rules.md's tabsnav_r rule) — not stacked into a
+     vertical list. justify-content: flex-start (left-aligned once
+     scrolling) instead of the desktop's evenly-filled row. */
   .tabs {
-    grid-template-columns: 1fr;
-    gap: 8px;
-    margin-bottom: 44px;
-    border-bottom: 0;
+    justify-content: flex-start;
+    margin-bottom: 2.75rem;
   }
 
   .tab {
-    flex-direction: row;
-    justify-content: flex-start;
-    margin: 0;
-    padding: 12px;
-    border: 1px solid #e6eff7;
-  }
-
-  .tabIcon {
-    width: 40px;
-    height: 40px;
+    flex: 0 0 auto;
+    min-width: 12rem;
+    padding-inline: 1rem;
   }
 }

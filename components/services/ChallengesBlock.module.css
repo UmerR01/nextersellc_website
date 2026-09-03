@@ -3,11 +3,11 @@
 }
 
 .wrapper {
-  padding: clamp(64px, 5vw, 92px) 0 88px;
+  padding: clamp(4rem, 5vw, 5.75rem) 0 5.5rem;
 }
 
 .container {
-  max-width: 1150px;
+  max-width: 71.875rem;
   margin: 0 auto;
   padding: 0 1rem;
 }
@@ -18,7 +18,7 @@
   font-weight: 400;
   color: #000;
   line-height: 1.15;
-  margin: 0 0 24px;
+  margin: 0 0 1.5rem;
   text-align: center;
 }
 
@@ -31,8 +31,8 @@
   font-size: clamp(1rem, 1.35vw, 1.375rem);
   line-height: 1.65;
   color: #112244;
-  margin: 0 auto 64px;
-  max-width: 1120px;
+  margin: 0 auto 4rem;
+  max-width: 70rem;
   text-align: center;
 }
 
@@ -50,7 +50,7 @@
 }
 
 .icon {
-  margin-bottom: 22px;
+  margin-bottom: 1.375rem;
 }
 
 .icon img {
@@ -65,7 +65,7 @@
   font-weight: 400;
   color: #000;
   line-height: 1.3;
-  margin: 0 0 14px;
+  margin: 0 0 0.875rem;
 }
 
 .cardText {
@@ -78,7 +78,7 @@
 
 @media (max-width: 767px) {
   .wrapper {
-    padding: 56px 0;
+    padding: 3.5rem 0;
   }
 
   .title,
@@ -87,7 +87,7 @@
   }
 
   .description {
-    margin-bottom: 44px;
+    margin-bottom: 2.75rem;
   }
 
   .grid {

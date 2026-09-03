@@ -1,5 +1,5 @@
 .section {
-  padding: 96px 0;
+  padding: 6rem 0;
   background: var(--color-bg);
   overflow: hidden;
   position: relative;
@@ -25,14 +25,14 @@
   color: var(--color-text-muted);
   text-align: center;
   width: 100%;
-  margin-top: 24px;
+  margin-top: 1.5rem;
 }
 
 /* ── Swiper tabs ── */
 .tabs {
   display: flex;
   gap: 0;
-  margin-top: 72px;
+  margin-top: 4.5rem;
   width: 100%;
   border-bottom: 2px solid var(--color-border);
   position: relative;
@@ -65,8 +65,8 @@
 .tabActive .tabIcon { filter: none; }
 
 .tabIcon {
-  width: 56px;
-  height: 56px;
+  width: 3.5rem;
+  height: 3.5rem;
   object-fit: contain;
   filter: brightness(0) saturate(100%) invert(67%) sepia(10%) saturate(734%) hue-rotate(170deg) brightness(91%) contrast(89%);
   display: block;
@@ -82,8 +82,8 @@
 
 /* ── Detail panels ── */
 .panelWrap {
-  margin-top: 64px;
-  max-width: 1180px;
+  margin-top: 4rem;
+  max-width: 73.75rem;
   width: 100%;
 }
 
@@ -94,15 +94,15 @@
 }
 
 @keyframes fadeIn {
-  from { opacity: 0; transform: translateY(8px); }
+  from { opacity: 0; transform: translateY(0.5rem); }
   to   { opacity: 1; transform: translateY(0); }
 }
 
 .panelLeft {
   display: flex;
   flex-direction: column;
-  max-width: 680px;
-  margin-right: 72px;
+  max-width: 42.5rem;
+  margin-right: 4.5rem;
 }
 
 .panelTitle {
@@ -144,6 +144,8 @@
   position: relative;
   margin-top: 0.5rem;
 }
+/* Icon size/offset kept in px on purpose — tied 1:1 to the embedded SVG's
+   own 24x24 viewBox, not a layout dimension. */
 .panelBody li::before {
   content: "";
   position: absolute;
@@ -157,11 +159,19 @@
 }
 
 .panelRight {
-  max-width: 428px;
+  max-width: 26.75rem;
   width: 100%;
   flex-shrink: 0;
   height: fit-content;
 }
+
+/* Same image-scaling rule as AIBlueprint.module.css's .imageWrap — once the
+   layout stacks to one column, cap the image at a fixed rem value instead
+   of letting it jump straight to max-width:100% at the breakpoint. That
+   jump meant the image snapped from a fixed 428px straight to the full
+   container width the instant the viewport crossed 1024px, instead of
+   scaling down continuously with it. See
+   track/ai-consulting-responsiveness-fixes.md. */
 
 .imgWrapper {
   position: relative;
@@ -182,12 +192,12 @@
 
 @media (max-width: 1024px) {
   .panel { flex-direction: column; }
-  .panelLeft { max-width: 100%; margin-right: 0; margin-bottom: 40px; }
-  .panelRight { max-width: 100%; }
+  .panelLeft { max-width: 100%; margin-right: 0; margin-bottom: 2.5rem; }
+  .panelRight { max-width: 32rem; }
 }
 @media (max-width: 768px) {
-  .section { padding: 64px 0; }
-  .tabs { margin-top: 40px; overflow-x: auto; overscroll-behavior-inline: contain; }
-  .tab { min-width: 160px; }
-  .panelWrap { margin-top: 24px; }
+  .section { padding: 4rem 0; }
+  .tabs { margin-top: 2.5rem; overflow-x: auto; overscroll-behavior-inline: contain; }
+  .tab { min-width: 10rem; }
+  .panelWrap { margin-top: 1.5rem; }
 }

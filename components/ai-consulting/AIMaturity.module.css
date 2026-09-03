@@ -1,5 +1,5 @@
 .section {
-  padding: 96px 0;
+  padding: 6rem 0;
   background: linear-gradient(135deg, var(--color-accent-dark) 0%, #17163f 100%);
   overflow: hidden;
   position: relative;
@@ -25,14 +25,14 @@
   color: rgba(255, 255, 255, 0.75);
   text-align: center;
   width: 100%;
-  margin-top: 24px;
+  margin-top: 1.5rem;
 }
 
 /* ── Swiper tabs ── */
 .tabs {
   display: flex;
   gap: 0;
-  margin-top: 72px;
+  margin-top: 4.5rem;
   width: 100%;
   border-bottom: 2px solid rgba(255, 255, 255, 0.15);
   position: relative;
@@ -63,8 +63,8 @@
 .tabActive .tabIcon { filter: none; }
 
 .tabIcon {
-  width: 56px;
-  height: 56px;
+  width: 3.5rem;
+  height: 3.5rem;
   object-fit: contain;
   filter: brightness(0) invert(1) opacity(0.55);
   transition: filter 0.2s;
@@ -81,8 +81,8 @@
 
 /* ── Detail panels ── */
 .panelWrap {
-  margin-top: 64px;
-  max-width: 1180px;
+  margin-top: 4rem;
+  max-width: 73.75rem;
   width: 100%;
 }
 
@@ -93,15 +93,15 @@
 }
 
 @keyframes fadeIn {
-  from { opacity: 0; transform: translateY(8px); }
+  from { opacity: 0; transform: translateY(0.5rem); }
   to   { opacity: 1; transform: translateY(0); }
 }
 
 .panelLeft {
   display: flex;
   flex-direction: column;
-  max-width: 680px;
-  margin-right: 72px;
+  max-width: 42.5rem;
+  margin-right: 4.5rem;
 }
 
 .panelTitle {
@@ -147,7 +147,7 @@
 }
 
 .panelRight {
-  max-width: 428px;
+  max-width: 26.75rem;
   width: 100%;
   flex-shrink: 0;
   height: fit-content;
@@ -172,12 +172,15 @@
 
 @media (max-width: 1024px) {
   .panel { flex-direction: column; }
-  .panelLeft { max-width: 100%; margin-right: 0; margin-bottom: 40px; }
-  .panelRight { max-width: 100%; }
+  .panelLeft { max-width: 100%; margin-right: 0; margin-bottom: 2.5rem; }
+  /* Image-scaling rule (see track/responsiveness-rules.md and
+     AIBlueprint.module.css's .imageWrap): cap at a fixed rem value
+     instead of jumping straight to 100% at the breakpoint. */
+  .panelRight { max-width: 32rem; }
 }
 @media (max-width: 768px) {
-  .section { padding: 64px 0; }
-  .tabs { margin-top: 40px; overflow-x: auto; overscroll-behavior-inline: contain; }
-  .tab { min-width: 130px; }
-  .panelWrap { margin-top: 24px; }
+  .section { padding: 4rem 0; }
+  .tabs { margin-top: 2.5rem; overflow-x: auto; overscroll-behavior-inline: contain; }
+  .tab { min-width: 8.125rem; }
+  .panelWrap { margin-top: 1.5rem; }
 }

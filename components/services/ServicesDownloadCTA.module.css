@@ -1,25 +1,38 @@
+/* Rebuilt to match components/adlc/AdlcStartCTA.module.css exactly — see
+   track/responsiveness-rules.md's cta_r rule. Previously the gradient lived
+   on .section itself, spanning the full viewport edge-to-edge with no page
+   gutter and a custom, much wider .container padding (clamp(2rem,8vw,7.5rem)
+   instead of the flat 1.875rem every other CTA banner uses) — this made the
+   banner look like a full-bleed slab instead of an inset card matching the
+   rest of the site. Now .section is a plain white section (like every other
+   page section) and .row is the actual inset gradient card, sized by the
+   sitewide global .container (var(--max-width)/var(--page-gutter)) the same
+   way AdlcStartCTA's card sits inside the page's normal gutter. */
 .section {
-  background: linear-gradient(110deg, #0d2042 0%, #123a76 63%, #704063 100%);
-  padding: 0;
+  background: #fff;
+  padding: 2.5rem 0 4rem;
 }
 
 .container {
-  max-width: none;
+  width: 100%;
+  max-width: var(--max-width);
   margin: 0 auto;
-  padding: 0 clamp(2rem, 8vw, 7.5rem);
+  padding-inline: var(--page-gutter);
 }
 
 .row {
+  background: linear-gradient(110deg, #0d2042 0%, #123a76 63%, #704063 100%);
   display: flex;
   align-items: center;
-  gap: 32px;
-  flex-wrap: wrap;
-  min-height: 198px;
+  justify-content: space-between;
+  gap: 2.5rem;
+  overflow: hidden;
+  padding: 1.875rem;
 }
 
 .left {
   flex: 1;
-  min-width: 260px;
+  min-width: 16.25rem;
 }
 
 .title {
@@ -36,29 +49,32 @@
   font-size: clamp(0.9375rem, 1.2vw, 1.0625rem);
   color: rgba(255, 255, 255, 0.72);
   line-height: 1.6;
-  margin: 12px 0 0;
+  margin: 0.75rem 0 0;
 }
 
 .right {
   flex-shrink: 0;
-  margin-right: clamp(1rem, 6vw, 5.5rem);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
+/* No padding override here — inherits the base .btn's 0.4rem 1.25rem from
+   app/globals.css, matching the Header's "Get in touch" button exactly
+   (same btn/btn-accent classes, same padding). */
 .btn {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   background: var(--color-accent);
   color: #fff;
   font-family: var(--font-inter-tight);
   font-size: 1rem;
   font-weight: 600;
-  min-width: 246px;
-  min-height: 49px;
-  justify-content: center;
-  padding: 14px 28px;
   text-decoration: none;
   transition: opacity 0.2s;
   white-space: nowrap;
+  padding: 0.4rem 1.25rem;
 }
 
 .btn:hover {
@@ -66,13 +82,46 @@
 }
 
 /* ── Fintech variant: "Unlock your Fintech vision" UI ──────────────────────── */
-.fintech {
+.fintech .row {
   background: linear-gradient(115deg, var(--color-accent-dark) 0%, #17163f 100%);
 }
 
 .btnFintech {
   font-family: var(--font-inter-tight);
-
-  padding: 14px 28px;
   white-space: nowrap;
+}
+
+@media (max-width: 768px) {
+  .section {
+    padding: 2rem 0 3.5rem;
+  }
+
+  .container {
+    padding-inline: 0;
+  }
+
+  .row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+
+  /* .right's own justify-content: center only takes effect once it's
+     given a width wider than its content, since a flex item with no
+     explicit size just shrink-to-fits at this align-items: flex-start
+     tier. See track/responsiveness-rules.md (CTA rule update). */
+  .right {
+    width: 100%;
+  }
+
+  .title {
+    font-size: 1.5rem;
+    line-height: 1.2;
+    margin-bottom: 0.625rem;
+  }
+
+  .desc {
+    font-size: 1rem;
+    line-height: 1.65;
+  }
 }

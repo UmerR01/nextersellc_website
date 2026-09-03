@@ -1,16 +1,23 @@
 .section {
-  padding: 48px 0 74px;
+  padding: 3rem 0 4.625rem;
   background: #fff;
 }
 
+/* Flat 30px (1.875rem) on all sides, all widths — the CTA-banner padding
+   rule, see track/responsiveness-rules.md and
+   components/adlc/AdlcStartCTA.module.css (the reference). The previous
+   fixed 4rem 8.375rem applied unchanged at any width above the 700px
+   breakpoint, so a tablet viewport (e.g. 768-1024px) got the full desktop
+   padding squeezed into a much narrower banner, reading as padding
+   appearing "out of nowhere". Flat padding needs no separate tier. */
 .inner {
   display: grid;
   grid-template-columns: minmax(0, 1fr) auto;
   align-items: center;
   justify-content: space-between;
-  gap: 72px;
-  min-height: 234px;
-  padding: 64px 134px;
+  gap: 4.5rem;
+  min-height: 14.625rem;
+  padding: 1.875rem;
   overflow: hidden;
   background: linear-gradient(115deg, var(--color-accent-dark) 0%, #17163f 100%);
 }
@@ -20,7 +27,7 @@
 }
 
 .title {
-  margin: 0 0 28px;
+  margin: 0 0 1.75rem;
   color: #fff;
   font-family: var(--font-inter-tight), sans-serif;
   font-size: clamp(2rem, 2.8vw, 2.375rem);
@@ -38,16 +45,18 @@
   line-height: 1.45;
 }
 
+/* justify-content: center — was flex-end. Button positioning per the CTA
+   rule update, see track/responsiveness-rules.md. */
 .right {
   display: flex;
-  justify-content: flex-end;
+  justify-content: center;
 }
 
+/* min-height removed — btn_r: no forced height on a button, ever. */
 .ctaButton {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-height: 2.625rem;
   padding: 0.4rem 1.5rem;
   border: 2px solid var(--color-accent);
   border-radius: var(--radius-button);
@@ -68,17 +77,18 @@
   color: var(--color-accent);
 }
 
+/* gap: 1.75rem — the desktop 4.5rem gap is the horizontal space between
+   the text and button columns side by side; left unreduced, that same
+   value becomes an oversized vertical gap once stacked. */
 @media (max-width: 700px) {
   .inner {
     grid-template-columns: 1fr;
-    padding: 40px 28px;
+    gap: 1.75rem;
   }
 
-  .right,
-  .ctaButton {
-    width: 100%;
-  }
-
+  /* width: 100% removed on both — btn_r: no forced width on a button,
+     ever. .right stays full-width (grid default-stretch at 1 column) so
+     its own justify-content: center can still center the button. */
   .ctaButton {
     white-space: normal;
   }

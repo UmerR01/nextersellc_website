@@ -61,8 +61,10 @@ export default function ServicesReviewSlider({
                       <Image src={review.photo} alt={review.photoAlt ?? review.name} width={72} height={72} className={styles.authorPhoto} />
                     ) : null}
                   </div>
-                  <p className={styles.authorName}>{review.name}</p>
-                  <p className={styles.authorPosition}>{review.role}</p>
+                  <div className={styles.authorInfo}>
+                    <p className={styles.authorName}>{review.name}</p>
+                    <p className={styles.authorPosition}>{review.role}</p>
+                  </div>
                 </div>
 
                 <div className={styles.leftContent}>

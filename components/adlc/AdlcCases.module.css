@@ -1,5 +1,5 @@
 .section {
-  padding: 64px 0 0;
+  padding: 4rem 0 0;
   background: #fff;
 }
 
@@ -10,7 +10,7 @@
   letter-spacing: -0.02em;
   line-height: 1.1;
   color: #fff;
-  margin-bottom: 40px;
+  margin-bottom: 2.5rem;
 }
 
 .casesList {
@@ -28,17 +28,17 @@
 .cardWrapper {
   display: flex;
   align-items: stretch;
-  min-height: 400px;
+  min-height: 25rem;
   position: relative;
-  max-width: 1440px;
+  max-width: 90rem;
   margin: 0 auto;
-  padding: 0 20px;
+  padding: 0 1.25rem;
 }
 
 .cardContent {
   flex: 0 0 46%;
   max-width: 46%;
-  padding: 64px 40px 64px 60px;
+  padding: 4rem 2.5rem 4rem 3.75rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -51,19 +51,19 @@
 }
 
 .cardReverse .cardContent {
-  padding: 64px 60px 64px 40px;
+  padding: 4rem 3.75rem 4rem 2.5rem;
 }
 
 .techTag {
-  margin-bottom: 16px;
+  margin-bottom: 1rem;
 }
 
 .techTagItem {
   display: inline-block;
   background: rgba(255, 255, 255, 0.16);
   border: 1px solid rgba(255, 255, 255, 0.24);
-  border-radius: 30px;
-  padding: 4px 14px;
+  border-radius: 1.875rem;
+  padding: 0.25rem 0.875rem;
   font-family: var(--font-inter-tight);
   font-size: 0.8125rem;
   font-weight: 500;
@@ -78,7 +78,7 @@
   font-weight: 400;
   line-height: 1.25;
   color: #fff;
-  margin-bottom: 16px;
+  margin-bottom: 1rem;
 }
 
 .cardDesc {
@@ -86,20 +86,20 @@
   font-size: clamp(0.875rem, 1.1vw, 1rem);
   line-height: 1.75;
   color: rgba(255, 255, 255, 0.75);
-  margin-bottom: 24px;
+  margin-bottom: 1.5rem;
 }
 
 .tagCloud {
   display: flex;
   flex-wrap: wrap;
-  gap: 8px;
+  gap: 0.5rem;
 }
 
 .tagItem {
   display: inline-block;
   background: rgba(255, 255, 255, 0.16);
-  border-radius: 30px;
-  padding: 4px 14px;
+  border-radius: 1.875rem;
+  padding: 0.25rem 0.875rem;
   font-family: var(--font-inter-tight);
   font-size: 0.8125rem;
   color: rgba(255, 255, 255, 0.9);
@@ -126,7 +126,7 @@
 
 .imageLeft {
   right: 22%;
-  bottom: 24px;
+  bottom: 1.5rem;
   width: 55%;
   z-index: 1;
 }
@@ -136,23 +136,23 @@
   display: block;
   width: 100%;
   height: auto;
-  border-radius: 4px 4px 0 0;
+  border-radius: 0.25rem 0.25rem 0 0;
 }
 
 .card:hover .imageRight,
 .card:hover .imageLeft {
-  transform: translate(10px, 10px);
+  transform: translate(0.625rem, 0.625rem);
 }
 
 @media (max-width: 1024px) {
   .cardContent {
     flex: 0 0 50%;
     max-width: 50%;
-    padding: 48px 32px;
+    padding: 3rem 2rem;
   }
 
   .cardReverse .cardContent {
-    padding: 48px 32px;
+    padding: 3rem 2rem;
   }
 
   .cardImage {
@@ -175,18 +175,18 @@
   .cardContent {
     flex: none;
     max-width: 100%;
-    padding: 40px 24px 32px;
+    padding: 2.5rem 1.5rem 2rem;
   }
 
   .cardReverse .cardContent {
-    padding: 40px 24px 32px;
+    padding: 2.5rem 1.5rem 2rem;
   }
 
   .cardImage {
     flex: none;
     max-width: 100%;
     width: 100%;
-    height: 240px;
+    height: 15rem;
     position: relative;
   }
 
@@ -199,6 +199,6 @@
   .imageLeft {
     width: 52%;
     right: 18%;
-    bottom: 16px;
+    bottom: 1rem;
   }
 }

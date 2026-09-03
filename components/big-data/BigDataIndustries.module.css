@@ -107,9 +107,9 @@
 
 .linkArrow {
   display: inline-block;
-  width: 17px;
-  padding-left: 6px;
-  padding-right: 17px;
+  width: 1.0625rem;
+  padding-left: 0.375rem;
+  padding-right: 1.0625rem;
   position: relative;
 }
 
@@ -117,10 +117,10 @@
 .linkArrow::after {
   content: "";
   display: block;
-  width: 6px;
-  height: 9px;
+  width: 0.375rem;
+  height: 0.5625rem;
   position: absolute;
-  right: 10px;
+  right: 0.625rem;
   top: 50%;
   transform: translateY(-50%);
   background-image: url("data:image/svg+xml;charset=utf8,%3Csvg width='6' height='10' viewBox='0 0 6 10' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M7.94319e-08 8.59L3.59 5L-3.53625e-07 1.41L1 0.5L5.5 5L1 9.5L7.94319e-08 8.59Z' fill='%233CC4E5'/%3E%3C/svg%3E");
@@ -136,12 +136,12 @@
 
 .cardLink:hover .linkArrow::before {
   animation: bounceBefore 1s linear infinite;
-  right: 6px;
+  right: 0.375rem;
 }
 
 .cardLink:hover .linkArrow::after {
   animation: bounceAfter 1s linear infinite;
-  right: 6px;
+  right: 0.375rem;
 }
 
 @keyframes bounceBefore {

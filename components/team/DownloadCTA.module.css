@@ -50,7 +50,6 @@
 
 .btn {
   font-family: var(--font-inter-tight), sans-serif;
-  min-height: 2.625rem;
   padding: 0.4rem 1.5rem;
   text-decoration: none;
   white-space: nowrap;

@@ -212,6 +212,12 @@
   filter: grayscale(0);
 }
 
+/* white-space: nowrap — .followBlock has min-width: 0 (needed so this
+   grid column can shrink instead of overflowing the footer), which lets
+   this button's own column narrow enough that its text used to wrap onto
+   a cramped second line inside the small pill shape. A short button
+   label should stay on one line regardless, matching the btn_r
+   convention used everywhere else on the site. */
 .newsletterBtn {
   display: inline-block;
   background-color: #fff;
@@ -222,6 +228,7 @@
   font-weight: 500;
   border-radius: 12px;
   text-decoration: none;
+  white-space: nowrap;
   transition: all 0.3s ease;
   font-family: var(--font-inter-tight), "Inter Tight", sans-serif;
 }

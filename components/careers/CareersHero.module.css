@@ -5,9 +5,11 @@
   width: 100%;
 }
 
-@media screen and (max-width: 767px) {
+/* 900px (not 767px) to byte-match AIHero.module.css — see
+   track/hero-rule-sitewide-rollout.md. */
+@media screen and (max-width: 900px) {
   .hero {
-    padding-top: 88px;
+    padding-top: calc(var(--header-height) + 48px);
   }
 }
 
@@ -89,28 +91,37 @@
   }
 }
 
+/* Header→breadcrumb→title spacing kept consistent with
+   AIHero.module.css / AdlcHero.module.css — see
+   track/hero-responsiveness-rule.md. */
 .inner {
   color: #fff;
   padding: 0 0 8.5rem;
+  text-align: left;
   position: relative;
 }
 
 @media screen and (max-width: 767px) {
   .inner {
-    padding-bottom: 72px;
-    padding-top: 40px;
-    text-align: left;
+    padding: 0 0 4.5rem;
   }
 }
 
 .breadcrumbs {
   display: flex;
   align-items: center;
-  gap: 0;
-  margin-bottom: 5rem;
-  font-size: 14px;
-  color: rgba(255, 255, 255, 0.7);
+  gap: 4px;
+  margin-bottom: 4.5rem;
+  font-size: 0.875rem;
+  line-height: 1.4;
+  color: rgba(255, 255, 255, 0.5);
   flex-wrap: wrap;
+}
+
+@media screen and (max-width: 900px) {
+  .breadcrumbs {
+    margin-bottom: 2rem;
+  }
 }
 
 .breadcrumbs a {
@@ -136,22 +147,21 @@
   vertical-align: middle;
 }
 
+/* Fluid clamp instead of a fixed 64px + max-width:768px step-jump — see
+   track/hero-responsiveness-rule.md. */
 .title {
-  font-size: clamp(2.5rem, 6vw, 4rem);
+  max-width: 85rem;
+  margin: 0 0 1.75rem;
+  font-size: clamp(3rem, 5vw, 4rem);
+  line-height: 1.18;
   font-weight: 400;
-  line-height: 1.2;
   color: #fff;
-  margin: 0;
+  text-align: left;
 }
 
-@media screen and (min-width: 768px) {
+@media screen and (max-width: 900px) {
   .title {
-    color: #fff;
-    font-size: clamp(3rem, 6vw, 4rem);
-    font-weight: 400;
-    line-height: 1.2;
-    max-width: 1920px;
-    text-align: center;
+    font-size: clamp(2.25rem, 9vw, 3rem);
   }
 }
 
@@ -160,79 +170,26 @@
 }
 
 .description {
-  font-size: 16px;
+  max-width: 58rem;
+  margin: 0;
+  font-size: clamp(1rem, 2.2vw, 1.375rem);
   font-weight: 400;
   line-height: 164%;
-  margin-bottom: 32px;
-  margin-top: 16px;
   text-align: left;
   color: #fff;
-}
-
-@media screen and (min-width: 768px) {
-  .description {
-    font-size: clamp(1.125rem, 2.2vw, 1.375rem);
-    margin-bottom: 40px;
-    text-align: left;
-  }
-}
-
-@media screen and (min-width: 1025px) {
-  .description {
-    text-align: center;
-  }
 }
 
 .description p {
   margin: 0;
 }
-/* AI Consulting / AI PoC style hero alignment */
-.inner {
-  padding: 0 0 8.5rem;
-  text-align: left;
-}
 
-.breadcrumbs {
-  gap: 4px;
-  margin-bottom: 4.5rem;
-  color: rgba(255, 255, 255, 0.5);
-  font-size: 0.875rem;
-  line-height: 1.4;
-}
-
-.title {
-  max-width: 85rem;
-  margin: 0 0 1.75rem;
-  font-size: clamp(3rem, 5vw, 4rem);
-  line-height: 1.18;
-  text-align: left;
-}
-
-.description {
-  max-width: 58rem;
-  margin: 0 0 2.25rem;
-  text-align: left;
-}
-
-.description p {
-  font-size: clamp(1.15rem, 1.8vw, 1.5rem);
-  line-height: 1.5;
-}
-
-@media (max-width: 767px) {
+/* Short-viewport safety (width-agnostic) — placed last on purpose, see
+   track/hero-responsiveness-rule.md. */
+@media (max-height: 450px) {
   .hero {
-    padding-top: calc(var(--header-height) + 48px);
+    padding-top: calc(var(--header-height) + 12px);
   }
-
-  .inner {
-    padding: 0 0 4.5rem;
-  }
-
   .breadcrumbs {
-    margin-bottom: 2rem;
-  }
-
-  .title {
-    font-size: clamp(2.25rem, 9vw, 3rem);
+    margin-bottom: 1rem;
   }
 }
