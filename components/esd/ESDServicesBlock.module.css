@@ -36,15 +36,33 @@
   margin: 0 auto clamp(3rem, 5vw, 4rem);
 }
 
+/* row-gap 24px / column-gap 72px replaces what used to be each card's own
+   36px left+right padding providing the inter-card spacing (36 + 36 = 72,
+   same total visual gap as before). .card gets zero horizontal padding
+   (see below) — with the old gap:0 + per-card padding, only the first
+   column's content sat flush with the container edge; every other card's
+   content was inset from its own box on one or both sides — an
+   inconsistent "left start" once compared card-to-card. Every card's
+   content now starts flush with its own box on both sides, with gap doing
+   the separating instead. See the "a card style's padding must not
+   outlive its background/border" rule in track/responsiveness-rules.md —
+   .card has no background/border of its own (transparent, hover-only), so
+   nothing justifies the inset. */
 .grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 0;
+  gap: 24px 72px;
 }
 
 @media (max-width: 1024px) {
   .grid {
     grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .grid {
+    gap: 24px 40px;
   }
 }
 
@@ -55,7 +73,7 @@
 }
 
 .card {
-  padding: 40px 36px;
+  padding: 40px 0;
   display: flex;
   flex-direction: column;
   border: none;
@@ -170,6 +188,6 @@
 
 @media (max-width: 768px) {
   .card {
-    padding: 28px 20px;
+    padding: 28px 0;
   }
 }

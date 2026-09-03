@@ -701,11 +701,11 @@ export default function MobilePage() {
                 </tr>
               </thead>
               <tbody>
-                {TABLE_ROWS.map((row, i) => (
+                {TABLE_ROWS.map((row) => (
                   <tr key={row.criteria}>
-                    <td data-label="Criteria" className={i === 0 ? styles.colStart : undefined} style={{ "--mobile-order": i * 3 + 1 } as React.CSSProperties}>{row.criteria}</td>
-                    <td data-label="On-device AI" style={{ "--mobile-order": i * 3 + 2 } as React.CSSProperties}>{row.onDevice}</td>
-                    <td data-label="Cloud AI" style={{ "--mobile-order": i * 3 + 3 } as React.CSSProperties}>{row.cloud}</td>
+                    <td>{row.criteria}</td>
+                    <td>{row.onDevice}</td>
+                    <td>{row.cloud}</td>
                   </tr>
                 ))}
               </tbody>

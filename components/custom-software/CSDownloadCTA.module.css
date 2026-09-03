@@ -1,86 +1,83 @@
+/* Rebuilt to match RagPage.module.css's .inlineCtaInner — the most fully-
+   corrected version of this CTA pattern on the site. Two earlier reference
+   choices turned out to be less-evolved versions of the same banner that
+   were each mistaken for "the" reference in turn: components/adlc/
+   AdlcStartCTA.module.css (a different page, /adlc, with its own quirk of
+   zeroing the container's side padding at mobile) and components/
+   ai-consulting/AIDualRisks.module.css / AITalkExperts.module.css (the
+   actual /ai-consulting page's CTA, but still carrying a stale
+   min-height: 14.625rem that RAG's version had already dropped — compare
+   the fix on those two files, corrected in the same pass as this one).
+   Matched to RAG here: sitewide .container gutter kept at every width
+   (never full-bleed), no min-height, 1024px breakpoint, flex-based. */
 .section {
-  width: min(calc(100% - clamp(2.5rem, 4vw, 5rem)), 88.75rem);
-  margin: 0 auto clamp(4.5rem, 6vw, 6rem);
-  padding: 0;
-  overflow: hidden;
-  background: linear-gradient(115deg, var(--color-accent-dark) 0%, #17163f 100%);
-}
-
-@media (max-width: 1024px) {
-  .section {
-    padding: 0;
-  }
+  background: #fff;
+  padding: 2.5rem 0 4rem;
 }
 
 .container {
-  max-width: none;
+  width: 100%;
+  max-width: var(--max-width);
   margin: 0 auto;
-  padding: clamp(3.5rem, 5vw, 4rem) clamp(2rem, 9.5vw, 8.5rem);
+  padding-inline: var(--page-gutter);
 }
 
 .row {
+  background: linear-gradient(115deg, var(--color-accent-dark) 0%, #17163f 100%);
   display: flex;
   align-items: center;
-  gap: clamp(2rem, 5vw, 5rem);
-}
-
-@media (max-width: 1024px) {
-  .row {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 1.75rem;
-  }
+  justify-content: space-between;
+  gap: 4.5rem;
+  overflow: hidden;
+  padding: 1.875rem;
 }
 
 .content {
-  flex: 0 0 66.666%;
-  max-width: 66.666%;
-}
-
-@media (max-width: 1024px) {
-  .content {
-    flex: none;
-    max-width: 100%;
-    width: 100%;
-  }
+  flex: 1;
+  min-width: 0;
 }
 
 .heading {
   font-family: var(--font-inter-tight), sans-serif;
-  font-size: clamp(2rem, 2.7vw, 2.375rem);
+  font-size: clamp(1.625rem, 2.2vw, 2.125rem);
   font-weight: 400;
   color: #fff;
-  margin: 0 0 1.5rem;
+  margin: 0;
   line-height: 1.25;
 }
 
 .desc {
   font-family: var(--font-inter-tight), sans-serif;
-  font-size: clamp(1rem, 1.45vw, 1.375rem);
-  color: rgba(255, 255, 255, 0.9);
-  margin: 0;
+  font-size: clamp(0.9375rem, 1.2vw, 1.0625rem);
+  color: rgba(255, 255, 255, 0.72);
+  margin: 0.75rem 0 0;
   line-height: 1.6;
 }
 
 .action {
-  flex: 1;
-  display: flex;
-  justify-content: center;
+  flex-shrink: 0;
 }
 
-/* justify-content: center, not flex-start — the button must be centered
-   once stacked, not merely un-stretched. See the btn_r rule's "Button
-   positioning — center, not start" correction in
-   track/responsiveness-rules.md. */
-@media (max-width: 1024px) {
-  .action {
-    width: 100%;
-    justify-content: center;
-  }
-}
-
+/* No padding override here — inherits the base .btn's 0.4rem 1.25rem from
+   app/globals.css, matching the Header's "Get in touch" button exactly. */
 .button {
   font-family: var(--font-inter-tight), sans-serif;
   text-decoration: none;
   white-space: nowrap;
+}
+
+/* Two-state cta_r rule (see track/responsiveness-rules.md): a plain row
+   above 700px, a centered stacked column at/below it. Matches
+   RagPage.module.css exactly, including the breakpoint — see
+   track/header-nav-and-cta-reference-fix.md. */
+@media (max-width: 700px) {
+  .row {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 1.75rem;
+  }
+
+  .action {
+    align-self: center;
+  }
 }

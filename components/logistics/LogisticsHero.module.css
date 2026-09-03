@@ -1,7 +1,7 @@
 .hero {
   font-family: var(--font-inter-tight), "Inter Tight", sans-serif;
   overflow: hidden;
-  padding-top: calc(var(--header-height) + 26px);
+  padding-top: calc(var(--header-height) + 1.625rem);
   position: relative;
   width: 100%;
 }
@@ -9,7 +9,7 @@
 @media (min-width: 1024px) and (max-width: 1680px) {
   .hero {
     margin-left: 0;
-    padding-top: calc(var(--header-height) + 26px);
+    padding-top: calc(var(--header-height) + 1.625rem);
     width: 100%;
   }
 }
@@ -18,7 +18,7 @@
    track/hero-rule-sitewide-rollout.md. */
 @media (max-width: 900px) {
   .hero {
-    padding-top: calc(var(--header-height) + 48px);
+    padding-top: calc(var(--header-height) + 3rem);
   }
 }
 
@@ -35,7 +35,7 @@
 .desktopImage {
   display: block;
   position: absolute;
-  height: calc(100% + 224px);
+  height: calc(100% + 14rem);
   width: 100%;
   z-index: 0;
 }
@@ -78,14 +78,14 @@
 }
 
 .container {
-  max-width: min(100%, 1540px);
+  max-width: min(100%, 96.25rem);
   margin: 0 auto;
   padding-inline: clamp(1.25rem, 3vw, 2.5rem);
 }
 
 @media (max-width: 768px) {
   .container {
-    padding: 0 20px;
+    padding: 0 1.25rem;
   }
 }
 
@@ -109,7 +109,7 @@
   display: flex;
   align-items: center;
   flex-wrap: wrap;
-  gap: 4px;
+  gap: 0.25rem;
   margin: 0 0 4.5rem;
   color: rgba(255, 255, 255, 0.5);
   font-size: 0.875rem;
@@ -180,7 +180,7 @@
 }
 
 .description p {
-  margin: 0 0 12px;
+  margin: 0 0 0.75rem;
 }
 
 .description p:last-child {
@@ -190,16 +190,16 @@
 .buttons {
   align-items: flex-start;
   display: flex;
-  gap: 32px;
+  gap: 2rem;
   justify-content: flex-start;
-  margin-top: 56px;
+  margin-top: 3.5rem;
 }
 
 @media (max-width: 768px) {
   .buttons {
     flex-wrap: wrap;
-    gap: 16px;
-    margin-top: 32px;
+    gap: 1rem;
+    margin-top: 2rem;
   }
 }
 
@@ -214,7 +214,7 @@
    track/hero-responsiveness-rule.md. */
 @media (max-height: 450px) {
   .hero {
-    padding-top: calc(var(--header-height) + 12px);
+    padding-top: calc(var(--header-height) + 0.75rem);
   }
   .breadcrumbs {
     margin-bottom: 1rem;

@@ -1,78 +1,89 @@
+/* Rebuilt to match RagPage.module.css's .inlineCtaInner — the most fully-
+   corrected version of this CTA pattern on the site (see
+   track/responsiveness-rules.md's cta_r rule and Correction #5). Previously
+   the gradient lived on .section itself, spanning edge-to-edge with only a
+   custom clamp()-based horizontal inset instead of the sitewide .container
+   gutter, and used a 768px grid-based breakpoint. Now .section is a plain
+   white section and .row is the actual inset gradient card, sized by the
+   sitewide global .container (var(--max-width)/var(--page-gutter)), flex-
+   based, no min-height, 1024px breakpoint — matching RAG exactly. */
 .section {
   position: relative;
-  padding: 3.5rem 0;
-  background: linear-gradient(115deg, var(--color-accent-dark) 0%, #17163f 100%);
+  padding: 3rem 0 4.625rem;
+  background: #fff;
   overflow: hidden;
 }
 
-.section::before {
-  content: none;
-}
-
 .container {
-  max-width: min(100%, 1470px);
+  width: 100%;
+  max-width: var(--max-width);
   margin: 0 auto;
-  padding-inline: clamp(3rem, 8.5vw, 8.25rem);
+  padding-inline: var(--page-gutter);
   position: relative;
   z-index: 1;
 }
 
 .row {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) auto;
-  gap: 3rem;
+  background: linear-gradient(115deg, var(--color-accent-dark) 0%, #17163f 100%);
+  display: flex;
   align-items: center;
+  justify-content: space-between;
+  gap: 4.5rem;
+  overflow: hidden;
+  padding: 1.875rem;
 }
 
-@media (max-width: 768px) {
-  .section {
-    padding: 2.5rem 0;
-  }
-
-  .container {
-    padding-inline: 1.5rem;
-  }
-
+/* Two-state cta_r rule (see track/responsiveness-rules.md): a plain row
+   above 700px, a centered stacked column at/below it. align-items:
+   stretch (not center) keeps the title/desc left-aligned; only the button
+   column is centered — via .btnCol, the actual flex item, since the
+   button itself is one level too deep for align-self to have any effect
+   on it directly. Matches RagPage.module.css exactly, including the
+   breakpoint — see track/header-nav-and-cta-reference-fix.md. */
+@media (max-width: 700px) {
   .row {
-    grid-template-columns: 1fr;
-    gap: 2rem;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 1.75rem;
   }
 
-  .title {
-    white-space: normal;
+  .btnCol {
+    align-self: center;
   }
 }
 
-.textCol {}
+.textCol {
+  flex: 1;
+  min-width: 0;
+}
 
 .title {
   font-family: var(--font-inter-tight), sans-serif;
-  font-size: clamp(1.5rem, 2.4vw, 2.5rem);
+  font-size: clamp(2rem, 2.8vw, 2.375rem);
   font-weight: 400;
   line-height: 1.2;
   color: #fff;
   margin: 0 0 1rem;
   letter-spacing: -0.01em;
-  white-space: nowrap;
 }
 
 .desc {
   font-family: var(--font-inter-tight), sans-serif;
-  font-size: clamp(1rem, 1.2vw, 1.125rem);
+  font-size: 1.375rem;
   line-height: 1.6;
-  color: rgba(255, 255, 255, 0.75);
+  color: rgba(255, 255, 255, 0.88);
   margin: 0;
 }
 
 .btnCol {
+  flex-shrink: 0;
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
 }
 
 .btn {
   font-family: var(--font-inter-tight), sans-serif;
-  padding: 0.4rem 1.5rem;
   text-decoration: none;
   white-space: nowrap;
 }

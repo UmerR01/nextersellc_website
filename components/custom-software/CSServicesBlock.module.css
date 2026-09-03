@@ -36,10 +36,26 @@
   color: #3CC4E5;
 }
 
+/* gap: 4.5rem replaces what used to be each card's own 2.25rem left+right
+   padding providing the inter-card spacing (2.25 + 2.25 = 4.5, same total
+   visual gap as before, at every column count). .card gets zero
+   horizontal padding (see below) — the old per-card padding, with
+   gap: 0, meant every card's content started inset from its own box's
+   left edge, not just the first column's — an inconsistent "left start"
+   across cards. Every card's content now starts flush with its own box
+   on both sides, with gap doing the separating instead. See the "a card
+   style's padding must not outlive its background/border" rule in
+   track/responsiveness-rules.md — .card has no background/border of its
+   own (transparent, hover-only), so nothing justifies the inset. */
 .grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 0;
+  /* row-gap 1.5rem (vertical spacing between rows, and between stacked
+     cards once the 640px tier drops to 1 column) / column-gap 4.5rem
+     (horizontal spacing between cards) — kept separate so the single-
+     column mobile tier doesn't inherit the wide horizontal value as
+     excessive vertical spacing. */
+  gap: 1.5rem 4.5rem;
 }
 
 @media (max-width: 1024px) {
@@ -57,7 +73,7 @@
 .card {
   background: transparent;
   border: none;
-  padding: 2.5rem 2.25rem;
+  padding: 2.5rem 0;
   display: flex;
   flex-direction: column;
   text-decoration: none;

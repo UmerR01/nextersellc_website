@@ -441,8 +441,6 @@
 }
 
 .servicesBlock .ecomServiceIntro {
-  max-width: 22rem;
-  margin: 0 auto;
   color: #172b4d;
   font-size: clamp(1rem, 1.2vw, 1.17rem);
   line-height: 1.48;
@@ -621,7 +619,6 @@
 }
 
 .whyTrustBlock .ecomServiceIntro {
-  max-width: 31rem;
   margin: 0;
   color: #172b4d;
   font-size: clamp(1rem, 1.2vw, 1.17rem);
@@ -748,7 +745,6 @@
 }
 
 .benefitsBlock .ecomServiceIntro {
-  max-width: 22rem;
   margin: 0;
   color: #172b4d;
   font-size: clamp(1rem, 1.2vw, 1.17rem);

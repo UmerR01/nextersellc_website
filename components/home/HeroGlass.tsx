@@ -22,11 +22,29 @@ import styles from "./HeroGlass.module.css";
  */
 export default function HeroGlass() {
   useEffect(() => {
+    // React Strict Mode (on in dev — see next.config.mjs) synchronously
+    // mounts, cleans up, and re-mounts every effect once, as a diagnostic.
+    // The cleanup for the FIRST of those two runs fires immediately, before
+    // the dynamic imports below have had a chance to resolve — so `ctx` is
+    // still null at that point, `ctx?.revert()` is a no-op, and nothing
+    // was actually reverted. Without this flag, the FIRST invocation's
+    // initGsap() would then go on to finish anyway (the import promises
+    // still resolve after cleanup ran), creating a real ScrollTrigger +
+    // pin-spacer for an instance nothing will ever revert — a leaked pin
+    // sitting alongside the second, "real" instance's own pin, doubling
+    // the reserved scroll space. Same failure mode on a genuine fast
+    // navigation away from "/" before gsap has finished loading, Strict
+    // Mode or not. `cancelled` makes the async setup check, right before
+    // it does anything with side effects, whether ITS OWN effect instance
+    // has already been cleaned up — and bails out instead of creating
+    // anything if so.
+    let cancelled = false;
     let ctx: { revert: () => void } | null = null;
 
     async function initGsap() {
       const { default: gsap } = await import("gsap");
       const { ScrollTrigger } = await import("gsap/ScrollTrigger");
+      if (cancelled) return;
       gsap.registerPlugin(ScrollTrigger);
 
       ctx = gsap.context(() => {
@@ -66,10 +84,29 @@ export default function HeroGlass() {
             .to("#hero-door-right", { xPercent: 100, ease: "none", duration: 1 }, 0);
         });
       });
+
+      // ScrollTrigger only self-corrects a pin-spacer's height automatically
+      // once, on the window "load" event — that's what makes a hard reload
+      // always come out right. A client-side route change (Next.js <Link>
+      // into "/") never fires "load" again, so whatever scroll position or
+      // not-yet-settled layout existed the instant this effect ran gets
+      // baked into the pin-spacer's height and stays wrong until something
+      // else (a manual scroll, a window resize) happens to force GSAP to
+      // recalculate. That stale spacer is the "whole hero section of white
+      // space pasted above the hero" — the spacer, not the hero itself, is
+      // oversized. Forcing a fresh measurement one frame after setup (once
+      // the browser has actually painted the new route) fixes it on every
+      // navigation, not just the first hard load.
+      requestAnimationFrame(() => {
+        if (!cancelled) ScrollTrigger.refresh();
+      });
     }
 
     initGsap();
-    return () => ctx?.revert();
+    return () => {
+      cancelled = true;
+      ctx?.revert();
+    };
   }, []);
 
   return (

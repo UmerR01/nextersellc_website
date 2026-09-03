@@ -43,18 +43,28 @@
   align-items: start;
 }
 
+/* clamp() on the fixed side + minmax(0, 1fr) on the flexible side — without
+   minmax(0, ...), a bare 1fr grid track still won't shrink below its
+   content's intrinsic min-content width (the CSS grid "auto minimum"
+   default), so text-heavy .content couldn't actually shrink and the whole
+   .tabs block just overflowed horizontally past the viewport instead of
+   narrowing — reading as "stays the same size instead of shrinking." The
+   clamp() on the fixed column additionally lets that side narrow gradually
+   as the viewport shrinks, instead of staying perfectly rigid until the
+   900px stacked tier. */
 .tabsLeft {
-  grid-template-columns: 21.375rem 1fr;
+  grid-template-columns: clamp(16rem, 22vw, 21.375rem) minmax(0, 1fr);
 }
 
 .tabsRight {
-  grid-template-columns: 1fr 15rem;
+  grid-template-columns: minmax(0, 1fr) clamp(11rem, 15vw, 15rem);
 }
 
 .menu {
   display: flex;
   flex-direction: column;
   gap: 0;
+  min-width: 0;
   border-top: 0.8125rem solid #edf5ff;
   border-left: 0;
   background: linear-gradient(120deg, #edf5ff, #dceaff);
@@ -70,12 +80,13 @@
   margin-left: 0;
   padding: 1.4375rem 1.75rem;
   font-family: var(--font-inter-tight);
-  font-size: 0.9375rem;
+  font-size: clamp(0.8125rem, 1vw, 0.9375rem);
   font-weight: 400;
   color: #111;
   cursor: pointer;
   transition: color 0.2s, border-color 0.2s;
   line-height: 1.4;
+  overflow-wrap: break-word;
 }
 
 .menuItem:hover {
@@ -98,6 +109,7 @@
 }
 
 .content {
+  min-width: 0;
   padding: 1.625rem 0;
 }
 

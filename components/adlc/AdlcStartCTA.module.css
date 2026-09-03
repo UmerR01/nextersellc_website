@@ -8,8 +8,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 2.5rem;
-  min-height: 14.625rem;
+  gap: 4.5rem;
   overflow: hidden;
   padding: 1.875rem;
 }
@@ -44,46 +43,30 @@
   justify-content: center;
 }
 
+/* No padding override here — inherits the base .btn's 0.4rem 1.25rem from
+   app/globals.css, matching the Header's "Get in touch" button exactly. */
 .btn {
   font-family: var(--font-inter-tight);
-  padding: 0.4rem 1.5rem;
   text-decoration: none;
   white-space: nowrap;
 }
 
-@media (max-width: 768px) {
-  .section {
-    padding: 2rem 0 3.5rem;
-  }
-
-  .section > :global(.container) {
-    padding-inline: 0;
-  }
-
+/* Two-state cta_r rule (see track/responsiveness-rules.md): a plain row
+   above 700px, a centered stacked column at/below it. Matches
+   RagPage.module.css's .inlineCtaInner exactly, including the breakpoint —
+   see track/header-nav-and-cta-reference-fix.md. The container-zeroing
+   hack and the min-height/mobile font-size overrides this block used to
+   carry were the "external padding" / "internal inline text spacing"
+   drift from that same reference — removed here, same fix already applied
+   on the AI Consulting CTA banners. */
+@media (max-width: 700px) {
   .row {
     flex-direction: column;
-    align-items: flex-start;
-    gap: 1rem;
-    min-height: 0;
+    align-items: stretch;
+    gap: 1.75rem;
   }
 
-  /* Button positioning: center — .right's own justify-content:center only
-     takes effect once it's given a width wider than its content, since a
-     flex item with no explicit size just shrink-to-fits at this
-     align-items:flex-start tier. See track/responsiveness-rules.md
-     (CTA rule update). */
   .right {
-    width: 100%;
-  }
-
-  .title {
-    font-size: 1.5rem;
-    line-height: 1.2;
-    margin-bottom: 0.625rem;
-  }
-
-  .description p {
-    font-size: 1rem;
-    line-height: 1.65;
+    align-self: center;
   }
 }

@@ -36,11 +36,17 @@
   padding-top: clamp(3rem, 5vw, 5rem);
 }
 
+/* Same flex-wrap technique as components/home/CoreTech.module.css's .row/
+   .logos, not a fixed-column-count grid — a grid locked to a specific
+   column count (5, dropping straight to 3 at 768px, nothing in between)
+   only adapts at each exact breakpoint crossing, so between breakpoints it
+   stays visually identical regardless of how much width is actually
+   available, reading as "not responsive while shrinking." A wrapping flex
+   row reflows continuously at every width instead. */
 .row {
   align-items: center;
   border-top: 1px solid rgba(57, 70, 99, 0.25);
-  display: grid;
-  grid-template-columns: 205px minmax(0, 1fr);
+  display: flex;
   gap: 40px 60px;
   padding: 32px 0;
   width: 100%;
@@ -51,6 +57,7 @@
 }
 
 .rowTitle {
+  flex: 0 0 205px;
   font-family: var(--font-inter-tight), sans-serif;
   font-size: 1.125rem;
   font-weight: 400;
@@ -59,10 +66,11 @@
 }
 
 .logos {
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
+  display: flex;
+  flex-wrap: wrap;
   align-items: center;
   gap: 28px 32px;
+  width: 100%;
 }
 
 .logo {
@@ -80,20 +88,27 @@
 
 @media (max-width: 1024px) {
   .row {
-    grid-template-columns: 160px minmax(0, 1fr);
     gap: 24px 32px;
+  }
+
+  .rowTitle {
+    flex-basis: 160px;
   }
 }
 
 @media (max-width: 768px) {
   .row {
-    grid-template-columns: 1fr;
+    flex-direction: column;
+    align-items: flex-start;
     padding: 2rem 0;
     gap: 1.25rem;
   }
 
+  .rowTitle {
+    flex-basis: auto;
+  }
+
   .logos {
-    grid-template-columns: repeat(3, 1fr);
     gap: 20px 24px;
   }
 

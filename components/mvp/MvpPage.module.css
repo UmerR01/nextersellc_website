@@ -86,15 +86,23 @@
    matches components/ai-consulting/AIHero.module.css. MVP was part of the
    "Fintech MVP lineage" flagged as already covered by an earlier hero-rule
    rollout, but it independently still carried the older 768px/flat-padding
-   pattern — see track/mvp-unit-conversion-and-audit.md. */
+   pattern — see track/mvp-unit-conversion-and-audit.md.
+
+   .heroBreadcrumbs's and .heroTitle's own overrides used to live in this
+   same block — but their BASE rules (.heroBreadcrumbs at line ~172,
+   .heroTitle at line ~209) are declared further down the file, and CSS
+   resolves equal-specificity ties by source order, not by whether a rule
+   sits inside a media query. A later unconditional base rule beats an
+   earlier conditional one even while the condition is true — so both
+   overrides were dead on arrival, always losing to the base 4.5rem
+   margin / desktop font-size no matter how narrow the viewport got. Moved
+   both down to right after their own base rules (see below) so they
+   actually win once the query matches. .hero's own override stays here
+   since .hero's base rule (right above) already comes first. */
 @media (max-width: 900px) {
   .hero {
     padding-top: calc(var(--header-height) + 3rem);
     padding-bottom: 4.5rem;
-  }
-
-  .heroTitle {
-    font-size: clamp(2.25rem, 9vw, 3rem);
   }
 }
 
@@ -170,7 +178,7 @@
   align-items: center;
   flex-wrap: wrap;
   gap: 0.25rem;
-  margin: 0 0 5rem;
+  margin: 0 0 4.5rem;
   color: rgba(255, 255, 255, 0.5);
   font-size: 0.875rem;
   line-height: 1.25rem;
@@ -209,6 +217,21 @@
   color: var(--mvp-fg);
   max-width: 85rem;
   margin: 0 0 1.5rem;
+}
+
+/* Moved down from the early @media block near .hero (line ~90) — these two
+   have to come after their own base rules above, or the base rule's later
+   source position wins the tie regardless of the media query being
+   active. Matches AIHero.module.css's .breadcrumb/.title 900px tier
+   exactly (margin-bottom: 2rem / font-size clamp). */
+@media (max-width: 900px) {
+  .heroBreadcrumbs {
+    margin-bottom: 2rem;
+  }
+
+  .heroTitle {
+    font-size: clamp(2.25rem, 9vw, 3rem);
+  }
 }
 
 .heroDescription {
@@ -436,8 +459,19 @@
   font-weight: 500;
 }
 
+/* aspect-ratio (matching the actual source image's own 528×348 intrinsic
+   ratio) instead of a fixed rem height — the grid column this sits in
+   (minmax(0, 32.125rem)) shrinks continuously as the viewport narrows
+   toward the 768px stack point, but a fixed height doesn't shrink with it;
+   the <Image>'s own inline style="height:auto" (MvpPage.tsx, off-limits)
+   then rendered shorter than the fixed-height box once the column got
+   narrow enough, exposing the box's background in the gap below the
+   image. aspect-ratio ties the box's height to its own width using the
+   same ratio the image's height:auto already computes from, so the two
+   always match exactly, at every width — see
+   track/mvp-page-followup-fixes.md. */
 .entrustSection .srImage {
-  height: 21.75rem;
+  aspect-ratio: 528 / 348;
 }
 
 .entrustSection .srImage::after {
@@ -445,8 +479,16 @@
   mix-blend-mode: multiply;
 }
 
+/* !important for the same reason as .tabImage :global(img) below — the
+   <Image>'s own inline style={{ height: "auto" }} otherwise wins over a
+   plain external height:100%, since inline style beats any external rule
+   at equal or lower specificity regardless of selector. This one only
+   ever looked correct because the real photo's actual ratio happens to be
+   close to the declared 528x348; hardened here so a future image swap on
+   this section can't quietly reopen the same "color below the image" bug
+   fixed on the tab images. */
 .entrustSection .srImage :global(img) {
-  height: 100%;
+  height: 100% !important;
   object-fit: cover;
 }
 
@@ -465,9 +507,7 @@
   }
 
   .entrustSection .srImage {
-    height: auto;
     max-width: 32.125rem;
-    aspect-ratio: 528 / 348;
   }
 }
 
@@ -497,12 +537,28 @@
   text-align: center;
 }
 
+/* Scroll at every width, never wrap to multiple rows — same theme as
+   MlPage.module.css's .maturityTabs / DevPathSection.module.css's .tabs.
+   See track/mvp-page-followup-fixes.md. */
 .tabButtons {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  display: flex;
   gap: 0;
   margin-bottom: 4rem;
   border-bottom: 1px solid #dce5ee;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scrollbar-width: thin;
+  justify-content: flex-start;
+}
+
+.tabButtons::-webkit-scrollbar {
+  display: block;
+  height: 6px;
+}
+
+.tabButtons::-webkit-scrollbar-thumb {
+  background: #dce8f4;
+  border-radius: 3px;
 }
 
 .tabBtn {
@@ -511,6 +567,8 @@
   align-items: center;
   justify-content: flex-end;
   gap: 0.9rem;
+  flex: 0 0 auto;
+  min-width: 14rem;
   min-height: 8rem;
   margin-bottom: -1px;
   background: transparent;
@@ -582,11 +640,33 @@
   width: 25rem;
 }
 
+/* aspect-ratio (matching the ourServicesTabs images' real 856x570 ratio)
+   instead of relying purely on the <Image>'s own inline height:auto — see
+   .entrustSection .srImage below / track/mvp-page-followup-fixes.md. Since
+   every tab swaps the same fixed-width 25rem box's content, an
+   aspect-ratio here keeps the box's own height identical across every
+   tab, so switching tabs can't cause the box to visibly resize and
+   flash the plain background behind the image for a frame. */
 .tabImage {
   position: relative;
   overflow: hidden;
   width: 25rem;
+  aspect-ratio: 856 / 570;
   border-radius: 0;
+}
+
+/* !important: the <Image> in MvpPage.tsx sets an inline style={{ height:
+   "auto" }} — an inline style always wins over an external stylesheet rule
+   at equal or lower specificity regardless of selector, so a plain
+   height:100% here is silently never applied. If the real photo's actual
+   aspect ratio doesn't land exactly on the declared 856x570, height:auto
+   computes a shorter box than the aspect-ratio container above, leaving a
+   gap at the bottom tinted by .tabImage::after — the "color below the
+   image" bug. !important is the only way to actually win against an
+   inline style short of removing the inline style itself. */
+.tabImage :global(img) {
+  height: 100% !important;
+  object-fit: cover;
 }
 
 .tabImage::after {
@@ -598,29 +678,10 @@
   pointer-events: none;
 }
 
-.tabImage::before {
-  content: "";
-  position: absolute;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  z-index: 2;
-  height: 0.5rem;
-  background: linear-gradient(90deg, #ff8fa8, #7daeff);
-  pointer-events: none;
-}
-
 @media (max-width: 768px) {
-  .tabButtons {
-    grid-template-columns: 1fr;
-    border-bottom: 0;
-  }
-
   .tabBtn {
-    min-height: auto;
-    flex-direction: row;
-    justify-content: flex-start;
-    border-bottom: 1px solid #dce5ee;
+    min-width: 12rem;
+    padding-inline: 0.75rem;
   }
 
   .tabBtnIcon {
@@ -647,9 +708,9 @@
 
 .downloadCtaInner {
   background: linear-gradient(115deg, var(--color-accent-dark) 0%, #17163f 100%);
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) auto;
+  display: flex;
   align-items: center;
+  justify-content: space-between;
   gap: 4.5rem;
   padding: 1.875rem;
 }
@@ -663,23 +724,25 @@
   border-radius: var(--radius-button);
   }
 
-/* gap: 1.75rem — the desktop 4.5rem gap is the horizontal space between
-   the text and button columns side by side; left unreduced, that same
-   value becomes an oversized vertical gap once stacked. Breakpoint widened
-   from 768px to 1024px per the cta_r rule (track/responsiveness-rules.md) —
-   768px left a squeezed two-column look across tablet widths. The old
-   min-height: 14.625rem above was the exact "card min-height" violation
-   flagged repeatedly sitewide (ML/Big Data/AI Integration) and is removed —
-   padding alone now sizes the banner. */
-@media (max-width: 1024px) {
+/* Flex-based (not grid) two-state shape, matching RagPage.module.css's
+   .inlineCtaInner exactly — flat 1.875rem padding at every width, no fixed
+   min-height, gap: 1.75rem once stacked. Breakpoint is 700px, matching the
+   real /ai-consulting page's own CTA banners (AIDualRisks.module.css /
+   AITalkExperts.module.css) — not 1024px/768px. See
+   track/header-nav-and-cta-reference-fix.md. */
+@media (max-width: 700px) {
   .downloadCtaInner {
-    grid-template-columns: 1fr;
+    flex-direction: column;
+    align-items: stretch;
     gap: 1.75rem;
+  }
+
+  .downloadCtaBtn {
+    align-self: center;
   }
 }
 
 .downloadCtaContent {
-  flex: 1 1 60%;
 }
 
 .downloadCtaTitle {
@@ -696,14 +759,13 @@
   color: rgba(255, 255, 255, 0.8);
 }
 
-/* justify-self: center — .downloadCtaInner is display:grid, and grid items
-   stretch to fill their column by default even with no explicit width on
-   the item itself. Once it collapses to a single column at ≤1024px, that
-   default would stretch this button edge to edge — a btn_r violation.
-   See track/responsiveness-rules.md. */
+/* No justify-self here — .downloadCtaInner is flex now, matching RAG; the
+   mobile ≤700px block above handles centering via .downloadCtaBtn's own
+   align-self, since .downloadCtaInner sets align-items: stretch there
+   (also matching RAG) which would otherwise stretch the button edge to
+   edge — a btn_r violation. */
 .downloadCtaBtn {
   flex-shrink: 0;
-  justify-self: center;
 }
 
 /* ─────────────────────────────────────────────────────────────────────────────
@@ -1078,6 +1140,24 @@
 
 .comparisonTable :global(strong) {
   font-weight: 700;
+}
+
+/* Scroll, don't squeeze — matches components/ai-consulting/AIWontForce
+   .module.css's comparison-table pattern exactly: .tableBlock already has
+   overflow-x: auto at every width, so giving the table itself a min-width
+   wider than a mobile viewport makes it scroll horizontally with a real
+   inner scrollbar instead of the fixed-layout thirds squeezing down to
+   unreadable widths. See track/mvp-page-followup-fixes.md. */
+@media (max-width: 768px) {
+  .comparisonTable {
+    min-width: 42.5rem;
+  }
+
+  .comparisonTable th:first-child,
+  .comparisonTable th:nth-child(2),
+  .comparisonTable th:nth-child(3) {
+    width: auto;
+  }
 }
 
 /* ─────────────────────────────────────────────────────────────────────────────
@@ -1906,11 +1986,15 @@
   border-top-color: rgba(57, 70, 99, 0.25);
 }
 
+/* Wrapping-flex technique, matching components/home/CoreTech.module.css —
+   see track/mvp-page-followup-fixes.md. No fixed column-count breakpoints:
+   the title column is a fixed/narrowing width that stacks above the logos
+   at its own mobile tier, and the logos row just wraps at every width. */
 .techStack .tsRow {
   align-items: center;
-  display: grid;
+  display: flex;
   gap: 2.5rem;
-  grid-template-columns: 15rem minmax(0, 1fr);
+  justify-content: flex-start;
   padding: 2.125rem 0;
   border-bottom-color: rgba(57, 70, 99, 0.25);
 }
@@ -1921,16 +2005,18 @@
   font-weight: 400;
   line-height: 1.45;
   max-width: 12.8125rem;
-  min-width: 0;
+  width: 100%;
+  flex-shrink: 0;
   opacity: 1;
 }
 
 .techStack .tsLogos {
   align-items: center;
-  display: grid;
-  flex: none;
+  display: flex;
+  flex-wrap: wrap;
+  flex: 1;
   gap: 1.75rem 1.5rem;
-  grid-template-columns: repeat(5, minmax(0, 1fr));
+  justify-content: flex-start;
   width: 100%;
 }
 
@@ -2029,24 +2115,15 @@
   transform: translate(0, -50%);
 }
 
-@media (max-width: 1100px) {
-  .techStack .tsLogos {
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-  }
-}
-
 @media (max-width: 768px) {
   .techStack .tsRow {
-    grid-template-columns: 1fr;
+    flex-direction: column;
+    align-items: flex-start;
     gap: 1.5rem;
   }
 
   .techStack .tsRowLabel {
     max-width: none;
-  }
-
-  .techStack .tsLogos {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 
   .crosslinksGrid {
@@ -2059,10 +2136,6 @@
 }
 
 @media (max-width: 576px) {
-  .techStack .tsLogos {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
   .techStack .tsLogoImg {
     height: 2.75rem;
     max-width: 7rem;
@@ -2366,5 +2439,9 @@
 @media (max-height: 450px) {
   .hero {
     padding-top: calc(var(--header-height) + 0.75rem);
+  }
+
+  .heroBreadcrumbs {
+    margin-bottom: 1rem;
   }
 }

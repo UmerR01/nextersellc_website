@@ -6,15 +6,15 @@
 }
 
 .inner {
-  max-width: 1284px;
+  max-width: 80.25rem;
   margin: 0 auto;
-  padding: clamp(5rem, 6.5vw, 7rem) 24px clamp(4.5rem, 6vw, 6.5rem);
+  padding: clamp(5rem, 6.5vw, 7rem) 1.5rem clamp(4.5rem, 6vw, 6.5rem);
   width: 100%;
 }
 
 @media screen and (max-width: 768px) {
   .inner {
-    padding: 60px 24px;
+    padding: 3.75rem 1.5rem;
   }
 }
 
@@ -36,12 +36,19 @@
   padding: clamp(4.5rem, 6vw, 6rem) 0 0;
 }
 
+/* Same wrapping-flex technique as components/home/CoreTech.module.css's
+   .row/.logos, not a fixed-column-count grid — a grid locked to a specific
+   column count (5, stepping down at fixed breakpoints) only adapts at each
+   exact breakpoint crossing, so between breakpoints it stays visually
+   identical regardless of how much width is actually available, reading as
+   "not responsive while shrinking." A wrapping flex row reflows
+   continuously at every width instead. */
 .row {
   align-items: center;
   border-top: 1px solid rgba(57, 70, 99, 0.25);
-  display: grid;
-  grid-template-columns: 305px minmax(0, 1fr);
-  padding: 34px 0;
+  display: flex;
+  gap: 1.75rem 3.75rem;
+  padding: 2.125rem 0;
   width: 100%;
 }
 
@@ -52,29 +59,33 @@
 @media screen and (max-width: 1024px) {
   .row {
     align-items: flex-start;
-    grid-template-columns: 220px minmax(0, 1fr);
+    gap: 1.75rem 2.5rem;
+  }
+
+  .rowTitle {
+    flex-basis: 13.75rem;
   }
 }
 
 .rowTitle {
+  flex: 0 0 19.0625rem;
   font-family: var(--font-inter-tight), sans-serif;
   font-size: 1.125rem;
   line-height: 1.45;
   color: #172033;
-  max-width: 220px;
 }
 
 .logos {
   align-items: center;
-  display: grid;
-  grid-template-columns: repeat(5, minmax(0, 1fr));
-  gap: 28px 24px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.75rem 1.5rem;
   width: 100%;
 }
 
 @media screen and (max-width: 768px) {
   .logos {
-    gap: 20px 24px;
+    gap: 1.25rem 1.5rem;
   }
 }
 
@@ -85,21 +96,15 @@
 }
 
 .logoImg {
-  height: 56px;
+  height: 3.5rem;
   width: auto;
   object-fit: contain;
-  max-width: 145px;
-}
-
-@media screen and (max-width: 1100px) {
-  .logos {
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-  }
+  max-width: 9.0625rem;
 }
 
 @media screen and (max-width: 768px) {
   .inner {
-    padding: 60px 24px;
+    padding: 3.75rem 1.5rem;
   }
 
   .title {
@@ -111,27 +116,20 @@
   }
 
   .row {
+    flex-direction: column;
+    align-items: flex-start;
     gap: 1.5rem;
-    grid-template-columns: 1fr;
     padding: 2rem 0;
   }
 
   .rowTitle {
-    max-width: none;
-  }
-
-  .logos {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+    flex-basis: auto;
   }
 }
 
 @media screen and (max-width: 576px) {
-  .logos {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
   .logoImg {
-    height: 44px;
-    max-width: 110px;
+    height: 2.75rem;
+    max-width: 6.875rem;
   }
 }

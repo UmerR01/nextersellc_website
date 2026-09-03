@@ -259,99 +259,11 @@
 }
 
 /* ── 3-col card grid ───────────────────────────────────────────────────────── */
-.cardsGrid {
-  margin-top: 4rem;
-}
-
-.cardsRow3 {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1.5rem;
-}
-
-@media (max-width: 900px) {
-  .cardsRow3 { grid-template-columns: 1fr; }
-}
-
-@media (min-width: 601px) and (max-width: 900px) {
-  .cardsRow3 { grid-template-columns: repeat(2, 1fr); }
-}
-
-.serviceCard {
-  background: #fff;
-  border: 1px solid #e6eff7;
-  border-radius: 2px;
-  padding: 2.25rem 2rem;
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-  position: relative;
-  overflow: hidden;
-  transition: box-shadow 0.3s, border-color 0.3s;
-}
-
-.serviceCard:hover {
-  box-shadow: 0 8px 32px rgba(60,196,229,0.13);
-  border-color: rgba(60,196,229,0.3);
-}
-
-.serviceCardDark {
-  background: rgba(255,255,255,0.05);
-  border: 1px solid rgba(255,255,255,0.1);
-  border-radius: 2px;
-  padding: 2.25rem 2rem;
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-  transition: border-color 0.3s, background 0.3s;
-}
-
-.serviceCardDark:hover {
-  background: rgba(255,255,255,0.08);
-  border-color: rgba(60,196,229,0.35);
-}
-
 .cardIcon {
   width: 56px;
   height: 56px;
   object-fit: contain;
   flex-shrink: 0;
-}
-
-.cardTitle {
-  font-family: var(--font-inter-tight), sans-serif;
-  font-size: 1.25rem;
-  font-weight: 600;
-  line-height: 1.3;
-  color: #0b1734;
-  margin: 0;
-}
-
-.cardTitleWhite {
-  font-family: var(--font-inter-tight), sans-serif;
-  font-size: 1.25rem;
-  font-weight: 600;
-  line-height: 1.3;
-  color: #fff;
-  margin: 0;
-}
-
-.cardDesc {
-  font-family: var(--font-inter-tight), sans-serif;
-  font-size: 0.9375rem;
-  line-height: 1.6;
-  color: #5e6d8e;
-  margin: 0;
-  flex: 1;
-}
-
-.cardDescWhite {
-  font-family: var(--font-inter-tight), sans-serif;
-  font-size: 0.9375rem;
-  line-height: 1.6;
-  color: rgba(255,255,255,0.7);
-  margin: 0;
-  flex: 1;
 }
 
 .cardLink {
@@ -439,10 +351,7 @@
   margin: 0 1.625rem;
   padding: 6rem 0 4rem;
   overflow: hidden;
-  background:
-    linear-gradient(116deg, rgba(60, 196, 229, 0.08) 0 12%, transparent 12% 100%),
-    linear-gradient(116deg, transparent 0 72%, rgba(60, 196, 229, 0.05) 72% 85%, transparent 85%),
-    linear-gradient(135deg, #071b3d 0%, #071026 62%, #15132d 100%);
+  background: linear-gradient(115deg, var(--color-accent-dark) 0%, #17163f 100%);
 }
 
 .serviceBlock :global(.container) {
@@ -461,16 +370,6 @@
   max-width: 62.5rem;
 }
 
-.svcDesc {
-  font-family: var(--font-inter-tight), sans-serif;
-  font-size: clamp(1rem, 1.2vw, 1.25rem);
-  line-height: 1.65;
-  color: rgba(255, 255, 255, 0.75);
-  text-align: center;
-  max-width: 51.25rem;
-  margin: 0 auto;
-}
-
 .tabsWrap {
   margin-top: 4.625rem;
 }
@@ -487,7 +386,15 @@
    track/responsiveness-rules.md. */
 .tabsNav {
   display: flex;
-  justify-content: center;
+  /* safe center — plain center on an *overflowing* flex row lets the
+     browser center the whole (wider-than-container) content block, which
+     can leave part of the overflow on both sides unreachable by
+     scrolling: the scroll range doesn't necessarily extend far enough
+     either direction to reveal the full first/last tab. "safe" keeps the
+     centered look while the row fits, but falls back to start-alignment
+     automatically once it would otherwise make content inaccessible —
+     the CSS Box Alignment spec's purpose-built fix for exactly this. */
+  justify-content: safe center;
   gap: 0;
   border-bottom: 1px solid rgba(255, 255, 255, 0.15);
   overflow-x: auto;
@@ -630,70 +537,6 @@
   background-size: contain;
 }
 
-.tabPanelLink {
-  display: inline-flex;
-  align-items: center;
-  font-family: var(--font-inter-tight), sans-serif;
-  font-size: 1rem;
-  font-weight: 600;
-  color: var(--color-accent);
-  text-decoration: none;
-  position: relative;
-}
-
-.linkArrow {
-  display: inline-block;
-  padding-left: 0.375rem;
-  padding-right: 1.0625rem;
-  position: relative;
-  width: 1.0625rem;
-}
-
-.linkArrow::before,
-.linkArrow::after {
-  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg width='6' height='10' viewBox='0 0 6 10' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M7.94319e-08 8.59L3.59 5L-3.53625e-07 1.41L1 0.5L5.5 5L1 9.5L7.94319e-08 8.59Z' fill='%233CC4E5'/%3E%3C/svg%3E");
-  background-position: 50%;
-  background-repeat: no-repeat;
-  background-size: cover;
-  content: "";
-  display: block;
-  height: 0.5625rem;
-  position: absolute;
-  right: 0.625rem;
-  top: 50%;
-  transform: translateY(-50%);
-  transition: 0.1s;
-  width: 0.375rem;
-}
-
-.linkArrow::after {
-  opacity: 0;
-}
-
-.tabPanelLink:hover .linkArrow::before {
-  animation: bounceBefore 1s linear infinite;
-  right: 0.375rem;
-}
-
-.tabPanelLink:hover .linkArrow::after {
-  animation: bounceAfter 1s linear infinite;
-  right: 0.375rem;
-}
-
-@keyframes bounceBefore {
-  0%   { opacity: 1; transform: translateX(0)    translateY(-50%); }
-  49%  { opacity: 0; transform: translateX(7px)  translateY(-50%); }
-  52%  { opacity: 0; transform: translateX(-7px) translateY(-50%); }
-  100% { opacity: 1; transform: translateX(0)    translateY(-50%); }
-}
-
-@keyframes bounceAfter {
-  0%   { opacity: 0; transform: translateX(-7px) translateY(-50%); }
-  49%  { opacity: 1; transform: translateX(0)    translateY(-50%); }
-  99%  { opacity: 0; transform: translateX(7px)  translateY(-50%); }
-  100% { opacity: 0; transform: translateX(-7px) translateY(-50%); }
-}
-
 @media (max-width: 900px) {
   .serviceBlock {
     margin-inline: 1rem;
@@ -803,38 +646,6 @@
   max-width: 43.125rem;
 }
 
-.vertTabBullets {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 0.625rem;
-}
-
-.vertTabBullets li {
-  font-family: var(--font-inter-tight), sans-serif;
-  font-size: 0.9375rem;
-  line-height: 1.55;
-  color: #0b1734;
-  padding-left: 1.25rem;
-  position: relative;
-}
-
-.vertTabBullets li::before {
-  content: "—";
-  position: absolute;
-  left: 0;
-  color: var(--color-accent);
-  font-weight: 700;
-}
-
-.vertTabCta {
-  font-family: var(--font-inter-tight), sans-serif;
-  text-decoration: none;
-  align-self: flex-start;
-}
-
 @media (max-width: 768px) {
   .solutionsBlock {
     padding: 4.5rem 0 3rem;
@@ -878,8 +689,7 @@
 }
 
 .inlineCtaInner,
-.webGradientBlock,
-.pdfCtaInner {
+.webGradientBlock {
   background: linear-gradient(115deg, var(--color-accent-dark) 0%, #17163f 100%);
 }
 
@@ -891,9 +701,16 @@
    banner is flex (not grid), so it doesn't hit the grid-stretch btn_r
    pattern, but wrapping left it flush-left instead of centered once the
    button dropped to its own line. Centered per the CTA rule update, see
-   track/responsiveness-rules.md. */
-@media (max-width: 1024px) {
+   track/responsiveness-rules.md. Breakpoint matches the real
+   /ai-consulting page's own CTA banners exactly — see
+   track/header-nav-and-cta-reference-fix.md. */
+@media (max-width: 700px) {
   .inlineCtaInner {
+    /* align-items: stretch (not the base rule's center) — without this,
+       the base .inlineCtaInner's align-items: center would also center
+       the title/desc text block horizontally once stacked, not just the
+       button. Matches RagPage.module.css exactly. */
+    align-items: stretch;
     flex-direction: column;
     /* gap: the desktop 4.5rem gap is the horizontal space between the
        text and button side by side; left unreduced, that same value
@@ -1068,165 +885,7 @@
   .processStepBody { margin-left: 1.75rem; }
 }
 
-/* ── Process testimonial (CSCitation quote style, own white section) ───────── */
-.processTestimonialSection {
-  background: #fff;
-  padding: 6rem 0;
-}
-
-.processTestimonial {
-  display: flex;
-  align-items: center;
-  gap: clamp(3rem, 8vw, 8rem);
-  background: linear-gradient(to right, rgba(60, 196, 229, 0.10) 0%, rgba(60, 196, 229, 0.03) 100%);
-  padding: clamp(3rem, 4.5vw, 4rem) clamp(2rem, 5vw, 4.5rem);
-  margin: 0 auto;
-  max-width: 73.75rem;
-}
-
-/* Person column (photo + name + position) — right side */
-.ptLeft {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  flex-shrink: 0;
-}
-
-.ptPhoto {
-  width: 4.5rem;
-  height: 4.5rem;
-  border-radius: 4px;
-  object-fit: cover;
-  display: block;
-  margin-bottom: 1.75rem;
-}
-
-.ptName {
-  font-family: var(--font-inter-tight), sans-serif;
-  font-size: clamp(1.125rem, 1.5vw, 1.375rem);
-  font-weight: 400;
-  color: #112244;
-  line-height: 1.3;
-}
-
-.ptPosition {
-  font-family: var(--font-inter-tight), sans-serif;
-  font-size: 0.875rem;
-  font-weight: 400;
-  color: #5e6d8e;
-  margin-top: 0.25rem;
-}
-
-/* Quote column (mark + quote) — left side */
-.ptRight {
-  flex: 1;
-  display: flex;
-  align-items: flex-start;
-  gap: clamp(1rem, 2vw, 1.5rem);
-}
-
-.ptQuoteMark {
-  font-family: Georgia, serif;
-  font-size: 3.5rem;
-  line-height: 1;
-  color: #112244;
-  display: block;
-  margin: -0.2em 0 0;
-  letter-spacing: -0.05em;
-}
-
-.ptQuote {
-  font-family: var(--font-inter-tight), sans-serif;
-  font-size: clamp(1.125rem, 1.55vw, 1.375rem);
-  font-style: italic;
-  font-weight: 400;
-  color: #112244;
-  line-height: 1.65;
-  margin: 0;
-}
-
-@media (max-width: 768px) {
-  .processTestimonial {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 2rem;
-    padding: 2.5rem 1.75rem;
-  }
-  .ptQuoteMark { font-size: 2.5rem; }
-}
-
-/* ── PDF CTA ───────────────────────────────────────────────────────────────── */
-.pdfCta {
-  background: #fff;
-  padding: 0 0 2.75rem;
-}
-
-.pdfCtaInner {
-  min-height: 19.8125rem;
-  padding: 4rem 7.625rem;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 4.5rem;
-  flex-wrap: wrap;
-}
-
-.pdfCtaBody { display: flex; flex-direction: column; gap: 1.5rem; max-width: 32.5rem; }
-
-.pdfCtaTitle {
-  font-family: var(--font-inter-tight), sans-serif;
-  font-size: clamp(2rem, 2.8vw, 2.5rem);
-  font-weight: 400;
-  color: #fff;
-  line-height: 1.18;
-  margin: 0;
-}
-
-.pdfCtaDesc {
-  font-family: var(--font-inter-tight), sans-serif;
-  font-size: 1.25rem;
-  line-height: 1.62;
-  color: rgba(255,255,255,0.95);
-  margin: 0;
-}
-
-.pdfCtaBtn {
-  font-family: var(--font-inter-tight), sans-serif;
-  text-decoration: none;
-  white-space: nowrap;
-  flex-shrink: 0;
-}
-
-.pdfIcon {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 1.375rem;
-  height: 1.125rem;
-  border: 1px solid currentColor;
-  border-radius: 2px;
-  font-size: 0.5rem;
-  line-height: 1;
-  letter-spacing: 0.03em;
-}
-
 /* ── Security section ──────────────────────────────────────────────────────── */
-@media (max-width: 900px) {
-  .pdfCta {
-    padding-bottom: 2rem;
-  }
-
-  .pdfCtaInner {
-    min-height: auto;
-    padding: 3rem 2rem;
-    gap: 2rem;
-  }
-
-  .pdfCtaBody {
-    max-width: none;
-  }
-}
-
 .securityBlock {
   background: #f7f9fe;
   margin-top: clamp(4rem, 7vw, 6rem);
@@ -1769,27 +1428,6 @@
   font-weight: 500;
 }
 
-.approachVertTabBtnActive .approachTabNum,
-.approachVertTabBtnActive:hover .approachTabNum {
-  color: #fff;
-  background: rgba(255, 255, 255, 0.18);
-}
-
-.approachTabNum {
-  font-family: var(--font-inter-tight), sans-serif;
-  font-size: 0.75rem;
-  font-weight: 700;
-  color: var(--color-accent);
-  background: rgba(60,196,229,0.08);
-  width: 1.75rem;
-  height: 1.75rem;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-}
-
 .approachVertTabContent {
   padding: 2.875rem 0 0;
   display: flex;
@@ -1886,8 +1524,12 @@
   padding: 0;
 }
 
+/* padding: 0 1.5rem removed — it added an extra left/right inset on top
+   of the container's own gutter, so this grid started further right than
+   every other section on the page instead of flush with it, at exactly
+   the width where it stacks to one column. */
 @media (max-width: 900px) {
-  .aiCardsGrid { grid-template-columns: 1fr; padding: 0 1.5rem; }
+  .aiCardsGrid { grid-template-columns: 1fr; }
 }
 
 @media (min-width: 601px) and (max-width: 900px) {

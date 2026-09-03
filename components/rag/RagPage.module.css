@@ -820,16 +820,20 @@
 }
 
 /* Exactly two states, one breakpoint — see track/rag-development-fixes.md.
-   Desktop (>1024px): plain left-text/right-button row, no flex-wrap safety
+   Desktop (>700px): plain left-text/right-button row, no flex-wrap safety
    net (that's what let content wrap unpredictably between the two states
    at odd widths, each time landing in an unstyled in-between look). No
    min-height either — a banner this short with a fixed min-height left
    visibly unused vertical space above/below the text once the fixed
    height exceeded the actual content; padding alone sizes it correctly.
-   Tablet/mobile (≤1024px, one rule covering both — the .adtechGradientCta
+   Tablet/mobile (≤700px, one rule covering both — the .adtechGradientCta
    grid variant this page's sibling pages use for a tablet-only tier is
    dead code here, RagPage.tsx never applies it): text on top, button
-   below, centered. */
+   below, centered. Breakpoint matches the real /ai-consulting page's own
+   CTA banners (AIDualRisks.module.css / AITalkExperts.module.css) exactly
+   — this file's own 1024px was itself a drift from that true reference,
+   caught only after several other pages had already copied it from here
+   in turn. See track/header-nav-and-cta-reference-fix.md. */
 .inlineCtaInner {
   background: linear-gradient(115deg, var(--color-accent-dark) 0%, #17163f 100%);
   padding: 1.875rem;
@@ -839,7 +843,7 @@
   gap: 4.5rem;
 }
 
-@media (max-width: 1024px) {
+@media (max-width: 700px) {
   .inlineCtaInner {
     flex-direction: column;
     align-items: stretch;
@@ -4299,7 +4303,6 @@
 }
 
 .ragRoiBlock .ecomServiceIntro {
-  max-width: 22rem;
   color: rgba(255, 255, 255, 0.95);
   font-size: 1.0625rem;
   font-weight: 600;

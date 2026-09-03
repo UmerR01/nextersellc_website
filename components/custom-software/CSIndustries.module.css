@@ -39,10 +39,33 @@
   max-width: 42.5rem;
 }
 
+/* row-gap 1.5rem (vertical spacing between rows) / column-gap 4.5rem
+   (horizontal spacing between cards) — replaces the old 1.5rem grid gap
+   plus each card's own 1.5rem left+right padding (1.5 + 1.5 + 1.5 = 4.5,
+   same total visual spacing as before). .card gets zero horizontal
+   padding (see below) — the earlier fix here only zeroed the outer edge
+   per column position via :nth-child, which correctly aligned the first/
+   last column but left every middle column's content inset from its own
+   cell on both sides — an inconsistent "left start" once compared card-
+   to-card (reported on the near-identical TwoLifecycles.module.css
+   pattern; same fix applied here for consistency). Every card's content
+   now starts flush with its own box on both sides at every column count,
+   with gap doing the separating instead — no per-breakpoint :nth-child
+   bookkeeping needed any more. See the "a card style's padding must not
+   outlive its background/border" rule in track/responsiveness-rules.md. */
 .grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 1.5rem;
+  gap: 1.5rem 4.5rem;
+}
+
+.card {
+  background: transparent;
+  border: none;
+  border-radius: 0.5rem;
+  padding: 1.75rem 0;
+  display: flex;
+  flex-direction: column;
 }
 
 @media (max-width: 1024px) {
@@ -51,20 +74,15 @@
   }
 }
 
-@media (max-width: 480px) {
+/* Was stuck at 2 columns all the way down to the narrowest phone widths
+   (only the gap shrank at 480px) — on an actual phone that's two
+   icon+title+desc cards crammed side by side, unreadable. Matches
+   CSAdvancedTech.module.css's own 640px single-column tier. */
+@media (max-width: 640px) {
   .grid {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: 1fr;
     gap: 1rem;
   }
-}
-
-.card {
-  background: transparent;
-  border: none;
-  border-radius: 0.5rem;
-  padding: 1.75rem 1.5rem;
-  display: flex;
-  flex-direction: column;
 }
 
 .iconWrap {

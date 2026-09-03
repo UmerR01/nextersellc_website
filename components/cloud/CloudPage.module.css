@@ -467,10 +467,7 @@
   margin: 0 1.625rem;
   padding: 6rem 0 4rem;
   overflow: hidden;
-  background:
-    linear-gradient(116deg, rgba(60, 196, 229, 0.08) 0 12%, transparent 12% 100%),
-    linear-gradient(116deg, transparent 0 72%, rgba(60, 196, 229, 0.05) 72% 85%, transparent 85%),
-    linear-gradient(135deg, #071b3d 0%, #071026 62%, #15132d 100%);
+  background: linear-gradient(115deg, var(--color-accent-dark) 0%, #17163f 100%);
 }
 
 .serviceBlock :global(.container) {
@@ -503,16 +500,40 @@
   margin-top: 4.625rem;
 }
 
+/* Scrollbar shown, not hidden — a desktop user relies on mouse-drag on the
+   scrollbar (not touch swipe) to know scrolling is even possible. See
+   track/responsiveness-rules.md's tabsnav_r rule. overflow-y: hidden pairs
+   with overflow-x: auto — otherwise the used value of overflow-y also
+   computes to auto per the CSS Overflow spec, and any slight vertical
+   overflow (padding, line-height rounding) triggers an unwanted second,
+   vertical scrollbar on this same row. */
 .tabsNav {
   display: flex;
-  justify-content: center;
+  /* safe center — plain center on an *overflowing* flex row lets the
+     browser center the whole (wider-than-container) content block, which
+     can leave part of the overflow on both sides unreachable by
+     scrolling: the scroll range doesn't necessarily extend far enough
+     either direction to reveal the full first/last tab. "safe" keeps the
+     centered look while the row fits, but falls back to start-alignment
+     automatically once it would otherwise make content inaccessible —
+     the CSS Box Alignment spec's purpose-built fix for exactly this. */
+  justify-content: safe center;
   gap: 0;
   border-bottom: 1px solid rgba(255, 255, 255, 0.15);
   overflow-x: auto;
-  scrollbar-width: none;
+  overflow-y: hidden;
+  scrollbar-width: thin;
 }
 
-.tabsNav::-webkit-scrollbar { display: none; }
+.tabsNav::-webkit-scrollbar {
+  display: block;
+  height: 6px;
+}
+
+.tabsNav::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.25);
+  border-radius: 3px;
+}
 
 .tabBtn {
   display: flex;
@@ -896,12 +917,14 @@
 }
 
 /* Two-state cta_r rule (see track/responsiveness-rules.md): a plain row
-   above 1024px (no flex-wrap — that "safety net" is what let this banner
+   above 700px (no flex-wrap — that "safety net" is what let this banner
    wrap unpredictably at in-between widths instead of switching cleanly),
    a centered stacked column at/below it. align-items: stretch (not
    center) on the container keeps the title/desc left-aligned; only the
-   button itself is centered, via its own align-self. */
-@media (max-width: 1024px) {
+   button itself is centered, via its own align-self. Breakpoint matches
+   the real /ai-consulting page's own CTA banners exactly — see
+   track/header-nav-and-cta-reference-fix.md. */
+@media (max-width: 700px) {
   .inlineCtaInner {
     flex-direction: column;
     align-items: stretch;
@@ -1727,8 +1750,12 @@
   padding: 0;
 }
 
+/* padding: 0 1.5rem removed — it added an extra left/right inset on top
+   of the container's own gutter, so this grid started further right than
+   every other section on the page instead of flush with it, at exactly
+   the width where it stacks to one column. */
 @media (max-width: 900px) {
-  .aiCardsGrid { grid-template-columns: 1fr; padding: 0 1.5rem; }
+  .aiCardsGrid { grid-template-columns: 1fr; }
 }
 
 @media (min-width: 601px) and (max-width: 900px) {

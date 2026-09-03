@@ -851,15 +851,17 @@
 }
 
 /* Exactly two states, one breakpoint — see track/ai-software-page-fixes.md.
-   Desktop (>1024px): plain left-text/right-button row, no flex-wrap safety
+   Desktop (>700px): plain left-text/right-button row, no flex-wrap safety
    net (that let content wrap unpredictably between the two states at odd
    widths). No min-height either — a fixed min-height taller than the
    actual content left visibly unused vertical space; padding alone sizes
-   it correctly. Tablet/mobile (≤1024px, one rule covering both — the
+   it correctly. Tablet/mobile (≤700px, one rule covering both — the
    .adtechGradientCta grid variant sibling pages use for a tablet-only
    tier is dead code here, AisoftPage.tsx never applies it, and
    justify-self is a grid-only property anyway, a no-op on this flex
-   layout): text on top, button below, centered. */
+   layout): text on top, button below, centered. Breakpoint matches the
+   real /ai-consulting page's own CTA banners exactly — see
+   track/header-nav-and-cta-reference-fix.md. */
 .inlineCtaInner {
   background: linear-gradient(115deg, var(--color-accent-dark) 0%, #17163f 100%);
   padding: 1.875rem;
@@ -869,7 +871,7 @@
   gap: 4.5rem;
 }
 
-@media (max-width: 1024px) {
+@media (max-width: 700px) {
   .inlineCtaInner {
     flex-direction: column;
     align-items: stretch;
