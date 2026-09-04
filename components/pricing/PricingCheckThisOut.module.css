@@ -1,6 +1,6 @@
 .section {
   background: #fff;
-  padding: 26px 0 clamp(5rem, 7vw, 6.25rem);
+  padding: 1.625rem 0 clamp(5rem, 7vw, 6.25rem);
 }
 
 .panel {

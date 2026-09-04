@@ -1,10 +1,10 @@
 .section {
   padding: clamp(6.5rem, 9vw, 8.5rem) 0;
-  scroll-margin-top: 96px;
+  scroll-margin-top: 6rem;
 }
 
 .container {
-  max-width: 1400px;
+  max-width: 87.5rem;
   margin: 0 auto;
   padding-inline: clamp(1.25rem, 4vw, 3.75rem);
 }
@@ -17,7 +17,7 @@
   color: #02102C;
   text-align: center;
   letter-spacing: normal;
-  margin-bottom: 64px;
+  margin-bottom: 4rem;
   font-family: var(--font-inter-tight), sans-serif;
 }
 
@@ -28,7 +28,7 @@
 /* Cards wrapper – positions nav buttons relative to swiper */
 .cardsWrapper {
   position: relative;
-  padding: 0 72px;
+  padding: 0 4.5rem;
 }
 
 .swiper {
@@ -47,7 +47,7 @@
   width: 100%;
   aspect-ratio: 1 / 1;
   overflow: hidden;
-  margin-bottom: 16px;
+  margin-bottom: 1rem;
 }
 
 .cardImage {
@@ -71,9 +71,9 @@
   font-weight: 500;
   line-height: 1.4;
   color: #5e6d8e;
-  margin: 4px 0 0;
+  margin: 0.25rem 0 0;
   font-family: var(--font-inter-tight), sans-serif;
-  min-height: 40px;
+  min-height: 2.5rem;
 }
 
 /* Nav buttons */
@@ -82,8 +82,8 @@
   top: calc((100% - clamp(4rem, 6vw, 5.5rem)) / 2);
   z-index: 10;
   transform: translateY(-50%);
-  width: 64px;
-  height: 48px;
+  width: 4rem;
+  height: 3rem;
   border: none;
   background: transparent;
   cursor: pointer;
@@ -94,18 +94,18 @@
 }
 
 .navPrev {
-  left: 4px;
+  left: 0.25rem;
 }
 
 .navNext {
-  right: 4px;
+  right: 0.25rem;
 }
 
 /* Arrow icon: tail + chevron construction, matching Awards & Recognitions. */
 .arrowBox {
   position: relative;
-  width: 40px;
-  height: 24px;
+  width: 2.5rem;
+  height: 1.5rem;
   display: block;
   flex-shrink: 0;
 }
@@ -120,7 +120,7 @@
   transform: translateY(-50%);
   border-radius: 999px;
   transition: width 0.3s ease-in-out;
-  width: 37px;
+  width: 2.3125rem;
 }
 
 .arrowBox::after {
@@ -129,33 +129,33 @@
   border-top: 2px solid var(--color-accent);
   content: "";
   display: block;
-  height: 10px;
+  height: 0.625rem;
   position: absolute;
   top: 50%;
   transition: 0.3s ease-in-out;
-  width: 10px;
+  width: 0.625rem;
 }
 
-.navNext .arrowBox::before { left: 1px; }
-.navNext .arrowBox::after  { right: 3px; transform: translateY(-50%) rotate(45deg); }
+.navNext .arrowBox::before { left: 0.0625rem; }
+.navNext .arrowBox::after  { right: 0.1875rem; transform: translateY(-50%) rotate(45deg); }
 
-.navPrev .arrowBox::before { right: 1px; }
-.navPrev .arrowBox::after  { left: 3px; transform: translateY(-50%) rotate(-135deg); }
+.navPrev .arrowBox::before { right: 0.0625rem; }
+.navPrev .arrowBox::after  { left: 0.1875rem; transform: translateY(-50%) rotate(-135deg); }
 
-.navBtn:hover .arrowBox::before { width: 42px; }
-.navNext:hover .arrowBox::after { right: -3px; }
-.navPrev:hover .arrowBox::after { left: -3px; }
+.navBtn:hover .arrowBox::before { width: 2.625rem; }
+.navNext:hover .arrowBox::after { right: -0.1875rem; }
+.navPrev:hover .arrowBox::after { left: -0.1875rem; }
 
 /* -- Mobile ≤768px ── */
 @media (max-width: 768px) {
   .section {
-    padding: 104px 0 24px;
+    padding: 6.5rem 0 1.5rem;
   }
 
   .title {
-    font-size: 32px;
-    line-height: 35px;
-    margin-bottom: 40px;
+    font-size: 2rem;
+    line-height: 2.1875rem;
+    margin-bottom: 2.5rem;
   }
 
   .cardsWrapper {

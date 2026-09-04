@@ -39,15 +39,15 @@
 
   .title {
     text-align: left;
-    font-size: 28px;
-    line-height: 34px;
+    font-size: 1.75rem;
+    line-height: 2.125rem;
   }
 }
 
 .titleAccent {
   color: #3CC4E5;
   padding-right: 0.5rem;
-  
+
 }
 
 .achievementsWrap {
@@ -66,8 +66,8 @@
 
 @media (min-width: 769px) and (max-width: 1440px) {
   .achievementsWrap {
-    margin: 64px auto 0;
-    max-width: calc(100% - 160px);
+    margin: 4rem auto 0;
+    max-width: calc(100% - 10rem);
   }
 }
 
@@ -87,8 +87,8 @@
   border: none;
   cursor: pointer;
   padding: 0;
-  height: 24px;
-  width: 40px;
+  height: 1.5rem;
+  width: 2.5rem;
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
@@ -107,7 +107,7 @@
   transform: translateY(-50%);
   border-radius: 999px;
   transition: width 0.3s ease-in-out;
-  width: 37px;
+  width: 2.3125rem;
 }
 
 /* Arrowhead (rotated square corner) */
@@ -118,32 +118,32 @@
   border-top: 2px solid var(--color-accent);
   content: "";
   display: block;
-  height: 10px;
-  width: 10px;
+  height: 0.625rem;
+  width: 0.625rem;
   position: absolute;
   top: 50%;
   transition: 0.3s ease-in-out;
 }
 
-.navNext::before { left: 1px; }
-.navNext::after  { right: 3px; transform: translateY(-50%) rotate(45deg); }
+.navNext::before { left: 0.0625rem; }
+.navNext::after  { right: 0.1875rem; transform: translateY(-50%) rotate(45deg); }
 
-.navPrev::before { right: 1px; }
-.navPrev::after  { left: 3px; transform: translateY(-50%) rotate(-135deg); }
+.navPrev::before { right: 0.0625rem; }
+.navPrev::after  { left: 0.1875rem; transform: translateY(-50%) rotate(-135deg); }
 
 .navPrev {
-  right: calc(100% + 40px);
+  right: calc(100% + 2.5rem);
 }
 
 .navNext {
-  left: calc(100% + 40px);
+  left: calc(100% + 2.5rem);
 }
 
 /* Hover grow */
-.navNext:not(.navDisabled):hover::before { width: 42px; }
-.navNext:not(.navDisabled):hover::after  { right: -3px; }
-.navPrev:not(.navDisabled):hover::before { width: 42px; }
-.navPrev:not(.navDisabled):hover::after  { left: -3px; }
+.navNext:not(.navDisabled):hover::before { width: 2.625rem; }
+.navNext:not(.navDisabled):hover::after  { right: -0.1875rem; }
+.navPrev:not(.navDisabled):hover::before { width: 2.625rem; }
+.navPrev:not(.navDisabled):hover::after  { left: -0.1875rem; }
 
 /* Disabled state */
 .navDisabled {
@@ -161,8 +161,8 @@
     right: auto;
     bottom: 0;
     transform: none;
-    width: 32px;
-    height: 20px;
+    width: 2rem;
+    height: 1.25rem;
     margin: 0;
     outline: none;
     box-shadow: none;
@@ -175,7 +175,7 @@
     left: 0;
   }
   .navNext {
-    left: 48px;
+    left: 3rem;
   }
   .navPrev:focus,
   .navNext:focus,
@@ -188,24 +188,24 @@
   .navPrev::before,
   .navNext::before {
     top: 50%;
-    width: 30px;
+    width: 1.875rem;
   }
   .navPrev::after,
   .navNext::after {
     top: 50%;
-    width: 8px;
-    height: 8px;
+    width: 0.5rem;
+    height: 0.5rem;
   }
 
-  .navNext::after { right: 2px; }
-  .navPrev::after { left: 2px; }
+  .navNext::after { right: 0.125rem; }
+  .navPrev::after { left: 0.125rem; }
 
   .navNext:not(.navDisabled):hover::before,
   .navPrev:not(.navDisabled):hover::before {
-    width: 34px;
+    width: 2.125rem;
   }
-  .navNext:not(.navDisabled):hover::after { right: -2px; }
-  .navPrev:not(.navDisabled):hover::after { left: -2px; }
+  .navNext:not(.navDisabled):hover::after { right: -0.125rem; }
+  .navPrev:not(.navDisabled):hover::after { left: -0.125rem; }
 }
 
 .slide {

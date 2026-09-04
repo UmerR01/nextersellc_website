@@ -460,20 +460,22 @@ export default function FintechPage() {
             <p className={styles.sectionDesc}>
               Nexterse LLC operates as a Dual-Engine engineering firm. We develop systems that combine deterministic transaction execution and AI-driven decisioning within a single, controlled architecture. Every transaction and every decision follows defined logic, measurable outputs, and consistent system behavior.
             </p>
-            <div className={styles.dualEngineTabs} role="tablist" aria-label="Dual-engine fintech engineering">
-              {DUAL_ENGINE.map((engine, index) => (
-                <button
-                  key={engine.title}
-                  type="button"
-                  role="tab"
-                  aria-selected={activeDualEngine === index}
-                  className={`${styles.dualEngineTab}${activeDualEngine === index ? ` ${styles.dualEngineTabActive}` : ""}`}
-                  onClick={() => setActiveDualEngine(index)}
-                >
-                  <Image src={engine.icon} alt="" width={56} height={56} className={styles.dualEngineIcon} />
-                  <span>{engine.title}</span>
-                </button>
-              ))}
+            <div className={styles.dualEngineTabsWrap}>
+              <div className={styles.dualEngineTabs} role="tablist" aria-label="Dual-engine fintech engineering">
+                {DUAL_ENGINE.map((engine, index) => (
+                  <button
+                    key={engine.title}
+                    type="button"
+                    role="tab"
+                    aria-selected={activeDualEngine === index}
+                    className={`${styles.dualEngineTab}${activeDualEngine === index ? ` ${styles.dualEngineTabActive}` : ""}`}
+                    onClick={() => setActiveDualEngine(index)}
+                  >
+                    <Image src={engine.icon} alt="" width={56} height={56} className={styles.dualEngineIcon} />
+                    <span>{engine.title}</span>
+                  </button>
+                ))}
+              </div>
             </div>
             <div className={styles.dualEnginePanel} role="tabpanel">
               <h3 className={styles.dualEnginePanelTitle}>{dualEngine.title}</h3>

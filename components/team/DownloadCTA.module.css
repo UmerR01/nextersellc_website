@@ -1,43 +1,50 @@
+/* Rebuilt to match RagPage.module.css's .inlineCtaInner — the confirmed
+   sitewide CTA reference (see track/header-nav-and-cta-reference-fix.md).
+   Was: min-height:16.875rem (fixed height on a CTA banner — btn_r: never),
+   padding:3.5rem 7rem (not the flat 1.875rem-everywhere rule), gap:2.5rem,
+   and a bespoke 768-1024px tablet tier with a
+   .container{padding-inline:0} "external padding" zeroing hack instead of
+   the sitewide .container gutter. */
 .section {
   background: #fff;
-  padding: 48px 0;
+  padding: 3rem 0 4.625rem;
 }
 
 .container {
-  max-width: 1468px;
+  max-width: 91.75rem;
   margin: 0 auto;
-  padding: 0 24px;
+  padding: 0 1.5rem;
 }
 
 .row {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 40px;
-  min-height: 270px;
-  padding: 56px 112px;
+  gap: 4.5rem;
   overflow: hidden;
+  padding: 1.875rem;
   background: linear-gradient(115deg, var(--color-accent-dark) 0%, #17163f 100%);
 }
 
 .left {
-  flex: 0 0 60%;
+  flex: 1;
+  min-width: 0;
 }
 
 .left h2 {
   font-family: var(--font-inter-tight), sans-serif;
-  font-size: 38px;
+  font-size: 2.375rem;
   line-height: 1.25;
   font-weight: 400;
   color: #fff;
   letter-spacing: normal;
-  margin-bottom: 16px;
+  margin-bottom: 1rem;
   margin-top: 0;
 }
 
 .left p {
   font-family: var(--font-inter-tight), sans-serif;
-  font-size: 22px;
+  font-size: 1.375rem;
   line-height: 1.6;
   color: rgba(255, 255, 255, 0.92);
   font-weight: 400;
@@ -48,69 +55,29 @@
   flex-shrink: 0;
 }
 
+/* No padding override here — inherits the base .btn's 0.4rem 1.25rem from
+   app/globals.css, matching the Header's "Get in touch" button exactly. */
 .btn {
   font-family: var(--font-inter-tight), sans-serif;
-  padding: 0.4rem 1.5rem;
   text-decoration: none;
   white-space: nowrap;
 }
 
-@media (min-width: 768px) and (max-width: 1024px) {
-  .container {
-    padding-inline: 0;
-  }
-
-  .row {
-    gap: clamp(1.5rem, 4vw, 2.5rem);
-    min-height: 0;
-    padding: clamp(2rem, 5vw, 3rem);
-  }
-
-  .left {
-    flex: 1 1 auto;
-  }
-
-  .left h2 {
-    font-size: clamp(1.5rem, 3.5vw, 2rem);
-  }
-
-  .left p {
-    font-size: clamp(1rem, 2.2vw, 1.125rem);
-  }
-
-  .right {
-    margin-left: auto;
-  }
-}
-
-@media (max-width: 767px) {
-  .section {
-    padding: 32px 0;
-  }
-
+/* Two-state cta_r rule (see track/responsiveness-rules.md): a plain row
+   above 700px, a centered stacked column at/below it. Matches
+   RagPage.module.css's .inlineCtaInner exactly, including the
+   breakpoint — see track/header-nav-and-cta-reference-fix.md. Replaces
+   the previous bespoke 768-1024px tablet tier and the 767px mobile tier
+   (which used a different breakpoint value and its own font-size
+   overrides not present on the reference). */
+@media (max-width: 700px) {
   .row {
     flex-direction: column;
-    align-items: flex-start;
-    min-height: 0;
-    padding: 40px 24px;
-  }
-
-  .left {
-    flex: unset;
-    width: 100%;
-  }
-
-  .left h2 {
-    font-size: 32px;
-    line-height: 35px;
-  }
-
-  .left p {
-    font-size: 18px;
+    align-items: stretch;
+    gap: 1.75rem;
   }
 
   .right {
     align-self: center;
   }
-
 }

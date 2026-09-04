@@ -1,16 +1,16 @@
 .social {
   list-style: none;
-  margin: 24px 0 0;
+  margin: 1.5rem 0 0;
   padding: 0;
   display: flex;
   justify-content: center;
-  gap: 28px;
+  gap: 1.75rem;
 }
 
 .shareBtn {
   display: inline-flex;
-  width: 20px;
-  height: 20px;
+  width: 1.25rem;
+  height: 1.25rem;
   align-items: center;
   justify-content: center;
   background: none;
@@ -23,16 +23,16 @@
 
 .shareBtn:hover {
   filter: none;
-  transform: translateY(-1px);
+  transform: translateY(-0.0625rem);
 }
 
 .social :global(img) {
-  width: 18px;
-  height: 18px;
+  width: 1.125rem;
+  height: 1.125rem;
 }
 
 @media (max-width: 768px) {
   .social {
-    gap: 20px;
+    gap: 1.25rem;
   }
 }

@@ -103,7 +103,7 @@
 }
 
 .breadcrumbs a {
-  color: rgba(255, 255, 255, 0.5);
+  color: #fff;
   font-family: var(--font-inter-tight), sans-serif;
   font-size: 14px;
   font-weight: 400;

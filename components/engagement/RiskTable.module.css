@@ -14,7 +14,7 @@
   font-size: clamp(2rem, 3.5vw, 3.5rem);
   font-weight: 400;
   color: #112244;
-  margin-bottom: 20px;
+  margin-bottom: 1.25rem;
 }
 
 .description {
@@ -35,14 +35,14 @@
 .table {
   width: 100%;
   border-collapse: collapse;
-  font-size: 16px;
+  font-size: 1rem;
   border: 1px solid #d8e4f0;
 }
 
 .table th {
   text-align: left;
   font-weight: 400;
-  font-size: 16px;
+  font-size: 1rem;
   color: #112244;
   padding: clamp(0.875rem, 1.5vw, 1.125rem) clamp(0.875rem, 1.7vw, 1.25rem);
   border: 1px solid #d8e4f0;

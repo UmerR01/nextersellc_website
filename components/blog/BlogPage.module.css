@@ -1,14 +1,14 @@
 /* ─── Page wrapper ─────────────────────────────────────────────────── */
 .section {
-  padding-top: calc(var(--header-height) + 26px);
+  padding-top: calc(var(--header-height) + 1.625rem);
   padding-bottom: 8.5rem;
   font-family: var(--font-inter-tight), "Inter Tight", sans-serif;
 }
 
 @media screen and (max-width: 768px) {
   .section {
-    padding-top: 88px;
-    padding-bottom: 72px;
+    padding-top: 5.5rem;
+    padding-bottom: 4.5rem;
   }
 }
 
@@ -16,7 +16,7 @@
 .wrapperMain {
   position: relative;
   width: 100%;
-  max-width: min(100%, 1540px);
+  max-width: min(100%, 96.25rem);
   margin: 0 auto;
   padding-inline: clamp(1.25rem, 3vw, 2.5rem);
 }
@@ -26,7 +26,7 @@
   display: flex;
   align-items: center;
   overflow: hidden;
-  padding: 8px 0 0;
+  padding: 0.5rem 0 0;
   position: static;
   white-space: nowrap;
   margin-bottom: 5rem;
@@ -35,11 +35,11 @@
 .breadcrumbs a {
   color: #0b1734;
   font-family: var(--font-inter-tight), "Inter Tight", sans-serif;
-  font-size: 14px;
+  font-size: 0.875rem;
   font-weight: 400;
-  line-height: 20px;
-  margin-right: 8px;
-  padding-right: 24px;
+  line-height: 1.25rem;
+  margin-right: 0.5rem;
+  padding-right: 1.5rem;
   position: relative;
   text-decoration: none;
   transition: color 0.3s ease;
@@ -66,9 +66,9 @@
 .breadcrumbs span {
   color: #899fb6;
   font-family: var(--font-inter-tight), "Inter Tight", sans-serif;
-  font-size: 14px;
+  font-size: 0.875rem;
   font-weight: 400;
-  line-height: 20px;
+  line-height: 1.25rem;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -81,13 +81,13 @@
   font-weight: 400;
   line-height: 1.1;
   color: #0b1734;
-  padding: 0 0 64px;
+  padding: 0 0 4rem;
   margin: 0;
 }
 
 @media screen and (max-width: 768px) {
   .pageTitle {
-    padding: 40px 0;
+    padding: 2.5rem 0;
     font-size: clamp(2rem, 8vw, 2.75rem);
   }
 }
@@ -101,7 +101,7 @@
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
-  gap: 40px;
+  gap: 2.5rem;
 }
 
 @media screen and (max-width: 768px) {
@@ -120,12 +120,12 @@
   display: flex;
   flex-wrap: wrap;
   list-style: none;
-  margin: -4px;
+  margin: -0.25rem;
   padding: 0;
 }
 
 .categoryList li {
-  margin: 4px;
+  margin: 0.25rem;
 }
 
 .categoryList li a {
@@ -134,19 +134,19 @@
   background: #f7f9fe;
   color: #0b1734;
   font-family: var(--font-inter-tight), "Inter Tight", sans-serif;
-  font-size: 18px;
+  font-size: 1.125rem;
   font-weight: 400;
-  line-height: 28px;
-  padding: 10px 16px 8px;
+  line-height: 1.75rem;
+  padding: 0.625rem 1rem 0.5rem;
   text-decoration: none;
   transition: all 0.5s ease;
 }
 
 @media screen and (max-width: 768px) {
   .categoryList li a {
-    font-size: 14px;
-    line-height: 22px;
-    padding: 8px 16px;
+    font-size: 0.875rem;
+    line-height: 1.375rem;
+    padding: 0.5rem 1rem;
   }
 }
 
@@ -158,15 +158,15 @@
 
 /* ─── Search ────────────────────────────────────────────────────────── */
 .blogSearch {
-  flex: 0 0 280px;
-  max-width: 280px;
+  flex: 0 0 17.5rem;
+  max-width: 17.5rem;
   width: 100%;
 }
 
 @media screen and (max-width: 768px) {
   .blogSearch {
     flex: 0 0 auto;
-    margin-top: 24px;
+    margin-top: 1.5rem;
     max-width: 100%;
   }
 
@@ -185,11 +185,11 @@
   border-bottom: 1px solid #899fb6;
   color: #0b1734;
   font-family: var(--font-inter-tight), "Inter Tight", sans-serif;
-  font-size: 16px;
-  line-height: 22px;
-  max-width: 280px;
+  font-size: 1rem;
+  line-height: 1.375rem;
+  max-width: 17.5rem;
   outline: none;
-  padding: 8px 40px 8px 0;
+  padding: 0.5rem 2.5rem 0.5rem 0;
   width: 100%;
   transition: border-color 0.3s;
 }
@@ -218,23 +218,23 @@
 
 /* ─── Posts grid ────────────────────────────────────────────────────── */
 .mainPosts {
-  margin-top: 40px;
+  margin-top: 2.5rem;
 }
 
 .postsRow {
   display: flex;
   flex-wrap: wrap;
-  margin: -28px -10px !important;
+  margin: -1.75rem -0.625rem !important;
 }
 
 @media screen and (max-width: 768px) {
   .postsRow {
-    margin: -20px -10px !important;
+    margin: -1.25rem -0.625rem !important;
   }
 }
 
 .postCol {
-  padding: 28px 10px !important;
+  padding: 1.75rem 0.625rem !important;
   position: relative;
   width: 100%;
 }
@@ -255,7 +255,7 @@
 
 @media screen and (max-width: 768px) {
   .postCol {
-    padding: 20px 10px !important;
+    padding: 1.25rem 0.625rem !important;
   }
 }
 
@@ -335,20 +335,20 @@
 
 /* ─── Post content ──────────────────────────────────────────────────── */
 .postContent {
-  padding-top: calc(56.2% + 24px);
+  padding-top: calc(56.2% + 1.5rem);
   position: relative;
 }
 
 @media screen and (max-width: 768px) {
   .postContent {
-    padding-top: calc(56.2% + 16px);
+    padding-top: calc(56.2% + 1rem);
   }
 }
 
 .postCategories {
   display: flex;
   flex-wrap: wrap;
-  margin: -4px;
+  margin: -0.25rem;
 }
 
 .postCategory {
@@ -357,11 +357,11 @@
   color: #0b1734;
   display: flex;
   font-family: var(--font-inter-tight), "Inter Tight", sans-serif;
-  font-size: 14px;
+  font-size: 0.875rem;
   font-weight: 400;
-  line-height: 20px;
-  margin: 4px;
-  padding: 5px 16px 3px;
+  line-height: 1.25rem;
+  margin: 0.25rem;
+  padding: 0.3125rem 1rem 0.1875rem;
   text-decoration: none;
   transition: all 0.5s ease;
   position: relative;
@@ -370,8 +370,8 @@
 
 @media screen and (max-width: 768px) {
   .postCategory {
-    font-size: 12px;
-    line-height: 17px;
+    font-size: 0.75rem;
+    line-height: 1.0625rem;
   }
 }
 
@@ -384,35 +384,35 @@
   font-family: var(--font-inter-tight), "Inter Tight", sans-serif;
   font-size: clamp(1.5rem, 1.55vw, 1.75rem);
   font-weight: 400;
-  line-height: 36px;
-  margin: 16px 0;
+  line-height: 2.25rem;
+  margin: 1rem 0;
   transition: color 0.5s ease;
 }
 
 @media screen and (max-width: 1199px) {
   .wrapperMain {
-    width: min(calc(100% - 40px), 1160px);
+    width: min(calc(100% - 2.5rem), 72.5rem);
   }
 
   .filterWrapper {
-    gap: 24px;
+    gap: 1.5rem;
   }
 
   .categoryList li a {
-    font-size: 16px;
-    padding-inline: 14px;
+    font-size: 1rem;
+    padding-inline: 0.875rem;
   }
 }
 
 @media screen and (max-width: 768px) {
   .wrapperMain {
-    width: calc(100% - 32px);
+    width: calc(100% - 2rem);
   }
 
   .postTitle {
-    font-size: 20px;
-    line-height: 24px;
-    margin: 8px 0 16px;
+    font-size: 1.25rem;
+    line-height: 1.5rem;
+    margin: 0.5rem 0 1rem;
   }
 }
 
@@ -442,13 +442,13 @@
   align-items: center;
   display: flex;
   justify-content: center;
-  margin-right: 16px;
+  margin-right: 1rem;
 }
 
 .authorAvatar {
   border-radius: 50%;
-  max-height: 48px;
-  max-width: 48px;
+  max-height: 3rem;
+  max-width: 3rem;
   object-fit: cover;
 }
 
@@ -460,15 +460,15 @@
 .authorInfo span {
   color: #5e6d8e;
   font-family: var(--font-inter-tight), "Inter Tight", sans-serif;
-  font-size: 16px;
+  font-size: 1rem;
   font-weight: 400;
-  line-height: 22px;
+  line-height: 1.375rem;
 }
 
 @media screen and (max-width: 768px) {
   .authorInfo span {
-    font-size: 13px;
-    line-height: 18px;
+    font-size: 0.8125rem;
+    line-height: 1.125rem;
   }
 }
 
@@ -485,13 +485,13 @@
 .postDateWrapper {
   display: flex;
   align-items: center;
-  gap: 5px;
+  gap: 0.3125rem;
 }
 
 .postReadtime {
   align-items: center;
   display: flex;
-  gap: 6px;
+  gap: 0.375rem;
 }
 
 /* ─── Absolute overlay link ─────────────────────────────────────────── */
@@ -503,20 +503,20 @@
 
 /* ─── No results ────────────────────────────────────────────────────── */
 .noResults {
-  padding: 48px 0;
-  font-size: 18px;
+  padding: 3rem 0;
+  font-size: 1.125rem;
   color: #5e6d8e;
   width: 100%;
 }
 
 /* ─── Pagination ────────────────────────────────────────────────────── */
 .paginationBlock {
-  padding-top: 56px;
+  padding-top: 3.5rem;
 }
 
 @media screen and (max-width: 768px) {
   .paginationBlock {
-    padding-top: 40px;
+    padding-top: 2.5rem;
   }
 }
 
@@ -538,8 +538,8 @@
 
 /* Prev / Next arrow buttons */
 .paginationBtn {
-  height: 40px;
-  width: 40px;
+  height: 2.5rem;
+  width: 2.5rem;
   cursor: pointer;
 }
 
@@ -551,11 +551,11 @@
 }
 
 .paginationBtn:first-child {
-  margin-right: 24px;
+  margin-right: 1.5rem;
 }
 
 .paginationBtn:last-child {
-  margin-left: 24px;
+  margin-left: 1.5rem;
 }
 
 /* Arrow: horizontal line */
@@ -564,12 +564,12 @@
   bottom: 0;
   content: "";
   display: block;
-  height: 2px;
+  height: 0.125rem;
   margin: auto 0;
   position: absolute;
   top: 0;
   transition: width 0.3s ease-in-out;
-  width: calc(100% - 2px);
+  width: calc(100% - 0.125rem);
 }
 
 /* Arrow: chevron tip */
@@ -579,12 +579,12 @@
   bottom: 0;
   content: "";
   display: block;
-  height: 10px;
+  height: 0.625rem;
   margin: auto 0;
   position: absolute;
   top: 0;
   transition: 0.3s ease-in-out;
-  width: 10px;
+  width: 0.625rem;
 }
 
 /* Disabled state */
@@ -602,38 +602,38 @@
 
 /* Prev arrow direction */
 .paginationBtn:first-child::before {
-  right: 1px;
+  right: 0.0625rem;
 }
 
 .paginationBtn:first-child::after {
-  left: 2px;
+  left: 0.125rem;
   transform: rotate(135deg);
 }
 
 .paginationBtn:first-child:not(.paginationDisabled):hover::before {
-  width: calc(100% + 4px);
+  width: calc(100% + 0.25rem);
 }
 
 .paginationBtn:first-child:not(.paginationDisabled):hover::after {
-  left: -4px;
+  left: -0.25rem;
 }
 
 /* Next arrow direction */
 .paginationBtnNext::before {
-  left: 1px;
+  left: 0.0625rem;
 }
 
 .paginationBtnNext::after {
-  right: 2px;
+  right: 0.125rem;
   transform: rotate(-45deg);
 }
 
 .paginationBtnNext:not(.paginationDisabled):hover::before {
-  width: calc(100% + 4px);
+  width: calc(100% + 0.25rem);
 }
 
 .paginationBtnNext:not(.paginationDisabled):hover::after {
-  right: -4px;
+  right: -0.25rem;
 }
 
 /* Page number items */
@@ -642,22 +642,22 @@
   color: #0b1734;
   display: flex;
   font-family: var(--font-inter-tight), "Inter Tight", sans-serif;
-  font-size: 18px;
+  font-size: 1.125rem;
   font-weight: 400;
-  height: 40px;
+  height: 2.5rem;
   justify-content: center;
-  line-height: 28px;
+  line-height: 1.75rem;
   text-align: center;
   text-decoration: none;
   transition: all 0.5s ease;
-  width: 40px;
+  width: 2.5rem;
   z-index: 1;
 }
 
 @media screen and (max-width: 768px) {
   .pageNumber {
-    font-size: 14px;
-    line-height: 22px;
+    font-size: 0.875rem;
+    line-height: 1.375rem;
   }
 }
 
@@ -674,8 +674,8 @@
   align-items: center;
   color: #0b1734;
   display: flex;
-  font-size: 18px;
-  height: 40px;
+  font-size: 1.125rem;
+  height: 2.5rem;
   justify-content: center;
-  width: 40px;
+  width: 2.5rem;
 }

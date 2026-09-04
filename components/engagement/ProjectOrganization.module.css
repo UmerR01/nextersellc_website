@@ -6,7 +6,7 @@
 
 @media (max-width: 768px) {
   .section {
-    padding: 72px 0;
+    padding: 4.5rem 0;
   }
 }
 
@@ -20,27 +20,27 @@
 .bg::before {
   content: "";
   position: absolute;
-  width: 800px;
-  height: 800px;
+  width: 50rem;
+  height: 50rem;
   background: var(--color-accent);
   border-radius: 50%;
   filter: blur(300px);
   opacity: 0.12;
-  top: -300px;
-  left: -200px;
+  top: -18.75rem;
+  left: -12.5rem;
 }
 
 .bg::after {
   content: "";
   position: absolute;
-  width: 600px;
-  height: 600px;
+  width: 37.5rem;
+  height: 37.5rem;
   background: var(--color-blue);
   border-radius: 50%;
   filter: blur(250px);
   opacity: 0.18;
-  bottom: -200px;
-  right: -100px;
+  bottom: -12.5rem;
+  right: -6.25rem;
 }
 
 .container {
@@ -60,19 +60,19 @@
   font-weight: 400;
   line-height: 1.1;
   color: #fff;
-  margin: 0 0 32px;
+  margin: 0 0 2rem;
 }
 
 @media (max-width: 768px) {
   .title {
-    font-size: 32px;
-    line-height: 35px;
-    margin-bottom: 24px;
+    font-size: 2rem;
+    line-height: 2.1875rem;
+    margin-bottom: 1.5rem;
   }
 }
 
 .description {
-  margin-bottom: 56px;
+  margin-bottom: 3.5rem;
 }
 
 .description p {
@@ -85,11 +85,11 @@
 
 @media (max-width: 768px) {
   .description p {
-    font-size: 16px;
-    line-height: 26px;
+    font-size: 1rem;
+    line-height: 1.625rem;
   }
   .description {
-    margin-bottom: 40px;
+    margin-bottom: 2.5rem;
   }
 }
 
@@ -102,7 +102,7 @@
 @media (max-width: 992px) {
   .cols {
     grid-template-columns: 1fr;
-    gap: 40px;
+    gap: 2.5rem;
   }
 }
 
@@ -112,9 +112,9 @@
 }
 
 .icon {
-  width: 56px;
-  height: 56px;
-  margin-bottom: 24px;
+  width: 3.5rem;
+  height: 3.5rem;
+  margin-bottom: 1.5rem;
 }
 
 .icon img {
@@ -129,19 +129,19 @@
   font-weight: 400;
   line-height: 1.3;
   color: #fff;
-  margin: 0 0 16px;
+  margin: 0 0 1rem;
 }
 
 @media (max-width: 768px) {
   .colTitle {
-    font-size: 20px;
+    font-size: 1.25rem;
   }
 }
 
 .colText {
-  font-size: 16px;
+  font-size: 1rem;
   font-weight: 400;
-  line-height: 26px;
+  line-height: 1.625rem;
   color: #c8d5e8;
   margin: 0;
 }

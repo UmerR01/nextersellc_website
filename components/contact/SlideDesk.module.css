@@ -11,7 +11,7 @@
 
 @media (max-width: 1199px) {
   .wrapper {
-    padding: 40px 0;
+    padding: 2.5rem 0;
   }
 }
 
@@ -45,12 +45,12 @@
 }
 
 .titleWrap {
-  max-width: 480px;
+  max-width: 30rem;
 }
 
 @media (max-width: 768px) {
   .titleWrap {
-    margin-bottom: 8px;
+    margin-bottom: 0.5rem;
     max-width: 100%;
   }
 }
@@ -65,8 +65,8 @@
 
 @media (max-width: 768px) {
   .title {
-    font-size: 24px;
-    line-height: 29px;
+    font-size: 1.5rem;
+    line-height: 1.8125rem;
   }
 }
 
@@ -85,7 +85,7 @@
 .links {
   display: flex;
   flex-direction: column;
-  padding-left: 26px;
+  padding-left: 1.625rem;
 }
 
 @media (max-width: 768px) {
@@ -103,10 +103,10 @@
   color: #3CC4E5;
   cursor: pointer;
   display: inline-flex;
-  font-size: 18px;
+  font-size: 1.125rem;
   font-weight: 400;
-  line-height: 22px;
-  margin-bottom: 24px;
+  line-height: 1.375rem;
+  margin-bottom: 1.5rem;
   position: relative;
   text-decoration: none;
   width: fit-content;
@@ -118,21 +118,21 @@
 
 .link:hover .linkArrow::before {
   animation: bounceBefore 1s linear infinite;
-  right: 6px;
+  right: 0.375rem;
 }
 
 .link:hover .linkArrow::after {
   animation: bounceAfter 1s linear infinite;
-  right: 6px;
+  right: 0.375rem;
 }
 
 .linkArrow {
-  font-size: 18px;
-  line-height: 22px;
-  padding-left: 6px;
-  padding-right: 17px;
+  font-size: 1.125rem;
+  line-height: 1.375rem;
+  padding-left: 0.375rem;
+  padding-right: 1.0625rem;
   position: relative;
-  width: 17px;
+  width: 1.0625rem;
 }
 
 .linkArrow::before,
@@ -143,13 +143,13 @@
   background-size: cover;
   content: "";
   display: block;
-  height: 9px;
+  height: 0.5625rem;
   position: absolute;
-  right: 10px;
+  right: 0.625rem;
   top: 50%;
   transform: translateY(-50%);
   transition: 0.1s;
-  width: 6px;
+  width: 0.375rem;
 }
 
 .linkArrow::after {
@@ -158,14 +158,14 @@
 
 @keyframes bounceBefore {
   0% { opacity: 1; transform: translateX(0) translateY(-50%); }
-  49% { opacity: 0; transform: translateX(7px) translateY(-50%); }
-  52% { opacity: 0; transform: translateX(-7px) translateY(-50%); }
+  49% { opacity: 0; transform: translateX(0.4375rem) translateY(-50%); }
+  52% { opacity: 0; transform: translateX(-0.4375rem) translateY(-50%); }
   100% { opacity: 1; transform: translateX(0) translateY(-50%); }
 }
 
 @keyframes bounceAfter {
-  0% { opacity: 0; transform: translateX(-7px) translateY(-50%); }
+  0% { opacity: 0; transform: translateX(-0.4375rem) translateY(-50%); }
   49% { opacity: 1; transform: translateX(0) translateY(-50%); }
-  99% { opacity: 0; transform: translateX(7px) translateY(-50%); }
-  100% { opacity: 0; transform: translateX(-7px) translateY(-50%); }
+  99% { opacity: 0; transform: translateX(0.4375rem) translateY(-50%); }
+  100% { opacity: 0; transform: translateX(-0.4375rem) translateY(-50%); }
 }

@@ -1,26 +1,30 @@
 .section {
   background: #fff;
-  padding: 28px 0;
+  padding: 1.75rem 0;
 }
 
+/* width: 100% (was calc(100% - 3rem)) — removes the left/right inset
+   that made the grey box sit margined in from .section's edges instead
+   of spanning it fully. max-width + margin:0 auto still center it on
+   very wide screens. */
 .container {
   box-sizing: border-box;
-  width: calc(100% - 48px);
-  max-width: 1420px;
+  width: 100%;
+  max-width: 88.75rem;
   margin: 0 auto;
-  padding: 24px 132px 0;
+  padding: 1.5rem 8.25rem 0;
   background: #f7f9fe;
 }
 
 .title {
   font-family: var(--font-inter-tight), sans-serif;
-  font-size: 56px;
-  line-height: 62px;
+  font-size: 3.5rem;
+  line-height: 3.875rem;
   font-weight: 400;
   color: #02102C;
   letter-spacing: normal;
   text-align: center;
-  margin-bottom: 64px;
+  margin-bottom: 4rem;
   margin-top: 0;
 }
 
@@ -31,7 +35,7 @@
 .content {
   display: grid;
   grid-template-columns: minmax(0, 1.08fr) minmax(0, 0.92fr);
-  gap: 88px;
+  gap: 5.5rem;
   align-items: start;
 }
 
@@ -41,15 +45,15 @@
   margin: 0;
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 1.25rem;
 }
 
 .valuesList li {
   font-family: var(--font-inter-tight), sans-serif;
-  font-size: 22px;
+  font-size: 1.375rem;
   line-height: 1.62;
   color: #112244;
-  padding-left: 30px;
+  padding-left: 1.875rem;
   position: relative;
 }
 
@@ -57,7 +61,7 @@
   content: "";
   position: absolute;
   left: 0;
-  top: 10px;
+  top: 0.625rem;
   width: 19px;
   height: 14px;
   background-image: url("data:image/svg+xml;charset=utf8,%3Csvg width='19' height='14' viewBox='0 0 19 14' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M17.25 1.75037L6.75 12.2504L1.5 7.00037' stroke='%233CC4E5' stroke-width='1.5' stroke-linecap='square'/%3E%3C/svg%3E");
@@ -109,18 +113,18 @@
 
 @media (max-width: 767px) {
   .section {
-    padding: 20px 0;
+    padding: 1.25rem 0;
   }
 
   .container {
-    width: calc(100% - 32px);
-    padding: 56px 24px;
+    width: 100%;
+    padding: 3.5rem 1.5rem;
   }
 
   .title {
-    font-size: 32px;
-    line-height: 35px;
-    margin-bottom: 40px;
+    font-size: 2rem;
+    line-height: 2.1875rem;
+    margin-bottom: 2.5rem;
   }
 
   .content {
@@ -132,7 +136,7 @@
   .imageCol { order: 2; }
 
   .valuesList li {
-    font-size: 16px;
-    padding-left: 26px;
+    font-size: 1rem;
+    padding-left: 1.625rem;
   }
 }

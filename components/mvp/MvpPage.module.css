@@ -193,7 +193,7 @@
 }
 
 .heroBreadcrumbs a {
-  color: rgba(255, 255, 255, 0.5);
+  color: #fff;
   transition: color 0.2s ease;
 }
 
@@ -540,6 +540,14 @@
 /* Scroll at every width, never wrap to multiple rows — same theme as
    MlPage.module.css's .maturityTabs / DevPathSection.module.css's .tabs.
    See track/mvp-page-followup-fixes.md. */
+/* justify-content: space-between — with only 3 tabs, flex-start packed
+   them all against the left edge and left a large dead gap on the right
+   whenever the row was wide enough not to need scrolling. space-between
+   spreads them across the full row's width when they fit; if a viewport
+   ever gets narrow enough to actually need horizontal scroll, negative
+   free space makes space-between behave the same as flex-start (per the
+   flexbox spec), so this doesn't reintroduce the "unreachable first/last
+   item" bug that justify-content:center has on an overflowing row. */
 .tabButtons {
   display: flex;
   gap: 0;
@@ -548,7 +556,7 @@
   overflow-x: auto;
   overflow-y: hidden;
   scrollbar-width: thin;
-  justify-content: flex-start;
+  justify-content: space-between;
 }
 
 .tabButtons::-webkit-scrollbar {
@@ -574,7 +582,7 @@
   background: transparent;
   border: 0;
   border-bottom: 2px solid transparent;
-  padding: 1rem 1rem 1.2rem;
+  padding: 1rem 2rem 1.2rem;
   font-size: 1.18rem;
   font-weight: 400;
   font-family: var(--mvp-font);

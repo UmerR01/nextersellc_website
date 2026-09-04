@@ -282,10 +282,7 @@ export default function ProcessPage() {
                 <div key={i} className={`${styles.step} timeline-step`}>
                   {/* LEFT column – card or empty */}
                   {isLeft ? (
-                    <div
-                      className={`${styles.cardLeft} timeline-card-left`}
-                      style={{ order: 0 }}
-                    >
+                    <div className={`${styles.cardLeft} timeline-card-left`}>
                       <div className={isLastStep ? styles.cardInnerLaunch : styles.cardInnerLeft}>
                         <div className={`${styles.cardBox}`}>
                           <div className={styles.stepMeta}>
@@ -298,14 +295,11 @@ export default function ProcessPage() {
                       </div>
                     </div>
                   ) : (
-                    <div className={styles.cardEmpty} style={{ order: 0 }} aria-hidden />
+                    <div className={`${styles.cardEmpty} ${styles.cardEmptyLeft}`} aria-hidden />
                   )}
 
                   {/* CENTER column */}
-                  <div
-                    className={`${styles.centerCol}`}
-                    style={{ order: 1 }}
-                  >
+                  <div className={styles.centerCol}>
                     <div className={`${styles.iconBg} timeline-icon-bg`}>
                       <span className={`${styles.timelineIcon} timeline-icon-el`}>
                         <Icon />
@@ -318,10 +312,7 @@ export default function ProcessPage() {
 
                   {/* RIGHT column – card or empty */}
                   {!isLeft ? (
-                    <div
-                      className={`${styles.cardRight} timeline-card-right`}
-                      style={{ order: 2 }}
-                    >
+                    <div className={`${styles.cardRight} timeline-card-right`}>
                       <div className={styles.cardInnerRight}>
                         <div className={styles.cardBox}>
                           <div className={styles.stepMeta}>
@@ -334,7 +325,7 @@ export default function ProcessPage() {
                       </div>
                     </div>
                   ) : (
-                    <div className={styles.cardEmpty} style={{ order: 2 }} aria-hidden />
+                    <div className={`${styles.cardEmpty} ${styles.cardEmptyRight}`} aria-hidden />
                   )}
                 </div>
               );

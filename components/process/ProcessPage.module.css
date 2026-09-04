@@ -107,15 +107,22 @@
     0 1.5rem 4rem rgba(10, 21, 48, 0.08);
 }
 
-@media (max-width: 991px) {
-  .heroCard {
-    padding: 1.875rem;
-  }
-}
+/* The 991px/767px padding tiers that used to live here are dead — the
+   "Nexterse process-page theme normalization" block further down (and its
+   own 991px/767px padding-left/right tiers) sets .heroCard's padding
+   unconditionally and comes later in the file, so it always wins the tie
+   regardless of these media queries. Left as align-items only now.
 
-@media (max-width: 767px) {
+   550px, not 767px, for align-items — this has to switch to flex-start at
+   the exact same breakpoint .heroTitle/.heroBody/etc.'s text-align does
+   (also 550px, see below), or there's a range where the card's own
+   position goes left-aligned while its text is still centered inside
+   that now off-center box — centered text sitting in a box that itself
+   isn't centered anymore. Only two clean states should exist: centered
+   box + centered text (above 550px) and left box + left text (at or
+   below it). */
+@media (max-width: 550px) {
   .heroCard {
-    padding: 1.25rem;
     align-items: flex-start;
   }
 }
@@ -130,7 +137,7 @@
   margin: 0;
 }
 
-@media (max-width: 478px) {
+@media (max-width: 550px) {
   .heroEyebrow {
     text-align: left;
   }
@@ -169,7 +176,7 @@
   }
 }
 
-@media (max-width: 478px) {
+@media (max-width: 550px) {
   .heroTitle {
     font-size: 1.5rem;
     line-height: 1.3;
@@ -187,7 +194,7 @@
   max-width: 100%;
 }
 
-@media (max-width: 478px) {
+@media (max-width: 550px) {
   .heroBody {
     align-items: flex-start;
     width: 100%;
@@ -210,7 +217,7 @@
   }
 }
 
-@media (max-width: 478px) {
+@media (max-width: 550px) {
   .heroSubtitle {
     text-align: left;
   }
@@ -225,7 +232,7 @@
   max-width: 31.25rem;
 }
 
-@media (max-width: 478px) {
+@media (max-width: 550px) {
   .heroDesc {
     text-align: left;
   }
@@ -254,7 +261,13 @@
   display: flex;
   flex-direction: column;
   padding: 3.125rem 3.125rem 0;
-  border-top: 0 solid var(--p-border);
+  /* border-top was 0 — an open-top box, so the left/right vertical
+     borders looked like they started floating mid-page instead of
+     framing a closed rectangle, with no line marking the boundary
+     between the hero section above and this one. Restoring it closes
+     the frame and doubles as the separator line between the two
+     sections. */
+  border-top: 1px solid var(--p-border);
   border-right: 1px solid var(--p-border);
   border-bottom: 1px solid var(--p-border);
   border-left: 1px solid var(--p-border);
@@ -282,13 +295,13 @@
   justify-content: center;
 }
 
-@media (max-width: 767px) {
-  .step {
-    column-gap: 5%;
-  }
-}
-
-@media (max-width: 478px) {
+/* 950px, not 767px — this whole stacking transition (step row, card
+   widths, cardEmpty, center-col position, card text alignment) moved to
+   one earlier, consolidated breakpoint so the timeline stacks to a
+   single column sooner and consistently, instead of piecemeal across
+   767px/478px. See the .cardLeft/.cardRight/.cardEmpty/.centerCol block
+   below for the rest of this transition. */
+@media (max-width: 950px) {
   .step {
     column-gap: 5%;
   }
@@ -302,7 +315,7 @@
   max-width: 40%;
 }
 
-@media (max-width: 767px) {
+@media (max-width: 950px) {
   .cardLeft,
   .cardRight {
     width: 80%;
@@ -311,29 +324,30 @@
   }
 }
 
-@media (max-width: 478px) {
-  .cardLeft,
-  .cardRight {
-    width: 80%;
-    min-width: 80%;
-    max-width: 80%;
-  }
-}
-
-/* Cards that are empty placeholders */
+/* Cards that are empty placeholders. Order used to be set inline in
+   ProcessPage.tsx (style={{ order: 0 / 2 }}) — an inline style always
+   wins over an external stylesheet rule regardless of specificity or
+   media query, which silently made every order override below (and on
+   .cardLeft/.cardRight/.centerCol, which had the same inline-style
+   problem) permanently inert. Moved fully into CSS: .cardEmptyLeft/
+   .cardEmptyRight distinguish the two placeholder slots (same base
+   .cardEmpty class, different order per slot) since a plain .cardEmpty
+   selector alone can't tell which one it is. */
 .cardEmpty {
   width: 40%;
   min-width: 40%;
   max-width: 40%;
 }
 
-@media (max-width: 767px) {
-  .cardEmpty {
-    display: none;
-  }
+.cardEmptyLeft {
+  order: 0;
 }
 
-@media (max-width: 478px) {
+.cardEmptyRight {
+  order: 2;
+}
+
+@media (max-width: 950px) {
   .cardEmpty {
     display: none;
   }
@@ -349,16 +363,19 @@
   order: 2;
 }
 
-/* Flip order for right-side steps on mobile */
-@media (max-width: 767px) {
+/* Once stacked to one column, .cardEmpty (whichever placeholder sat on
+   the opposite side) is hidden — so with the desktop order left as-is,
+   a "left" step (cardLeft order 0, centerCol order 1) would show its
+   card BEFORE its icon, while a "right" step (centerCol order 1,
+   cardRight order 2) shows its icon BEFORE its card — the icon rail
+   alternates sides depending on which steps happened to be left/right at
+   desktop. Forced consistent here instead: centerCol always first
+   (visually left), the card always after it (visually right), on every
+   step regardless of its desktop side. */
+@media (max-width: 950px) {
+  .cardLeft,
   .cardRight {
-    order: 2;
-  }
-}
-
-@media (max-width: 478px) {
-  .cardRight {
-    order: 2;
+    order: 1;
   }
 }
 
@@ -374,21 +391,12 @@
   order: 1;
 }
 
-@media (max-width: 767px) {
+@media (max-width: 950px) {
   .centerCol {
     width: 15%;
     min-width: 15%;
     max-width: 15%;
-  }
-}
-
-@media (max-width: 478px) {
-  .centerCol {
-    width: 15%;
-    min-width: 15%;
-    max-width: 15%;
-    align-items: center;
-    order: 1;
+    order: 0;
   }
 }
 
@@ -508,7 +516,7 @@
   margin-bottom: 6.25rem;
 }
 
-@media (max-width: 767px) {
+@media (max-width: 950px) {
   .cardInnerLeft {
     align-items: flex-start;
   }
@@ -531,13 +539,20 @@
   margin-bottom: 12.5rem;
 }
 
-@media (max-width: 767px) {
+@media (max-width: 950px) {
   .cardInnerLaunch {
     align-items: flex-start;
   }
 }
 
 /* ─── Step card box ─────────────────────────────────────────────────────────── */
+/* width: 100% (was a fixed 25rem) — a fixed width doesn't shrink with its
+   parent, so at a narrow-but-not-yet-478px viewport (the .cardLeft/
+   .cardRight column can be well under 25rem=400px once stacked at
+   950px), the card box stayed rigidly 400px wide and overflowed its own
+   column instead of fitting it — the "card box responsiveness issue".
+   max-width caps it at the same 25rem on wide layouts where the column
+   has more room than the card needs. */
 .cardBox {
   display: flex;
   flex-direction: column;
@@ -547,7 +562,7 @@
   border-radius: 4px;
   background-color: var(--p-surface);
   box-shadow: 0 1rem 2.5rem rgba(10, 21, 48, 0.08);
-  width: 25rem;
+  width: 100%;
   max-width: 25rem;
 }
 
@@ -620,7 +635,7 @@
   row-gap: 0;
 }
 
-@media (max-width: 767px) {
+@media (max-width: 950px) {
   .finalStep {
     column-gap: 5%;
     align-items: flex-start;
@@ -632,6 +647,20 @@
   max-width: 40%;
   min-width: 40%;
   margin-bottom: 6.25rem;
+}
+
+/* Same 950px stacking tier as .cardLeft/.cardRight (which go to 80% at
+   this breakpoint) — .finalCardOuter had no tier between the 40% desktop
+   width and the 478px full-width one, so across that whole range it
+   stayed a rigid 40% of the timeline's full content width, leaving a
+   large empty gap beside it instead of using the space the other stacked
+   cards do. */
+@media (max-width: 950px) {
+  .finalCardOuter {
+    width: 80%;
+    max-width: 80%;
+    min-width: 80%;
+  }
 }
 
 @media (max-width: 478px) {
@@ -717,10 +746,17 @@
 }
 .heroGradient { display: none; }
 .heroBgVideo { display: none; }
+/* Full border (was border: 0, then a left/right-only version that relied
+   on the heroDivider above and .timelineContainer's border-top below to
+   read as "capped" — reported as not actually looking like a closed box).
+   A real border-top/border-bottom on the card itself closes it properly.
+   Horizontal padding added to match — with border:0 originally, .heroCard
+   had no horizontal padding at all (0 on each side), which would
+   otherwise butt the divider/content straight up against these borders. */
 .heroCard {
   max-width: 71.875rem;
-  padding: clamp(2rem, 4vw, 4rem) 0;
-  border: 0;
+  padding: 3.125rem;
+  border: 1px solid var(--p-border);
   background: transparent;
   box-shadow: none;
   backdrop-filter: none;
@@ -736,6 +772,27 @@
   box-shadow: none;
 }
 .finalCardOuter { box-shadow: none; }
+
+/* .heroCard's new left/right border padding, stepped down to match
+   .timelineContainer's own horizontal padding at the same tiers (1.875rem
+   @991px, 1.25rem @767px) — keeps the two connected boxes' inner content
+   insets consistent as they narrow. Only padding-left/right here (not the
+   shorthand) so the vertical clamp() above stays untouched. Placed after
+   the normalization block on purpose, same "must come after the base rule
+   it overrides" reasoning as the tiers below. */
+@media (max-width: 991px) {
+  .heroCard {
+    padding-left: 1.875rem;
+    padding-right: 1.875rem;
+  }
+}
+
+@media (max-width: 767px) {
+  .heroCard {
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
+  }
+}
 
 /* Hero spacing + title clamp — matches AIHero.module.css reference (see
    track/responsiveness-rules.md, "hero spacing + title clamp" rule). These

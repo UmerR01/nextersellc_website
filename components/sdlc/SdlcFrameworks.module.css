@@ -5,23 +5,23 @@
 }
 
 @media screen and (max-width: 768px) {
-  .section { padding: 64px 0; }
+  .section { padding: 4rem 0; }
 }
 
 .row {
   display: grid;
   align-items: flex-start;
   gap: clamp(3rem, 4vw, 4rem);
-  grid-template-columns: 560px minmax(0, 1fr);
+  grid-template-columns: 35rem minmax(0, 1fr);
   margin: 0 auto;
-  max-width: 1434px;
-  min-height: 866px;
+  max-width: 89.625rem;
+  min-height: 54.125rem;
 }
 
 @media screen and (max-width: 1200px) {
   .row {
-    grid-template-columns: minmax(360px, 0.8fr) minmax(0, 1.2fr);
-    gap: 40px;
+    grid-template-columns: minmax(22.5rem, 0.8fr) minmax(0, 1.2fr);
+    gap: 2.5rem;
   }
 }
 
@@ -42,8 +42,8 @@
 
 @media screen and (max-width: 768px) {
   .title {
-    font-size: 24px;
-    line-height: 29px;
+    font-size: 1.5rem;
+    line-height: 1.8125rem;
   }
 }
 
@@ -73,7 +73,7 @@
   gap: 0;
   border-bottom: 2px solid #e6eff7;
   margin-bottom: 2.5rem;
-  max-width: 332px;
+  max-width: 20.75rem;
 }
 
 .tabBtn {
@@ -110,12 +110,12 @@
   line-height: 1.62;
   color: #253858;
   margin: 0 0 clamp(3rem, 5vw, 4rem);
-  max-width: 650px;
+  max-width: 40.625rem;
 }
 
 .tabImage {
-  max-width: 670px;
-  width: min(100%, 670px);
+  max-width: 41.875rem;
+  width: min(100%, 41.875rem);
 }
 
 .tabImg {
@@ -139,15 +139,24 @@
   }
 
   .right {
-    padding: 0 2rem 4rem;
+    padding: 0 0 4rem;
+  }
+
+  /* Once stacked to a single column, .tabDesc/.tabImage's desktop caps
+     (40.625rem / 41.875rem) left visible empty space beside them instead
+     of using the now-much-wider .right column — there's no sibling
+     column competing for width anymore at this tier. */
+  .tabDesc {
+    max-width: none;
+  }
+
+  .tabImage {
+    max-width: none;
+    width: 100%;
   }
 }
 
 @media screen and (max-width: 768px) {
-  .title {
-    font-size: 2.5rem;
-  }
-
   .tabBtn {
     font-size: 1.25rem;
   }

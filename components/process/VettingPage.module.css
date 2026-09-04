@@ -584,11 +584,21 @@
 }
 
 /* ─── Description card panel (desktop only, right side) ─────────────────── */
+/* Was 31.25rem (500px) — sized generously for the longest description
+   (Training Assessment) with .descCardInner formerly stretched to match
+   via height:100%. Now that .descCardInner hugs its own content
+   (height:auto — see below), this wrapper's fixed height is only a
+   viewport/clip bound + the shared reference height the topOffset
+   peek-stacking effect needs, not the visible card's own size — so it
+   was left reserving far more space than any card actually uses,
+   showing as a large blank area below the (now correctly short) visible
+   card. Trimmed to 26rem, still comfortably above the longest
+   description's actual rendered height. */
 .descCardWrap {
   width: 30%;
   position: relative;
   overflow: hidden;
-  height: 31.25rem;
+  height: 26rem;
   display: flex;
   flex-direction: column;
 }
@@ -600,8 +610,14 @@
 }
 
 .descCard {
-  background-color: #ffffff;
-  height: 31.25rem;
+  /* Matches .funnelContainer's own #f7f9fe fill (not plain white) — this
+     box is an invisible positioning/clipping shell, not a visible card
+     (.descCardInner is the actual visible card), so its fill needs to
+     match the section it sits inside rather than the page background,
+     or any leftover reserved space below a short card's auto-height box
+     stands out as a mismatched white block instead of blending away. */
+  background-color: #f7f9fe;
+  height: 26rem;
   position: absolute;
   left: 0;
   right: 0;
@@ -616,7 +632,18 @@
   border: 1px solid var(--v-border-card);
   background: rgba(255, 255, 255, 0.9);
   backdrop-filter: blur(8px);
-  height: 100%;
+  /* Was height:100% of .descCard's fixed 31.25rem (a shared height every
+     step needs so the topOffset peek-stacking effect lines up) — that
+     stretched the visible bordered box itself to the full fixed height,
+     so a short description (e.g. "Internship", the last/shortest step)
+     left a large empty gap below the text inside the border, reading as
+     an oversized blank box instead of a card. auto lets the actual
+     visible card hug its own content height ("bring the bottom up")
+     while .descCard/.descCardWrap keep their fixed height untouched —
+     that outer box is just the invisible positioning/clipping shell for
+     the stack animation (its own background is plain white, matching
+     the page, so nothing shows below the shorter inner card). */
+  height: auto;
   box-sizing: border-box;
 }
 
@@ -851,22 +878,54 @@
 }
 .hero::before { display: none; }
 .heroInner,
-.sectionInner {
+.sectionInner,
+.benefitsInner {
   max-width: 71.875rem;
-  border: 0;
+  /* Outline box — matches ProcessPage.module.css's .heroCard reference:
+     a real 1px border closing the box on all sides, flat 3.125rem
+     (50px) padding between the border and the content on every side,
+     no fill/shadow/blur. Covers the hero (heroContent's box),
+     "Setting Benchmark for Recruitment Excellence" (.sectionInner), and
+     "Benefits of working with us" (.benefitsInner, previously left out
+     of this normalization block entirely and still carrying its
+     original glassy background/shadow/blur). */
+  border: 1px solid var(--v-border);
   background: transparent;
   box-shadow: none;
   backdrop-filter: none;
   -webkit-backdrop-filter: none;
 }
-.heroInner { padding: clamp(2rem, 4vw, 4rem) 0; }
+.heroInner { padding: 3.125rem; }
 .section { padding-top: clamp(4rem, 6vw, 5.75rem); }
-.sectionInner { padding: 0; }
+.sectionInner { padding: 3.125rem; }
 .sectionInnerDark::before { display: none; }
+
+/* Horizontal padding stepped down to match ProcessPage's own .heroCard
+   tiers (vertical stays flat 50px). Placed after the normalization
+   block on purpose — an unconditional rule declared later in the file
+   always wins the tie over an earlier media-query rule touching the
+   same property. .benefitsInner isn't listed here — its own pre-existing
+   991px/767px padding tiers further up the file are untouched by this
+   block (no unconditional padding override on .benefitsInner above), so
+   they're still live and don't need restating. */
+@media (max-width: 991px) {
+  .heroInner,
+  .sectionInner {
+    padding-left: 1.875rem;
+    padding-right: 1.875rem;
+  }
+}
+
+@media (max-width: 767px) {
+  .heroInner,
+  .sectionInner {
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
+  }
+}
 .heroH1,
 .sectionH2 { font-weight: 400; }
 .card,
-.descCard,
 .funnelContainer {
   background: #f7f9fe;
   border: 0;
@@ -874,6 +933,13 @@
   backdrop-filter: none;
   -webkit-backdrop-filter: none;
 }
+/* .descCard deliberately left out of the group above — it's the fixed-
+   height, no-border positioning shell for the stack animation (see
+   .descCardInner's comment). Its own base rule sets background-color
+   directly (matching .funnelContainer's #f7f9fe, not the group's shared
+   declaration) so the area below a shorter card's now-auto-height
+   visible box blends into the section instead of showing a mismatched
+   fill. */
 .provenBorder { border: 0; box-shadow: none; backdrop-filter: none; -webkit-backdrop-filter: none; }
 
 /* Hero padding-top + title clamp tiers — matches

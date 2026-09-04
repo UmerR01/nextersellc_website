@@ -149,7 +149,7 @@ export default function PrivacyPolicyPage() {
             <p>
               If you have questions about this Privacy Policy or how Nexterse LLC handles
               personal information, contact us at{" "}
-              <a href="mailto:hello@nexterse.com">hello@nexterse.com</a>.
+              <a href="mailto:info@nexterse.com">info@nexterse.com</a>.
             </p>
           </section>
         </article>

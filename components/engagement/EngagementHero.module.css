@@ -2,12 +2,12 @@
   position: relative;
   overflow: hidden;
   width: 100%;
-  padding-top: calc(var(--header-height) + 26px);
+  padding-top: calc(var(--header-height) + 1.625rem);
 }
 
 @media screen and (min-width: 1024px) and (max-width: 1680px) {
   .hero {
-    padding-top: calc(var(--header-height) + 26px);
+    padding-top: calc(var(--header-height) + 1.625rem);
   }
 }
 
@@ -57,7 +57,7 @@
 }
 
 .container {
-  max-width: min(100%, 1540px);
+  max-width: min(100%, 96.25rem);
   margin: 0 auto;
   padding-inline: clamp(1.25rem, 3vw, 2.5rem);
 }
@@ -75,7 +75,7 @@
   display: flex;
   align-items: center;
   flex-wrap: wrap;
-  gap: 4px;
+  gap: 0.25rem;
   margin-bottom: 4.5rem;
   color: rgba(255, 255, 255, 0.5);
   font-size: 0.875rem;
@@ -83,10 +83,10 @@
 }
 
 .breadcrumbs a {
-  color: rgba(255, 255, 255, 0.5);
-  font-size: 14px;
+  color: #fff;
+  font-size: 0.875rem;
   font-weight: 400;
-  line-height: 20px;
+  line-height: 1.25rem;
   text-decoration: none;
   transition: color 0.2s ease;
 }
@@ -102,9 +102,9 @@
 
 .breadcrumbs span {
   color: rgba(255, 255, 255, 0.35);
-  font-size: 14px;
+  font-size: 0.875rem;
   font-weight: 400;
-  line-height: 20px;
+  line-height: 1.25rem;
 }
 
 /* Fluid clamp instead of a fixed 40px/64px + max-width:768px step-jump —
@@ -137,7 +137,7 @@
    see track/hero-responsiveness-rule.md. */
 @media (max-width: 900px) {
   .hero {
-    padding-top: calc(var(--header-height) + 48px);
+    padding-top: calc(var(--header-height) + 3rem);
   }
 
   .content {
@@ -153,8 +153,8 @@
   }
 
   .description p {
-    font-size: 16px;
-    line-height: 26px;
+    font-size: 1rem;
+    line-height: 1.625rem;
   }
 }
 
@@ -162,7 +162,7 @@
    track/hero-responsiveness-rule.md. */
 @media (max-height: 450px) {
   .hero {
-    padding-top: calc(var(--header-height) + 12px);
+    padding-top: calc(var(--header-height) + 0.75rem);
   }
   .breadcrumbs {
     margin-bottom: 1rem;

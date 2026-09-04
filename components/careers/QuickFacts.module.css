@@ -5,13 +5,13 @@
 
 @media screen and (max-width: 768px) {
   .section {
-    padding-top: 40px;
-    padding-bottom: 64px;
+    padding-top: 2.5rem;
+    padding-bottom: 4rem;
   }
 }
 
 .container {
-  max-width: 1504px;
+  max-width: 94rem;
   margin: 0 auto;
   padding-inline: clamp(1.25rem, 4vw, 3.75rem);
 }
@@ -29,9 +29,9 @@
 
 @media screen and (max-width: 768px) {
   .title {
-    font-size: 32px;
-    line-height: 35px;
-    margin-bottom: 40px;
+    font-size: 2rem;
+    line-height: 2.1875rem;
+    margin-bottom: 2.5rem;
     text-align: left;
   }
 }
@@ -80,23 +80,23 @@
 
 @media screen and (max-width: 768px) {
   .card {
-    padding: 24px;
+    padding: 1.5rem;
   }
 }
 
 .cardWrapper {
   display: flex;
   justify-content: center;
-  max-width: 300px;
+  max-width: 18.75rem;
   width: 100%;
 }
 
 .cardNumber {
   color: #3CC4E5;
-  font-size: 56px;
+  font-size: 3.5rem;
   font-weight: 400;
-  line-height: 62px;
-  margin-bottom: 4px;
+  line-height: 3.875rem;
+  margin-bottom: 0.25rem;
   text-align: center;
   width: fit-content;
   font-family: var(--font-inter-tight), sans-serif;
@@ -104,17 +104,17 @@
 
 @media screen and (max-width: 768px) {
   .cardNumber {
-    font-size: 40px;
-    line-height: 48px;
+    font-size: 2.5rem;
+    line-height: 3rem;
   }
 }
 
 .cardSymbol {
   color: #3CC4E5;
-  font-size: 56px;
+  font-size: 3.5rem;
   font-weight: 400;
-  line-height: 62px;
-  margin-bottom: 4px;
+  line-height: 3.875rem;
+  margin-bottom: 0.25rem;
   text-align: center;
   width: fit-content;
   font-family: var(--font-inter-tight), sans-serif;
@@ -122,33 +122,57 @@
 
 @media screen and (max-width: 768px) {
   .cardSymbol {
-    font-size: 40px;
-    line-height: 48px;
+    font-size: 2.5rem;
+    line-height: 3rem;
   }
 }
 
 .cardIcon {
   height: 100%;
-  margin-bottom: 16px;
-  max-height: 56px;
-  max-width: 56px;
+  margin-bottom: 1rem;
+  max-height: 3.5rem;
+  max-width: 3.5rem;
   width: 100%;
   object-fit: contain;
 }
 
 .cardTitle {
   color: #000;
-  font-size: 22px;
+  font-size: 1.375rem;
   font-weight: 600;
-  line-height: 36px;
-  max-width: 300px;
+  line-height: 2.25rem;
+  max-width: 18.75rem;
   text-align: center;
   width: 100%;
 }
 
 @media screen and (max-width: 768px) {
   .cardTitle {
-    font-size: 16px;
-    line-height: 26px;
+    font-size: 1rem;
+    line-height: 1.625rem;
+  }
+}
+
+/* Below 350px, 2 columns squeeze each card too tight (min-height clamp
+   floor + padding leaves almost no room for the number/icon + title).
+   Drop to a single column, and let the card's own content fill it —
+   .cardWrapper/.cardTitle were capped at a fixed 18.75rem meant to keep
+   content from stretching too wide across a 2-up row; in a single-column
+   row that cap just leaves the card looking under-filled with dead space
+   on either side instead of using the row's own full width. Placed last
+   so it wins over the earlier 1024px .col:last-child:nth-child(odd)
+   centering rule (same specificity, later source wins). */
+@media screen and (max-width: 350px) {
+  .row {
+    grid-template-columns: 1fr;
+  }
+
+  .col:last-child:nth-child(odd) {
+    width: 100%;
+  }
+
+  .cardWrapper,
+  .cardTitle {
+    max-width: none;
   }
 }

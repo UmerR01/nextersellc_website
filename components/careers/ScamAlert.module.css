@@ -1,24 +1,24 @@
 .section {
   margin: 0 auto;
-  max-width: 1420px;
+  max-width: 88.75rem;
 }
 
 .wrapper {
-  padding-top: 96px;
-  padding-bottom: 64px;
+  padding-top: 6rem;
+  padding-bottom: 4rem;
 }
 
 @media screen and (max-width: 768px) {
   .wrapper {
-    padding-top: 64px;
-    padding-bottom: 40px;
+    padding-top: 4rem;
+    padding-bottom: 2.5rem;
   }
 }
 
 .container {
   margin: 0 auto;
-  max-width: 1504px;
-  padding: 0 24px;
+  max-width: 94rem;
+  padding: 0 1.5rem;
   text-align: center;
 }
 
@@ -30,20 +30,20 @@
 
 .title {
   color: #02102c;
-  font-size: 56px;
+  font-size: 3.5rem;
   font-weight: 400;
-  line-height: 62px;
+  line-height: 3.875rem;
   letter-spacing: normal;
-  margin: 0 auto 24px;
-  max-width: 980px;
+  margin: 0 auto 1.5rem;
+  max-width: 61.25rem;
   font-family: var(--font-inter-tight), sans-serif;
 }
 
 @media screen and (max-width: 768px) {
   .title {
-    font-size: 32px;
-    line-height: 35px;
-    margin-bottom: 16px;
+    font-size: 2rem;
+    line-height: 2.1875rem;
+    margin-bottom: 1rem;
   }
 }
 
@@ -53,11 +53,11 @@
 }
 
 .descriptions p {
-  font-size: 22px;
+  font-size: 1.375rem;
   font-weight: 400;
-  line-height: 36px;
+  line-height: 2.25rem;
   color: #02102c;
-  margin: 0 0 16px;
+  margin: 0 0 1rem;
 }
 
 .descriptions p:last-child {
@@ -66,8 +66,8 @@
 
 @media screen and (max-width: 768px) {
   .descriptions p {
-    font-size: 16px;
-    line-height: 26px;
+    font-size: 1rem;
+    line-height: 1.625rem;
   }
 }
 
@@ -87,9 +87,9 @@
 
 /* ---- Jobs listing (replaces image) ---- */
 .jobsWrap {
-  margin-top: 64px;
+  margin-top: 4rem;
   text-align: left;
-  max-width: 1200px;
+  max-width: 75rem;
   margin-left: auto;
   margin-right: auto;
 }
@@ -321,7 +321,7 @@
 
 @media screen and (max-width: 768px) {
   .jobsWrap {
-    margin-top: 40px;
+    margin-top: 2.5rem;
   }
 }
 
@@ -333,8 +333,8 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 24px;
-  padding: clamp(1.75rem, 3vw, 2.5rem) 16px;
+  gap: 1.5rem;
+  padding: clamp(1.75rem, 3vw, 2.5rem) 1rem;
   border-bottom: 1px solid #d8e0ec;
   border-radius: 0;
 }
@@ -343,8 +343,8 @@
   .jobRow {
     flex-direction: column;
     align-items: flex-start;
-    gap: 14px;
-    padding: 20px 0;
+    gap: 0.875rem;
+    padding: 1.25rem 0;
     border-radius: 0;
   }
 
@@ -353,7 +353,7 @@
 .jobLeft {
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  gap: 0.375rem;
   flex: 1;
   min-width: 0;
 }
@@ -376,18 +376,18 @@
 .tags {
   display: flex;
   flex-wrap: wrap;
-  gap: 8px;
-  margin-top: 10px;
+  gap: 0.5rem;
+  margin-top: 0.625rem;
 }
 
 .tag {
   display: inline-flex;
   align-items: center;
-  gap: 5px;
-  padding: 5px 12px;
+  gap: 0.3125rem;
+  padding: 0.3125rem 0.75rem;
   border: 1.5px solid #d8e0ec;
   border-radius: 999px;
-  font-size: 13px;
+  font-size: 0.8125rem;
   font-weight: 400;
   color: #02102c;
   line-height: 1;
@@ -401,7 +401,7 @@
 .applyLink {
   display: inline-flex;
   align-items: center;
-  gap: 6px;
+  gap: 0.375rem;
   flex-shrink: 0;
   font-family: var(--font-inter-tight), sans-serif;
   font-size: clamp(1.05rem, 1.35vw, 1.25rem);
@@ -427,7 +427,7 @@
 .viewMoreWrap {
   display: flex;
   justify-content: center;
-  margin-top: 40px;
+  margin-top: 2.5rem;
 }
 
 .viewMoreBtn {

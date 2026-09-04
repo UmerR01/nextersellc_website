@@ -1,26 +1,26 @@
 .section {
   font-family: var(--font-inter-tight), "Inter Tight", sans-serif;
-  padding: 96px 0;
+  padding: 6rem 0;
   background: #fff;
 }
 
 @media screen and (max-width: 768px) {
-  .section { padding: 64px 0; }
+  .section { padding: 4rem 0; }
 }
 
 .title {
-  font-size: 38px;
+  font-size: 2.375rem;
   font-weight: 400;
-  line-height: 46px;
+  line-height: 2.875rem;
   color: #112244;
-  margin: 0 0 48px;
+  margin: 0 0 3rem;
 }
 
 @media screen and (max-width: 768px) {
   .title {
-    font-size: 24px;
-    line-height: 29px;
-    margin-bottom: 32px;
+    font-size: 1.5rem;
+    line-height: 1.8125rem;
+    margin-bottom: 2rem;
   }
 }
 
@@ -43,14 +43,14 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 16px;
+  gap: 1rem;
   background: none;
   border: none;
-  padding: 24px 0;
+  padding: 1.5rem 0;
   cursor: pointer;
-  font-size: 18px;
+  font-size: 1.125rem;
   font-weight: 600;
-  line-height: 26px;
+  line-height: 1.625rem;
   color: #112244;
   font-family: var(--font-inter-tight), "Inter Tight", sans-serif;
   text-align: left;
@@ -67,9 +67,9 @@
 
 @media screen and (max-width: 768px) {
   .question {
-    font-size: 15px;
-    line-height: 22px;
-    padding: 20px 0;
+    font-size: 0.9375rem;
+    line-height: 1.375rem;
+    padding: 1.25rem 0;
   }
 }
 
@@ -90,9 +90,9 @@
 }
 
 .answer {
-  padding: 0 0 24px;
-  font-size: 16px;
-  line-height: 26px;
+  padding: 0 0 1.5rem;
+  font-size: 1rem;
+  line-height: 1.625rem;
   color: #5e6d8e;
 }
 
@@ -100,24 +100,24 @@
 
 @media screen and (max-width: 768px) {
   .answer {
-    font-size: 14px;
-    line-height: 22px;
-    padding-bottom: 20px;
+    font-size: 0.875rem;
+    line-height: 1.375rem;
+    padding-bottom: 1.25rem;
   }
 }
 
 .loadMore {
-  padding: 24px 0;
+  padding: 1.5rem 0;
   border-top: 1px solid #e6eff7;
 }
 
 .loadMoreBtn {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
+  gap: 0.5rem;
   background: none;
   border: none;
-  font-size: 18px;
+  font-size: 1.125rem;
   font-weight: 600;
   color: var(--color-accent, #3CC4E5);
   cursor: pointer;
@@ -134,4 +134,4 @@
   transition: transform 0.2s;
 }
 
-.loadMoreBtn:hover .arrow { transform: translateX(4px); }
+.loadMoreBtn:hover .arrow { transform: translateX(0.25rem); }

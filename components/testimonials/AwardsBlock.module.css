@@ -1,28 +1,28 @@
 .section {
-  padding: 0 0 96px;
+  padding: 0 0 6rem;
 }
 
 @media screen and (max-width: 768px) {
   .section {
-    padding: 0 0 48px;
+    padding: 0 0 3rem;
   }
 }
 
 .container {
-  max-width: min(100%, 1504px);
+  max-width: min(100%, 94rem);
   margin: 0 auto;
-  padding: 0 40px;
+  padding: 0 2.5rem;
 }
 
 @media screen and (min-width: 1440px) {
   .container {
-    padding: 0 96px;
+    padding: 0 6rem;
   }
 }
 
 @media (max-width: 768px) {
   .container {
-    padding: 0 20px;
+    padding: 0 1.25rem;
   }
 }
 
@@ -35,14 +35,14 @@
   color: #112244;
   letter-spacing: 0.05rem;
   word-spacing: 0.5rem;
-  margin: 0 0 64px;
+  margin: 0 0 4rem;
 }
 
 @media screen and (max-width: 768px) {
   .title {
     text-align: left;
-    font-size: 28px;
-    margin-bottom: 40px;
+    font-size: 1.75rem;
+    margin-bottom: 2.5rem;
   }
 }
 
@@ -60,19 +60,19 @@
 }
 
 .awardImg {
-  height: 120px;
+  height: 7.5rem;
   width: auto;
-  max-width: 160px;
+  max-width: 10rem;
   object-fit: contain;
 }
 
 @media screen and (max-width: 768px) {
   .row {
-    gap: 24px;
+    gap: 1.5rem;
   }
 
   .awardImg {
-    height: 80px;
-    max-width: 110px;
+    height: 5rem;
+    max-width: 6.875rem;
   }
 }

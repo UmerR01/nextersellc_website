@@ -8,19 +8,23 @@
 /* ─────────────────────────────────────────
    SECTION 1 — Hero (Careers-style bg)
 ───────────────────────────────────────── */
+/* Padding-top matches AIHero.module.css's own formula exactly (see the
+   "hero spacing + title clamp" rule in track/responsiveness-rules.md) —
+   header-anchored calc(), not a flat/arbitrary value per width tier.
+   Previously this had 3 unrelated tiers (3.125rem base, 5.5rem @767px,
+   6rem @1024-1680px) that didn't track --header-height at all, stacked
+   on top of .heroInner's own separate top padding below — replaced with
+   a single source of top clearance here; .heroInner no longer adds its
+   own on top of it. */
 .hero {
   overflow: hidden;
-  padding-top: 50px;
+  padding-top: calc(var(--header-height) + 1.625rem);
   position: relative;
   width: 100%;
 }
 
-@media screen and (max-width: 767px) {
-  .hero { padding-top: 88px; }
-}
-
-@media screen and (min-width: 1024px) and (max-width: 1680px) {
-  .hero { padding-top: 96px; }
+@media (max-width: 900px) {
+  .hero { padding-top: calc(var(--header-height) + 3rem); }
 }
 
 .bgWrapper {
@@ -39,12 +43,12 @@
 }
 
 @media screen and (min-width: 769px) {
-  .bgWrapper { min-height: 700px; }
+  .bgWrapper { min-height: 43.75rem; }
 }
 
 .desktopBg {
   display: block;
-  height: calc(100% + 224px);
+  height: calc(100% + 14rem);
   position: absolute;
   top: 0;
   width: 100%;
@@ -79,33 +83,42 @@
 
 .heroContainer {
   margin: 0 auto;
-  max-width: 1504px;
+  max-width: 94rem;
   padding-inline: clamp(1.25rem, 4vw, 3.75rem);
 }
 
 @media (max-width: 768px) {
-  .heroContainer { padding: 0 20px; }
+  .heroContainer { padding: 0 1.25rem; }
 }
 
+/* Top padding removed — .hero above is now the single source of header
+   clearance (matches AIHero's own "section's padding-top is the only
+   thing controlling the gap" shape); this used to add its own 6rem/
+   2.5rem on top of .hero's, compounding into an inconsistent, much
+   larger total gap than the reference at several widths. */
 .heroInner {
   color: #fff;
-  padding: 96px 0 clamp(4.5rem, 6vw, 6rem);
+  padding: 0 0 clamp(4.5rem, 6vw, 6rem);
   position: relative;
 }
 
 @media screen and (max-width: 767px) {
-  .heroInner { padding-bottom: 72px; padding-top: 40px; }
+  .heroInner { padding-bottom: 4.5rem; }
 }
 
-/* Breadcrumbs */
+/* Breadcrumbs — margin-bottom matches AIHero.module.css exactly. */
 .breadcrumbs {
   display: flex;
   align-items: center;
   gap: 0;
-  margin-bottom: 32px;
-  font-size: 14px;
+  margin-bottom: 4.5rem;
+  font-size: 0.875rem;
   color: rgba(255, 255, 255, 0.7);
   flex-wrap: wrap;
+}
+
+@media (max-width: 900px) {
+  .breadcrumbs { margin-bottom: 2rem; }
 }
 
 .breadcrumbs a {
@@ -119,9 +132,9 @@
 .breadcrumbs a::after {
   content: "";
   display: inline-block;
-  width: 12px;
-  height: 12px;
-  margin: 0 6px;
+  width: 0.75rem;
+  height: 0.75rem;
+  margin: 0 0.375rem;
   background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none'%3E%3Cpath d='M6 4l4 4-4 4' stroke='rgba(255,255,255,0.5)' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
   background-repeat: no-repeat;
   background-position: center;
@@ -145,7 +158,7 @@
 
 /* Left column */
 .heroLeft {
-  max-width: 640px;
+  max-width: 40rem;
   width: 100%;
 }
 
@@ -153,12 +166,18 @@
   .heroLeft { max-width: 100%; }
 }
 
+/* font-size clamp matches AIHero.module.css exactly (was clamp(2.25rem,
+   5vw, 3.5rem), with no separate mobile tier at all). */
 .heroTitle {
   color: #fff;
-  font-size: clamp(2.25rem, 5vw, 3.5rem);
+  font-size: clamp(3rem, 5vw, 4rem);
   font-weight: 400;
   line-height: 1.15;
   margin: 0;
+}
+
+@media (max-width: 900px) {
+  .heroTitle { font-size: clamp(2.25rem, 9vw, 3rem); }
 }
 
 .heroTitleAccent { color: #3CC4E5; }
@@ -171,27 +190,26 @@
 }
 .descLink:hover { opacity: 0.8; }
 
-.heroDescription { margin: 24px 0 0; }
+.heroDescription { margin: 1.5rem 0 0; }
 
 @media screen and (max-width: 768px) {
-  .heroDescription { margin-top: 16px; }
+  .heroDescription { margin-top: 1rem; }
 }
 
 .heroDescription p {
   color: rgba(255, 255, 255, 0.85);
   font-size: clamp(1rem, 1.8vw, 1.125rem);
   line-height: 1.65;
-  margin-bottom: 16px;
+  margin-bottom: 1rem;
 }
 
 .heroDescription p:last-child { margin-bottom: 0; }
 
 /* Right form card */
 .heroForm {
-  background: linear-gradient(325deg, #e2e7ee, #fff, #fff, #fff, #e2e7ee);
-  background-size: cover;
-  max-width: 428px;
-  padding: 40px 48px 56px;
+  background: #ffffff;
+  max-width: 26.75rem;
+  padding: 2.5rem 3rem 3.5rem;
   width: 100%;
   flex-shrink: 0;
   display: flex;
@@ -203,13 +221,13 @@
 }
 
 @media screen and (max-width: 768px) {
-  .heroForm { padding: 40px 24px 48px; }
+  .heroForm { padding: 2.5rem 1.5rem 3rem; }
 }
 
 .heroSuccess .heroForm {
   justify-content: center;
   align-items: center;
-  min-height: 360px;
+  min-height: 22.5rem;
 }
 
 /* Form elements */
@@ -217,11 +235,11 @@
   font-size: 1.25rem;
   font-weight: 700;
   color: #112244;
-  margin: 0 0 24px;
+  margin: 0 0 1.5rem;
   line-height: 1.4;
 }
 
-.heroForm form > div { margin-bottom: 24px; }
+.heroForm form > div { margin-bottom: 1.5rem; }
 
 .heroForm input[type="text"],
 .heroForm input[type="email"] {
@@ -230,12 +248,12 @@
   border-radius: 0 !important;
   color: #112244;
   font-family: var(--font-inter-tight);
-  font-size: 16px;
-  line-height: 22px;
+  font-size: 1rem;
+  line-height: 1.375rem;
   width: 100%;
   background: transparent;
   outline: none;
-  padding: 4px 0;
+  padding: 0.25rem 0;
   transition: border-color 0.2s;
 }
 
@@ -253,7 +271,7 @@
 
 /* Custom Select */
 .selectIntentionWrapper,
-.selectCompanyWrapper { margin-bottom: 24px; }
+.selectCompanyWrapper { margin-bottom: 1.5rem; }
 
 .selectWrap { position: relative; width: 100%; }
 
@@ -264,12 +282,14 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 4px 0;
+  padding: 0.25rem 0;
   transition: border-color 0.2s;
   user-select: none;
 }
 
 .selectSelected::after {
+  /* 16px = the embedded chevron svg's own width/height (16x16) — kept in
+     px, not converted, per the icon-tied-to-viewBox rule. */
   background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='none'%3E%3Cpath stroke='%23899FB6' stroke-linecap='square' stroke-width='1.5' d='m13 6-5 5-5-5'/%3E%3C/svg%3E");
   background-position: center;
   background-repeat: no-repeat;
@@ -289,21 +309,21 @@
 
 .selectOpen::after { transform: rotate(180deg); }
 .selectError { border-bottom-color: #3CC4E5; }
-.selectErrorMsg { font-size: 12px; color: #3CC4E5; margin-top: 4px; }
+.selectErrorMsg { font-size: 0.75rem; color: #3CC4E5; margin-top: 0.25rem; }
 .selectErrorMsg p { margin: 0; }
 .selectSelected p { margin: 0; flex: 1; }
-.selectedPlaceholder { color: #394663; font-size: 16px; font-weight: 600; }
-.selectedValue { color: #112244; font-size: 16px; font-weight: 400; }
+.selectedPlaceholder { color: #394663; font-size: 1rem; font-weight: 600; }
+.selectedValue { color: #112244; font-size: 1rem; font-weight: 400; }
 
 .selectOptionList {
   background: #fff;
   border: 1px solid #e6eff7;
   box-shadow: 0 8px 24px rgba(10, 21, 48, 0.12);
   left: 0;
-  max-height: 220px;
+  max-height: 13.75rem;
   overflow-y: auto;
   position: absolute;
-  top: calc(100% + 4px);
+  top: calc(100% + 0.25rem);
   width: 100%;
   z-index: 100;
 }
@@ -313,9 +333,9 @@
 .selectOption {
   color: #112244;
   cursor: pointer;
-  font-size: 15px;
+  font-size: 0.9375rem;
   line-height: 1.4;
-  padding: 10px 16px;
+  padding: 0.625rem 1rem;
   transition: background 0.15s, color 0.15s;
 }
 
@@ -323,48 +343,35 @@
 
 /* Radio */
 .discussWrapper p { display: flex; flex-direction: column; }
-.discussLabel { color: #112244; font-size: 16px; font-weight: 600; margin-bottom: 8px; }
+.discussLabel { color: #112244; font-size: 1rem; font-weight: 600; margin-bottom: 0.5rem; }
 .radioGroup { display: flex; gap: 0; }
-.radioItem { height: 24px; }
-.radioItem:not(:last-child) { margin-right: 40px; }
-.radioItem label { display: flex; align-items: center; gap: 8px; cursor: pointer; }
-.radioItem input[type="radio"] { accent-color: #3CC4E5; width: 16px; height: 16px; cursor: pointer; flex-shrink: 0; }
-.radioLabel { color: #112244; font-size: 16px; line-height: 22px; }
-.fieldError { color: #ff415c; font-size: 12px; margin-top: 4px; display: block; }
+.radioItem { height: 1.5rem; }
+.radioItem:not(:last-child) { margin-right: 2.5rem; }
+.radioItem label { display: flex; align-items: center; gap: 0.5rem; cursor: pointer; }
+.radioItem input[type="radio"] { accent-color: #3CC4E5; width: 1rem; height: 1rem; cursor: pointer; flex-shrink: 0; }
+.radioLabel { color: #112244; font-size: 1rem; line-height: 1.375rem; }
+.fieldError { color: #ff415c; font-size: 0.75rem; margin-top: 0.25rem; display: block; }
 
 /* Agreement */
-.agreementWrapper > p { display: flex; max-height: 24px; align-items: center; gap: 4px; }
-.agreementWrapper > p a { color: #3CC4E5; font-size: 16px; text-decoration: none; transition: opacity 0.2s; }
+.agreementWrapper > p { display: flex; max-height: 1.5rem; align-items: center; gap: 0.25rem; }
+.agreementWrapper > p a { color: #3CC4E5; font-size: 1rem; text-decoration: none; transition: opacity 0.2s; }
 .agreementWrapper > p a:hover { opacity: 0.8; }
 .checkboxWrap { display: inline-flex; align-items: center; }
-.checkboxWrap label { display: flex; align-items: center; gap: 6px; cursor: pointer; }
-.checkboxWrap input[type="checkbox"] { accent-color: #3CC4E5; width: 16px; height: 16px; cursor: pointer; }
-.checkboxLabel { color: #112244; font-size: 16px; line-height: 22px; }
+.checkboxWrap label { display: flex; align-items: center; gap: 0.375rem; cursor: pointer; }
+.checkboxWrap input[type="checkbox"] { accent-color: #3CC4E5; width: 1rem; height: 1rem; cursor: pointer; }
+.checkboxLabel { color: #112244; font-size: 1rem; line-height: 1.375rem; }
 
-/* Submit */
+/* Submit — btn_r: no forced width, ever. The button itself now uses the
+   global btn/btn-accent classes directly (app/globals.css) instead of a
+   locally re-approximated copy, so its padding, border-radius, colors,
+   and hover transition are byte-identical to the Header's "Get in touch"
+   button, not just visually similar. .submitWrapper/.submitBtn are left
+   as empty hooks (no width, no color/padding overrides) — .bottomSection's
+   own justify-content:flex-end right-aligns the button once it's sized
+   to its own content. */
 .bottomSection { display: flex; justify-content: flex-end; margin-bottom: 0 !important; }
-.submitWrapper { width: 100%; }
-
-.submitBtn {
-  align-items: center;
-  background: #112244;
-  border: none;
-  color: #fff;
-  cursor: pointer;
-  display: inline-flex;
-  font-family: var(--font-inter-tight);
-  font-size: 16px;
-  font-weight: 600;
-  gap: 8px;
-  justify-content: center;
-  line-height: 1.2;
-  width: 100%;
-  padding: 12px 24px;
-  transition: background 0.2s;
-}
-
-.submitBtn:hover { background: #3CC4E5; }
-.submitBtn svg { flex-shrink: 0; }
+.submitWrapper {}
+.submitBtn {}
 
 /* Form success */
 .formSuccess {
@@ -372,7 +379,7 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: 24px;
+  padding: 1.5rem;
   text-align: center;
   width: 100%;
 }
@@ -380,32 +387,38 @@
 .formSuccessTitle {
   color: #112244;
   font-family: var(--font-inter-tight);
-  font-size: 38px;
+  font-size: 2.375rem;
   font-weight: 600;
-  line-height: 46px;
-  margin-top: 24px;
+  line-height: 2.875rem;
+  margin-top: 1.5rem;
   text-align: center;
 }
 
 @media screen and (max-width: 768px) {
-  .formSuccessTitle { font-size: 32px; line-height: 35px; }
+  .formSuccessTitle { font-size: 2rem; line-height: 2.1875rem; }
 }
 
+/* Now a disabled <button> (was a real link to the PDF) — no action for
+   now. appearance/border reset since buttons carry browser chrome an
+   <a> never had; opacity + not-allowed cursor signal it's inert instead
+   of a live "hover" affordance. */
 .formSuccessBtn {
+  appearance: none;
   align-items: center;
   color: #fff;
+  cursor: not-allowed;
   display: flex;
-  gap: 8px;
-  text-decoration: none;
+  gap: 0.5rem;
+  border: none;
   background: #3CC4E5;
-  padding: 12px 24px;
-  margin-top: 32px;
+  padding: 0.75rem 1.5rem;
+  margin-top: 2rem;
   font-family: var(--font-inter-tight);
-  font-size: 18px;
+  font-size: 1.125rem;
   font-weight: 600;
+  opacity: 0.55;
 }
 
-.formSuccessBtn:hover { opacity: 0.88; color: #fff; }
 .formSuccessBtn svg { flex-shrink: 0; }
 
 
@@ -476,14 +489,14 @@
   font-size: clamp(1rem, 1.45vw, 1.375rem);
   line-height: 1.5;
   font-weight: 400;
-  padding-left: 32px;
+  padding-left: 2rem;
   position: relative;
   margin-bottom: 1.2rem;
   color: #112244;
 }
 
 @media screen and (max-width: 768px) {
-  .caseBusinessDescriptions ul li { font-size: 16px; }
+  .caseBusinessDescriptions ul li { font-size: 1rem; }
 }
 
 .caseBusinessDescriptions ul li::before {
@@ -492,11 +505,11 @@
   background-size: contain;
   content: "";
   display: inline-block;
-  height: 24px;
+  height: 1.5rem;
   left: 0;
   position: absolute;
-  top: 4px;
-  width: 24px;
+  top: 0.25rem;
+  width: 1.5rem;
 }
 
 
@@ -509,7 +522,7 @@
 }
 
 @media (max-width: 768px) {
-  .faqSection { padding: 72px 0; }
+  .faqSection { padding: 4.5rem 0; }
 }
 
 .faqContainer {
@@ -528,14 +541,14 @@
 }
 
 @media (max-width: 768px) {
-  .faqTitle { font-size: 32px; line-height: 38px; margin-bottom: 40px; }
+  .faqTitle { font-size: 2rem; line-height: 2.375rem; margin-bottom: 2.5rem; }
 }
 
 .faqList { display: flex; flex-direction: column; }
 
 .faqItem {
   border-top: 1px solid #e6eff7;
-  padding: 16px 0;
+  padding: 1rem 0;
   transition: border-color 0.3s;
 }
 
@@ -553,7 +566,7 @@
   gap: 1rem;
   font-size: clamp(1.125rem, 1.5vw, 1.375rem);
   font-weight: 400;
-  line-height: 36px;
+  line-height: 2.25rem;
   color: #112244;
   text-align: left;
   transition: color 0.3s;
@@ -562,11 +575,11 @@
 
 .faqBullet {
   flex-shrink: 0;
-  width: 10px;
-  height: 10px;
+  width: 0.625rem;
+  height: 0.625rem;
   border-radius: 50%;
   border: 2px solid #899fb6;
-  margin-top: 13px;
+  margin-top: 0.8125rem;
   transition: border-color 0.3s;
 }
 
@@ -585,33 +598,34 @@
 
 .faqAnswerInner {
   overflow: hidden;
-  padding-left: calc(10px + 1rem);
+  /* 0.625rem = .faqBullet's width — kept in sync with it. */
+  padding-left: calc(0.625rem + 1rem);
 }
 
 .faqAnswerInner p {
-  font-size: 16px;
+  font-size: 1rem;
   line-height: 1.6;
   color: #5e6d8e;
   margin: 0;
-  padding-top: 8px;
-  padding-bottom: 12px;
+  padding-top: 0.5rem;
+  padding-bottom: 0.75rem;
 }
 
 .faqAnswerInner ol,
-.faqAnswerInner ul { padding-bottom: 12px; padding-top: 4px; }
+.faqAnswerInner ul { padding-bottom: 0.75rem; padding-top: 0.25rem; }
 
-.faqAnswerInner ol { padding-left: 20px; }
+.faqAnswerInner ol { padding-left: 1.25rem; }
 
 .faqAnswerInner ul { list-style: none; padding-left: 0; }
 
 .faqAnswerInner li {
-  font-size: 16px;
+  font-size: 1rem;
   line-height: 1.6;
   color: #5e6d8e;
-  padding-bottom: 6px;
+  padding-bottom: 0.375rem;
 }
 
-.faqAnswerInner ul li { padding-left: 24px; position: relative; }
+.faqAnswerInner ul li { padding-left: 1.5rem; position: relative; }
 
 .faqAnswerInner ul li::before {
   background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='19' height='14' viewBox='0 0 19 14' fill='none'%3E%3Cpath d='M17.25 1.75037L6.75 12.2504L1.5 7.00037' stroke='%233CC4E5' stroke-width='1.5' stroke-linecap='square'/%3E%3C/svg%3E");
@@ -619,11 +633,11 @@
   background-size: contain;
   content: "";
   display: inline-block;
-  height: 16px;
+  height: 1rem;
   left: 0;
   position: absolute;
-  top: 4px;
-  width: 20px;
+  top: 0.25rem;
+  width: 1.25rem;
 }
 
 .faqAnswerInner li:last-child { padding-bottom: 0; }
@@ -637,9 +651,9 @@
   color: var(--color-accent);
   cursor: pointer;
   font-family: var(--font-inter-tight);
-  font-size: 16px;
+  font-size: 1rem;
   font-weight: 500;
-  margin-top: 24px;
+  margin-top: 1.5rem;
   padding: 0;
   transition: opacity 0.2s;
 }
@@ -648,4 +662,16 @@
 /* ─────────────────────────────────────────
    Post Divider
 ───────────────────────────────────────── */
-.postDivider { height: 96px; }
+.postDivider { height: 6rem; }
+
+/* Short-viewport safety (width-agnostic) — matches AIHero.module.css's
+   own tier exactly (see the "hero spacing + title clamp" rule in
+   track/responsiveness-rules.md). Placed last in the file on purpose: a
+   max-height query declared earlier than an unconditional/min-width rule
+   touching the same property is silently dead the instant a width
+   condition and a height condition are both true at once, which is
+   exactly what high browser zoom produces. */
+@media (max-height: 450px) {
+  .hero { padding-top: calc(var(--header-height) + 0.75rem); }
+  .breadcrumbs { margin-bottom: 1rem; }
+}

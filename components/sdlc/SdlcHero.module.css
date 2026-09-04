@@ -6,14 +6,14 @@
 .hero {
   position: relative;
   overflow: hidden;
-  padding-top: calc(var(--header-height) + 26px);
+  padding-top: calc(var(--header-height) + 1.625rem);
   width: 100%;
   font-family: var(--font-inter-tight), "Inter Tight", sans-serif;
 }
 
 @media screen and (min-width: 1024px) and (max-width: 1680px) {
   .hero {
-    padding-top: calc(var(--header-height) + 26px);
+    padding-top: calc(var(--header-height) + 1.625rem);
   }
 }
 
@@ -21,7 +21,7 @@
    track/hero-rule-sitewide-rollout.md. */
 @media screen and (max-width: 900px) {
   .hero {
-    padding-top: calc(var(--header-height) + 48px);
+    padding-top: calc(var(--header-height) + 3rem);
   }
 }
 
@@ -69,7 +69,7 @@
 }
 
 .heroWrapper :global(.container) {
-  max-width: min(100%, 1540px);
+  max-width: min(100%, 96.25rem);
   margin: 0 auto;
   padding-inline: clamp(1.25rem, 3vw, 2.5rem);
 }
@@ -94,7 +94,7 @@
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  gap: 4px;
+  gap: 0.25rem;
   font-size: 0.875rem;
   line-height: 1.4;
   color: rgba(255, 255, 255, 0.5);
@@ -159,7 +159,7 @@
    track/hero-responsiveness-rule.md. */
 @media (max-height: 450px) {
   .hero {
-    padding-top: calc(var(--header-height) + 12px);
+    padding-top: calc(var(--header-height) + 0.75rem);
   }
   .breadcrumbs {
     margin-bottom: 1rem;

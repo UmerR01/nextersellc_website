@@ -1,12 +1,12 @@
 .contentWrapper {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) 280px;
+  grid-template-columns: minmax(0, 1fr) 17.5rem;
   align-items: stretch;
-  column-gap: 17px;
+  column-gap: 1.0625rem;
   width: 100%;
-  max-width: min(100%, 1540px);
+  max-width: min(100%, 96.25rem);
   margin: 0 auto;
-  padding: calc(var(--header-height) + 26px) clamp(1.25rem, 3vw, 2.5rem) 0;
+  padding: calc(var(--header-height) + 1.625rem) clamp(1.25rem, 3vw, 2.5rem) 0;
 }
 .primary {
   min-width: 0;
@@ -17,18 +17,18 @@
   min-width: 0;
   width: 100%;
   box-sizing: border-box;
-  padding-right: 48px;
+  padding-right: 3rem;
 }
 
 .secondary {
   min-width: 0;
   width: 100%;
-  padding-bottom: 9px;
+  padding-bottom: 0.5625rem;
 }
 
 .secondaryContentWrapper {
   position: sticky;
-  top: calc(var(--header-height) + 18px);
+  top: calc(var(--header-height) + 1.125rem);
 }
 
 .postNavigation {
@@ -39,9 +39,9 @@
 }
 
 .postNavigationWrapper {
-  max-height: min(459px, calc(100vh - var(--header-height) - 84px));
+  max-height: min(28.6875rem, calc(100vh - var(--header-height) - 5.25rem));
   overflow: auto;
-  padding: 19px 8px 18px 32px;
+  padding: 1.1875rem 0.5rem 1.125rem 2rem;
   scrollbar-color: var(--color-border) var(--color-bg-elevated);
   scrollbar-width: thin;
 }
@@ -54,16 +54,16 @@
   font-weight: 600;
   font-size: 1.125rem;
   color: var(--color-text);
-  margin-bottom: 17px;
+  margin-bottom: 1.0625rem;
 }
 
 .closeButton {
   display: none;
   position: absolute;
-  right: -12px;
-  top: -12px;
-  width: 44px;
-  height: 44px;
+  right: -0.75rem;
+  top: -0.75rem;
+  width: 2.75rem;
+  height: 2.75rem;
   align-items: center;
   justify-content: center;
   background: none;
@@ -86,17 +86,17 @@
   list-style: none;
   margin: 0;
   padding: 0;
-  max-width: 210px;
+  max-width: 13.125rem;
 }
 
 .tocList li {
-  font-size: 14px;
-  line-height: 20px;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
   color: var(--color-text);
 }
 
 .tocList li:not(:last-child) {
-  margin-bottom: 17px;
+  margin-bottom: 1.0625rem;
 }
 
 .tocList a {
@@ -120,14 +120,14 @@
 
 @media (max-width: 1250px) {
   .contentWrapper {
-    grid-template-columns: minmax(0, 1fr) 220px;
-    column-gap: 16px;
-    width: min(calc(100% - 40px), 1160px);
+    grid-template-columns: minmax(0, 1fr) 13.75rem;
+    column-gap: 1rem;
+    width: min(calc(100% - 2.5rem), 72.5rem);
     padding-inline: 0;
   }
 
   .tocList {
-    max-width: 165px;
+    max-width: 10.3125rem;
   }
 }
 
@@ -136,8 +136,8 @@
     display: flex;
     flex-wrap: wrap;
     gap: 0;
-    width: calc(100% - 32px);
-    padding: calc(var(--header-height) + 26px) 0 0;
+    width: calc(100% - 2rem);
+    padding: calc(var(--header-height) + 1.625rem) 0 0;
   }
 
   .primary {
@@ -154,8 +154,8 @@
     order: 1;
     width: 100% !important;
     max-width: 100%;
-    margin: 0 0 32px;
-    padding-top: 32px;
+    margin: 0 0 2rem;
+    padding-top: 2rem;
   }
 
   .secondaryContentWrapper {
@@ -163,7 +163,7 @@
   }
 
   .postNavigation {
-    padding: 24px 8px;
+    padding: 1.5rem 0.5rem;
   }
 
   .closeButton {
@@ -178,6 +178,6 @@
 
 @media (max-width: 768px) {
   .contentWrapper {
-    padding-top: 88px;
+    padding-top: 5.5rem;
   }
 }
