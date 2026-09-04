@@ -192,12 +192,9 @@ export default function WhitepaperExtPage({ data }: { data: WhitepaperData }) {
     setHeroErrors(errors);
     if (Object.keys(errors).length === 0) {
       setHeroSubmitted(true);
-      const a = document.createElement("a");
-      a.href = data.hero.pdfUrl;
-      a.target = "_blank";
-      a.click();
 
-      // Best-effort notification — the PDF download above never waits on this.
+      // The button no longer opens/downloads the PDF directly — it only
+      // sends the mail notification below. Fire-and-forget, same as before.
       fetch("/api/whitepaper-download", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -474,16 +471,13 @@ export default function WhitepaperExtPage({ data }: { data: WhitepaperData }) {
 
                       <div className={s.bottomSection}>
                         <div className={s.submitWrapper}>
-                          <button type="submit" className={s.submitBtn}>
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                              <path d="M4.5 12V3.75C4.5 3.55 4.5 3 4.5 3S5.05 3 5.25 3H14.25L19.5 8.25V12" stroke="white" strokeWidth="1.5" strokeLinecap="square" />
-                              <path d="M13.789 3V8.25H19.039" stroke="white" strokeWidth="1.5" strokeLinecap="square" />
-                              <path d="M4.5 18.75H6a1.5 1.5 0 0 0 0-3H4.5v4.5" stroke="white" strokeWidth="1.5" strokeLinecap="square" />
-                              <path d="M17.25 15.75h-3V20.25" stroke="white" strokeWidth="1.5" strokeLinecap="square" />
-                              <path d="M16.875 18H13.875" stroke="white" strokeWidth="1.5" strokeLinecap="square" />
-                              <path d="M9.375 20.25c1.657 0 3-1.343 3-3s-1.343-3-3-3H7.875v6h1.5Z" stroke="white" strokeWidth="1.5" strokeLinecap="square" />
-                            </svg>
-                            {data.hero.submitLabel ?? "Download PDF"}
+                          {/* No icon, no PDF link — this is now a plain "Send" button that
+                              only fires the mail notification (handleHeroSubmit). Uses the
+                              global btn/btn-accent classes directly so its UI (padding,
+                              border-radius, colors, hover transition) matches the Header's
+                              "Get in touch" button exactly, not a locally re-approximated copy. */}
+                          <button type="submit" className={`btn btn-accent ${s.submitBtn}`}>
+                            Send
                           </button>
                         </div>
                       </div>
@@ -495,13 +489,15 @@ export default function WhitepaperExtPage({ data }: { data: WhitepaperData }) {
                         <path d="M71.389 12.509L38.668 45.263L28.852 35.446" stroke="#112244" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
                       </svg>
                       <div className={s.formSuccessTitle}>Thank you!</div>
-                      <a href={data.hero.pdfUrl} target="_blank" className={s.formSuccessBtn}>
+                      {/* No link, no action for now — was a real link to the PDF; disabled
+                          per the same "PDF button becomes a Send-only button" change above. */}
+                      <button type="button" className={s.formSuccessBtn} disabled>
                         Get your copy
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                          <path d="M6 18L17 7" stroke="white" strokeWidth="1.5" strokeLinecap="square" strokeLinejoin="round" />
-                          <path d="M8.25 6H18V15.75" stroke="white" strokeWidth="1.5" strokeLinecap="square" />
+                          <path d="M6 18L17 7" stroke="currentColor" strokeWidth="1.5" strokeLinecap="square" strokeLinejoin="round" />
+                          <path d="M8.25 6H18V15.75" stroke="currentColor" strokeWidth="1.5" strokeLinecap="square" />
                         </svg>
-                      </a>
+                      </button>
                     </div>
                   )}
                 </div>

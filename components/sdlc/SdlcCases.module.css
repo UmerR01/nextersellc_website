@@ -1,31 +1,31 @@
 .section {
   font-family: var(--font-inter-tight), "Inter Tight", sans-serif;
-  padding: 64px 0;
+  padding: 4rem 0;
 }
 
 .wrapper {
-  max-width: min(100%, 1504px);
+  max-width: min(100%, 94rem);
   margin: 0 auto;
-  padding: 0 40px;
+  padding: 0 2.5rem;
 }
 
 @media screen and (max-width: 768px) {
-  .wrapper { padding: 0 20px; }
+  .wrapper { padding: 0 1.25rem; }
 }
 
 .title {
-  font-size: 38px;
+  font-size: 2.375rem;
   font-weight: 400;
-  line-height: 46px;
+  line-height: 2.875rem;
   color: #112244;
-  margin: 0 0 48px;
+  margin: 0 0 3rem;
 }
 
 @media screen and (max-width: 768px) {
   .title {
-    font-size: 24px;
-    line-height: 29px;
-    margin-bottom: 32px;
+    font-size: 1.5rem;
+    line-height: 1.8125rem;
+    margin-bottom: 2rem;
   }
 }
 
@@ -44,7 +44,7 @@
 
 .card {
   display: block;
-  border-radius: 8px;
+  border-radius: 0.5rem;
   overflow: hidden;
   text-decoration: none;
   color: #fff;
@@ -58,7 +58,7 @@
 .cardWrapper {
   display: flex;
   align-items: stretch;
-  min-height: 360px;
+  min-height: 22.5rem;
   position: relative;
 }
 
@@ -68,7 +68,7 @@
 
 .cardContent {
   flex: 1;
-  padding: 48px;
+  padding: 3rem;
   display: flex;
   flex-direction: column;
   gap: 0;
@@ -77,15 +77,15 @@
 }
 
 @media screen and (max-width: 768px) {
-  .cardContent { padding: 32px 24px; }
+  .cardContent { padding: 2rem 1.5rem; }
 }
 
 .logoWrap {
-  margin-bottom: 24px;
+  margin-bottom: 1.5rem;
 }
 
 .logo {
-  max-width: 135px;
+  max-width: 8.4375rem;
   height: auto;
 }
 
@@ -93,48 +93,48 @@
   display: inline-block;
   background: rgba(255, 255, 255, 0.15);
   border-radius: 4px;
-  padding: 4px 12px;
-  font-size: 13px;
+  padding: 0.25rem 0.75rem;
+  font-size: 0.8125rem;
   font-weight: 500;
   color: #fff;
-  margin-bottom: 24px;
+  margin-bottom: 1.5rem;
 }
 
 .cardTitle {
-  font-size: 28px;
+  font-size: 1.75rem;
   font-weight: 400;
-  line-height: 36px;
+  line-height: 2.25rem;
   color: #fff;
-  margin: 0 0 16px;
+  margin: 0 0 1rem;
 }
 
 @media screen and (max-width: 768px) {
   .cardTitle {
-    font-size: 20px;
-    line-height: 26px;
+    font-size: 1.25rem;
+    line-height: 1.625rem;
   }
 }
 
 .cardDesc {
-  font-size: 16px;
-  line-height: 26px;
+  font-size: 1rem;
+  line-height: 1.625rem;
   color: rgba(255, 255, 255, 0.8);
-  margin: 0 0 24px;
+  margin: 0 0 1.5rem;
   flex: 1;
 }
 
 .tags {
   display: flex;
   flex-wrap: wrap;
-  gap: 8px;
+  gap: 0.5rem;
   margin-top: auto;
 }
 
 .tag {
   background: rgba(255, 255, 255, 0.12);
-  border-radius: 20px;
-  padding: 4px 14px;
-  font-size: 13px;
+  border-radius: 1.25rem;
+  padding: 0.25rem 0.875rem;
+  font-size: 0.8125rem;
   color: rgba(255, 255, 255, 0.85);
 }
 
@@ -146,23 +146,23 @@
 
 @media screen and (max-width: 768px) {
   .cardImages {
-    flex: 0 0 200px;
-    height: 200px;
+    flex: 0 0 12.5rem;
+    height: 12.5rem;
   }
 }
 
 .imgRight {
   position: absolute;
-  right: -20px;
-  top: 20px;
+  right: -1.25rem;
+  top: 1.25rem;
   width: 58%;
   z-index: 2;
 }
 
 .imgLeft {
   position: absolute;
-  left: -10px;
-  bottom: 10px;
+  left: -0.625rem;
+  bottom: 0.625rem;
   width: 68%;
   z-index: 1;
 }
@@ -179,14 +179,14 @@
 /* Navigation */
 .nav {
   display: flex;
-  gap: 16px;
-  margin-top: 32px;
+  gap: 1rem;
+  margin-top: 2rem;
   align-items: center;
 }
 
 .navBtn {
-  width: 48px;
-  height: 48px;
+  width: 3rem;
+  height: 3rem;
   border-radius: 50%;
   border: 2px solid #112244;
   background: transparent;
@@ -223,14 +223,14 @@
 }
 
 .viewAll {
-  margin-top: 16px;
+  margin-top: 1rem;
 }
 
 .viewAllLink {
   display: inline-flex;
   align-items: center;
-  gap: 6px;
-  font-size: 18px;
+  gap: 0.375rem;
+  font-size: 1.125rem;
   font-weight: 600;
   color: var(--color-accent, #3CC4E5);
   text-decoration: none;
@@ -248,5 +248,5 @@
 }
 
 .viewAllLink:hover .arrow {
-  transform: translateX(4px);
+  transform: translateX(0.25rem);
 }

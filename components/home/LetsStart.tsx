@@ -143,7 +143,7 @@ export default function LetsStart({ variant }: LetsStartProps = {}) {
                 </div>
                 <div className={`lets-start-description ${styles.description}`}>
                   If you have any questions, email us{" "}
-                  <a href="mailto:hello@nexterse.com">info@nexterse.com</a>
+                  <a href="mailto:info@nexterse.com">info@nexterse.com</a>
                 </div>
               </>
             )}

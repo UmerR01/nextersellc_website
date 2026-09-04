@@ -1,12 +1,12 @@
 .section {
   background: #fff;
-  padding: 0 0 26px;
+  padding: 0 0 1.625rem;
 }
 
 .container {
   margin: 0 auto;
-  max-width: 1200px;
-  padding: 0 24px;
+  max-width: 75rem;
+  padding: 0 1.5rem;
 }
 
 .accent {
@@ -20,14 +20,14 @@
   font-weight: 400;
   letter-spacing: 0;
   line-height: 1.15;
-  margin: 0 0 56px;
+  margin: 0 0 3.5rem;
   text-align: center;
   word-spacing: 0.08em;
 }
 
 .sliderArea {
   margin: 0 auto;
-  max-width: calc(100% - 168px);
+  max-width: calc(100% - 10.5rem);
   position: relative;
 }
 
@@ -37,7 +37,7 @@
 
 .track {
   display: flex;
-  gap: 56px;
+  gap: 3.5rem;
   transition: transform 0.4s ease;
   width: 100%;
 }
@@ -45,23 +45,23 @@
 .slide {
   align-items: center;
   display: flex;
-  flex: 0 0 calc((100% - (var(--visible, 6) - 1) * 56px) / var(--visible, 6));
+  flex: 0 0 calc((100% - (var(--visible, 6) - 1) * 3.5rem) / var(--visible, 6));
   justify-content: center;
-  min-width: calc((100% - (var(--visible, 6) - 1) * 56px) / var(--visible, 6));
+  min-width: calc((100% - (var(--visible, 6) - 1) * 3.5rem) / var(--visible, 6));
 }
 
 .awardWrap {
   align-items: center;
   display: flex;
   justify-content: center;
-  min-height: 118px;
+  min-height: 7.375rem;
   width: 100%;
 }
 
 .awardImg {
   height: auto;
-  max-height: 118px;
-  max-width: 118px;
+  max-height: 7.375rem;
+  max-width: 7.375rem;
   object-fit: contain;
   width: 100%;
 }
@@ -74,14 +74,14 @@
   color: var(--color-accent);
   cursor: pointer;
   display: flex;
-  height: 24px;
+  height: 1.5rem;
   justify-content: center;
   padding: 0;
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
   transition: color 0.2s ease;
-  width: 48px;
+  width: 3rem;
 }
 
 .navBtn:hover {
@@ -95,11 +95,11 @@
 }
 
 .navPrev {
-  right: calc(100% + 24px);
+  right: calc(100% + 1.5rem);
 }
 
 .navNext {
-  left: calc(100% + 24px);
+  left: calc(100% + 1.5rem);
 }
 
 .mobileNav {
@@ -117,41 +117,41 @@
 
   .mobileNav {
     display: flex;
-    gap: 12px;
-    margin-top: 24px;
+    gap: 0.75rem;
+    margin-top: 1.5rem;
   }
 
   .mobileNav .navBtn {
-    height: 18px;
+    height: 1.125rem;
     inset: auto;
     position: relative;
     transform: none;
-    width: 36px;
+    width: 2.25rem;
   }
 }
 
 @media (max-width: 768px) {
   .section {
-    padding-bottom: 24px;
+    padding-bottom: 1.5rem;
   }
 
   .title {
-    margin-bottom: 40px;
+    margin-bottom: 2.5rem;
     text-align: left;
   }
 
   .track {
-    gap: 32px;
+    gap: 2rem;
   }
 
   .slide {
-    flex-basis: calc((100% - (var(--visible, 4) - 1) * 32px) / var(--visible, 4));
-    min-width: calc((100% - (var(--visible, 4) - 1) * 32px) / var(--visible, 4));
+    flex-basis: calc((100% - (var(--visible, 4) - 1) * 2rem) / var(--visible, 4));
+    min-width: calc((100% - (var(--visible, 4) - 1) * 2rem) / var(--visible, 4));
   }
 
   .awardImg {
-    max-height: 88px;
-    max-width: 88px;
+    max-height: 5.5rem;
+    max-width: 5.5rem;
   }
 }
 
@@ -162,8 +162,8 @@
 
 .arrowBox {
   position: relative;
-  width: 40px;
-  height: 24px;
+  width: 2.5rem;
+  height: 1.5rem;
   display: block;
   flex-shrink: 0;
 }
@@ -174,7 +174,7 @@
   top: 50%;
   transform: translateY(-50%);
   border-radius: 999px;
-  width: 37px;
+  width: 2.3125rem;
   height: 2px;
   background: var(--color-accent);
   transition: width 0.3s ease-in-out;
@@ -184,22 +184,22 @@
   content: "";
   position: absolute;
   top: 50%;
-  width: 10px;
-  height: 10px;
+  width: 0.625rem;
+  height: 0.625rem;
   box-sizing: border-box;
   border-right: 2px solid var(--color-accent);
   border-top: 2px solid var(--color-accent);
   transition: 0.3s ease-in-out;
 }
 
-.navNext .arrowBox::before { left: 1px; }
-.navNext .arrowBox::after { right: 3px; transform: translateY(-50%) rotate(45deg); }
-.navPrev .arrowBox::before { right: 1px; }
-.navPrev .arrowBox::after { left: 3px; transform: translateY(-50%) rotate(-135deg); }
+.navNext .arrowBox::before { left: 0.0625rem; }
+.navNext .arrowBox::after { right: 0.1875rem; transform: translateY(-50%) rotate(45deg); }
+.navPrev .arrowBox::before { right: 0.0625rem; }
+.navPrev .arrowBox::after { left: 0.1875rem; transform: translateY(-50%) rotate(-135deg); }
 
-.navBtn:not(:disabled):hover .arrowBox::before { width: 42px; }
-.navNext:not(:disabled):hover .arrowBox::after { right: -3px; }
-.navPrev:not(:disabled):hover .arrowBox::after { left: -3px; }
+.navBtn:not(:disabled):hover .arrowBox::before { width: 2.625rem; }
+.navNext:not(:disabled):hover .arrowBox::after { right: -0.1875rem; }
+.navPrev:not(:disabled):hover .arrowBox::after { left: -0.1875rem; }
 
 .navBtn:disabled .arrowBox::before { background: #899fb6; }
 .navBtn:disabled .arrowBox::after { border-color: #899fb6; }

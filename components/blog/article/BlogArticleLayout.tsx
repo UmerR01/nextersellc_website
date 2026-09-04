@@ -41,9 +41,16 @@ export default function BlogArticleLayout({ contents, title, children }: Props) 
     };
 
     // Mirrors the reference's one-shot breakpoint flag: only force collapse/expand
-    // when crossing 992px, so a manual toggle survives resizes within the same regime.
+    // when crossing 900px, so a manual toggle survives resizes within the same regime.
+    // Must match BlogArticleLayout.module.css's own @media (max-width: 900px) —
+    // this used to check 992px while the CSS switched to the stacked mobile
+    // layout at 900px, so between 901-992px wide the TOC list was force-collapsed
+    // (.tocList.closed applies unconditionally, no media guard) while the CSS was
+    // still in its desktop tier, where .closeButton (the only way to re-expand it)
+    // stays display:none until 900px — the sidebar box rendered with nothing
+    // visible inside it and no way to reopen it.
     const evaluateBreakpoint = () => {
-      const isMobile = window.innerWidth <= 992;
+      const isMobile = window.innerWidth <= 900;
       if (isMobileRef.current === null || isMobile !== isMobileRef.current) {
         isMobileRef.current = isMobile;
         setCollapsed(isMobile);

@@ -3,9 +3,13 @@
   padding: 28px 0;
 }
 
+/* width: 100% (was calc(100% - 48px)) — removes the left/right inset
+   that made the grey box sit margined in from .section's edges instead
+   of spanning it fully. max-width + margin:0 auto still center it on
+   very wide screens. */
 .container {
   box-sizing: border-box;
-  width: calc(100% - 48px);
+  width: 100%;
   max-width: 1420px;
   margin: 0 auto;
   padding: 96px 132px;
@@ -86,7 +90,7 @@
   }
 
   .container {
-    width: calc(100% - 32px);
+    width: 100%;
     padding: 64px 24px;
   }
 

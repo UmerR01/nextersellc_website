@@ -122,7 +122,7 @@ export default function ContactModal({ open, onClose }: Props) {
             {/* Email description */}
             <p className={styles.emailDesc}>
               If you have any questions, email us{" "}
-              <a href="mailto:hello@nexterse.com">hello@nexterse.com</a>
+              <a href="mailto:info@nexterse.com">info@nexterse.com</a>
             </p>
 
             {/* Success state */}

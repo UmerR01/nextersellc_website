@@ -1,23 +1,23 @@
 .section {
   background: #fff;
-  padding: 96px 0;
+  padding: 6rem 0;
 }
 
 .container {
-  max-width: 1210px;
+  max-width: 75.625rem;
   margin: 0 auto;
-  padding: 0 24px;
+  padding: 0 1.5rem;
 }
 
 /* Title */
 .title {
-  font-size: 56px;
-  line-height: 62px;
+  font-size: 3.5rem;
+  line-height: 3.875rem;
   font-weight: 400;
   color: #02102c;
   text-align: center;
   letter-spacing: normal;
-  margin-bottom: 64px;
+  margin-bottom: 4rem;
   font-family: var(--font-inter-tight), sans-serif;
 }
 
@@ -29,8 +29,8 @@
 .grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  column-gap: 64px;
-  row-gap: 56px;
+  column-gap: 4rem;
+  row-gap: 3.5rem;
 }
 
 /* Card */
@@ -41,24 +41,24 @@
 }
 
 .icon {
-  width: 56px;
-  height: 56px;
+  width: 3.5rem;
+  height: 3.5rem;
   object-fit: contain;
-  margin-bottom: 24px;
+  margin-bottom: 1.5rem;
   display: block;
 }
 
 .cardTitle {
-  font-size: 28px;
+  font-size: 1.75rem;
   font-weight: 500;
   line-height: 1.4;
   color: #02102c;
-  margin: 0 0 12px;
+  margin: 0 0 0.75rem;
   font-family: var(--font-inter-tight), sans-serif;
 }
 
 .cardDesc {
-  font-size: 18px;
+  font-size: 1.125rem;
   line-height: 1.55;
   color: #112244;
   margin: 0;
@@ -68,28 +68,28 @@
 @media (max-width: 1024px) {
   .grid {
     grid-template-columns: repeat(2, 1fr);
-    column-gap: 48px;
+    column-gap: 3rem;
   }
 }
 
 /* ── Mobile ≤768px ── */
 @media (max-width: 768px) {
   .title {
-    font-size: 32px;
-    line-height: 35px;
-    margin-bottom: 40px;
+    font-size: 2rem;
+    line-height: 2.1875rem;
+    margin-bottom: 2.5rem;
   }
 
   .grid {
     grid-template-columns: repeat(1, 1fr);
-    gap: 40px;
+    gap: 2.5rem;
   }
 
   .cardTitle {
-    font-size: 22px;
+    font-size: 1.375rem;
   }
 
   .cardDesc {
-    font-size: 16px;
+    font-size: 1rem;
   }
 }

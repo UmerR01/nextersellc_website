@@ -19,15 +19,15 @@
   color: #0b0b0d;
   text-align: center;
   margin: 0 0 clamp(1.75rem, 3vw, 2.25rem);
-  max-width: 1000px;
+  max-width: 62.5rem;
   margin-left: auto;
   margin-right: auto;
 }
 
 @media screen and (max-width: 768px) {
   .title {
-    font-size: 24px;
-    line-height: 29px;
+    font-size: 1.5rem;
+    line-height: 1.8125rem;
     text-align: left;
     margin-left: 0;
     margin-right: 0;
@@ -43,40 +43,56 @@
   line-height: 1.62;
   color: #253858;
   text-align: center;
-  max-width: 1200px;
+  max-width: 75rem;
   margin: 0 auto clamp(5rem, 7vw, 7rem);
 }
 
 @media screen and (max-width: 768px) {
   .description {
-    font-size: 14px;
-    line-height: 22px;
+    font-size: 0.875rem;
+    line-height: 1.375rem;
     text-align: left;
     margin-left: 0;
     margin-right: 0;
-    margin-bottom: 32px;
+    margin-bottom: 2rem;
   }
 }
 
 .description p { margin: 0; }
 
 /* Desktop table */
+/* Inner scroll fix (AIWontForce.module.css pattern): .table had width:100%
+   and no min-width, so between 768px (where it's shown instead of
+   .tableMobile) and whatever width comfortably fits 3 columns, it just
+   squeezed narrower and narrower instead of scrolling — cramped, hard to
+   read, especially the long "Role in delivery" column. min-width on the
+   table plus a visible scrollbar on the wrapper gives it somewhere to go
+   instead of shrinking indefinitely. */
 .tableWrap {
   margin: 0 auto;
-  max-width: 1150px;
+  max-width: 71.875rem;
   overflow-x: auto;
+  overflow-y: hidden;
+  scrollbar-width: thin;
+}
+
+.tableWrap::-webkit-scrollbar {
+  display: block;
+  height: 0.375rem;
+}
+
+.tableWrap::-webkit-scrollbar-thumb {
+  background: #d9e3ef;
+  border-radius: 0.1875rem;
 }
 
 .table {
   width: 100%;
+  min-width: 48rem;
   border-collapse: collapse;
   color: #253858;
   font-size: 1rem;
   line-height: 1.45;
-}
-
-@media screen and (max-width: 768px) {
-  .table { display: none; }
 }
 
 .table th {
@@ -107,22 +123,24 @@
   background: #f3f6fb;
 }
 
-/* Mobile */
+/* Mobile column layout — replaced by the scrollable .table at every
+   width (see .tableWrap/.table above), which is why .tableMobile stays
+   permanently hidden below instead of switching on at ≤768px. Was: the
+   real table swapped out for this stacked-column layout on small
+   screens ("becomes 3 rows"); now the same table with a real horizontal
+   scrollbar renders at every width instead. Rules kept, unused, in case
+   this needs reverting. */
 .tableMobile {
   display: none;
 }
 
-@media screen and (max-width: 768px) {
-  .tableMobile { display: block; }
-}
-
-.mobileCol { margin-bottom: 24px; }
+.mobileCol { margin-bottom: 1.5rem; }
 
 .mobileColTitle {
-  font-size: 14px;
+  font-size: 0.875rem;
   font-weight: 400;
   color: #253858;
-  padding: 10px 14px;
+  padding: 0.625rem 0.875rem;
   background: #f3f6fb;
   border: 1px solid #cbd6e3;
   border-bottom: none;
@@ -133,11 +151,11 @@
 }
 
 .mobileCell {
-  padding: 10px 14px;
+  padding: 0.625rem 0.875rem;
   border-bottom: 1px solid #cbd6e3;
   color: #253858;
-  font-size: 13px;
-  line-height: 20px;
+  font-size: 0.8125rem;
+  line-height: 1.25rem;
 }
 
 .mobileCell:last-child { border-bottom: none; }

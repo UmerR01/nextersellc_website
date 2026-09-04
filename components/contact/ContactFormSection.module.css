@@ -1,7 +1,7 @@
 .section {
   background: none;
-  margin: 96px auto;
-  max-width: 1278px;
+  margin: 6rem auto;
+  max-width: 79.875rem;
 }
 
 @media (max-width: 768px) {
@@ -12,7 +12,7 @@
 
 @media screen and (min-width: 1024px) and (max-width: 1680px) {
   .section {
-    margin-top: 140px;
+    margin-top: 8.75rem;
   }
 }
 
@@ -36,21 +36,21 @@
 
 .contentLeft {
   flex: 1 1 100%;
-  padding-left: 48px;
-  padding-right: 48px;
-  padding-top: 40px;
-  padding-bottom: 40px;
+  padding-left: 3rem;
+  padding-right: 3rem;
+  padding-top: 2.5rem;
+  padding-bottom: 2.5rem;
 }
 
 @media (max-width: 1200px) {
   .contentLeft {
-    padding: 24px;
+    padding: 1.5rem;
   }
 }
 
 @media (max-width: 768px) {
   .contentLeft {
-    padding: 24px 16px;
+    padding: 1.5rem 1rem;
   }
 }
 
@@ -58,7 +58,7 @@
 
 .icons {
   display: flex;
-  margin-right: -24px;
+  margin-right: -1.5rem;
   margin-top: 0;
 }
 
@@ -71,36 +71,36 @@
 
 .iconItem {
   display: flex;
-  margin-bottom: 64px;
-  padding-right: 24px;
+  margin-bottom: 4rem;
+  padding-right: 1.5rem;
 }
 
 @media (max-width: 768px) {
   .iconItem {
     align-items: center;
-    margin-bottom: 18px;
+    margin-bottom: 1.125rem;
   }
 
   .iconItem:last-child {
-    margin-bottom: 40px;
+    margin-bottom: 2.5rem;
   }
 }
 
 .iconImg {
-  padding-right: 16px;
+  padding-right: 1rem;
   flex-shrink: 0;
 }
 
 .iconDesc {
-  font-size: 16px;
-  line-height: 22px;
+  font-size: 1rem;
+  line-height: 1.375rem;
   color: #112244;
 }
 
 @media (max-width: 768px) {
   .iconDesc {
-    font-size: 13px;
-    line-height: 18px;
+    font-size: 0.8125rem;
+    line-height: 1.125rem;
   }
 }
 
@@ -117,14 +117,14 @@
   flex-wrap: wrap;
   font-weight: 500;
   justify-content: flex-end;
-  margin-bottom: 32px;
+  margin-bottom: 2rem;
 }
 
 .fieldErrorText {
   color: #ff415c;
-  font-size: 13px;
+  font-size: 0.8125rem;
   line-height: 1.4;
-  margin-top: 4px;
+  margin-top: 0.25rem;
   flex-basis: 100%;
   text-align: right;
 }
@@ -133,17 +133,17 @@
   .formLabel {
     flex-direction: column;
     justify-content: flex-start;
-    margin-bottom: 24px;
+    margin-bottom: 1.5rem;
     width: 100%;
   }
 }
 
 .formLabelText {
   color: #112244;
-  font-size: 16px;
+  font-size: 1rem;
   font-weight: 400;
-  line-height: 22px;
-  padding-right: 20px;
+  line-height: 1.375rem;
+  padding-right: 1.25rem;
   text-align: right;
   white-space: nowrap;
 }
@@ -157,8 +157,8 @@
 
 @media (max-width: 768px) {
   .formLabelText {
-    font-size: 13px;
-    line-height: 18px;
+    font-size: 0.8125rem;
+    line-height: 1.125rem;
   }
 }
 
@@ -167,8 +167,8 @@
   align-items: baseline;
   position: relative;
   color: #112244;
-  font-size: 16px;
-  line-height: 22px;
+  font-size: 1rem;
+  line-height: 1.375rem;
 }
 
 @media (max-width: 1200px) {
@@ -183,14 +183,14 @@
   border-bottom: 1px solid #899fb6;
   color: #112244;
   font-family: inherit;
-  font-size: 16px;
-  line-height: 22px;
-  max-width: 547px;
-  min-width: 547px;
+  font-size: 1rem;
+  line-height: 1.375rem;
+  max-width: 34.1875rem;
+  min-width: 34.1875rem;
   outline: none;
-  padding: 4px 0 8px;
+  padding: 0.25rem 0 0.5rem;
   transition: border-color 0.2s;
-  width: 547px;
+  width: 34.1875rem;
 }
 
 .formInput:focus {
@@ -211,12 +211,12 @@
 
 .formTextarea {
   resize: none;
-  min-height: 72px;
+  min-height: 4.5rem;
 }
 
 @media (max-width: 768px) {
   .formTextarea {
-    height: 36px;
+    height: 2.25rem;
   }
 }
 
@@ -238,8 +238,8 @@
   align-items: center;
   display: flex;
   justify-content: space-between;
-  max-width: 547px;
-  width: 547px;
+  max-width: 34.1875rem;
+  width: 34.1875rem;
 }
 
 @media (max-width: 1200px) {
@@ -255,7 +255,7 @@
   .bottomWrapper {
     flex-direction: column;
     align-items: stretch;
-    gap: 20px;
+    gap: 1.25rem;
   }
 }
 
@@ -279,7 +279,7 @@
   display: inline-block;
   flex-shrink: 0;
   height: 24px;
-  margin-right: 8px;
+  margin-right: 0.5rem;
   position: relative;
   width: 24px;
 }
@@ -307,8 +307,8 @@
 
 .checkboxText {
   color: #112244;
-  font-size: 16px;
-  line-height: 22px;
+  font-size: 1rem;
+  line-height: 1.375rem;
 }
 
 @media (max-width: 768px) {
@@ -325,8 +325,8 @@
     height: 20px;
   }
   .checkboxText {
-    font-size: 13px;
-    line-height: 18px;
+    font-size: 0.8125rem;
+    line-height: 1.125rem;
   }
 }
 
@@ -341,11 +341,11 @@
   background-repeat: no-repeat;
   background-size: 0 100%;
   color: #3CC4E5;
-  font-size: 16px;
-  line-height: 22px;
-  margin-left: 5px;
-  margin-right: 54px;
-  margin-top: 1px;
+  font-size: 1rem;
+  line-height: 1.375rem;
+  margin-left: 0.3125rem;
+  margin-right: 3.375rem;
+  margin-top: 0.0625rem;
   position: relative;
   text-decoration: none;
   transition: background-size 0.3s;
@@ -363,24 +363,28 @@
 
 @media (max-width: 768px) {
   .privacyLink {
-    font-size: 13px;
-    line-height: 18px;
-    margin-top: 3px;
+    font-size: 0.8125rem;
+    line-height: 1.125rem;
+    margin-top: 0.1875rem;
   }
 }
 
 /* Submit */
 
+/* btn_r: no forced width on a button, ever — .submitWrapper now handles
+   the button's right alignment itself (justify-content:flex-end) instead
+   of relying on .bottomWrapper's own mobile align-items:stretch to
+   position it, so it stays right-aligned and intrinsically sized at
+   every width, matching LetsStart.module.css's .send button. */
 .submitWrapper {
+  display: flex;
+  justify-content: flex-end;
   position: relative;
 }
 
 @media (max-width: 768px) {
   .submitWrapper {
     margin-top: 0;
-    width: 100%;
-  }
-  .submitBtn {
     width: 100%;
   }
 }
@@ -391,14 +395,22 @@
   border-radius: var(--radius-button);
   color: var(--color-accent);
   cursor: pointer;
-  display: flex;
+  /* inline-flex, not flex — .bottomWrapper's mobile align-items:stretch
+     was stretching this to the full width of its (now flex) wrapper,
+     since a plain display:flex element is block-level by default and
+     fills its container unless given an explicit width. inline-flex
+     keeps it sized to its own content, matching every other CTA button
+     on the site (btn_r). */
+  display: inline-flex;
   align-items: center;
   justify-content: center;
   font-family: inherit;
   font-size: 1rem;
   font-weight: 600;
-  gap: 8px;
-  padding: 0.3rem 1.25rem;
+  gap: 0.5rem;
+  /* Matches the Header's own button padding exactly (app/globals.css's
+     base .btn: 0.4rem 1.25rem) — was 0.3rem 1.25rem. */
+  padding: 0.4rem 1.25rem;
   position: relative;
   transition: background-color 0.25s ease, color 0.25s ease;
   white-space: nowrap;
@@ -415,7 +427,7 @@
 }
 
 .submitBtnLoading {
-  padding: 18px 48px;
+  padding: 1.125rem 3rem;
 }
 
 @keyframes spin {
@@ -424,8 +436,8 @@
 
 .spinner {
   display: inline-block;
-  width: 20px;
-  height: 20px;
+  width: 1.25rem;
+  height: 1.25rem;
   border: 2px solid rgba(255, 255, 255, 0.3);
   border-top-color: #fff;
   border-radius: 50%;
@@ -434,10 +446,10 @@
 
 .errorMsg {
   color: #e53e3e;
-  font-size: 12px;
-  margin-top: 8px;
+  font-size: 0.75rem;
+  margin-top: 0.5rem;
   position: absolute;
-  bottom: -20px;
+  bottom: -1.25rem;
   left: 0;
 }
 
@@ -447,10 +459,10 @@
   align-items: center;
   display: flex;
   flex-wrap: wrap;
-  gap: 24px;
+  gap: 1.5rem;
   justify-content: flex-end;
-  margin: 48px 0 0 auto;
-  max-width: 548px;
+  margin: 3rem 0 0 auto;
+  max-width: 34.25rem;
   position: relative;
 }
 
@@ -460,13 +472,23 @@
   height: 1px;
   opacity: 0.15;
   position: absolute;
-  top: -25px;
+  top: -1.5625rem;
   width: 100%;
 }
 
 @media (max-width: 1199px) {
   .booking {
-    margin: 48px 0 0;
+    margin: 3rem 0 0;
+  }
+}
+
+/* Matches .formInput's own 1200px tier — the message fields above already
+   go full width there, so the divider line (.booking::before, 100% of
+   .booking's own box) stayed noticeably narrower than them between
+   576-1200px while it was still capped at the desktop 34.25rem. */
+@media (max-width: 1200px) {
+  .booking {
+    max-width: 100%;
   }
 }
 
@@ -477,10 +499,10 @@
 
 .personAvatar {
   border-radius: 50%;
-  height: 56px;
-  margin-right: 12px;
+  height: 3.5rem;
+  margin-right: 0.75rem;
   object-fit: cover;
-  width: 56px;
+  width: 3.5rem;
 }
 
 .personText {
@@ -489,16 +511,16 @@
 }
 
 .personName {
-  font-size: 16px;
+  font-size: 1rem;
   font-weight: 600;
-  line-height: 22.4px;
+  line-height: 1.4rem;
   color: #112244;
 }
 
 .personRole {
   color: #899fb6;
-  font-size: 14px;
-  line-height: 19.6px;
+  font-size: 0.875rem;
+  line-height: 1.225rem;
 }
 
 .bookBtn {
@@ -511,9 +533,11 @@
   display: inline-flex;
   font-size: 1rem;
   font-weight: 600;
-  gap: 8px;
+  gap: 0.5rem;
   justify-content: center;
-  padding: 0.3rem 1.25rem;
+  /* Matches the Header's own button padding exactly (app/globals.css's
+     base .btn: 0.4rem 1.25rem) — was 0.3rem 1.25rem. */
+  padding: 0.4rem 1.25rem;
   transition: background-color 0.25s ease, color 0.25s ease;
 }
 
@@ -529,15 +553,16 @@
 
 @media (max-width: 576px) {
   .booking {
-    align-items: stretch;
+    /* flex-end, not stretch — stretch was the actual cause of .bookBtn
+       filling the row width in this stacked (column) layout: align-items
+       controls the cross axis, which becomes horizontal once
+       flex-direction switches to column, so "stretch" stretched the
+       button horizontally. btn_r: no forced button width, ever — stays
+       intrinsically sized and right-aligned, matching LetsStart's .send. */
+    align-items: flex-end;
     flex-direction: column;
-    gap: 20px;
+    gap: 1.25rem;
     max-width: none;
-  }
-  .bookBtn {
-    width: 100%;
-    white-space: normal;
-    text-align: center;
   }
 }
 
@@ -545,26 +570,26 @@
 
 .successState {
   text-align: center;
-  padding: 40px 0;
+  padding: 2.5rem 0;
 }
 
 .successIcon {
-  margin: 0 auto 24px;
+  margin: 0 auto 1.5rem;
   width: fit-content;
 }
 
 .successTitle {
   color: #112244;
-  font-size: 32px;
+  font-size: 2rem;
   font-weight: 600;
   line-height: 1.2;
-  margin-bottom: 12px;
+  margin-bottom: 0.75rem;
 }
 
 .successSubtitle {
   color: #112244;
-  font-size: 18px;
-  line-height: 28px;
+  font-size: 1.125rem;
+  line-height: 1.75rem;
 }
 
 /* ── RIGHT COLUMN ── */
@@ -573,32 +598,32 @@
   align-items: stretch;
   display: flex;
   flex-direction: column;
-  flex: 0 0 401px;
+  flex: 0 0 25.0625rem;
   justify-content: center;
   position: relative;
 }
 
 @media (max-width: 1200px) {
   .contentRight {
-    margin-left: -24px;
-    margin-right: -24px;
-    margin-top: 40px;
+    margin-left: -1.5rem;
+    margin-right: -1.5rem;
+    margin-top: 2.5rem;
   }
 }
 
 @media (max-width: 768px) {
   .contentRight {
-    margin-left: -16px;
-    margin-right: -16px;
-    margin-top: 40px;
+    margin-left: -1rem;
+    margin-right: -1rem;
+    margin-top: 2.5rem;
   }
   .mapContainer {
-    height: 300px;
+    height: 18.75rem;
   }
 }
 
 .mapContainer {
-  height: 385px;
+  height: 24.0625rem;
 }
 
 .mapContainer iframe {
@@ -618,39 +643,39 @@
 }
 
 .addressCardInner {
-  padding: 40px 40px 20px;
+  padding: 2.5rem 2.5rem 1.25rem;
 }
 
 @media (max-width: 768px) {
   .addressCardInner {
-    padding: 34px 40px 12px;
+    padding: 2.125rem 2.5rem 0.75rem;
   }
 }
 
 .addressTitle {
   color: #fff;
-  font-size: 22px;
+  font-size: 1.375rem;
   font-weight: 600;
   line-height: 164%;
-  margin-bottom: 4px;
+  margin-bottom: 0.25rem;
   text-align: center;
 }
 
 @media (max-width: 768px) {
   .addressTitle {
-    font-size: 16px;
+    font-size: 1rem;
   }
 }
 
 .addressText {
   color: #fff;
-  font-size: 16px;
+  font-size: 1rem;
   font-weight: 400;
   line-height: 140%;
 }
 
 .addressText p {
-  margin-bottom: 8px;
+  margin-bottom: 0.5rem;
 }
 
 .addressText p:last-child {
@@ -659,7 +684,7 @@
 
 @media (max-width: 768px) {
   .addressText {
-    font-size: 13px;
+    font-size: 0.8125rem;
   }
 }
 
@@ -668,15 +693,15 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding-bottom: 30px;
+  padding-bottom: 1.875rem;
 }
 
 .addressEmail {
-  font-size: 16px;
+  font-size: 1rem;
   font-weight: 400;
   line-height: 140%;
   text-align: center;
-  margin-top: 24px;
+  margin-top: 1.5rem;
 }
 
 .addressEmail a {
@@ -687,7 +712,7 @@
 }
 
 .addressEmail a + a {
-  margin-top: 4px;
+  margin-top: 0.25rem;
 }
 
 .addressEmail a:hover {
@@ -696,16 +721,16 @@
 
 @media (max-width: 768px) {
   .addressEmail {
-    font-size: 13px;
-    margin-top: 15px;
+    font-size: 0.8125rem;
+    margin-top: 0.9375rem;
   }
 }
 
 .addressSocials {
   display: flex;
   flex-direction: row;
-  gap: 16px;
-  margin-top: 16px;
+  gap: 1rem;
+  margin-top: 1rem;
 }
 
 .socialLink {

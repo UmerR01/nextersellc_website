@@ -5,7 +5,7 @@
 }
 
 .container {
-  max-width: 1280px;
+  max-width: 80rem;
   margin: 0 auto;
   padding-inline: clamp(1.25rem, 4vw, 3.75rem);
 }
@@ -34,11 +34,16 @@
 }
 
 /* ── Card ── */
+/* padding-left: 0 — a uniform padding on all 4 sides pushed the icon/
+   title/text inward from the grid column's own left edge, so the card's
+   content didn't start flush left the way it should. Top/right/bottom
+   padding stays (keeps the hover highlight background readable, not
+   flush against the card above/below/beside it). */
 .card {
   background: transparent;
   color: inherit;
   cursor: pointer;
-  padding: clamp(1.5rem, 3vw, 2rem);
+  padding: clamp(1.5rem, 3vw, 2rem) clamp(1.5rem, 3vw, 2rem) clamp(1.5rem, 3vw, 2rem) 0;
   border: 0;
   text-decoration: none;
   transition: background 0.3s ease;
@@ -55,24 +60,24 @@
 }
 
 .cardIcon {
-  margin-bottom: 24px;
+  margin-bottom: 1.5rem;
   display: block;
 }
 
 .cardTitle {
-  font-size: 28px;
+  font-size: 1.75rem;
   font-weight: 500;
   line-height: 1.4;
   color: #02102c;
-  margin: 0 0 16px;
+  margin: 0 0 1rem;
   font-family: var(--font-inter-tight), sans-serif;
 }
 
 .cardBody {
-  font-size: 18px;
+  font-size: 1.125rem;
   line-height: 1.7;
   color: #112244;
-  margin: 0 0 24px;
+  margin: 0 0 1.5rem;
   font-family: var(--font-inter-tight), sans-serif;
 }
 
@@ -82,7 +87,7 @@
   align-items: center;
   color: #3CC4E5;
   font-weight: 600;
-  font-size: 16px;
+  font-size: 1rem;
   text-decoration: none;
   font-family: var(--font-inter-tight), sans-serif;
   position: relative;
@@ -91,9 +96,9 @@
 .arrow {
   display: inline-block;
   position: relative;
-  width: 17px;
-  padding-left: 6px;
-  padding-right: 17px;
+  width: 1.0625rem;
+  padding-left: 0.375rem;
+  padding-right: 1.0625rem;
 }
 
 .arrow::before,
@@ -101,7 +106,7 @@
   content: "";
   display: block;
   position: absolute;
-  right: 10px;
+  right: 0.625rem;
   top: 50%;
   transform: translateY(-50%);
   transition: 0.1s;
@@ -120,39 +125,39 @@
 .card:hover .arrow::before,
 .card:focus-visible .arrow::before {
   animation: bounceBefore 1s linear infinite;
-  right: 6px;
+  right: 0.375rem;
 }
 
 .card:hover .arrow::after,
 .card:focus-visible .arrow::after {
   animation: bounceAfter 1s linear infinite;
-  right: 6px;
+  right: 0.375rem;
 }
 
 @keyframes bounceBefore {
   0% { opacity: 1; transform: translateX(0) translateY(-50%); }
-  49% { opacity: 0; transform: translateX(7px) translateY(-50%); }
-  52% { opacity: 0; transform: translateX(-7px) translateY(-50%); }
+  49% { opacity: 0; transform: translateX(0.4375rem) translateY(-50%); }
+  52% { opacity: 0; transform: translateX(-0.4375rem) translateY(-50%); }
   100% { opacity: 1; transform: translateX(0) translateY(-50%); }
 }
 
 @keyframes bounceAfter {
-  0% { opacity: 0; transform: translateX(-7px) translateY(-50%); }
+  0% { opacity: 0; transform: translateX(-0.4375rem) translateY(-50%); }
   49% { opacity: 1; transform: translateX(0) translateY(-50%); }
-  99% { opacity: 0; transform: translateX(7px) translateY(-50%); }
-  100% { opacity: 0; transform: translateX(-7px) translateY(-50%); }
+  99% { opacity: 0; transform: translateX(0.4375rem) translateY(-50%); }
+  100% { opacity: 0; transform: translateX(-0.4375rem) translateY(-50%); }
 }
 
 /* ── ≤768px ── */
 @media (max-width: 767px) {
   .section {
-    padding: 72px 0;
+    padding: 4.5rem 0;
   }
 
   .title {
-    font-size: 32px;
-    line-height: 35px;
-    margin-bottom: 40px;
+    font-size: 2rem;
+    line-height: 2.1875rem;
+    margin-bottom: 2.5rem;
   }
 
   .grid {
@@ -160,14 +165,14 @@
   }
 
   .card {
-    padding: 24px 16px;
+    padding: 1.5rem 1rem 1.5rem 0;
   }
 
   .cardTitle {
-    font-size: 22px;
+    font-size: 1.375rem;
   }
 
   .cardBody {
-    font-size: 16px;
+    font-size: 1rem;
   }
 }

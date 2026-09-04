@@ -2,7 +2,7 @@
   background: none;
   position: relative;
   overflow: hidden;
-  padding-top: calc(var(--header-height) + 26px);
+  padding-top: calc(var(--header-height) + 1.625rem);
   margin-left: calc(50% - 50vw);
   width: 100vw;
 }
@@ -36,7 +36,7 @@
 }
 
 .container {
-  max-width: min(100%, 1540px);
+  max-width: min(100%, 96.25rem);
   margin: 0 auto;
   padding-inline: clamp(1.25rem, 3vw, 2.5rem);
 }
@@ -58,15 +58,15 @@
   align-items: center;
   overflow: hidden;
   white-space: nowrap;
-  gap: 4px;
+  gap: 0.25rem;
   margin-bottom: 4.5rem;
   font-size: 0.875rem;
   line-height: 1.4;
 }
 
 .breadcrumbLink {
-  color: rgba(255, 255, 255, 0.5);
-  font-size: 14px;
+  color: #fff;
+  font-size: 0.875rem;
   text-decoration: none;
   font-family: var(--font-inter-tight), sans-serif;
   transition: color 0.2s;
@@ -83,7 +83,7 @@
 
 .breadcrumbCurrent {
   color: rgba(255, 255, 255, 0.35);
-  font-size: 14px;
+  font-size: 0.875rem;
   font-family: var(--font-inter-tight), sans-serif;
 }
 
@@ -122,14 +122,14 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: flex-start;
-  margin: 1.5rem -24px 0;
+  margin: 1.5rem -1.5rem 0;
 }
 
 .numberItem {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  margin: 0 24px;
+  margin: 0 1.5rem;
 }
 
 .numberData {
@@ -151,8 +151,8 @@
   color: #fff;
   font-size: clamp(0.8125rem, 1.35vw, 1rem);
   font-weight: 600;
-  line-height: 22px;
-  margin-top: 4px;
+  line-height: 1.375rem;
+  margin-top: 0.25rem;
   text-align: left;
   font-family: var(--font-inter-tight), sans-serif;
 }
@@ -162,14 +162,14 @@
 @media (min-width: 1024px) and (max-width: 1680px) {
   .hero {
     margin-left: 0;
-    padding-top: calc(var(--header-height) + 26px);
+    padding-top: calc(var(--header-height) + 1.625rem);
     width: 100%;
   }
 }
 
 @media (max-width: 900px) {
   .hero {
-    padding-top: calc(var(--header-height) + 48px);
+    padding-top: calc(var(--header-height) + 3rem);
   }
 
   .desktopBg {
@@ -194,13 +194,13 @@
 
   .numbers {
     justify-content: space-between;
-    margin: 8px -8px 0;
+    margin: 0.5rem -0.5rem 0;
   }
 
   .numberItem {
     flex: 1 1 33.33%;
     margin: 0;
-    padding: 0 8px;
+    padding: 0 0.5rem;
     align-items: flex-start;
   }
 
@@ -213,7 +213,7 @@
    track/hero-responsiveness-rule.md. */
 @media (max-height: 450px) {
   .hero {
-    padding-top: calc(var(--header-height) + 12px);
+    padding-top: calc(var(--header-height) + 0.75rem);
   }
   .breadcrumbs {
     margin-bottom: 1rem;

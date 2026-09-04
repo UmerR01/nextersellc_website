@@ -50,7 +50,7 @@
 }
 
 .breadcrumbs a {
-  color: rgba(255, 255, 255, 0.6);
+  color: #fff;
   font-family: var(--font-inter-tight), "Inter Tight", sans-serif;
   font-size: 14px;
   font-weight: 400;

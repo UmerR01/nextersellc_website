@@ -1,18 +1,18 @@
 .section {
   background: #fff;
-  padding: 96px 0 0;
+  padding: 6rem 0 0;
 }
 
 .panel {
   background:
     radial-gradient(circle at 0% 50%, rgba(60, 196, 229, 0.1), transparent 34%),
     linear-gradient(90deg, rgba(60, 196, 229, 0.08) 0%, #fff 50%, #eaf4ff 100%);
-  min-height: 268px;
-  padding: 66px clamp(4rem, 10vw, 13rem);
+  min-height: 16.75rem;
+  padding: 4.125rem clamp(4rem, 10vw, 13rem);
 }
 
 .content {
-  max-width: 420px;
+  max-width: 26.25rem;
 }
 
 .title {
@@ -110,7 +110,7 @@
 
 @media (max-width: 768px) {
   .section {
-    padding-top: 64px;
+    padding-top: 4rem;
   }
 
   .panel {

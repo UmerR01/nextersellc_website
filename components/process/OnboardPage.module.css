@@ -558,16 +558,43 @@
 .heroInner,
 .sectionInner {
   max-width: 71.875rem;
-  border: 0;
+  /* Outline box — matches ProcessPage.module.css's .heroCard reference:
+     a real 1px border closing the box on all sides, flat 3.125rem
+     (50px) padding between the border and the content on every side,
+     no fill/shadow/blur. */
+  border: 1px solid var(--ob-border);
   background: transparent;
   box-shadow: none;
   backdrop-filter: none;
   -webkit-backdrop-filter: none;
 }
-.heroInner { padding: clamp(2rem, 4vw, 4rem) 0; }
+.heroInner { padding: 3.125rem; }
 .section { padding-top: clamp(4rem, 6vw, 5.75rem); }
-.sectionInner { padding: 0; }
+.sectionInner { padding: 3.125rem; }
 .sectionInnerDark::before { display: none; }
+
+/* Horizontal padding stepped down to match ProcessPage's own .heroCard
+   tiers, keeping the box's inner content inset consistent as it narrows
+   (vertical stays flat 50px per the outline-box rule above). Placed
+   after the normalization block on purpose — same source-order
+   requirement as ProcessPage.module.css's equivalent tiers: an
+   unconditional rule declared later in the file always wins the tie
+   over an earlier media-query rule touching the same property. */
+@media (max-width: 991px) {
+  .heroInner,
+  .sectionInner {
+    padding-left: 1.875rem;
+    padding-right: 1.875rem;
+  }
+}
+
+@media (max-width: 767px) {
+  .heroInner,
+  .sectionInner {
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
+  }
+}
 .heroH1,
 .sectionH2 { font-weight: 400; }
 .card,

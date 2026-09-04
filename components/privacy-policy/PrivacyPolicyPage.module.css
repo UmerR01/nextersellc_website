@@ -161,7 +161,13 @@
   .shell {
     grid-template-columns: 1fr;
     gap: 2.5rem;
-    padding-top: clamp(5rem, 10vw, 7rem);
+    /* Header-anchored, not a flat clamp — the fixed header is 5.5rem
+       (88px) tall down to 560px, but clamp(5rem, 10vw, 7rem)'s own floor
+       (5rem = 80px) undercuts that everywhere below ~880px wide (where
+       10vw drops under 88px), overlapping the header instead of clearing
+       it. calc(header + clamp(...)) can't fall below the header's actual
+       height at any width. */
+    padding-top: calc(var(--header-height) + clamp(1rem, 3vw, 2.5rem));
   }
 
   .article {
@@ -180,7 +186,12 @@
 
 @media (max-width: 640px) {
   .shell {
-    padding-top: 4.5rem;
+    /* Was a flat 4.5rem (72px) — the header is still 5.5rem (88px) here
+       until 560px, so this overlapped the header by 16px between
+       561-640px wide, and left zero breathing room (exactly equal) below
+       560px where the header itself drops to 4.5rem. Header-anchored
+       with a small fixed clearance instead. */
+    padding-top: calc(var(--header-height) + 0.75rem);
   }
 
   .article h1 {

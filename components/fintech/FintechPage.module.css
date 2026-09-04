@@ -133,12 +133,49 @@
    instead. See track/responsiveness-rules.md's tabsnav_r rule and the
    matching fix on GenAI's ROI tabs / ML's maturity tabs / Services' dev-path
    tabs. */
+/* justify-content: safe center — same "bunched against the left edge,
+   dead space on the other side" bug already fixed on MVP's
+   "Why leaders build MVPs first" tabs (see
+   track/mvp-page-followup-fixes.md). With only 2 tabs here, space-between
+   (used on MVP's 3-tab row) would shove one tab hard against each edge of
+   a wide container, an even less natural look for a pair — centering the
+   pair as a group reads better. `safe` keeps the same guarantee
+   space-between gets for free: if the row ever needs to actually scroll
+   (narrow viewport), centering degrades to flex-start-like packing
+   instead of clipping the first tab unreachably off-screen — see the
+   justify-content:safe center fix on Web App / Cloud Development's
+   tabsNav earlier this session.
+
+   The border-bottom "divider" line and its margin-top now live on a new
+   .dualEngineTabsWrap, not on .dualEngineTabs itself — .dualEngineTabs
+   still centers its own (narrower) row of tabs inside that wrapper, but
+   the divider line needs to span the section's full content width to
+   match the heading/description above it, same as it did before the
+   tabs were centered instead of left-packed. Reported: the line was only
+   ever as wide as the 2 tabs' own centered content. */
+/* margin-inline: 15.625% — a fixed 15.625rem (250px) inset was reported
+   broken across 760-1256px: it doesn't scale down with the viewport like
+   the heading/paragraph text above it does, so at a mid-range width it
+   stayed a full 250px on each side while the 2-tab row's own required
+   width didn't shrink, squeezing them into a visibly-too-narrow, empty-
+   looking centered scroll strip. --max-width is 1600px (app/globals.css),
+   and 250/1600 = 15.625% exactly — so this resolves to the same 250px at
+   full desktop width, but now scales continuously down with the
+   container's actual rendered width at every size in between, instead of
+   jumping straight from 250px to 0 only at the ≤760px breakpoint. */
+.dualEngineTabsWrap {
+  margin-top: 4.875rem;
+  margin-inline: 15.625%;
+  border-bottom: 1px solid #d9e3ef;
+}
+
+/* gap: 3rem — additional breathing room between the 2 tabs, on top of
+   each tab's own 1.5rem left/right padding (so 3rem+1.5rem+1.5rem = 6rem
+   total between the two icons). */
 .dualEngineTabs {
   display: flex;
-  justify-content: flex-start;
-  gap: 0;
-  margin-top: 4.875rem;
-  border-bottom: 1px solid #d9e3ef;
+  justify-content: safe center;
+  gap: 3rem;
   overflow-x: auto;
   overflow-y: hidden;
   scrollbar-width: thin;
@@ -201,9 +238,19 @@
   filter: none;
 }
 
+/* margin-left: 6.5% — same fluid-inset technique as .dualEngineTabsWrap
+   above: a fixed 6.5rem (104px) doesn't shrink as the viewport narrows,
+   so the panel would stay pinned the same distance from the left edge
+   while everything around it (including its own max-width column)
+   keeps shrinking, instead of moving left with the rest of the page.
+   --max-width is 1600px and 104/1600 = 6.5% exactly, so this still
+   resolves to the same 6.5rem at full desktop width, but now scales
+   continuously down with the container's actual rendered width. Reset
+   to 0 at the ≤760px tier below, same as .dualEngineTabsWrap. */
 .dualEnginePanel {
   max-width: 48.75rem;
   margin-top: 4rem;
+  margin-left: 6.5%;
 }
 
 .dualEnginePanelTitle {
@@ -225,8 +272,9 @@
 }
 
 @media (max-width: 760px) {
-  .dualEngineTabs {
+  .dualEngineTabsWrap {
     margin-top: 3.25rem;
+    margin-inline: 0;
   }
 
   .dualEngineTab {
@@ -234,7 +282,7 @@
     padding: 0 1rem 1.25rem;
   }
 
-  .dualEnginePanel { margin-top: 2.625rem; }
+  .dualEnginePanel { margin-top: 2.625rem; margin-left: 0; }
 }
 
 /* ── Vertical tabs (Solutions) ─────────────────────────────────────────────── */

@@ -133,7 +133,7 @@ export default function DevelopmentPage() {
               <div className={styles.heroLeadRow}>
                 <p className={styles.heroLead}>Ensuring efficiency for your project</p>
                 <a className={`btn btn-accent ${styles.ctaBtn}`} href="#get-modal-popup">
-                  Let&apos;s talk&nbsp;<i className="ti-arrow-right" />
+                  Let&apos;s talk
                 </a>
               </div>
             </div>

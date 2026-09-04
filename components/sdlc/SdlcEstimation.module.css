@@ -9,7 +9,7 @@
 }
 
 @media screen and (max-width: 768px) {
-  .wrapper { padding: 64px 0; }
+  .wrapper { padding: 4rem 0; }
 }
 
 .title {
@@ -20,19 +20,19 @@
   color: #0b0b0d;
   text-align: center;
   margin: 0 0 clamp(4.5rem, 6vw, 6rem);
-  max-width: 1000px;
+  max-width: 62.5rem;
   margin-left: auto;
   margin-right: auto;
 }
 
 @media screen and (max-width: 768px) {
   .title {
-    font-size: 24px;
-    line-height: 29px;
+    font-size: 1.5rem;
+    line-height: 1.8125rem;
     text-align: left;
     margin-left: 0;
     margin-right: 0;
-    margin-bottom: 40px;
+    margin-bottom: 2.5rem;
   }
 }
 
@@ -45,7 +45,7 @@
   gap: clamp(4rem, 7vw, 7rem);
   grid-template-columns: repeat(2, minmax(0, 1fr));
   margin: 0 auto;
-  max-width: 1150px;
+  max-width: 71.875rem;
 }
 
 @media screen and (max-width: 768px) {
@@ -81,8 +81,8 @@
 
 @media screen and (max-width: 768px) {
   .cardTitle {
-    font-size: 18px;
-    line-height: 24px;
+    font-size: 1.125rem;
+    line-height: 1.5rem;
   }
 }
 

@@ -1,37 +1,37 @@
 .section {
-  margin-top: 60px;
+  margin-top: 3.75rem;
 }
 
 /* Summary heading — h2 tag. Top spacing comes from .section, not here. */
 .title {
   color: #050505;
   font-weight: 500;
-  font-size: 36px;
+  font-size: 2.25rem;
   line-height: 1.12;
   letter-spacing: 0;
-  margin: 0 0 16px;
+  margin: 0 0 1rem;
 }
 
 .text {
-  font-size: 18px;
-  line-height: 28px;
+  font-size: 1.125rem;
+  line-height: 1.75rem;
   font-weight: 400;
   color: #1b2b4a;
-  margin: 0 0 24px;
+  margin: 0 0 1.5rem;
 }
 
 @media (max-width: 768px) {
   .section {
-    margin-top: 44px;
+    margin-top: 2.75rem;
   }
 
   .title {
-    font-size: 28px;
+    font-size: 1.75rem;
     line-height: 1.16;
   }
 
   .text {
-    font-size: 16px;
-    line-height: 26px;
+    font-size: 1rem;
+    line-height: 1.625rem;
   }
 }
