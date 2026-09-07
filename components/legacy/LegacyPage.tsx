@@ -72,6 +72,10 @@ const CASES = [
     tags: ["AI inside", "Enterprise"],
     imgRight: "/legacy-modernization/11_Cover-1-1.png",
     imgLeft: "/legacy-modernization/11_Cover-1-2.png",
+    imgRightW: 696,
+    imgRightH: 490,
+    imgLeftW: 696,
+    imgLeftH: 490,
   },
   {
     href: "#",
@@ -82,6 +86,10 @@ const CASES = [
     tags: ["AI inside", "Enterprise"],
     imgRight: "/legacy-modernization/07_Cover-right-2.png",
     imgLeft: "/legacy-modernization/07_Cover-left-2.png",
+    imgRightW: 696,
+    imgRightH: 490,
+    imgLeftW: 696,
+    imgLeftH: 490,
   },
   {
     href: "#",
@@ -92,6 +100,10 @@ const CASES = [
     tags: ["AI inside", "Enterprise"],
     imgRight: "/legacy-modernization/10_Cover-1-1.png",
     imgLeft: "/legacy-modernization/10_Cover-1-2.png",
+    imgRightW: 1392,
+    imgRightH: 980,
+    imgLeftW: 1392,
+    imgLeftH: 980,
   },
 ];
 
@@ -587,11 +599,11 @@ export default function LegacyPage() {
                       <div className={styles.caseImagesGrid}>
                         <div className={styles.caseImgRight}>
                           {/* eslint-disable-next-line @next/next/no-img-element */}
-                          <img src={c.imgRight} alt={c.title} loading="lazy" />
+                          <img src={c.imgRight} alt={c.title} width={c.imgRightW} height={c.imgRightH} loading="lazy" />
                         </div>
                         <div className={styles.caseImgLeft}>
                           {/* eslint-disable-next-line @next/next/no-img-element */}
-                          <img src={c.imgLeft} alt={c.title} loading="lazy" />
+                          <img src={c.imgLeft} alt={c.title} width={c.imgLeftW} height={c.imgLeftH} loading="lazy" />
                         </div>
                       </div>
                     </div>

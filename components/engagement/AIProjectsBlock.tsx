@@ -57,6 +57,8 @@ export default function AIProjectsBlock() {
                 src="/engagement/engagement-models-ai-projects.jpg"
                 alt="Engagement models for AI projects"
                 className={styles.image}
+                width={3727}
+                height={5590}
                 loading="lazy"
               />
             </div>

@@ -11,10 +11,12 @@ import styles from "./BlogSocialShare.module.css";
  * the title/image/link shown there come from generateMetadata in
  * app/blog/[slug]/page.tsx, not from anything passed here.
  *
+ * There's a plain "copy link" button instead of an Instagram share icon —
  * Instagram has no web share-intent endpoint at all (it only accepts shares
- * from its own native app), so there's no working "share to Instagram" link
- * to build — clicking it copies the article link instead, the closest real
- * equivalent.
+ * from its own native app), so a share icon there would have had to silently
+ * do the same copy-link action anyway; a real chain-link icon makes the
+ * action clear instead of implying an Instagram-specific action that isn't
+ * actually possible.
  */
 export default function BlogSocialShare({ title }: { title: string }) {
   const [copied, setCopied] = useState(false);
@@ -28,9 +30,9 @@ export default function BlogSocialShare({ title }: { title: string }) {
 
   const items = [
     {
-      key: "instagram",
+      key: "copy-link",
       alt: copied ? "Link copied" : "Copy link",
-      src: "/footer/icons/instagram-icon.svg",
+      src: "/footer/icons/copy-link-icon.svg",
       onClick: async () => {
         try {
           await navigator.clipboard.writeText(shareUrl());
@@ -38,7 +40,7 @@ export default function BlogSocialShare({ title }: { title: string }) {
           setTimeout(() => setCopied(false), 2000);
         } catch {
           // Clipboard API can be blocked (permissions, insecure context) —
-          // there's no web share-intent fallback for Instagram either way.
+          // nothing else to fall back to for a plain copy-link action.
         }
       },
     },
@@ -70,10 +72,17 @@ export default function BlogSocialShare({ title }: { title: string }) {
   return (
     <ul className={styles.social}>
       {items.map((item) => (
-        <li key={item.key}>
+        <li key={item.key} className={styles.itemWrap}>
           <button type="button" onClick={item.onClick} aria-label={item.alt} title={item.alt} className={styles.shareBtn}>
             <Image src={item.src} alt="" width={18} height={18} loading="lazy" unoptimized />
           </button>
+          {/* Clicking copy-link has no visible effect on its own — this
+              tooltip is the only feedback the copy actually happened. */}
+          {item.key === "copy-link" && (
+            <span className={`${styles.copiedTooltip} ${copied ? styles.copiedTooltipVisible : ""}`} role="status">
+              Link copied!
+            </span>
+          )}
         </li>
       ))}
     </ul>

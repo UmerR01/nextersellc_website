@@ -3,6 +3,7 @@
 import { useState } from "react";
 import styles from "./LetsStart.module.css";
 import { isValidName, isValidEmail, VALIDATION_MESSAGES } from "@/lib/formValidation";
+import Honeypot from "@/components/Honeypot";
 
 function ClipIcon() {
   return (
@@ -188,12 +189,14 @@ export default function LetsStart({ variant }: LetsStartProps = {}) {
                 }
               }}
             >
+              <Honeypot />
               <label className={`lets-start-field ${styles.field}`}>
                 <span className={`lets-start-label ${styles.label}`}>My Name*</span>
                 <input
                   type="text"
                   name="name"
                   placeholder="John Smith"
+                  autoComplete="name"
                   value={name}
                   onChange={(e) => { setName(e.target.value); setErrors((p) => ({ ...p, name: undefined })); }}
                   disabled={status === "loading"}
@@ -206,6 +209,7 @@ export default function LetsStart({ variant }: LetsStartProps = {}) {
                   type="email"
                   name="email"
                   placeholder="name@company.com"
+                  autoComplete="email"
                   value={email}
                   onChange={(e) => { setEmail(e.target.value); setErrors((p) => ({ ...p, email: undefined })); }}
                   disabled={status === "loading"}

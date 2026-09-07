@@ -3,6 +3,7 @@
 import { useRef, useState } from "react";
 import styles from "./CareersApply.module.css";
 import { isValidName, isValidEmail, VALIDATION_MESSAGES } from "@/lib/formValidation";
+import Honeypot, { HONEYPOT_FIELD_NAME } from "@/components/Honeypot";
 
 type Status = "idle" | "loading" | "success" | "error";
 
@@ -15,6 +16,7 @@ export default function CareersApply() {
   const [errors, setErrors] = useState<Record<string, string>>({});
 
   const fileInputRef = useRef<HTMLInputElement>(null);
+  const honeypotRef = useRef<HTMLInputElement>(null);
 
   const handleFile = (e: React.ChangeEvent<HTMLInputElement>) => {
     const f = e.target.files?.[0];
@@ -41,6 +43,7 @@ export default function CareersApply() {
       formData.append("name", name);
       formData.append("email", email);
       formData.append("message", message);
+      formData.append(HONEYPOT_FIELD_NAME, honeypotRef.current?.value ?? "");
       if (file) formData.append("resume", file);
       const res = await fetch("/api/careers", { method: "POST", body: formData });
       setStatus(res.ok ? "success" : "error");
@@ -90,6 +93,7 @@ export default function CareersApply() {
           {/* RIGHT */}
           <div className={styles.right}>
             <form className={styles.form} onSubmit={handleSubmit} noValidate>
+              <Honeypot ref={honeypotRef} />
 
               {/* Name */}
               <label className={`${styles.formLabel} ${errors.name ? styles.fieldError : ""}`}>

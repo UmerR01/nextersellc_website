@@ -3,20 +3,20 @@ import { useEffect, useState } from "react";
 import styles from "@/components/custom-software/CSAwardsBlock.module.css";
 
 const AWARDS = [
-  { src: "/badges_fix/06_techreviewer_badge_2026-08.svg", alt: "techreviewer.co 2026 — Nexterse LLC listed among Top Big Data Development Companies" },
-  { src: "/badges_fix/06_techreviewer_badge_2026-11.svg", alt: "techreviewer.co 2026 — Nexterse LLC listed among Top Machine Learning Development Companies" },
-  { src: "/badges_fix/06_techreviewer_badge_2026-04.svg", alt: "techreviewer.co 2026 — Nexterse LLC listed among Top AI Software Development Companies" },
-  { src: "/badges_fix/12_5ca49c9f6cb37e33319e1162_Goodfirms.svg", alt: "Goodfirms badge icon" },
-  { src: "/badges_fix/12_5ca49c9f8ff5ad26d13b6845_TDA.svg", alt: "TDA badge icon" },
-  { src: "/badges_fix/12_5ca49c9f6cb37e49a79e1163_changed.svg", alt: "AWS partner badge icon" },
-  { src: "/badges_fix/01_top_clutch.co_software_developers_startup_massachusetts.svg", alt: "Top clutch.co software developers startup Massachusetts" },
-  { src: "/badges_fix/01_top_clutch.co_software_developers_hospitality__leisure_massachusetts.svg", alt: "Top clutch.co software developers hospitality & leisure Massachusetts" },
-  { src: "/badges_fix/01_top_clutch.co_python__django_developers_boston_2024.svg", alt: "Top clutch.co Python & Django developers Boston 2024" },
-  { src: "/badges_fix/01_top_clutch.co_nodejs_developers_boston_2024.svg", alt: "Top clutch.co Node.js developers Boston 2024" },
-  { src: "/badges_fix/01_techreviewer_badge_2025-2.svg", alt: "TR top software developers 2025" },
-  { src: "/badges_fix/01_techreviewer_badge_2025-1.svg", alt: "TR top web developers 2025" },
-  { src: "/badges_fix/01_techreviewer_badge_2024-2.svg", alt: "TR top software developers 2024" },
-  { src: "/badges_fix/01_techreviewer_badge_2024-1.svg", alt: "TR top web developers 2024" },
+  { src: "/badges_fix/06_techreviewer_badge_2026-08.svg", alt: "techreviewer.co 2026 — Nexterse LLC listed among Top Big Data Development Companies", width: 108, height: 147 },
+  { src: "/badges_fix/06_techreviewer_badge_2026-11.svg", alt: "techreviewer.co 2026 — Nexterse LLC listed among Top Machine Learning Development Companies", width: 108, height: 147 },
+  { src: "/badges_fix/06_techreviewer_badge_2026-04.svg", alt: "techreviewer.co 2026 — Nexterse LLC listed among Top AI Software Development Companies", width: 108, height: 147 },
+  { src: "/badges_fix/12_5ca49c9f6cb37e33319e1162_Goodfirms.svg", alt: "Goodfirms badge icon", width: 144, height: 130 },
+  { src: "/badges_fix/12_5ca49c9f8ff5ad26d13b6845_TDA.svg", alt: "TDA badge icon", width: 111, height: 130 },
+  { src: "/badges_fix/12_5ca49c9f6cb37e49a79e1163_changed.svg", alt: "AWS partner badge icon", width: 135, height: 130 },
+  { src: "/badges_fix/01_top_clutch.co_software_developers_startup_massachusetts.svg", alt: "Top clutch.co software developers startup Massachusetts", width: 121, height: 131 },
+  { src: "/badges_fix/01_top_clutch.co_software_developers_hospitality__leisure_massachusetts.svg", alt: "Top clutch.co software developers hospitality & leisure Massachusetts", width: 121, height: 131 },
+  { src: "/badges_fix/01_top_clutch.co_python__django_developers_boston_2024.svg", alt: "Top clutch.co Python & Django developers Boston 2024", width: 122, height: 131 },
+  { src: "/badges_fix/01_top_clutch.co_nodejs_developers_boston_2024.svg", alt: "Top clutch.co Node.js developers Boston 2024", width: 121, height: 131 },
+  { src: "/badges_fix/01_techreviewer_badge_2025-2.svg", alt: "TR top software developers 2025", width: 92, height: 126 },
+  { src: "/badges_fix/01_techreviewer_badge_2025-1.svg", alt: "TR top web developers 2025", width: 92, height: 126 },
+  { src: "/badges_fix/01_techreviewer_badge_2024-2.svg", alt: "TR top software developers 2024", width: 92, height: 126 },
+  { src: "/badges_fix/01_techreviewer_badge_2024-1.svg", alt: "TR top web developers 2024", width: 92, height: 126 },
 ];
 
 export default function BigDataAwards() {
@@ -57,7 +57,7 @@ export default function BigDataAwards() {
                 <div key={i} className={styles.slide}>
                   <div className={styles.awardWrap}>
                     {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img src={a.src} alt={a.alt} className={styles.awardImg} loading="lazy" />
+                    <img src={a.src} alt={a.alt} width={a.width} height={a.height} className={styles.awardImg} loading="lazy" />
                   </div>
                 </div>
               ))}

@@ -1,14 +1,16 @@
 "use client";
 
-import { useState } from "react";
+import { useRef, useState } from "react";
 import styles from "./WhitepaperSubscribe.module.css";
 import { isValidName, isValidEmail, VALIDATION_MESSAGES } from "@/lib/formValidation";
+import Honeypot, { HONEYPOT_FIELD_NAME } from "@/components/Honeypot";
 
 export default function WhitepaperSubscribe() {
   const [submitted, setSubmitted] = useState(false);
   const [form, setForm] = useState({ name: "", email: "", agree: false });
   const [status, setStatus] = useState<"idle" | "loading" | "error">("idle");
   const [errors, setErrors] = useState<{ name?: string; email?: string; agree?: string }>({});
+  const honeypotRef = useRef<HTMLInputElement>(null);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -26,7 +28,7 @@ export default function WhitepaperSubscribe() {
       const res = await fetch("/api/whitepaper-subscribe", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ name: form.name, email: form.email }),
+        body: JSON.stringify({ name: form.name, email: form.email, [HONEYPOT_FIELD_NAME]: honeypotRef.current?.value ?? "" }),
       });
       if (!res.ok) throw new Error("Request failed");
       setSubmitted(true);
@@ -52,6 +54,7 @@ export default function WhitepaperSubscribe() {
 
             <div className={styles.right}>
               <form className={styles.form} onSubmit={handleSubmit} noValidate>
+                <Honeypot ref={honeypotRef} />
                 <label className={styles.field}>
                   <span className={styles.label}>Full name*</span>
                   <input

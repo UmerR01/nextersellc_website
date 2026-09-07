@@ -2,6 +2,7 @@
 
 import { useRef, useState } from "react";
 import styles from "./JobDetailPage.module.css";
+import Honeypot from "@/components/Honeypot";
 import {
   isValidName,
   isValidEmail,
@@ -157,6 +158,7 @@ export default function JobApplicationForm({ jobTitle }: { jobTitle: string }) {
       </div>
 
       <form ref={formRef} onSubmit={submit} className={styles.form} noValidate>
+        <Honeypot />
         <div className={styles.formPage} data-step-one hidden={step !== 1}>
           <div className={styles.twoColumns}>
             <label>
@@ -207,17 +209,17 @@ export default function JobApplicationForm({ jobTitle }: { jobTitle: string }) {
         <div className={styles.formPage} hidden={step !== 2}>
           <label>
             <span>LinkedIn profile URL <b>*</b></span>
-            <input name="linkedinUrl" type="url" placeholder="https://linkedin.com/in/your-profile" onChange={() => clearError("linkedinUrl")} />
+            <input name="linkedinUrl" type="url" placeholder="https://linkedin.com/in/your-profile" autoComplete="url" onChange={() => clearError("linkedinUrl")} />
             {errors.linkedinUrl && <span className={styles.fieldErrorText}>{errors.linkedinUrl}</span>}
           </label>
           <label>
             <span>GitHub URL <b>*</b></span>
-            <input name="githubUrl" type="url" placeholder="https://github.com/your-profile" onChange={() => clearError("githubUrl")} />
+            <input name="githubUrl" type="url" placeholder="https://github.com/your-profile" autoComplete="url" onChange={() => clearError("githubUrl")} />
             {errors.githubUrl && <span className={styles.fieldErrorText}>{errors.githubUrl}</span>}
           </label>
           <label>
             <span>Portfolio URL</span>
-            <input name="portfolioUrl" type="url" placeholder="https://yourportfolio.com" onChange={() => clearError("portfolioUrl")} />
+            <input name="portfolioUrl" type="url" placeholder="https://yourportfolio.com" autoComplete="url" onChange={() => clearError("portfolioUrl")} />
             {errors.portfolioUrl && <span className={styles.fieldErrorText}>{errors.portfolioUrl}</span>}
           </label>
           <label>

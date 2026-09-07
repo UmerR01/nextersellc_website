@@ -1,8 +1,9 @@
 "use client";
 
-import { useState, type Dispatch, type SetStateAction } from "react";
+import { useRef, useState, type Dispatch, type SetStateAction } from "react";
 import styles from "./PricingQuiz.module.css";
 import { isValidName, isValidEmail, VALIDATION_MESSAGES } from "@/lib/formValidation";
+import Honeypot, { HONEYPOT_FIELD_NAME } from "@/components/Honeypot";
 
 const OPTIONS = [
   { id: "ai-readiness", label: "Take AI readiness assessment" },
@@ -122,6 +123,7 @@ export default function PricingQuiz() {
   const [isComplete, setIsComplete] = useState(false);
   const [submitError, setSubmitError] = useState("");
   const [fieldErrors, setFieldErrors] = useState<Record<string, string>>({});
+  const honeypotRef = useRef<HTMLInputElement>(null);
 
   const isAi = flow === "ai";
   const totalSteps = isAi ? AI_STEPS.length : CUSTOM_STEPS.length;
@@ -183,7 +185,13 @@ export default function PricingQuiz() {
       const res = await fetch("/api/pricing", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ formName: "AI readiness assessment", name, email, fields: buildAiFields() }),
+        body: JSON.stringify({
+          formName: "AI readiness assessment",
+          name,
+          email,
+          fields: buildAiFields(),
+          [HONEYPOT_FIELD_NAME]: honeypotRef.current?.value ?? "",
+        }),
       });
       if (!res.ok) throw new Error("Request failed");
       setIsComplete(true);
@@ -207,7 +215,13 @@ export default function PricingQuiz() {
       const res = await fetch("/api/pricing", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ formName: "Custom software development cost estimate", name, email, fields: buildCustomFields() }),
+        body: JSON.stringify({
+          formName: "Custom software development cost estimate",
+          name,
+          email,
+          fields: buildCustomFields(),
+          [HONEYPOT_FIELD_NAME]: honeypotRef.current?.value ?? "",
+        }),
       });
       if (!res.ok) throw new Error("Request failed");
       setIsComplete(true);
@@ -384,6 +398,7 @@ export default function PricingQuiz() {
     const step = AI_STEPS[currentStep];
     return (
       <section className={styles.section}>
+        <Honeypot ref={honeypotRef} />
         <div className="container">
           <div className={`${styles.inner} ${styles.assessmentInner} ${isLoading ? styles.loadingInner : ""}`}>
             <div className={styles.assessmentCopy}>
@@ -446,6 +461,7 @@ export default function PricingQuiz() {
     const key = `custom-${currentStep}`;
     return (
       <section className={styles.section}>
+        <Honeypot ref={honeypotRef} />
         <div className="container">
           <div className={`${styles.inner} ${styles.assessmentInner} ${step.kind === "organization" ? styles.orgInner : ""} ${isLoading ? styles.loadingInner : ""}`}>
             <div className={styles.assessmentCopy}>
@@ -508,6 +524,7 @@ export default function PricingQuiz() {
 
   return (
     <section className={styles.section}>
+      <Honeypot ref={honeypotRef} />
       <div className="container">
         <div className={styles.inner}>
           <div className={styles.copy}>

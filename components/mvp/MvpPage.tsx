@@ -63,57 +63,57 @@ const techStackRows = [
   {
     label: "AI foundational models",
     tools: [
-      { src: "/adlc/03_OpenAI.svg",                     alt: "OpenAI GPT-4o" },
-      { src: "/ai-consulting/tech-logos/claude.svg",     alt: "Claude 3.5 Sonnet" },
-      { src: "/ai-consulting/tech-logos/gemini.svg",     alt: "Gemini 1.5 Pro" },
-      { src: "/adlc/03_Meta-Llama-1.svg",               alt: "Llama 3.1" },
-      { src: "/adlc/03_mistral-ai-2.svg",               alt: "Mistral Large" },
+      { src: "/adlc/03_OpenAI.svg",                     alt: "OpenAI GPT-4o", width: 180, height: 56 },
+      { src: "/ai-consulting/tech-logos/claude.svg",     alt: "Claude 3.5 Sonnet", width: 195, height: 56 },
+      { src: "/ai-consulting/tech-logos/gemini.svg",     alt: "Gemini 1.5 Pro", width: 175, height: 56 },
+      { src: "/adlc/03_Meta-Llama-1.svg",               alt: "Llama 3.1", width: 199, height: 56 },
+      { src: "/adlc/03_mistral-ai-2.svg",               alt: "Mistral Large", width: 227, height: 56 },
     ],
   },
   {
     label: "AI orchestration",
     tools: [
-      { src: "/ai-consulting/tech-logos/langchain.svg",  alt: "LangChain" },
-      { src: "/ai-consulting/tech-logos/llamaindex.svg", alt: "LlamaIndex" },
-      { src: "/ai-consulting/tech-logos/crewai.svg",     alt: "CrewAI" },
-      { src: "/ai-consulting/tech-logos/autogen.svg",    alt: "AutoGen" },
+      { src: "/ai-consulting/tech-logos/langchain.svg",  alt: "LangChain", width: 243, height: 56 },
+      { src: "/ai-consulting/tech-logos/llamaindex.svg", alt: "LlamaIndex", width: 287, height: 56 },
+      { src: "/ai-consulting/tech-logos/crewai.svg",     alt: "CrewAI", width: 191, height: 56 },
+      { src: "/ai-consulting/tech-logos/autogen.svg",    alt: "AutoGen", width: 155, height: 56 },
     ],
   },
   {
     label: "Vector & search",
     tools: [
-      { src: "/ai-consulting/tech-logos/pinecone.svg",   alt: "Pinecone" },
-      { src: "/ai-consulting/tech-logos/weaviate.svg",   alt: "Weaviate" },
-      { src: "/ai-consulting/tech-logos/qdrant.svg",     alt: "Qdrant" },
-      { src: "/ai-consulting/tech-logos/chroma.svg",     alt: "Chroma" },
+      { src: "/ai-consulting/tech-logos/pinecone.svg",   alt: "Pinecone", width: 177, height: 56 },
+      { src: "/ai-consulting/tech-logos/weaviate.svg",   alt: "Weaviate", width: 165, height: 56 },
+      { src: "/ai-consulting/tech-logos/qdrant.svg",     alt: "Qdrant", width: 275, height: 56 },
+      { src: "/ai-consulting/tech-logos/chroma.svg",     alt: "Chroma", width: 248, height: 56 },
     ],
   },
   {
     label: "Software development",
     tools: [
-      { src: "/custom-software/tech/tool_15.svg",        alt: "Python" },
-      { src: "/custom-software/tech/tool_16.svg",        alt: "Node.js" },
-      { src: "/custom-software/tech/tool_11.svg",        alt: "Java" },
-      { src: "/custom-software/tech/tool_12.svg",        alt: ".NET" },
-      { src: "/custom-software/tech/tool_13.svg",        alt: "PHP" },
-      { src: "/custom-software/tech/tool_17.svg",        alt: "JavaScript" },
+      { src: "/custom-software/tech/tool_15.svg",        alt: "Python", width: 137, height: 56 },
+      { src: "/custom-software/tech/tool_16.svg",        alt: "Node.js", width: 71, height: 56 },
+      { src: "/custom-software/tech/tool_11.svg",        alt: "Java", width: 90, height: 56 },
+      { src: "/custom-software/tech/tool_12.svg",        alt: ".NET", width: 56, height: 56 },
+      { src: "/custom-software/tech/tool_13.svg",        alt: "PHP", width: 72, height: 56 },
+      { src: "/custom-software/tech/tool_17.svg",        alt: "JavaScript", width: 56, height: 56 },
     ],
   },
   {
     label: "Cloud & DevOps",
     tools: [
-      { src: "/ai-consulting/tech-logos/aws.svg",        alt: "AWS" },
-      { src: "/ai-consulting/tech-logos/gcp.svg",        alt: "GCP" },
-      { src: "/ai-consulting/tech-logos/azure.svg",      alt: "Azure" },
-      { src: "/ai-consulting/tech-logos/docker.svg",     alt: "Docker" },
+      { src: "/ai-consulting/tech-logos/aws.svg",        alt: "AWS", width: 199, height: 56 },
+      { src: "/ai-consulting/tech-logos/gcp.svg",        alt: "GCP", width: 179, height: 56 },
+      { src: "/ai-consulting/tech-logos/azure.svg",      alt: "Azure", width: 230, height: 56 },
+      { src: "/ai-consulting/tech-logos/docker.svg",     alt: "Docker", width: 62, height: 56 },
     ],
   },
   {
     label: "Mobile",
     tools: [
-      { src: "/custom-software/tech/tool_18.svg",        alt: "React Native" },
-      { src: "/custom-software/tech/tool_19.svg",        alt: "iOS" },
-      { src: "/custom-software/tech/tool_20.svg",        alt: "Android" },
+      { src: "/custom-software/tech/tool_18.svg",        alt: "React Native", width: 56, height: 56 },
+      { src: "/custom-software/tech/tool_19.svg",        alt: "iOS", width: 56, height: 56 },
+      { src: "/custom-software/tech/tool_20.svg",        alt: "Android", width: 65, height: 56 },
     ],
   },
 ];
@@ -452,7 +452,7 @@ export default function MvpPage() {
                   {row.tools.map((tool) => (
                     // eslint-disable-next-line @next/next/no-img-element
                     <span key={tool.src} className={s.tsLogoSlot}>
-                      <img src={tool.src} alt={tool.alt} className={s.tsLogoImg} loading="lazy" />
+                      <img src={tool.src} alt={tool.alt} width={tool.width} height={tool.height} className={s.tsLogoImg} loading="lazy" />
                     </span>
                   ))}
                 </div>

@@ -165,6 +165,8 @@ export default function AiIntegrationPage() {
               src="/ai-integration/03_How-AI-integration-fits-into-existing-software-clean.png"
               alt="How AI integration fits into existing software"
               className={styles.architectureImg}
+              width={1560}
+              height={801}
               loading="lazy"
             />
           </div>

@@ -78,13 +78,13 @@ export default function AiIntegrationHero() {
           <a href="/">Home</a>
           <span className={s.breadcrumbSep}>
             <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden>
-              <path stroke="rgba(255,255,255,0.5)" strokeLinecap="square" d="m6 4 4 4-4 4" />
+              <path stroke="#fff" strokeLinecap="square" d="m6 4 4 4-4 4" />
             </svg>
           </span>
           <a href="/services">Services</a>
           <span className={s.breadcrumbSep}>
             <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden>
-              <path stroke="rgba(255,255,255,0.5)" strokeLinecap="square" d="m6 4 4 4-4 4" />
+              <path stroke="#fff" strokeLinecap="square" d="m6 4 4 4-4 4" />
             </svg>
           </span>
           <span>AI integration services</span>

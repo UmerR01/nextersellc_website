@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import Image from "next/image";
 import styles from "./ContactModal.module.css";
 import { isValidName, isValidEmail, VALIDATION_MESSAGES } from "@/lib/formValidation";
+import Honeypot from "@/components/Honeypot";
 
 const CLIENT_LOGOS = [
   { src: "/get-partner/insure-modal.png", alt: "Insure", w: 240, h: 44 },
@@ -189,12 +190,14 @@ export default function ContactModal({ open, onClose }: Props) {
                   }
                 }}
               >
+                <Honeypot />
                 <label className={styles.field}>
                   <span className={styles.fieldLabel}>My Name*</span>
                   <input
                     type="text"
                     name="name"
                     placeholder="John Smith"
+                    autoComplete="name"
                     value={name}
                     onChange={(e) => { setName(e.target.value); setErrors((p) => ({ ...p, name: undefined })); }}
                     disabled={status === "loading"}
@@ -207,6 +210,7 @@ export default function ContactModal({ open, onClose }: Props) {
                     type="email"
                     name="email"
                     placeholder="name@company.com"
+                    autoComplete="email"
                     value={email}
                     onChange={(e) => { setEmail(e.target.value); setErrors((p) => ({ ...p, email: undefined })); }}
                     disabled={status === "loading"}

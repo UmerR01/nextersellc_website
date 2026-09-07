@@ -33,6 +33,8 @@ export default function ESDStandards() {
                 src="/esd/esd-standard.jpg"
                 alt="Enterprise software built on standards"
                 className={styles.img}
+                width={4480}
+                height={6720}
                 loading="lazy"
               />
             </div>

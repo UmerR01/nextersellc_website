@@ -16,6 +16,10 @@ const CASES = [
     tags: ["AI inside", "Enterprise"],
     imgRight: "/esd/10_Cover-1-1.png",
     imgLeft: "/esd/10_Cover-1-2.png",
+    imgRightWidth: 1392,
+    imgRightHeight: 980,
+    imgLeftWidth: 1392,
+    imgLeftHeight: 980,
   },
   {
     href: "#",
@@ -26,6 +30,10 @@ const CASES = [
     tags: ["AI inside", "Enterprise"],
     imgRight: "/esd/10_Cover-2-1.png",
     imgLeft: "/esd/10_Cover-2-1-1.png",
+    imgRightWidth: 696,
+    imgRightHeight: 490,
+    imgLeftWidth: 696,
+    imgLeftHeight: 490,
   },
   {
     href: "#",
@@ -36,6 +44,10 @@ const CASES = [
     tags: ["Enterprise"],
     imgRight: "/esd/09_inbound_transportation_kanban_board011@2x.png",
     imgLeft: "/esd/09_inbound_transportation_kanban_board011@2x.png",
+    imgRightWidth: 696,
+    imgRightHeight: 514,
+    imgLeftWidth: 696,
+    imgLeftHeight: 514,
   },
   {
     href: "#",
@@ -46,6 +58,10 @@ const CASES = [
     tags: ["AI inside", "Enterprise"],
     imgRight: "/esd/11_Cover-1-1.png",
     imgLeft: "/esd/11_Cover-1-2.png",
+    imgRightWidth: 696,
+    imgRightHeight: 490,
+    imgLeftWidth: 696,
+    imgLeftHeight: 490,
   },
   {
     href: "#",
@@ -56,6 +72,10 @@ const CASES = [
     tags: ["AI inside", "Enterprise"],
     imgRight: "/esd/12_Cover-2-1.png",
     imgLeft: "/esd/12_Cover-2-2.png",
+    imgRightWidth: 696,
+    imgRightHeight: 490,
+    imgLeftWidth: 696,
+    imgLeftHeight: 490,
   },
   {
     href: "#",
@@ -66,6 +86,10 @@ const CASES = [
     tags: ["Enterprise"],
     imgRight: "/esd/04_91374-2.png",
     imgLeft: "/esd/04_91374-2.png",
+    imgRightWidth: 1564,
+    imgRightHeight: 909,
+    imgLeftWidth: 1564,
+    imgLeftHeight: 909,
   },
 ];
 
@@ -118,11 +142,11 @@ export default function ESDCasesBlock() {
                     <div className={styles.cardImages}>
                       <div className={styles.cardImgRight}>
                         {/* eslint-disable-next-line @next/next/no-img-element */}
-                        <img src={c.imgRight} alt={c.title} loading="lazy" />
+                        <img src={c.imgRight} alt={c.title} width={c.imgRightWidth} height={c.imgRightHeight} loading="lazy" />
                       </div>
                       <div className={styles.cardImgLeft}>
                         {/* eslint-disable-next-line @next/next/no-img-element */}
-                        <img src={c.imgLeft} alt={c.title} loading="lazy" />
+                        <img src={c.imgLeft} alt={c.title} width={c.imgLeftWidth} height={c.imgLeftHeight} loading="lazy" />
                       </div>
                     </div>
                   </div>

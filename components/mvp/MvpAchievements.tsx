@@ -3,18 +3,18 @@ import { useEffect, useState } from "react";
 import styles from "./MvpAchievements.module.css";
 
 const BADGES = [
-  { src: "/badges_fix/mvp__06_techreviewer_badge_2026-13.svg", alt: "techreviewer.co 2026 — Top MVP Development Companies" },
-  { src: "/badges_fix/edtech-development__06_top-software-development-companies.svg", alt: "GoodFirms — Top Software Development Company" },
-  { src: "/badges_fix/06_techreviewer_badge_2026-12.svg", alt: "techreviewer.co 2026 — Top Software Development Companies" },
-  { src: "/badges_fix/12_5ca49c9f6cb37e33319e1162_Goodfirms.svg", alt: "GoodFirms badge" },
-  { src: "/badges_fix/12_5ca49c9f8ff5ad26d13b6845_TDA.svg", alt: "TDA badge" },
-  { src: "/badges_fix/12_5ca49c9f6cb37e49a79e1163_changed.svg", alt: "AWS partner badge" },
-  { src: "/badges_fix/12_Responsive-Design-Development-2025.svg", alt: "Responsive Design Development 2025" },
-  { src: "/badges_fix/12_Mobile-Software-Development-2025.svg", alt: "Mobile Software Development 2025" },
-  { src: "/badges_fix/12_Machine-Learning-Development-2024.svg", alt: "Machine Learning Development 2024" },
-  { src: "/badges_fix/12_Data-Mining-Development-2024.svg", alt: "Data Mining Development 2024" },
-  { src: "/badges_fix/12_Data-Migration-Services-2025.svg", alt: "Data Migration Services 2025" },
-  { src: "/badges_fix/12_Branding-Services-2024.svg", alt: "Branding Services 2024" },
+  { src: "/badges_fix/mvp__06_techreviewer_badge_2026-13.svg", alt: "techreviewer.co 2026 — Top MVP Development Companies", width: 108, height: 147 },
+  { src: "/badges_fix/edtech-development__06_top-software-development-companies.svg", alt: "GoodFirms — Top Software Development Company", width: 140, height: 146 },
+  { src: "/badges_fix/06_techreviewer_badge_2026-12.svg", alt: "techreviewer.co 2026 — Top Software Development Companies", width: 108, height: 147 },
+  { src: "/badges_fix/12_5ca49c9f6cb37e33319e1162_Goodfirms.svg", alt: "GoodFirms badge", width: 144, height: 130 },
+  { src: "/badges_fix/12_5ca49c9f8ff5ad26d13b6845_TDA.svg", alt: "TDA badge", width: 111, height: 130 },
+  { src: "/badges_fix/12_5ca49c9f6cb37e49a79e1163_changed.svg", alt: "AWS partner badge", width: 135, height: 130 },
+  { src: "/badges_fix/12_Responsive-Design-Development-2025.svg", alt: "Responsive Design Development 2025", width: 116, height: 101 },
+  { src: "/badges_fix/12_Mobile-Software-Development-2025.svg", alt: "Mobile Software Development 2025", width: 116, height: 101 },
+  { src: "/badges_fix/12_Machine-Learning-Development-2024.svg", alt: "Machine Learning Development 2024", width: 92, height: 101 },
+  { src: "/badges_fix/12_Data-Mining-Development-2024.svg", alt: "Data Mining Development 2024", width: 92, height: 101 },
+  { src: "/badges_fix/12_Data-Migration-Services-2025.svg", alt: "Data Migration Services 2025", width: 116, height: 101 },
+  { src: "/badges_fix/12_Branding-Services-2024.svg", alt: "Branding Services 2024", width: 92, height: 101 },
 ];
 
 export default function MvpAchievements() {
@@ -58,7 +58,7 @@ export default function MvpAchievements() {
                 <div key={i} className={styles.slide}>
                   <div className={styles.awardWrap}>
                     {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img src={b.src} alt={b.alt} className={styles.awardImg} loading="lazy" />
+                    <img src={b.src} alt={b.alt} width={b.width} height={b.height} className={styles.awardImg} loading="lazy" />
                   </div>
                 </div>
               ))}

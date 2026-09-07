@@ -48,6 +48,8 @@ export default function WhyTeams() {
                 src="/services-page/why-client.jpg"
                 alt="Why teams choose Nexterse LLC"
                 className={styles.image}
+                width={4000}
+                height={6000}
                 loading="lazy"
               />
             </div>

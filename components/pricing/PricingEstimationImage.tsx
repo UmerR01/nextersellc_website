@@ -10,7 +10,7 @@ export default function PricingEstimationImage() {
         </h2>
         <div className={styles.imageWrap}>
           <Image
-            src="/pricing/02_Steps-in-estimation-process.jpg"
+            src="/pricing/02_Steps-in-estimation-process-v2.jpg"
             alt="Estimation Process"
             width={1560}
             height={1159}

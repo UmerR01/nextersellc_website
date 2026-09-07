@@ -3,11 +3,11 @@ import { useEffect, useState } from "react";
 import styles from "./ESDAwardsBlock.module.css";
 
 const AWARDS = [
-  { src: "/badges_fix/05_top_clutch.co_.net_developers_boston_2026-2.svg", alt: "Clutch 2026 award - Top .NET Developers in Boston" },
-  { src: "/badges_fix/06_techreviewer_badge_2026-09.svg", alt: "techreviewer.co 2026 - Top Enterprise Software Development Companies" },
-  { src: "/badges_fix/06_techreviewer_badge_2026-10.svg", alt: "techreviewer.co 2026 - Top Legacy Software Modernization Companies" },
-  { src: "/badges_fix/12_5ca49c9f6cb37e33319e1162_Goodfirms.svg", alt: "Goodfirms badge" },
-  { src: "/badges_fix/12_5ca49c9f8ff5ad26d13b6845_TDA.svg", alt: "TDA badge" },
+  { src: "/badges_fix/05_top_clutch.co_.net_developers_boston_2026-2.svg", alt: "Clutch 2026 award - Top .NET Developers in Boston", width: 136, height: 147 },
+  { src: "/badges_fix/06_techreviewer_badge_2026-09.svg", alt: "techreviewer.co 2026 - Top Enterprise Software Development Companies", width: 108, height: 147 },
+  { src: "/badges_fix/06_techreviewer_badge_2026-10.svg", alt: "techreviewer.co 2026 - Top Legacy Software Modernization Companies", width: 108, height: 147 },
+  { src: "/badges_fix/12_5ca49c9f6cb37e33319e1162_Goodfirms.svg", alt: "Goodfirms badge", width: 144, height: 130 },
+  { src: "/badges_fix/12_5ca49c9f8ff5ad26d13b6845_TDA.svg", alt: "TDA badge", width: 111, height: 130 },
 ];
 
 export default function ESDAwardsBlock() {
@@ -49,7 +49,7 @@ export default function ESDAwardsBlock() {
                 <div key={award.src} className={styles.slide}>
                   <div className={styles.awardWrap}>
                     {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img src={award.src} alt={award.alt} className={styles.awardImg} loading="lazy" />
+                    <img src={award.src} alt={award.alt} width={award.width} height={award.height} className={styles.awardImg} loading="lazy" />
                   </div>
                 </div>
               ))}

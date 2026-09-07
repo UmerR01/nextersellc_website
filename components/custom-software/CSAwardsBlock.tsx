@@ -3,17 +3,17 @@ import { useEffect, useState } from "react";
 import styles from "./CSAwardsBlock.module.css";
 
 const AWARDS = [
-  { src: "/badges_fix/05_top_clutch.co_python__django_developers_boston_2026-2.svg", alt: "Clutch 2026 Top Python Django Developers Boston" },
-  { src: "/badges_fix/06_top-software-development-companies.svg", alt: "GoodFirms Top Software Development Company" },
-  { src: "/badges_fix/custom-software__06_techreviewer_badge_2026-12.svg", alt: "TechReviewer 2026 Top Software Development" },
-  { src: "/badges_fix/06_techreviewer_badge_2026-13.svg", alt: "TechReviewer 2026 Top MVP Development" },
-  { src: "/badges_fix/badge-goodfirms.svg", alt: "Goodfirms badge" },
-  { src: "/badges_fix/badge-tda.svg", alt: "TDA badge" },
-  { src: "/badges_fix/badge-aws.svg", alt: "AWS partner badge" },
-  { src: "/badges_fix/badge-custom-web.svg", alt: "Custom Web Design Development 2025" },
-  { src: "/badges_fix/badge-responsive-design.svg", alt: "Responsive Design Development 2025" },
-  { src: "/badges_fix/custom-software__12_Data-analysis-development-2024.svg", alt: "Data Analysis Development 2024" },
-  { src: "/badges_fix/badge-data-migration.svg", alt: "Data Migration Services 2025" },
+  { src: "/badges_fix/05_top_clutch.co_python__django_developers_boston_2026-2.svg", alt: "Clutch 2026 Top Python Django Developers Boston", width: 136, height: 147 },
+  { src: "/badges_fix/06_top-software-development-companies.svg", alt: "GoodFirms Top Software Development Company", width: 140, height: 146 },
+  { src: "/badges_fix/custom-software__06_techreviewer_badge_2026-12.svg", alt: "TechReviewer 2026 Top Software Development", width: 108, height: 147 },
+  { src: "/badges_fix/06_techreviewer_badge_2026-13.svg", alt: "TechReviewer 2026 Top MVP Development", width: 108, height: 147 },
+  { src: "/badges_fix/badge-goodfirms.svg", alt: "Goodfirms badge", width: 144, height: 130 },
+  { src: "/badges_fix/badge-tda.svg", alt: "TDA badge", width: 111, height: 130 },
+  { src: "/badges_fix/badge-aws.svg", alt: "AWS partner badge", width: 135, height: 130 },
+  { src: "/badges_fix/badge-custom-web.svg", alt: "Custom Web Design Development 2025", width: 116, height: 101 },
+  { src: "/badges_fix/badge-responsive-design.svg", alt: "Responsive Design Development 2025", width: 116, height: 101 },
+  { src: "/badges_fix/custom-software__12_Data-analysis-development-2024.svg", alt: "Data Analysis Development 2024", width: 92, height: 101 },
+  { src: "/badges_fix/badge-data-migration.svg", alt: "Data Migration Services 2025", width: 116, height: 101 },
 ];
 
 export default function CSAwardsBlock() {
@@ -54,7 +54,7 @@ export default function CSAwardsBlock() {
                 <div key={i} className={styles.slide}>
                   <div className={styles.awardWrap}>
                     {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img src={a.src} alt={a.alt} className={styles.awardImg} loading="lazy" />
+                    <img src={a.src} alt={a.alt} width={a.width} height={a.height} className={styles.awardImg} loading="lazy" />
                   </div>
                 </div>
               ))}

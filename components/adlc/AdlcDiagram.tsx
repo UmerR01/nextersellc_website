@@ -8,7 +8,7 @@ export default function AdlcDiagram() {
         <div className="container">
           <div className={styles.imageWrap}>
             <Image
-              src="/adlc/03_7-phases-of-ADLC.png"
+              src="/adlc/03_7-phases-of-ADLC-v2.png"
               alt="7 phases of ADLC"
               width={1560}
               height={1596}
