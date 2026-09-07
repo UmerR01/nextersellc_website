@@ -4,6 +4,7 @@ import { useState, useRef, useEffect } from "react";
 import Link from "next/link";
 import s from "./WhitepaperExtPage.module.css";
 import { isValidName, isValidEmail, VALIDATION_MESSAGES } from "@/lib/formValidation";
+import Honeypot, { HONEYPOT_FIELD_NAME } from "@/components/Honeypot";
 import type {
   WhitepaperData,
   RichText,
@@ -173,6 +174,7 @@ export default function WhitepaperExtPage({ data }: { data: WhitepaperData }) {
   });
   const [heroErrors, setHeroErrors] = useState<Record<string, string>>({});
   const [heroSubmitted, setHeroSubmitted] = useState(false);
+  const heroHoneypotRef = useRef<HTMLInputElement>(null);
 
   const [faqOpen, setFaqOpen] = useState<Set<number>>(
     new Set(data.faq?.defaultOpen ?? [0])
@@ -206,6 +208,7 @@ export default function WhitepaperExtPage({ data }: { data: WhitepaperData }) {
           company: heroForm.company,
           companyType: heroForm.companyType,
           whitepaper: data.breadcrumb,
+          [HONEYPOT_FIELD_NAME]: heroHoneypotRef.current?.value ?? "",
         }),
       }).catch(() => {});
     }
@@ -365,6 +368,7 @@ export default function WhitepaperExtPage({ data }: { data: WhitepaperData }) {
                 <div className={s.heroForm}>
                   {!heroSubmitted ? (
                     <form onSubmit={handleHeroSubmit} noValidate>
+                      <Honeypot ref={heroHoneypotRef} />
                       <p className={s.formTitle}>
                         {data.hero.formTitle ?? "Get the guide"}
                       </p>

@@ -9,6 +9,8 @@ export default function ESDArchitectureImage() {
           src="/esd/05_Dual-engine-enterprise-architecture-clean.png"
           alt="Dual engine enterprise architecture"
           className={styles.img}
+          width={1560}
+          height={658}
           loading="lazy"
         />
       </div>

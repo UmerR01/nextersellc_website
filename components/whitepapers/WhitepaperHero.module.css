@@ -74,13 +74,19 @@
   position: relative;
 }
 
+/* Shape now matches the AI Consulting reference exactly — was a rounded,
+   thicker stroke, out of theme with every other hero's sharp square-cap
+   chevron. Color stays #112244 (not white) — this is a light-background
+   hero (.hero { background: #fff }), and #112244 already matches
+   .breadcrumbs a's own link color exactly; forcing white here would make
+   the arrow invisible against the white background. */
 .breadcrumbs a::after {
   content: "";
   display: inline-block;
-  width: 0.75rem;
-  height: 0.75rem;
+  width: 16px;
+  height: 16px;
   margin: 0 0.375rem;
-  background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none'%3E%3Cpath d='M6 4l4 4-4 4' stroke='%23112244' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='none'%3E%3Cpath stroke='%23112244' stroke-linecap='square' d='m6 4 4 4-4 4'/%3E%3C/svg%3E");
   background-repeat: no-repeat;
   background-position: center;
   background-size: contain;

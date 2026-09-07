@@ -3,6 +3,8 @@ import styles from "./MlIndustries.module.css";
 const INDUSTRIES = [
   {
     icon: "/ml/03_5da07b812ca4f60c99824fc4_Marketing-Automation-Platforms-300x165.png",
+    iconWidth: 300,
+    iconHeight: 165,
     title: "Finance & fintech",
     desc: "Transaction analysis, risk scoring, and anomaly detection that run inside decision flows in real time, with traceable outputs your compliance team can audit.",
     link: "/services/financial-development",
@@ -10,6 +12,8 @@ const INDUSTRIES = [
   },
   {
     icon: "/ml/09_pexels-karolina-grabowska-4021766-200x300.jpg",
+    iconWidth: 200,
+    iconHeight: 300,
     title: "Healthcare & life sciences",
     desc: "Models that work with clinical, operational, and patient data to support diagnostics, planning, and resource allocation, inside governed environments built around data privacy.",
     link: "/services/healthcare-development",
@@ -17,6 +21,8 @@ const INDUSTRIES = [
   },
   {
     icon: "/ml/01_Transportation-and-logistics-software-benefits-for-business-291x300.jpg",
+    iconWidth: 291,
+    iconHeight: 300,
     title: "Logistics & supply chain",
     desc: "Demand, routing, and inventory models that react to live conditions and feed decisions straight into your logistics operations.",
     link: "/services/logistics-development",
@@ -24,6 +30,8 @@ const INDUSTRIES = [
   },
   {
     icon: "/big-data/06_image-300x165.png",
+    iconWidth: 300,
+    iconHeight: 165,
     title: "Advertising and media",
     desc: "Campaign performance shifts faster than traditional reporting cycles can capture. Our data systems connect performance signals directly to campaign execution. Targeting, bidding, and segmentation adjust continuously based on live data.",
     link: "/services/adtech-development",
@@ -54,7 +62,7 @@ export default function MlIndustries() {
               </div>
               <div className={styles.imageWrap}>
                 {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src={ind.icon} alt={ind.title} className={styles.image} loading="lazy" />
+                <img src={ind.icon} alt={ind.title} width={ind.iconWidth} height={ind.iconHeight} className={styles.image} loading="lazy" />
               </div>
             </div>
           ))}

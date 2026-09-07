@@ -213,7 +213,7 @@ export default function AdlcHero() {
             <a href="/">Home</a>
             <span className={styles.breadcrumbSep}>
               <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden>
-                <path stroke="rgba(255,255,255,0.5)" strokeLinecap="square" d="m6 4 4 4-4 4" />
+                <path stroke="#fff" strokeLinecap="square" d="m6 4 4 4-4 4" />
               </svg>
             </span>
             <span>Agentic development lifecycle (ADLC)</span>

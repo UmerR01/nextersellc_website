@@ -30,6 +30,8 @@ export default function ESDReliablePartner() {
                 src="/esd/esd-reliable.jpg"
                 alt="What makes Nexterse LLC a reliable partner"
                 className={styles.img}
+                width={5184}
+                height={3456}
                 loading="lazy"
               />
             </div>

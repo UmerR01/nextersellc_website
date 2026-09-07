@@ -142,7 +142,7 @@
   width: 16px;
   height: 16px;
   margin: 0 0.25rem;
-  background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='none'%3E%3Cpath stroke='rgba(255,255,255,0.5)' stroke-linecap='square' d='m6 4 4 4-4 4'/%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='none'%3E%3Cpath stroke='%23fff' stroke-linecap='square' d='m6 4 4 4-4 4'/%3E%3C/svg%3E");
   background-repeat: no-repeat;
   background-position: center;
   background-size: contain;

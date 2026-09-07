@@ -3,16 +3,16 @@ import { useEffect, useState } from "react";
 import styles from "./PricingAwards.module.css";
 
 const AWARDS = [
-  { src: "/badges_fix/06_techreviewer_badge_2026-12.svg", alt: "techreviewer.co 2026 — Nexterse LLC listed among Top Software Development Companies" },
-  { src: "/badges_fix/edtech-development__06_top-software-development-companies.svg", alt: "GoodFirms badge — Nexterse LLC listed as a Top Software Development Company" },
-  { src: "/badges_fix/12_5ca49c9f6cb37e33319e1162_Goodfirms.svg", alt: "Goodfirms badge icon" },
-  { src: "/badges_fix/12_5ca49c9f8ff5ad26d13b6845_TDA.svg", alt: "TDA badge icon" },
-  { src: "/badges_fix/12_5ca49c9f6cb37e49a79e1163_changed.svg", alt: "AWS partner badge icon" },
-  { src: "/badges_fix/12_Custom-Web-Design-Development-2025.svg", alt: "Custom Web Design Development 2025" },
-  { src: "/badges_fix/12_Mobile-Software-Development-2025.svg", alt: "Mobile Software Development 2025" },
-  { src: "/badges_fix/12_Responsive-Design-Development-2025.svg", alt: "Responsive Design Development 2025" },
-  { src: "/badges_fix/12_Machine-Learning-Development-2024.svg", alt: "Machine Learning Development 2024" },
-  { src: "/badges_fix/12_Business-Intelligence-Services-2024.svg", alt: "Business Intelligence Services 2024" },
+  { src: "/badges_fix/06_techreviewer_badge_2026-12.svg", alt: "techreviewer.co 2026 — Nexterse LLC listed among Top Software Development Companies", width: 108, height: 147 },
+  { src: "/badges_fix/edtech-development__06_top-software-development-companies.svg", alt: "GoodFirms badge — Nexterse LLC listed as a Top Software Development Company", width: 140, height: 146 },
+  { src: "/badges_fix/12_5ca49c9f6cb37e33319e1162_Goodfirms.svg", alt: "Goodfirms badge icon", width: 144, height: 130 },
+  { src: "/badges_fix/12_5ca49c9f8ff5ad26d13b6845_TDA.svg", alt: "TDA badge icon", width: 111, height: 130 },
+  { src: "/badges_fix/12_5ca49c9f6cb37e49a79e1163_changed.svg", alt: "AWS partner badge icon", width: 135, height: 130 },
+  { src: "/badges_fix/12_Custom-Web-Design-Development-2025.svg", alt: "Custom Web Design Development 2025", width: 116, height: 101 },
+  { src: "/badges_fix/12_Mobile-Software-Development-2025.svg", alt: "Mobile Software Development 2025", width: 116, height: 101 },
+  { src: "/badges_fix/12_Responsive-Design-Development-2025.svg", alt: "Responsive Design Development 2025", width: 116, height: 101 },
+  { src: "/badges_fix/12_Machine-Learning-Development-2024.svg", alt: "Machine Learning Development 2024", width: 92, height: 101 },
+  { src: "/badges_fix/12_Business-Intelligence-Services-2024.svg", alt: "Business Intelligence Services 2024", width: 92, height: 101 },
 ];
 
 export default function PricingAwards() {
@@ -53,7 +53,7 @@ export default function PricingAwards() {
                 <div key={i} className={styles.slide}>
                   <div className={styles.awardWrap}>
                     {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img src={a.src} alt={a.alt} className={styles.awardImg} loading="lazy" />
+                    <img src={a.src} alt={a.alt} width={a.width} height={a.height} className={styles.awardImg} loading="lazy" />
                   </div>
                 </div>
               ))}

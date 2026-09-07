@@ -34,6 +34,8 @@ export default function ESDDataReadiness() {
                 src="/esd/data-readiness.jpg"
                 alt="AI starts with data readiness"
                 className={styles.img}
+                width={4000}
+                height={6000}
                 loading="lazy"
               />
             </div>

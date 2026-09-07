@@ -14,8 +14,12 @@ const CASES = [
     tags: ["Startups"],
     imgRight: "/engagement/02_Frame-1787-1.png",
     imgRightAlt: "Screenshot Dexai",
+    imgRightWidth: 644,
+    imgRightHeight: 442,
     imgLeft: "/engagement/02_Graphical-user-interface-for-robot-operation-2.png",
     imgLeftAlt: "Screenshot Dexai",
+    imgLeftWidth: 1392,
+    imgLeftHeight: 980,
   },
   {
     href: "/portfolio/ai-integration-fintech",
@@ -28,8 +32,12 @@ const CASES = [
     tags: ["AI inside", "Enterprise"],
     imgRight: "/engagement/05_tablet-cover-right.png",
     imgRightAlt: "tablet-cover-right",
+    imgRightWidth: 1392,
+    imgRightHeight: 980,
     imgLeft: "/engagement/05_tablet-cover-left.png",
     imgLeftAlt: "tablet-cover-left",
+    imgLeftWidth: 1392,
+    imgLeftHeight: 980,
   },
   {
     href: "/portfolio/ai-readiness-assessment-for-insurance-company",
@@ -42,8 +50,12 @@ const CASES = [
     tags: ["AI inside", "Enterprise"],
     imgRight: "/engagement/04_Cover-right-1-1.png",
     imgRightAlt: "Insurance AI cover",
+    imgRightWidth: 696,
+    imgRightHeight: 490,
     imgLeft: "/engagement/04_Cover-1-1.png",
     imgLeftAlt: "Insurance AI cover",
+    imgLeftWidth: 1400,
+    imgLeftHeight: 960,
   },
   {
     href: "/portfolio/rag-based-knowledge-platform",
@@ -56,8 +68,12 @@ const CASES = [
     tags: ["AI inside", "Enterprise"],
     imgRight: "/engagement/04_Cover-1.png",
     imgRightAlt: "RAG development",
+    imgRightWidth: 1400,
+    imgRightHeight: 960,
     imgLeft: "/engagement/04_Cover-right-1.png",
     imgLeftAlt: "RAG development",
+    imgLeftWidth: 696,
+    imgLeftHeight: 490,
   },
 ];
 
@@ -97,11 +113,11 @@ export default function CasesBlock() {
               <div className={styles.cardImages}>
                 <div className={styles.imgRight}>
                   {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img src={c.imgRight} alt={c.imgRightAlt} loading="lazy" />
+                  <img src={c.imgRight} alt={c.imgRightAlt} width={c.imgRightWidth} height={c.imgRightHeight} loading="lazy" />
                 </div>
                 <div className={styles.imgLeft}>
                   {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img src={c.imgLeft} alt={c.imgLeftAlt} loading="lazy" />
+                  <img src={c.imgLeft} alt={c.imgLeftAlt} width={c.imgLeftWidth} height={c.imgLeftHeight} loading="lazy" />
                 </div>
               </div>
             </div>

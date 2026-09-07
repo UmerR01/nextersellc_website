@@ -1,9 +1,10 @@
 "use client";
 
 import Image from "next/image";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import styles from "./ContactFormSection.module.css";
 import { isValidName, isValidEmail, VALIDATION_MESSAGES } from "@/lib/formValidation";
+import Honeypot, { HONEYPOT_FIELD_NAME } from "@/components/Honeypot";
 
 const CalendarSVG = () => (
   <svg width="15" height="15" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -25,6 +26,7 @@ export default function ContactFormSection() {
   const [agreed, setAgreed] = useState(false);
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
   const [errors, setErrors] = useState<{ name?: string; email?: string; message?: string; agreed?: string }>({});
+  const honeypotRef = useRef<HTMLInputElement>(null);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -43,7 +45,7 @@ export default function ContactFormSection() {
       const res = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ name, email, message }),
+        body: JSON.stringify({ name, email, message, [HONEYPOT_FIELD_NAME]: honeypotRef.current?.value ?? "" }),
       });
       if (res.ok) {
         setStatus("success");
@@ -86,6 +88,7 @@ export default function ContactFormSection() {
             {status !== "success" ? (
               <>
                 <form className={styles.form} onSubmit={handleSubmit} noValidate>
+                  <Honeypot ref={honeypotRef} />
                   <label className={styles.formLabel}>
                     <span className={styles.formLabelText}>My Name*</span>
                     <span className={styles.formInputWrap}>

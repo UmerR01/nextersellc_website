@@ -7,6 +7,35 @@ const ROWS: { title: string; count: number }[] = [
   { title: "LLMOps and evaluation frameworks", count: 4 },
 ];
 
+// Intrinsic pixel dimensions for /genai-development/tech/row{r}_tool{t}.svg, indexed [row-1][tool-1]
+const TECH_LOGO_DIMS: { width: number; height: number }[][] = [
+  [
+    { width: 258, height: 56 },
+    { width: 237, height: 56 },
+    { width: 258, height: 56 },
+    { width: 195, height: 56 },
+    { width: 265, height: 56 },
+  ],
+  [
+    { width: 170, height: 56 },
+    { width: 287, height: 56 },
+    { width: 191, height: 56 },
+    { width: 155, height: 56 },
+  ],
+  [
+    { width: 275, height: 56 },
+    { width: 248, height: 56 },
+    { width: 177, height: 56 },
+    { width: 165, height: 56 },
+  ],
+  [
+    { width: 247, height: 56 },
+    { width: 329, height: 56 },
+    { width: 242, height: 56 },
+    { width: 165, height: 56 },
+  ],
+];
+
 export default function GenaiTechStack() {
   return (
     <section id="genai-tech" className={styles.techStackSection}>
@@ -26,6 +55,8 @@ export default function GenaiTechStack() {
                     src={`/genai-development/tech/row${ri + 1}_tool${i + 1}.svg`}
                     alt={`${row.title} technology`}
                     className={styles.techLogoImg}
+                    width={TECH_LOGO_DIMS[ri][i].width}
+                    height={TECH_LOGO_DIMS[ri][i].height}
                     loading="lazy"
                   />
                 ))}

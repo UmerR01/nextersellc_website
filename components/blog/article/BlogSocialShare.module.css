@@ -7,6 +7,37 @@
   gap: 1.75rem;
 }
 
+.itemWrap {
+  position: relative;
+}
+
+/* "Link copied!" confirmation — Instagram has no web share-intent, so its
+   button copies the article URL instead; this is the only visible sign
+   that click actually did something. Hidden by default (opacity/visibility,
+   not display:none, so the fade transition has something to animate). */
+.copiedTooltip {
+  position: absolute;
+  bottom: calc(100% + 0.5rem);
+  left: 50%;
+  transform: translateX(-50%);
+  white-space: nowrap;
+  background: var(--color-text, #0a1530);
+  color: #fff;
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 0.3rem 0.625rem;
+  border-radius: 0.25rem;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.2s ease;
+  pointer-events: none;
+}
+
+.copiedTooltipVisible {
+  opacity: 1;
+  visibility: visible;
+}
+
 .shareBtn {
   display: inline-flex;
   width: 1.25rem;

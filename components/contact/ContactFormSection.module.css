@@ -426,8 +426,14 @@
   opacity: 0.7;
 }
 
+/* Filled accent bg + white text, same look as :hover — was left
+   transparent (the base .submitBtn state), so the white spinner inside
+   had nothing to contrast against and effectively disappeared on the
+   page's own white background. */
 .submitBtnLoading {
   padding: 1.125rem 3rem;
+  background: var(--color-accent);
+  color: #fff;
 }
 
 @keyframes spin {
