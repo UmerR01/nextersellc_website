@@ -1,8 +1,10 @@
+/* No self-padding — matches AIHero.module.css's .breadcrumb, which has
+   none; this used to carry a stray padding-top (0.5rem) that pushed the
+   whole breadcrumb down for no reason tied to anything else on the page. */
 .breadcrumbs {
   display: flex;
   align-items: center;
   overflow: hidden;
-  padding: 0.5rem 0 0;
   white-space: nowrap;
   margin-bottom: 5rem;
 }
@@ -13,21 +15,27 @@
   font-size: 0.875rem;
   font-weight: 400;
   line-height: 1.25rem;
-  margin-right: 0.5rem;
-  padding-right: 1.5rem;
-  position: relative;
   text-decoration: none;
   transition: color 0.3s ease;
 }
 
+/* Plain inline-block after the link's own text, margin on both sides —
+   matches AIHero.module.css's spacing exactly (a separate flex sibling
+   with the container's own gap: 0.25rem produces the same 4px-icon-4px
+   result). Was position:absolute inside a padding-right reserved box —
+   worked out to 8px before the icon and 8px after, double the
+   reference's spacing. */
 .breadcrumbs a::after {
-  background: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='none'%3E%3Cpath stroke='%230b1734' stroke-linecap='square' d='m6 4 4 4-4 4'/%3E%3C/svg%3E") center no-repeat;
   content: "";
-  position: absolute;
-  inset: 0 0 0 auto;
+  display: inline-block;
   width: 16px;
   height: 16px;
-  margin: auto 0;
+  margin: 0 0.25rem;
+  background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='none'%3E%3Cpath stroke='%230b1734' stroke-linecap='square' d='m6 4 4 4-4 4'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  vertical-align: middle;
 }
 
 .breadcrumbs a:hover { color: #3cc4e5; }

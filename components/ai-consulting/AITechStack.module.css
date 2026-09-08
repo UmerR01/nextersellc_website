@@ -45,9 +45,17 @@
   gap: 1.5rem 2.5rem;
 }
 
+/* Fixed slot width (matching .logo's own max-width below), same technique
+   as components/home/CoreTech.module.css's .logo — without it, each .row
+   is an independent flex container so column 2's start-x depends on how
+   wide *that row's* logo 1 happens to render, which differs row to row and
+   makes columns zigzag instead of lining up (see track/tech-stack-column-
+   alignment.md). justify-content stays default (flex-start) so a narrower
+   logo still starts flush left in its slot, matching the reference. */
 .logoWrap {
   display: flex;
   align-items: center;
+  flex: 0 0 11.25rem;
 }
 
 .logo {

@@ -41,11 +41,13 @@
   z-index: 1;
 }
 
+/* gap: 0 — the icon (.breadcrumbs a::after) carries its own margin on
+   both sides now. */
 .breadcrumbs {
   display: flex;
   align-items: center;
   flex-wrap: wrap;
-  gap: 4px;
+  gap: 0;
   margin-bottom: 24px;
 }
 
@@ -63,10 +65,22 @@
   color: #3cc4e5;
 }
 
+/* Was a text "›" character (out of theme with every other page's shared
+   chevron SVG) at a dim rgba(255,255,255,0.4), mismatched with this
+   page's own white link color. Replaced with the same chevron every
+   other hero uses, matching this page's white link color and the
+   reference's 4px-icon-4px spacing. */
 .breadcrumbs a::after {
-  content: "›";
-  margin-left: 6px;
-  color: rgba(255, 255, 255, 0.4);
+  content: "";
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  margin: 0 4px;
+  background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='none'%3E%3Cpath stroke='%23fff' stroke-linecap='square' d='m6 4 4 4-4 4'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  vertical-align: middle;
 }
 
 .breadcrumbs span {

@@ -5,6 +5,7 @@ import Link from "next/link";
 import s from "./WhitepaperExtPage.module.css";
 import { isValidName, isValidEmail, VALIDATION_MESSAGES } from "@/lib/formValidation";
 import Honeypot, { HONEYPOT_FIELD_NAME } from "@/components/Honeypot";
+import TurnstileWidget, { TURNSTILE_FIELD_NAME } from "@/components/Turnstile";
 import type {
   WhitepaperData,
   RichText,
@@ -175,6 +176,7 @@ export default function WhitepaperExtPage({ data }: { data: WhitepaperData }) {
   const [heroErrors, setHeroErrors] = useState<Record<string, string>>({});
   const [heroSubmitted, setHeroSubmitted] = useState(false);
   const heroHoneypotRef = useRef<HTMLInputElement>(null);
+  const heroTurnstileRef = useRef<HTMLInputElement>(null);
 
   const [faqOpen, setFaqOpen] = useState<Set<number>>(
     new Set(data.faq?.defaultOpen ?? [0])
@@ -209,6 +211,7 @@ export default function WhitepaperExtPage({ data }: { data: WhitepaperData }) {
           companyType: heroForm.companyType,
           whitepaper: data.breadcrumb,
           [HONEYPOT_FIELD_NAME]: heroHoneypotRef.current?.value ?? "",
+          [TURNSTILE_FIELD_NAME]: heroTurnstileRef.current?.value ?? "",
         }),
       }).catch(() => {});
     }
@@ -474,6 +477,7 @@ export default function WhitepaperExtPage({ data }: { data: WhitepaperData }) {
                       </div>
 
                       <div className={s.bottomSection}>
+                        <TurnstileWidget tokenRef={heroTurnstileRef} />
                         <div className={s.submitWrapper}>
                           {/* No icon, no PDF link — this is now a plain "Send" button that
                               only fires the mail notification (handleHeroSubmit). Uses the

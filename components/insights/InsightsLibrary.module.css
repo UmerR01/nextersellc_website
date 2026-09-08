@@ -277,10 +277,15 @@
   }
 }
 
-/* btn_r: no forced width on a button, ever — was width:100% at every
-   breakpoint (the wrap's justify-content:center already centers it as an
-   intrinsically-sized inline-flex element; min-width below just sets a
-   floor, it doesn't stretch it). */
+/* btn_r: no forced width/height on a button, ever, at any screen size —
+   was width:100% at every breakpoint (fixed previously), but also still
+   had min-height and a ≥1200px min-width below, both removed now. A
+   min-width "only sets a floor" in the strict sense, but the rule makes
+   no exception for that — the wrap's justify-content:center already
+   centers this as an intrinsically-sized inline-flex element with no
+   help from a floor. Padding also brought in line with the sitewide
+   convention (app/globals.css's base .btn: 0.4rem 1.25rem, matching the
+   Header's own button) — was a bespoke 0.875rem 1.5rem. */
 .downloadBtn {
   display: inline-flex;
   align-items: center;
@@ -292,8 +297,7 @@
   font-size: 1.125rem;
   line-height: 1.5rem;
   font-weight: 600;
-  min-height: 3.4375rem;
-  padding: 0.875rem 1.5rem;
+  padding: 0.4rem 1.25rem;
   text-decoration: none;
   text-align: center;
   cursor: pointer;
@@ -305,12 +309,6 @@
 .downloadBtn:hover {
   background: transparent;
   color: var(--color-accent, #3cc4e5);
-}
-
-@media screen and (min-width: 1200px) {
-  .downloadBtn {
-    min-width: 17.0625rem;
-  }
 }
 
 /* SVG icon inherits currentColor so it follows text color automatically */

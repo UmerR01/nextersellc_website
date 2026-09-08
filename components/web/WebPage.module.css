@@ -991,18 +991,30 @@
 }
 
 /* 6-col rows: 1 label column + 5 logo columns */
+/* Wrapping-flex technique, matching components/home/CoreTech.module.css's
+   .row/.logos — not a fixed-column-count grid. A grid locked to a specific
+   column count (5, dropping straight to a fixed 3 at 768px) only adapts at
+   each exact breakpoint crossing, so between crossings it stays visually
+   identical no matter how much width is actually available (reading as
+   "not responsive while shrinking"), and it never becomes a true single
+   column on narrow phones. A wrapping flex row reflows continuously at
+   every width instead, and a fixed flex-basis on each logo keeps columns
+   lined up row to row (see track/tech-stack-column-alignment.md). Label
+   width (15rem) matches components/ai-consulting/AITechStack.module.css's
+   .rowLabel, which uses these same category names. */
 .techRow {
-  display: grid;
-  grid-template-columns: minmax(10rem, 1fr) 5fr;
-  gap: 2.5rem;
   align-items: center;
-  padding: 2.5rem 0;
   border-top: 1px solid #e6eff7;
+  display: flex;
+  gap: 1.75rem 2.5rem;
+  padding: 2.5rem 0;
+  width: 100%;
 }
 
 .techRow:last-child { border-bottom: 1px solid #e6eff7; }
 
 .techRowLabel {
+  flex: 0 0 15rem;
   font-family: var(--font-inter-tight), sans-serif;
   font-size: 0.9375rem;
   font-weight: 400;
@@ -1011,33 +1023,46 @@
 }
 
 .techLogos {
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  gap: 2.25rem 1.5rem;
   align-items: center;
-  justify-items: start;
+  display: flex;
+  flex: 1 1 auto;
+  flex-wrap: wrap;
+  gap: 2.25rem 1.5rem;
 }
 
 .techLogoImg {
   width: auto;
   height: 3.125rem;
-  max-width: 100%;
+  max-width: 9.0625rem;
   object-fit: contain;
+  object-position: left center;
   display: block;
+  flex: 0 0 9.0625rem;
 }
 
 .techLogoImgSm {
   height: 2rem;
 }
 
-@media (max-width: 768px) {
+/* Stack breakpoint raised from 768px so it comfortably exceeds the
+   widest row's own single-line width requirement (see
+   track/tech-stack-column-alignment.md follow-up) — otherwise a row with
+   more logos than its siblings starts wrapping into 2 lines internally
+   while still side-by-side with the label, well before the layout ever
+   reaches the point of stacking, so it visibly becomes "two rows" while
+   shorter rows stay "one row" at the same viewport width. */
+@media (max-width: 1450px) {
   .techRow {
-    grid-template-columns: 1fr;
+    flex-direction: column;
+    align-items: flex-start;
     gap: 1.25rem;
-    align-items: start;
   }
-  .techRowLabel { font-weight: 600; }
-  .techLogos { grid-template-columns: repeat(3, 1fr); gap: 1.75rem 1rem; }
+  .techRowLabel { font-weight: 600; flex-basis: auto; }
+  .techLogos { gap: 1.75rem 1rem; }
+}
+
+@media (max-width: 640px) {
+  .techLogoImg { flex-basis: 6.875rem; max-width: 6.875rem; }
 }
 
 .archImgWrap {

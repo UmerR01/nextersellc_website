@@ -32,14 +32,24 @@
   gap: 0;
 }
 
+/* Wrapping-flex technique, matching components/home/CoreTech.module.css's
+   .row/.logos (and components/custom-software/TechStack.module.css, which
+   shares these same /custom-software/tech/*.svg logos) — not a
+   fixed-column-count grid, and not centered. A grid locked to a specific
+   column count only adapts at each exact breakpoint crossing, so between
+   crossings it stays visually identical no matter how much width is
+   actually available, reading as "not responsive while shrinking." The
+   previous `justify-items: center` / `justify-content: center` also left
+   every logo centered in its column instead of starting flush left like
+   every other tech-stack section on the site (see
+   track/tech-stack-column-alignment.md). */
 .row {
-  display: grid;
-  grid-template-columns: minmax(11.25rem, 15rem) 1fr;
   align-items: center;
-  column-gap: clamp(1.5rem, 3vw, 2.5rem);
+  border-top: 1px solid #aeb9c8;
+  display: flex;
+  gap: clamp(1.5rem, 3vw, 2.5rem);
   min-height: 6.25rem;
   padding: 1.75rem 0;
-  border-top: 1px solid #aeb9c8;
 }
 
 .row:last-child {
@@ -47,6 +57,7 @@
 }
 
 .rowTitle {
+  flex: 0 0 15rem;
   font-family: var(--font-inter-tight);
   font-size: 1.125rem;
   font-weight: 400;
@@ -54,22 +65,24 @@
 }
 
 .logos {
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  gap: clamp(1rem, 2vw, 1.75rem);
   align-items: center;
-  justify-items: center;
+  display: flex;
+  flex: 1 1 auto;
+  flex-wrap: wrap;
+  gap: clamp(1rem, 2vw, 1.75rem);
 }
 
 .row:first-child .logoImg {
   height: 2.625rem;
   max-width: 8.125rem;
+  flex-basis: 8.125rem;
 }
 
 .logo {
-  display: flex;
   align-items: center;
-  justify-content: center;
+  display: flex;
+  justify-content: flex-start;
+  flex: 0 0 9.0625rem;
 }
 
 .logoImg {
@@ -77,15 +90,18 @@
   max-width: 9.0625rem;
   width: auto;
   object-fit: contain;
+  object-position: left center;
 }
 
 @media (max-width: 768px) {
   .row {
-    grid-template-columns: 1fr;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.25rem;
   }
 
-  .logos {
-    grid-template-columns: repeat(3, 1fr);
+  .rowTitle {
+    flex-basis: auto;
   }
 }
 
@@ -96,6 +112,10 @@
 
   .title {
     margin-bottom: 3rem;
+  }
+
+  .logo {
+    flex-basis: 7.5rem;
   }
 
   .logoImg {

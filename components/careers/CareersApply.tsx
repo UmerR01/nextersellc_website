@@ -4,6 +4,8 @@ import { useRef, useState } from "react";
 import styles from "./CareersApply.module.css";
 import { isValidName, isValidEmail, VALIDATION_MESSAGES } from "@/lib/formValidation";
 import Honeypot, { HONEYPOT_FIELD_NAME } from "@/components/Honeypot";
+import TurnstileWidget, { TURNSTILE_FIELD_NAME } from "@/components/Turnstile";
+import { GENERIC_SUBMIT_ERROR, extractErrorMessage } from "@/lib/formErrors";
 
 type Status = "idle" | "loading" | "success" | "error";
 
@@ -13,10 +15,12 @@ export default function CareersApply() {
   const [message, setMessage] = useState("");
   const [file, setFile] = useState<File | null>(null);
   const [status, setStatus] = useState<Status>("idle");
+  const [errorMessage, setErrorMessage] = useState(GENERIC_SUBMIT_ERROR);
   const [errors, setErrors] = useState<Record<string, string>>({});
 
   const fileInputRef = useRef<HTMLInputElement>(null);
   const honeypotRef = useRef<HTMLInputElement>(null);
+  const turnstileRef = useRef<HTMLInputElement>(null);
 
   const handleFile = (e: React.ChangeEvent<HTMLInputElement>) => {
     const f = e.target.files?.[0];
@@ -44,10 +48,17 @@ export default function CareersApply() {
       formData.append("email", email);
       formData.append("message", message);
       formData.append(HONEYPOT_FIELD_NAME, honeypotRef.current?.value ?? "");
+      formData.append(TURNSTILE_FIELD_NAME, turnstileRef.current?.value ?? "");
       if (file) formData.append("resume", file);
       const res = await fetch("/api/careers", { method: "POST", body: formData });
-      setStatus(res.ok ? "success" : "error");
+      if (res.ok) {
+        setStatus("success");
+      } else {
+        setErrorMessage(await extractErrorMessage(res));
+        setStatus("error");
+      }
     } catch {
+      setErrorMessage(GENERIC_SUBMIT_ERROR);
       setStatus("error");
     }
   };
@@ -176,6 +187,7 @@ export default function CareersApply() {
                     </button>
                   </div>
                   <div className={styles.submitWrapper}>
+                    <TurnstileWidget tokenRef={turnstileRef} />
                     <p>
                       <button
                         type="submit"
@@ -186,7 +198,7 @@ export default function CareersApply() {
                       </button>
                     </p>
                     {status === "error" && (
-                      <p className={styles.errorMsg}>Something went wrong. Please try again.</p>
+                      <p className={styles.errorMsg}>{errorMessage}</p>
                     )}
                   </div>
                 </div>
