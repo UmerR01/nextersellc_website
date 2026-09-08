@@ -3,6 +3,8 @@
 import { useRef, useState } from "react";
 import styles from "./JobDetailPage.module.css";
 import Honeypot from "@/components/Honeypot";
+import { GENERIC_SUBMIT_ERROR, extractErrorMessage } from "@/lib/formErrors";
+import TurnstileWidget from "@/components/Turnstile";
 import {
   isValidName,
   isValidEmail,
@@ -124,13 +126,17 @@ export default function JobApplicationForm({ jobTitle }: { jobTitle: string }) {
     setError("");
     try {
       const response = await fetch("/api/careers", { method: "POST", body: formData });
-      if (!response.ok) throw new Error();
+      if (!response.ok) {
+        setStatus("error");
+        setError(await extractErrorMessage(response));
+        return;
+      }
       setStatus("success");
       form.reset();
       setFile(null);
     } catch {
       setStatus("error");
-      setError("Something went wrong. Please try again.");
+      setError(GENERIC_SUBMIT_ERROR);
     }
   };
 
@@ -242,6 +248,7 @@ export default function JobApplicationForm({ jobTitle }: { jobTitle: string }) {
             <span>I accept the Nexterse <a href="/privacy-policy">privacy policy</a> and terms.</span>
           </label>
           {errors.privacyAccepted && <span className={styles.fieldErrorText}>{errors.privacyAccepted}</span>}
+          <TurnstileWidget />
           <div className={styles.formFooter}>
             <button className={styles.backButton} type="button" onClick={() => setStep(1)}>Back</button>
             <button className={styles.submitButton} type="submit" disabled={status === "loading"}>

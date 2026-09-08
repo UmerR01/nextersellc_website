@@ -29,3 +29,10 @@ export const HONEYPOT_FIELD_NAME = "hp_x7q";
 export function isHoneypotTriggered(value: unknown): boolean {
   return typeof value === "string" && value.trim().length > 0;
 }
+
+// A second anti-spam layer used to live here too: a submission-timing
+// check (first a raw client timestamp, later a server-signed token in
+// lib/formToken.ts). Removed once Cloudflare Turnstile (lib/turnstile.ts)
+// went live — Turnstile subsumes it, since a script can't solve it without
+// a real browser actually taking real time, which is strictly stronger
+// proof than trusting elapsed time. See track/form-spam-honeypot-fix.md.

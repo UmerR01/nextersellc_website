@@ -4,6 +4,8 @@ import { useRef, useState, type Dispatch, type SetStateAction } from "react";
 import styles from "./PricingQuiz.module.css";
 import { isValidName, isValidEmail, VALIDATION_MESSAGES } from "@/lib/formValidation";
 import Honeypot, { HONEYPOT_FIELD_NAME } from "@/components/Honeypot";
+import TurnstileWidget, { TURNSTILE_FIELD_NAME } from "@/components/Turnstile";
+import { GENERIC_SUBMIT_ERROR, extractErrorMessage } from "@/lib/formErrors";
 
 const OPTIONS = [
   { id: "ai-readiness", label: "Take AI readiness assessment" },
@@ -124,6 +126,7 @@ export default function PricingQuiz() {
   const [submitError, setSubmitError] = useState("");
   const [fieldErrors, setFieldErrors] = useState<Record<string, string>>({});
   const honeypotRef = useRef<HTMLInputElement>(null);
+  const turnstileRef = useRef<HTMLInputElement>(null);
 
   const isAi = flow === "ai";
   const totalSteps = isAi ? AI_STEPS.length : CUSTOM_STEPS.length;
@@ -191,12 +194,16 @@ export default function PricingQuiz() {
           email,
           fields: buildAiFields(),
           [HONEYPOT_FIELD_NAME]: honeypotRef.current?.value ?? "",
+          [TURNSTILE_FIELD_NAME]: turnstileRef.current?.value ?? "",
         }),
       });
-      if (!res.ok) throw new Error("Request failed");
+      if (!res.ok) {
+        setSubmitError(await extractErrorMessage(res));
+        return;
+      }
       setIsComplete(true);
     } catch {
-      setSubmitError("Something went wrong. Please try again.");
+      setSubmitError(GENERIC_SUBMIT_ERROR);
     } finally {
       setIsLoading(false);
     }
@@ -221,12 +228,16 @@ export default function PricingQuiz() {
           email,
           fields: buildCustomFields(),
           [HONEYPOT_FIELD_NAME]: honeypotRef.current?.value ?? "",
+          [TURNSTILE_FIELD_NAME]: turnstileRef.current?.value ?? "",
         }),
       });
-      if (!res.ok) throw new Error("Request failed");
+      if (!res.ok) {
+        setSubmitError(await extractErrorMessage(res));
+        return;
+      }
       setIsComplete(true);
     } catch {
-      setSubmitError("Something went wrong. Please try again.");
+      setSubmitError(GENERIC_SUBMIT_ERROR);
     } finally {
       setIsLoading(false);
     }
@@ -399,6 +410,7 @@ export default function PricingQuiz() {
     return (
       <section className={styles.section}>
         <Honeypot ref={honeypotRef} />
+        <TurnstileWidget tokenRef={turnstileRef} />
         <div className="container">
           <div className={`${styles.inner} ${styles.assessmentInner} ${isLoading ? styles.loadingInner : ""}`}>
             <div className={styles.assessmentCopy}>
@@ -462,6 +474,7 @@ export default function PricingQuiz() {
     return (
       <section className={styles.section}>
         <Honeypot ref={honeypotRef} />
+        <TurnstileWidget tokenRef={turnstileRef} />
         <div className="container">
           <div className={`${styles.inner} ${styles.assessmentInner} ${step.kind === "organization" ? styles.orgInner : ""} ${isLoading ? styles.loadingInner : ""}`}>
             <div className={styles.assessmentCopy}>
@@ -525,6 +538,7 @@ export default function PricingQuiz() {
   return (
     <section className={styles.section}>
       <Honeypot ref={honeypotRef} />
+        <TurnstileWidget tokenRef={turnstileRef} />
       <div className="container">
         <div className={styles.inner}>
           <div className={styles.copy}>

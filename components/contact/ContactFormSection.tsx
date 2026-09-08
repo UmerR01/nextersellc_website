@@ -5,6 +5,8 @@ import { useRef, useState } from "react";
 import styles from "./ContactFormSection.module.css";
 import { isValidName, isValidEmail, VALIDATION_MESSAGES } from "@/lib/formValidation";
 import Honeypot, { HONEYPOT_FIELD_NAME } from "@/components/Honeypot";
+import TurnstileWidget, { TURNSTILE_FIELD_NAME } from "@/components/Turnstile";
+import { GENERIC_SUBMIT_ERROR, extractErrorMessage } from "@/lib/formErrors";
 
 const CalendarSVG = () => (
   <svg width="15" height="15" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -25,8 +27,10 @@ export default function ContactFormSection() {
   const [message, setMessage] = useState("");
   const [agreed, setAgreed] = useState(false);
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
+  const [errorMessage, setErrorMessage] = useState(GENERIC_SUBMIT_ERROR);
   const [errors, setErrors] = useState<{ name?: string; email?: string; message?: string; agreed?: string }>({});
   const honeypotRef = useRef<HTMLInputElement>(null);
+  const turnstileRef = useRef<HTMLInputElement>(null);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -45,14 +49,22 @@ export default function ContactFormSection() {
       const res = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ name, email, message, [HONEYPOT_FIELD_NAME]: honeypotRef.current?.value ?? "" }),
+        body: JSON.stringify({
+          name,
+          email,
+          message,
+          [HONEYPOT_FIELD_NAME]: honeypotRef.current?.value ?? "",
+          [TURNSTILE_FIELD_NAME]: turnstileRef.current?.value ?? "",
+        }),
       });
       if (res.ok) {
         setStatus("success");
       } else {
+        setErrorMessage(await extractErrorMessage(res));
         setStatus("error");
       }
     } catch {
+      setErrorMessage(GENERIC_SUBMIT_ERROR);
       setStatus("error");
     }
   };
@@ -148,6 +160,7 @@ export default function ContactFormSection() {
                         {errors.agreed && <span className={styles.fieldErrorText}>{errors.agreed}</span>}
                       </div>
                       <div className={styles.submitWrapper}>
+                        <TurnstileWidget tokenRef={turnstileRef} />
                         <button
                           type="submit"
                           className={`${styles.submitBtn} ${status === "loading" ? styles.submitBtnLoading : ""}`}
@@ -160,7 +173,7 @@ export default function ContactFormSection() {
                           )}
                         </button>
                         {status === "error" && (
-                          <p className={styles.errorMsg}>Something went wrong. Please try again.</p>
+                          <p className={styles.errorMsg}>{errorMessage}</p>
                         )}
                       </div>
                     </div>

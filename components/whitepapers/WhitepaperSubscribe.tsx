@@ -4,13 +4,17 @@ import { useRef, useState } from "react";
 import styles from "./WhitepaperSubscribe.module.css";
 import { isValidName, isValidEmail, VALIDATION_MESSAGES } from "@/lib/formValidation";
 import Honeypot, { HONEYPOT_FIELD_NAME } from "@/components/Honeypot";
+import TurnstileWidget, { TURNSTILE_FIELD_NAME } from "@/components/Turnstile";
+import { GENERIC_SUBMIT_ERROR, extractErrorMessage } from "@/lib/formErrors";
 
 export default function WhitepaperSubscribe() {
   const [submitted, setSubmitted] = useState(false);
   const [form, setForm] = useState({ name: "", email: "", agree: false });
   const [status, setStatus] = useState<"idle" | "loading" | "error">("idle");
+  const [errorMessage, setErrorMessage] = useState(GENERIC_SUBMIT_ERROR);
   const [errors, setErrors] = useState<{ name?: string; email?: string; agree?: string }>({});
   const honeypotRef = useRef<HTMLInputElement>(null);
+  const turnstileRef = useRef<HTMLInputElement>(null);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -28,12 +32,22 @@ export default function WhitepaperSubscribe() {
       const res = await fetch("/api/whitepaper-subscribe", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ name: form.name, email: form.email, [HONEYPOT_FIELD_NAME]: honeypotRef.current?.value ?? "" }),
+        body: JSON.stringify({
+          name: form.name,
+          email: form.email,
+          [HONEYPOT_FIELD_NAME]: honeypotRef.current?.value ?? "",
+          [TURNSTILE_FIELD_NAME]: turnstileRef.current?.value ?? "",
+        }),
       });
-      if (!res.ok) throw new Error("Request failed");
+      if (!res.ok) {
+        setErrorMessage(await extractErrorMessage(res));
+        setStatus("error");
+        return;
+      }
       setSubmitted(true);
       setStatus("idle");
     } catch {
+      setErrorMessage(GENERIC_SUBMIT_ERROR);
       setStatus("error");
     }
   };
@@ -77,6 +91,7 @@ export default function WhitepaperSubscribe() {
                   {errors.email && <span className={styles.fieldErrorText}>{errors.email}</span>}
                 </label>
 
+                <TurnstileWidget tokenRef={turnstileRef} />
                 <div className={styles.bottomRow}>
                   <label className={styles.checkboxLabel}>
                     <input
@@ -95,7 +110,7 @@ export default function WhitepaperSubscribe() {
                 {errors.agree && <p className={styles.fieldErrorText}>{errors.agree}</p>}
                 {status === "error" && (
                   <p style={{ color: "#ff415c", fontSize: 14, marginTop: 8 }}>
-                    Something went wrong. Please try again.
+                    {errorMessage}
                   </p>
                 )}
               </form>

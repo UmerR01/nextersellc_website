@@ -108,11 +108,15 @@
   }
 }
 
+/* gap: 0 — the icon (.breadcrumbs a::after) already carries its own
+   margin: 0 0.25rem on both sides; a nonzero flex gap here stacked on
+   top of that margin, doubling the space after each icon (4px before,
+   8px after) instead of the reference's symmetric 4px/4px. */
 .breadcrumbs {
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  gap: 0.25rem;
+  gap: 0;
   margin-bottom: 4.5rem;
   font-size: 0.875rem;
   line-height: 1.4;

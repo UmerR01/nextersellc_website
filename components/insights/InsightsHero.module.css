@@ -119,10 +119,15 @@
   }
 }
 
+/* gap: 0 — the icon (.breadcrumbs a::after) carries its own margin on
+   both sides now (was absolutely positioned inside a padding-right/
+   margin-right reserved box, working out to 8px before the icon and
+   12px after with this gap stacked on top — both fixed below to match
+   the reference's symmetric 4px/4px). */
 .breadcrumbs {
   display: flex;
   align-items: center;
-  gap: 0.25rem;
+  gap: 0;
   margin-bottom: 4.5rem;
   font-size: 0.875rem;
   line-height: 1.4;
@@ -138,9 +143,6 @@
 .breadcrumbs a {
   color: #fff;
   text-decoration: none;
-  position: relative;
-  padding-right: 1.5rem;
-  margin-right: 0.5rem;
 }
 
 .breadcrumbs a:hover {
@@ -148,17 +150,19 @@
   transition: all 0.3s ease;
 }
 
-/* Chevron arrow after each link */
+/* Chevron arrow after each link — plain inline-block with margin on both
+   sides, matching AIHero.module.css's spacing exactly. */
 .breadcrumbs a::after {
-  background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='none'%3E%3Cpath stroke='%23fff' stroke-linecap='square' d='m6 4 4 4-4 4'/%3E%3C/svg%3E");
-  bottom: 0;
   content: "";
-  height: 16px;
-  margin: auto 0;
-  position: absolute;
-  right: 0;
-  top: 0;
+  display: inline-block;
   width: 16px;
+  height: 16px;
+  margin: 0 0.25rem;
+  background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='none'%3E%3Cpath stroke='%23fff' stroke-linecap='square' d='m6 4 4 4-4 4'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  vertical-align: middle;
 }
 
 /* Current page span */

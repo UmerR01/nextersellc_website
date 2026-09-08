@@ -5,6 +5,8 @@ import Image from "next/image";
 import styles from "./ContactModal.module.css";
 import { isValidName, isValidEmail, VALIDATION_MESSAGES } from "@/lib/formValidation";
 import Honeypot from "@/components/Honeypot";
+import TurnstileWidget from "@/components/Turnstile";
+import { GENERIC_SUBMIT_ERROR, extractErrorMessage } from "@/lib/formErrors";
 
 const CLIENT_LOGOS = [
   { src: "/get-partner/insure-modal.png", alt: "Insure", w: 240, h: 44 },
@@ -58,6 +60,7 @@ export default function ContactModal({ open, onClose }: Props) {
   const [sent, setSent] = useState(false);
   const [fileName, setFileName] = useState("");
   const [status, setStatus] = useState<"idle" | "loading" | "error">("idle");
+  const [errorMessage, setErrorMessage] = useState(GENERIC_SUBMIT_ERROR);
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
@@ -182,10 +185,15 @@ export default function ContactModal({ open, onClose }: Props) {
                       method: "POST",
                       body: new FormData(e.currentTarget),
                     });
-                    if (!res.ok) throw new Error("Request failed");
+                    if (!res.ok) {
+                      setErrorMessage(await extractErrorMessage(res));
+                      setStatus("error");
+                      return;
+                    }
                     setSent(true);
                     setStatus("idle");
                   } catch {
+                    setErrorMessage(GENERIC_SUBMIT_ERROR);
                     setStatus("error");
                   }
                 }}
@@ -249,6 +257,7 @@ export default function ContactModal({ open, onClose }: Props) {
                       onChange={(e) => setFileName(e.target.files?.[0]?.name ?? "")}
                     />
                   </label>
+                  <TurnstileWidget />
                   <button
                     type="submit"
                     className={`${styles.sendBtn} ${status === "loading" ? styles.sendLoading : ""}`}
@@ -260,7 +269,7 @@ export default function ContactModal({ open, onClose }: Props) {
                 </div>
                 {status === "error" && (
                   <p className={styles.errorText}>
-                    Something went wrong. Please try again.
+                    {errorMessage}
                   </p>
                 )}
 

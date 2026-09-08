@@ -2028,11 +2028,17 @@
   width: 100%;
 }
 
+/* Fixed slot width (matching .tsLogoImg's own max-width below), same
+   technique as components/home/CoreTech.module.css's .logo — without it,
+   each .tsRow is an independent flex container so column 2's start-x
+   depends on how wide *that row's* logo 1 happens to render, which
+   differs row to row and makes columns zigzag instead of lining up. */
 .tsLogoSlot {
   align-items: center;
   display: flex;
   justify-content: flex-start;
   min-height: 3.5rem;
+  flex: 0 0 9rem;
 }
 
 .techStack .tsLogoImg {
@@ -2144,6 +2150,10 @@
 }
 
 @media (max-width: 576px) {
+  .tsLogoSlot {
+    flex-basis: 7rem;
+  }
+
   .techStack .tsLogoImg {
     height: 2.75rem;
     max-width: 7rem;

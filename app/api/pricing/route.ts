@@ -1,6 +1,8 @@
 import { NextRequest, NextResponse } from "next/server";
 import { sendFormEmails, type FormField } from "@/lib/mailer";
-import { HONEYPOT_FIELD_NAME, isHoneypotTriggered } from "@/lib/honeypot";
+import { HONEYPOT_FIELD_NAME } from "@/lib/honeypot";
+import { isBlockedByPreCheck } from "@/lib/antiSpamGate";
+import { TURNSTILE_FIELD_NAME, verifyTurnstileToken } from "@/lib/turnstile";
 import { isValidEmail } from "@/lib/formValidation";
 
 export async function POST(req: NextRequest) {
@@ -13,12 +15,24 @@ export async function POST(req: NextRequest) {
       fields?: FormField[];
     };
 
-    if (isHoneypotTriggered(body[HONEYPOT_FIELD_NAME])) {
+    if (isBlockedByPreCheck(req, body[HONEYPOT_FIELD_NAME], "pricing")) {
       return NextResponse.json({ success: true }, { status: 200 });
     }
 
     if (!name || !email || !Array.isArray(fields) || fields.length === 0) {
       return NextResponse.json({ error: "Missing required fields" }, { status: 400 });
+    }
+
+    const remoteIp = req.headers.get("x-forwarded-for")?.split(",")[0]?.trim();
+    const turnstileResult = await verifyTurnstileToken(body[TURNSTILE_FIELD_NAME], remoteIp, "pricing");
+    if (!turnstileResult.ok) {
+      if (turnstileResult.reason === "unavailable") {
+        return NextResponse.json(
+          { error: "Our verification service is temporarily unavailable. Please try again in a moment." },
+          { status: 503 }
+        );
+      }
+      return NextResponse.json({ error: "Verification failed. Please try again." }, { status: 400 });
     }
 
     if (!isValidEmail(email)) {

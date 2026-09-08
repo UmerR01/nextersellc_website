@@ -90,10 +90,16 @@
   }
 }
 
+/* Fixed slot width (matching .logoImg's own max-width below), same
+   technique as components/home/CoreTech.module.css's .logo — without it,
+   each .row is an independent flex container so column 2's start-x
+   depends on how wide *that row's* logo 1 happens to render, which
+   differs row to row and makes columns zigzag instead of lining up. */
 .logo {
   align-items: center;
   display: flex;
   justify-content: flex-start;
+  flex: 0 0 9.0625rem;
 }
 
 .logoImg {
@@ -134,6 +140,10 @@
 }
 
 @media screen and (max-width: 576px) {
+  .logo {
+    flex-basis: 6.875rem;
+  }
+
   .logoImg {
     height: 2.75rem;
     max-width: 6.875rem;

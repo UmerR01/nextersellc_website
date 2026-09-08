@@ -88,3 +88,11 @@
     padding: 2rem 1.25rem;
   }
 }
+
+/* On narrow phones, 2 logo columns per provider box get too tight
+   (see track/tech-stack-column-alignment.md follow-up) — drop to 1. */
+@media (max-width: 480px) {
+  .logos {
+    grid-template-columns: 1fr;
+  }
+}

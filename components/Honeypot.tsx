@@ -20,10 +20,17 @@ export { HONEYPOT_FIELD_NAME };
  * specifically special-case display:none. `tabIndex={-1}` + `aria-hidden`
  * are kept as defense-in-depth, not the primary defense.
  *
+ * This used to also carry a second, server-signed timing-token field
+ * (lib/formToken.ts) as a submission-speed anti-spam layer. Removed once
+ * Cloudflare Turnstile (components/Turnstile.tsx) went live — Turnstile
+ * subsumes it: it can't be solved without a real browser actually taking
+ * real time, which is strictly stronger proof than trusting elapsed time
+ * against a signed timestamp. See track/form-spam-honeypot-fix.md.
+ *
  * Usage: render `<Honeypot ref={honeypotRef} />` inside the form, then read
  * `honeypotRef.current?.value` when building the submission payload
- * (FormData field or JSON key, both under HONEYPOT_FIELD_NAME) — matches
- * how these forms already read file inputs, no controlled-state needed.
+ * (FormData field or JSON key, under HONEYPOT_FIELD_NAME) — matches how
+ * these forms already read file inputs, no controlled-state needed.
  */
 const Honeypot = forwardRef<HTMLInputElement>((_props, ref) => (
   <div style={{ display: "none" }} aria-hidden="true">

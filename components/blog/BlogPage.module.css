@@ -5,10 +5,32 @@
   font-family: var(--font-inter-tight), "Inter Tight", sans-serif;
 }
 
-@media screen and (max-width: 768px) {
+/* 900px (not 768px), and header-anchored calc() (not a flat 5.5rem) —
+   matches AIHero.module.css's own tier exactly. The old flat value gave
+   this hero the SAME 88px top clearance as the header's own height in
+   the 561-767px range (zero breathing room, not literally overlapping),
+   and between 769-900px it was still on the desktop tier entirely
+   (114px clearance) while AI Consulting had already switched to its
+   wider mobile tier (176px) at that same width. */
+@media (max-width: 900px) {
   .section {
-    padding-top: 5.5rem;
+    padding-top: calc(var(--header-height) + 3rem);
     padding-bottom: 4.5rem;
+  }
+}
+
+/* Short-viewport safety (width-agnostic) — matches AIHero.module.css's
+   own tier exactly. Placed last in the file on purpose: a max-height
+   query declared earlier than an unconditional/min-width rule touching
+   the same property is silently dead the instant a width condition and
+   a height condition are both true at once, which is exactly what high
+   browser zoom produces. */
+@media (max-height: 450px) {
+  .section {
+    padding-top: calc(var(--header-height) + 0.75rem);
+  }
+  .breadcrumbs {
+    margin-bottom: 1rem;
   }
 }
 
@@ -22,14 +44,24 @@
 }
 
 /* ─── Breadcrumbs ───────────────────────────────────────────────────── */
+/* No self-padding — matches AIHero.module.css's .breadcrumb, which has
+   none; this used to carry a stray padding-top (0.5rem) that pushed the
+   whole breadcrumb down for no reason tied to anything else on the page. */
 .breadcrumbs {
   display: flex;
   align-items: center;
   overflow: hidden;
-  padding: 0.5rem 0 0;
   position: static;
   white-space: nowrap;
-  margin-bottom: 5rem;
+  margin-bottom: 4.5rem;
+}
+
+/* Matches AIHero.module.css's own tier exactly — was flat 5rem at every
+   width, never shrinking on mobile at all. */
+@media (max-width: 900px) {
+  .breadcrumbs {
+    margin-bottom: 2rem;
+  }
 }
 
 .breadcrumbs a {
@@ -38,25 +70,29 @@
   font-size: 0.875rem;
   font-weight: 400;
   line-height: 1.25rem;
-  margin-right: 0.5rem;
-  padding-right: 1.5rem;
-  position: relative;
   text-decoration: none;
   transition: color 0.3s ease;
 }
 
+/* Plain inline-block after the link's own text, margin on both sides —
+   matches AIHero.module.css's spacing exactly (a separate flex sibling
+   with the container's own gap: 0.25rem produces the same 4px-icon-4px
+   result). Was position:absolute inside a padding-right reserved box
+   (margin-right: 0.5rem + padding-right: 1.5rem, icon width 16px) —
+   worked out to 8px before the icon and 8px after, double the
+   reference's spacing and a different technique than every other page,
+   which is what read as "inconsistent" between pages. */
 .breadcrumbs a::after {
+  content: "";
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  margin: 0 0.25rem;
   background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='none'%3E%3Cpath stroke='%230b1734' stroke-linecap='square' d='m6 4 4 4-4 4'/%3E%3C/svg%3E");
   background-repeat: no-repeat;
   background-position: center;
-  bottom: 0;
-  content: "";
-  height: 16px;
-  margin: auto 0;
-  position: absolute;
-  right: 0;
-  top: 0;
-  width: 16px;
+  background-size: contain;
+  vertical-align: middle;
 }
 
 .breadcrumbs a:hover {
@@ -77,7 +113,7 @@
 /* ─── Page title ────────────────────────────────────────────────────── */
 .pageTitle {
   font-family: var(--font-inter-tight), "Inter Tight", sans-serif;
-  font-size: clamp(2.5rem, 4vw, 4rem);
+  font-size: clamp(3rem, 5vw, 4rem);
   font-weight: 400;
   line-height: 1.1;
   color: #0b1734;
@@ -85,10 +121,14 @@
   margin: 0;
 }
 
-@media screen and (max-width: 768px) {
+/* 900px (not 768px), matching AIHero.module.css's own breakpoint and
+   clamp floor exactly. The mobile tier also used to add a top padding
+   (2.5rem) that didn't exist at any other width — AI Consulting's title
+   never gets top spacing at any breakpoint, only ever a bottom one. */
+@media (max-width: 900px) {
   .pageTitle {
-    padding: 2.5rem 0;
-    font-size: clamp(2rem, 8vw, 2.75rem);
+    padding: 0 0 2.5rem;
+    font-size: clamp(2.25rem, 9vw, 3rem);
   }
 }
 
@@ -390,10 +430,14 @@
 }
 
 @media screen and (max-width: 1199px) {
-  .wrapperMain {
-    width: min(calc(100% - 2.5rem), 72.5rem);
-  }
-
+  /* .wrapperMain's width override removed here — it's border-box (see
+     app/globals.css), so forcing width: calc(100% - 2.5rem) on top of
+     the base rule's own still-active padding-inline double-counted the
+     inset (the width reduction AND the padding both eat into the same
+     box). AIHero.module.css's equivalent container has no width
+     override at any breakpoint at all — its base max-width +
+     padding-inline already scale fluidly on their own, which is exactly
+     what .wrapperMain's base rule already does too once this is removed. */
   .filterWrapper {
     gap: 1.5rem;
   }
@@ -405,10 +449,8 @@
 }
 
 @media screen and (max-width: 768px) {
-  .wrapperMain {
-    width: calc(100% - 2rem);
-  }
-
+  /* Same removal as the 1199px tier above — width: calc(100% - 2rem)
+     double-counted with the still-active padding-inline. */
   .postTitle {
     font-size: 1.25rem;
     line-height: 1.5rem;
