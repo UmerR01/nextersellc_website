@@ -1,0 +1,71 @@
+.section {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding-top: calc(var(--header-height) + 3rem);
+  padding-bottom: 3rem;
+  text-align: center;
+}
+
+.inner {
+  width: 100%;
+  max-width: 34rem;
+  padding-inline: clamp(1.25rem, 3vw, 2.5rem);
+}
+
+.code {
+  margin: 0 0 0.75rem;
+  color: var(--color-accent);
+  font-size: clamp(3rem, 8vw, 4.5rem);
+  font-weight: 300;
+  letter-spacing: -0.02em;
+  line-height: 1;
+}
+
+.title {
+  margin: 0 0 1rem;
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  font-weight: 400;
+  letter-spacing: -0.01em;
+  line-height: 1.25;
+}
+
+.desc {
+  margin: 0 0 2rem;
+  color: var(--color-text-muted);
+  font-size: 1.0625rem;
+  line-height: 1.6;
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+}
+
+.secondaryLink {
+  color: var(--color-text);
+  font-size: 1rem;
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  transition: color 0.2s ease;
+}
+
+.secondaryLink:hover {
+  color: var(--color-accent);
+}
+
+/* Short-viewport safety, same convention as the hero components —
+   min-height:100vh + a fixed header can overflow a very short viewport
+   (high browser zoom). See track/hero-responsiveness-rule.md. */
+@media (max-height: 450px) {
+  .section {
+    min-height: auto;
+    padding-top: calc(var(--header-height) + 1.5rem);
+    padding-bottom: 1.5rem;
+  }
+}
