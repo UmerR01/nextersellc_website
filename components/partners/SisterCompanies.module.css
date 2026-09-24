@@ -1,0 +1,244 @@
+.section {
+  position: relative;
+  z-index: 4;
+  background: #fff;
+  padding: clamp(4.5rem, 7vw, 6rem) 0;
+}
+
+.heading {
+  font-family: var(--font-inter-tight), sans-serif;
+  font-size: clamp(2rem, 4vw, 3.5rem);
+  font-weight: 400;
+  line-height: 1.1;
+  color: #02102c;
+  margin: 0 0 clamp(2.5rem, 4vw, 4rem);
+  text-align: center;
+}
+
+@media (max-width: 768px) {
+  .heading {
+    margin-bottom: 2rem;
+  }
+}
+
+.accent {
+  color: #3cc4e5;
+}
+
+.timeline {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+/* Three real grid columns — rail / image / text — instead of a narrow
+   centered column with side padding, so the row actually uses the page's
+   full width. The rail column is a fixed width just big enough for the
+   circle (not a wide percentage), so it stops reading as empty space
+   between the image and text. align-items: stretch is load-bearing here:
+   it's what makes .rail's own box as tall as the row's tallest sibling
+   (the image or the text, whichever is taller), which is what the
+   connector line's height math below depends on — with the default
+   align-items: flex-start, .rail would collapse to the circle's own
+   height and the line would fall short of the next circle. */
+.step {
+  display: grid;
+  grid-template-columns: 4.5rem 44% 1fr;
+  grid-template-areas: "rail media text";
+  align-items: stretch;
+  column-gap: clamp(1.5rem, 3vw, 3rem);
+  /* Circle diameter — also read by .media/.text below so their top edge
+     lands exactly on the circle's vertical middle. */
+  --circle: clamp(2.5rem, 3vw, 3.25rem);
+}
+
+.step:not(:last-child) {
+  padding-bottom: clamp(3rem, 6vw, 4.5rem);
+}
+
+.rail {
+  grid-area: rail;
+  position: relative;
+  min-height: 3rem;
+}
+
+/* Circle + line values copied as-is from PartnersProcess.module.css's
+   .iconBg / .lineTrack / .progressBar (same colors, border, transition) —
+   only the inner content changes (a step number instead of an SVG icon),
+   and the circle stays permanently at the "mobile" left-aligned geometry
+   (left: 0, no centering transform) that PartnersProcess itself only
+   switches to below 478px, since this section is a single left-aligned
+   column throughout, not two alternating side columns. Width is a fixed
+   diameter rather than PartnersProcess's own 100%, since .rail is a
+   fixed-width grid column rather than a narrow one sized off the icon. */
+.iconBg {
+  width: var(--circle);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background-color: var(--color-accent) !important;
+  border: 1px solid var(--color-border);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  z-index: 10;
+  top: 0;
+  left: 0;
+  transition: background 0.3s ease;
+}
+
+.circleNum {
+  color: #fff;
+  font-family: var(--font-inter-tight), sans-serif;
+  font-size: 1.125rem;
+  font-weight: 700;
+  transition: color 0.3s ease;
+}
+
+.lineTrack {
+  width: 0.0625rem;
+  min-width: 0.0625rem;
+  max-width: 0.0625rem;
+  background-color: var(--color-border);
+  position: absolute;
+  top: 0;
+  /* Extends past the rail's own height (the circle's diameter) down into
+     the gap to the next circle, using .step's own padding-bottom as the
+     offset — same bridging technique LetsStart.module.css's .step::after
+     uses for its own connector line. */
+  bottom: calc(-1 * clamp(3rem, 6vw, 4.5rem));
+  left: calc(var(--circle) / 2);
+  transform: translateX(-50%);
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+}
+
+.progressBar {
+  width: 0.0625rem;
+  min-width: 0.0625rem;
+  max-width: 0.0625rem;
+  background-color: rgba(10, 21, 48, 0.5);
+  height: 0;
+  border-radius: 6.25rem;
+  position: relative;
+  z-index: 1;
+}
+
+/* No card background/border — image and text float directly on the
+   section's white background instead of sitting in a boxed card. Sized
+   to actually read as a full-page row (~44% / ~45% of the row) rather
+   than a small fixed-width thumbnail next to a paragraph. align-self:
+   start + margin-top: half the circle's own diameter puts the image and
+   text's top edge exactly on the circle's vertical middle (the circle
+   itself sits at .rail's top, so its center is var(--circle)/2 down). */
+.media {
+  grid-area: media;
+  align-self: start;
+  margin-top: calc(var(--circle) / 2);
+  position: relative;
+  width: 100%;
+  aspect-ratio: 3 / 2;
+  overflow: hidden;
+  border-radius: 8px;
+}
+
+.image {
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.media:hover .image {
+  transform: scale(1.06);
+}
+
+.text {
+  grid-area: text;
+  align-self: start;
+  margin-top: calc(var(--circle) / 2);
+  min-width: 0;
+}
+
+/* Color comes from .accent (applied alongside on every use) now that the
+   heading is just the company name, with no leading black "Nexterse
+   Sister" text to contrast it against. */
+.name {
+  margin: 0 0 0.6rem;
+  font-family: var(--font-inter-tight), sans-serif;
+  font-size: clamp(1.25rem, 2vw, 1.75rem);
+  font-weight: 400;
+  line-height: 1.15;
+}
+
+/* Flag chips — each shows the country's flag + name, so a multi-country
+   company (e.g. UAE + Germany) reads as a small row of chips under its
+   name rather than a single ambiguous location line. */
+.flags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.flagChip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.25rem 0.65rem 0.25rem 0.35rem;
+  border: 1px solid var(--color-border);
+  border-radius: 999px;
+  background: var(--color-bg-elevated);
+  color: var(--color-text-muted);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+
+.flagIcon {
+  width: 1.125rem;
+  height: 1.125rem;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.copy {
+  margin: 0 0 1.25rem;
+  color: var(--color-text);
+  font-size: clamp(0.9375rem, 1.1vw, 1.0625rem);
+  line-height: 1.6;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .image {
+    transition: none;
+  }
+}
+
+@media (max-width: 700px) {
+  /* Rail stays its own column (spanning both rows below); image and text
+     stack in the second column instead of sitting side by side. */
+  .step {
+    grid-template-columns: 2.5rem 1fr;
+    grid-template-areas:
+      "rail media"
+      "rail text";
+    row-gap: 1rem;
+    --circle: 2.5rem;
+  }
+  .rail {
+    min-height: 2.5rem;
+  }
+  .media {
+    aspect-ratio: 16 / 9;
+  }
+  /* Text is already below the image in its own row here, not beside the
+     circle, so it doesn't need the circle-alignment offset the desktop
+     3-column layout uses. */
+  .text {
+    margin-top: 0;
+  }
+  .circleNum {
+    font-size: 1rem;
+  }
+}

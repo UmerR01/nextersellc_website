@@ -1,0 +1,148 @@
+.cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  height: 34px;
+  padding: 0 14px;
+  border-radius: 4px;
+  background: #0b3ea8;
+  color: #fff;
+  font-size: 13px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+.cta svg {
+  width: 14px;
+  height: 14px;
+}
+
+.table {
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.headRow,
+.row {
+  display: grid;
+  grid-template-columns: 1.4fr 0.8fr 0.8fr 0.8fr 1fr 1fr;
+  align-items: center;
+  padding: 11px 14px;
+}
+
+.headRow {
+  background: #fafbfd;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+  font-size: 11px;
+  font-weight: 700;
+  color: rgba(0, 0, 0, 0.55);
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.row {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+  font-size: 13px;
+  font-weight: 600;
+  color: #0f172a;
+  opacity: 0;
+  animation: rtRise 0.5s ease both;
+}
+.row:last-child {
+  border-bottom: 0;
+}
+
+.muted {
+  font-weight: 400;
+  color: rgba(0, 0, 0, 0.55);
+}
+
+.gross {
+  font-weight: 700;
+  color: #0b3ea8;
+  transition: color 0.3s ease;
+}
+.grossUpdated {
+  color: #047857;
+  animation: rtFlash 0.6s ease;
+}
+
+.tobCard {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  justify-content: center;
+  gap: 14px;
+  margin-top: 16px;
+  padding: 16px 18px;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 8px;
+  background: #fafbfd;
+}
+
+.tobHead {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.tobTitle {
+  font-size: 12px;
+  font-weight: 700;
+  color: rgba(0, 0, 0, 0.6);
+}
+
+.syncTag {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 11px;
+  font-weight: 700;
+  color: rgba(0, 0, 0, 0.4);
+  transition: color 0.4s ease;
+}
+.syncTag svg {
+  width: 13px;
+  height: 13px;
+}
+.syncTagOn {
+  color: #047857;
+}
+
+.tobRows {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.tobChip {
+  padding: 6px 12px;
+  border: 1px solid rgba(11, 62, 168, 0.25);
+  border-radius: 999px;
+  background: rgba(11, 62, 168, 0.06);
+  color: #0b3ea8;
+  font-size: 12px;
+  font-weight: 600;
+  opacity: 0;
+  animation: rtRise 0.4s ease both;
+}
+
+@keyframes rtRise {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: none; }
+}
+@keyframes rtFlash {
+  0% { color: #047857; }
+  50% { color: #22c55e; }
+  100% { color: #047857; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .row,
+  .tobChip,
+  .grossUpdated {
+    animation: none;
+    opacity: 1;
+  }
+}

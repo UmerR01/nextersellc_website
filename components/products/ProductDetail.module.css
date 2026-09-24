@@ -1,0 +1,359 @@
+/* White surfaces match the sitewide theme, but --color-accent and
+   --color-accent-dark are overridden per product (see ProductDetail.tsx's
+   root style), so every color() reference below automatically follows
+   each product's own brand colours instead of the sitewide cyan/navy. */
+.hero,
+.section,
+.sectionTight,
+.more {
+  background: #fff;
+  color: var(--color-text);
+  font-family: var(--font-inter-tight), "Inter Tight", sans-serif;
+}
+
+.hero {
+  padding: calc(var(--header-height) + 1.625rem) 0 clamp(4rem, 8vw, 7rem);
+}
+.section {
+  padding: clamp(3.5rem, 7vw, 6rem) 0;
+  background: #f8fafc;
+}
+.sectionTight {
+  padding: 0 0 clamp(2.5rem, 5vw, 4rem);
+  background: #f8fafc;
+}
+.more {
+  padding: clamp(3.5rem, 7vw, 6rem) 0;
+  background: #f8fafc;
+}
+
+.accent {
+  color: var(--color-accent);
+}
+
+/* Breadcrumb — same treatment as the blog page */
+.breadcrumbs {
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  white-space: nowrap;
+  margin-bottom: clamp(2rem, 6vw, 4.5rem);
+}
+.breadcrumbs a {
+  color: #0b1734;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+.breadcrumbs a::after {
+  content: "";
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  margin: 0 0.25rem;
+  background: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='none'%3E%3Cpath stroke='%230b1734' stroke-linecap='square' d='m6 4 4 4-4 4'/%3E%3C/svg%3E") center / contain no-repeat;
+  vertical-align: middle;
+}
+.breadcrumbs a:hover {
+  color: var(--color-accent);
+}
+.breadcrumbs span {
+  color: #899fb6;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.heroGrid {
+  display: grid;
+  grid-template-columns: 0.8fr 1.2fr;
+  align-items: center;
+  gap: clamp(2rem, 6vw, 5rem);
+}
+.heroTitle {
+  margin: 0 0 1.5rem;
+  font-size: clamp(3rem, 5vw, 4rem);
+  font-weight: 400;
+  line-height: 1.1;
+  color: #0b1734;
+}
+.heroDesc {
+  max-width: 32rem;
+  margin: 0 0 2rem;
+  color: var(--color-text-muted);
+  font-size: clamp(1.0625rem, 1.4vw, 1.25rem);
+  line-height: 1.6;
+}
+
+.buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.9rem;
+}
+
+.h2 {
+  margin: 0 0 clamp(2rem, 4vw, 3.5rem);
+  font-size: clamp(2rem, 4vw, 3.5rem);
+  font-weight: 400;
+  line-height: 1.1;
+  color: #02102c;
+}
+
+.featureGrid {
+  display: grid;
+  grid-template-columns: 0.8fr 1.2fr;
+  align-items: center;
+  gap: clamp(2rem, 6vw, 5rem);
+}
+.featureList {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.featureBtn {
+  display: block;
+  width: 100%;
+  padding: 0.9rem 0 0.9rem 1.5rem;
+  border: 0;
+  border-left: 2px solid var(--color-border);
+  background: none;
+  color: var(--color-text-muted);
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+  transition: color 0.25s ease, border-color 0.25s ease;
+}
+.featureBtn:hover {
+  color: var(--color-text);
+}
+.featureActive {
+  border-left-color: var(--color-accent);
+  color: var(--color-text);
+}
+.featureTitle {
+  display: block;
+  font-size: clamp(1.25rem, 2vw, 1.75rem);
+  line-height: 1.25;
+}
+.featureText {
+  display: block;
+  max-width: 28rem;
+  margin-top: 0.6rem;
+  color: var(--color-text-muted);
+  font-size: 1.0625rem;
+  line-height: 1.6;
+  animation: pdFade 0.4s ease;
+}
+
+.quoteCard {
+  margin: 0;
+  padding: clamp(1.75rem, 5vw, 4rem);
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
+  background: #fff;
+}
+.quote {
+  max-width: 60rem;
+  margin: 0 0 2rem;
+  color: #02102c;
+  font-size: clamp(1.4rem, 2.8vw, 2.25rem);
+  font-weight: 300;
+  line-height: 1.3;
+}
+.author {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.authorAvatar {
+  width: 3rem;
+  height: 3rem;
+  border: 1px solid var(--color-accent);
+  border-radius: 50%;
+  background: var(--color-bg-elevated);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-accent);
+  font-weight: 600;
+  font-size: 1rem;
+}
+.authorName {
+  display: block;
+  font-weight: 700;
+}
+.authorRole {
+  display: block;
+  color: var(--color-text-muted);
+  font-size: 0.9375rem;
+}
+
+/* Same navy block the site's Let's start section uses */
+/* color: var(--color-on-accent-dark, #fff) — same variable LetsStart's
+   own accent-dark block uses, set alongside --color-accent-dark in
+   ProductDetail.tsx's root style so a light accentDark (e.g. white, on
+   SalesHub/Joblynk) doesn't leave this text unreadable against it. */
+.ctaCard {
+  padding: clamp(1.75rem, 5vw, 4rem);
+  border-radius: 12px;
+  background: var(--color-accent-dark);
+  color: var(--color-on-accent-dark, #fff);
+}
+.ctaTitle {
+  margin: 0 0 1.25rem;
+  font-size: clamp(2rem, 4vw, 3.25rem);
+  font-weight: 400;
+  line-height: 1.1;
+}
+.ctaText {
+  max-width: 34rem;
+  margin: 0 0 2rem;
+  color: var(--color-on-accent-dark, #fff);
+  opacity: 0.85;
+  font-size: 1.125rem;
+  line-height: 1.6;
+}
+
+.moreGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+  gap: 1.25rem;
+}
+.moreCard {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  padding: 1.75rem;
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
+  background: #fff;
+  transition: border-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+}
+.moreCard:hover {
+  border-color: var(--color-accent);
+  transform: translateY(-4px);
+  box-shadow: 0 1rem 2rem rgba(10, 21, 48, 0.08);
+}
+.moreName {
+  margin: 0;
+  color: #02102c;
+  font-size: 1.5rem;
+  font-weight: 400;
+}
+.moreCat {
+  color: var(--color-accent);
+  font-size: 0.9375rem;
+  font-weight: 600;
+}
+.moreText {
+  margin: 0;
+  color: var(--color-text-muted);
+  line-height: 1.55;
+}
+
+@keyframes pdFade {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: none; }
+}
+
+@media (max-width: 900px) {
+  .heroGrid,
+  .featureGrid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+.heroGrid > *,
+.featureGrid > * {
+  min-width: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .featureText {
+    animation: none;
+  }
+  .moreCard:hover {
+    transform: none;
+  }
+}
+
+/* LetsStart goes full-bleed under 560px; keep it on the same page gutter
+   as every other section on the detail page. */
+@media (max-width: 560px) {
+  .letsStartWrap {
+    padding-inline: var(--page-gutter);
+  }
+}
+
+/* Products whose accent is too light for white button text set
+   --color-on-accent; everyone else falls back to the sitewide look. */
+.themeWrap :global(.btn-accent) {
+  color: var(--color-on-accent, #fff);
+}
+.themeWrap :global(.btn-accent:hover) {
+  color: var(--color-on-accent, var(--color-accent));
+}
+.themeWrap :global(.btn-outline) {
+  color: var(--color-on-accent, var(--color-accent));
+}
+.themeWrap :global(.btn-outline:hover) {
+  color: var(--color-on-accent, #fff);
+}
+.themeWrap .ctaCard :global(.btn-outline) {
+  color: var(--color-accent);
+}
+.themeWrap .ctaCard :global(.btn-outline:hover) {
+  color: var(--color-on-accent, #fff);
+}
+/* On the dark CTA block the hover state (transparent fill) needs accent
+   text, not the dark on-accent text used on light surfaces. */
+.themeWrap .ctaCard :global(.btn-accent:hover) {
+  color: var(--color-accent);
+}
+
+/* Screenshot-based products (Fittsy): hero image and phone screenshots */
+.heroShot {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border-radius: 20px;
+  overflow: hidden;
+}
+.heroShotImg {
+  object-fit: cover;
+}
+.shotFrame {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  aspect-ratio: 720 / 554;
+  border-radius: 20px;
+  background: var(--color-accent-dark);
+  overflow: hidden;
+  padding: 1.25rem 0;
+}
+.shot {
+  position: relative;
+  height: 100%;
+  aspect-ratio: 1079 / 2255;
+  border-radius: 28px;
+  overflow: hidden;
+  box-shadow: 0 0 0 4px #1c1c1c, 0 18px 40px rgba(0, 0, 0, 0.5);
+  animation: shotIn 0.35s ease;
+}
+.shotImg {
+  object-fit: cover;
+}
+@keyframes shotIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: none; }
+}
+@media (max-width: 900px) {
+  .shotFrame { aspect-ratio: auto; height: 34rem; }
+}

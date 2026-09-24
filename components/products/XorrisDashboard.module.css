@@ -1,0 +1,393 @@
+/* Sized in cqw so the dashboard scales like a screenshot. Colours are
+   Xorris's own plum palette (PLUM #812986, PLUM_MID #a855b5). */
+.root {
+  position: relative;
+  container-type: inline-size;
+  width: 100%;
+  height: 100%;
+  border-radius: 14px;
+  background: #f9f9f9;
+  overflow: hidden;
+  box-shadow: 0 1rem 2.5rem rgba(10, 21, 48, 0.12);
+  font-family: var(--font-inter-tight), "Inter Tight", sans-serif;
+  color: #000;
+}
+
+.screen {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1.8cqw;
+  padding: 1.6cqw;
+}
+
+.panel {
+  padding: 1.6cqw;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 2.4cqw;
+  background: #fff;
+}
+
+/* ── KPIs ── */
+.kpis {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.3cqw;
+}
+.kpi {
+  position: relative;
+  padding: 1.5cqw 1.8cqw;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  border-left: 0;
+  border-radius: 1.6cqw;
+  background: #faf7fb;
+  animation: xdRise 0.6s ease both;
+}
+.kpi::before {
+  content: "";
+  position: absolute;
+  inset: 1.1cqw auto 1.1cqw 0;
+  width: 0.35cqw;
+  border-radius: 0 0.3cqw 0.3cqw 0;
+  background: #812986;
+}
+.kpiHead {
+  display: flex;
+  align-items: center;
+  gap: 0.7cqw;
+}
+.kpiLabel {
+  color: rgba(0, 0, 0, 0.6);
+  font-size: 1.15cqw;
+}
+.info {
+  display: grid;
+  place-items: center;
+  width: 1.3cqw;
+  height: 1.3cqw;
+  border: 1px solid #812986;
+  border-radius: 50%;
+  color: #812986;
+  font-size: 0.85cqw;
+  font-weight: 700;
+}
+.kpiValue {
+  margin-top: 0.7cqw;
+  font-size: 2.5cqw;
+  font-weight: 700;
+  line-height: 1.1;
+  font-variant-numeric: tabular-nums;
+}
+.kpiSub {
+  margin-top: 0.8cqw;
+  color: rgba(0, 0, 0, 0.4);
+  font-size: 0.95cqw;
+}
+.kpiIcon {
+  position: absolute;
+  top: 1.3cqw;
+  right: 1.5cqw;
+  display: grid;
+  place-items: center;
+  width: 2.7cqw;
+  height: 2.7cqw;
+  border-radius: 50%;
+  background: #fff;
+  box-shadow: 0 0.2cqw 0.8cqw rgba(129, 41, 134, 0.12);
+  color: #812986;
+}
+.kpiIcon svg {
+  width: 1.4cqw;
+  height: 1.4cqw;
+}
+
+/* ── Chart ── */
+.chartHead {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1cqw;
+}
+.chartTitle {
+  font-size: 1.8cqw;
+  font-weight: 700;
+}
+.chartTools {
+  display: flex;
+  align-items: center;
+  gap: 1.6cqw;
+}
+.legend {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.7cqw;
+  color: rgba(0, 0, 0, 0.45);
+  font-size: 1.05cqw;
+}
+.legendBar {
+  width: 0.35cqw;
+  height: 1.3cqw;
+  border-radius: 999px;
+  background: #812986;
+}
+.range {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.8cqw;
+  padding: 0.9cqw 1.3cqw;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 0.5cqw;
+  color: rgba(0, 0, 0, 0.7);
+  font-size: 1.05cqw;
+  font-weight: 600;
+  white-space: nowrap;
+}
+.range svg {
+  width: 1.1cqw;
+  height: 1.1cqw;
+}
+
+.chart {
+  display: flex;
+  gap: 1.2cqw;
+  margin-top: 2.4cqw;
+}
+.yAxis {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 19cqw;
+  color: #b892c0;
+  font-size: 0.95cqw;
+  text-align: right;
+}
+.plot {
+  position: relative;
+  flex: 1;
+}
+.grid {
+  position: absolute;
+  inset: 0 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 19cqw;
+}
+.grid span {
+  height: 1px;
+  background: #f1eaf3;
+}
+.cols {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(21, 1fr);
+}
+.col {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.track {
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  width: 100%;
+  height: 19cqw;
+}
+.bar {
+  position: relative;
+  display: block;
+  width: 52%;
+  border-radius: 0.8cqw 0.8cqw 0 0;
+  background: linear-gradient(180deg, #cdb0d9 0%, rgba(205, 176, 217, 0.15) 100%);
+  transform-origin: bottom;
+  animation: xdGrow 1s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+.barActive {
+  background: linear-gradient(180deg, #812986 0%, #5a1860 100%);
+}
+.dot {
+  position: absolute;
+  top: 0.3cqw;
+  left: 50%;
+  width: 0.9cqw;
+  height: 0.9cqw;
+  transform: translateX(-50%);
+  border: 0.2cqw solid #b98cc4;
+  border-radius: 50%;
+  background: #fff;
+}
+.barActive .dot {
+  border-color: #812986;
+  box-shadow: 0 0 0 0.25cqw #812986;
+}
+.stem {
+  position: absolute;
+  top: 1.6cqw;
+  bottom: 28%;
+  left: 50%;
+  width: 0.25cqw;
+  transform: translateX(-50%);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.85);
+}
+.bot {
+  position: absolute;
+  right: 1.2cqw;
+  bottom: 0.6cqw;
+  z-index: 2;
+  width: 6cqw;
+  height: auto;
+  pointer-events: none;
+  filter: drop-shadow(0 0.4cqw 0.6cqw rgba(90, 24, 96, 0.3));
+  animation: xdBob 2.2s ease-in-out infinite;
+}
+.xLabel {
+  margin-top: 1cqw;
+  color: #b892c0;
+  font-size: 0.85cqw;
+  white-space: nowrap;
+}
+.xLabelActive {
+  color: #000;
+  font-weight: 700;
+}
+
+/* ── Global phone numbers ── */
+.globeSub {
+  margin-top: 0.3cqw;
+  color: rgba(0, 0, 0, 0.4);
+  font-size: 1.05cqw;
+}
+.globeGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.6cqw;
+  margin-top: 1.4cqw;
+}
+.numbers {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+.eyebrow {
+  color: rgba(0, 0, 0, 0.4);
+  font-size: 0.8cqw;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+.countries {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5cqw;
+  margin-top: 1.2cqw;
+}
+.countryRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.5cqw;
+}
+.countryName {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.7cqw;
+  color: rgba(0, 0, 0, 0.7);
+  font-size: 1cqw;
+  font-weight: 600;
+}
+.rowFlag {
+  width: 1.5cqw;
+  height: 1.05cqw;
+  border-radius: 0.15cqw;
+  object-fit: cover;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.1);
+}
+.countryCount {
+  color: rgba(0, 0, 0, 0.4);
+  font-size: 0.9cqw;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+.barTrackH {
+  height: 0.55cqw;
+  overflow: hidden;
+  border-radius: 999px;
+  background: rgba(0, 0, 0, 0.05);
+}
+.barFill {
+  display: block;
+  height: 100%;
+  border-radius: 999px;
+  background: #812986;
+  transform-origin: left;
+  animation: xdFill 1s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+.miniKpis {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.9cqw;
+  margin-top: auto;
+  padding-top: 1.4cqw;
+  border-top: 1px solid rgba(0, 0, 0, 0.06);
+}
+/* Same card as the top KPI row, scaled down to fit the half-width column */
+.miniKpi {
+  padding: 1.1cqw 1.3cqw;
+}
+.miniKpi .kpiLabel {
+  font-size: 0.95cqw;
+}
+.miniKpi .kpiValue {
+  font-size: 2.2cqw;
+}
+.miniKpi .kpiSub {
+  font-size: 0.85cqw;
+}
+.miniKpi .kpiIcon {
+  top: 1cqw;
+  right: 1cqw;
+  width: 2.3cqw;
+  height: 2.3cqw;
+}
+.miniKpi .kpiIcon svg {
+  width: 1.2cqw;
+  height: 1.2cqw;
+}
+.globeBox {
+  position: relative;
+  min-height: 25cqw;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  border-radius: 1.8cqw;
+  background: #fff;
+  overflow: hidden;
+}
+
+@keyframes xdFill {
+  from { transform: scaleX(0); }
+  to { transform: scaleX(1); }
+}
+@keyframes xdRise {
+  from { opacity: 0; transform: translateY(1cqw); }
+  to { opacity: 1; transform: none; }
+}
+@keyframes xdGrow {
+  from { transform: scaleY(0); }
+  to { transform: scaleY(1); }
+}
+@keyframes xdBob {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-1.1cqw); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .kpi,
+  .miniKpi,
+  .barFill,
+  .bar,
+  .bot {
+    animation: none;
+  }
+}

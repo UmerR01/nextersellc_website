@@ -1,0 +1,441 @@
+/* Timeline classes below are extracted from
+   components/process/ProcessPage.module.css's ".timelineSection ▸ .finalText"
+   block, values kept as-is, only the design tokens swapped from that
+   file's own --p-* custom properties for the sitewide --color-* ones (so
+   nothing here leaks a second global :root block). */
+
+.section {
+  background: #fff;
+  padding: clamp(4.5rem, 7vw, 6rem) 0;
+}
+
+.head {
+  max-width: 40rem;
+  margin: 0 auto clamp(3rem, 5vw, 4rem);
+  text-align: center;
+}
+
+.eyebrow {
+  display: block;
+  margin-bottom: 0.75rem;
+  font-size: 0.9375rem;
+  font-weight: 700;
+  color: var(--color-accent);
+}
+
+.title {
+  margin: 0 0 0.75rem;
+  font-size: clamp(2rem, 3.5vw, 3rem);
+  font-weight: 300;
+  line-height: 1.15;
+  color: var(--color-text);
+}
+
+.sub {
+  margin: 0;
+  color: var(--color-text-muted);
+  font-size: 1.0625rem;
+  line-height: 1.6;
+}
+
+/* ─── Timeline container ─────────────────────────────────────────────────── */
+.timelineContainer {
+  max-width: 71.875rem;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  padding: 3.125rem 3.125rem 0;
+  border: 1px solid var(--color-border);
+}
+
+@media (max-width: 991px) {
+  .timelineContainer {
+    padding: 1.875rem;
+  }
+}
+
+@media (max-width: 767px) {
+  .timelineContainer {
+    padding: 3.125rem 1.25rem 1.25rem;
+  }
+}
+
+/* ─── Single timeline step row ──────────────────────────────────────────── */
+.step {
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  column-gap: 0;
+  row-gap: 0;
+  justify-content: center;
+}
+
+@media (max-width: 950px) {
+  .step {
+    column-gap: 5%;
+  }
+}
+
+/* ─── Card columns (left / right) ───────────────────────────────────────── */
+.cardLeft,
+.cardRight {
+  width: 40%;
+  min-width: 40%;
+  max-width: 40%;
+}
+
+@media (max-width: 950px) {
+  .cardLeft,
+  .cardRight {
+    width: 80%;
+    min-width: 80%;
+    max-width: 80%;
+  }
+}
+
+.cardEmpty {
+  width: 40%;
+  min-width: 40%;
+  max-width: 40%;
+}
+
+.cardEmptyLeft {
+  order: 0;
+}
+
+.cardEmptyRight {
+  order: 2;
+}
+
+@media (max-width: 950px) {
+  .cardEmpty {
+    display: none;
+  }
+}
+
+.cardLeft {
+  order: 0;
+}
+
+.cardRight {
+  order: 2;
+}
+
+@media (max-width: 950px) {
+  .cardLeft,
+  .cardRight {
+    order: 1;
+  }
+}
+
+/* ─── Center column (icon + progress line) ──────────────────────────────── */
+.centerCol {
+  flex-direction: column;
+  width: 10%;
+  min-width: 10%;
+  max-width: 10%;
+  align-items: center;
+  position: relative;
+  display: flex;
+  order: 1;
+}
+
+@media (max-width: 950px) {
+  .centerCol {
+    width: 15%;
+    min-width: 15%;
+    max-width: 15%;
+    order: 0;
+  }
+}
+
+.iconBg {
+  width: 65%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background-color: var(--color-accent) !important;
+  border: 1px solid var(--color-border);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  z-index: 10;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  transition: background 0.3s ease;
+}
+
+@media (max-width: 478px) {
+  .iconBg {
+    width: 100%;
+    left: 0;
+    transform: none;
+  }
+}
+
+.timelineIcon {
+  font-size: 1.5vw;
+  color: #fff;
+  fill: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.3s ease;
+}
+
+.timelineIcon svg {
+  width: 1em;
+  height: 1em;
+}
+
+@media (max-width: 478px) {
+  .timelineIcon {
+    font-size: 5vw;
+  }
+}
+
+.lineTrack {
+  width: 0.0625rem;
+  min-width: 0.0625rem;
+  max-width: 0.0625rem;
+  height: 100%;
+  min-height: 100%;
+  max-height: 100%;
+  background-color: var(--color-border);
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+}
+
+.progressBar {
+  width: 0.0625rem;
+  min-width: 0.0625rem;
+  max-width: 0.0625rem;
+  background-color: rgba(10, 21, 48, 0.5);
+  height: 0;
+  border-radius: 6.25rem;
+  position: relative;
+  z-index: 1;
+}
+
+/* ─── Card content wrapper ───────────────────────────────────────────────── */
+.cardInnerLeft {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  margin-top: 1.875rem;
+  margin-bottom: 6.25rem;
+}
+
+@media (max-width: 950px) {
+  .cardInnerLeft {
+    align-items: flex-start;
+  }
+}
+
+.cardInnerRight {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-top: 1.875rem;
+  margin-bottom: 6.25rem;
+}
+
+.cardInnerLaunch {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  margin-top: 1.875rem;
+  margin-bottom: 6.25rem;
+}
+
+@media (max-width: 950px) {
+  .cardInnerLaunch {
+    align-items: flex-start;
+  }
+}
+
+/* ─── Step card box ──────────────────────────────────────────────────────── */
+.cardBox {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  padding: 2.5rem;
+  border: 0;
+  border-radius: 4px;
+  background-color: var(--color-bg-elevated);
+  box-shadow: none;
+  width: 100%;
+  max-width: 25rem;
+}
+
+@media (max-width: 478px) {
+  .cardBox {
+    width: 100%;
+    max-width: 100%;
+    padding: 1.875rem;
+  }
+}
+
+.stepMeta {
+  display: flex;
+  flex-direction: column;
+  row-gap: 0.625rem;
+}
+
+.eyebrowBox {
+  display: inline-block;
+  padding: 0.625rem;
+  background-color: var(--color-border);
+  font-size: 1.0625rem;
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--color-text);
+  width: fit-content;
+}
+
+.stepTitle {
+  font-size: 2.5rem;
+  font-weight: 300;
+  line-height: 1.2;
+  color: var(--color-text);
+  margin: 0;
+}
+
+@media (max-width: 478px) {
+  .stepTitle {
+    font-size: 1.5rem;
+    line-height: 1.3;
+  }
+}
+
+.stepSubtitle {
+  font-size: 1.0625rem;
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--color-text-muted);
+  /* No negative margin here — it was fighting .stepMeta's own row-gap
+     (0.625rem), netting an effectively negative gap that pulled this
+     right up against the title above it, reported as cramped spacing.
+     The row-gap alone gives consistent, correct spacing on its own. */
+  margin: 0;
+}
+
+.stepText {
+  font-size: 1rem;
+  line-height: 1.4;
+  color: var(--color-text);
+  margin: 0;
+}
+
+/* ─── Final card (completion) ───────────────────────────────────────────── */
+.finalStep {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  column-gap: 0;
+  row-gap: 0;
+}
+
+@media (max-width: 950px) {
+  .finalStep {
+    column-gap: 5%;
+    align-items: flex-start;
+  }
+}
+
+.finalCardOuter {
+  width: 40%;
+  max-width: 40%;
+  min-width: 40%;
+  margin-bottom: 6.25rem;
+}
+
+@media (max-width: 950px) {
+  .finalCardOuter {
+    width: 80%;
+    max-width: 80%;
+    min-width: 80%;
+  }
+}
+
+@media (max-width: 478px) {
+  .finalCardOuter {
+    width: 100%;
+    max-width: 100%;
+    min-width: 100%;
+    order: 2;
+  }
+}
+
+.finalCard {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  padding: 2.5rem;
+  border: 0;
+  border-radius: 4px;
+  background-color: var(--color-bg-elevated);
+  box-shadow: none;
+}
+
+.finalHeading {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  align-items: center;
+}
+
+@media (max-width: 478px) {
+  .finalCard {
+    padding: 1.875rem;
+  }
+}
+
+.finalTitle {
+  font-size: 2.5rem;
+  font-weight: 300;
+  line-height: 1.2;
+  color: var(--color-text);
+  margin: 0;
+  text-align: center;
+}
+
+@media (max-width: 478px) {
+  .finalTitle {
+    font-size: 1.5rem;
+    line-height: 1.3;
+    text-align: left;
+  }
+}
+
+.finalSubtitle {
+  font-size: 0.875rem;
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--color-text-muted);
+}
+
+.finalText {
+  font-size: 1rem;
+  line-height: 1.4;
+  color: var(--color-text);
+  margin: 0;
+  text-align: center;
+  max-width: 31.25rem;
+}
+
+@media (max-width: 478px) {
+  .finalText {
+    text-align: left;
+  }
+}

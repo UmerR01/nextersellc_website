@@ -1,0 +1,417 @@
+/* Everything is sized in cqw so the dashboard scales like a screenshot
+   at any container width. Colours are SalesHub's own UI colours. */
+.root {
+  container-type: inline-size;
+  width: 100%;
+  height: 100%;
+  border-radius: 14px;
+  background: #f5f7fb;
+  overflow: hidden;
+  box-shadow: 0 1rem 2.5rem rgba(10, 21, 48, 0.12);
+  font-family: var(--font-inter-tight), "Inter Tight", sans-serif;
+  color: #0f172a;
+}
+
+.screen {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 2.2cqw;
+  padding: 2.4cqw;
+}
+
+/* ── Row 1 ── */
+.topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2cqw;
+}
+
+.search {
+  display: flex;
+  align-items: center;
+  gap: 1.2cqw;
+  flex: 0 1 46%;
+  min-width: 0;
+  padding: 1.3cqw 1.8cqw;
+  border: 1px solid #e5e7eb;
+  border-radius: 999px;
+  background: #fff;
+  animation: shSearchGlow 2.4s ease-in-out infinite;
+}
+.searchIcon {
+  display: inline-flex;
+  width: 2.1cqw;
+  height: 2.1cqw;
+  color: #94a3b8;
+}
+.searchIcon svg {
+  width: 100%;
+  height: 100%;
+}
+.searchText {
+  overflow: hidden;
+  color: #94a3b8;
+  font-size: 1.7cqw;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  animation: shBlinkText 2.4s ease-in-out infinite;
+}
+.caret {
+  flex: 0 0 auto;
+  width: 1px;
+  height: 2cqw;
+  margin-left: -0.6cqw;
+  background: #3b82f6;
+  animation: shCaret 1s steps(1) infinite;
+}
+
+.userArea {
+  display: flex;
+  align-items: center;
+  gap: 1.3cqw;
+}
+.bell {
+  position: relative;
+  display: inline-flex;
+  width: 2.6cqw;
+  height: 2.6cqw;
+  transform-origin: 50% 10%;
+  animation: shRing 4s ease-in-out infinite;
+}
+.bell svg {
+  width: 100%;
+  height: 100%;
+}
+.badge {
+  position: absolute;
+  top: -1cqw;
+  right: -1cqw;
+  display: grid;
+  place-items: center;
+  min-width: 1.6cqw;
+  height: 1.6cqw;
+  border-radius: 999px;
+  background: #dc2626;
+  color: #fff;
+  font-size: 1.05cqw;
+  font-weight: 700;
+}
+.avatar {
+  display: grid;
+  place-items: center;
+  width: 3.4cqw;
+  height: 3.4cqw;
+  border-radius: 50%;
+  background: #35c7d8;
+  font-size: 1.6cqw;
+}
+.userText {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.25;
+}
+.userName {
+  font-size: 1.6cqw;
+}
+.userMail {
+  color: #6b7280;
+  font-size: 1.4cqw;
+}
+
+/* ── Row 2 ── */
+.kpis {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  border: 1px solid #e8edf4;
+  border-radius: 2.2cqw;
+  background: linear-gradient(180deg, #fff, #f8fafc);
+  box-shadow: 0 0.6cqw 1.6cqw rgba(15, 23, 42, 0.05);
+}
+.kpi {
+  display: flex;
+  flex-direction: column;
+  gap: 0.9cqw;
+  padding: 2.4cqw 2.4cqw;
+  animation: shRise 0.6s ease both;
+}
+.kpi:nth-child(2) { animation-delay: 0.08s; }
+.kpi:nth-child(3) { animation-delay: 0.16s; }
+.kpi:nth-child(4) { animation-delay: 0.24s; }
+.kpi + .kpi {
+  border-left: 1px solid #eef2f7;
+}
+.kpiHead {
+  display: flex;
+  align-items: center;
+  gap: 1.1cqw;
+}
+.kpiIcon {
+  width: 2.4cqw;
+  height: 2.4cqw;
+}
+.kpiLabel {
+  color: #64748b;
+  font-size: 1.35cqw;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+.kpiBody {
+  display: flex;
+  align-items: center;
+  gap: 1.2cqw;
+  padding-left: 3.5cqw;
+}
+.kpiValue {
+  font-size: 3cqw;
+  font-weight: 700;
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+}
+.delta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3cqw;
+  padding: 0.35cqw 1cqw;
+  border-radius: 999px;
+  background: #dcfce7;
+  color: #16a34a;
+  font-size: 1.25cqw;
+  font-weight: 600;
+}
+
+/* ── Row 3 ── */
+.lower {
+  flex: 1;
+  min-height: 0;
+  display: grid;
+  grid-template-columns: 2.15fr 1fr;
+  gap: 2.2cqw;
+}
+
+.chartCard {
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  padding: 2.2cqw 2.4cqw 1.8cqw;
+  border: 1px solid #e8edf4;
+  border-radius: 2.2cqw;
+  background: #fff;
+}
+.cardTitle {
+  font-size: 1.9cqw;
+  font-weight: 600;
+}
+.cardSub {
+  margin-top: 0.4cqw;
+  color: #64748b;
+  font-size: 1.35cqw;
+}
+
+.chart {
+  flex: 1;
+  display: flex;
+  min-height: 0;
+  gap: 1.2cqw;
+  margin-top: 2cqw;
+}
+.yAxis {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-sizing: border-box;
+  padding-bottom: 2.6cqw;
+  color: #64748b;
+  font-size: 1.2cqw;
+  text-align: right;
+}
+.plot {
+  position: relative;
+  flex: 1;
+  display: flex;
+}
+.grid {
+  position: absolute;
+  inset: 0 0 2.6cqw 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.grid span {
+  height: 1px;
+  background: #eef2f7;
+}
+.bars {
+  position: relative;
+  flex: 1;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 3cqw;
+  padding: 0 1.2cqw;
+}
+.barCol {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 0;
+}
+.barTrack {
+  position: relative;
+  display: flex;
+  flex: 1;
+  align-items: flex-end;
+  justify-content: center;
+  width: 100%;
+}
+.bar {
+  display: block;
+  width: 62%;
+  border-radius: 1cqw 1cqw 0 0;
+  background: linear-gradient(180deg, #1e3a8a 0%, #4f74d9 55%, #7c93e0 100%);
+  transform-origin: bottom;
+  animation: shGrow 1.1s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+.barValue {
+  position: absolute;
+  left: 0;
+  right: 0;
+  padding-bottom: 0.5cqw;
+  color: #334155;
+  font-size: 1.3cqw;
+  font-weight: 600;
+  text-align: center;
+  font-variant-numeric: tabular-nums;
+  animation: shFloat 0.6s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+.barLabel {
+  margin-top: 1.1cqw;
+  color: #334155;
+  font-size: 1.25cqw;
+  white-space: nowrap;
+}
+
+/* Promo card with flowing waves */
+.promo {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow: hidden;
+  padding: 2.6cqw;
+  border-radius: 2.2cqw;
+  background: linear-gradient(160deg, #0a0a7a 0%, #0f1fc4 55%, #1447e6 100%);
+  color: #fff;
+}
+.waves {
+  position: absolute;
+  inset: auto 0 0 0;
+  height: 62%;
+  pointer-events: none;
+}
+.wave {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 300%;
+  height: 100%;
+  animation: shWave 9s linear infinite;
+}
+.waveB {
+  height: 82%;
+  animation-duration: 6.5s;
+  animation-direction: reverse;
+}
+.waveC {
+  height: 56%;
+  animation-duration: 5s;
+}
+.promoContent {
+  position: relative;
+  z-index: 1;
+}
+.newPill {
+  display: inline-block;
+  padding: 0.7cqw 1.5cqw;
+  border-radius: 999px;
+  background: #fff;
+  color: #1e3a8a;
+  font-size: 1.3cqw;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}
+.promoTitle {
+  margin-top: 1.6cqw;
+  font-size: 2.6cqw;
+  font-weight: 700;
+  line-height: 1.15;
+}
+.promoText {
+  margin-top: 1.4cqw;
+  font-size: 1.5cqw;
+  line-height: 1.5;
+  opacity: 0.95;
+}
+.promoBtn {
+  position: relative;
+  z-index: 1;
+  align-self: center;
+  margin-top: 2cqw;
+  padding: 1.5cqw 5cqw;
+  border-radius: 1.6cqw;
+  background: #fff;
+  color: #0f172a;
+  font-size: 1.9cqw;
+  font-weight: 600;
+  box-shadow: 0 0.8cqw 2cqw rgba(0, 0, 40, 0.25);
+}
+
+@keyframes shCaret {
+  0%, 49% { opacity: 1; }
+  50%, 100% { opacity: 0; }
+}
+@keyframes shBlinkText {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.35; }
+}
+@keyframes shSearchGlow {
+  0%, 100% { border-color: #e5e7eb; box-shadow: 0 0 0 0 transparent; }
+  50% { border-color: #93c5fd; box-shadow: 0 0 0 0.5cqw rgba(59, 130, 246, 0.12); }
+}
+@keyframes shRing {
+  0%, 88%, 100% { transform: rotate(0); }
+  90% { transform: rotate(14deg); }
+  92% { transform: rotate(-12deg); }
+  94% { transform: rotate(8deg); }
+  96% { transform: rotate(-4deg); }
+}
+@keyframes shRise {
+  from { opacity: 0; transform: translateY(1cqw); }
+  to { opacity: 1; transform: none; }
+}
+@keyframes shGrow {
+  from { transform: scaleY(0); }
+  to { transform: scaleY(1); }
+}
+@keyframes shFloat {
+  from { opacity: 0; transform: translateY(2cqw); }
+  to { opacity: 1; transform: none; }
+}
+@keyframes shWave {
+  from { transform: translateX(0); }
+  to { transform: translateX(-33.3333%); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .search,
+  .searchText,
+  .caret,
+  .bell,
+  .kpi,
+  .bar,
+  .barValue,
+  .wave {
+    animation: none;
+  }
+}

@@ -1,0 +1,253 @@
+/* Sized for ScaledFrame's fixed 720x554 design box. */
+.root {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  border-radius: 12px;
+  background: #0a0a0a;
+  color: #fafafa;
+  font-family: var(--font-inter-tight), "Inter Tight", sans-serif;
+  box-shadow: 0 1.5rem 3rem rgba(10, 21, 48, 0.25);
+}
+
+/* Pink glow + tree silhouette standing in for the photo background */
+.glow {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 45% 40% at 78% 22%, rgba(214, 120, 170, 0.42), transparent 70%),
+    radial-gradient(ellipse 35% 30% at 92% 12%, rgba(240, 150, 190, 0.3), transparent 70%),
+    radial-gradient(ellipse 60% 25% at 50% 105%, rgba(200, 90, 140, 0.28), transparent 70%);
+}
+.tree {
+  position: absolute;
+  right: 10%;
+  top: 0;
+  width: 46%;
+  height: 100%;
+  opacity: 0.55;
+  background:
+    radial-gradient(circle at 60% 18%, rgba(255, 170, 205, 0.55) 0 8%, transparent 9%),
+    radial-gradient(circle at 35% 26%, rgba(255, 150, 195, 0.4) 0 9%, transparent 10%),
+    radial-gradient(circle at 75% 32%, rgba(255, 180, 210, 0.35) 0 7%, transparent 8%),
+    linear-gradient(to bottom, transparent 30%, rgba(150, 60, 90, 0.5) 45%, transparent 75%);
+  filter: blur(6px);
+}
+.particle {
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(255, 190, 225, 0.85);
+  box-shadow: 0 0 10px rgba(255, 150, 210, 0.9);
+  animation: kdTwinkle 3.2s ease-in-out infinite;
+}
+
+.screen {
+  position: relative;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding: 26px 26px 22px;
+}
+.rise {
+  opacity: 0;
+  animation: kdRise 0.55s ease both;
+}
+
+.eyebrow {
+  font-family: ui-monospace, "Geist Mono", Menlo, Consolas, monospace;
+  font-size: 7.5px;
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: #e6a3d0;
+}
+.title {
+  margin: 4px 0 6px;
+  font-size: 26px;
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  color: #fafafa;
+}
+.lede {
+  margin: 0;
+  max-width: 62%;
+  font-size: 9px;
+  line-height: 1.45;
+  color: #f0f0f0;
+}
+
+.cards {
+  flex: none;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+}
+.card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 7px;
+  min-height: 112px;
+  padding: 14px 16px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 13px;
+  background: rgba(8, 6, 8, 0.6);
+  backdrop-filter: blur(6px);
+}
+.mono {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-family: ui-monospace, "Geist Mono", Menlo, Consolas, monospace;
+  font-size: 7.5px;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: #fafafa;
+}
+.mono svg {
+  width: 9px;
+  height: 9px;
+  color: #eaa6d6;
+}
+.big {
+  font-size: 30px;
+  font-weight: 400;
+  line-height: 1;
+}
+.cardText {
+  font-size: 8px;
+  font-weight: 600;
+  line-height: 1.45;
+  color: #fafafa;
+}
+.link {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  margin-top: auto;
+  font-size: 8.5px;
+  font-weight: 500;
+  color: #eaa6d6;
+}
+.link svg {
+  width: 9px;
+  height: 9px;
+}
+.btn {
+  margin-top: auto;
+  padding: 6px 13px;
+  border-radius: 999px;
+  background: #f5f5f5;
+  color: #0a0a0a;
+  font-size: 8px;
+  font-weight: 500;
+}
+
+.start {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  padding: 18px 20px 16px;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 14px;
+  background: rgba(8, 6, 8, 0.42);
+}
+.startTitle {
+  margin: 6px 0 4px;
+  font-size: 21px;
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  color: #fafafa;
+}
+.startText {
+  margin: 0;
+  max-width: 78%;
+  font-size: 8.5px;
+  line-height: 1.45;
+  color: #e5e5e5;
+}
+.steps {
+  flex: 1;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 11px;
+  align-items: center;
+  margin-top: 12px;
+}
+.step {
+  position: relative;
+  display: flex;
+  gap: 9px;
+  padding: 12px 12px 14px;
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  border-radius: 12px;
+  background: rgba(70, 40, 60, 0.35);
+  opacity: 0;
+  animation: kdRise 0.5s ease both;
+}
+.stepIcon {
+  display: grid;
+  place-items: center;
+  width: 25px;
+  height: 25px;
+  flex-shrink: 0;
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  border-radius: 7px;
+  background: rgba(255, 255, 255, 0.1);
+  color: #eaa6d6;
+}
+.stepIcon svg {
+  width: 12px;
+  height: 12px;
+}
+.stepBody {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+.stepBody em {
+  font-style: normal;
+  font-family: ui-monospace, "Geist Mono", Menlo, Consolas, monospace;
+  font-size: 5.8px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: #bdbdbd;
+}
+.stepBody b {
+  font-size: 9px;
+  font-weight: 600;
+  color: #fafafa;
+}
+.stepBody span {
+  font-size: 6.6px;
+  line-height: 1.45;
+  color: #d4d4d4;
+}
+.stepNum {
+  position: absolute;
+  left: 12px;
+  bottom: 7px;
+  font-style: normal;
+  font-family: ui-monospace, "Geist Mono", Menlo, Consolas, monospace;
+  font-size: 5.8px;
+  color: #a1a1a1;
+}
+
+@keyframes kdRise {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: none; }
+}
+@keyframes kdTwinkle {
+  0%, 100% { opacity: 0.25; transform: translateY(0); }
+  50% { opacity: 1; transform: translateY(-4px); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .rise, .step { animation: none; opacity: 1; }
+  .particle { animation: none; }
+}

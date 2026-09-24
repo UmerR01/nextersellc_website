@@ -1,0 +1,46 @@
+.cta {
+  display: inline-flex; align-items: center; gap: 6px; height: 32px; padding: 0 14px; border-radius: 6px;
+  background: #0061a6; color: #fff; font-size: 12px; font-weight: 700; white-space: nowrap;
+}
+.cta svg { width: 14px; height: 14px; }
+
+.toolbar { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; font-size: 15px; color: #101828; }
+.toolbar b { font-weight: 600; font-variant-numeric: tabular-nums; }
+.toggle {
+  display: inline-flex; align-items: center; justify-content: center; margin-left: 4px; width: 30px; height: 26px;
+  border: 1px solid #e5e9f0; border-radius: 8px; background: #f7fbff; color: #0061a6;
+}
+.toggle svg { width: 14px; height: 14px; }
+.box { display: inline-block; width: 12px; height: 12px; flex-shrink: 0; border: 1.5px solid #98a2b3; border-radius: 3px; background: #fff; }
+
+.table { flex: 1; display: flex; flex-direction: column; min-height: 0; }
+.tr {
+  display: grid; grid-template-columns: 1.55fr 0.7fr 1.6fr 1.5fr 1.35fr 1fr 0.95fr; align-items: center; gap: 8px; padding: 0 4px;
+}
+.th { flex: none; height: 26px; font-size: 9.5px; font-weight: 600; color: #667085; border-bottom: 1px solid #eef1f5; }
+.row { flex: 1; border-bottom: 1px solid #eef1f5; font-size: 10.5px; color: #101828; opacity: 0; animation: jaRise 0.4s ease both; }
+.name { display: flex; align-items: center; gap: 8px; font-weight: 600; white-space: nowrap; overflow: hidden; }
+.profiles { display: inline-flex; align-items: center; gap: 6px; color: #667085; }
+.profiles svg { width: 13px; height: 13px; }
+.profiles em {
+  display: inline-grid; place-items: center; width: 13px; height: 13px; border-radius: 2px; background: #0a66c2;
+  color: #fff; font-style: normal; font-size: 7.5px; font-weight: 800;
+}
+.muted { color: #667085; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.co { font-weight: 500; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+
+.stale, .synced {
+  display: inline-flex; align-items: center; justify-self: start; gap: 5px; padding: 3px 9px; border-radius: 999px;
+  font-size: 9.5px; font-weight: 700; white-space: nowrap; transition: background-color 0.3s ease, color 0.3s ease;
+}
+.stale { background: #f1ecff; color: #7c5cd6; }
+.stale i { width: 5px; height: 5px; border-radius: 50%; background: #9b7de6; }
+.synced { background: #dcfce7; color: #047857; animation: jaPop 0.3s ease; }
+.synced svg { width: 12px; height: 12px; }
+
+@keyframes jaRise { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+@keyframes jaPop { from { transform: scale(0.85); } to { transform: none; } }
+
+@media (prefers-reduced-motion: reduce) {
+  .row, .synced { animation: none; opacity: 1; }
+}

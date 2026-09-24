@@ -1,0 +1,117 @@
+.cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  height: 34px;
+  padding: 0 14px;
+  border-radius: 4px;
+  background: #0b3ea8;
+  color: #fff;
+  font-size: 13px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+.cta svg {
+  width: 14px;
+  height: 14px;
+}
+
+.columns {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.panel {
+  padding: 16px 18px;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 8px;
+  background: #fafbfd;
+}
+
+.panelHead {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 14px;
+  font-size: 13px;
+  font-weight: 700;
+  color: #0b3ea8;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.panelIcon {
+  width: 15px;
+  height: 15px;
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 0;
+  border-top: 1px solid rgba(0, 0, 0, 0.06);
+  font-size: 13px;
+  color: #0f172a;
+}
+.row:first-of-type {
+  border-top: 0;
+}
+
+.checkEmpty,
+.check {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  border: 1.5px solid rgba(0, 0, 0, 0.15);
+}
+
+.check {
+  border-color: transparent;
+  color: #16a34a;
+  animation: shCheckPop 0.3s ease;
+}
+.check svg {
+  width: 18px;
+  height: 18px;
+}
+
+.banner {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: auto;
+  padding: 14px 16px;
+  border-radius: 8px;
+  background: rgba(0, 0, 0, 0.04);
+  color: rgba(0, 0, 0, 0.35);
+  font-size: 13px;
+  font-weight: 600;
+  transition: background-color 0.4s ease, color 0.4s ease;
+}
+.banner svg {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+}
+
+.bannerOn {
+  background: #dcfce7;
+  color: #047857;
+}
+
+@keyframes shCheckPop {
+  from { transform: scale(0.5); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .check {
+    animation: none;
+  }
+}

@@ -1,9 +1,14 @@
-/* Let's start � Sumato-style contact block, adapted to Nexterse accents. */
+/* Let's start � Sumato-style contact block, adapted to Nexterse accents.
+   Every "on the dark wrapper" text/line color below uses
+   --color-on-accent-dark (falling back to #fff, its value everywhere
+   except the product pages that set it explicitly), so a product whose
+   --color-accent-dark is light (e.g. white) can still read by overriding
+   this one variable instead of every individual color rule. */
 .section {
   position: relative;
   z-index: 4;
   background: #fff;
-  color: #fff;
+  color: var(--color-on-accent-dark, #fff);
   padding: clamp(4.5rem, 6vw, 6rem) 0;
 }
 
@@ -18,6 +23,17 @@
   max-width: 90rem;
   margin-right: auto;
   margin-left: auto;
+}
+
+/* No real overrides needed — the Partners page uses this section the
+   same way most standalone pages already do without a variant at all.
+   Rule exists purely so styles.partners resolves to a real class instead
+   of undefined (CSS Modules only export keys that exist in this file);
+   box-sizing is already the sitewide default, so this changes nothing
+   visually — a genuinely empty rule risks being stripped by some CSS
+   minifiers before the class-name export map is generated. */
+.partners {
+  box-sizing: border-box;
 }
 
 .library {
@@ -35,7 +51,7 @@
 }
 
 .library .title {
-  color: #fff;
+  color: var(--color-on-accent-dark, #fff);
 }
 
 .library .stepsEyebrow {
@@ -76,6 +92,12 @@
   margin: 0;
 }
 
+/* Product variant only: "Let's set you up" stays white instead of the
+   page's (per-product) accent colour. */
+.titleWhite {
+  color: var(--color-on-accent-dark, #fff);
+}
+
 .steps {
   display: flex;
   flex-direction: column;
@@ -86,7 +108,7 @@
 }
 
 .stepsEyebrow {
-  color: #fff;
+  color: var(--color-on-accent-dark, #fff);
   font-size: 12px;
   font-weight: 700;
   letter-spacing: 0.08em;
@@ -97,7 +119,7 @@
 }
 
 .step {
-  color: #fff;
+  color: var(--color-on-accent-dark, #fff);
   font-family: var(--font-inter-tight), sans-serif;
   font-size: 1.5rem;
   font-weight: 400;
@@ -109,13 +131,21 @@
   padding-bottom: 1.55rem;
 }
 
+/* Circle and line each used a separately hand-computed `left` (-25px /
+   -20px) meant to land both at the same center — off by enough to read
+   as the line not passing through the circle's middle. Both now share
+   one anchor (`left: -19.5px`) and self-center on it via
+   translateX(-50%), which guarantees the same center regardless of each
+   element's own width instead of relying on manually keeping two
+   separate offsets in sync. */
 .step::before {
-  border: 2px solid #fff;
+  border: 2px solid var(--color-on-accent-dark, #fff);
   border-radius: 50%;
   box-sizing: border-box;
   content: "";
   height: 11px;
-  left: -25px;
+  left: -19.5px;
+  transform: translateX(-50%);
   position: absolute;
   top: 0.76rem;
   width: 11px;
@@ -126,10 +156,11 @@
 }
 
 .step::after {
-  background: #fff;
+  background: var(--color-on-accent-dark, #fff);
   bottom: -0.7rem;
   content: "";
-  left: -20px;
+  left: -19.5px;
+  transform: translateX(-50%);
   position: absolute;
   top: 1.43rem;
   width: 2px;
@@ -146,14 +177,15 @@
 .timelineArrow {
   background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' fill='none'%3E%3Cpath stroke='%23fff' stroke-linecap='square' stroke-width='2' d='M19.5 9 12 16.5 4.5 9'/%3E%3C/svg%3E");
   height: 24px;
-  left: -31px;
+  left: -19.5px;
+  transform: translateX(-50%);
   position: absolute;
   top: -10px;
   width: 24px;
 }
 
 .description {
-  color: #fff;
+  color: var(--color-on-accent-dark, #fff);
   font-size: 1.3125rem;
   font-weight: 400;
   line-height: 1.6;
@@ -206,7 +238,7 @@
 }
 
 .label {
-  color: #fff;
+  color: var(--color-on-accent-dark, #fff);
   flex: 0 0 113px;
   font-size: 1rem;
   font-weight: 700;
@@ -218,8 +250,8 @@
 .field textarea {
   background: transparent;
   border: none;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.86);
-  color: #fff;
+  border-bottom: 1px solid color-mix(in srgb, var(--color-on-accent-dark, #fff) 86%, transparent);
+  color: var(--color-on-accent-dark, #fff);
   flex: 1;
   font: inherit;
   min-width: 0;
@@ -261,7 +293,7 @@
 
 .attach {
   align-items: center;
-  color: #fff;
+  color: var(--color-on-accent-dark, #fff);
   cursor: pointer;
   display: inline-flex;
   font-weight: 700;
@@ -272,7 +304,7 @@
 }
 
 .attach::after {
-  background: #fff;
+  background: var(--color-on-accent-dark, #fff);
   bottom: 0;
   content: "";
   height: 1px;
@@ -338,7 +370,7 @@
 
 .success {
   align-items: center;
-  color: #fff;
+  color: var(--color-on-accent-dark, #fff);
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -348,12 +380,12 @@
 }
 
 .successIcon {
-  color: #fff;
+  color: var(--color-on-accent-dark, #fff);
   margin-bottom: 2rem;
 }
 
 .successTitle {
-  color: #fff;
+  color: var(--color-on-accent-dark, #fff);
   font-family: var(--font-inter-tight), sans-serif;
   font-size: clamp(3rem, 5vw, 3.6rem);
   font-weight: 600;
@@ -362,7 +394,7 @@
 }
 
 .successText {
-  color: #fff;
+  color: var(--color-on-accent-dark, #fff);
   font-size: 1.4rem;
   font-weight: 700;
   line-height: 1.35;
@@ -383,7 +415,7 @@
 
 .manager {
   align-items: center;
-  border-top: 1px solid rgba(255, 255, 255, 0.14);
+  border-top: 1px solid color-mix(in srgb, var(--color-on-accent-dark, #fff) 14%, transparent);
   display: flex;
   gap: 1.5rem;
   justify-content: flex-end;
@@ -407,7 +439,7 @@
 }
 
 .managerName {
-  color: #fff;
+  color: var(--color-on-accent-dark, #fff);
   font-size: 1rem;
   font-weight: 700;
   line-height: 1.35;

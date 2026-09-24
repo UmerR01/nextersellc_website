@@ -69,8 +69,22 @@ const LIBRARY_STEPS = [
   "Start the project",
 ];
 
+const PRODUCT_STEPS = [
+  "Tell us what you need",
+  "We match you with the right product",
+  "See it working on your own data",
+  "Get set up and go live",
+];
+
+const PARTNER_STEPS = [
+  "Tell us about your business",
+  "We review fit & alignment",
+  "Discuss partnership terms",
+  "Onboard & go live together",
+];
+
 interface LetsStartProps {
-  variant?: "testimonials" | "whitepapers" | "library" | "process";
+  variant?: "testimonials" | "whitepapers" | "library" | "process" | "partners" | "products" | "product";
 }
 
 export default function LetsStart({ variant }: LetsStartProps = {}) {
@@ -85,7 +99,7 @@ export default function LetsStart({ variant }: LetsStartProps = {}) {
 
   return (
     <section
-      className={`lets-start ${styles.section} ${variant === "library" ? styles.library : ""} ${variant === "process" ? styles.process : ""} ${variant === "whitepapers" ? styles.whitepapers : ""}`}
+      className={`lets-start ${styles.section} ${variant === "library" ? styles.library : ""} ${variant === "process" ? styles.process : ""} ${variant === "whitepapers" ? styles.whitepapers : ""} ${variant === "partners" ? styles.partners : ""}`}
       id="lets-start"
     >
       <div className={`lets-start-wrapper ${styles.wrapper}`}>
@@ -124,6 +138,50 @@ export default function LetsStart({ variant }: LetsStartProps = {}) {
             ) : variant === "whitepapers" ? (
               <>
                 <p className={`lets-start-title ${styles.title}`}>Let's start</p>
+                <div className={`lets-start-description ${styles.description}`}>
+                  If you have any questions, email us{" "}
+                  <a href="mailto:info@nexterse.com">info@nexterse.com</a>
+                </div>
+              </>
+            ) : variant === "products" || variant === "product" ? (
+              <>
+                <p className={`lets-start-title ${styles.title} ${variant === "product" ? styles.titleWhite : ""}`}>
+                  {variant === "product" ? "Let’s set you up" : "Share your query"}
+                </p>
+                <div className={`lets-start-steps ${styles.steps}`}>
+                  <span className={`lets-start-eyebrow ${styles.stepsEyebrow}`}>What&apos;s next</span>
+                  {PRODUCT_STEPS.map((s, i) => (
+                    <div key={s} className={`lets-start-step ${styles.step}`}>
+                      {i === PRODUCT_STEPS.length - 1 && (
+                        <span className={`lets-start-timeline-arrow ${styles.timelineArrow}`} aria-hidden />
+                      )}
+                      <span className={`lets-start-step-text ${styles.stepText}`}>
+                        {i + 1}. {s}
+                      </span>
+                    </div>
+                  ))}
+                </div>
+                <div className={`lets-start-description ${styles.description}`}>
+                  If you have any questions, email us{" "}
+                  <a href="mailto:info@nexterse.com">info@nexterse.com</a>
+                </div>
+              </>
+            ) : variant === "partners" ? (
+              <>
+                <p className={`lets-start-title ${styles.title}`}>Let&rsquo;s partner up</p>
+                <div className={`lets-start-steps ${styles.steps}`}>
+                  <span className={`lets-start-eyebrow ${styles.stepsEyebrow}`}>What's next</span>
+                  {PARTNER_STEPS.map((s, i) => (
+                    <div key={s} className={`lets-start-step ${styles.step}`}>
+                      {i === PARTNER_STEPS.length - 1 && (
+                        <span className={`lets-start-timeline-arrow ${styles.timelineArrow}`} aria-hidden />
+                      )}
+                      <span className={`lets-start-step-text ${styles.stepText}`}>
+                        {i + 1}. {s}
+                      </span>
+                    </div>
+                  ))}
+                </div>
                 <div className={`lets-start-description ${styles.description}`}>
                   If you have any questions, email us{" "}
                   <a href="mailto:info@nexterse.com">info@nexterse.com</a>

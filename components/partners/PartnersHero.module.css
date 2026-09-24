@@ -1,0 +1,256 @@
+/* Copied verbatim from components/ai-consulting/AIHero.module.css per
+   explicit instruction to reuse the AI Consulting hero's UI and
+   responsiveness settings as-is — keep the two in sync if that reference
+   ever changes its spacing/breakpoint rules. */
+.section {
+  position: relative;
+  overflow: hidden;
+  padding-top: calc(var(--header-height) + 1.625rem);
+  padding-bottom: 8.5rem;
+  background: #02102c;
+  color: #fff;
+}
+
+.heroBgSvg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.inner {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: min(100%, 96.25rem);
+  margin: 0 auto;
+  padding-inline: clamp(1.25rem, 3vw, 2.5rem);
+}
+
+.breadcrumb {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.25rem;
+  margin-bottom: 4.5rem;
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 0.875rem;
+  line-height: 1.4;
+}
+
+.breadcrumb a,
+.breadcrumb span {
+  display: inline-flex;
+  align-items: center;
+  color: inherit;
+  text-decoration: none;
+}
+
+.breadcrumb a {
+  color: #fff;
+  transition: color 0.2s ease;
+}
+
+.breadcrumb a:hover {
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.breadcrumb span {
+  color: rgba(255, 255, 255, 0.35);
+}
+
+.breadcrumbSep {
+  display: flex;
+  align-items: center;
+}
+
+.title {
+  max-width: 85rem;
+  margin: 0 0 1.75rem;
+  color: #fff;
+  font-size: clamp(3rem, 5vw, 4rem);
+  font-weight: 400;
+  line-height: 1.18;
+  letter-spacing: 0;
+  text-align: left;
+}
+
+.title span {
+  color: var(--color-accent);
+}
+
+.desc {
+  max-width: 58rem;
+  margin: 0 0 2.25rem;
+  color: rgba(255, 255, 255, 0.9);
+  font-size: clamp(1.15rem, 1.8vw, 1.5rem);
+  font-weight: 400;
+  line-height: 1.5;
+  text-align: left;
+}
+
+.points {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(2.5rem, 6vw, 5.25rem);
+  max-width: 82rem;
+  margin: 0 0 3.75rem;
+}
+
+.point {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.9rem;
+  padding: 0;
+  text-align: left;
+}
+
+.checkIcon {
+  flex-shrink: 0;
+  width: 1.2rem;
+  height: 1.2rem;
+  margin-top: 0.45rem;
+  color: var(--color-accent);
+}
+
+.pointText {
+  color: rgba(255, 255, 255, 0.94);
+  font-size: clamp(1.1rem, 1.45vw, 1.38rem);
+  font-weight: 400;
+  line-height: 1.55;
+}
+
+.buttons {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 2.25rem 4.5rem;
+}
+
+.btnPrimary {
+  padding: 0.4rem 1.5rem;
+  text-decoration: none;
+  font-family: var(--font-inter-tight), sans-serif;
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+.serviceRating {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  flex-shrink: 0;
+  color: #fff;
+  font-family: var(--font-inter-tight), sans-serif;
+}
+
+.ratingLabel {
+  margin: 0;
+  color: #fff;
+  font-size: 1rem;
+  line-height: 1.25;
+}
+
+.ratingScore {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+}
+
+.flagStack {
+  display: inline-flex;
+  align-items: center;
+}
+
+.flag {
+  width: 1.75rem;
+  height: 1.75rem;
+  border-radius: 50%;
+  object-fit: cover;
+  background: #fff;
+}
+
+.flag + .flag {
+  margin-left: -0.55rem;
+}
+
+/* "+5" is the last item in the stack, fully visible (not tucked behind
+   another flag). */
+.flagMore {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.75rem;
+  height: 1.75rem;
+  margin-left: -0.55rem;
+  border-radius: 50%;
+  background: var(--color-accent-dark);
+  color: #fff;
+  font-size: 0.6875rem;
+  font-weight: 700;
+}
+
+.ratingStars,
+.ratingScore strong {
+  color: #ffab00;
+  font-size: 1rem;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.ratingStars {
+  letter-spacing: 0.125rem;
+}
+
+@media (max-width: 900px) {
+  .section {
+    min-height: auto;
+    padding-top: calc(var(--header-height) + 3rem);
+    padding-bottom: 4.5rem;
+  }
+
+  .breadcrumb {
+    margin-bottom: 2rem;
+  }
+
+  .title {
+    font-size: clamp(2.25rem, 9vw, 3rem);
+  }
+
+  .points {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    margin-bottom: 2.5rem;
+  }
+
+  .point {
+    max-width: 100%;
+  }
+
+  .buttons {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+}
+
+@media (max-width: 420px) {
+  .buttons {
+    width: 100%;
+  }
+}
+
+/* Short-viewport safety (width-agnostic) — see
+   track/hero-responsiveness-rule.md. Placed last on purpose — see
+   AIHero.module.css's own comment on why. */
+@media (max-height: 450px) {
+  .section {
+    padding-top: calc(var(--header-height) + 0.75rem);
+  }
+  .breadcrumb {
+    margin-bottom: 1rem;
+  }
+}

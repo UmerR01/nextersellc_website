@@ -1,0 +1,183 @@
+.intro {
+  padding-top: calc(var(--header-height) + 1.625rem);
+  padding-bottom: clamp(3rem, 5vw, 4.5rem);
+  font-family: var(--font-inter-tight), "Inter Tight", sans-serif;
+}
+
+@media (max-width: 900px) {
+  .intro {
+    padding-top: calc(var(--header-height) + 3rem);
+  }
+}
+
+.wrapperMain {
+  position: relative;
+  width: 100%;
+  max-width: min(100%, 96.25rem);
+  margin: 0 auto;
+  padding-inline: clamp(1.25rem, 3vw, 2.5rem);
+}
+
+/* Breadcrumb — same as blog/BlogPage */
+.breadcrumbs {
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  white-space: nowrap;
+  margin-bottom: 4.5rem;
+}
+@media (max-width: 900px) {
+  .breadcrumbs {
+    margin-bottom: 2rem;
+  }
+}
+.breadcrumbs a {
+  color: #0b1734;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+.breadcrumbs a::after {
+  content: "";
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  margin: 0 0.25rem;
+  background: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='none'%3E%3Cpath stroke='%230b1734' stroke-linecap='square' d='m6 4 4 4-4 4'/%3E%3C/svg%3E") center / contain no-repeat;
+  vertical-align: middle;
+}
+.breadcrumbs a:hover {
+  color: #3cc4e5;
+}
+.breadcrumbs span {
+  color: #899fb6;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+}
+
+.pageTitle {
+  margin: 0 0 1.25rem;
+  font-size: clamp(3rem, 5vw, 4rem);
+  font-weight: 400;
+  line-height: 1.1;
+  color: #0b1734;
+}
+@media (max-width: 900px) {
+  .pageTitle {
+    font-size: clamp(2.25rem, 9vw, 3rem);
+  }
+}
+.accent {
+  color: #3cc4e5;
+}
+
+.lead {
+  max-width: 40rem;
+  margin: 0 0 2.25rem;
+  color: var(--color-text-muted);
+  font-size: clamp(1.0625rem, 1.4vw, 1.25rem);
+  line-height: 1.55;
+}
+
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+/* ── Product rows (site theme; only the wireframes use product colours) ── */
+.dark {
+  background: #f8fafc;
+  padding: clamp(3.5rem, 7vw, 6rem) 0;
+}
+
+.row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: clamp(2rem, 6vw, 5.5rem);
+}
+.row + .row {
+  margin-top: clamp(3.5rem, 7vw, 6rem);
+}
+.rowReverse .media {
+  order: 2;
+}
+.row > * {
+  min-width: 0;
+}
+.rowReverse .text {
+  order: 1;
+}
+
+.logo {
+  display: block;
+  height: 3rem;
+  width: auto;
+  max-width: 9rem;
+  margin-bottom: 1.25rem;
+  object-fit: contain;
+  object-position: left center;
+}
+
+.name {
+  margin: 0 0 1.25rem;
+  color: #02102c;
+  font-size: clamp(2rem, 4vw, 3.5rem);
+  font-weight: 400;
+  line-height: 1.1;
+}
+
+.desc {
+  max-width: 34rem;
+  margin: 0 0 1.5rem;
+  color: var(--color-text-muted);
+  font-size: clamp(1rem, 1.3vw, 1.1875rem);
+  line-height: 1.65;
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin: 0 0 1.75rem;
+  padding: 0;
+  list-style: none;
+}
+.tags li {
+  padding: 0.4rem 0.9rem;
+  border: 1px solid var(--color-border);
+  border-radius: 999px;
+  background: #fff;
+  color: var(--color-text);
+  font-size: 0.9375rem;
+}
+
+@media (max-width: 900px) {
+  .row {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 1.75rem;
+  }
+  /* stacked: text first, then the wireframe */
+  .text,
+  .rowReverse .text {
+    order: 1;
+  }
+  .media,
+  .rowReverse .media {
+    order: 2;
+  }
+}
+
+/* Screenshot-based products (Fittsy): same frame size as the wireframes */
+.shot {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 720 / 554;
+  border-radius: 20px;
+  overflow: hidden;
+}
+.shotImg {
+  object-fit: cover;
+}

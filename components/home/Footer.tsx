@@ -84,6 +84,7 @@ export default function Footer() {
                 <h3>About Us</h3>
                 <ul>
                   <li><Link href="/about-us">Team</Link></li>
+                  <li><Link href="/partners">Partners</Link></li>
                   <li><Link href="/contact-us">Contact Us</Link></li>
                   <li><Link href="/blog">Insights</Link></li>
                   <li><Link href="/privacy-policy">Privacy &amp; Policy</Link></li>
@@ -295,6 +296,7 @@ export default function Footer() {
                 <h3>About Us</h3>
                 <ul>
                   <li><Link href="/about-us">Team</Link></li>
+                  <li><Link href="/partners">Partners</Link></li>
                   <li><Link href="/contact-us">Contact Us</Link></li>
                   <li><Link href="/blog">Insights</Link></li>
                   <li><Link href="/privacy-policy">Privacy &amp; Policy</Link></li>

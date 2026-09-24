@@ -1,0 +1,164 @@
+.typeRow {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+
+.typeCard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  padding: 14px 10px;
+  border: 1.5px solid rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  text-align: center;
+}
+
+.typeCardActive {
+  border-color: #0b3ea8;
+  background: rgba(11, 62, 168, 0.05);
+}
+
+.typeIcon {
+  width: 18px;
+  height: 18px;
+  color: #0b3ea8;
+}
+
+.typeLabel {
+  font-size: 13px;
+  font-weight: 700;
+  color: #0f172a;
+}
+
+.typeDesc {
+  font-size: 10px;
+  color: rgba(0, 0, 0, 0.45);
+  line-height: 1.3;
+}
+
+.members {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 16px;
+  flex: 1;
+}
+
+.member {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 12px;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 8px;
+  opacity: 0;
+  animation: fqRise 0.4s ease both;
+}
+
+.memberPrincipal {
+  border-color: rgba(11, 62, 168, 0.35);
+  background: rgba(11, 62, 168, 0.04);
+}
+
+.memberAvatar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  background: rgba(11, 62, 168, 0.12);
+  color: #0b3ea8;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.memberInfo {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.memberName {
+  font-size: 13px;
+  font-weight: 600;
+  color: #0f172a;
+}
+
+.memberSub {
+  font-size: 11px;
+  color: rgba(0, 0, 0, 0.45);
+}
+
+.roleBadge,
+.roleBadgePrincipal {
+  flex-shrink: 0;
+  padding: 3px 10px;
+  border-radius: 999px;
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+.roleBadge {
+  background: rgba(0, 0, 0, 0.06);
+  color: rgba(0, 0, 0, 0.55);
+}
+.roleBadgePrincipal {
+  background: #0b3ea8;
+  color: #fff;
+}
+
+.summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 16px;
+  padding: 14px 18px;
+  border-radius: 8px;
+  background: #0b3ea8;
+  color: #fff;
+}
+
+.summary > div {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.summary > div:last-child {
+  align-items: flex-end;
+}
+
+.summaryLabel {
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  opacity: 0.75;
+}
+
+.summaryValue {
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.summaryPremium {
+  font-size: 20px;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+
+@keyframes fqRise {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .member {
+    animation: none;
+    opacity: 1;
+  }
+}

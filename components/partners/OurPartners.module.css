@@ -1,0 +1,298 @@
+/* Full-width section, same bg as home/Industries.module.css's .section */
+.section {
+  position: relative;
+  z-index: 4;
+  background: #f8fafc;
+  padding: clamp(4.5rem, 7vw, 6rem) 0;
+  overflow: hidden;
+}
+
+/* ── Row 1: heading left / description right — same flex-row layout
+   mechanics as home/StatsBlock.module.css's .row (breakpoints included),
+   content follows the reference screenshot instead of StatsBlock's own
+   stat-number content. ── */
+.statsRow {
+  display: flex;
+  align-items: center;
+  gap: 3rem;
+  flex-wrap: wrap;
+  margin-bottom: clamp(3.5rem, 6vw, 5rem);
+}
+
+.statsTitleCol {
+  flex: 1 1 48%;
+  min-width: 280px;
+}
+
+.statsCol {
+  flex: 1 1 42%;
+  min-width: 280px;
+}
+
+.eyebrow {
+  display: block;
+  margin-bottom: 0.75rem;
+  font-size: 0.9375rem;
+  font-weight: 700;
+  color: var(--color-accent);
+}
+
+.statsTitle {
+  margin: 0;
+  font-size: clamp(1.9rem, 3.5vw, 3.5rem);
+  font-weight: 300;
+  line-height: 1.15;
+  color: var(--color-text);
+}
+
+.introText {
+  margin: 0;
+  color: var(--color-text-muted);
+  font-size: clamp(1rem, 1.2vw, 1.125rem);
+  line-height: 1.65;
+  max-width: 32rem;
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+  .statsRow {
+    display: block;
+  }
+  .statsTitleCol,
+  .statsCol {
+    min-width: 0;
+    width: 100%;
+  }
+  .statsTitleCol {
+    margin-bottom: 1.5rem;
+  }
+  .introText {
+    max-width: none;
+  }
+}
+
+@media (max-width: 576px) {
+  .statsRow {
+    gap: 1.5rem;
+  }
+  .statsTitleCol,
+  .statsCol {
+    min-width: 0;
+    flex-basis: 100%;
+  }
+}
+
+/* ── Row 2: partner card stack ──
+   Active card sits front-left; every other card fans out behind it to
+   the right via the --rank custom property each card carries (0 =
+   active, 1, 2… = further back), so clicking a peeking card always finds
+   something to grab even at high ranks. */
+.stack {
+  position: relative;
+  height: 27rem;
+  touch-action: pan-y;
+}
+
+/* Centered via left:50% + a -50% base transform (rather than the old
+   inset:0/width:82% pairing, which resolves to a fixed LEFT edge, not a
+   centered box — that's what was reading as "not centered"). Every other
+   transform on the card (the rank offset, the scale, the enter-animation
+   keyframes below) is layered on top of that same -50% base so the whole
+   stack stays centered as it animates, not just at rest. */
+.card {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 82%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 1.25rem;
+  padding: clamp(1.75rem, 3vw, 2.5rem);
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 1.5rem 3rem rgba(10, 21, 48, 0.1);
+  cursor: pointer;
+  transform: translateX(-50%) translateX(calc(var(--rank, 0) * 3.25rem)) scale(calc(1 - var(--rank, 0) * 0.045));
+  opacity: max(0.35, calc(1 - var(--rank, 0) * 0.18));
+  transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.4s ease, box-shadow 0.3s ease;
+}
+
+.card:not(.cardActive):hover {
+  box-shadow: 0 1.5rem 3rem rgba(10, 21, 48, 0.16);
+}
+
+.cardActive {
+  cursor: default;
+}
+
+.enterFromRight {
+  animation: partnerEnterFromRight 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.enterFromLeft {
+  animation: partnerEnterFromLeft 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@keyframes partnerEnterFromRight {
+  from { opacity: 0.4; transform: translateX(calc(-50% + 4rem)) scale(0.97); }
+  to { opacity: 1; transform: translateX(-50%) scale(1); }
+}
+@keyframes partnerEnterFromLeft {
+  from { opacity: 0.4; transform: translateX(calc(-50% - 4rem)) scale(0.97); }
+  to { opacity: 1; transform: translateX(-50%) scale(1); }
+}
+
+/* Only the active card's content is actually legible — background/stacked
+   cards fade it out entirely so they read as a plain empty card surface
+   instead of a ghosted "reflection" of the active card's text. */
+.cardContent {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  height: 100%;
+  opacity: 0;
+  transition: opacity 0.25s ease;
+}
+
+.cardActive .cardContent {
+  opacity: 1;
+}
+
+/* ── Row 1: real partner logo + big dim step number ── */
+.cardHead {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+/* Generously sized per spec ("logo space should be big"). Width drives
+   the size and height is auto so the mark scales at its own aspect ratio
+   instead of being squeezed into a fixed width/height box (the box was
+   forcing `object-fit: contain` to shrink the visible logo well below
+   the box itself whenever the asset's own aspect ratio didn't match).
+   flex-shrink: 0 stops .cardHead's flex layout from silently compressing
+   it back down to fit cardNumber. */
+.cardLogo {
+  width: clamp(11rem, 16vw, 15rem);
+  height: auto;
+  max-height: 6rem;
+  flex-shrink: 0;
+  object-fit: contain;
+  object-position: left center;
+}
+
+/* Big dim "ghost" numeral, top-right — matches the reference card's
+   large faint step number. */
+.cardNumber {
+  flex-shrink: 0;
+  font-size: clamp(2.25rem, 4vw, 3.25rem);
+  font-weight: 300;
+  line-height: 1;
+  color: var(--color-border);
+}
+
+/* ── Row 2: company name + industry ── */
+.cardSubheads {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+/* Left = company name, so it carries more weight than the industry tag
+   on the right. */
+.cardSubLeft {
+  font-size: 1.0625rem;
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+.cardSubRight {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  text-align: right;
+  color: var(--color-text-muted);
+}
+
+/* Second divider, between the sub-heading row and the main copy —
+   matches the reference card, which frames the sub-heading row with a
+   line on both sides rather than just the one above it. */
+.cardDivider {
+  height: 1px;
+  background: var(--color-border);
+}
+
+.cardCopy {
+  flex: 1;
+  margin: 0;
+  color: var(--color-text);
+  font-size: clamp(1.125rem, 1.5vw, 1.375rem);
+  line-height: 1.6;
+  max-width: 42rem;
+}
+
+/* ── Dots ── */
+.dots {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.625rem;
+  margin-top: 1.75rem;
+}
+
+.dot {
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 50%;
+  border: 0;
+  padding: 0;
+  background: var(--color-border);
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.dot:hover {
+  background: var(--color-accent);
+}
+
+.dotActive {
+  background: var(--color-accent);
+  transform: scale(1.3);
+}
+
+/* ── Responsive ── */
+@media (max-width: 900px) {
+  .stack {
+    height: 24rem;
+  }
+  .card {
+    width: 88%;
+    transform: translateX(-50%) translateX(calc(var(--rank, 0) * 1.75rem)) scale(calc(1 - var(--rank, 0) * 0.045));
+  }
+  /* Keep only the active card and the very next one visible — beyond
+     that the fan gets too cramped to read on a narrow screen. .cardDeep
+     is applied in OurPartners.tsx whenever rank >= 2, rather than
+     matching against the inline --rank value here, since CSS can't
+     reliably select on a numeric custom property's value. */
+  .cardDeep {
+    opacity: 0;
+    pointer-events: none;
+  }
+}
+
+@media (max-width: 560px) {
+  .stack {
+    height: 26rem;
+  }
+  .card {
+    width: 100%;
+    padding: 1.5rem;
+    gap: 1.25rem;
+  }
+  .cardCopy {
+    font-size: 0.9375rem;
+  }
+}
