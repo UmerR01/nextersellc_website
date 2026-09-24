@@ -28,7 +28,11 @@ export const BLOG_POSTS: BlogPost[] = [
   },
   {
     id: "252495",
-    href: "/blog/how-to-modernize-legacy-systems-with-custom-ai",
+    // Deliberately unlinked — the article behind this id is still
+    // SumatoSoft-branded placeholder content and has been pulled from the
+    // live route registry (see components/blog/article/articles/index.ts).
+    // Restore this href once the article is actually rewritten.
+    href: "#",
     image: "/blog/how-to-modernize-legacy-systems-with-custom-ai.jpg",
     imageAlt: "How to modernize legacy systems with custom AI",
     categories: [
