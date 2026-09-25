@@ -1,0 +1,131 @@
+.candidateRow {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 14px;
+  border: 1px solid #e5e9f0;
+  border-radius: 8px;
+  background: #fafbfd;
+}
+
+.avatar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  background: #ebf5ff;
+  color: #0061a6;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.candidateBody {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.candidateName {
+  font-size: 13px;
+  font-weight: 700;
+  color: #101828;
+}
+
+.candidateRole {
+  font-size: 11px;
+  color: rgba(16, 24, 40, 0.5);
+}
+
+.checks {
+  display: flex;
+  flex-direction: column;
+  margin-top: 6px;
+}
+
+.checkRow {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 9px 0;
+  border-top: 1px solid #eef1f5;
+}
+.checkRow:first-child {
+  border-top: 0;
+}
+
+.checkEmpty,
+.check {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  border: 1.5px solid rgba(16, 24, 40, 0.15);
+}
+
+.check {
+  border-color: transparent;
+  color: #16a34a;
+  animation: jqCheckPop 0.3s ease;
+}
+.check svg {
+  width: 18px;
+  height: 18px;
+}
+
+.checkBody {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.checkLabel {
+  font-size: 12.5px;
+  font-weight: 600;
+  color: #101828;
+}
+
+.checkDetail {
+  font-size: 11px;
+  color: rgba(16, 24, 40, 0.5);
+}
+
+.banner {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: auto;
+  padding: 14px 16px;
+  border-radius: 8px;
+  background: #f2f4f7;
+  color: rgba(16, 24, 40, 0.35);
+  font-size: 13px;
+  font-weight: 600;
+  transition: background-color 0.4s ease, color 0.4s ease;
+}
+.banner svg {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+}
+
+.bannerOn {
+  background: #dcfce7;
+  color: #047857;
+}
+
+@keyframes jqCheckPop {
+  from { transform: scale(0.5); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .check {
+    animation: none;
+  }
+}

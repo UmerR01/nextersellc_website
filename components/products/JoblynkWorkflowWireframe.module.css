@@ -1,0 +1,161 @@
+.pipeline {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  padding-top: 8px;
+  flex-shrink: 0;
+}
+
+.feed {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 20px;
+  padding: 14px 16px;
+  border: 1px solid #e5e9f0;
+  border-radius: 8px;
+  background: #fafbfd;
+  flex: 1;
+  min-height: 0;
+}
+
+.feedRow {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  font-weight: 600;
+  color: #101828;
+  opacity: 0;
+  animation: jwFeedRise 0.4s ease both;
+}
+
+.feedIcon {
+  width: 14px;
+  height: 14px;
+  flex-shrink: 0;
+  color: #12b76a;
+}
+
+.track {
+  position: absolute;
+  left: 8%;
+  right: 8%;
+  top: 28px;
+  height: 2px;
+  background: #e5e9f0;
+  z-index: 0;
+}
+
+.trackFill {
+  position: absolute;
+  left: 8%;
+  top: 28px;
+  height: 2px;
+  background: #0061a6;
+  z-index: 0;
+  transition: width 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.stepWrap {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  width: 15%;
+}
+
+.node {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  background: #fff;
+  border: 1.5px solid #e5e9f0;
+  color: rgba(16, 24, 40, 0.35);
+  transition: border-color 0.3s ease, color 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
+}
+.node svg {
+  width: 15px;
+  height: 15px;
+}
+
+.nodeDone {
+  border-color: #0061a6;
+  background: #0061a6;
+  color: #fff;
+}
+.nodeActive {
+  border-color: #0061a6;
+  color: #0061a6;
+  box-shadow: 0 0 0 4px #ebf5ff;
+  animation: jwPulse 1.2s ease-in-out infinite;
+}
+.nodeHuman.nodeDone,
+.nodeHuman.nodeActive {
+  background: #fff;
+  border-color: #f59e0b;
+  color: #b45309;
+  box-shadow: 0 0 0 4px #fef3c7;
+}
+
+.stepLabel {
+  font-size: 9.5px;
+  font-weight: 700;
+  color: rgba(16, 24, 40, 0.55);
+  text-align: center;
+  line-height: 1.3;
+}
+
+.footer {
+  display: flex;
+  gap: 18px;
+  flex-shrink: 0;
+  padding-top: 14px;
+}
+
+.footerChip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+  font-weight: 600;
+  color: rgba(16, 24, 40, 0.55);
+}
+
+.dotAuto,
+.dotHuman {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+}
+.dotAuto {
+  background: #0061a6;
+}
+.dotHuman {
+  background: #f59e0b;
+}
+
+@keyframes jwPulse {
+  0%, 100% { box-shadow: 0 0 0 4px #ebf5ff; }
+  50% { box-shadow: 0 0 0 7px #ebf5ff; }
+}
+@keyframes jwFeedRise {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nodeActive {
+    animation: none;
+  }
+  .feedRow {
+    animation: none;
+    opacity: 1;
+  }
+}

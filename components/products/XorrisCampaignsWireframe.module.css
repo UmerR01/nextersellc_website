@@ -1,0 +1,135 @@
+.cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  height: 34px;
+  padding: 0 14px;
+  border-radius: 4px;
+  background: #812986;
+  color: #fff;
+  font-size: 13px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+.cta svg {
+  width: 14px;
+  height: 14px;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.card {
+  padding: 14px 16px;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 8px;
+  opacity: 0;
+  animation: cpRise 0.5s ease both;
+}
+
+.cardTop {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.name {
+  font-size: 14px;
+  font-weight: 700;
+  color: #000;
+}
+
+.badge {
+  flex-shrink: 0;
+  padding: 3px 10px;
+  border-radius: 999px;
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+.statusRunning {
+  background: #d1fae5;
+  color: #047857;
+}
+.statusScheduled {
+  background: #fef3c7;
+  color: #b45309;
+}
+.statusDraft {
+  background: rgba(0, 0, 0, 0.06);
+  color: rgba(0, 0, 0, 0.55);
+}
+.statusCompleted {
+  background: rgba(129, 41, 134, 0.1);
+  color: #812986;
+}
+
+.meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 18px;
+  margin-top: 8px;
+  font-size: 12px;
+  color: rgba(0, 0, 0, 0.5);
+}
+.meta b {
+  font-weight: 600;
+  color: #000;
+}
+
+.progressRow {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.progressTrack {
+  flex: 1;
+  height: 6px;
+  border-radius: 999px;
+  background: rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+}
+
+.progressFill {
+  display: block;
+  height: 100%;
+  border-radius: 999px;
+  background: #812986;
+  animation: cpFill 1.2s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.progressLabel {
+  flex-shrink: 0;
+  font-size: 11px;
+  font-weight: 600;
+  color: rgba(0, 0, 0, 0.5);
+}
+
+.footer {
+  margin-top: auto;
+  padding-top: 6px;
+  font-size: 12px;
+  color: rgba(0, 0, 0, 0.4);
+}
+
+@keyframes cpRise {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: none; }
+}
+@keyframes cpFill {
+  from { width: 0 !important; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .card,
+  .progressFill {
+    animation: none;
+  }
+}

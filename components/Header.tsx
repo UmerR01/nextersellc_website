@@ -136,6 +136,8 @@ const MOBILE_NAV_ITEMS: MobileNavItem[] = [
       {
         links: [
           // { label: "Team", href: "/team#management-team" }, // "Team" dropdown link disabled per request
+          { label: "Products", href: "/products" },
+          { label: "Partners", href: "/partners" },
           { label: "FAQ", href: "/faq" },
           { label: "Testimonials", href: "/testimonials" },
           { label: "Engagement Models", href: "/engagement-models-process" },
@@ -522,6 +524,8 @@ export default function Header({ forceSolid = false, startTransparent = false }:
                     <div className={dd.colLinks}>
                       {[
                         // { label: "Team", href: "/team#management-team" }, // "Team" dropdown link disabled per request
+                        { label: "Products", href: "/products" },
+                        { label: "Partners", href: "/partners" },
                         { label: "FAQ", href: "/faq" },
                         { label: "Testimonials", href: "/testimonials" },
                         { label: "Engagement Models", href: "/engagement-models-process" },

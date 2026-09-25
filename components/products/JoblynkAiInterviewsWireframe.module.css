@@ -1,0 +1,150 @@
+.liveBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  height: 34px;
+  padding: 0 14px;
+  border-radius: 4px;
+  background: #fdeceb;
+  color: #d92d20;
+  font-size: 13px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+.liveDot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #d92d20;
+  animation: jaiPulse 1.2s ease-in-out infinite;
+}
+
+.transcript {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 14px;
+  border: 1px solid #e5e9f0;
+  border-radius: 8px;
+  background: #fafbfd;
+  min-height: 0;
+}
+
+.line {
+  font-size: 12px;
+  line-height: 1.5;
+  color: #101828;
+  transition: opacity 0.4s ease;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+}
+
+.who {
+  display: inline-block;
+  margin-right: 6px;
+  padding: 1px 7px;
+  border-radius: 999px;
+  font-size: 9.5px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+.lineAi .who {
+  background: #ebf5ff;
+  color: #0061a6;
+}
+.lineCandidate .who {
+  background: #f2f4f7;
+  color: rgba(16, 24, 40, 0.6);
+}
+
+.scores {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-top: 14px;
+  flex: 1;
+  justify-content: center;
+}
+
+.scoreRow {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.scoreLabel {
+  flex: 0 0 92px;
+  font-size: 12px;
+  font-weight: 600;
+  color: rgba(16, 24, 40, 0.6);
+}
+
+.scoreTrack {
+  flex: 1;
+  height: 8px;
+  border-radius: 999px;
+  background: #f2f4f7;
+  overflow: hidden;
+}
+
+.scoreFill {
+  display: block;
+  height: 100%;
+  width: 0%;
+  border-radius: 999px;
+  background: linear-gradient(90deg, #1a6fd4, #0061a6);
+  transition: width 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.scoreValue {
+  flex: 0 0 34px;
+  text-align: right;
+  font-size: 12px;
+  font-weight: 700;
+  color: #101828;
+  font-variant-numeric: tabular-nums;
+}
+
+.footer {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 14px;
+  font-size: 11px;
+  font-weight: 600;
+  color: rgba(16, 24, 40, 0.5);
+  transition: color 0.3s ease;
+}
+.footerDone {
+  color: #047857;
+}
+.footerIcon {
+  width: 13px;
+  height: 13px;
+  flex-shrink: 0;
+  color: rgba(16, 24, 40, 0.3);
+  transition: color 0.3s ease;
+}
+.footerDone .footerIcon {
+  color: #12b76a;
+}
+
+@keyframes jaiPulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.3; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .line {
+    opacity: 1 !important;
+  }
+  .scoreFill {
+    transition: none;
+  }
+  .liveDot {
+    animation: none;
+  }
+}

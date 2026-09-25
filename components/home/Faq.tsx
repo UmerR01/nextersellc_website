@@ -79,11 +79,27 @@ const FAQS = [
   },
 ];
 
-export default function Faq() {
+export type FaqItem = { q: string; a: string[] };
+
+export default function Faq({ items, title }: { items?: FaqItem[]; title?: string } = {}) {
   const [openItems, setOpenItems] = useState<Set<number>>(new Set([0]));
   const [showAll, setShowAll] = useState(false);
 
-  const visibleFaqs = showAll ? FAQS : FAQS.filter((f) => !f.hidden);
+  const faqs = items
+    ? items.map((it, idx) => ({
+        q: it.q,
+        aHtml: (
+          <>
+            {it.a.map((p) => (
+              <p key={p}>{p}</p>
+            ))}
+          </>
+        ),
+        hidden: idx >= 5,
+      }))
+    : FAQS;
+  const visibleFaqs = showAll ? faqs : faqs.filter((f) => !f.hidden);
+  const hasHidden = faqs.some((f) => f.hidden);
 
   const toggle = (i: number) => {
     setOpenItems((prev) => {
@@ -97,7 +113,7 @@ export default function Faq() {
   return (
     <section className={styles.section} id="faq">
       <div className={`container ${styles.wrapper}`}>
-        <h2 className={styles.title}>Frequently asked questions</h2>
+        <h2 className={styles.title}>{title ?? "Frequently asked questions"}</h2>
 
         <div className={styles.cards}>
           {visibleFaqs.map((item, i) => {
@@ -120,7 +136,7 @@ export default function Faq() {
           })}
         </div>
 
-        {!showAll && (
+        {!showAll && hasHidden && (
           <div className={styles.loadMore}>
             <button className={styles.loadMoreLink} onClick={() => setShowAll(true)}>
               Load more <span className={styles.loadMoreArrow} aria-hidden />

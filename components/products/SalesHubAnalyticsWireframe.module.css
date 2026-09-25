@@ -1,0 +1,132 @@
+.cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  height: 34px;
+  padding: 0 14px;
+  border-radius: 4px;
+  background: rgba(11, 62, 168, 0.08);
+  color: #0b3ea8;
+  font-size: 12px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+.cta svg {
+  width: 14px;
+  height: 14px;
+}
+
+.kpis {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+}
+
+.kpi {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 14px 14px;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 8px;
+  background: #fafbfd;
+  opacity: 0;
+  animation: anRise 0.5s ease both;
+}
+
+.kpiLabel {
+  font-size: 10px;
+  font-weight: 700;
+  color: rgba(0, 0, 0, 0.5);
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.kpiValue {
+  font-size: 22px;
+  font-weight: 700;
+  color: #0f172a;
+  font-variant-numeric: tabular-nums;
+}
+
+.kpiSub {
+  font-size: 10px;
+  font-weight: 600;
+  color: #047857;
+}
+
+.funnel {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 18px;
+  padding: 18px 20px;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 8px;
+  background: #fafbfd;
+}
+
+.funnelLabel {
+  font-size: 11px;
+  font-weight: 700;
+  color: rgba(0, 0, 0, 0.5);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.stageRow {
+  display: grid;
+  grid-template-columns: 5.5rem 1fr 2.5rem;
+  align-items: center;
+  gap: 10px;
+}
+
+.stageName {
+  font-size: 12px;
+  font-weight: 600;
+  color: #0f172a;
+}
+
+.stageTrack {
+  height: 8px;
+  border-radius: 999px;
+  background: rgba(0, 0, 0, 0.06);
+  overflow: hidden;
+}
+
+.stageFill {
+  display: block;
+  height: 100%;
+  border-radius: 999px;
+  background: linear-gradient(90deg, #0b3ea8, #6f9bf0);
+  transform-origin: left;
+  animation: anGrow 0.9s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.stageCount {
+  font-size: 12px;
+  font-weight: 700;
+  color: #0b3ea8;
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+@keyframes anRise {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: none; }
+}
+@keyframes anGrow {
+  from { transform: scaleX(0); }
+  to { transform: scaleX(1); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .kpi,
+  .stageFill {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+}

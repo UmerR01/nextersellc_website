@@ -1,0 +1,182 @@
+.headerTime {
+  font-size: 12px;
+  font-weight: 500;
+  color: rgba(0, 0, 0, 0.4);
+  white-space: nowrap;
+}
+
+/* Fills XorrisFeatureCard's full body height (the shell already matches
+   every other wireframe's outer size) — the call content is a fixed,
+   narrower column centered inside it, flexed top-to-bottom so it still
+   reaches the bottom edge instead of leaving dead space below it. */
+.panel {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  max-width: 300px;
+  margin: 0 auto;
+  color: #1e2433;
+}
+
+.contactRow {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.outBadge {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  background: #10b981;
+  color: #fff;
+}
+.outBadge svg {
+  width: 11px;
+  height: 11px;
+}
+
+.contactName {
+  flex: 1;
+  min-width: 0;
+  font-size: 14px;
+  font-weight: 600;
+  color: #1e2433;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.status {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 13px;
+  font-weight: 500;
+  color: #64748b;
+}
+
+.statusDot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #10b981;
+  animation: xcPulseDot 1.6s ease-in-out infinite;
+}
+
+.viaLine {
+  margin: 18px 0 0;
+  text-align: center;
+  font-size: 13px;
+  color: #94a3b8;
+}
+
+.numberRow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  margin-top: 6px;
+  font-size: 15px;
+  font-weight: 500;
+  color: #334155;
+  font-variant-numeric: tabular-nums;
+}
+
+.dash {
+  color: #cbd5e1;
+}
+
+.timer {
+  font-variant-numeric: tabular-nums;
+}
+
+.spacer {
+  flex: 1;
+}
+
+.controls {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  row-gap: 22px;
+  padding: 0 4px;
+  margin-bottom: 28px;
+}
+
+.control {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+}
+
+.controlIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  color: #812986;
+}
+
+.controlIcon svg {
+  width: 26px;
+  height: 26px;
+}
+
+.controlPulse {
+  color: #dc2626;
+  animation: xcRecPulse 1.4s ease-in-out infinite;
+}
+
+.controlLabel {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: rgba(129, 41, 134, 0.85);
+}
+
+.hangupRow {
+  display: flex;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.hangup {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: #ef4444;
+  color: #fff;
+  box-shadow: 0 0.75rem 1.5rem rgba(239, 68, 68, 0.35);
+}
+
+.hangup svg {
+  width: 27px;
+  height: 27px;
+}
+
+@keyframes xcPulseDot {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.35; }
+}
+
+@keyframes xcRecPulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.45; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .statusDot,
+  .controlPulse {
+    animation: none;
+  }
+}

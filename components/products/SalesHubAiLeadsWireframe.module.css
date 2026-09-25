@@ -1,0 +1,178 @@
+.card {
+  padding: 16px 18px;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 8px;
+  background: #fafbfd;
+}
+
+.cardTop {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.logoWrap {
+  display: flex;
+  align-items: center;
+  height: 24px;
+}
+
+.logo {
+  height: 100%;
+  width: auto;
+  object-fit: contain;
+}
+
+.toggle {
+  position: relative;
+  flex-shrink: 0;
+  width: 38px;
+  height: 22px;
+  border-radius: 999px;
+  background: rgba(0, 0, 0, 0.18);
+  transition: background-color 0.4s ease;
+}
+.toggleOn {
+  background: #0b3ea8;
+}
+.knob {
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: #fff;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
+  transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.toggleOn .knob {
+  transform: translateX(16px);
+}
+
+.desc {
+  margin: 12px 0 0;
+  font-size: 12px;
+  line-height: 1.55;
+  color: rgba(0, 0, 0, 0.55);
+}
+
+.statusRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 0;
+  border-top: 1px solid rgba(0, 0, 0, 0.06);
+  font-size: 12px;
+}
+.statusRow:first-of-type {
+  margin-top: 10px;
+}
+
+.statusLabel {
+  color: rgba(0, 0, 0, 0.5);
+}
+
+.statusValue {
+  font-weight: 700;
+  color: rgba(0, 0, 0, 0.4);
+  transition: color 0.4s ease;
+}
+.statusValueOn {
+  color: #047857;
+}
+
+.statusMono {
+  font-weight: 600;
+  color: #0f172a;
+  font-variant-numeric: tabular-nums;
+}
+
+.ruleRow {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 14px;
+  font-size: 12px;
+  color: rgba(0, 0, 0, 0.6);
+}
+.ruleRow b {
+  color: #0b3ea8;
+}
+
+.ruleIcon {
+  width: 14px;
+  height: 14px;
+  flex-shrink: 0;
+  color: #0b3ea8;
+}
+
+.queue {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-top: 12px;
+  flex: 1;
+  justify-content: flex-end;
+}
+
+.queueRow {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 12px;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  border-radius: 8px;
+  font-size: 12px;
+  font-weight: 600;
+  color: #0f172a;
+  opacity: 0;
+  animation: aiRise 0.4s ease both;
+}
+
+.queueAvatar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  background: rgba(11, 62, 168, 0.12);
+  color: #0b3ea8;
+  font-size: 11px;
+}
+
+.queueBadge {
+  margin-left: auto;
+  padding: 3px 9px;
+  border-radius: 999px;
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+.statusQueued {
+  background: rgba(0, 0, 0, 0.06);
+  color: rgba(0, 0, 0, 0.55);
+}
+.statusProgress {
+  background: #fef3c7;
+  color: #b45309;
+}
+.statusDone {
+  background: #d1fae5;
+  color: #047857;
+}
+
+@keyframes aiRise {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .queueRow {
+    animation: none;
+    opacity: 1;
+  }
+}

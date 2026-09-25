@@ -1,0 +1,107 @@
+.svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+/* ── Products (phones) ── sized in container units ── */
+.phones {
+  position: absolute;
+  inset: 0;
+  container-type: size;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.card {
+  position: relative;
+  flex: none;
+  height: 62cqh;
+  overflow: hidden;
+  border-radius: 3.6cqh;
+  background: #fff;
+  box-shadow: 0 2.4cqh 5cqh rgba(0, 0, 0, 0.4);
+}
+.cardLeft {
+  margin-right: -3cqw;
+}
+.cardRight {
+  height: 46cqh;
+  margin-left: -7cqw;
+}
+.phone {
+  position: relative;
+  z-index: 2;
+  flex: none;
+  height: 100cqh;
+  aspect-ratio: 9 / 19;
+  padding: 1.5cqh;
+  border-radius: 8cqh;
+  background: linear-gradient(145deg, #3a3a44, #0c0c10 40%, #2a2a32);
+  box-shadow: 0 3cqh 6cqh rgba(0, 0, 0, 0.5), inset 0 0 0 0.25cqh rgba(255, 255, 255, 0.25);
+}
+.screen {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  border-radius: 6.6cqh;
+  background: #fff;
+}
+.status {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex: none;
+  height: 8.5cqh;
+  padding: 0 3.4cqh 0 4cqh;
+  background: #fff;
+  color: #111;
+}
+.time {
+  font-size: 2.6cqh;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+.island {
+  position: absolute;
+  top: 1.7cqh;
+  left: 50%;
+  width: 11cqh;
+  height: 3.3cqh;
+  border-radius: 999px;
+  background: #000;
+  transform: translateX(-50%);
+}
+.icons {
+  display: flex;
+  align-items: center;
+  gap: 0.9cqh;
+}
+.icons svg {
+  height: 1.9cqh;
+  width: auto;
+}
+.shot {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* ── Business ── */
+.tier {
+}
+.tierText {
+  font-family: var(--font-inter-tight), sans-serif;
+  font-weight: 500;
+}
+.payout {
+  filter: drop-shadow(0 8px 14px rgba(0, 0, 0, 0.3));
+}
+
+
