@@ -22,23 +22,25 @@
 .transcript {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 9px;
   padding: 14px;
   border: 1px solid #e5e9f0;
   border-radius: 8px;
   background: #fafbfd;
   min-height: 0;
+  min-width: 0;
+  overflow: hidden;
 }
 
 .line {
-  font-size: 12px;
-  line-height: 1.5;
+  font-size: 11.5px;
+  line-height: 1.45;
   color: #101828;
   transition: opacity 0.4s ease;
   overflow: hidden;
   text-overflow: ellipsis;
   display: -webkit-box;
-  -webkit-line-clamp: 1;
+  -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
 }
 
@@ -63,8 +65,8 @@
 .scores {
   display: flex;
   flex-direction: column;
-  gap: 16px;
-  margin-top: 14px;
+  gap: 14px;
+  margin-top: 16px;
   flex: 1;
   justify-content: center;
 }
@@ -147,4 +149,218 @@
   .liveDot {
     animation: none;
   }
+}
+
+/* ── Video call stage ── */
+.stage {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: 16px;
+  height: 236px;
+  flex-shrink: 0;
+}
+
+.video {
+  position: relative;
+  border-radius: 10px;
+  background: #3c4043;
+  overflow: hidden;
+  box-shadow: 0 6px 16px rgba(10, 21, 48, 0.18);
+}
+
+.camOff {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding-bottom: 26px;
+}
+.camCircle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  background: #4d5054;
+  transition: box-shadow 0.3s ease;
+}
+.camCircle svg,
+.ctl svg {
+  width: 20px;
+  height: 20px;
+  fill: none;
+  stroke: #fff;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.camLabel {
+  color: #fff;
+  font-size: 11.5px;
+  font-weight: 500;
+}
+.camOff.speaking .camCircle {
+  box-shadow: 0 0 0 3px #3c4043, 0 0 0 5px #12b76a;
+}
+
+.namePill {
+  position: absolute;
+  left: 10px;
+  bottom: 10px;
+  padding: 3px 9px;
+  border-radius: 4px;
+  background: rgba(0, 0, 0, 0.45);
+  color: #fff;
+  font-size: 10.5px;
+  font-weight: 600;
+}
+
+.pip {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 3px 11px 3px 3px;
+  border-radius: 999px;
+  background: rgba(20, 24, 34, 0.72);
+  transition: box-shadow 0.3s ease;
+}
+.pip.speaking {
+  box-shadow: 0 0 0 1.5px #12b76a;
+}
+.agentAvatar {
+  display: block;
+  width: 26px;
+  height: 26px;
+  flex-shrink: 0;
+  overflow: hidden;
+  border-radius: 50%;
+  background: #1a6fd4;
+}
+.agentAvatar img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.pipText {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+.pipName {
+  color: #fff;
+  font-size: 11px;
+  font-weight: 600;
+  line-height: 1;
+}
+.wave {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  height: 10px;
+}
+.wave i {
+  display: block;
+  width: 2px;
+  height: 3px;
+  border-radius: 1px;
+  background: rgba(255, 255, 255, 0.85);
+}
+.wave i.waveOn {
+  animation: jaiWave 0.7s ease-in-out infinite;
+}
+
+.controls {
+  position: absolute;
+  left: 50%;
+  bottom: 10px;
+  display: flex;
+  gap: 8px;
+  transform: translateX(-50%);
+}
+.ctl {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: #4d5054;
+}
+.ctl svg {
+  width: 15px;
+  height: 15px;
+}
+.ctlEnd {
+  background: #d92d20;
+}
+
+@keyframes jaiWave {
+  0%, 100% { height: 3px; }
+  50% { height: 10px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .wave i.waveOn {
+    animation: none;
+    height: 5px;
+  }
+}
+
+/* Candidate footage (optional): fills the tile once it has loaded and
+   replaces the "Camera is off" state. */
+.clip {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+.videoLive .clip {
+  opacity: 1;
+}
+.videoLive .camOff {
+  display: none;
+}
+.videoLive.video::after {
+  /* gentle bottom shade so the name pill and controls stay readable */
+  content: "";
+  position: absolute;
+  inset: auto 0 0 0;
+  height: 55%;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.55), transparent);
+  pointer-events: none;
+}
+.videoLive .pip,
+.videoLive .namePill,
+.videoLive .controls {
+  z-index: 1;
+}
+
+/* Call over: the footage cuts out and the tile falls back to the dark state */
+.videoOver .clip {
+  opacity: 0;
+}
+.videoLive.videoOver .camOff {
+  display: flex;
+}
+.videoLive.videoOver::after {
+  display: none;
+}
+.doneBadge {
+  background: #ecfdf3;
+  color: #027a48;
+}
+.doneBadge .liveDot {
+  background: #12b76a;
+  animation: none;
 }

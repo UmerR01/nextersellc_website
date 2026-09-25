@@ -28,7 +28,7 @@
 }
 
 .accent {
-  color: var(--color-accent);
+  color: var(--color-accent-text, var(--color-accent));
 }
 
 /* Breadcrumb — same treatment as the blog page */
@@ -56,7 +56,7 @@
   vertical-align: middle;
 }
 .breadcrumbs a:hover {
-  color: var(--color-accent);
+  color: var(--color-accent-hover, var(--color-accent));
 }
 .breadcrumbs span {
   color: #899fb6;
@@ -171,8 +171,8 @@
   gap: 1rem;
 }
 .authorAvatar {
-  width: 3rem;
-  height: 3rem;
+  width: 3.5rem;
+  height: 3.5rem;
   border: 1px solid var(--color-accent);
   border-radius: 50%;
   background: var(--color-bg-elevated);
@@ -183,6 +183,8 @@
   font-weight: 600;
   font-size: 1rem;
 }
+.authorAvatar { overflow: hidden; flex: none; }
+.authorPhoto { width: 100%; height: 100%; object-fit: cover; display: block; }
 .authorName {
   display: block;
   font-weight: 700;
@@ -231,7 +233,7 @@
   padding: 1.75rem;
   border: 1px solid var(--color-border);
   border-radius: 12px;
-  background: #fff;
+  background: var(--color-accent-dark);
   transition: border-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
 }
 .moreCard:hover {
@@ -241,7 +243,7 @@
 }
 .moreName {
   margin: 0;
-  color: #02102c;
+  color: #fff;
   font-size: 1.5rem;
   font-weight: 400;
 }
@@ -252,7 +254,7 @@
 }
 .moreText {
   margin: 0;
-  color: var(--color-text-muted);
+  color: var(--color-text-white-off);
   line-height: 1.55;
 }
 
@@ -304,16 +306,27 @@
 .themeWrap :global(.btn-outline:hover) {
   color: var(--color-on-accent, #fff);
 }
+/* Dark CTA block: use the product's light secondary tint, since the primary
+   accent may be a dark colour that would vanish on this surface. */
+.ctaCard .accent {
+  color: var(--color-accent-light, var(--color-accent));
+}
+.themeWrap .ctaCard :global(.btn-accent) {
+  background: var(--color-accent-light, var(--color-accent));
+  border-color: var(--color-accent-light, var(--color-accent));
+  color: var(--color-on-accent-light, var(--color-on-accent, #fff));
+}
+.themeWrap .ctaCard :global(.btn-accent:hover) {
+  background: transparent;
+  color: var(--color-accent-light, var(--color-accent));
+}
 .themeWrap .ctaCard :global(.btn-outline) {
-  color: var(--color-accent);
+  border-color: var(--color-accent-light, var(--color-accent));
+  color: var(--color-accent-light, var(--color-accent));
 }
 .themeWrap .ctaCard :global(.btn-outline:hover) {
-  color: var(--color-on-accent, #fff);
-}
-/* On the dark CTA block the hover state (transparent fill) needs accent
-   text, not the dark on-accent text used on light surfaces. */
-.themeWrap .ctaCard :global(.btn-accent:hover) {
-  color: var(--color-accent);
+  background: var(--color-accent-light, var(--color-accent));
+  color: var(--color-on-accent-light, var(--color-on-accent, #fff));
 }
 
 /* Screenshot-based products (Fittsy): hero image and phone screenshots */
@@ -334,7 +347,12 @@
   width: 100%;
   aspect-ratio: 720 / 554;
   border-radius: 20px;
-  background: var(--color-accent-dark);
+  /* Same blurred navy to dusk-pink wash as the app's dashboard image */
+  background:
+    radial-gradient(ellipse at 100% 45%, #a88d7e 0%, rgba(168, 141, 126, 0) 60%),
+    radial-gradient(ellipse at 0% 100%, #a28c9c 0%, rgba(162, 140, 156, 0) 55%),
+    radial-gradient(ellipse at 100% 100%, #e2af96 0%, rgba(226, 175, 150, 0) 55%),
+    linear-gradient(180deg, #353853 0%, #6a5a66 45%, #b89489 100%);
   overflow: hidden;
   padding: 1.25rem 0;
 }

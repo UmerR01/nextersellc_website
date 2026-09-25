@@ -12,7 +12,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const { slug } = await params;
   const p = getProduct(slug);
   if (!p) return {};
-  const title = `${p.name} ${p.suffix} | Nexterse LLC`;
+  const title = `${[p.name, p.suffix].filter(Boolean).join(" ")} | Nexterse LLC`;
   return {
     title,
     description: p.description,

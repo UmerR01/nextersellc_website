@@ -9,9 +9,13 @@ type SelectDropdownProps = {
   value: string;
   onChange: (value: string) => void;
   required?: boolean;
+  /** Muted text shown while nothing is selected */
+  placeholder?: string;
+  /** Open the list as an overlay instead of pushing the content below it down */
+  floating?: boolean;
 };
 
-export default function SelectDropdown({ label, options, value, onChange, required = false }: SelectDropdownProps) {
+export default function SelectDropdown({ label, options, value, onChange, required = false, placeholder, floating = false }: SelectDropdownProps) {
   const [open, setOpen] = useState(false);
   const rootRef = useRef<HTMLDivElement>(null);
   const listId = useId();
@@ -37,7 +41,7 @@ export default function SelectDropdown({ label, options, value, onChange, requir
   };
 
   return (
-    <div className={`${styles.root} ${open ? styles.open : ""}`} ref={rootRef}>
+    <div className={`${styles.root} ${open ? styles.open : ""} ${floating ? styles.floating : ""}`} ref={rootRef}>
       <button
         type="button"
         className={styles.trigger}
@@ -47,7 +51,7 @@ export default function SelectDropdown({ label, options, value, onChange, requir
         aria-haspopup="listbox"
       >
         <span className={styles.label}>{label}{required && <b>*</b>}</span>
-        <span className={styles.value}>{value}</span>
+        <span className={`${styles.value} ${!value && placeholder ? styles.placeholder : ""}`}>{value || placeholder}</span>
         <svg viewBox="0 0 20 20" aria-hidden="true"><path d="m5 12 5-5 5 5" /></svg>
       </button>
 

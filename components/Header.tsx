@@ -170,6 +170,7 @@ export default function Header({ forceSolid = false, startTransparent = false }:
   const [mobileNavOpen, setMobileNavOpen] = useState<string | null>(null);
   const [solid, setSolid] = useState(forceSolid && !startTransparent);
   const [modalOpen, setModalOpen] = useState(false);
+  const [modalVariant, setModalVariant] = useState<"contact" | "partner">("contact");
   // Desktop nav dropdown, opened by tap on touch/no-hover devices — see the
   // click handler below and the .itemOpen rules in NavDropdown.module.css.
   const [openDesktop, setOpenDesktop] = useState<string | null>(null);
@@ -311,23 +312,25 @@ export default function Header({ forceSolid = false, startTransparent = false }:
   };
 
   useEffect(() => {
-    const openContactModal = () => {
+    const openContactModal = (variant: "contact" | "partner" = "contact") => {
+      setModalVariant(variant);
       setModalOpen(true);
-      if (window.location.hash === "#get-modal-popup") {
+      if (window.location.hash === "#get-modal-popup" || window.location.hash === "#partner-modal-popup") {
         window.history.replaceState(null, "", window.location.pathname + window.location.search);
       }
     };
 
     const onDocumentClick = (event: MouseEvent) => {
       const target = event.target as Element | null;
-      const trigger = target?.closest?.('a[href="#get-modal-popup"]');
+      const trigger = target?.closest?.('a[href="#get-modal-popup"], a[href="#partner-modal-popup"]');
       if (!trigger) return;
       event.preventDefault();
-      openContactModal();
+      openContactModal(trigger.getAttribute("href") === "#partner-modal-popup" ? "partner" : "contact");
     };
 
     const onHashChange = () => {
       if (window.location.hash === "#get-modal-popup") openContactModal();
+      else if (window.location.hash === "#partner-modal-popup") openContactModal("partner");
     };
 
     document.addEventListener("click", onDocumentClick);
@@ -769,7 +772,7 @@ export default function Header({ forceSolid = false, startTransparent = false }:
         </div>
       </aside>
 
-      <ContactModal open={modalOpen} onClose={() => setModalOpen(false)} />
+      <ContactModal open={modalOpen} variant={modalVariant} onClose={() => setModalOpen(false)} />
     </>
   );
 }

@@ -9,3 +9,5 @@ npm-debug.log*
 next-env.d.ts
 track/
 scripts/
+# Original/uncompressed source media kept locally only (compressed copies live in public/)
+assets-source/

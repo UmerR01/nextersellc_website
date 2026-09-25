@@ -73,19 +73,19 @@
 }
 
 .active .question {
-  color: var(--color-accent);
+  color: var(--color-accent-hover, var(--color-accent));
 }
 
 .active .bullet {
-  border-color: var(--color-accent);
+  border-color: var(--color-accent-hover, var(--color-accent));
 }
 
 .card:hover .question {
-  color: var(--color-accent);
+  color: var(--color-accent-hover, var(--color-accent));
 }
 
 .card:hover .bullet {
-  border-color: var(--color-accent);
+  border-color: var(--color-accent-hover, var(--color-accent));
 }
 
 /* ---- Answer ---- */

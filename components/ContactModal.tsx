@@ -5,6 +5,7 @@ import Image from "next/image";
 import styles from "./ContactModal.module.css";
 import { isValidName, isValidEmail, VALIDATION_MESSAGES } from "@/lib/formValidation";
 import Honeypot from "@/components/Honeypot";
+import PartnerForm from "@/components/PartnerForm";
 import TurnstileWidget from "@/components/Turnstile";
 import { GENERIC_SUBMIT_ERROR, extractErrorMessage } from "@/lib/formErrors";
 
@@ -54,9 +55,12 @@ function CalendarIcon() {
 interface Props {
   open: boolean;
   onClose: () => void;
+  /** "partner" swaps the contact form for the partner enquiry form. */
+  variant?: "contact" | "partner";
 }
 
-export default function ContactModal({ open, onClose }: Props) {
+export default function ContactModal({ open, onClose, variant = "contact" }: Props) {
+  const isPartner = variant === "partner";
   const [sent, setSent] = useState(false);
   const [fileName, setFileName] = useState("");
   const [status, setStatus] = useState<"idle" | "loading" | "error">("idle");
@@ -101,7 +105,7 @@ export default function ContactModal({ open, onClose }: Props) {
           className={styles.modal}
           role="dialog"
           aria-modal="true"
-          aria-label="Contact us"
+          aria-label={isPartner ? "Become a partner" : "Contact us"}
           onClick={(e) => e.stopPropagation()}
         >
           {/* Close button */}
@@ -111,6 +115,7 @@ export default function ContactModal({ open, onClose }: Props) {
 
           {/* ── Left panel ── */}
           <div className={styles.left}>
+           <div className={styles.leftInner}>
             {/* Brand */}
             <div className={styles.brand}>
               <Image
@@ -124,13 +129,26 @@ export default function ContactModal({ open, onClose }: Props) {
             </div>
 
             {/* Email description */}
-            <p className={styles.emailDesc}>
-              If you have any questions, email us{" "}
-              <a href="mailto:info@nexterse.com">info@nexterse.com</a>
-            </p>
+            {isPartner ? (
+              <div className={styles.pIntro}>
+                <span className={styles.pEyebrow}>Partnerships</span>
+                <h2 className={styles.pTitle}>Become a Partner</h2>
+                <p className={styles.emailDesc}>
+                  Tell us about your business and how you would like to work with us. If you have any
+                  questions about partnering with Nexterse LLC, email us{" "}
+                  <a href="mailto:info@nexterse.com">info@nexterse.com</a>
+                </p>
+              </div>
+            ) : (
+              <p className={styles.emailDesc}>
+                If you have any questions, email us{" "}
+                <a href="mailto:info@nexterse.com">info@nexterse.com</a>
+              </p>
+            )}
 
-            {/* Success state */}
-            {sent ? (
+            {isPartner ? (
+              <PartnerForm />
+            ) : sent ? (
               <div className={styles.success}>
                 <div className={styles.successIcon}>
                   <svg width="81" height="80" viewBox="0 0 81 80" fill="none">
@@ -280,6 +298,7 @@ export default function ContactModal({ open, onClose }: Props) {
                 </div>
               </form>
             )}
+           </div>
           </div>
 
           {/* ── Right panel ── */}

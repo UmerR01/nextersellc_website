@@ -156,41 +156,31 @@
 
 .ratingScore {
   display: inline-flex;
-  align-items: center;
-  gap: 0.65rem;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.5rem;
 }
 
+/* Rectangular 3:2 flags with a hairline border, no rounding: same look as
+   the Xorris platform's CountryFlag. */
 .flagStack {
   display: inline-flex;
   align-items: center;
+  gap: 0.4rem;
 }
 
 .flag {
-  width: 1.75rem;
-  height: 1.75rem;
-  border-radius: 50%;
+  display: block;
+  flex: none;
+  box-sizing: border-box;
+  width: 1.875rem;
+  aspect-ratio: 3 / 2;
+  height: auto;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  border-radius: 0;
   object-fit: cover;
+  object-position: center;
   background: #fff;
-}
-
-.flag + .flag {
-  margin-left: -0.55rem;
-}
-
-/* "+5" is the last item in the stack, fully visible (not tucked behind
-   another flag). */
-.flagMore {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 1.75rem;
-  height: 1.75rem;
-  margin-left: -0.55rem;
-  border-radius: 50%;
-  background: var(--color-accent-dark);
-  color: #fff;
-  font-size: 0.6875rem;
-  font-weight: 700;
 }
 
 .ratingStars,

@@ -4,8 +4,7 @@
 .overlay {
   position: fixed;
   inset: 0;
-  overflow-x: hidden;
-  overflow-y: auto;
+  overflow: hidden;
   z-index: 9999;
   animation: overlayIn 0.2s ease;
 }
@@ -27,19 +26,23 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  min-height: 100%;
-  padding: 24px;
+  height: 100%;
+  padding: clamp(8px, 2.4vh, 24px) clamp(8px, 2vw, 24px);
   position: relative;
   z-index: 1;
 }
 
 /* ── Modal box ── */
 .modal {
+  --pad-x: clamp(20px, 5.5vw, 120px);
+  --gap-y: clamp(8px, 1.9vh, 20px);
   position: relative;
   display: flex;
   background: #fff;
   width: 100%;
   max-width: 1420px;
+  /* Fit the viewport: the form panel scrolls inside, the modal never grows past the screen */
+  max-height: 100%;
   animation: modalIn 0.25s ease;
   overflow: hidden;
 }
@@ -65,14 +68,14 @@
 /* ── Close button ── */
 .closeBtn {
   position: absolute;
-  top: 32px;
-  right: 32px;
+  top: clamp(12px, 3vh, 32px);
+  right: clamp(12px, 2vw, 32px);
   width: 24px;
   height: 24px;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: none;
+  background: transparent;
   border: none;
   cursor: pointer;
   z-index: 10;
@@ -82,10 +85,23 @@
 
 /* ── Left panel ── */
 .left {
-  padding: 52px 120px 150px;
   width: 100%;
+  min-width: 0;
+  min-height: 0;
   position: relative;
   z-index: 1;
+  overflow-x: hidden;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  /* Lets the form re-flow to the modal panel width, not just the window width */
+  container-type: inline-size;
+  container-name: left;
+}
+.leftInner {
+  padding: clamp(16px, 5vh, 52px) var(--pad-x) clamp(16px, 4vh, 48px);
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
 /* Brand / logo */
@@ -95,7 +111,7 @@
   gap: 0.5rem;
 }
 .brandLogo {
-  height: 62px;
+  height: clamp(34px, 6.2vh, 62px);
   width: auto;
 }
 .logoMark {
@@ -120,11 +136,11 @@
 
 /* Email description */
 .emailDesc {
-  margin-top: 40px;
-  font-size: 1rem;
+  margin-top: clamp(10px, 3.6vh, 40px);
+  font-size: clamp(0.875rem, 0.6rem + 0.5vw, 1rem);
   color: var(--color-text);
-  line-height: 1.55;
-  margin-bottom: 16px;
+  line-height: 1.5;
+  margin-bottom: clamp(6px, 1.5vh, 16px);
 }
 .emailDesc a {
   color: var(--color-accent);
@@ -136,7 +152,7 @@
   display: flex;
   flex-direction: column;
   align-items: flex-end;
-  margin-top: 44px;
+  margin-top: clamp(8px, 3.4vh, 44px);
 }
 
 /* Each label row: right-aligned like Sumatosoft */
@@ -146,7 +162,7 @@
   justify-content: flex-end;
   flex-wrap: wrap;
   width: 100%;
-  margin-bottom: 20px;
+  margin-bottom: var(--gap-y);
 }
 
 .fieldErrorText {
@@ -174,10 +190,11 @@
 
 .field input,
 .field textarea {
+  flex: 1 1 0;
   max-width: 632px;
   min-width: 0;
-  width: 632px;
-  padding: 4px 0 10px;
+  width: auto;
+  padding: 4px 0 clamp(6px, 1.2vh, 10px);
   background: transparent;
   border: none;
   border-bottom: 1px solid #899fb6;
@@ -196,8 +213,8 @@
 
 /* Privacy text */
 .privacy {
-  margin-bottom: 20px;
-  margin-top: 16px;
+  margin-bottom: var(--gap-y);
+  margin-top: clamp(4px, 1.4vh, 16px);
   max-width: 632px;
   color: #899fb6;
   font-size: 0.875rem;
@@ -334,8 +351,8 @@
   gap: 1.5rem;
   max-width: 632px;
   width: 100%;
-  margin-top: 2rem;
-  padding-top: 2rem;
+  margin-top: clamp(0.75rem, 3vh, 2rem);
+  padding-top: clamp(0.75rem, 3vh, 2rem);
   border-top: 1px solid rgba(16, 30, 77, 0.12);
 }
 .managerInfo {
@@ -390,24 +407,24 @@
 }
 .successIcon { margin-bottom: 1.5rem; }
 .successTitle {
-  font-size: 3.5rem;
+  font-size: clamp(2rem, 6.5vh, 3.5rem);
   font-weight: 400;
   color: var(--color-text);
-  line-height: 62px;
+  line-height: 1.15;
   margin-bottom: 1rem;
 }
 .successSub {
-  font-size: 1.375rem;
+  font-size: clamp(1rem, 2.6vh, 1.375rem);
   color: var(--color-text);
-  line-height: 36px;
+  line-height: 1.5;
   margin-bottom: 2rem;
 }
 .successLink { color: var(--color-accent); font-weight: 400; }
 .successFooter {
   margin-top: auto;
   padding: 32px;
-  margin: 0 -120px;
-  width: calc(100% + 240px);
+  margin: 0 calc(var(--pad-x) * -1);
+  width: calc(100% + var(--pad-x) * 2);
   background: linear-gradient(135deg, rgba(18,122,255,0.06) 0%, rgba(255,65,92,0.04) 100%);
   border-top: 1px solid rgba(16,30,77,0.1);
 }
@@ -429,9 +446,9 @@
 
 /* ── Right panel (dark navy) ── */
 .right {
-  flex: 0 0 415px;
+  flex: 0 0 clamp(280px, 29vw, 415px);
   background: var(--color-accent-dark);
-  padding: 52px 32px 48px;
+  padding: clamp(16px, 5vh, 52px) clamp(16px, 2.2vw, 32px) clamp(16px, 4vh, 48px);
   display: flex;
   flex-direction: column;
   overflow-y: auto;
@@ -443,7 +460,7 @@
   letter-spacing: 0.1em;
   
   color: var(--color-text-muted);
-  margin-bottom: 1.25rem;
+  margin-bottom: clamp(0.5rem, 2vh, 1.25rem);
   text-align: center;
 }
 
@@ -456,14 +473,18 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 110px;
+  height: clamp(52px, 11.5vh, 110px);
 }
 .clientLogo {
   display: block;
   filter: brightness(0) invert(1);
   opacity: 1;
   object-fit: contain;
-  max-width: 100%;
+  /* natural sizes come inline from the TSX; let them scale down with the panel */
+  width: auto !important;
+  height: auto !important;
+  max-width: 88%;
+  max-height: 72%;
 }
 
 
@@ -477,21 +498,21 @@
 .badgeGrid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 1.5rem;
+  gap: clamp(0.5rem, 1.8vh, 1.5rem);
   margin-top: auto;
 }
 .badgeWrap {
   display: flex;
   align-items: center;
   justify-content: center;
-  min-height: 92px;
-  padding: 8px;
+  min-height: clamp(52px, 9.5vh, 92px);
+  padding: clamp(4px, 0.9vh, 8px);
   background: rgba(255, 255, 255, 0.96);
   border-radius: 6px;
 }
 .badge {
   max-width: 100%;
-  max-height: 76px;
+  max-height: clamp(38px, 8vh, 76px);
   width: auto;
   object-fit: contain;
   filter: none;
@@ -499,32 +520,181 @@
 }
 
 /* ── Responsive ── */
-@media screen and (min-width: 1200px) and (max-width: 1600px) {
-  .left { padding: 48px 0 54px; margin: 0 auto; max-width: 760px; }
-  .form { margin-top: 32px; }
-  .field input, .field textarea { max-width: 626px; width: 626px; }
-  .privacy, .formBottom, .manager { max-width: 626px; }
-}
-
-@media (max-width: 1199px) {
-  .modal { flex-direction: column; }
-  .right { display: none; }
-  .left { padding: 72px 24px 101px; }
-  .form { align-items: flex-start; margin-top: 40px; }
-  .field { flex-direction: column; justify-content: flex-start; }
-  .fieldLabel { text-align: left; margin-right: 0; margin-bottom: 4px; }
-  .field input, .field textarea { max-width: 100%; min-width: unset; width: 100%; }
+/* Label-left rows only while the panel is wide enough; below that, stack. */
+@container left (max-width: 640px) {
+  .form { align-items: stretch; }
+  .field { flex-direction: column; justify-content: flex-start; align-items: stretch; }
+  .fieldLabel { text-align: left; margin-right: 0; margin-bottom: 2px; }
+  .field input, .field textarea { flex: none; max-width: 100%; width: 100%; }
+  .fieldErrorText { text-align: left; }
   .privacy, .formBottom, .manager { max-width: 100%; }
   .formBottom { flex-wrap: wrap; gap: 1rem; }
-  .manager { flex-wrap: wrap; }
-  .successFooter { margin: 0 -24px; width: calc(100% + 48px); }
+  .manager { flex-wrap: wrap; justify-content: flex-start; }
+}
+
+/* Below this the partner panel no longer fits beside the form */
+@media (max-width: 960px) {
+  .modal { flex-direction: column; }
+  .right { display: none; }
+  .left { flex: 1 1 auto; }
+  .leftInner { padding-top: clamp(40px, 8vh, 72px); }
+  /* No dark panel behind the cross here, so it floats over scrolling fields */
+  .closeBtn {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.92);
+    box-shadow: 0 1px 6px rgba(2, 16, 44, 0.18);
+  }
 }
 
 @media (max-width: 768px) {
-  .closeBtn { top: 16px; right: 16px; }
-  .successTitle { font-size: 2rem; line-height: 35px; }
-  .successSub { font-size: 1rem; line-height: 26px; }
   .wrapper { padding: 0; }
-  .modal { min-height: 100vh; }
+  .modal { height: 100%; }
 }
 
+/* ── Partner enquiry variant ── */
+/* Long form: two columns, underline fields (same look as the shared
+   SelectDropdown used by the careers filters), scrolls inside the modal. */
+.pIntro { margin-bottom: 8px; }
+.pEyebrow {
+  display: inline-block;
+  margin-top: clamp(20px, 4vh, 28px);
+  padding: 5px 12px;
+  border-radius: 999px;
+  background: rgba(60, 196, 229, 0.12);
+  color: var(--color-accent);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.pTitle {
+  margin: 14px 0 0;
+  font-size: clamp(1.875rem, 3.2vw, 2.75rem);
+  font-weight: 400;
+  line-height: 1.1;
+  color: #02102c;
+}
+.pIntro .emailDesc {
+  margin: 14px 0 0;
+  max-width: 44rem;
+  color: var(--color-text-muted);
+  line-height: 1.6;
+}
+
+.pForm {
+  width: 100%;
+  max-width: 46rem;
+  margin-top: 8px;
+}
+
+.pSection {
+  min-width: 0;
+  margin: 34px 0 0;
+  padding: 0;
+  border: 0;
+}
+.pSection:first-of-type { margin-top: 28px; }
+.pSectionHead {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  float: left;            /* keeps <legend> inline with the divider */
+  width: 100%;
+  margin: 0 0 22px;
+  padding: 0;
+}
+.pStep {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--color-accent-dark);
+  color: #fff;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}
+.pSectionTitle {
+  color: #02102c;
+  font-size: 1.0625rem;
+  font-weight: 600;
+}
+.pGrid {
+  clear: both;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 30px 32px;
+}
+@container left (min-width: 460px) {
+  .pGrid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .pFull { grid-column: 1 / -1; }
+}
+
+.pField {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: 0.45rem;
+  min-width: 0;
+  min-height: 4rem;
+}
+.pLabel {
+  color: var(--color-text-muted);
+  font-size: 0.76rem;
+  font-weight: 500;
+  line-height: 1.3;
+}
+.pReq { margin-left: 2px; color: #e63555; font-weight: 700; }
+
+.pField input,
+.pField textarea {
+  width: 100%;
+  min-width: 0;
+  padding: 0.25rem 0 0.7rem;
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid #d6deea;
+  border-radius: 0;
+  color: var(--color-text);
+  font: inherit;
+  font-size: 0.95rem;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+.pField textarea { min-height: 5.5rem; resize: vertical; }
+.pField input::placeholder,
+.pField textarea::placeholder { color: #8394ad; }
+.pField input:focus,
+.pField textarea:focus {
+  outline: none;
+  border-bottom-color: var(--color-accent);
+  box-shadow: 0 1px 0 var(--color-accent);
+}
+.pInvalid input,
+.pInvalid textarea { border-bottom-color: #ff415c; }
+.pError { color: #e0314d; font-size: 0.8125rem; line-height: 1.3; margin-top: 2px; }
+
+.pForm .privacy { max-width: none; margin: 22px 0 18px; }
+.pBottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+.pSend {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-left: auto;
+}
+.pForm .errorText { max-width: none; margin-top: 12px; }
+
+@media (max-width: 480px) {
+  .pSend { width: 100%; justify-content: space-between; }
+}
