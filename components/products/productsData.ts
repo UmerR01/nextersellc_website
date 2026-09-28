@@ -3,7 +3,9 @@ export type WireframeKind = "kanban" | "dashboard" | "quotes" | "workspace" | "s
 export type Product = {
   slug: string;
   name: string;
-  /** Accent word in the title: "{name} {suffix}" */
+  /** Accent word in the title: "{name} {suffix}". When `nameAccent` is set it is the
+   * last word of `name` itself (e.g. "AI" in "Croquis AI") and is coloured instead. */
+  nameAccent?: string;
   suffix: string;
   category: string;
   /** Short one-line for cards ("More from Nexterse") */
@@ -30,12 +32,24 @@ export type Product = {
    * onAccentDark is the text color used on top of accentDark — only needed
    * when accentDark is light enough that the sitewide white text on it
    * would be unreadable. */
-  theme: { accent: string; accentDark?: string; onAccentDark?: string; onAccent?: string };
+  theme: {
+    accent: string;
+    accentDark?: string;
+    onAccentDark?: string;
+    onAccent?: string;
+    /** Coloured title words on white when `accent` is too dark to stand out */
+    accentText?: string;
+    /** Secondary tint used on the dark surfaces (CTA block) */
+    accentLight?: string;
+    /** Text colour on solid `accentLight` buttons */
+    onAccentLight?: string;
+  };
   features: { title: string; text: string }[];
   ctaText: string;
   faqs: { q: string; a: string[] }[];
   // Placeholder quote until a real customer review is supplied.
-  quote: { text: string; name: string; role: string };
+  /** avatar: optional photo path under /public/reviews/; initials show until it exists */
+  quote: { text: string; name: string; role: string; avatar?: string };
 };
 
 export const PRODUCTS: Product[] = [
@@ -70,7 +84,7 @@ export const PRODUCTS: Product[] = [
         text: "Agents can run calls in English or Arabic, matching the accent and phrasing a caller actually expects instead of a flat translated script. That makes the same platform usable for a US sales team and a Gulf-region support line without standing up separate tooling for each.",
       },
       {
-        title: "CRM",
+        title: "Leads",
         text: "Numbers, contacts and call history live in one place instead of scattered spreadsheets, so every agent call updates a record you can actually act on. Reps and managers see the same up-to-date picture of who was called, when, and what happened, right alongside the transcripts.",
       },
       {
@@ -115,8 +129,9 @@ export const PRODUCTS: Product[] = [
     ],
     quote: {
       text: "Xorris gave us one place to run and review every call. We stopped chasing updates and started making decisions.",
-      name: "Daniel Brooks",
-      role: "Head of Talent Acquisition",
+      name: "Abdullah Al-Harbi",
+      role: "Head of Talent Acquisition, Riyadh",
+      avatar: "/reviews/xorris.jpg",
     },
   },
   {
@@ -192,8 +207,9 @@ export const PRODUCTS: Product[] = [
     ],
     quote: {
       text: "SalesHub gave us one place to see every quote and broker. We stopped rebuilding rate sheets and started closing.",
-      name: "Rachel Turner",
-      role: "Sales Director",
+      name: "Khalid Al Mansoori",
+      role: "Sales Director, Dubai",
+      avatar: "/reviews/saleshub.jpg",
     },
   },
   {
@@ -263,8 +279,9 @@ export const PRODUCTS: Product[] = [
     ],
     quote: {
       text: "Joblynk gave us one pipeline from job post to offer. We stopped chasing candidates and started hiring.",
-      name: "Michael Reyes",
-      role: "Recruiting Manager",
+      name: "Jason Miller",
+      role: "Recruiting Manager, Austin",
+      avatar: "/reviews/joblynk.jpg",
     },
   },
   // Croquis AI, Koadic and Fittsy: real one-line descriptions supplied,
@@ -278,6 +295,7 @@ export const PRODUCTS: Product[] = [
     slug: "croquis",
     name: "Croquis AI",
     suffix: "",
+    nameAccent: "AI",
     category: "AI Development",
     short: "Describe your idea and watch an AI developer build it, with your team in control.",
     description: "An AI developer workspace for people with an idea and teams with a backlog. Share what you want to build in plain language, and Croquis AI reviews the requirements, writes the code, runs it and shows you a live preview. No development background is needed, and developers keep full visibility and control.",
@@ -289,7 +307,10 @@ export const PRODUCTS: Product[] = [
     // brand blue (readable on white, sits well beside the dark dashboard)
     // and #050a1e its dark navy background.
     colors: { accent: "#bbdcfd", solid: "#264f9e" },
-    theme: { accent: "#264f9e", accentDark: "#050a1e" },
+    // #263c6e is the dark blue (buttons, coloured words); #bbdcfd is the light
+    // blue of the wireframe's message bubbles (product name and buttons on the dark CTA, hover tint). The CTA block itself
+    // uses #010412, the wireframe's dark background.
+    theme: { accent: "#263c6e", accentDark: "#010412", accentLight: "#bbdcfd", onAccentLight: "#263c6e" },
     features: [
       {
         title: "Coding Agent",
@@ -345,14 +366,15 @@ export const PRODUCTS: Product[] = [
     ],
     quote: {
       text: "Croquis AI took our idea straight to a working preview. We stopped stitching build steps together and started reviewing results.",
-      name: "Priya Nair",
-      role: "Product Founder",
+      name: "Ryan Cooper",
+      role: "Product Founder, Seattle",
+      avatar: "/reviews/croquis.jpg",
     },
   },
   {
     slug: "koadic",
     name: "Koadic",
-    suffix: "",
+    suffix: "Designer",
     category: "AI Design",
     short: "An AI designer that creates images and wireframes from a prompt.",
     description: "An AI design platform that generates images, UI wireframes and other visual designs from a prompt: a design partner that produces real graphical output, not just written specs.",
@@ -408,14 +430,15 @@ export const PRODUCTS: Product[] = [
     ],
     quote: {
       text: "Koadic gave us real wireframes and images from a prompt. We stopped starting from a blank canvas.",
-      name: "Emily Carter",
-      role: "Creative Director",
+      name: "Ayesha Khan",
+      role: "Creative Director, Lahore",
+      avatar: "/reviews/koadic.jpg",
     },
   },
   {
     slug: "fittsy",
     name: "Fittsy",
-    suffix: "",
+    suffix: "Stylist",
     category: "Fashion Tech",
     short: "An AI stylist that plans your outfits around your calendar and weather.",
     description:
@@ -481,8 +504,9 @@ export const PRODUCTS: Product[] = [
     ],
     quote: {
       text: "Fittsy checks my calendar and the weather and simply tells me what to wear. Trying it on my avatar first means I no longer change three times before leaving.",
-      name: "Sara Mitchell",
-      role: "Marketing Manager",
+      name: "Chen Wei",
+      role: "Marketing Manager, Shanghai",
+      avatar: "/reviews/fittsy.jpg",
     },
   },
 ];

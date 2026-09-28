@@ -110,24 +110,26 @@ export default function PartnersHero() {
         </div>
 
         <div className={styles.buttons}>
-          <a href="#get-modal-popup" className={`btn btn-accent ${styles.btnPrimary}`}>Become a Partner</a>
+          <a href="#partner-modal-popup" className={`btn btn-accent ${styles.btnPrimary}`}>Become a Partner</a>
           <div className={styles.serviceRating}>
             <p className={styles.ratingLabel}>Partnering with industry leaders</p>
             <div className={styles.ratingScore}>
-              {/* Countries partners are based in — USA, UAE, Germany are the
-                 3 shown, "+5" stands in for the rest. Swap/extend once the
-                 real country spread and count are known. */}
-              <span className={styles.flagStack} aria-hidden>
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src="/flags/us.svg" alt="" className={styles.flag} />
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src="/flags/ae.svg" alt="" className={styles.flag} />
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src="/flags/de.svg" alt="" className={styles.flag} />
-                <span className={styles.flagMore}>+5</span>
+              {/* Countries our partners operate in (same rectangular flag
+                 style as the Xorris platform's CountryFlag). */}
+              <span className={styles.flagStack}>
+                {[
+                  { code: "us", label: "USA" },
+                  { code: "ae", label: "UAE" },
+                  { code: "de", label: "Germany" },
+                  { code: "sa", label: "KSA" },
+                  { code: "it", label: "Italy" },
+                ].map((f) => (
+                  // eslint-disable-next-line @next/next/no-img-element
+                  <img key={f.code} src={`/flags/${f.code}.svg`} alt={f.label} title={f.label} className={styles.flag} />
+                ))}
               </span>
               {/* Replace with the real active-partner count when known. */}
-              <strong>50+ Active Partners</strong>
+              <strong>10+ Active Partners</strong>
             </div>
           </div>
         </div>

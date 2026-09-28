@@ -4,6 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { PRODUCTS } from "./productsData";
+import { titleParts } from "./ProductDetail";
 import ProductWireframe from "./ProductWireframe";
 import styles from "./ProductsPage.module.css";
 
@@ -66,7 +67,7 @@ export default function ProductsPage() {
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img src={p.logo} alt={`${p.name} logo`} className={styles.logo} />
                 <h2 className={styles.name}>
-                  {p.name} <span style={{ color: p.theme.accent }}>{p.suffix}</span>
+                  {titleParts(p)[0]} <span style={{ color: p.theme.accentText ?? p.theme.accent }}>{titleParts(p)[1]}</span>
                 </h2>
                 <p className={styles.desc}>{p.description}</p>
                 <ul className={styles.tags}>

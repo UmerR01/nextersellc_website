@@ -57,6 +57,10 @@
   font-weight: 400;
 }
 
+.value.placeholder {
+  color: #8394ad;
+}
+
 .trigger svg {
   position: absolute;
   right: 0.25rem;
@@ -119,4 +123,23 @@
 .options .selected {
   color: var(--color-accent-dark);
   font-weight: 600;
+}
+
+/* Overlay variant: the list floats over the content below instead of
+   pushing it down (used inside long, scrolling forms). */
+.floating.open {
+  z-index: 30;
+}
+
+.floating .options {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  max-height: 18rem;
+  overflow-y: auto;
+  border-top: 1px solid #d6deea;
+  border-radius: 0 0 8px 8px;
+  padding: 0.4rem 0;
+  box-shadow: 0 0.8rem 1.8rem rgba(10, 21, 48, 0.14);
 }
