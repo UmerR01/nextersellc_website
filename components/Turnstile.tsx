@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState, type Ref } from "react";
-import { TURNSTILE_FIELD_NAME } from "@/lib/turnstile";
+import { TURNSTILE_ENABLED, TURNSTILE_FIELD_NAME } from "@/lib/turnstile";
 
 export { TURNSTILE_FIELD_NAME };
 
@@ -66,7 +66,7 @@ export default function TurnstileWidget({ tokenRef }: TurnstileWidgetProps) {
   const [token, setToken] = useState("");
 
   useEffect(() => {
-    if (!SITE_KEY || !containerRef.current) return;
+    if (!TURNSTILE_ENABLED || !SITE_KEY || !containerRef.current) return;
     let cancelled = false;
 
     loadTurnstileScript()
@@ -96,6 +96,11 @@ export default function TurnstileWidget({ tokenRef }: TurnstileWidgetProps) {
       }
     };
   }, []);
+
+  // Switched off (see TURNSTILE_ENABLED in lib/turnstile.ts): render nothing and
+  // load nothing. The forms read `tokenRef.current?.value ?? ""`, so a missing
+  // field is fine, and the server doesn't check the token while the switch is off.
+  if (!TURNSTILE_ENABLED) return null;
 
   return (
     // Never shown to visitors, in any form: the wrapper is taken out of the layout

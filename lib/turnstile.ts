@@ -1,7 +1,24 @@
 const SECRET = process.env.TURNSTILE_SECRET_KEY ?? "";
 const SITE_KEY_CONFIGURED = Boolean(process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY);
 
-if (!SECRET && process.env.NODE_ENV === "production") {
+/**
+ * Master switch for Cloudflare Turnstile. OFF unless NEXT_PUBLIC_TURNSTILE_ENABLED
+ * is exactly "true" — no env change is needed to keep it off.
+ *
+ * While off: the widget is not rendered and its script is never loaded
+ * (components/Turnstile.tsx), and verifyTurnstileToken() below accepts every
+ * submission without contacting Cloudflare. The image captcha (lib/captcha.ts) is
+ * then the primary check, with the honeypot and header heuristics
+ * (lib/antiSpamGate.ts) as the secondary layer. All the Turnstile code is kept so
+ * it can be switched back on.
+ *
+ * To re-enable: set NEXT_PUBLIC_TURNSTILE_ENABLED=true, plus
+ * NEXT_PUBLIC_TURNSTILE_SITE_KEY and TURNSTILE_SECRET_KEY, then REBUILD —
+ * NEXT_PUBLIC_* values are baked into the client bundle at build time.
+ */
+export const TURNSTILE_ENABLED = process.env.NEXT_PUBLIC_TURNSTILE_ENABLED === "true";
+
+if (TURNSTILE_ENABLED && !SECRET && process.env.NODE_ENV === "production") {
   console.warn(
     "[turnstile] TURNSTILE_SECRET_KEY is not set — Turnstile verification is " +
       "inactive (allowing everything through it) until it's configured."
@@ -59,6 +76,7 @@ export type TurnstileResult = { ok: true } | { ok: false; reason: "missing" | "i
  * show an honest message regardless of which failure mode you pick.
  */
 export async function verifyTurnstileToken(token: unknown, remoteIp?: string, route = "unknown"): Promise<TurnstileResult> {
+  if (!TURNSTILE_ENABLED) return { ok: true }; // switched off — see TURNSTILE_ENABLED above
   if (!SECRET) return { ok: true }; // not configured yet — see warning above
 
   if (typeof token !== "string" || !token) {
@@ -110,5 +128,5 @@ export async function verifyTurnstileToken(token: unknown, remoteIp?: string, ro
 
 /** True once a site key is present client-side — lets components/Turnstile.tsx no-op cleanly before setup. */
 export function isTurnstileConfigured(): boolean {
-  return SITE_KEY_CONFIGURED;
+  return TURNSTILE_ENABLED && SITE_KEY_CONFIGURED;
 }
