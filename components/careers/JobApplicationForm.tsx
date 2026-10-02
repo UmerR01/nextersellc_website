@@ -5,6 +5,7 @@ import styles from "./JobDetailPage.module.css";
 import Honeypot from "@/components/Honeypot";
 import { GENERIC_SUBMIT_ERROR, extractErrorMessage } from "@/lib/formErrors";
 import TurnstileWidget from "@/components/Turnstile";
+import CaptchaField from "@/components/CaptchaField";
 import {
   isValidName,
   isValidEmail,
@@ -248,6 +249,7 @@ export default function JobApplicationForm({ jobTitle }: { jobTitle: string }) {
             <span>I accept the Nexterse <a href="/privacy-policy">privacy policy</a> and terms.</span>
           </label>
           {errors.privacyAccepted && <span className={styles.fieldErrorText}>{errors.privacyAccepted}</span>}
+          <CaptchaField inheritFieldStyle className={styles.captcha} />
           <TurnstileWidget />
           <div className={styles.formFooter}>
             <button className={styles.backButton} type="button" onClick={() => setStep(1)}>Back</button>

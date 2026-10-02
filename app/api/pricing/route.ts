@@ -3,6 +3,7 @@ import { sendFormEmails, type FormField } from "@/lib/mailer";
 import { HONEYPOT_FIELD_NAME } from "@/lib/honeypot";
 import { isBlockedByPreCheck } from "@/lib/antiSpamGate";
 import { TURNSTILE_FIELD_NAME, verifyTurnstileToken } from "@/lib/turnstile";
+import { CAPTCHA_ANSWER_FIELD, CAPTCHA_TOKEN_FIELD, captchaGuard } from "@/lib/captcha";
 import { isValidEmail } from "@/lib/formValidation";
 
 export async function POST(req: NextRequest) {
@@ -22,6 +23,9 @@ export async function POST(req: NextRequest) {
     if (!name || !email || !Array.isArray(fields) || fields.length === 0) {
       return NextResponse.json({ error: "Missing required fields" }, { status: 400 });
     }
+
+    const captchaBlock = captchaGuard(body[CAPTCHA_TOKEN_FIELD], body[CAPTCHA_ANSWER_FIELD], "pricing");
+    if (captchaBlock) return captchaBlock;
 
     const remoteIp = req.headers.get("x-forwarded-for")?.split(",")[0]?.trim();
     const turnstileResult = await verifyTurnstileToken(body[TURNSTILE_FIELD_NAME], remoteIp, "pricing");

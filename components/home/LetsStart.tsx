@@ -5,6 +5,7 @@ import styles from "./LetsStart.module.css";
 import { isValidName, isValidEmail, VALIDATION_MESSAGES } from "@/lib/formValidation";
 import Honeypot from "@/components/Honeypot";
 import TurnstileWidget from "@/components/Turnstile";
+import CaptchaField from "@/components/CaptchaField";
 import { GENERIC_SUBMIT_ERROR, extractErrorMessage } from "@/lib/formErrors";
 
 function ClipIcon() {
@@ -300,6 +301,9 @@ export default function LetsStart({ variant }: LetsStartProps = {}) {
                 with our <a href="/privacy-policy">Privacy & Policy</a> to respond to your enquiry.
               </p>
 
+              {/* Invisible until Cloudflare needs an interactive check; kept out of the
+                  bottom row so it can't push the captcha away from the right edge. */}
+              <TurnstileWidget />
               <div className={`lets-start-bottom ${styles.bottom}`}>
                 <label className={`lets-start-attach ${styles.attach} ${status === "loading" ? styles.attachDisabled : ""}`}>
                   <ClipIcon />
@@ -312,15 +316,7 @@ export default function LetsStart({ variant }: LetsStartProps = {}) {
                     onChange={(e) => setFileName(e.target.files?.[0]?.name ?? "")}
                   />
                 </label>
-                <TurnstileWidget />
-                <button
-                  type="submit"
-                  className={`lets-start-send ${styles.send} ${status === "loading" ? styles.sendLoading : ""}`}
-                  disabled={status === "loading"}
-                  aria-busy={status === "loading"}
-                >
-                  {status === "loading" ? <span className={styles.spinner} aria-hidden="true" /> : "Send"}
-                </button>
+                <CaptchaField inheritFieldStyle className={styles.captcha} />
               </div>
               {status === "error" && (
                 <p className={styles.errorText}>
@@ -332,6 +328,14 @@ export default function LetsStart({ variant }: LetsStartProps = {}) {
                 <a href="https://calendly.com/nexterse-meeting-schedule22/30min" target="_blank" rel="noreferrer noopener" className={`lets-start-book ${styles.book}`}>
                   <CalendarIcon /> Book an intro call
                 </a>
+                <button
+                  type="submit"
+                  className={`lets-start-send ${styles.send} ${status === "loading" ? styles.sendLoading : ""}`}
+                  disabled={status === "loading"}
+                  aria-busy={status === "loading"}
+                >
+                  {status === "loading" ? <span className={styles.spinner} aria-hidden="true" /> : "Send"}
+                </button>
               </div>
             </form>
             )}

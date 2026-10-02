@@ -3,6 +3,7 @@ import { fileToAttachment, sendFormEmails } from "@/lib/mailer";
 import { HONEYPOT_FIELD_NAME } from "@/lib/honeypot";
 import { isBlockedByPreCheck } from "@/lib/antiSpamGate";
 import { TURNSTILE_FIELD_NAME, verifyTurnstileToken } from "@/lib/turnstile";
+import { CAPTCHA_ANSWER_FIELD, CAPTCHA_TOKEN_FIELD, captchaGuard } from "@/lib/captcha";
 import { isValidEmail } from "@/lib/formValidation";
 
 export async function POST(req: NextRequest) {
@@ -39,6 +40,9 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: "Missing required fields" }, { status: 400 });
     }
 
+    const captchaBlock = captchaGuard(formData.get(CAPTCHA_TOKEN_FIELD), formData.get(CAPTCHA_ANSWER_FIELD), "careers");
+    if (captchaBlock) return captchaBlock;
+
     const remoteIp = req.headers.get("x-forwarded-for")?.split(",")[0]?.trim();
     const turnstileResult = await verifyTurnstileToken(formData.get(TURNSTILE_FIELD_NAME), remoteIp, "careers");
     if (!turnstileResult.ok) {
@@ -64,11 +68,15 @@ export async function POST(req: NextRequest) {
       fields: [
         { label: "Name", value: name },
         { label: "Email", value: email },
-        { label: "Phone", value: phone || "-" },
+        // This route serves two forms: the short "Apply for a job" form on the careers
+        // page (name, email, message, optional file) and the longer per-job form (adds
+        // phone, links, position). Only list what was actually submitted, so the short
+        // form's email isn't padded with empty "-" rows.
+        ...(phone ? [{ label: "Phone", value: phone }] : []),
         ...(position ? [{ label: "Position", value: position }] : []),
-        { label: "LinkedIn", value: linkedinUrl || "-" },
-        { label: "GitHub", value: githubUrl || "-" },
-        { label: "Portfolio", value: portfolioUrl || "-" },
+        ...(linkedinUrl ? [{ label: "LinkedIn", value: linkedinUrl }] : []),
+        ...(githubUrl ? [{ label: "GitHub", value: githubUrl }] : []),
+        ...(portfolioUrl ? [{ label: "Portfolio", value: portfolioUrl }] : []),
         { label: "Message", value: message },
       ],
       attachments: resumeAttachment ? [resumeAttachment] : undefined,

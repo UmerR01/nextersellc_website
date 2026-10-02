@@ -5,6 +5,7 @@ import styles from "./PricingQuiz.module.css";
 import { isValidName, isValidEmail, VALIDATION_MESSAGES } from "@/lib/formValidation";
 import Honeypot, { HONEYPOT_FIELD_NAME } from "@/components/Honeypot";
 import TurnstileWidget, { TURNSTILE_FIELD_NAME } from "@/components/Turnstile";
+import CaptchaField, { CAPTCHA_ANSWER_FIELD, CAPTCHA_TOKEN_FIELD } from "@/components/CaptchaField";
 import { GENERIC_SUBMIT_ERROR, extractErrorMessage } from "@/lib/formErrors";
 
 const OPTIONS = [
@@ -127,6 +128,8 @@ export default function PricingQuiz() {
   const [fieldErrors, setFieldErrors] = useState<Record<string, string>>({});
   const honeypotRef = useRef<HTMLInputElement>(null);
   const turnstileRef = useRef<HTMLInputElement>(null);
+  const captchaTokenRef = useRef<HTMLInputElement>(null);
+  const captchaAnswerRef = useRef<HTMLInputElement>(null);
 
   const isAi = flow === "ai";
   const totalSteps = isAi ? AI_STEPS.length : CUSTOM_STEPS.length;
@@ -195,6 +198,8 @@ export default function PricingQuiz() {
           fields: buildAiFields(),
           [HONEYPOT_FIELD_NAME]: honeypotRef.current?.value ?? "",
           [TURNSTILE_FIELD_NAME]: turnstileRef.current?.value ?? "",
+          [CAPTCHA_TOKEN_FIELD]: captchaTokenRef.current?.value ?? "",
+          [CAPTCHA_ANSWER_FIELD]: captchaAnswerRef.current?.value ?? "",
         }),
       });
       if (!res.ok) {
@@ -229,6 +234,8 @@ export default function PricingQuiz() {
           fields: buildCustomFields(),
           [HONEYPOT_FIELD_NAME]: honeypotRef.current?.value ?? "",
           [TURNSTILE_FIELD_NAME]: turnstileRef.current?.value ?? "",
+          [CAPTCHA_TOKEN_FIELD]: captchaTokenRef.current?.value ?? "",
+          [CAPTCHA_ANSWER_FIELD]: captchaAnswerRef.current?.value ?? "",
         }),
       });
       if (!res.ok) {
@@ -455,6 +462,7 @@ export default function PricingQuiz() {
                     ))}
                   </fieldset>
                 ) : null}
+                {currentStep === totalSteps - 1 ? <CaptchaField inheritFieldStyle className={styles.captcha} tokenRef={captchaTokenRef} answerRef={captchaAnswerRef} /> : null}
                 <div className={styles.assessmentActions}>
                   <button type="button" className={`${styles.assessmentBtn} ${styles.prevBtn}`} onClick={goPrev}>Prev</button>
                   <button type="button" className={`${styles.assessmentBtn} ${styles.assessmentNext}`} onClick={goNext}>{currentStep === totalSteps - 1 ? "Finish" : "Next"}</button>
@@ -522,6 +530,7 @@ export default function PricingQuiz() {
                   clearError={(field) => setFieldErrors((current) => ({ ...current, [field]: "" }))}
                 />
               ) : null}
+              {currentStep === totalSteps - 1 ? <CaptchaField inheritFieldStyle className={styles.captcha} tokenRef={captchaTokenRef} answerRef={captchaAnswerRef} /> : null}
               <div className={styles.assessmentActions}>
                 <button type="button" className={`${styles.assessmentBtn} ${styles.prevBtn}`} onClick={goPrev}>Prev</button>
                 <button type="button" className={`${styles.assessmentBtn} ${styles.assessmentNext}`} onClick={goNext}>{currentStep === totalSteps - 1 ? "Finish" : "Next"}</button>

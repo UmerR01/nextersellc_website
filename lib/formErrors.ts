@@ -14,7 +14,9 @@
  * string regardless of what the server actually said — this reads the
  * real message off the response body instead.
  */
-export const GENERIC_SUBMIT_ERROR = "Something went wrong. Please try again.";
+import { refreshCaptcha } from "./captchaClient";
+
+export const GENERIC_SUBMIT_ERROR ="Something went wrong. Please try again.";
 
 /**
  * Reads a user-facing error message off a failed fetch Response, falling
@@ -22,6 +24,10 @@ export const GENERIC_SUBMIT_ERROR = "Something went wrong. Please try again.";
  * string (e.g. a proxy/host-level error page instead of our own JSON).
  */
 export async function extractErrorMessage(res: Response): Promise<string> {
+  // Called for every non-OK submission response. The image captcha is consumed
+  // by any attempt that reaches the server's check (right or wrong), so show
+  // the visitor a fresh one for the retry — see lib/captcha.ts.
+  refreshCaptcha();
   try {
     const data = (await res.json()) as { error?: unknown };
     if (typeof data?.error === "string" && data.error.trim()) return data.error;

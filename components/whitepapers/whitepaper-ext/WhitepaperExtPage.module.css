@@ -252,6 +252,19 @@
 
 .heroForm form > div { margin-bottom: 1.5rem; }
 
+/* "Agree with Privacy policy" (left) and the captcha (right) share one row; the
+   captcha drops below, still right-aligned, only if they genuinely don't fit. */
+.agreeCaptchaRow {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: space-between;
+}
+.agreeCaptchaRow .agreementWrapper { flex: 1 1 9rem; min-width: 0; }
+.agreeCaptchaRow .agreementWrapper > p { flex-wrap: wrap; max-height: none; }
+.captcha { margin-left: auto; }
+
 .heroForm input[type="text"],
 .heroForm input[type="email"] {
   border: none !important;

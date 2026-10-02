@@ -7,6 +7,7 @@ import { isValidName, isValidEmail, VALIDATION_MESSAGES } from "@/lib/formValida
 import Honeypot from "@/components/Honeypot";
 import PartnerForm from "@/components/PartnerForm";
 import TurnstileWidget from "@/components/Turnstile";
+import CaptchaField from "@/components/CaptchaField";
 import { GENERIC_SUBMIT_ERROR, extractErrorMessage } from "@/lib/formErrors";
 
 const CLIENT_LOGOS = [
@@ -263,6 +264,9 @@ export default function ContactModal({ open, onClose, variant = "contact" }: Pro
                   appropriate information.
                 </p>
 
+                {/* Invisible until Cloudflare needs an interactive check; kept out of the
+                    bottom row so it can't push the captcha away from the right edge. */}
+                <TurnstileWidget />
                 <div className={styles.formBottom}>
                   <label className={`${styles.attach} ${status === "loading" ? styles.attachDisabled : ""}`}>
                     <ClipIcon />
@@ -275,15 +279,7 @@ export default function ContactModal({ open, onClose, variant = "contact" }: Pro
                       onChange={(e) => setFileName(e.target.files?.[0]?.name ?? "")}
                     />
                   </label>
-                  <TurnstileWidget />
-                  <button
-                    type="submit"
-                    className={`${styles.sendBtn} ${status === "loading" ? styles.sendLoading : ""}`}
-                    disabled={status === "loading"}
-                    aria-busy={status === "loading"}
-                  >
-                    {status === "loading" ? <span className={styles.spinner} aria-hidden="true" /> : "Send"}
-                  </button>
+                  <CaptchaField inheritFieldStyle className={styles.captcha} />
                 </div>
                 {status === "error" && (
                   <p className={styles.errorText}>
@@ -295,6 +291,14 @@ export default function ContactModal({ open, onClose, variant = "contact" }: Pro
                   <a href="https://calendly.com/nexterse-meeting-schedule22/30min" target="_blank" rel="noreferrer" className={styles.bookBtn}>
                     <CalendarIcon /> Book a consultation
                   </a>
+                  <button
+                    type="submit"
+                    className={`${styles.sendBtn} ${status === "loading" ? styles.sendLoading : ""}`}
+                    disabled={status === "loading"}
+                    aria-busy={status === "loading"}
+                  >
+                    {status === "loading" ? <span className={styles.spinner} aria-hidden="true" /> : "Send"}
+                  </button>
                 </div>
               </form>
             )}
