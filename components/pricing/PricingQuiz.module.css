@@ -229,7 +229,13 @@
   max-width: 30rem;
 }
 
-.inputStep input {
+/* Captcha block on the quiz's last step; its code box shares the email step's field look. */
+.captcha {
+  margin: 1.5rem 0 0;
+}
+
+.inputStep input,
+.captcha input {
   background: transparent;
   border: 0;
   border-bottom: 1px solid #8aa0bc;
@@ -241,12 +247,14 @@
   width: 100%;
 }
 
-.inputStep input::placeholder {
+.inputStep input::placeholder,
+.captcha input::placeholder {
   color: #8aa0bc;
   font-weight: 600;
 }
 
-.inputStep input:focus {
+.inputStep input:focus,
+.captcha input:focus {
   border-bottom-color: var(--color-accent);
 }
 

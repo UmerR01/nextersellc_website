@@ -210,6 +210,51 @@
   color: #899fb6;
 }
 
+/* Order under the fields: privacy checkbox, then captcha, then the button — all
+   lined up under the inputs (same left offset as .bottomRow). */
+.consentRow {
+  margin-bottom: 1.25rem;
+  padding-left: 7.5rem;
+}
+
+@media screen and (max-width: 1024px) {
+  .consentRow {
+    padding-left: 0;
+  }
+}
+
+/* Captcha: its code box uses the same underline look as the fields above. */
+.captcha {
+  margin: 0 0 1.5rem 7.5rem;
+}
+
+.captcha input {
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid #899fb6;
+  color: #112244;
+  font-family: var(--font-inter-tight), sans-serif;
+  font-size: 1rem;
+  outline: none;
+  padding: 0.5rem 0;
+  transition: border-color 0.2s;
+}
+
+.captcha input:hover,
+.captcha input:focus {
+  border-bottom-color: #3CC4E5;
+}
+
+.captcha input::placeholder {
+  color: #899fb6;
+}
+
+@media screen and (max-width: 1024px) {
+  .captcha {
+    margin-left: 0;
+  }
+}
+
 /* Bottom row: checkbox + button */
 .bottomRow {
   display: flex;
@@ -249,7 +294,7 @@
 @media screen and (max-width: 1024px) {
   .checkboxLabel {
     font-size: 0.8125rem;
-    margin-bottom: 2rem;
+    margin-bottom: 0;
   }
 }
 

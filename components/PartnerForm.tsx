@@ -6,6 +6,7 @@ import SelectDropdown from "@/components/helpers/SelectDropdown";
 import { isValidName, isValidEmail, isValidPhone, VALIDATION_MESSAGES } from "@/lib/formValidation";
 import Honeypot from "@/components/Honeypot";
 import TurnstileWidget from "@/components/Turnstile";
+import CaptchaField from "@/components/CaptchaField";
 import { GENERIC_SUBMIT_ERROR, extractErrorMessage } from "@/lib/formErrors";
 import { EMPLOYEES, PARTNERSHIP_TYPES, SOURCES, LIMITS, MIN_LENGTH } from "@/lib/partnerForm";
 
@@ -222,6 +223,8 @@ export default function PartnerForm() {
         the purpose of providing you with appropriate information.
       </p>
 
+      <TurnstileWidget />
+
       <div className={styles.pBottom}>
         <label className={`${styles.attach} ${loading ? styles.attachDisabled : ""}`}>
           <ClipIcon />
@@ -234,17 +237,18 @@ export default function PartnerForm() {
             onChange={(e) => setFileName(e.target.files?.[0]?.name ?? "")}
           />
         </label>
-        <div className={styles.pSend}>
-          <TurnstileWidget />
-          <button
-            type="submit"
-            className="btn btn-accent"
-            disabled={loading}
-            aria-busy={loading}
-          >
-            {loading ? <span className={styles.spinner} aria-hidden="true" /> : "Send"}
-          </button>
-        </div>
+        <CaptchaField inheritFieldStyle className={styles.pCaptcha} />
+      </div>
+
+      <div className={styles.pSend}>
+        <button
+          type="submit"
+          className="btn btn-accent"
+          disabled={loading}
+          aria-busy={loading}
+        >
+          {loading ? <span className={styles.spinner} aria-hidden="true" /> : "Send"}
+        </button>
       </div>
       {status === "error" && <p className={styles.errorText}>{errorMessage}</p>}
     </form>

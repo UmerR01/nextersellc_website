@@ -5,6 +5,7 @@ import styles from "./CareersApply.module.css";
 import { isValidName, isValidEmail, VALIDATION_MESSAGES } from "@/lib/formValidation";
 import Honeypot, { HONEYPOT_FIELD_NAME } from "@/components/Honeypot";
 import TurnstileWidget, { TURNSTILE_FIELD_NAME } from "@/components/Turnstile";
+import CaptchaField, { CAPTCHA_ANSWER_FIELD, CAPTCHA_TOKEN_FIELD } from "@/components/CaptchaField";
 import { GENERIC_SUBMIT_ERROR, extractErrorMessage } from "@/lib/formErrors";
 
 type Status = "idle" | "loading" | "success" | "error";
@@ -21,6 +22,8 @@ export default function CareersApply() {
   const fileInputRef = useRef<HTMLInputElement>(null);
   const honeypotRef = useRef<HTMLInputElement>(null);
   const turnstileRef = useRef<HTMLInputElement>(null);
+  const captchaTokenRef = useRef<HTMLInputElement>(null);
+  const captchaAnswerRef = useRef<HTMLInputElement>(null);
 
   const handleFile = (e: React.ChangeEvent<HTMLInputElement>) => {
     const f = e.target.files?.[0];
@@ -49,6 +52,8 @@ export default function CareersApply() {
       formData.append("message", message);
       formData.append(HONEYPOT_FIELD_NAME, honeypotRef.current?.value ?? "");
       formData.append(TURNSTILE_FIELD_NAME, turnstileRef.current?.value ?? "");
+      formData.append(CAPTCHA_TOKEN_FIELD, captchaTokenRef.current?.value ?? "");
+      formData.append(CAPTCHA_ANSWER_FIELD, captchaAnswerRef.current?.value ?? "");
       if (file) formData.append("resume", file);
       const res = await fetch("/api/careers", { method: "POST", body: formData });
       if (res.ok) {
@@ -186,6 +191,9 @@ export default function CareersApply() {
                       )}
                     </button>
                   </div>
+                  <CaptchaField inheritFieldStyle className={styles.captcha} tokenRef={captchaTokenRef} answerRef={captchaAnswerRef} />
+                </div>
+                <div className={styles.submitRow}>
                   <div className={styles.submitWrapper}>
                     <TurnstileWidget tokenRef={turnstileRef} />
                     <p>

@@ -251,12 +251,46 @@
   }
 }
 
+/* Privacy checkbox (left) and captcha (right) share a row; it wraps, with the
+   captcha dropping below and staying right-aligned, only when they don't fit. */
+.bottomWrapper .agreementWrapper {
+  flex: 1 1 9rem;
+  min-width: 0;
+}
+
+.captcha {
+  margin-left: auto;
+}
+
 @media (max-width: 768px) {
   .bottomWrapper {
-    flex-direction: column;
-    align-items: stretch;
+    flex-wrap: wrap;
+    align-items: center;
     gap: 1.25rem;
   }
+}
+
+/* The captcha's code box uses the same look as the form's other fields
+   (see .formInput) — sizing is handled by the captcha itself. */
+.captcha input {
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid #899fb6;
+  color: #112244;
+  font-family: inherit;
+  font-size: 1rem;
+  line-height: 1.375rem;
+  outline: none;
+  padding: 0.25rem 0 0.5rem;
+  transition: border-color 0.2s;
+}
+
+.captcha input:focus {
+  border-bottom-color: #3CC4E5;
+}
+
+.captcha input::placeholder {
+  color: #5e6d8e;
 }
 
 /* Checkbox */
@@ -453,10 +487,8 @@
 .errorMsg {
   color: #e53e3e;
   font-size: 0.75rem;
-  margin-top: 0.5rem;
-  position: absolute;
-  bottom: -1.25rem;
-  left: 0;
+  margin: 0.75rem 0 0;
+  text-align: right;
 }
 
 /* Booking block */
@@ -466,7 +498,7 @@
   display: flex;
   flex-wrap: wrap;
   gap: 1.5rem;
-  justify-content: flex-end;
+  justify-content: space-between; /* Book on the left, Send on the right */
   margin: 3rem 0 0 auto;
   max-width: 34.25rem;
   position: relative;
@@ -569,6 +601,11 @@
     flex-direction: column;
     gap: 1.25rem;
     max-width: none;
+  }
+
+  /* Stacked on phones: Send first (on top), Book below it. */
+  .submitBtn {
+    order: -1;
   }
 }
 

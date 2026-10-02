@@ -208,6 +208,22 @@
   }
 }
 
+/* Desktop: label on the left, field on the right, on the SAME row. The base
+   width:100% made the label fill the whole row, which wrapped every field onto
+   its own line below it (label high on the left, field lower on the right).
+   Letting the label take just the leftover space beside the fixed-width field
+   keeps both on one baseline. Below 1200px the stacked layout is unchanged. */
+@media (min-width: 1200px) {
+  .labelText {
+    flex: 1 1 0;
+    justify-content: flex-end; /* label text hugs the field, like the contact page */
+    margin-right: 1.25rem;
+    min-width: 0;
+    text-align: right;
+    width: auto;
+  }
+}
+
 .inputWrap {
   display: flex;
   align-items: baseline;
@@ -224,7 +240,8 @@
   }
 }
 
-.formInput {
+.formInput,
+.captcha input {
   background: transparent;
   border: none;
   border-bottom: 1px solid #fff;
@@ -238,11 +255,13 @@
   width: 100%;
 }
 
-.formInput:focus {
+.formInput:focus,
+.captcha input:focus {
   border-bottom-color: #3CC4E5;
 }
 
-.formInput::placeholder {
+.formInput::placeholder,
+.captcha input::placeholder {
   color: #5e6d8e;
 }
 
@@ -296,9 +315,34 @@
 .bottomSection {
   align-items: center;
   display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
   justify-content: space-between;
   max-width: 36.25rem;
   width: 100%;
+}
+
+/* Attach file (left) and captcha (right) share this row; Send sits on its own row below. */
+.captcha {
+  margin-left: auto;
+}
+
+.submitRow {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 1.5rem;
+  max-width: 36.25rem;
+  width: 100%;
+}
+
+/* Same rule the fields and .privacyMessage follow: below 1200px they span the
+   full form width, so these rows must too — otherwise the captcha and Send stop
+   at the desktop 36.25rem and no longer line up with the right edge of the fields. */
+@media (max-width: 1199px) {
+  .bottomSection,
+  .submitRow {
+    max-width: 100%;
+  }
 }
 
 @media (max-width: 768px) {
@@ -444,7 +488,7 @@
   font-size: 0.8125rem;
   margin-top: 0.5rem;
   position: absolute;
-  left: 0;
+  right: 0;
   top: 100%;
   white-space: nowrap;
 }

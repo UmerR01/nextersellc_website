@@ -9,5 +9,7 @@ npm-debug.log*
 next-env.d.ts
 track/
 scripts/
+# Local mail/anti-spam test harness (SMTP sink + route-level tests)
+test-local/
 # Original/uncompressed source media kept locally only (compressed copies live in public/)
 assets-source/

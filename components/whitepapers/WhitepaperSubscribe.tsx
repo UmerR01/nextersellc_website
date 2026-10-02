@@ -5,6 +5,7 @@ import styles from "./WhitepaperSubscribe.module.css";
 import { isValidName, isValidEmail, VALIDATION_MESSAGES } from "@/lib/formValidation";
 import Honeypot, { HONEYPOT_FIELD_NAME } from "@/components/Honeypot";
 import TurnstileWidget, { TURNSTILE_FIELD_NAME } from "@/components/Turnstile";
+import CaptchaField, { CAPTCHA_ANSWER_FIELD, CAPTCHA_TOKEN_FIELD } from "@/components/CaptchaField";
 import { GENERIC_SUBMIT_ERROR, extractErrorMessage } from "@/lib/formErrors";
 
 export default function WhitepaperSubscribe() {
@@ -15,6 +16,8 @@ export default function WhitepaperSubscribe() {
   const [errors, setErrors] = useState<{ name?: string; email?: string; agree?: string }>({});
   const honeypotRef = useRef<HTMLInputElement>(null);
   const turnstileRef = useRef<HTMLInputElement>(null);
+  const captchaTokenRef = useRef<HTMLInputElement>(null);
+  const captchaAnswerRef = useRef<HTMLInputElement>(null);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -37,6 +40,8 @@ export default function WhitepaperSubscribe() {
           email: form.email,
           [HONEYPOT_FIELD_NAME]: honeypotRef.current?.value ?? "",
           [TURNSTILE_FIELD_NAME]: turnstileRef.current?.value ?? "",
+          [CAPTCHA_TOKEN_FIELD]: captchaTokenRef.current?.value ?? "",
+          [CAPTCHA_ANSWER_FIELD]: captchaAnswerRef.current?.value ?? "",
         }),
       });
       if (!res.ok) {
@@ -91,8 +96,7 @@ export default function WhitepaperSubscribe() {
                   {errors.email && <span className={styles.fieldErrorText}>{errors.email}</span>}
                 </label>
 
-                <TurnstileWidget tokenRef={turnstileRef} />
-                <div className={styles.bottomRow}>
+                <div className={styles.consentRow}>
                   <label className={styles.checkboxLabel}>
                     <input
                       type="checkbox"
@@ -103,11 +107,15 @@ export default function WhitepaperSubscribe() {
                       Agree with <a href="/privacy-policy">Privacy Policy</a>
                     </span>
                   </label>
+                  {errors.agree && <p className={styles.fieldErrorText}>{errors.agree}</p>}
+                </div>
+                <CaptchaField inheritFieldStyle className={styles.captcha} tokenRef={captchaTokenRef} answerRef={captchaAnswerRef} />
+                <TurnstileWidget tokenRef={turnstileRef} />
+                <div className={styles.bottomRow}>
                   <button type="submit" className={styles.submitBtn} disabled={status === "loading"}>
                     {status === "loading" ? "Subscribing…" : "Subscribe"}
                   </button>
                 </div>
-                {errors.agree && <p className={styles.fieldErrorText}>{errors.agree}</p>}
                 {status === "error" && (
                   <p style={{ color: "#ff415c", fontSize: 14, marginTop: 8 }}>
                     {errorMessage}

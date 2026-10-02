@@ -47,12 +47,9 @@ type TurnstileWidgetProps = {
  * token, a script can't fake a pass here, because it never executes the
  * browser JS Cloudflare uses to issue one).
  *
- * Unlike Honeypot.tsx, this widget is NOT hidden — Cloudflare's terms
- * require the badge/checkbox to stay visible when shown, and
- * `appearance: "interaction-only"` below already keeps it fully collapsed
- * (zero layout height) for the common case where no visible challenge is
- * needed, only expanding if Cloudflare decides an interactive check is
- * required.
+ * The widget is kept out of sight everywhere (see the wrapper style in the
+ * return below). Pair that with the dashboard widget mode "Invisible", which is
+ * Cloudflare's supported way to never show any UI.
  *
  * No-ops cleanly (renders nothing, contributes an empty token) if
  * NEXT_PUBLIC_TURNSTILE_SITE_KEY isn't set yet — see .env.local.
@@ -101,7 +98,30 @@ export default function TurnstileWidget({ tokenRef }: TurnstileWidgetProps) {
   }, []);
 
   return (
-    <div>
+    // Never shown to visitors, in any form: the wrapper is taken out of the layout
+    // and clipped to a 1px, see-through box pinned inside the viewport, so even if
+    // Cloudflare escalates to its "Verify you are human" checkbox it can't appear or
+    // shift the form. Deliberately NOT display:none and NOT 0x0/off-screen: browsers
+    // throttle cross-origin frames that aren't visible, and Cloudflare's script needs
+    // to actually run to hand back a token.
+    //
+    // The real switch is the widget's mode in the Cloudflare dashboard: set it to
+    // "Invisible" so Cloudflare never needs a checkbox. In "Managed" mode a visitor
+    // Cloudflare flags is stuck behind this hidden checkbox: no token is ever
+    // produced and the server answers "Verification failed" (see lib/turnstile.ts).
+    <div
+      aria-hidden="true"
+      style={{
+        position: "fixed",
+        bottom: 0,
+        right: 0,
+        width: 1,
+        height: 1,
+        overflow: "hidden",
+        opacity: 0.01,
+        pointerEvents: "none",
+      }}
+    >
       <div ref={containerRef} />
       <input ref={tokenRef} type="hidden" name={TURNSTILE_FIELD_NAME} value={token} readOnly />
     </div>

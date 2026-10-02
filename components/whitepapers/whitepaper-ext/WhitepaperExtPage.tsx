@@ -6,6 +6,8 @@ import s from "./WhitepaperExtPage.module.css";
 import { isValidName, isValidEmail, VALIDATION_MESSAGES } from "@/lib/formValidation";
 import Honeypot, { HONEYPOT_FIELD_NAME } from "@/components/Honeypot";
 import TurnstileWidget, { TURNSTILE_FIELD_NAME } from "@/components/Turnstile";
+import CaptchaField, { CAPTCHA_ANSWER_FIELD, CAPTCHA_TOKEN_FIELD } from "@/components/CaptchaField";
+import { GENERIC_SUBMIT_ERROR, extractErrorMessage } from "@/lib/formErrors";
 import type {
   WhitepaperData,
   RichText,
@@ -177,13 +179,17 @@ export default function WhitepaperExtPage({ data }: { data: WhitepaperData }) {
   const [heroSubmitted, setHeroSubmitted] = useState(false);
   const heroHoneypotRef = useRef<HTMLInputElement>(null);
   const heroTurnstileRef = useRef<HTMLInputElement>(null);
+  const heroCaptchaTokenRef = useRef<HTMLInputElement>(null);
+  const heroCaptchaAnswerRef = useRef<HTMLInputElement>(null);
+  const [heroSending, setHeroSending] = useState(false);
+  const [heroSubmitError, setHeroSubmitError] = useState("");
 
   const [faqOpen, setFaqOpen] = useState<Set<number>>(
     new Set(data.faq?.defaultOpen ?? [0])
   );
   const [faqShowAll, setFaqShowAll] = useState(false);
 
-  const handleHeroSubmit = (e: React.FormEvent) => {
+  const handleHeroSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     const errors: Record<string, string> = {};
     if (!heroForm.name.trim()) errors.name = VALIDATION_MESSAGES.required;
@@ -195,25 +201,41 @@ export default function WhitepaperExtPage({ data }: { data: WhitepaperData }) {
     if (!heroForm.agreement) errors.agreement = VALIDATION_MESSAGES.checkbox;
     setHeroErrors(errors);
     if (Object.keys(errors).length === 0) {
-      setHeroSubmitted(true);
-
       // The button no longer opens/downloads the PDF directly — it only
-      // sends the mail notification below. Fire-and-forget, same as before.
-      fetch("/api/whitepaper-download", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          name: heroForm.name,
-          email: heroForm.email,
-          intention: heroForm.intention,
-          discuss: heroForm.discuss,
-          company: heroForm.company,
-          companyType: heroForm.companyType,
-          whitepaper: data.breadcrumb,
-          [HONEYPOT_FIELD_NAME]: heroHoneypotRef.current?.value ?? "",
-          [TURNSTILE_FIELD_NAME]: heroTurnstileRef.current?.value ?? "",
-        }),
-      }).catch(() => {});
+      // sends the mail notification below. This used to be fire-and-forget
+      // with an optimistic "Thank you", but the image captcha can be mistyped,
+      // and showing success for a rejected submission would silently drop a
+      // real lead — so wait for the server's answer and show failures.
+      setHeroSending(true);
+      setHeroSubmitError("");
+      try {
+        const res = await fetch("/api/whitepaper-download", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            name: heroForm.name,
+            email: heroForm.email,
+            intention: heroForm.intention,
+            discuss: heroForm.discuss,
+            company: heroForm.company,
+            companyType: heroForm.companyType,
+            whitepaper: data.breadcrumb,
+            [HONEYPOT_FIELD_NAME]: heroHoneypotRef.current?.value ?? "",
+            [TURNSTILE_FIELD_NAME]: heroTurnstileRef.current?.value ?? "",
+            [CAPTCHA_TOKEN_FIELD]: heroCaptchaTokenRef.current?.value ?? "",
+            [CAPTCHA_ANSWER_FIELD]: heroCaptchaAnswerRef.current?.value ?? "",
+          }),
+        });
+        if (!res.ok) {
+          setHeroSubmitError(await extractErrorMessage(res));
+          return;
+        }
+        setHeroSubmitted(true);
+      } catch {
+        setHeroSubmitError(GENERIC_SUBMIT_ERROR);
+      } finally {
+        setHeroSending(false);
+      }
     }
   };
 
@@ -458,6 +480,7 @@ export default function WhitepaperExtPage({ data }: { data: WhitepaperData }) {
                         />
                       </div>
 
+                      <div className={s.agreeCaptchaRow}>
                       <div className={s.agreementWrapper}>
                         <p>
                           <span className={s.checkboxWrap}>
@@ -476,6 +499,10 @@ export default function WhitepaperExtPage({ data }: { data: WhitepaperData }) {
                         )}
                       </div>
 
+                      <CaptchaField inheritFieldStyle className={s.captcha} tokenRef={heroCaptchaTokenRef} answerRef={heroCaptchaAnswerRef} />
+                      </div>
+                      {heroSubmitError && <span className={s.fieldError}>{heroSubmitError}</span>}
+
                       <div className={s.bottomSection}>
                         <TurnstileWidget tokenRef={heroTurnstileRef} />
                         <div className={s.submitWrapper}>
@@ -484,7 +511,7 @@ export default function WhitepaperExtPage({ data }: { data: WhitepaperData }) {
                               global btn/btn-accent classes directly so its UI (padding,
                               border-radius, colors, hover transition) matches the Header's
                               "Get in touch" button exactly, not a locally re-approximated copy. */}
-                          <button type="submit" className={`btn btn-accent ${s.submitBtn}`}>
+                          <button type="submit" className={`btn btn-accent ${s.submitBtn}`} disabled={heroSending}>
                             Send
                           </button>
                         </div>

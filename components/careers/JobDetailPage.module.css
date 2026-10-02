@@ -232,6 +232,12 @@
   display: none;
 }
 
+/* Captcha block, left-aligned under the consent checkbox. Its code box already
+   gets the form's field look from the generic `.form input` rule above. */
+.captcha {
+  align-self: flex-start;
+}
+
 .dropZone {
   width: 100%;
   min-height: 6rem;
@@ -496,10 +502,15 @@
     display: grid;
   }
 
+  /* btn_r: buttons are never stretched or stacked full-width — they keep their own
+     width, Back on the left and Submit on the right, same as on desktop. */
   .formFooter {
     display: flex;
-    align-items: stretch;
-    flex-direction: column;
+    align-items: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 0.75rem 1rem;
+    justify-content: space-between;
   }
 
   .consent {

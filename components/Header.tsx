@@ -610,7 +610,12 @@ export default function Header({ forceSolid = false, startTransparent = false }:
           <div className={styles.right}>
             <button
               className={`btn btn-accent ${styles.contactButton}`}
-              onClick={() => setModalOpen(true)}
+              onClick={() => {
+                // Always reopen as the plain contact form — modalVariant would otherwise
+                // still be "partner" from an earlier "Become a partner" open.
+                setModalVariant("contact");
+                setModalOpen(true);
+              }}
               aria-label="Get in touch"
             >
               <span className={styles.contactButtonText}>Get in touch</span>

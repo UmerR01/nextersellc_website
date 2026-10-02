@@ -189,7 +189,8 @@
 }
 
 .field input,
-.field textarea {
+.field textarea,
+.captcha input {
   flex: 1 1 0;
   max-width: 632px;
   min-width: 0;
@@ -204,9 +205,11 @@
   resize: vertical;
 }
 .field input::placeholder,
-.field textarea::placeholder { color: #5e6d8e; }
+.field textarea::placeholder,
+.captcha input::placeholder { color: #5e6d8e; }
 .field input:focus,
-.field textarea:focus {
+.field textarea:focus,
+.captcha input:focus {
   outline: none;
   border-bottom-color: var(--color-blue);
 }
@@ -247,6 +250,8 @@
 /* File + Send row */
 .formBottom {
   display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
   align-items: center;
   justify-content: space-between;
   max-width: 632px;
@@ -347,8 +352,9 @@
 .manager {
   display: flex;
   align-items: center;
-  justify-content: flex-end;
-  gap: 1.5rem;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 1rem 1.5rem;
   max-width: 632px;
   width: 100%;
   margin-top: clamp(0.75rem, 3vh, 2rem);
@@ -532,6 +538,12 @@
   .manager { flex-wrap: wrap; justify-content: flex-start; }
 }
 
+/* Very narrow panel: Send and Book stack. Send goes first (on top), Book below it. */
+@container left (max-width: 420px) {
+  .manager { flex-direction: column; align-items: flex-start; }
+  .sendBtn { order: -1; }
+}
+
 /* Below this the partner panel no longer fits beside the form */
 @media (max-width: 960px) {
   .modal { flex-direction: column; }
@@ -651,7 +663,8 @@
 .pReq { margin-left: 2px; color: #e63555; font-weight: 700; }
 
 .pField input,
-.pField textarea {
+.pField textarea,
+.pCaptcha input {
   width: 100%;
   min-width: 0;
   padding: 0.25rem 0 0.7rem;
@@ -666,9 +679,11 @@
 }
 .pField textarea { min-height: 5.5rem; resize: vertical; }
 .pField input::placeholder,
-.pField textarea::placeholder { color: #8394ad; }
+.pField textarea::placeholder,
+.pCaptcha input::placeholder { color: #8394ad; }
 .pField input:focus,
-.pField textarea:focus {
+.pField textarea:focus,
+.pCaptcha input:focus {
   outline: none;
   border-bottom-color: var(--color-accent);
   box-shadow: 0 1px 0 var(--color-accent);
@@ -685,16 +700,16 @@
   flex-wrap: wrap;
   gap: 16px;
 }
+/* Attach file (left) and captcha (right) share .pBottom; Send sits on its own row below. */
+.pCaptcha {
+  margin-left: auto;
+}
 .pSend {
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  flex-wrap: wrap;
-  gap: 16px;
-  margin-left: auto;
+  margin-top: 18px;
+  width: 100%;
 }
 .pForm .errorText { max-width: none; margin-top: 12px; }
 
-@media (max-width: 480px) {
-  .pSend { width: 100%; justify-content: space-between; }
-}

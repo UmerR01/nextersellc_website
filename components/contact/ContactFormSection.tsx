@@ -6,6 +6,7 @@ import styles from "./ContactFormSection.module.css";
 import { isValidName, isValidEmail, VALIDATION_MESSAGES } from "@/lib/formValidation";
 import Honeypot, { HONEYPOT_FIELD_NAME } from "@/components/Honeypot";
 import TurnstileWidget, { TURNSTILE_FIELD_NAME } from "@/components/Turnstile";
+import CaptchaField, { CAPTCHA_ANSWER_FIELD, CAPTCHA_TOKEN_FIELD } from "@/components/CaptchaField";
 import { GENERIC_SUBMIT_ERROR, extractErrorMessage } from "@/lib/formErrors";
 
 const CalendarSVG = () => (
@@ -31,6 +32,8 @@ export default function ContactFormSection() {
   const [errors, setErrors] = useState<{ name?: string; email?: string; message?: string; agreed?: string }>({});
   const honeypotRef = useRef<HTMLInputElement>(null);
   const turnstileRef = useRef<HTMLInputElement>(null);
+  const captchaTokenRef = useRef<HTMLInputElement>(null);
+  const captchaAnswerRef = useRef<HTMLInputElement>(null);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -55,6 +58,8 @@ export default function ContactFormSection() {
           message,
           [HONEYPOT_FIELD_NAME]: honeypotRef.current?.value ?? "",
           [TURNSTILE_FIELD_NAME]: turnstileRef.current?.value ?? "",
+          [CAPTCHA_TOKEN_FIELD]: captchaTokenRef.current?.value ?? "",
+          [CAPTCHA_ANSWER_FIELD]: captchaAnswerRef.current?.value ?? "",
         }),
       });
       if (res.ok) {
@@ -141,6 +146,10 @@ export default function ContactFormSection() {
                     {errors.message && <span className={styles.fieldErrorText}>{errors.message}</span>}
                   </label>
 
+                  {/* Invisible until Cloudflare needs an interactive check; kept out of the
+                      bottom rows so it can't shift anything. */}
+                  <TurnstileWidget tokenRef={turnstileRef} />
+
                   <div className={styles.bottomSection}>
                     <div className={styles.bottomWrapper}>
                       <div className={styles.agreementWrapper}>
@@ -159,38 +168,38 @@ export default function ContactFormSection() {
                         </p>
                         {errors.agreed && <span className={styles.fieldErrorText}>{errors.agreed}</span>}
                       </div>
-                      <div className={styles.submitWrapper}>
-                        <TurnstileWidget tokenRef={turnstileRef} />
-                        <button
-                          type="submit"
-                          className={`${styles.submitBtn} ${status === "loading" ? styles.submitBtnLoading : ""}`}
-                          disabled={status === "loading"}
-                        >
-                          {status === "loading" ? (
-                            <span className={styles.spinner} />
-                          ) : (
-                            "Get in Touch"
-                          )}
-                        </button>
-                        {status === "error" && (
-                          <p className={styles.errorMsg}>{errorMessage}</p>
-                        )}
-                      </div>
+                      <CaptchaField inheritFieldStyle className={styles.captcha} tokenRef={captchaTokenRef} answerRef={captchaAnswerRef} />
                     </div>
                   </div>
-                </form>
+                  {status === "error" && (
+                    <p className={styles.errorMsg}>{errorMessage}</p>
+                  )}
 
-                <div className={styles.booking}>
-                  <a
-                    href="https://calendly.com/nexterse-meeting-schedule22/30min"
-                    className={styles.bookBtn}
-                    target="_blank"
-                    rel="noreferrer noopener"
-                  >
-                    <CalendarSVG />
-                    Book an intro call
-                  </a>
-                </div>
+                  {/* Book + Send share the bottom row (Send goes first on phones). The
+                      booking block lives inside the form so the submit button still submits it. */}
+                  <div className={styles.booking}>
+                    <a
+                      href="https://calendly.com/nexterse-meeting-schedule22/30min"
+                      className={styles.bookBtn}
+                      target="_blank"
+                      rel="noreferrer noopener"
+                    >
+                      <CalendarSVG />
+                      Book an intro call
+                    </a>
+                    <button
+                      type="submit"
+                      className={`${styles.submitBtn} ${status === "loading" ? styles.submitBtnLoading : ""}`}
+                      disabled={status === "loading"}
+                    >
+                      {status === "loading" ? (
+                        <span className={styles.spinner} />
+                      ) : (
+                        "Get in Touch"
+                      )}
+                    </button>
+                  </div>
+                </form>
               </>
             ) : (
               <div className={styles.successState}>
